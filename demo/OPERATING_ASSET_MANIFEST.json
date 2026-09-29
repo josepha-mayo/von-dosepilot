@@ -1,0 +1,68 @@
+{
+  "schema": "von.operating_demo.assets.v1",
+  "scope": "invented operating demo only; private candidate",
+  "files": {
+    "NOTICE_REVIEW.md": {
+      "bytes": 1705,
+      "sha256": "75398950fa81d4a74c86cfacb755162c33de99e3b9a1c91d098c99ba42ce7ef0"
+    },
+    "OPERATING_DEMO_README.md": {
+      "bytes": 2739,
+      "sha256": "0d3531c645dc8bef6e468597f6d5de5119da25aac49010b8647ddfdfbaa20c28"
+    },
+    "PACKAGE_MANIFEST.json": {
+      "bytes": 1411,
+      "sha256": "88155af8bea6f5b6973896b87a741e8dcb979443ae8e6272950845502f6f4466"
+    },
+    "README.md": {
+      "bytes": 2135,
+      "sha256": "d1633edb43ffac5401986b409d5eebc0bdd415eeef6a044995a01f1fd40112b6"
+    },
+    "demo_steps.py": {
+      "bytes": 9214,
+      "sha256": "20289f6806dfc31fc22511974aa0537138f9c2ecf046be1b04656646153d5e0a"
+    },
+    "dosepilot.py": {
+      "bytes": 13544,
+      "sha256": "1defad90386fefa0e1be19116c7185aab2f01e13e8b1c33f5e74f624b02cf42a"
+    },
+    "inventory.json": {
+      "bytes": 18614,
+      "sha256": "0db94915dcce6155142259e4b3ecda033ee26af51935403f24dca616d35ad921"
+    },
+    "measurements.json": {
+      "bytes": 18782,
+      "sha256": "62f12b19c4f703a1ecc3a40ec00702d7bf590f763b1abc7f80961e54ad251cca"
+    },
+    "model.json": {
+      "bytes": 24198,
+      "sha256": "4b18aec503b93a9bf2174ed442b4b9ab77fdbd278f5ba5b8eb5b4d32a7d302f1"
+    },
+    "one_missing.json": {
+      "bytes": 18783,
+      "sha256": "b5b5a26337de165ce249772465c87c2ffbb8339d5e9705b98118e937abc1f439"
+    },
+    "present.py": {
+      "bytes": 4474,
+      "sha256": "8b6ae9e0dd3476e8231b1d1ebb27e84776b479aa9f928a12c174458f8b76aa4f"
+    },
+    "recover_plan.py": {
+      "bytes": 2479,
+      "sha256": "c79b8ec88be66e34bc528a7d5e20faed05b6469993b1ae24a103b2853eb2be62"
+    },
+    "requirements.txt": {
+      "bytes": 13,
+      "sha256": "7bd6b8946940b79948c548c8048e545684b91c8edc9444d8dfc0c8f76a97c0a7"
+    },
+    "run_operating_demo.py": {
+      "bytes": 1385,
+      "sha256": "65a318816da667517493302dacd42d891ae8c80e5d2aa587c8dc07836b9d1af1"
+    },
+    "run_recovery_demo.py": {
+      "bytes": 3283,
+      "sha256": "b74eee2b1075c942f1ee5f25dbf5dcc4edc8c6bc86ab2f468110587910573bdd"
+    }
+  },
+  "no_fonts_or_patient_data": true,
+  "not_public_license_clearance": true
+}

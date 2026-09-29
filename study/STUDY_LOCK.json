@@ -1,0 +1,126 @@
+{
+  "absolute_mse_tolerance": 1e-12,
+  "deps": {
+    "joblib": "1.5.3",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.0",
+    "threadpoolctl": "3.6.0"
+  },
+  "engine_files": {
+    "bracketing_methods.py": "1b58f1c8af86117876bd08c900b6f73ae951506aad06cae6c5834168dd7e4eae",
+    "coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "coverage_scoring.py": "85235aabde3545ce74bf62c72e2e4019bf5b9859c2e10b83411823bfa1cf2d71",
+    "curve_shape_methods.py": "82a5e4c2c338acb5b3c545724a8c9c2de58d3f6326f9b8be9f0403fa7096d70e",
+    "evaluate.py": "24593a7d8608fd3ce98c367e1760af596b3b33554c1ef7a3f8ac645b046b700b",
+    "evaluate_bracketing.py": "e47374a29c8af9d47b1880d308dd08959386a8b07a25030499f49a09379ea582",
+    "evaluate_coverage.py": "3a9f7507c2d8a724be9e429c78c61c669fb9e671f3be7f5c29485186903127e4",
+    "evaluate_curve_shape.py": "dd0ca6065751d86cc280265d62e8ea3434309780e68f89b9f9654f1a4d02c1e7",
+    "evaluate_mechanism.py": "52f911dcaeb2942a45f9fd9c7585fb6f9e6506cd09787887cc03b959ceb8d45d",
+    "evaluate_sparse.py": "f07954779744fc8fdcaddac1f2413ef8ceb7e5e9d27c407bc1f425e96e599ada",
+    "mechanism_methods.py": "d38452a8454df7ce7f85a257b9bb0aa81a874f909ef5f0c66ec2529212811a15",
+    "methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "sparse_methods.py": "511ea1665a7f245cd3a2923fd8a6be6f5c2e45ba901da1620f7298a4125ec64c",
+    "synthetic_bracketing_preflight.py": "5eb3fdb124274825f538569016bbe60ccaa7cdfd85f0c8912f3a2eb365fbf6ad",
+    "synthetic_coverage_preflight.py": "616ed5da77b1c29415a7ac4c656757f68d1d175e59aa72126d1d88d55655a27d",
+    "synthetic_coverage_scoring.py": "afcc04e61e80d35941580bc4a7e1bdef93d7d8e01205fdd003d84d49a87a4767"
+  },
+  "expected_mse": {
+    "r13_matched_paired_native": 0.001737932637554947,
+    "r13_single64_expected_loss": 0.001144858681382854,
+    "r9_own24": 0.0017214230057830812,
+    "r9_shared24": 0.002136395428366182
+  },
+  "expected_patients": 59,
+  "expected_shape": [
+    119,
+    24
+  ],
+  "historical_source_manifests": {
+    "r13": "96c2ba2090e412780dbbcf87a97334ac756173b60864548ba147d78a2672196c",
+    "r9": "def3fe8a0c87fc32aac0b5ae3585678daa28688651a14914149d7747ebb2d9c7"
+  },
+  "inner_folds": 3,
+  "input_files": {
+    "contract/BRACKETING_CONTRACT.json": {
+      "bytes": 72442,
+      "sha256": "25678678b1b8d43b47675ab2256bcc81df0b21ba19cc57a76844518a5dea32a0"
+    },
+    "contract/VALIDATION.json": {
+      "bytes": 1325,
+      "sha256": "32e8fbb3f3336e7902f079fe65c726d71cac9e4f8f6f38d5e13a4bb8e975ef89"
+    },
+    "contract/all_record_q_pair_budgets.csv": {
+      "bytes": 331754,
+      "sha256": "0f889a6616a40b0df7a757771728534b7d41a20ff5acc47b1cabce5770c5c796"
+    },
+    "contract/candidate_native_wells.csv": {
+      "bytes": 2720700,
+      "sha256": "edd1b98abf3e77f9312a62748b9c44d36cb64955252c8c5e41db5e8375bb23ce"
+    },
+    "query_pool/QUERY_POOL_MANIFEST.json": {
+      "bytes": 472558,
+      "sha256": "536ece2d552740671a5a44f16c948b8ddc4ca6330be1f9b3c4f11398491a3aab"
+    },
+    "query_pool/VALIDATION.json": {
+      "bytes": 3976,
+      "sha256": "f6c9b483199d3b5f9fd48e4d8e6e0124b3811f60334594ddc6cb331b5143033c"
+    },
+    "query_pool/controls.csv": {
+      "bytes": 641500,
+      "sha256": "a6bf7f973806c2e0ad9c68f1ba5cea5e995aeb8399bf863c6f841fa5460fddc2"
+    },
+    "query_pool/native_actions.csv": {
+      "bytes": 26564,
+      "sha256": "d8d3c6b7fb89dda33a6dd054d5d3cfb35db000098893ca359880ced02f0725f7"
+    },
+    "query_pool/native_support_wells.csv": {
+      "bytes": 10545848,
+      "sha256": "c35d11066e8ed022790ede12054c02c37b0e2596ecb55504393dd4c15802e9a1"
+    },
+    "query_pool/query_actions.csv": {
+      "bytes": 6053,
+      "sha256": "51b4e2b7fb9762e52e67b22bde30032835c89c84035131e0a77f6f48a8e5e77b"
+    },
+    "query_pool/query_wells.csv": {
+      "bytes": 9264262,
+      "sha256": "ab8d8c41c380f2765f25c6bcdfd925b4efd9176741f45836d0a26c28ef293898"
+    },
+    "query_pool/sample_budgets.csv": {
+      "bytes": 17591,
+      "sha256": "9b5f1c65eedc3346be1f377ddb097e3c68d3187dd32b5aaf8b529a9ee4f71337"
+    },
+    "train/preparation_audit.json": {
+      "bytes": 1207,
+      "sha256": "33561a7ba7a3e27c3d79b677e89aceb43c9b0641d9b19ab4c62603d5886491a4"
+    },
+    "train/train.npz": {
+      "bytes": 110628,
+      "sha256": "c775264e3c612711281bbe88793e77b3edfee2e2dbc4180116dd296854a8787a"
+    },
+    "train/train_curves.csv": {
+      "bytes": 3418290,
+      "sha256": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94"
+    },
+    "train/train_metadata.json": {
+      "bytes": 7707,
+      "sha256": "131c7de4eb16fafe08d07aaaad613377a6208db14bbd4396090b2ec674f9753e"
+    }
+  },
+  "input_roles": {
+    "contract": "contract/BRACKETING_CONTRACT.json",
+    "curves": "train/train_curves.csv",
+    "metadata": "train/train_metadata.json",
+    "preparation_audit": "train/preparation_audit.json",
+    "query_pool": "query_pool/QUERY_POOL_MANIFEST.json",
+    "train": "train/train.npz"
+  },
+  "no_historical_prediction_files_required": true,
+  "orientation_averaging": "LOSSES_ONLY",
+  "outer_folds": 5,
+  "relative_mse_tolerance": 0.0,
+  "schema": "von.real_train_reproduction.v1",
+  "scope": "Previously released Lib1 TRAIN only; no original workbook or protected responses",
+  "wells_per_procedure": 64
+}

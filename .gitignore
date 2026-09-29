@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+demo_run_*/
+outputs/
+private_inputs/
+source_assets_private/
+*.xlsx
+*.npz
+*.pkl
+.env

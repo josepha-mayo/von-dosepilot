@@ -1,0 +1,909 @@
+{
+  "assay_context": "synthetic",
+  "library_id": "lib1",
+  "plates": {
+    "p1": "SYNTHETIC_PLATE_1",
+    "p2": "SYNTHETIC_PLATE_2"
+  },
+  "run_id": "SYNTHETIC_RUN",
+  "sample_id": "SYNTHETIC_SAMPLE",
+  "schema": "von.inventory.v1",
+  "wells": [
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_00",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A1"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_00",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A1"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_00",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A2"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_00",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A2"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_00",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A3"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_00",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A3"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_01",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A4"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_01",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A4"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_01",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A5"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_01",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A5"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_01",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A6"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_01",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A6"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_02",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A7"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_02",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A7"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_02",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A8"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_02",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A8"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_02",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A9"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_02",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A9"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_03",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A10"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_03",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A10"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_03",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A11"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_03",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A11"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_03",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A12"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_03",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A12"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_04",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A13"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_04",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A13"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_04",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A14"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_04",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A14"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_04",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A15"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_04",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A15"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_05",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A16"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_05",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A16"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_05",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A17"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_05",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A17"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_05",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A18"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_05",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A18"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_06",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A19"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_06",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A19"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_06",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A20"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_06",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A20"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_06",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A21"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_06",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A21"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_07",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A22"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_07",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A22"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_07",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A23"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_07",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A23"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_07",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "A24"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_07",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "A24"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_08",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B1"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_08",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B1"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_08",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B2"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_08",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B2"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_08",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B3"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_08",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B3"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_09",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B4"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_09",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B4"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_09",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B5"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_09",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B5"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_09",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B6"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_09",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B6"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_10",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B7"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_10",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B7"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_10",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B8"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_10",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B8"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_10",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B9"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_10",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B9"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_11",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B10"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_11",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B10"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_11",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B11"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_11",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B11"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_11",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B12"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_11",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B12"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_12",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B13"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_12",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B13"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_12",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B14"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_12",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B14"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_12",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B15"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_12",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B15"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_13",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B16"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_13",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B16"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_13",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B17"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_13",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B17"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_13",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B18"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_13",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B18"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_14",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B19"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_14",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B19"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_14",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B20"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_14",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B20"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_14",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B21"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_14",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B21"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_15",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B22"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_15",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B22"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_15",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B23"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_15",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B23"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_15",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "B24"
+    },
+    {
+      "concentration_nM": "100",
+      "drug_id": "SYNTHETIC_DRUG_15",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "B24"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_16",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C1"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_16",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C1"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_16",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C2"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_16",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C2"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_17",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C3"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_17",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C3"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_17",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C4"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_17",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C4"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_18",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C5"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_18",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C5"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_18",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C6"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_18",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C6"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_19",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C7"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_19",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C7"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_19",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C8"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_19",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C8"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_20",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C9"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_20",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C9"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_20",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C10"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_20",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C10"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_21",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C11"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_21",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C11"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_21",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C12"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_21",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C12"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_22",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C13"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_22",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C13"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_22",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C14"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_22",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C14"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_23",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C15"
+    },
+    {
+      "concentration_nM": "1",
+      "drug_id": "SYNTHETIC_DRUG_23",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C15"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_23",
+      "plate": "p1",
+      "unit": "nM",
+      "well": "C16"
+    },
+    {
+      "concentration_nM": "10",
+      "drug_id": "SYNTHETIC_DRUG_23",
+      "plate": "p2",
+      "unit": "nM",
+      "well": "C16"
+    }
+  ]
+}

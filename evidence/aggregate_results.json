@@ -1,0 +1,44 @@
+{
+  "schema": "dosepilot.public_aggregate_evidence.v1",
+  "evidence_type": "retrospective_repeated_development",
+  "samples": 119,
+  "whole_patients": 59,
+  "targets": 24,
+  "treatment_wells_per_layout": 64,
+  "plates": 2,
+  "wells_per_plate": 32,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "orientation_average": "losses_not_predictions",
+  "methods": {
+    "R9_paired_control": 0.0017214230057830812,
+    "R13_matched_paired_native": 0.001737932637554947,
+    "R13_retained": 0.001144858681382854,
+    "R18_lower_point_not_promoted": 0.0011414048112341991,
+    "R22_prior_center_not_promoted": 0.001143256661767395,
+    "R23_corrected_covariance_not_promoted": 0.0011421341320843055,
+    "same_panel_interpolation_control": 0.012445522811884427
+  },
+  "R13_vs_R9": {
+    "relative_mse_reduction": 0.3349347153275358,
+    "patient_wins": 53,
+    "patient_regressions": 6,
+    "favorable_folds": 5,
+    "drug_regressions": 6,
+    "gedatolisib_palbociclib_mse_increase_percent": 20.935
+  },
+  "independent_validation": "not_established",
+  "synthetic_demo_is_biological_score": false,
+  "scope_limitations": [
+    "Ordinary organoid plates, not a prospective organ-on-chip experiment.",
+    "No calibrated uncertainty, clinical effectiveness or realized laboratory saving established.",
+    "Simple interpolation uses R13-selected panels, not an independently optimized allocation.",
+    "R13 Lib2 exact-budget mapping and destination target-support limitations remain unresolved."
+  ],
+  "source_evidence": [
+    "R13 original retained experiment",
+    "R22 and R23 reports",
+    "R24 consolidated technical report"
+  ],
+  "source_full_checkpoint_sha256": "413327a833747a843f395373054a9a42013f7591e5f8e78bc2ecc489242629e3"
+}
