@@ -51,10 +51,13 @@ python study/acquire_public_source.py --check-only
 
 The development study used 119 organoid samples from 59 whole patients at the same 64-treatment-well budget. R13 reduced MSE by **33.49%** versus R9 and **34.13%** versus the matched paired-native control, with **53/59 patient means** and **5/5 outer-fold means** improving.
 
+A separately optimized piecewise-linear interpolation acquisition policy was also tested at the same 64-well budget. It reached MSE **0.0024168103**; R13 was **52.63% lower**, with lower patient-mean error for **59/59 patients** and lower mean error in **5/5 folds**. This remains repeated development evidence, not independent confirmation.
+
 ## Report and submission materials
 
 - [Concise technical report PDF](docs/DosePilot_Technical_Report_Public.pdf) (historical report)
 - [R33 reproduction and R34 experiment addendum](docs/KAGGLE_R33_ADDENDUM.md)
+- [Separately optimized interpolation control](docs/POST_SUBMISSION_CONTROL.md)
 - [Public-workbook reproduction commands](docs/PUBLIC_REPRODUCTION.md)
 - [Kaggle writeup](docs/KAGGLE_WRITEUP.md)
 - [Method and scope](docs/METHOD_AND_LIMITS.md)
