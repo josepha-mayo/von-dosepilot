@@ -53,11 +53,20 @@ The development study used 119 organoid samples from 59 whole patients at the sa
 
 A separately optimized piecewise-linear interpolation acquisition policy was also tested at the same 64-well budget. It reached MSE **0.0024168103**; R13 was **52.63% lower**, with lower patient-mean error for **59/59 patients** and lower mean error in **5/5 folds**. This remains repeated development evidence, not independent confirmation.
 
+## Separate external CRC confirmation
+
+A post-submission external experiment froze the DosePilot sparse-reconstruction **design** on a different public metastatic-CRC organoid study before opening its FORECAST-1 confirmation responses. The community cohort supplied development data; FORECAST-1 was held back from model, acquisition, scaler, penalty and threshold selection.
+
+Under a new eight-drug task with the same design principle and a 21-measurement budget, 13 of 19 FORECAST-1 PDTO lines were complete under the prefrozen all-values-required rule. On those complete patients, learned sparse reconstruction reached patient-balanced MSE **0.0021715** versus **0.0038552** for a separately optimized interpolation policy at the identical measurement count, a **43.67% reduction**. It improved **10/13 patient means**, was nonworse on **7/8 targets**, and improved the prespecified five-drug overlap subset. The paired-patient descriptive bootstrap interval for learned-minus-interpolation MSE was `[-0.002809, -0.000581]`.
+
+The deliberately strict prefrozen support gate nevertheless **did not fully pass** because it required at least 12 strict patient wins out of the original 19 source patients; six source lines were incomplete and the learned procedure won 10 of the 13 complete patients. The gate was not relaxed after seeing the outcomes. This supports transfer of the sparse acquisition/reconstruction pattern, but it is **not direct external validation of the original fitted 24-drug R13 model**. See [the full external confirmation record](docs/EXTERNAL_CRC_CONFIRMATION.md).
+
 ## Report and submission materials
 
 - [Concise technical report PDF](docs/DosePilot_Technical_Report_Public.pdf) (historical report)
 - [R33 reproduction and R34 experiment addendum](docs/KAGGLE_R33_ADDENDUM.md)
 - [Separately optimized interpolation control](docs/POST_SUBMISSION_CONTROL.md)
+- [Separate external CRC confirmation](docs/EXTERNAL_CRC_CONFIRMATION.md)
 - [Public-workbook reproduction commands](docs/PUBLIC_REPRODUCTION.md)
 - [Kaggle writeup](docs/KAGGLE_WRITEUP.md)
 - [Method and scope](docs/METHOD_AND_LIMITS.md)
