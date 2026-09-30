@@ -40,7 +40,7 @@ T_j is the original normalized log-dose trapezoid, with boundary interpolation u
 
 ## Sixty-four treatment wells, not sixty-four free features
 
-R13 chooses two native concentrations for each of 24 drugs plus sixteen third-dose upgrades: 24 x 2 + 16 = 64. One well is read for each selected drug-dose choice. A paired-dose observation in the controls consumes two real wells.
+The complete selected source curves contain exactly **416 eligible target-treatment measurements per sample**, split evenly as 208 measurements on each of two plates. R13 chooses two native concentrations for each of 24 drugs plus sixteen third-dose upgrades: 24 x 2 + 16 = 64. One well is read for each selected drug-dose choice. Thus the evaluated policy uses **64/416 = 15.38%** of the retrospective source treatment-measurement count, or **84.62% fewer treatment measurements**. A paired-dose observation in the controls consumes two real wells. This count comparison does not establish an equal percentage reduction in laboratory cost, material consumption, staffing, or elapsed time.
 
 Two complementary layouts assign the selected doses across two plates. Each alternative uses 64 distinct wells, 32 per plate. The intended policy selects one layout independently of outcomes. Historical evaluation averages the two layout losses, never their predictions:
 
