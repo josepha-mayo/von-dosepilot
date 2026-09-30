@@ -1,0 +1,25 @@
+{
+  "status": "COMPLETE",
+  "date": "2026-09-30",
+  "procedure": "separately optimized piecewise-linear log-dose interpolation acquisition policy",
+  "patients": 59,
+  "samples": 119,
+  "targets": 24,
+  "treatment_wells_per_orientation": 64,
+  "plate_wells_per_orientation": 32,
+  "patient_balanced_mse": {
+    "optimized_interpolation": 0.002416810289196867,
+    "r13": 0.001144858681382854
+  },
+  "r13_error_reduction_vs_optimized_interpolation": 0.5262935256025812,
+  "r13_patient_wins": 59,
+  "r13_patient_losses": 0,
+  "r13_favorable_outer_folds": 5,
+  "interpolation_orientation_mse": {
+    "A": 0.0025303844536349925,
+    "B": 0.0023032361247587413
+  },
+  "new_independent_validation": false,
+  "official_judge_score": null,
+  "limitations": "Repeated development cohort; finite interpolation policy class; planning overfit remains possible; no prospective laboratory validation."
+}
