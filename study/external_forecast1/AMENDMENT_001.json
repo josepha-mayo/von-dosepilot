@@ -1,0 +1,14 @@
+{
+  "status": "REVIEWED_PRE_SCORE_METADATA_AMENDMENT",
+  "reason": "Attempt 001 stopped before model selection or external scoring because the first two SN38 dose labels differ only by decimal rounding between the two source tables.",
+  "attempt_001_preserved": true,
+  "attempt_001_external_metric_calculated": false,
+  "observed_max_absolute_dose_difference_uM": 1.7600000000001322e-08,
+  "observed_max_relative_dose_difference": 0.0005770491803279123,
+  "changed_rule": "Treat grids as the same assay grid only when all dose labels match within rtol=0.001 and atol=1e-12. Each cohort retains its own source dose values when computing its AUC target.",
+  "scientific_model_changed": false,
+  "budget_changed": false,
+  "targets_changed": false,
+  "external_outcomes_used_to_choose_amendment": false,
+  "automatic_retry": false
+}
