@@ -65,6 +65,26 @@ Ten unique synthetic tests passed before the complete run. A second implementati
 
 Aggregate hashes and results are recorded in [the eLife stress-test receipt](../evidence/elife_sparse_stress_20260930.json).
 
+## Reproduce the public analysis
+
+The repository does not redistribute the source workbook. Obtain the original eLife supplementary workbook `elife-18489-supp1-v2.xlsx` and verify SHA-256:
+
+```
+b80557f95c35713df8ab0bec94acb64f266bde73dd24bbbeacb689ad701f2605
+```
+
+Then run the synthetic checks and analysis from the repository root:
+
+```bash
+PYTHONPATH=study/external_elife_sparse python -m unittest discover -s study/external_elife_sparse -p 'test_elife_sparse.py' -v
+
+python study/external_elife_sparse/elife_sparse.py \
+  --source /path/to/elife-18489-supp1-v2.xlsx \
+  --output /path/to/new_elife_sparse_run
+```
+
+Use a new output directory. The runner writes organoid-level predictions and fold plans, so generated output folders are analysis artifacts and should not be committed automatically. The tested protocol and source identities are pinned in [the frozen protocol](../study/external_elife_sparse/PROTOCOL.md).
+
 ## Limits
 
 This experiment tests an **adapted sparse-reconstruction procedure**, not the fitted 24-drug R13 model. The source study, drug panel, support construction and replicate structure differ from DosePilot development. It supplies no clinical-response validation, no organ-on-chip hardware evidence, no physical-well equivalence and no official competition score.
