@@ -1,0 +1,80 @@
+{
+  "schema": "dosepilot.protected_exact22_failure.v1",
+  "status": "INCOMPLETE_PRESERVE_NO_RETRY",
+  "date": "2026-09-30",
+  "scientific_role": "One-shot protected-cohort exact-dose transfer attempt of 22 unchanged R13 heads/weights",
+  "why_22_not_24": {
+    "unsupported_full24_targets": ["Gedatolisib", "Palbociclib"],
+    "reason": "Their required target support extends beyond the Lib2 source hull; no extrapolation, nearest-dose substitution, or target relabeling was permitted.",
+    "full24_validation_claimed": false
+  },
+  "frozen_design": {
+    "protected_samples": 61,
+    "protected_patients": 31,
+    "targets": 22,
+    "candidate_actions_per_orientation": 58,
+    "comparator_actions_per_orientation": 58,
+    "authorized_response_cells": 19642,
+    "candidate_model_changed": false,
+    "candidate_model_sha256": "779af6df9e3cbb9c7cf91c604e67b3839a20ee7172559be15dcd3915bea1a471",
+    "source_workbook_sha256": "3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c",
+    "r13_plan_sha256": "0397dc6107acd020c2dad4cb8666cf713d6da2ff38aa63019bdec485c5451c78",
+    "protocol_sha256": "ed5819ccd88a9f0d021fbe3be2e37ce592eff92bdc26cfc9d3b99798d2c46826",
+    "execution_freeze_sha256": "eb5d29e4849ad53a15503c41c0be47b73392df0180bc77c5c9e22343a2c235cd"
+  },
+  "preaccess_checks": {
+    "metadata_preflight_passed": true,
+    "metadata_bound_response_cells": 19642,
+    "semantic_response_values_read_during_metadata_preflight": 0,
+    "synthetic_full_pipeline_passed": true,
+    "synthetic_real_response_values_read": 0,
+    "unit_tests_passed": 16,
+    "unit_tests_failed_final": 0,
+    "test_log_sha256": "7e8eb63638ab476f2e28325e2bf6bda15d9d8895af28e5981a216c86a9900fcf",
+    "metadata_audit_sha256": "82bb09c665c8f8192668d08e1bd87491835cff626f55538822430631fcaa2b0e",
+    "minimal_footprint_sha256": "2af0d419ef583e4c1c877769edcab7f104b7f794467d23f218be58ce26f32f55",
+    "synthetic_preflight_sha256": "f646cb40d9c6a4347da1c6e9d3a3890df0ef9447ee545c40d55b6f96587c3bb1"
+  },
+  "attempt": {
+    "numeric_access_started_marker_sha256": "8c09204f9050e3957c5e90821a1d8e421ce2a2c7c04d3554a675bf8e3418ae95",
+    "failure_receipt_sha256": "0a6f8267d2cab2792f014e143065376be162c531354bcce819dad33514eda2ac",
+    "selected_response_cells_may_have_been_accessed": 4703,
+    "failure_reason": "A required selected viability value was nonnumeric.",
+    "patient_or_sample_identity_published": false,
+    "predictions_produced": false,
+    "efficacy_score_produced": false,
+    "promotion_gate_evaluated": false,
+    "imputation_performed": false,
+    "sample_or_target_dropped_after_failure": false,
+    "automatic_retry": false,
+    "retry_permitted": false
+  },
+  "post_failure_access_accounting": {
+    "touched_samples": 15,
+    "touched_patients": 9,
+    "remaining_not_reached_samples": 46,
+    "remaining_wholly_unexposed_patients": 22,
+    "remaining_samples_in_wholly_unexposed_patients": 45,
+    "response_values_reread_for_ledger": 0,
+    "original_31_patient_frame_still_untouched": false,
+    "sequential_salvage_of_remaining_patients_permitted": false,
+    "ledger_sha256": "86eb9a43e87ac86149b3c3899f7252fb88527370179f08c3f22d47ce0097b355"
+  },
+  "public_interpretation": {
+    "validation_success": false,
+    "model_loss": false,
+    "data_quality_and_missingness_gate_worked_as_designed": true,
+    "supports_fail_closed_workflow_claim": true,
+    "supports_accuracy_claim": false,
+    "supports_competition_rank_claim": false,
+    "protected_lib2_retry_claim": false
+  },
+  "private_code_hashes": {
+    "exact22_core.py": "e8ba11ef8fc3a5ae60498c5bfe01718b97567a23fa2dbb3226146d39fa5d2985",
+    "run_exact22.py": "cd67b2acb7432601941d8ba1cc50a9feb5fbe42204af52509704195b8a7308de",
+    "verify_exact22.py": "ce175516352cd68bde83f872267ca1d38c675c18a405540917b581b0dfe7a96f"
+  },
+  "patient_level_data_published": false,
+  "protected_response_values_published": false,
+  "official_score": null
+}
