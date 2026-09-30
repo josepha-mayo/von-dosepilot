@@ -69,6 +69,14 @@ The new four-drug task used 11 replicate-averaged dose-level readouts out of 28 
 
 This is organoid-ID-distinct confirmation of the sparse reconstruction design under a stromal coculture context. It does **not** prove unique-patient independence for every ID, directly validate the original R13 weights, equate dose-level summaries with physical wells, or validate clinical/OoC hardware performance. See [the frozen protocol and aggregate evidence](docs/STROMA_CONTEXT_CONFIRMATION.md).
 
+## Stronger comparator audit: important qualification
+
+A subsequent **post-hoc** test added training-only slope/intercept calibration to each drug's optimized interpolation output, without adding measurements. On the same eight-drug FORECAST assessment, calibrated interpolation improved to MSE **0.0028731**. The unchanged learned result is **24.42% lower**, not 43.67% lower against this stronger control; its descriptive paired interval **includes zero**. The original failed support gate remains failed.
+
+On matched-CAF data, the same calibration procedure instead worsened interpolation to MSE **0.0058699**. The learned result remains better than both tested interpolation readouts; retain the conservative **43.29%** advantage against the better-performing original control as the headline. All **14 synthetic calibration tests** passed, and saved predictions and every target metric were separately checked. See [the full calibrated-control audit](docs/CALIBRATED_CONTROL_AUDIT.md).
+
+These are additional analyses of already exposed data, not new independent confirmations. A later six-drug FORECAST analysis also reuses the same source cohort and must not be counted a second time. See [the evidence ledger](docs/EVIDENCE_LEDGER.md).
+
 ## Report and submission materials
 
 - [Concise technical report PDF](docs/DosePilot_Technical_Report_Public.pdf) (historical report)
@@ -76,6 +84,8 @@ This is organoid-ID-distinct confirmation of the sparse reconstruction design un
 - [Separately optimized interpolation control](docs/POST_SUBMISSION_CONTROL.md)
 - [Separate external CRC confirmation](docs/EXTERNAL_CRC_CONFIRMATION.md)
 - [External matched-CAF stromal stress test](docs/STROMA_CONTEXT_CONFIRMATION.md)
+- [Calibrated interpolation comparator audit](docs/CALIBRATED_CONTROL_AUDIT.md)
+- [Evidence ledger and cohort deduplication](docs/EVIDENCE_LEDGER.md)
 - [Public-workbook reproduction commands](docs/PUBLIC_REPRODUCTION.md)
 - [Kaggle writeup](docs/KAGGLE_WRITEUP.md)
 - [Method and scope](docs/METHOD_AND_LIMITS.md)
