@@ -34,7 +34,7 @@ DosePilot combines:
 
 **Code:** https://github.com/josepha-mayo/von-dosepilot
 
-**Technical report:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/DosePilot_Technical_Report.md
+**Technical report PDF:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/DosePilot_Technical_Report_Public.pdf
 
 **Demo video:** https://youtu.be/QeOGJIgx378
 

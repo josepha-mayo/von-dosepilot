@@ -41,7 +41,7 @@ The development study used 119 organoid samples from 59 whole patients at the sa
 
 ## Report and submission materials
 
-- [Concise technical report](docs/DosePilot_Technical_Report.md)
+- [Concise technical report PDF](docs/DosePilot_Technical_Report_Public.pdf)
 - [Kaggle writeup](docs/KAGGLE_WRITEUP.md)
 - [Method and scope](docs/METHOD_AND_LIMITS.md)
 - [Data and reproduction notes](docs/DATA_AND_REPRODUCTION.md)
