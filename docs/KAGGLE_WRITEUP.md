@@ -19,6 +19,8 @@ We evaluated DosePilot retrospectively on **119 patient-derived organoid samples
 
 The retained broader-coverage procedure achieved patient-balanced MSE **0.0011448587**, compared with **0.0017214230** for our earlier paired-measurement procedure: a **33.49% reduction**. **53 of 59 patients** and **all five outer-fold averages** improved. A matched paired-native control was also worse at the same well count.
 
+A stricter post-submission control separately optimized a piecewise-linear log-dose interpolation acquisition policy under the same 64-treatment-well budget. Its patient-balanced MSE was **0.0024168103**; R13 was **52.63% lower**, with lower patient-mean error for **59/59 patients** and lower mean error in **5/5 outer folds**. This is another comparison on the repeatedly reused development cohort, not independent confirmation.
+
 ## What is technically distinctive
 
 DosePilot combines:
@@ -51,7 +53,7 @@ The operating demo uses fictional measurements and model parameters while exerci
 
 The historical source workbook is now pinned to an exact public artifact: Mendeley Data v3 `Data S4.xlsx` is listed at **15,886,254 bytes** with SHA-256 `3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c`, exactly matching DosePilot's frozen source identity. The dataset is listed as CC BY 4.0. `python study/acquire_public_source.py --check-only` verifies that live metadata anonymously, and the acquisition path has downloaded the same exact bytes locally.
 
-The remaining public-reproduction gap is narrower but real: the frozen TRAIN selection/contract metadata needed to rebuild the exact prepared input kit is not yet published. Independent validation is therefore still **not established**; the source identity result should not be read as a new biological score.
+The public source-to-results route is now executable without the old private input bundle. `study/prepare_compact_source.py` reconstructs the exact 49,504-row Lib1 TRAIN curve CSV from the verified public workbook using a patient-free fixed catalog; `study/reproduce_compact.py` then rebuilds the historical models and predictions in a fresh environment. All four locked R9/R13 metrics matched within absolute MSE tolerance `1e-12`. Full commands and receipts are in `docs/PUBLIC_REPRODUCTION.md` and `evidence/r33_public_pipeline.json`. This is reproducibility of retrospective development results, **not independent validation or a new biological score**.
 
 ## AI assistance
 
