@@ -1,0 +1,104 @@
+{
+  "schema": "dosepilot.forecast1_support_complete_sensitivity.v1",
+  "date": "2026-09-30",
+  "status": "POSTHOC_SUPPORT_COMPLETE_SENSITIVITY",
+  "relationship_to_primary_external_confirmation": "This analysis was defined after the repository's prefrozen eight-drug FORECAST-1 confirmation existed. It does not replace, repair, or retroactively pass that experiment's failed support gate.",
+  "source": {
+    "article": "Tan et al., Cell Reports Medicine (2023), Unified framework for patient-derived, tumor-organoid-based predictive testing of standard-of-care therapies in metastatic colorectal cancer",
+    "doi": "10.1016/j.xcrm.2023.101335",
+    "pmcid": "PMC10783557",
+    "license": "CC BY-NC-ND 4.0",
+    "source_files_redistributed": false,
+    "community_single_agent_workbook_sha256": "dadea8de4da8b67456dd930f13370058e94097a36e8891bc38b4e77affcd92ea",
+    "forecast1_single_agent_workbook_sha256": "9bc3611ba8d45c4ed31ebf28bae0e5ce91b9349bf09f616eefb158e02ec89d63",
+    "processed_auc_workbook_sha256": "c769732edc1ef21bdf8981bbf6ffa141c390a1a5af839a908a63e86ed1b165a9"
+  },
+  "exposure_and_selection_disclosure": {
+    "raw_forecast_rows_displayed_during_schema_discovery_before_protocol_freeze": true,
+    "aggregate_forecast_metric_calculated_before_protocol_freeze": false,
+    "candidate_or_comparator_selected_on_forecast_metric": false,
+    "six_drug_task_selected_for_complete_numeric_support_and assay_overlap_not_test_performance": true,
+    "interpretation": "Support-complete sensitivity analysis, not prospectively blinded confirmation."
+  },
+  "task": {
+    "training_lines": 84,
+    "training_patients": 82,
+    "external_lines": 19,
+    "external_patients": 19,
+    "targets": ["5FU","SN38","Regorafenib","Erlotinib","TAS-102","Gemcitabine"],
+    "dose_points_per_target": 9,
+    "full_values_per_patient": 54,
+    "sparse_values_per_patient": 16,
+    "measurements_per_target": 2.6666666666666665,
+    "dosepilot_64_over_24_measurements_per_target": 2.6666666666666665,
+    "target": "normalized trapezoidal AUC over log concentration using all nine raw supplied values; no clipping",
+    "candidate": "R13 design family rescaled to six drugs: two doses per drug plus four third-dose upgrades, covariance residual allocation alpha 0.1, own-drug ridge, one shared lambda selected from 0.01,0.1,1,10 by five-fold patient-grouped community CV",
+    "comparator": "separately optimized constant-tail piecewise-linear log-dose interpolation with the same 16-value budget"
+  },
+  "selection": {
+    "selected_lambda": 0.01,
+    "candidate_upgrades": ["SN38","Regorafenib","TAS-102","Gemcitabine"],
+    "interpolation_upgrades": ["SN38","Regorafenib","Erlotinib","TAS-102"],
+    "community_cv_candidate_mse_by_lambda": {
+      "0.01": 0.001240334362595408,
+      "0.1": 0.0012866710203011907,
+      "1.0": 0.0033674589813173683,
+      "10.0": 0.014131238172119759
+    },
+    "forecast_used_for_selection": false
+  },
+  "forecast1_primary_raw_auc": {
+    "candidate_mse": 0.0017699569162393438,
+    "candidate_rmse": 0.04207085590096003,
+    "optimized_interpolation_mse": 0.00353172996116192,
+    "optimized_interpolation_rmse": 0.05942835990637736,
+    "relative_mse_reduction": 0.4988413792381121,
+    "patient_wins": 16,
+    "patient_losses": 3,
+    "patient_ties": 0,
+    "drug_mse_wins": 6,
+    "drug_count": 6,
+    "candidate_patient_rmse_p90": 0.05430183362911171,
+    "interpolation_patient_rmse_p90": 0.09263248174431031,
+    "paired_patient_delta_mse_ci95": [-0.003231404019877996,-0.000410330383489663],
+    "delta_definition": "candidate patient MSE minus optimized-interpolation patient MSE; negative favors candidate"
+  },
+  "posthoc_published_auc_secondary": {
+    "candidate_mse": 0.005763899787987198,
+    "optimized_interpolation_mse": 0.007969668193215547,
+    "relative_mse_reduction": 0.27677041901268673,
+    "patient_wins": 16,
+    "patient_losses": 3,
+    "drug_mse_wins": 5,
+    "drug_count": 6,
+    "model_refit_for_secondary": false,
+    "selection_changed_for_secondary": false
+  },
+  "target_definition_audit": {
+    "raw_logdose_auc_vs_published_processed_auc_pearson": 0.9559210297512734,
+    "mean_absolute_difference": 0.02597515095041994,
+    "max_absolute_difference": 0.37470195873215495,
+    "published_auc_not_claimed_identical_to_raw_logdose_auc": true
+  },
+  "verification": {
+    "attempt_result_sha256": "d87f02a85ceea6a88e1f34b7b8c72cca0a5450c769e6b15a0ef5c8859a100eca",
+    "private_prediction_file_sha256": "da59d340b0412c12d0b58013e9c61cc689b9d598d28a99dee2dea7736cb6e5af",
+    "independent_verifier_sha256": "e329a757866bf9d1e7fe680c850b30cffa38a14d8755afc7b42460dea5102f84",
+    "candidate_prediction_max_difference": 0.0,
+    "interpolation_prediction_max_difference": 2.220446049250313e-16,
+    "tests_passed": 14,
+    "tests_failed": 0,
+    "source_fixture_failure_preserved": true,
+    "model_refit_during_verification": false,
+    "patient_level_predictions_published": false
+  },
+  "limits": {
+    "new_independent_validation": false,
+    "exact_submitted_r13_weights_validated": false,
+    "coverage_vs_replication_plate_design_validated": false,
+    "organ_on_chip_validated": false,
+    "clinical_validation": false,
+    "protected_lib2_used": false,
+    "official_competition_score": null
+  }
+}
