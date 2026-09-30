@@ -1,0 +1,40 @@
+{
+  "schema": "dosepilot.lib2_exact22_incomplete.v1",
+  "status": "INCOMPLETE_NO_EFFICACY_SCORE",
+  "study_role": "one-shot protected exact-shared-22 transfer attempt",
+  "protocol_sha256": "ed5819ccd88a9f0d021fbe3be2e37ce592eff92bdc26cfc9d3b99798d2c46826",
+  "execution_freeze_sha256": "eb5d29e4849ad53a15503c41c0be47b73392df0180bc77c5c9e22343a2c235cd",
+  "source_workbook_sha256": "3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c",
+  "retained_r13_model_sha256": "779af6df9e3cbb9c7cf91c604e67b3839a20ee7172559be15dcd3915bea1a471",
+  "planned": {
+    "samples": 61,
+    "whole_patients": 31,
+    "targets": 22,
+    "excluded_shifted_grid_targets": ["Gedatolisib", "Palbociclib"],
+    "r13_readouts_per_orientation": 58,
+    "interpolation_readouts_per_orientation": 58,
+    "authorized_endpoint_cells": 19642
+  },
+  "execution": {
+    "numeric_access_marker_written": true,
+    "selected_response_cells_may_have_been_accessed_before_failure": 4703,
+    "samples_reached": 15,
+    "whole_patients_reached": 9,
+    "remaining_not_reached_samples": 46,
+    "remaining_wholly_unreached_patients": 22,
+    "remaining_samples_in_wholly_unreached_patients": 45,
+    "failure_type": "required response could not be converted to a finite numeric value",
+    "predictions_constructed": false,
+    "efficacy_metrics_constructed": false,
+    "retry_permitted": false
+  },
+  "decision": "PRESERVE_FAILURE_NO_RETRY_NO_PARTIAL_SCORE",
+  "failure_sha256": "0a6f8267d2cab2792f014e143065376be162c531354bcce819dad33514eda2ac",
+  "access_started_sha256": "8c09204f9050e3957c5e90821a1d8e421ce2a2c7c04d3554a675bf8e3418ae95",
+  "post_failure_access_ledger_sha256": "86eb9a43e87ac86149b3c3899f7252fb88527370179f08c3f22d47ce0097b355",
+  "raw_response_values_published": false,
+  "patient_identifiers_published": false,
+  "original_r13_changed": false,
+  "official_competition_score": null,
+  "interpretation": "This is an incomplete data-compatibility/access result, not a predictive win or loss. The protected exact22 hypothesis produced no score and must not be repaired by dropping patients, dropping targets, imputing values, or retrying."
+}
