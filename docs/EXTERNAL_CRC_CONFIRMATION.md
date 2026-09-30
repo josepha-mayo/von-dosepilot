@@ -78,4 +78,12 @@ The audit did not refit a model, reopen the source workbook, or alter the result
 
 This external experiment does **not** validate the original fitted 24-drug R13 model, clinical decisions, prospective organ-on-chip hardware, calibrated uncertainty, or realized laboratory savings. It shows evidence for the sparse acquisition-and-reconstruction **design pattern** on a separate CRC organoid cohort.
 
+## Later support-complete sensitivity analysis
+
+A later, explicitly **post-hoc** sensitivity analysis asked whether the learned-versus-interpolation advantage persists when the task is restricted by support metadata to the six drugs with complete nine-dose values for **all 19** FORECAST-1 source patients. This analysis does not replace the frozen eight-drug confirmation and cannot retroactively satisfy its failed gate.
+
+Using the same 2.667 sparse measurements per target as the original 64/24 DosePilot ratio, the six-drug task used 16 of 54 available values. The learned design family was selected only on the community cohort and reached FORECAST-1 MSE **0.00176996** versus **0.00353173** for separately optimized interpolation, a **49.88% reduction**, with **16/19 patient wins** and **6/6 drug-MSE wins**. The descriptive patient-bootstrap interval for learned-minus-interpolation MSE was **[-0.0032314, -0.0004103]**.
+
+This later task is weaker evidence than the prefrozen confirmation because raw FORECAST-1 rows had been displayed during schema discovery and the earlier external result already existed in project history. It is therefore reported only as a robustness/sensitivity analysis. Full details and verification are in [FORECAST1_SUPPORT_COMPLETE_SENSITIVITY.md](FORECAST1_SUPPORT_COMPLETE_SENSITIVITY.md).
+
 The original protected Lib2 frame remains closed.
