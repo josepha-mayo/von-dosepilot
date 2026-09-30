@@ -49,7 +49,7 @@ python study/acquire_public_source.py --check-only
 | Matched paired-native comparator | 0.0017379326 |
 | **Retained broader-coverage procedure, R13** | **0.0011448587** |
 
-The development study used 119 organoid samples from 59 whole patients at the same 64-treatment-well budget. R13 reduced MSE by **33.49%** versus R9 and **34.13%** versus the matched paired-native control, with **53/59 patient means** and **5/5 outer-fold means** improving.
+The development study used 119 organoid samples from 59 whole patients at the same 64-treatment-well budget. The complete selected source curves contain **416 eligible target-treatment measurements per sample (208 per plate)**; the 64-well policy therefore uses **15.38%** of that retrospective treatment-measurement count. This **84.62% measurement-count reduction is not a claim of equal savings in money, materials, or elapsed laboratory time**. R13 reduced MSE by **33.49%** versus R9 and **34.13%** versus the matched paired-native control, with **53/59 patient means** and **5/5 outer-fold means** improving.
 
 A separately optimized piecewise-linear interpolation acquisition policy was also tested at the same 64-well budget. It reached MSE **0.0024168103**; R13 was **52.63% lower**, with lower patient-mean error for **59/59 patients** and lower mean error in **5/5 folds**. This remains repeated development evidence, not independent confirmation.
 
