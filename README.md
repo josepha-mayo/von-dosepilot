@@ -61,12 +61,21 @@ Under a new eight-drug task with the same design principle and a 21-measurement 
 
 The deliberately strict prefrozen support gate nevertheless **did not fully pass** because it required at least 12 strict patient wins out of the original 19 source patients; six source lines were incomplete and the learned procedure won 10 of the 13 complete patients. The gate was not relaxed after seeing the outcomes. This supports transfer of the sparse acquisition/reconstruction pattern, but it is **not direct external validation of the original fitted 24-drug R13 model**. See [the full external confirmation record](docs/EXTERNAL_CRC_CONFIRMATION.md).
 
+## External matched-CAF stromal stress test
+
+A second post-submission experiment used the separate Farin et al. public colorectal-cancer organoid/CAF biobank. The entire split, normalization, sparse model, independently optimized interpolation comparator and four-part gate were frozen before any RLU outcome was decoded. Development used 13 metadata-complete monoculture organoid IDs; confirmation used **15 different organoid IDs** with matched autologous tumor-CAF cocultures.
+
+The new four-drug task used 11 replicate-averaged dose-level readouts out of 28 available positive-dose readouts. On the one-shot matched-CAF confirmation, learned sparse reconstruction reached MSE **0.0029697** versus **0.0052366** for optimized interpolation, **43.29% lower**. It won **10/15 organoid means**, was nonworse on **3/4 drug MSEs**, and improved p90 organoid RMSE from **0.10986** to **0.06666**. The fixed descriptive bootstrap interval for learned-minus-interpolation mean organoid MSE was **[-0.004234, -0.000497]**. **All four prefrozen gate components passed.**
+
+This is organoid-ID-distinct confirmation of the sparse reconstruction design under a stromal coculture context. It does **not** prove unique-patient independence for every ID, directly validate the original R13 weights, equate dose-level summaries with physical wells, or validate clinical/OoC hardware performance. See [the frozen protocol and aggregate evidence](docs/STROMA_CONTEXT_CONFIRMATION.md).
+
 ## Report and submission materials
 
 - [Concise technical report PDF](docs/DosePilot_Technical_Report_Public.pdf) (historical report)
 - [R33 reproduction and R34 experiment addendum](docs/KAGGLE_R33_ADDENDUM.md)
 - [Separately optimized interpolation control](docs/POST_SUBMISSION_CONTROL.md)
 - [Separate external CRC confirmation](docs/EXTERNAL_CRC_CONFIRMATION.md)
+- [External matched-CAF stromal stress test](docs/STROMA_CONTEXT_CONFIRMATION.md)
 - [Public-workbook reproduction commands](docs/PUBLIC_REPRODUCTION.md)
 - [Kaggle writeup](docs/KAGGLE_WRITEUP.md)
 - [Method and scope](docs/METHOD_AND_LIMITS.md)
