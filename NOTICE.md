@@ -14,3 +14,5 @@ R33 metadata notice: `study/TRAIN_CATALOG.json` is a selected/transformed drug-d
 
 
 External-confirmation attribution: Tan et al. (2023), *Cell Reports Medicine*, DOI 10.1016/j.xcrm.2023.101335, PMCID PMC10783557. The article and its supplementary materials are distributed under CC BY-NC-ND 4.0. DosePilot does not redistribute the Tan et al. supplementary workbooks and does not extend the repository's MIT license to them. Only source identities, original analysis code/protocol descriptions, and aggregate non-patient-level results are recorded here. See `docs/EXTERNAL_CRC_CONFIRMATION.md`.
+
+Stromal-context confirmation attribution: Farin et al. (2023), *Cancer Discovery*, DOI 10.1158/2159-8290.CD-23-0050, PMCID PMC10551667. The associated Mendeley Data v1 deposit, DOI 10.17632/fypp6xhkjy.1, includes `Drug_sensitivity_all_lines.txt` and is listed under CC BY-NC-ND 4.0. DosePilot does not redistribute that source file or relicense it under MIT. The repository records original analysis code, the frozen protocol, exact source hashes and aggregate non-patient-level results only. See `docs/STROMA_CONTEXT_CONFIRMATION.md`.
