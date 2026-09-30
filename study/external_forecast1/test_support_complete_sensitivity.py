@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-import external_replication as e
+import support_complete_sensitivity as e
 
 class Tests(unittest.TestCase):
     def setUp(self):
