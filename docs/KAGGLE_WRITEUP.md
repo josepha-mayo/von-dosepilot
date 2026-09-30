@@ -47,6 +47,12 @@ python run_demo.py --output demo_run_001
 
 The operating demo uses fictional measurements and model parameters while exercising the same workflow behaviors.
 
+## Reproducibility
+
+The historical source workbook is now pinned to an exact public artifact: Mendeley Data v3 `Data S4.xlsx` is listed at **15,886,254 bytes** with SHA-256 `3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c`, exactly matching DosePilot's frozen source identity. The dataset is listed as CC BY 4.0. `python study/acquire_public_source.py --check-only` verifies that live metadata anonymously, and the acquisition path has downloaded the same exact bytes locally.
+
+The remaining public-reproduction gap is narrower but real: the frozen TRAIN selection/contract metadata needed to rebuild the exact prepared input kit is not yet published. Independent validation is therefore still **not established**; the source identity result should not be read as a new biological score.
+
 ## AI assistance
 
 ChatGPT assisted with research synthesis, implementation, numerical checking, documentation, and release preparation. Focused OpenCode reviews used Muse Spark 1.3 in later verified sessions. The DosePilot runtime itself uses no language-model API.

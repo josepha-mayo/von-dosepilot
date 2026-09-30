@@ -1,0 +1,18 @@
+{
+  "schema": "von.dosepilot.public_source.v1",
+  "dataset_id": "hr94h42xdc",
+  "version": 3,
+  "doi": "10.17632/hr94h42xdc.3",
+  "licence_short_name": "CC BY 4.0",
+  "licence_url": "http://creativecommons.org/licenses/by/4.0",
+  "snapshot_url": "https://data.mendeley.com/public-api/datasets/hr94h42xdc/snapshot/3",
+  "files_url": "https://data.mendeley.com/public-api/datasets/hr94h42xdc/files?folder_id=root&version=3&$start=0&$limit=1000",
+  "file": {
+    "filename": "Data S4.xlsx",
+    "id": "7302f514-ae1f-42a4-a0f9-77d4ebf468e9",
+    "bytes": 15886254,
+    "sha256": "3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c",
+    "download_url": "https://data.mendeley.com/public-files/datasets/hr94h42xdc/files/7302f514-ae1f-42a4-a0f9-77d4ebf468e9/file_downloaded"
+  },
+  "scope_note": "The public workbook contains broader study data. DosePilot source preparation is restricted to its declared Lib1 TRAIN selection before numerical viability values are requested."
+}

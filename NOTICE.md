@@ -8,4 +8,4 @@ NumPy and the separately installed study dependencies retain their upstream lice
 
 Historical manifests and notices inside `demo/` record the earlier private preparation state. They are retained to preserve provenance. The present owner-authorized MIT release supersedes those earlier statements that an original-code license had not yet been chosen; it does not override third-party rights.
 
-Source-study attribution: Kryeziu et al. (2026), DOI 10.1016/j.xcrm.2026.102840. Its clinical findings do not validate DosePilot. The biological source-to-results route remains incomplete; see `docs/DATA_AND_REPRODUCTION.md`.
+Source-study attribution: Kryeziu et al. (2026), DOI 10.1016/j.xcrm.2026.102840. The associated Mendeley Data v3 deposit, DOI 10.17632/hr94h42xdc.3, is listed as CC BY 4.0; its `Data S4.xlsx` file is the exact SHA-256-pinned historical source workbook used by DosePilot. The external dataset is not relicensed by this repository and is not redistributed here. The study's clinical findings do not validate DosePilot. Full public source-to-results reproduction is still incomplete; see `docs/DATA_AND_REPRODUCTION.md`.

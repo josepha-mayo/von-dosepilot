@@ -29,6 +29,18 @@ python run_demo.py --output demo_run_001
 
 No GPU, API key, or language-model API is required.
 
+## Exact public source
+
+The historical raw drug-screen workbook is now tied to an exact public artifact: Mendeley Data v3 lists `Data S4.xlsx` at **15,886,254 bytes** with SHA-256 `3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c`, exactly matching DosePilot's frozen source identity. The dataset is listed as CC BY 4.0.
+
+Verify that live metadata anonymously with:
+
+```bash
+python study/acquire_public_source.py --check-only
+```
+
+See [data and reproduction notes](docs/DATA_AND_REPRODUCTION.md) for the remaining source-to-results reproduction gap.
+
 ## Retrospective development result
 
 | Complete procedure | Patient-balanced MSE |
@@ -50,8 +62,10 @@ The development study used 119 organoid samples from 59 whole patients at the sa
 
 - `demo/`: operating predictor, recovery logic, fictional inputs, and replay scripts.
 - `study/engine/`: original scientific modules used by the project.
+- `study/acquire_public_source.py`: verifies or downloads the exact public Mendeley Data S4 workbook.
+- `study/PUBLIC_SOURCE.json`: pinned public dataset/file identity, licence metadata and SHA-256.
 - `study/reproduce_train.py`: locked prepared-data reproduction wrapper.
-- `study/prepare_from_source_v3.py`: exact-byte source importer for inspection.
+- `study/prepare_from_source_v3.py`: exact-byte Lib1 TRAIN source importer.
 - `evidence/`: aggregate, non-patient-level result summaries.
 
 ## Scope and license

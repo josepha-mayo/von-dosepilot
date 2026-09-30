@@ -1,0 +1,20 @@
+{
+  "schema": "dosepilot.public_source_acquisition.v1",
+  "verified_date_utc": "2026-09-30",
+  "dataset_id": "hr94h42xdc",
+  "dataset_version": 3,
+  "dataset_doi": "10.17632/hr94h42xdc.3",
+  "listed_licence": "CC BY 4.0",
+  "filename": "Data S4.xlsx",
+  "file_id": "7302f514-ae1f-42a4-a0f9-77d4ebf468e9",
+  "bytes": 15886254,
+  "sha256": "3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c",
+  "matches_historical_source_lock": true,
+  "download_completed": true,
+  "local_verification_copies": 2,
+  "source_workbook_committed_to_repository": false,
+  "metadata_check_command": "python study/acquire_public_source.py --check-only",
+  "acquisition_command_shape": "python study/acquire_public_source.py --output /path/to/Data_S4.xlsx",
+  "biological_accuracy_recomputed_in_this_receipt": false,
+  "independent_validation_established": false
+}
