@@ -1,0 +1,108 @@
+{
+  "schema": "dosepilot.external_stromal_context_confirmation.v1",
+  "date": "2026-09-30",
+  "status": "CONFIRMATION_COMPLETE_GATE_PASSED",
+  "source": {
+    "study": "Farin et al., Cancer Discovery 2023",
+    "doi": "10.1158/2159-8290.CD-23-0050",
+    "pmcid": "PMC10551667",
+    "dataset_doi": "10.17632/fypp6xhkjy.1",
+    "dataset_file": "Drug_sensitivity_all_lines.txt",
+    "file_sha256": "f9a9a51fd77ae1a5b19ad71fc236ce446223b3c2fcc66631ab304ab69bec78f0",
+    "license": "CC BY-NC-ND 4.0; source data not redistributed by DosePilot"
+  },
+  "design": {
+    "development_organoid_ids": 13,
+    "confirmation_organoid_ids": 15,
+    "organoid_id_overlap": 0,
+    "patient_identity_claimed": false,
+    "development_condition": "monoculture only",
+    "primary_confirmation_condition": "matched autologous tumor-CAF coculture",
+    "secondary_condition": "same held-out organoid IDs in monoculture",
+    "targets": [
+      "5-FU",
+      "Gef",
+      "Oxa",
+      "SN-38"
+    ],
+    "positive_doses_per_target": 7,
+    "full_dose_level_readouts": 28,
+    "sparse_dose_level_readouts": 11,
+    "budget_note": "replicate-averaged dose-level readouts, not physical-well counts",
+    "endpoint": "DMSO-normalized, unclipped log-dose trapezoidal AUC",
+    "candidate": "training-only covariance allocation alpha0.1 + own-drug ridge; shared lambda chosen by development leave-one-organoid-out CV",
+    "comparator": "independently optimized constant-tail piecewise-linear interpolation at identical 11-readout budget",
+    "gate": {
+      "at_least_3_of_4_targets_nonworse": true,
+      "at_least_9_of_15_organoid_wins": true,
+      "candidate_mse_lower": true,
+      "p90_nonworse": true
+    }
+  },
+  "development": {
+    "selected_lambda": 0.1,
+    "loo_mse": {
+      "development_mean": 0.06914050866509969,
+      "learned": 0.008362068328713558,
+      "optimized_interpolation": 0.011851605264987833
+    },
+    "strict_organoid_wins_vs_interpolation": 7,
+    "confirmation_outcomes_used": false
+  },
+  "confirmation": {
+    "learned_mse": 0.002969711683585339,
+    "optimized_interpolation_mse": 0.005236626630824439,
+    "relative_mse_reduction": 0.4328960430165715,
+    "strict_organoid_wins": 10,
+    "strict_organoid_losses": 5,
+    "target_nonworse_count": 3,
+    "learned_p90_organoid_rmse": 0.06665610573587068,
+    "interpolation_p90_organoid_rmse": 0.10986335935623637,
+    "per_target_mse": {
+      "learned": {
+        "5-FU": 0.001783429130646397,
+        "Gef": 0.004305806931321474,
+        "Oxa": 0.002453551207903029,
+        "SN-38": 0.0033360594644704553
+      },
+      "optimized_interpolation": {
+        "5-FU": 0.005633088712412891,
+        "Gef": 0.003239362652394835,
+        "Oxa": 0.0034453347681273495,
+        "SN-38": 0.008628720390362683
+      }
+    },
+    "descriptive_paired_organoid_delta_mse_ci95": [
+      -0.004233824635354308,
+      -0.0004968570381069612
+    ],
+    "all_gate_components_passed": true,
+    "no_post_outcome_exclusions": true,
+    "retuning": false
+  },
+  "secondary_heldout_monoculture": {
+    "learned_mse": 0.0036079629900843736,
+    "optimized_interpolation_mse": 0.0057686437250243725,
+    "learned_p90_organoid_rmse": 0.07880625421408849,
+    "interpolation_p90_organoid_rmse": 0.11349424593043032
+  },
+  "integrity": {
+    "protocol_sha256": "488fbf030444bc81fec2aaaf81316df773d98c3cb6fb58b580fa9e5cb27e1882",
+    "intent_sha256": "5533ce24b26a2d9dca4098e68796d8f3680afd23d9c4864ea7f221e8e221a253",
+    "source_freeze_sha256": "ce42fb92160c12963b7b3ca99fb247b1fea6ceb5a5da9c93c0d150220b3a5965",
+    "development_model_freeze_sha256": "0a4a3fc9d2299e1f1b41e171bbb1ca4802d82d5844df837c21d18e870445eecf",
+    "confirmation_result_sha256": "a4f7a0be6c9c9ee60d3da3bfe325ee61d548bfff05eec45434a50f48a3a59b3a",
+    "confirmation_prediction_file_sha256": "2d151a4b317a537d513c16b3783162eacce56639f23b054b472cfbb84302914b",
+    "aggregate_recomputation_passed": true,
+    "invented_tests_before_any_outcome_access": 12,
+    "confirmation_run_count": 1
+  },
+  "limitations": [
+    "Separate dataset and held-out organoid IDs do not prove unique patient identities for this split.",
+    "The task validates a sparse reconstruction design pattern, not the original fitted R13 weights.",
+    "Dose-level readouts average source replicates and are not physical-well counts.",
+    "No clinical effectiveness, calibrated uncertainty, realized laboratory savings, or organ-on-chip hardware performance is established.",
+    "The descriptive bootstrap interval is not selection-corrected clinical inference."
+  ],
+  "official_competition_score": null
+}
