@@ -4,7 +4,7 @@
   "verified_utc": "2026-09-30T19:03:13.097532+00:00",
   "record_role": "Aggregate companion to the exact preserved execution artifacts, not a byte-identical copy of those artifacts",
   "source_code_commit": "3721d93bc908bfcdea791fdfafc854f6440fd8bd",
-  "protocol_sha256": "bce52720ab8674b495094865864568ad5328ed1c718dbe28f33e6671634383",
+  "protocol_sha256": "bce52720ab8674b495094865864568ad5328ed1c718dbe28b5f33e6671634383",
   "protocol_role": "Post-hoc comparator stress test on two already exposed tasks; fixed before this comparator was evaluated",
   "tasks": {
     "forecast8": {
