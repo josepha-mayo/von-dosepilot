@@ -1,0 +1,76 @@
+{
+  "schema": "dosepilot.elife_sparse_stress.v1",
+  "status": "COMPLETE_VERIFIED_GATE_NOT_PASSED",
+  "source": {
+    "paper": "Targeting mutant RAS in patient-derived colorectal cancer organoids by combinatorial drug screening",
+    "journal": "eLife",
+    "doi": "10.7554/eLife.18489",
+    "workbook": "elife-18489-supp1-v2.xlsx",
+    "sha256": "b80557f95c35713df8ab0bec94acb64f266bde73dd24bbbeacb689ad701f2605"
+  },
+  "evidence_level": "retrospective external stress test after partial source-value exposure; not blind confirmation",
+  "scope": {
+    "patient_derived_organoid_sheets": 12,
+    "targets": ["Afatinib", "Lapatinib", "Selumetinib", "Trametinib", "SCH772984"],
+    "fixed_complete_support_counts": [12, 11, 14, 8, 9],
+    "full_target_readouts": 54,
+    "sparse_readouts": 13,
+    "measurement_count_reduction": 0.7592592592592593,
+    "physical_well_equivalence_claimed": false
+  },
+  "method": {
+    "learned": "own-drug ridge heads; two doses per drug plus three training-only third-dose upgrades; one shared nested-CV ridge penalty",
+    "comparator": "separately optimized constant-tail piecewise-linear log-dose interpolation at identical 13-readout budget",
+    "outer_evaluation": "leave-one-organoid-out across 12 fixed patient-derived tumor organoid sheets",
+    "cross_drug_features": false
+  },
+  "metrics": {
+    "learned_mse": 0.004173416692298532,
+    "interpolation_mse": 0.006042348788047281,
+    "relative_mse_reduction": 0.30930556333421066,
+    "learned_rmse": 0.06460198675194542,
+    "interpolation_rmse": 0.07773254651719112,
+    "learned_p90_organoid_rmse": 0.08015145181083456,
+    "interpolation_p90_organoid_rmse": 0.1074443793184402,
+    "strict_organoid_wins": 7,
+    "strict_organoid_losses": 5,
+    "target_wins": 4,
+    "targets": {
+      "Afatinib": {"learned_mse": 0.002381376331708865, "interpolation_mse": 0.004121108859496723},
+      "Lapatinib": {"learned_mse": 0.003283163863082936, "interpolation_mse": 0.004504290219250078},
+      "Selumetinib": {"learned_mse": 0.0066411773557914595, "interpolation_mse": 0.005302932608162693},
+      "Trametinib": {"learned_mse": 0.004954956730094815, "interpolation_mse": 0.006559098942956917},
+      "SCH772984": {"learned_mse": 0.0036064091808145804, "interpolation_mse": 0.009724313310369997}
+    },
+    "paired_organoid_delta_ci95": [-0.00476005869707607, 0.0005744092273383733],
+    "delta_definition": "learned organoid MSE minus interpolation organoid MSE; negative favors learned"
+  },
+  "prespecified_gate": {
+    "relative_gain_at_least_5pct": true,
+    "at_least_8_of_12_organoid_wins": false,
+    "at_least_4_of_5_target_wins": true,
+    "p90_nonworse": true,
+    "bootstrap_upper_below_zero": false,
+    "decision": "DOES_NOT_PASS_RETROSPECTIVE_STRESS_GATE"
+  },
+  "verification": {
+    "unique_synthetic_tests_passed": 10,
+    "source_target_support_reconstructed": true,
+    "target_reconstruction_max_abs_error": 0.0,
+    "all_aggregate_and_target_metrics_recomputed": true,
+    "fold_structure_verified": true,
+    "same_coordinator_not_external_reviewer": true,
+    "protocol_sha256": "6a2616ebc6d8fb10af63d286a9df4b07fd5c907387997dd2188d9733c0c8569f",
+    "freeze_sha256": "0785626e6ede61bb4d483a48503a7a1bb9f7af35153794b5bedf615e8aea49de",
+    "code_sha256": "1a4786d74b315d362bc601c5c8bfc4ac22199c921baf721d92d0b91bdefca7bd",
+    "test_code_sha256": "6eee62099e6cf9f63cd06469eb82ea0aff396db73df2d3962f9ecdf567256c21",
+    "test_log_sha256": "64407038ada8e5966b91d837b1799dfcbccc3d9a9b142e21872d4c9295872509",
+    "result_sha256": "586f0f4be86930e95e59ae7bc20e18b2c92ce18a67641506cfcec53750c362dc",
+    "private_predictions_sha256": "cb8190affa2f735cc4c3647d22d275248fbd8cc18b8e588a846335096c99a9b4",
+    "verification_sha256": "02cfccc5637a6d25de12337419b7da1cb8ba1c8510ac4be11b33ff1dc1085f43"
+  },
+  "original_r13_fitted_weights_tested": false,
+  "new_independent_confirmation": false,
+  "raw_response_matrix_published": false,
+  "official_competition_score": null
+}
