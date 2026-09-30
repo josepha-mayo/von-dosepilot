@@ -77,6 +77,19 @@ On matched-CAF data, the same calibration procedure instead worsened interpolati
 
 These are additional analyses of already exposed data, not new independent confirmations. A later six-drug FORECAST analysis also reuses the same source cohort and must not be counted a second time. See [the evidence ledger](docs/EVIDENCE_LEDGER.md).
 
+
+## Protected Lib2 exact-support attempt: incomplete
+
+A separately frozen one-shot study attempted to evaluate the **22 R13 heads with exact cross-library support** on the historically reserved Lib2 frame. The two shifted-grid targets, Gedatolisib and Palbociclib, were excluded before numerical access; the unchanged R13 model then required 58 dose-level readouts per deployment alternative, matched by a TRAIN-only optimized interpolation comparator.
+
+The importer encountered a required nonnumeric response **before any prediction vector or efficacy metric was constructed**. Under the frozen no-retry rule, the study is therefore **incomplete and has no Lib2 efficacy score**. No complete-case rescue, patient removal, imputation, target shrinking, or second attempt is used. See [the exact22 incomplete-study record](docs/LIB2_EXACT22_INCOMPLETE.md).
+
+## Public eLife CRC-organoid retrospective stress test
+
+A separate public eLife CRC-organoid workbook was used for a five-drug, 12-organoid retrospective test of the sparse-reconstruction **design pattern**. Each procedure used **13 of 54 dose-level target-support readouts**. Learned own-drug reconstruction reached MSE **0.0041734** versus **0.0060423** for separately optimized interpolation, **30.93% lower**, with better target MSE on **4/5 drugs** and lower p90 organoid RMSE.
+
+The fixed stress gate nevertheless **did not pass**: learned reconstruction won only **7/12 organoid-level losses**, and the paired-organoid descriptive interval `[-0.004760, +0.000574]` crosses zero. Numerical source values had also been visible during source-structure inspection before the protocol freeze, so this is not blind confirmation. It does not test the original fitted R13 weights or establish physical-well equivalence. See [the eLife stress-test record](docs/ELIFE_SPARSE_STRESS.md).
+
 ## Report and submission materials
 
 - [Concise technical report PDF](docs/DosePilot_Technical_Report_Public.pdf) (historical report)
@@ -86,6 +99,8 @@ These are additional analyses of already exposed data, not new independent confi
 - [External matched-CAF stromal stress test](docs/STROMA_CONTEXT_CONFIRMATION.md)
 - [Calibrated interpolation comparator audit](docs/CALIBRATED_CONTROL_AUDIT.md)
 - [Evidence ledger and cohort deduplication](docs/EVIDENCE_LEDGER.md)
+- [Protected Lib2 exact22 incomplete-study record](docs/LIB2_EXACT22_INCOMPLETE.md)
+- [Public eLife sparse-reconstruction stress test](docs/ELIFE_SPARSE_STRESS.md)
 - [Public-workbook reproduction commands](docs/PUBLIC_REPRODUCTION.md)
 - [Kaggle writeup](docs/KAGGLE_WRITEUP.md)
 - [Method and scope](docs/METHOD_AND_LIMITS.md)
@@ -102,6 +117,7 @@ These are additional analyses of already exposed data, not new independent confi
 - `study/TRAIN_CATALOG.json`: fixed patient-free drug/dose catalog, with a separate provenance notice.
 - `study/reproduce_train.py`: historical 16-file-kit reproduction wrapper, retained unchanged.
 - `study/prepare_from_source_v3.py`: exact-byte Lib1 TRAIN source importer.
+- `study/external_elife_sparse/`: frozen protocol, runner, and synthetic tests for the public eLife retrospective stress test.
 - `evidence/`: aggregate, non-patient-level result summaries.
 
 ## Scope and license
