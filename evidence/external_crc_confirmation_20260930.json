@@ -1,0 +1,90 @@
+{
+  "schema": "dosepilot.external_crc_confirmation.v1",
+  "date": "2026-09-30",
+  "status": "CONFIRMATION_COMPLETE_GATE_NOT_FULLY_PASSED",
+  "source": {
+    "article": "Tan et al., Cell Reports Medicine (2023), Unified framework for patient-derived, tumor-organoid-based predictive testing of standard-of-care therapies in metastatic colorectal cancer",
+    "doi": "10.1016/j.xcrm.2023.101335",
+    "pmcid": "PMC10783557",
+    "license": "CC BY-NC-ND 4.0",
+    "source_files_redistributed": false,
+    "community_single_agent_workbook_sha256": "dadea8de4da8b67456dd930f13370058e94097a36e8891bc38b4e77affcd92ea",
+    "forecast1_single_agent_workbook_sha256": "9bc3611ba8d45c4ed31ebf28bae0e5ce91b9349bf09f616eefb158e02ec89d63",
+    "europe_pmc_supplementary_archive_sha256": "f9eda73a74eb3e0a271b83008782e5a0ac07f83c3f0099ac8044d97fbb7a8a99"
+  },
+  "protocol": {
+    "sha256": "5689c7696930f173ce180bc0d4e86e0a4e7b2b252accd7778499b54fc03eb6d3",
+    "frozen_before_forecast_numerical_outcomes": true,
+    "targets": ["5FU","Pemetrexed","SN38","Temozolomide","Regorafenib","Erlotinib","TAS-102","Gemcitabine"],
+    "shared_with_dosepilot_development": ["5FU","SN38","Regorafenib","TAS-102","Gemcitabine"],
+    "target_definition": "normalized trapezoidal AUC over log concentration using all nine supplied response values; no clipping",
+    "measurement_budget": 21,
+    "allocation": "two concentrations per drug plus exactly five third-dose upgrades",
+    "learned_family": "own-drug ridge with allocation alpha 0.1 and one shared lambda selected from 0.01, 0.1, 1, 10 on patient-grouped community OOF",
+    "comparator": "separately optimized piecewise-linear log-dose interpolation under the same 21-measurement class",
+    "forecast_retuning": false
+  },
+  "development": {
+    "community_source_lines": 84,
+    "community_source_patients": 82,
+    "complete_case_lines": 64,
+    "complete_case_patients": 63,
+    "selected_lambda": 0.01,
+    "patient_grouped_oof_mse": {
+      "learned": 0.0015249303822672648,
+      "optimized_interpolation": 0.0026616588818353594,
+      "community_mean": 0.019290348935824406
+    },
+    "development_only": true
+  },
+  "confirmation": {
+    "forecast1_source_lines": 19,
+    "forecast1_source_patients": 19,
+    "complete_case_lines": 13,
+    "complete_case_patients": 13,
+    "incomplete_lines_excluded_by_prefrozen_rule": 6,
+    "metrics": {
+      "learned_mse": 0.0021714653573835976,
+      "optimized_interpolation_mse": 0.0038551794484292285,
+      "community_mean_mse": 0.025446675639914533,
+      "learned_rmse": 0.04659898451021865,
+      "optimized_interpolation_rmse": 0.062090091386864846,
+      "relative_mse_reduction_vs_optimized_interpolation": 0.4367407830345358,
+      "shared_five_mse": {
+        "learned": 0.0018543410710653116,
+        "optimized_interpolation": 0.002658375975806
+      },
+      "strict_patient_wins_vs_interpolation": 10,
+      "strict_patient_losses_vs_interpolation": 3,
+      "target_mse_nonworse_count": 7,
+      "target_count": 8,
+      "paired_patient_delta_mse_ci95": [-0.0028093741012525444,-0.000581467951499398],
+      "delta_definition": "learned patient MSE minus optimized-interpolation patient MSE; negative favors learned"
+    },
+    "prespecified_gate": {
+      "lower_primary_mse": true,
+      "at_least_12_strict_patient_wins_out_of_original_19": false,
+      "at_least_5_of_8_targets_nonworse": true,
+      "lower_shared_five_mse": true,
+      "all_components_passed": false
+    },
+    "interpretation": "The frozen learned sparse procedure outperformed the frozen optimized interpolation comparator on the complete FORECAST-1 confirmation subset, but the deliberately strict four-part support gate did not fully pass because only 10 patient means improved versus the prefrozen requirement of at least 12 of the original 19 source patients.",
+    "no_retuning_after_forecast": true,
+    "no_retry_after_forecast": true,
+    "model_selected_without_forecast": true,
+    "original_24_drug_model_directly_validated": false,
+    "clinical_validation": false,
+    "organ_on_chip_hardware_validated": false,
+    "official_competition_score": null
+  },
+  "verification": {
+    "confirmation_code_sha256": "f470230bcae96ca43c9df0a628019775fb0fff38827d4c38d0cd05d1f7b0552a",
+    "frozen_model_receipt_sha256": "14d1fb3c60b29c589b23aa550c62a9ba64db7c89ff79aaf65bd56ae75ceea77c",
+    "private_prediction_file_sha256": "241ca1c9bb73b3116e3100cd44ec36b58cbacc825f43ab6dfc20f673991cf371",
+    "result_sha256": "23d99678aca6144cfbe028a199006d02eef2701088bb5725cc963528213b032c",
+    "direct_recomputation_passed": true,
+    "model_refit_during_audit": false,
+    "source_workbook_reopened_during_audit": false,
+    "patient_level_predictions_published": false
+  }
+}
