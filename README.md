@@ -39,7 +39,7 @@ Verify that live metadata anonymously with:
 python study/acquire_public_source.py --check-only
 ```
 
-See [data and reproduction notes](docs/DATA_AND_REPRODUCTION.md) for the remaining source-to-results reproduction gap.
+**R33 now reconstructs the biological development results from this public workbook without the old private input bundle.** It recovered all 49,504 TRAIN measurements with an exact CSV hash, and a fresh-environment replay matched all four frozen R9/R13 metrics. See [full commands and evidence](docs/PUBLIC_REPRODUCTION.md). This is improved reproducibility, not a new accuracy or independent-validation claim.
 
 ## Retrospective development result
 
@@ -53,7 +53,9 @@ The development study used 119 organoid samples from 59 whole patients at the sa
 
 ## Report and submission materials
 
-- [Concise technical report PDF](docs/DosePilot_Technical_Report_Public.pdf)
+- [Concise technical report PDF](docs/DosePilot_Technical_Report_Public.pdf) (historical report)
+- [R33 reproduction and R34 experiment addendum](docs/KAGGLE_R33_ADDENDUM.md)
+- [Public-workbook reproduction commands](docs/PUBLIC_REPRODUCTION.md)
 - [Kaggle writeup](docs/KAGGLE_WRITEUP.md)
 - [Method and scope](docs/METHOD_AND_LIMITS.md)
 - [Data and reproduction notes](docs/DATA_AND_REPRODUCTION.md)
@@ -64,7 +66,10 @@ The development study used 119 organoid samples from 59 whole patients at the sa
 - `study/engine/`: original scientific modules used by the project.
 - `study/acquire_public_source.py`: verifies or downloads the exact public Mendeley Data S4 workbook.
 - `study/PUBLIC_SOURCE.json`: pinned public dataset/file identity, licence metadata and SHA-256.
-- `study/reproduce_train.py`: locked prepared-data reproduction wrapper.
+- `study/reproduce_compact.py`: scientific replay using one reconstructed TRAIN CSV.
+- `study/prepare_compact_source.py`: metadata-driven public-workbook to TRAIN reconstruction.
+- `study/TRAIN_CATALOG.json`: fixed patient-free drug/dose catalog, with a separate provenance notice.
+- `study/reproduce_train.py`: historical 16-file-kit reproduction wrapper, retained unchanged.
 - `study/prepare_from_source_v3.py`: exact-byte Lib1 TRAIN source importer.
 - `evidence/`: aggregate, non-patient-level result summaries.
 

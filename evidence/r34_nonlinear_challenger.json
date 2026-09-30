@@ -1,0 +1,230 @@
+{
+  "adaptive_development_warning": true,
+  "baseline_mse": 0.0011448586813828535,
+  "candidate_mse": 0.001146185234155711,
+  "decision": "REJECT_AND_RETAIN_R13",
+  "descriptive_delta_ci95": [
+    -3.395972790066021e-06,
+    8.011947895615447e-06
+  ],
+  "folds": [
+    {
+      "baseline": 0.0015111022938200727,
+      "candidate": 0.0015115184116402244,
+      "delta": 4.1611782015168325e-07,
+      "fold": 0
+    },
+    {
+      "baseline": 0.0009309062918224677,
+      "candidate": 0.0009304469824220547,
+      "delta": -4.5930940041302194e-07,
+      "fold": 1
+    },
+    {
+      "baseline": 0.0011331173107758516,
+      "candidate": 0.0011396827201559955,
+      "delta": 6.5654093801439765e-06,
+      "fold": 2
+    },
+    {
+      "baseline": 0.0009198402687310406,
+      "candidate": 0.0009198402687310406,
+      "delta": 0.0,
+      "fold": 3
+    },
+    {
+      "baseline": 0.0012370062017995598,
+      "candidate": 0.0012370062017995598,
+      "delta": 0.0,
+      "fold": 4
+    }
+  ],
+  "gates": {
+    "at_least_35_patient_wins": false,
+    "at_least_4_folds_nonworse": false,
+    "descriptive_bootstrap_upper_below_zero": false,
+    "no_drug_regression_over_10pct": true,
+    "relative_gain_at_least_2pct": false
+  },
+  "heldout_lib2_used": false,
+  "independent_validation": false,
+  "orientation_averaged_predictions": false,
+  "patient_losses": 17,
+  "patient_ties": 23,
+  "patient_wins": 19,
+  "patients": 59,
+  "relative_reduction": -0.0011587043837193445,
+  "samples": 119,
+  "seconds": 7.343275081000002,
+  "selected_hyperparameters": [
+    [
+      0.1,
+      0.01
+    ],
+    [
+      0.1,
+      0.01
+    ],
+    [
+      0.1,
+      0.01
+    ],
+    [
+      0.0,
+      0.01
+    ],
+    [
+      0.0,
+      0.01
+    ]
+  ],
+  "status": "COMPLETE",
+  "targets": [
+    {
+      "baseline": 0.0013002732852377154,
+      "candidate": 0.0013095711228921158,
+      "relative_increase": 0.007150679599404741,
+      "target": "5-FU"
+    },
+    {
+      "baseline": 0.001201585522301394,
+      "candidate": 0.0012050768151210557,
+      "relative_increase": 0.002905571642520144,
+      "target": "AZD7762"
+    },
+    {
+      "baseline": 0.001355181086963562,
+      "candidate": 0.0013511553072226784,
+      "relative_increase": -0.002970658150124983,
+      "target": "Afatinib"
+    },
+    {
+      "baseline": 0.0007995469261788042,
+      "candidate": 0.0007976807433172082,
+      "relative_increase": -0.002334050448439373,
+      "target": "Alisertib"
+    },
+    {
+      "baseline": 0.0008658977965215589,
+      "candidate": 0.0008545850085133849,
+      "relative_increase": -0.01306480747914951,
+      "target": "Atorvastatin"
+    },
+    {
+      "baseline": 0.0011668304245496311,
+      "candidate": 0.001180929452468783,
+      "relative_increase": 0.01208318503058714,
+      "target": "Bemcentinib"
+    },
+    {
+      "baseline": 0.0021719841252746,
+      "candidate": 0.0021640011442874483,
+      "relative_increase": -0.0036754324740482236,
+      "target": "Encorafenib"
+    },
+    {
+      "baseline": 0.0011617510759271837,
+      "candidate": 0.0011583985585420305,
+      "relative_increase": -0.002885745022854991,
+      "target": "Gedatolisib"
+    },
+    {
+      "baseline": 0.0011589333707120667,
+      "candidate": 0.001166272422856299,
+      "relative_increase": 0.0063325919588654855,
+      "target": "Gemcitabine"
+    },
+    {
+      "baseline": 0.0012688041165480623,
+      "candidate": 0.0012720929438920536,
+      "relative_increase": 0.0025920686267466575,
+      "target": "Idasanutlin"
+    },
+    {
+      "baseline": 0.001096394152680598,
+      "candidate": 0.00109588710350789,
+      "relative_increase": -0.00046246978923447646,
+      "target": "LCL161"
+    },
+    {
+      "baseline": 0.0011317696613839137,
+      "candidate": 0.0011279207555435428,
+      "relative_increase": -0.003400785488157143,
+      "target": "LGK974"
+    },
+    {
+      "baseline": 0.0010406164494264852,
+      "candidate": 0.001039802649576186,
+      "relative_increase": -0.0007820363119838136,
+      "target": "Lapatinib"
+    },
+    {
+      "baseline": 0.0007396638489533882,
+      "candidate": 0.000738713213652013,
+      "relative_increase": -0.001285226123624028,
+      "target": "Luminespib"
+    },
+    {
+      "baseline": 0.0008901322460873033,
+      "candidate": 0.0008942601956500499,
+      "relative_increase": 0.004637456491315195,
+      "target": "Methotrexate"
+    },
+    {
+      "baseline": 0.0012257481025449378,
+      "candidate": 0.0012308409194839221,
+      "relative_increase": 0.004154864224068966,
+      "target": "Napabucasin"
+    },
+    {
+      "baseline": 0.001738720325333094,
+      "candidate": 0.0017338509558906421,
+      "relative_increase": -0.0028005478348100965,
+      "target": "Palbociclib"
+    },
+    {
+      "baseline": 0.0007530434495603317,
+      "candidate": 0.0007570841926629273,
+      "relative_increase": 0.005365883077470324,
+      "target": "Panobinostat"
+    },
+    {
+      "baseline": 0.0010526151798068305,
+      "candidate": 0.0010500463747366246,
+      "relative_increase": -0.0024404028361791896,
+      "target": "Pevonedistat"
+    },
+    {
+      "baseline": 0.0013001475871154584,
+      "candidate": 0.0013346505868879078,
+      "relative_increase": 0.02653775626273225,
+      "target": "Regorafenib"
+    },
+    {
+      "baseline": 0.000592405664637321,
+      "candidate": 0.000594711904342336,
+      "relative_increase": 0.0038930075161027755,
+      "target": "SN-38"
+    },
+    {
+      "baseline": 0.00148123410628835,
+      "candidate": 0.001482648651715644,
+      "relative_increase": 0.0009549776239210495,
+      "target": "TAS-102"
+    },
+    {
+      "baseline": 0.001109883922506203,
+      "candidate": 0.0011036328227455915,
+      "relative_increase": -0.005632210390520864,
+      "target": "Trametinib"
+    },
+    {
+      "baseline": 0.0008734459266496882,
+      "candidate": 0.0008646317742287251,
+      "relative_increase": -0.01009123994060157,
+      "target": "Volasertib"
+    }
+  ],
+  "targets_count": 24,
+  "wells_per_prediction": 64
+}

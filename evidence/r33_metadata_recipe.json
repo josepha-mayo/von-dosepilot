@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "checks": {
+    "sample_count": true,
+    "sample_identities": true,
+    "curves": true,
+    "physical_wells": true,
+    "bounds": true
+  },
+  "samples": 119,
+  "patients": 59,
+  "selected_wells": 49504,
+  "response_values_decoded": 0,
+  "original_workbook_parsed": false,
+  "lib2_response_access": false,
+  "metadata_derived_recipe": true,
+  "seconds": 0.9629285199999913,
+  "input_only_projection_sha256": "b210cf9e1b6266acc22da80898c2cb4173fad80282895eaf2a0d82bb3094ce0f",
+  "candidate_sha256": "1cc9d1f7f4cbe84d83c558a85ee11daa9daf6da1bb6ccebc9e7fe7da47c1ba1f",
+  "new_accuracy_claim": false
+}

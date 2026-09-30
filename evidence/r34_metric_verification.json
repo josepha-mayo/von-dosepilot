@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "checks": {
+    "candidate_mse": true,
+    "baseline_mse": true,
+    "wins": true,
+    "losses": true,
+    "ties": true,
+    "all_targets": true,
+    "folds": true,
+    "saved_patient_delta": true
+  },
+  "patients": 59,
+  "samples": 119,
+  "targets": 24,
+  "separate_direct_metric_recomputation": true,
+  "independent_reviewer": false,
+  "new_fit": false,
+  "lib2_used": false,
+  "source_result_sha256": "aedcae1c52f20b8e6e07edba58dbab84283d6d21136d36bd60448aa27f52b0d4",
+  "prediction_sha256": "1742d2cbca1dccd2588c0819d17a6c3be54c9d996ee9d30a6dc2f740ba01a25c",
+  "patient_predictions_published": false
+}

@@ -1,0 +1,39 @@
+test_complete_selection (test_compact_source.SourceTests.test_complete_selection) ... ok
+test_compound_identity (test_compact_source.SourceTests.test_compound_identity) ... ok
+test_cross_drug_physical_collision (test_compact_source.SourceTests.test_cross_drug_physical_collision) ... ok
+test_duplicate_dose (test_compact_source.SourceTests.test_duplicate_dose) ... ok
+test_duplicate_well (test_compact_source.SourceTests.test_duplicate_well) ... ok
+test_incomplete_earlier_run_not_selected (test_compact_source.SourceTests.test_incomplete_earlier_run_not_selected) ... ok
+test_invented_full_extraction (test_compact_source.SourceTests.test_invented_full_extraction) ... ok
+test_lib2_excluded_before_identity (test_compact_source.SourceTests.test_lib2_excluded_before_identity) ... ok
+test_metadata_has_no_response_dependency (test_compact_source.SourceTests.test_metadata_has_no_response_dependency) ... ok
+test_missing_metadata_identity (test_compact_source.SourceTests.test_missing_metadata_identity) ... ok
+test_missing_target_not_silently_dropped (test_compact_source.SourceTests.test_missing_target_not_silently_dropped) ... ok
+test_natural_run_order (test_compact_source.SourceTests.test_natural_run_order) ... ok
+test_no_patient_identity_guessing (test_compact_source.SourceTests.test_no_patient_identity_guessing) ... ok
+test_required_viability_fails (test_compact_source.SourceTests.test_required_viability_fails) ... ok
+test_xml_bad_row_reference (test_compact_source.SourceTests.test_xml_bad_row_reference) ... ok
+test_xml_duplicate_cell (test_compact_source.SourceTests.test_xml_duplicate_cell) ... ok
+test_xml_header (test_compact_source.SourceTests.test_xml_header) ... ok
+test_xml_metadata_avoids_response_cells (test_compact_source.SourceTests.test_xml_metadata_avoids_response_cells) ... ok
+test_dose_alias (test_compact_train.CompactTests.test_dose_alias) ... ok
+test_hash_required (test_compact_train.CompactTests.test_hash_required) ... ok
+test_incomplete_population (test_compact_train.CompactTests.test_incomplete_population) ... ok
+test_inconsistent_run (test_compact_train.CompactTests.test_inconsistent_run) ... ok
+test_lib2_before_response (test_compact_train.CompactTests.test_lib2_before_response) ... ok
+test_nonfinite (test_compact_train.CompactTests.test_nonfinite) ... ok
+test_nonnumeric (test_compact_train.CompactTests.test_nonnumeric) ... ok
+test_nonpositive_dose (test_compact_train.CompactTests.test_nonpositive_dose) ... ok
+test_patient_identity (test_compact_train.CompactTests.test_patient_identity) ... ok
+test_reference_integral (test_compact_train.CompactTests.test_reference_integral) ... ok
+test_repeated_dose_other_well (test_compact_train.CompactTests.test_repeated_dose_other_well) ... ok
+test_repeated_physical_well (test_compact_train.CompactTests.test_repeated_physical_well) ... ok
+test_schema (test_compact_train.CompactTests.test_schema) ... ok
+test_unknown_plate (test_compact_train.CompactTests.test_unknown_plate) ... ok
+test_unknown_target (test_compact_train.CompactTests.test_unknown_target) ... ok
+test_valid_complete (test_compact_train.CompactTests.test_valid_complete) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 51.717s
+
+OK

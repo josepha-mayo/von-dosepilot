@@ -1,0 +1,67 @@
+{
+  "comparisons": {
+    "r13_matched_paired_native": {
+      "absolute_difference": 0.0,
+      "expected": 0.001737932637554947,
+      "match": true,
+      "observed": 0.001737932637554947
+    },
+    "r13_single64_expected_loss": {
+      "absolute_difference": 0.0,
+      "expected": 0.001144858681382854,
+      "match": true,
+      "observed": 0.001144858681382854
+    },
+    "r9_own24": {
+      "absolute_difference": 0.0,
+      "expected": 0.0017214230057830812,
+      "match": true,
+      "observed": 0.0017214230057830812
+    },
+    "r9_shared24": {
+      "absolute_difference": 4.336808689942018e-19,
+      "expected": 0.002136395428366182,
+      "match": true,
+      "observed": 0.0021363954283661816
+    }
+  },
+  "independent_validation": false,
+  "input_equivalence": {
+    "checks": {
+      "descriptor_query_ids": true,
+      "descriptor_query_target_indices": true,
+      "descriptor_recoverable": true,
+      "descriptor_supports": true,
+      "descriptor_target_ids": true,
+      "descriptor_weights": true,
+      "drug_ids": true,
+      "layout_candidates": true,
+      "layout_native_concentrations": true,
+      "layout_native_ids": true,
+      "layout_native_target_indices": true,
+      "library_ids": true,
+      "patient_ids": true,
+      "sample_ids": true,
+      "well_ids": true,
+      "x": true,
+      "x_replicates": true,
+      "y": true
+    },
+    "compact_load_seconds": 0.9519469599999866,
+    "max_target_difference": 0.0,
+    "native_feature_cells": 39032,
+    "new_numerical_input_file_count": 1,
+    "new_public_metadata_files": 1,
+    "old_input_file_count": 16,
+    "original_workbook_parsed": false,
+    "passed": true,
+    "patients": 59,
+    "samples": 119,
+    "targets": 24
+  },
+  "new_accuracy_claim": false,
+  "public_raw_source_end_to_end_completed": false,
+  "seconds": 8.983793817999981,
+  "source_workbook_parsed": false,
+  "status": "PASS"
+}

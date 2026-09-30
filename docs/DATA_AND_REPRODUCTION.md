@@ -1,59 +1,44 @@
-# Data access and reproduction: current limits
+# Data access and reproduction
 
-## Route A: invented operating workflow
+## Current status: R33 source-to-results route verified
 
-The complete runnable input and invented model are in `demo/`. `python run_demo.py --output NEWDIR` needs only Python and NumPy. It demonstrates software behavior, not the biological accuracy score.
+The historical biological development results can now be rebuilt without the old private metadata bundle. The new route combines the exact public Data S4 workbook, an executable input-only selection recipe, a patient-free drug/dose catalog and the unchanged scientific engines.
 
-## Route B: prepared-data reproduction
+The public-workbook reconstruction recovered the exact historical TRAIN CSV: 119 samples from 59 patients and 49,504 measurements. A subsequent model replay in a newly installed isolated environment matched all four frozen R9/R13 MSEs; the largest absolute difference was `2.168404344971009e-19`. Thirty-four unique fixture tests also passed in that environment.
 
-The original wrapper and 16 unchanged scientific engines are in `study/`. In the earlier R16 run, the separately held prepared Lib1 inputs regenerated the reported R9/R13 measurements, plans and fitted outputs.
+See [complete commands, scope and expected outputs](PUBLIC_REPRODUCTION.md) and [the composed execution receipt](../evidence/r33_public_pipeline.json). This is a completed reproducibility improvement, **not new predictive accuracy or independent validation**.
 
-After an exact-hash input kit is available, the command shape is:
+## Three distinct routes
+
+The fictional operating demo remains `python run_demo.py --output NEWDIR`. It needs only Python and NumPy and demonstrates runtime behaviour rather than biological accuracy.
+
+The new biological route is:
 
 ```bash
 python -m pip install -r study/requirements.txt
-python study/reproduce_train.py --inputs /path/to/input_kit --output new_reproduction
-```
-
-The complete prepared input kit is not yet supplied by this public release. `STUDY_LOCK.json` names every required file, byte hash, dependency version and expected metric. Do not substitute similar data and call it an exact reproduction.
-
-## Route C: exact public source
-
-The source workbook identity is now resolved, not inferred. Mendeley Data version 3 publicly lists `Data S4.xlsx` with:
-
-- dataset DOI: `10.17632/hr94h42xdc.3`
-- listed licence: `CC BY 4.0`
-- file id: `7302f514-ae1f-42a4-a0f9-77d4ebf468e9`
-- byte count: `15,886,254`
-- SHA-256: `3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c`
-
-That SHA-256 is exactly the historical workbook lock used by DosePilot. The project no longer relies on a merely similar or unverified public download.
-
-The anonymous metadata route and exact expected identity are pinned in `study/PUBLIC_SOURCE.json`. Verify the live public record without downloading the workbook:
-
-```bash
-python study/acquire_public_source.py --check-only
-```
-
-Or acquire the exact public workbook with byte-count and SHA-256 verification:
-
-```bash
 python study/acquire_public_source.py --output Data_S4.xlsx
+python study/prepare_compact_source.py --source-xlsx Data_S4.xlsx --output rebuilt_train --execute-lib1-only
+python study/reproduce_compact.py --curves rebuilt_train/train_curves.csv --output rebuilt_results
 ```
 
-The importer `study/prepare_from_source_v3.py` authenticates that exact workbook before parsing and restricts numerical viability reads to the declared Lib1 TRAIN selection. It does not authorize a protected independent-test read.
+The original `reproduce_train.py --inputs ...` route is retained unchanged for historical compatibility. It still expects its old 16-file kit. That kit is neither distributed nor required by the new compact route.
 
-## What is still missing for full public biological reproduction
+## Public source and attribution
 
-The remaining gap is narrower: the frozen TRAIN selection, contract and query metadata needed to convert the public workbook into the exact prepared input kit are not yet published as a reviewed public bundle. The source workbook itself is no longer the blocker.
+The author deposit is Mendeley Data v3, DOI `10.17632/hr94h42xdc.3`, listed as CC BY 4.0. `Data S4.xlsx` has file ID `7302f514-ae1f-42a4-a0f9-77d4ebf468e9`, 15,886,254 bytes and SHA-256 `3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c`.
 
-Full public reproduction will be claimed only after that metadata route is released, the source-to-prepared conversion is executed from the public route, and `reproduce_train.py` regenerates the locked R9/R13 metrics in a clean environment.
-
-## Provenance
-
-- Article: https://pubmed.ncbi.nlm.nih.gov/42208542/
-- Study DOI: https://doi.org/10.1016/j.xcrm.2026.102840
 - Author dataset: https://data.mendeley.com/datasets/hr94h42xdc/3
-- Dataset DOI: https://doi.org/10.17632/hr94h42xdc.3
+- Source study: https://doi.org/10.1016/j.xcrm.2026.102840
+- Article record: https://pubmed.ncbi.nlm.nih.gov/42208542/
 
-The source dataset and this project's code have separate licences. DosePilot code and documentation are MIT-licensed; the cited Mendeley dataset is listed by its publisher as CC BY 4.0. External rights remain with their respective holders.
+Credit Kryeziu, Sveen and Lothe. The dataset and applicable derived metadata retain their external attribution requirements. Original project code is MIT-licensed; it does not relicense the author dataset. See [catalog notice](../study/TRAIN_CATALOG_NOTICE.md).
+
+## Access and evidence limits
+
+Both reconstruction passes consume the same authenticated workbook snapshot. Input metadata determines eligibility before viability access. The execution logged 49,504 selected TRAIN viability conversions, zero Lib2 numerical response conversions and zero raw-signal conversions. XML parsing still encounters uninterpreted workbook bytes; these counts are not a claim of a byte-level security boundary.
+
+The first resource-bounded reconstruction attempt timed out during metadata parsing before its numerical-access marker. It is preserved. The unchanged successor received an explicitly reviewed longer wall-clock allowance and completed in 495.07 seconds on a shared laptop. The model process completed in 69.99 seconds; its internal replay timer was 49.15 seconds. Those are operational timings, not general hardware benchmarks.
+
+The source extraction used an existing Python 3.12.3 / NumPy 2.3.5 environment. The tests and model replay used a new isolated environment with all six pinned study dependencies. This is not a claim that an independent reviewer reproduced the work or that every stage ran on a clean new machine.
+
+The protected independent cohort remains excluded. No clinical benefit, prospective organ-on-chip performance, calibrated uncertainty or new predictive improvement is established. Generated patient-level data and fitted outputs stay local and are not part of the public repository.

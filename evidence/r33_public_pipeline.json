@@ -1,0 +1,139 @@
+{
+  "clean_model_environment_install": {
+    "fresh_venv": true,
+    "original_environment_changed": false,
+    "returncode": 0,
+    "seconds": 140.0374269390013,
+    "status": "PASS",
+    "system_site_packages": false
+  },
+  "code_sha256": {
+    "TRAIN_CATALOG.json": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "prepare_compact_source.py": "1cc9d1f7f4cbe84d83c558a85ee11daa9daf6da1bb6ccebc9e7fe7da47c1ba1f",
+    "prepare_from_source_v3.py": "64ca8b327f7de8f585e98bc37a23a70ea8c676b4c593c82d0190e03447f35b81",
+    "reproduce_compact.py": "4c2d335b83ff33f247357b739e0989c8bbd5abda07fe54f01ec38eb6ead0cb7a"
+  },
+  "earlier_attempt": {
+    "outcome": "TIMEOUT",
+    "phase": "metadata-only; no TRAIN_ACCESS_STARTED marker",
+    "preserved": true,
+    "runtime_successor_explicitly_reviewed": true,
+    "same_scientific_source_and_data": true,
+    "wall_seconds": 240.06496907697874
+  },
+  "fixture_tests": {
+    "failed": 0,
+    "fresh_model_environment": true,
+    "passed": 34
+  },
+  "independent_validation": false,
+  "model_replay": {
+    "comparisons": {
+      "r13_matched_paired_native": {
+        "absolute_difference": 0.0,
+        "expected": 0.001737932637554947,
+        "matches": true,
+        "observed": 0.001737932637554947
+      },
+      "r13_single64_expected_loss": {
+        "absolute_difference": 2.168404344971009e-19,
+        "expected": 0.001144858681382854,
+        "matches": true,
+        "observed": 0.0011448586813828537
+      },
+      "r9_own24": {
+        "absolute_difference": 0.0,
+        "expected": 0.0017214230057830812,
+        "matches": true,
+        "observed": 0.0017214230057830812
+      },
+      "r9_shared24": {
+        "absolute_difference": 0.0,
+        "expected": 0.002136395428366182,
+        "matches": true,
+        "observed": 0.002136395428366182
+      }
+    },
+    "input_audit": {
+      "curve_rows": 49504,
+      "curve_sha256": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+      "lib2_response_values_converted": 0,
+      "native_pairs": 164,
+      "reconstructed_from_one_train_curve_csv": true,
+      "samples": 119,
+      "source_workbook_opened": false,
+      "targets": 24,
+      "whole_patients": 59
+    },
+    "new_accuracy_gain": false,
+    "provenance": {
+      "catalog_sha256": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+      "curves_sha256": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+      "deps": {
+        "joblib": "1.5.3",
+        "numpy": "2.3.5",
+        "pandas": "2.2.3",
+        "scikit-learn": "1.8.0",
+        "scipy": "1.17.0",
+        "threadpoolctl": "3.6.0"
+      },
+      "independent_validation": false,
+      "loader_sha256": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+      "new_accuracy_gain": false,
+      "old_predictions_or_weights_input": false,
+      "original_source_workbook_opened": false,
+      "private_metadata_kit_used": false,
+      "protected_response_access": false,
+      "python": "3.12.3",
+      "role": "Compact input-route reproduction of historical development results",
+      "study_lock_sha256": "8118b562b78b3f55866d6239a38280c942df2c7d81f0b7c4ce71ba0e39ce9ffc",
+      "wrapper_sha256": "4c2d335b83ff33f247357b739e0989c8bbd5abda07fe54f01ec38eb6ead0cb7a"
+    },
+    "public_raw_source_end_to_end_completed": false,
+    "seconds": 49.15194287599297,
+    "status": "PASS"
+  },
+  "new_predictive_gain": false,
+  "patient_data_published": false,
+  "pipeline_execution": {
+    "automatic_retry": false,
+    "fresh_environment": true,
+    "independent_validation": false,
+    "new_accuracy_gain": false,
+    "no_private_metadata_kit": true,
+    "returncode": 0,
+    "seconds": 69.99414604599588,
+    "source_csv_sha256": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "source_reconstruction_receipt_sha256": "3ab52f175efc653619eabac08f4902b84a4996979a3546915cebdd45e3734c05",
+    "status": "PASS"
+  },
+  "private_selection_or_input_kit_required": false,
+  "public_raw_source_to_results_verified": true,
+  "runtime_scope": "Shared laptop; timings are operational observations, not performance benchmarks.",
+  "schema": "dosepilot.public_source_to_results.v1",
+  "scope_clarification": "The wrapper alone marks raw-source end-to-end false because it takes a CSV. This parent receipt composes the successful exact public-workbook extraction and its exact-hash CSV with the successful clean-environment wrapper replay. Source extraction used an existing Python3.12.3/NumPy2.3.5 environment; scientific replay and 34 tests used a new isolated venv. This is not independent external validation or a clean-machine certification.",
+  "source": {
+    "audit": {
+      "lib2_numeric_conversions": 0,
+      "raw_signal_conversions": 0,
+      "selected_viability_decodes": 49504
+    },
+    "bytes": 3418290,
+    "clinical_or_independent_validation": false,
+    "curves_sha256": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "private_metadata_kit_used": false,
+    "same_verified_snapshot": true,
+    "source_sha256": "3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c",
+    "status": "PASS"
+  },
+  "source_execution": {
+    "automatic_retry": false,
+    "max_rss_kib": 143060,
+    "returncode": 0,
+    "seconds": 495.0677517160075,
+    "status": "COMPLETE"
+  },
+  "status": "PASS",
+  "verified_utc": "2026-09-30T11:15:10.637531+00:00"
+}
