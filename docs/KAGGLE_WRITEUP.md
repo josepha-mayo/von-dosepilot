@@ -7,6 +7,14 @@
 **Team:** von DosePilot  
 **Author:** Joseph Ayanda
 
+## Project Summary
+
+DosePilot addresses a practical bottleneck in dose-response experiments: when treatment wells are limited, should the assay repeat measurements for precision or spend those wells on broader dose coverage? The project treats that choice as part of the predictive method rather than as an invisible preprocessing decision.
+
+On a retrospective colorectal-cancer organoid task, DosePilot reconstructs 24 fixed drug-response summaries from exactly 64 identified treatment wells. Acquisition planning, scaling and model selection stay inside whole-patient training folds. The retained R13 procedure uses broader dose coverage and 24 drug-specific sparse prediction heads. It achieved patient-balanced MSE **0.0011448587**, 33.49% lower than an earlier paired-well procedure and 34.13% lower than a matched paired-native control. A separately optimized interpolation acquisition policy reached **0.0024168103**, while R13 was 52.63% lower and improved all 59 patient means in that comparison.
+
+DosePilot also turns the research method into an inspectable workflow: it binds every required value to a sample, run, drug, concentration, plate and physical well; rejects incompatible inventories; abstains when required inputs are missing; and recovers the same committed acquisition plan after an export failure. The complete historical R9/R13 result can now be reproduced from the exact public source workbook without the old private input bundle. The evidence remains retrospective development on conventional organoid plates, not prospective organ-on-chip or clinical validation.
+
 ## Why it matters
 
 Sparse drug screens force a practical choice: spend another well repeating a measurement, or use that well to cover another concentration. DosePilot makes that tradeoff explicit and carries the chosen measurement identities all the way from inventory to prediction.
@@ -21,6 +29,12 @@ The retained broader-coverage procedure achieved patient-balanced MSE **0.001144
 
 A stricter post-submission control separately optimized a piecewise-linear log-dose interpolation acquisition policy under the same 64-treatment-well budget. Its patient-balanced MSE was **0.0024168103**; R13 was **52.63% lower**, with lower patient-mean error for **59/59 patients** and lower mean error in **5/5 outer folds**. This is another comparison on the repeatedly reused development cohort, not independent confirmation.
 
+## Practical value and organ-on-chip path
+
+The immediate value is experimental decision support under a hard measurement budget: DosePilot makes the acquisition policy explicit, auditable and executable before response values enter the workflow. That matters whenever dose-response experiments cannot measure every desirable concentration or replicate.
+
+For organ-on-chip work, the same software pattern can support dose-response planning and measurement provenance, but the present evidence does **not** validate microfluidic devices. A real OoC deployment must first encode channel topology, shared-flow coupling, tissue dependence, device-level replication and any different dose-support constraints, then evaluate the complete acquisition-and-prediction procedure prospectively. DosePilot exposes that boundary rather than treating ordinary organoid-plate evidence as chip validation.
+
 ## What is technically distinctive
 
 DosePilot combines:
@@ -31,6 +45,12 @@ DosePilot combines:
 - explicit abstention when required values are missing;
 - recovery of an already committed layout after export failure;
 - a dose-aware operator prototype that exposes unsupported concentration/target requests instead of silently substituting measurements.
+
+## Reliability and evidence boundary
+
+The main result is intentionally not presented as a universal win. R13 is repeated adaptive development evidence; six drug-average errors and six patient averages regress versus R9. Later challengers, including nonlinear heads, alternative allocation rules, per-target regularization, calibration and cross-drug context, were retained as negative results when they failed promotion. The original independent Lib2 attempt failed before scoring, and the remaining protected cohort has not been reopened.
+
+The public source-to-results replay verifies reproducibility of the historical result, not independence. No clinical effectiveness, calibrated uncertainty, realized reagent savings or prospective OoC performance is claimed.
 
 ## Public assets
 
