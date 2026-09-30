@@ -37,6 +37,16 @@ The prefrozen complete-case rule retained 13 of 19 FORECAST-1 PDTO lines. On tho
 
 We also froze a deliberately strict four-part support gate before opening FORECAST-1. Three parts passed, but the gate as a whole **failed** because it required at least 12 strict patient wins out of the original 19 source patients; six source lines were incomplete and the learned procedure won 10 of the 13 complete patients. We did not relax the gate after seeing the result. This experiment supports transfer of the sparse acquisition/reconstruction **design pattern**, not direct validation of the original fitted 24-drug R13 heads or a clinical claim. Full protocol, source identities and aggregate audit are in `docs/EXTERNAL_CRC_CONFIRMATION.md` and `evidence/external_crc_confirmation_20260930.json`.
 
+### External matched-CAF stromal context stress test
+
+A second independently sourced post-submission experiment tested the same sparse-reconstruction **design pattern** under a tumor-microenvironment shift. Using the Farin et al. colorectal-cancer organoid/CAF biobank, we froze all metadata selection, normalization, endpoint, model/comparator code and a four-part gate **before decoding any RLU outcome field**. Development used 13 complete monoculture organoid IDs. Primary confirmation used 15 different organoid IDs with matched autologous tumor-CAF cocultures; no confirmation ID entered development.
+
+The task reconstructed four DMSO-normalized seven-dose AUC targets from **11 replicate-averaged dose-level readouts** out of 28 available positive-dose readouts. The learned method used training-only covariance allocation plus own-drug ridge prediction. The comparator independently optimized constant-tail log-dose interpolation under the same 11-readout count.
+
+On the one-shot matched-CAF confirmation, learned reconstruction achieved MSE **0.0029697** versus **0.0052366** for optimized interpolation, a **43.29% reduction**. It improved **10/15 organoid means**, was nonworse on **3/4 drug MSEs**, and reduced p90 organoid RMSE from **0.10986** to **0.06666**. The fixed-seed descriptive bootstrap interval for learned-minus-interpolation mean organoid MSE was **[-0.004234, -0.000497]**. **All four prefrozen gate components passed.** A separately prespecified held-out monoculture diagnostic also favored learned reconstruction (MSE **0.0036080** versus **0.0057686**).
+
+This is stronger evidence for transfer of the sparse acquisition/reconstruction pattern into a stromal coculture context, but the boundary remains explicit: the split is organoid-ID-distinct, not proven unique-patient-distinct; dose-level summaries are not physical-well counts; and this does not directly validate the original 24 fitted R13 heads, clinical benefit, calibrated uncertainty or prospective OoC hardware. Full protocol and reproducible aggregate check: `docs/STROMA_CONTEXT_CONFIRMATION.md` and `evidence/stroma_context_confirmation_20260930.json`.
+
 ## Practical value and organ-on-chip path
 
 The immediate value is experimental decision support under a hard measurement budget: DosePilot makes the acquisition policy explicit, auditable and executable before response values enter the workflow. That matters whenever dose-response experiments cannot measure every desirable concentration or replicate.
@@ -94,3 +104,4 @@ ChatGPT assisted with research synthesis, implementation, numerical checking, do
 3. Xi, Briol & Girolami, Bayesian Quadrature for Multiple Related Integrals, PMLR 80 (2018).
 4. Longi et al., Sensor Placement for Spatial Gaussian Processes with Integral Observations, PMLR 124 (2020).
 5. Tan et al., *Cell Reports Medicine* (2023), DOI: 10.1016/j.xcrm.2023.101335. Separate external CRC organoid cohort used only for the frozen post-submission sparse-reconstruction confirmation described above.
+6. Farin et al., *Cancer Discovery* (2023), DOI: 10.1158/2159-8290.CD-23-0050; Mendeley Data DOI: 10.17632/fypp6xhkjy.1. Separate organoid/CAF biobank used for the frozen matched-stroma stress test.
