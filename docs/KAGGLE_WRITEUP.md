@@ -29,6 +29,14 @@ The retained broader-coverage procedure achieved patient-balanced MSE **0.001144
 
 A stricter post-submission control separately optimized a piecewise-linear log-dose interpolation acquisition policy under the same 64-treatment-well budget. Its patient-balanced MSE was **0.0024168103**; R13 was **52.63% lower**, with lower patient-mean error for **59/59 patients** and lower mean error in **5/5 outer folds**. This is another comparison on the repeatedly reused development cohort, not independent confirmation.
 
+### Separate external CRC confirmation
+
+We then froze a new sparse-reconstruction task on an **independent public metastatic-CRC organoid study** before accessing its FORECAST-1 confirmation responses. The model/design was fitted only on the study's community cohort. The external task used eight single agents and a fixed **21-measurement** budget: two concentrations for every drug plus five third-dose upgrades. A piecewise-linear interpolation comparator optimized its own acquisition policy under the identical measurement count.
+
+The prefrozen complete-case rule retained 13 of 19 FORECAST-1 PDTO lines. On those 13 distinct patients, learned sparse reconstruction reached patient-balanced MSE **0.0021715** versus **0.0038552** for optimized interpolation, **43.67% lower**. It improved **10/13 patient means**, was nonworse on **7/8 target MSEs**, and improved the five-drug subset shared with the original DosePilot development task. The prespecified paired-patient bootstrap interval for learned-minus-interpolation MSE was **[-0.002809, -0.000581]**.
+
+We also froze a deliberately strict four-part support gate before opening FORECAST-1. Three parts passed, but the gate as a whole **failed** because it required at least 12 strict patient wins out of the original 19 source patients; six source lines were incomplete and the learned procedure won 10 of the 13 complete patients. We did not relax the gate after seeing the result. This experiment supports transfer of the sparse acquisition/reconstruction **design pattern**, not direct validation of the original fitted 24-drug R13 heads or a clinical claim. Full protocol, source identities and aggregate audit are in `docs/EXTERNAL_CRC_CONFIRMATION.md` and `evidence/external_crc_confirmation_20260930.json`.
+
 ## Practical value and organ-on-chip path
 
 The immediate value is experimental decision support under a hard measurement budget: DosePilot makes the acquisition policy explicit, auditable and executable before response values enter the workflow. That matters whenever dose-response experiments cannot measure every desirable concentration or replicate.
@@ -50,7 +58,7 @@ DosePilot combines:
 
 The main result is intentionally not presented as a universal win. R13 is repeated adaptive development evidence; six drug-average errors and six patient averages regress versus R9. Later challengers, including nonlinear heads, alternative allocation rules, per-target regularization, calibration and cross-drug context, were retained as negative results when they failed promotion. The original independent Lib2 attempt failed before scoring, and the remaining protected cohort has not been reopened.
 
-The public source-to-results replay verifies reproducibility of the historical result, not independence. No clinical effectiveness, calibrated uncertainty, realized reagent savings or prospective OoC performance is claimed.
+The public source-to-results replay verifies reproducibility of the historical result, not independence. The separate Tan et al. FORECAST-1 experiment adds an external patient cohort for a newly frozen eight-drug sparse-reconstruction task, but its prespecified four-part support gate did not fully pass and it does not directly validate the original 24 fitted heads. No clinical effectiveness, calibrated uncertainty, realized reagent savings or prospective OoC performance is claimed.
 
 ## Public assets
 
@@ -85,3 +93,4 @@ ChatGPT assisted with research synthesis, implementation, numerical checking, do
 2. Abdel-Rehim et al., *Bioinformatics* (2026), DOI: 10.1093/bioinformatics/btag293.
 3. Xi, Briol & Girolami, Bayesian Quadrature for Multiple Related Integrals, PMLR 80 (2018).
 4. Longi et al., Sensor Placement for Spatial Gaussian Processes with Integral Observations, PMLR 124 (2020).
+5. Tan et al., *Cell Reports Medicine* (2023), DOI: 10.1016/j.xcrm.2023.101335. Separate external CRC organoid cohort used only for the frozen post-submission sparse-reconstruction confirmation described above.
