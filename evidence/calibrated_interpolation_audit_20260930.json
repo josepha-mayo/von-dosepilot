@@ -1,0 +1,130 @@
+{
+  "schema": "dosepilot.calibrated_interpolation_audit.v1",
+  "status": "COMPLETE_AND_VERIFIED",
+  "verified_utc": "2026-09-30T19:03:13.097532+00:00",
+  "record_role": "Aggregate companion to the exact preserved execution artifacts, not a byte-identical copy of those artifacts",
+  "source_code_commit": "3721d93bc908bfcdea791fdfafc854f6440fd8bd",
+  "protocol_sha256": "bce52720ab8674b495094865864568ad5328ed1c718dbe28f33e6671634383",
+  "protocol_role": "Post-hoc comparator stress test on two already exposed tasks; fixed before this comparator was evaluated",
+  "tasks": {
+    "forecast8": {
+      "development_samples": 64,
+      "development_patients": 63,
+      "source_confirmation_patients": 19,
+      "eligible_confirmation_patients": 13,
+      "original_incomplete_exclusions": 6,
+      "targets": 8,
+      "dose_level_readouts": 21,
+      "selected_calibration_ridge": 0.01,
+      "development_cv_mse": {
+        "identity": 0.0026616588818353594,
+        "0.0": 0.00214022793926952,
+        "0.01": 0.002132076845845508,
+        "0.1": 0.002199072389641957,
+        "1.0": 0.006177009625870992,
+        "10.0": 0.016230989568641406
+      },
+      "confirmation_mse": {
+        "original_learned": 0.0021714653573835976,
+        "original_optimized_interpolation": 0.003855179448429229,
+        "calibrated_interpolation": 0.0028731430152015357
+      },
+      "learned_vs_calibrated": {
+        "relative_mse_reduction": 0.24421953731694734,
+        "patient_wins": 9,
+        "patient_losses": 4,
+        "patient_ties": 0,
+        "target_wins": 5,
+        "descriptive_delta_ci95": [-0.0015859147205944484, 0.00010524333945352495],
+        "interval_includes_zero": true
+      },
+      "p90_patient_rmse": {
+        "original_learned": 0.06269108733118912,
+        "original_optimized_interpolation": 0.08473903148415288,
+        "calibrated_interpolation": 0.07111268655303633
+      },
+      "original_support_gate_passed": false,
+      "original_support_gate_relaxed": false,
+      "input_prediction_sha256": "241ca1c9bb73b3116e3100cd44ec36b58cbacc825f43ab6dfc20f673991cf371",
+      "calibration_model_sha256": "6f37e90ec022830286d85467910d0d38e00c45beb3f560f1171ceda29dc9fcbe",
+      "output_prediction_sha256": "dd8df7615447b2b81867865cd1eccf7d59337e1012806e97f6ce5a390b246c56",
+      "direct_coefficient_max_error": 4.440892098500626e-16
+    },
+    "stroma4": {
+      "development_organoid_ids": 13,
+      "confirmation_organoid_ids": 15,
+      "unique_patient_independence_established": false,
+      "targets": 4,
+      "replicate_averaged_dose_level_readouts": 11,
+      "physical_well_equivalence_claimed": false,
+      "selected_calibration_ridge": 0.1,
+      "development_cv_mse": {
+        "identity": 0.011851605264987833,
+        "0.0": 0.011936735922894588,
+        "0.01": 0.011691456066329807,
+        "0.1": 0.010294367441789272,
+        "1.0": 0.019839420134547172,
+        "10.0": 0.05709745423086618
+      },
+      "confirmation_mse": {
+        "original_learned": 0.0029697116835853393,
+        "original_optimized_interpolation": 0.00523662663082444,
+        "calibrated_interpolation": 0.005869903143463967
+      },
+      "learned_vs_calibrated": {
+        "relative_mse_reduction": 0.4940782478000407,
+        "organoid_wins": 12,
+        "organoid_losses": 3,
+        "organoid_ties": 0,
+        "target_wins": 3,
+        "descriptive_delta_ci95": [-0.005589808482644939, -0.0007201594128821025],
+        "interval_includes_zero": false
+      },
+      "calibration_improved_over_original_interpolation": false,
+      "reporting_decision": "Keep the conservative 43.29% learned advantage versus the better achieved raw interpolation control as the headline; disclose the 49.41% calibrated-control comparison separately",
+      "p90_organoid_rmse": {
+        "original_learned": 0.06665610573587068,
+        "original_optimized_interpolation": 0.10986335935623637,
+        "calibrated_interpolation": 0.10062946182750068
+      },
+      "original_support_gate_passed": true,
+      "input_prediction_sha256": "2d151a4b317a537d513c16b3783162eacce56639f23b054b472cfbb84302914b",
+      "calibration_model_sha256": "59abfb664d81d21783bdc91717db9864fc878a8a884ffc8704ca2939292a80fd",
+      "output_prediction_sha256": "4d8ecd98ba178eeb8e7b45548eab1bbdc53fae030ed72ed45739eb160c10d20e",
+      "direct_coefficient_max_error": 2.220446049250313e-16
+    }
+  },
+  "verification": {
+    "status": "PASS",
+    "unique_synthetic_tests_passed": 14,
+    "all_four_downloaded_source_files_hash_matched": true,
+    "original_full_training_interpolation_plans_reproduced": true,
+    "original_learned_and_interpolation_metrics_reproduced": true,
+    "all_target_metrics_recomputed": true,
+    "training_only_model_selection_recomputed": true,
+    "max_saved_prediction_reconstruction_error": 2.220446049250313e-16,
+    "different_implementation_same_coordinator": true,
+    "independent_external_reviewer": false,
+    "exact_execution_result_sha256": "5717714302bdf3b3dfd65f86de614b72ecd8959db111fe30bab99c17b8af2147",
+    "exact_execution_intent_sha256": "d1539e972098c4d69bfd5c5eaaad99c1b01c2b2237f92c4b8ad23de3a1eb9c7a",
+    "test_log_sha256": "773dffef5fd4b2d1ffe8b93df32df8af1fd9c50aad11151b2b313178d7b975fe"
+  },
+  "source_sha256": {
+    "calibrated_control.py": "295abb78dc19931b091829898d293d3407812dc83e599a977a506feff7c86f55",
+    "test_calibrated_control.py": "57e6f7bb6f072f336aad01d79741ece7256e11518b6f26891711ce768af12ded",
+    "run_calibration_audit.py": "af1e26daac2e7e4bd7a714be45484492a70dc972c2a7ec53751f345ebd951f2a",
+    "PROTOCOL.md": "bce52720ab8674b495094865864568ad5328ed1c718dbe28b5f33e6671634383"
+  },
+  "confirmation_values_used_for_fitting": false,
+  "additional_confirmation_measurements": false,
+  "confirmation_source_workbooks_or_rlu_file_reopened": false,
+  "new_target_or_sample_exclusions": false,
+  "bootstrap_selection_corrected": false,
+  "new_independent_validation": false,
+  "original_fitted_r13_model_validated_externally": false,
+  "original_fitted_r13_model_changed": false,
+  "protected_lib2_accessed": false,
+  "patient_arrays_or_weights_published": false,
+  "kaggle_entry_replaced": false,
+  "official_score": null
+}
