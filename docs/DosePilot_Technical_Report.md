@@ -1,7 +1,7 @@
 # von DosePilot
 Measurement-aware drug-screen reconstruction
 
-Joseph Ayanda | Model & Algorithm | 29 September 2026
+Joseph Ayanda | Model & Algorithm | Updated 30 September 2026
 
 ## Overview
 
@@ -100,11 +100,11 @@ The six regressing drug averages were Bemcentinib, Gedatolisib, Idasanutlin, LCL
 
 R18 achieved a slightly lower exploratory MSE, 0.0011414048, but did not pass the original replacement rule. The later prior-centered and functional-covariance variants also failed promotion. R13 remains the retained operational method, not the literal lowest observed point or a proven optimum.
 
-A constant-tail, piecewise-linear log-dose readout on R13-selected measurements had MSE 0.0124455228 and lost to R13 on all 59 patients. This is a limited matched-observation comparison: its measurement plan was selected for the learned method, not optimized for interpolation.
+A constant-tail, piecewise-linear log-dose readout on R13-selected measurements had MSE 0.0124455228, but that comparison favored the learned method's acquisition plan. A stricter post-submission control therefore optimized the interpolation policy's **own** measurement locations inside patient-separated training folds while preserving the same 24 targets and 64-treatment-well budget. That separately optimized interpolation procedure reached patient-balanced MSE **0.0024168103**. R13 remained **52.63% lower**, with lower patient-mean error for **59/59 patients** and lower mean error in **5/5 outer folds**. This remains repeated-development evidence and does not prove superiority to every possible interpolation method.
 
 ## Interpretation
 
-Repeated trials reused the same development population. Patient-contained nested evaluation prevents within-trial leakage but does not erase selection across rounds. Bootstrap intervals are descriptive. The internal 5% improvement rule is model-selection discipline, not an official scoring formula or probability of winning. No independent predictive estimate is available.
+Repeated trials reused the same development population. Patient-contained nested evaluation prevents within-trial leakage but does not erase selection across rounds. Bootstrap intervals are descriptive. The internal 5% improvement rule is model-selection discipline, not an official scoring formula or probability of winning. Post-submission challengers that changed allocation, regularization, calibration or cross-drug context were rejected when they failed their development gates. The public source replay strengthens reproducibility but does not create an independent predictive estimate.
 
 # Operating workflow
 Traceability, abstention and transfer boundaries
@@ -146,7 +146,7 @@ Run from the repository root with a fresh output directory. The synthetic workfl
 
 ## Biological reproduction status
 
-The prepared-input route previously regenerated recorded R9/R13 plans, fitted models and predictions without cached predictions or fitted weights as inputs. Original engines and locked reproduction code are included in the repository. However, private prepared data and metadata templates are not publicly supplied, and the original-workbook importer has only been fixture-tested. Full public source-to-results reproduction remains incomplete.
+The full historical R9/R13 development result can now be reconstructed from the exact public Mendeley Data v3 workbook without the old private input bundle. The public route first authenticates the exact `Data S4.xlsx` bytes, reconstructs the fixed 119-sample / 59-patient Lib1 TRAIN population from input metadata, and decodes exactly 49,504 selected viability values while recording zero Lib2 numerical-response conversions and zero raw-signal conversions. The resulting TRAIN CSV matches its historical SHA-256 byte identity. A fresh isolated environment then rebuilds the plans, fits and predictions through the unchanged scientific engines; all four locked R9/R13 MSE values match within absolute tolerance `1e-12` (maximum observed difference approximately `2.17e-19`). Thirty-four reconstruction/loader tests passed. See `docs/PUBLIC_REPRODUCTION.md` and `evidence/r33_public_pipeline.json`. This establishes reproducibility of the retrospective development result, **not independent biological validation**.
 
 Original project code and documentation are MIT-licensed. External source data and dependencies retain their own rights. No biological workbook, private input arrays, real biological model weights or patient-level outputs are included in the public release. ChatGPT assisted with implementation and documentation; later Muse Spark 1.3 reviews had limited recorded scopes and are not independent biological validation.
 
@@ -160,6 +160,6 @@ Original project code and documentation are MIT-licensed. External source data a
 
 [4] Longi et al. (2020). Sensor Placement for Spatial Gaussian Processes with Integral Observations. PMLR 124:1009-1018. proceedings.mlr.press/v124/longi20a.html.
 
-[E] Project evidence: historical R13/R16/R21-R25 records, original study code and aggregate_results.json. Aggregate figures are reported here; private patient-level trial records are not part of this public repository.
+[E] Project evidence: historical R13/R16/R21-R25 records, public R33 source-to-results reproduction, post-submission fixed-budget controls, original study code and aggregate evidence files. Aggregate figures are reported here; patient-level predictions, fitted biological weights and protected independent-study responses are not part of this public repository.
 
 https://github.com/josepha-mayo/von-dosepilot
