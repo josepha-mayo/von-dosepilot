@@ -28,6 +28,17 @@ Public source records for provenance, not a permission determination:
 
 The exact historical workbook SHA256 is `3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c`. A changed download is not silently treated as the same input. A URL is not proof of byte identity or redistribution rights.
 
+## Public source status
+
+The associated authors' dataset is publicly listed at Mendeley Data version 3:
+
+- Dataset: https://data.mendeley.com/datasets/hr94h42xdc/3
+- DOI: https://doi.org/10.17632/hr94h42xdc.3
+- Listed licence: Creative Commons Attribution 4.0 International
+- Data S4 is described by the authors as the raw drug-sensitivity screening measurements, including sample, run, library, compound, concentration, plate/well, signal and normalized viability fields.
+
+This materially improves the public provenance route, but it does **not** by itself prove that the historical workbook used by DosePilot is byte-identical to a particular Mendeley file. The project therefore keeps the historical SHA256 lock and refuses to silently substitute a changed or merely similar download.
+
 ## Required before claiming full public reproduction
 
 Resolve applicable source and derived-asset permissions; publish an approved complete metadata/acquisition route without private-account dependency; conduct the specifically authorized source reconstruction using the reviewed exact contract; retain a terminal failure or exact output comparison; and verify installation/run from that public route. None of those steps is completed merely by including this document. No protected independent test is authorized by possession of this code.
