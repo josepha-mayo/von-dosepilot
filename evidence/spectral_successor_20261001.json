@@ -1,0 +1,188 @@
+{
+  "schema": "dosepilot.spectral_successor.v1",
+  "scientific_status": "PASSES_UNCHANGED_INTERNAL_DEVELOPMENT_SCREEN",
+  "deployment_status": "Constructed and inference-tested research successor; original accepted entry unchanged",
+  "original_frame": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_wells_per_alternative": 64,
+    "per_plate": 32
+  },
+  "model": "S2 spectral residual correction on unchanged R13 acquisition",
+  "metrics": {
+    "r13_soft": {
+      "mse": 0.0010701439454817465,
+      "p90_rmse": 0.03873324205763433,
+      "fold_mse": [
+        0.0014029111880116722,
+        0.0009027793284462313,
+        0.0010696932796466138,
+        0.00082704403134406,
+        0.0011553962594581919
+      ],
+      "orientation_mse": [
+        0.0011189862591732777,
+        0.0010213016317902148
+      ]
+    },
+    "r13": {
+      "mse": 0.001144858681382854,
+      "p90_rmse": 0.04110782499169961,
+      "fold_mse": [
+        0.001511102293820073,
+        0.0009309062918224682,
+        0.001133117310775852,
+        0.0009198402687310413,
+        0.0012370062017995605
+      ],
+      "orientation_mse": [
+        0.0011924998549447887,
+        0.0010972175078209196
+      ]
+    },
+    "r18": {
+      "mse": 0.0011414048112341991,
+      "p90_rmse": 0.04095930575479935,
+      "fold_mse": [
+        0.0015065050020425241,
+        0.0009277053434741434,
+        0.0011360512581447993,
+        0.0009124504299761857,
+        0.0012318490417423575
+      ],
+      "orientation_mse": [
+        0.0011902913101605125,
+        0.0010925183123078864
+      ]
+    }
+  },
+  "comparisons": {
+    "r13": {
+      "relative_gain": 0.06526109913483902,
+      "patient_wins": 49,
+      "patient_losses": 10,
+      "patient_ties": 0,
+      "fold_wins": 5,
+      "target_nonworse": 20,
+      "descriptive_delta_ci95": [
+        -0.00010583711561796613,
+        -4.7338275732997076e-05
+      ],
+      "gate": {
+        "mse5percent": true,
+        "wins40": true,
+        "foldwins4": true,
+        "p90_nonworse": true,
+        "both_orientation_means_below_reference_expected": true
+      }
+    },
+    "r18": {
+      "relative_gain": 0.062432596263019446,
+      "patient_wins": 47,
+      "patient_losses": 12,
+      "patient_ties": 0,
+      "fold_wins": 5,
+      "target_nonworse": 20,
+      "descriptive_delta_ci95": [
+        -0.00010127328977560975,
+        -4.473160775157714e-05
+      ],
+      "gate": {
+        "mse5percent": true,
+        "wins40": true,
+        "foldwins4": true,
+        "p90_nonworse": true,
+        "both_orientation_means_below_reference_expected": true
+      }
+    }
+  },
+  "regressing_target_means_vs_r13": [
+    "Alisertib",
+    "Methotrexate",
+    "Napabucasin",
+    "Panobinostat"
+  ],
+  "other_completed_candidates": [
+    {
+      "method": "S1 hard reduced-rank residual",
+      "mse": 0.0010871592831997162,
+      "decision": "REJECT_R18_MARGIN"
+    },
+    {
+      "method": "S1 full-rank residual control",
+      "mse": 0.0010848257091747118,
+      "decision": "REJECT_R18_MARGIN"
+    },
+    {
+      "method": "S3 fixed-plan full residual",
+      "mse": 0.0010977058957504665,
+      "decision": "REJECT_MARGIN_AND_BREADTH"
+    },
+    {
+      "method": "S4 fixed-plan soft residual",
+      "mse": 0.0010790799124368396,
+      "decision": "REJECT_PATIENT_BREADTH"
+    }
+  ],
+  "verification": {
+    "status": "PASS",
+    "utc": "2026-10-01T19:38:42.073598+00:00",
+    "checks": 894,
+    "numeric_comparisons": 678,
+    "maximum_metric_discrepancy": 4.440892098500626e-16,
+    "selected_model_whitening_max_error": 6.909078344163877e-17,
+    "selected_models_verified": 5
+  },
+  "public_route_replay": {
+    "status": "PASS",
+    "source_commit": "01db9cb1ce00cc45e4324b0aea03a2c4be53ab46",
+    "mse": 0.0010701439454817462,
+    "r13_mse": 0.0011448586813828537,
+    "wins": 49,
+    "result_sha256": "d6c5a9788edd1c0ae138fac9e5eb4b2bf6a8039349eaa523f816fa41d6406c56",
+    "private_metadata_kit_used": false,
+    "old_predictions_input": false,
+    "source_workbook_reparsed": false
+  },
+  "runtime": {
+    "verified_utc": "2026-10-01T19:51:58.258126+00:00",
+    "source_commit": "422ee97a2e42dee2953ef7ba34fc674303f5d605",
+    "unique_synthetic_tests": 33,
+    "single_orientation_input_sets_checked": 238,
+    "max_prediction_difference": 2.220446049250313e-16,
+    "missing_positions_checked": 64,
+    "all_missing_cases_withheld": true,
+    "requires_all64_inputs": true,
+    "training_inference_is_not_validation": true
+  },
+  "final_model": {
+    "selection": [
+      0.1,
+      1.0
+    ],
+    "plan_sha256": "25b14b67b2e5ab82394f1409ed72f68ae264278095c280df9e552d4f1bdff2ca",
+    "model_sha256": "561ec96804d2fb408ea18fe24e3d931e07a3b219bbc43170783bad3e4f981967",
+    "new_validation": false
+  },
+  "execution_hashes": {
+    "rrr_run_001/RESULT.json": "8912665ffe66194adbed197b74454f10253008dc9b7e88e494fbf3e167fb3408",
+    "refinements_001/RESULT.json": "983bb4781722d3da9178d9941252a56a1eb0d17185a7c7cfd6d3f9ba318faa60",
+    "INDEPENDENT_VERIFICATION.json": "deec824b3dd8daa65c4243b731ca1bd68c32fca4d7d65a054d301943e01c11ce",
+    "PROTOCOL_REFINEMENTS.md": "dd58f99a6375ed934ef79ebadbc673a3115c0780aa8feb7226155b9d19618a26",
+    "PROTOCOL_RRR.md": "9c021d6144c4b398b134861cd96f0de1b1b017c96a4e3671f28b1a065d309762"
+  },
+  "research_agents": {
+    "launched": 3,
+    "completed": 0,
+    "provider_error_or_database_lock": true,
+    "private_data_provided": false
+  },
+  "new_independent_validation": false,
+  "bootstrap_selection_corrected": false,
+  "protected_lib2_used": false,
+  "new_source_workbook_read": false,
+  "patient_data_or_weights_published": false,
+  "accepted_entry_replaced": false,
+  "official_score": null
+}
