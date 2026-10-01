@@ -6,6 +6,8 @@ MIT-licensed research software by Joseph Ayanda for the AI4S Open Innovation cha
 
 **Demo video:** https://youtu.be/QeOGJIgx378
 
+**1 October evidence update:** the approved Protected22 execution completed, but the full 61-PDO / 31-patient primary is **not estimable** because five required responses were nonnumeric. Its prespecified complete-patient secondary analysis favors R13, but it is not successful confirmation. A previously recorded cross-session access was discovered after this execution, so the cohort is not described as untouched. [Full result and disclosure](docs/PROTECTED22_RESULT.md) · [Current access status: all planned records exposed](evidence/PROTECTED22_ACCESS_STATUS.json). The earlier incomplete attempt below remains preserved, not replaced.
+
 ## What it does
 
 DosePilot turns a compatible assay inventory into one committed 64-treatment-well layout, keeps the physical identity of every required observation, and produces 24 drug-response summaries from complete measurements.
@@ -78,11 +80,11 @@ On matched-CAF data, the same calibration procedure instead worsened interpolati
 These are additional analyses of already exposed data, not new independent confirmations. A later six-drug FORECAST analysis also reuses the same source cohort and must not be counted a second time. See [the evidence ledger](docs/EVIDENCE_LEDGER.md).
 
 
-## Protected Lib2 exact-support attempt: incomplete
+## Earlier Lib2 exact-support attempt: incomplete
 
 A separately frozen one-shot study attempted to evaluate the **22 R13 heads with exact cross-library support** on the historically reserved Lib2 frame. The two shifted-grid targets, Gedatolisib and Palbociclib, were excluded before numerical access; the unchanged R13 model then required 58 dose-level readouts per deployment alternative, matched by a TRAIN-only optimized interpolation comparator.
 
-The importer encountered a required nonnumeric response **before any prediction vector or efficacy metric was constructed**. Under the frozen no-retry rule, the study is therefore **incomplete and has no Lib2 efficacy score**. No complete-case rescue, patient removal, imputation, target shrinking, or second attempt is used. See [the exact22 incomplete-study record](docs/LIB2_EXACT22_INCOMPLETE.md).
+That earlier importer encountered a required nonnumeric response **before any prediction vector or efficacy metric was constructed**. Its no-retry failure remains preserved as **incomplete with no efficacy score for that attempt**. Today's separately approved missingness-reporting execution does not repair it or restore untouched-cohort status. See [the original exact22 incomplete-study record](docs/LIB2_EXACT22_INCOMPLETE.md) and [the 1 October result and cross-session disclosure](docs/PROTECTED22_RESULT.md).
 
 ## Public eLife CRC-organoid retrospective stress test
 
@@ -92,6 +94,7 @@ The fixed stress gate nevertheless **did not pass**: learned reconstruction won 
 
 ## Report and submission materials
 
+- [Protected22 result: unavailable primary, conditional evidence and exposure disclosure](docs/PROTECTED22_RESULT.md)
 - [Concise technical report PDF](docs/DosePilot_Technical_Report_Public.pdf) (historical report)
 - [R33 reproduction and R34 experiment addendum](docs/KAGGLE_R33_ADDENDUM.md)
 - [Separately optimized interpolation control](docs/POST_SUBMISSION_CONTROL.md)

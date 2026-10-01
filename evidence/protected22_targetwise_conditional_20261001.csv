@@ -1,0 +1,23 @@
+target,complete_patients,original_patients,complete_pdos_in_these_patients,candidate_conditional_mse,comparator_conditional_mse,patient_wins,patient_losses,estimand
+5-FU,30,31,59,0.0010515443888922218,0.0012089064797338696,22,8,equal-patient conditional error for this target; differing support across targets
+AZD7762,31,31,61,0.0010261212079878388,0.00168493524992029,20,11,equal-patient conditional error for this target; differing support across targets
+Afatinib,31,31,61,0.0033203633979709737,0.0040292755712093295,21,10,equal-patient conditional error for this target; differing support across targets
+Alisertib,31,31,61,0.003429937983506142,0.0023763968649788405,10,21,equal-patient conditional error for this target; differing support across targets
+Atorvastatin,31,31,61,0.0011677768384391884,0.0028993490039730084,22,9,equal-patient conditional error for this target; differing support across targets
+Bemcentinib,31,31,61,0.0020556678989912757,0.0018108130187369784,13,18,equal-patient conditional error for this target; differing support across targets
+Encorafenib,30,31,59,0.002419364266378852,0.0019282957589775128,10,20,equal-patient conditional error for this target; differing support across targets
+Gemcitabine,31,31,61,0.0008989400623140066,0.003174562057786414,28,3,equal-patient conditional error for this target; differing support across targets
+Idasanutlin,31,31,61,0.0016656771820041383,0.0013932979912843779,16,15,equal-patient conditional error for this target; differing support across targets
+LCL161,31,31,61,0.004039734906878085,0.005578172009175007,22,9,equal-patient conditional error for this target; differing support across targets
+LGK974,30,31,56,0.0013600541536780044,0.0020120652066925836,26,4,equal-patient conditional error for this target; differing support across targets
+Lapatinib,31,31,61,0.001426674305170812,0.0020549798791464156,19,12,equal-patient conditional error for this target; differing support across targets
+Luminespib,31,31,61,0.0014264849044411765,0.0009661173335336863,17,14,equal-patient conditional error for this target; differing support across targets
+Methotrexate,31,31,61,0.0011621775596264733,0.0018458981232555532,22,9,equal-patient conditional error for this target; differing support across targets
+Napabucasin,30,31,56,0.0012632175669315597,0.0029632477876672322,25,5,equal-patient conditional error for this target; differing support across targets
+Panobinostat,31,31,61,0.0013030795629015905,0.0022715094615913204,24,7,equal-patient conditional error for this target; differing support across targets
+Pevonedistat,31,31,61,0.001901783827792578,0.0017664668758953007,16,15,equal-patient conditional error for this target; differing support across targets
+Regorafenib,30,31,59,0.0013028409609038831,0.001704532744524728,17,13,equal-patient conditional error for this target; differing support across targets
+SN-38,31,31,61,0.0012363602314107158,0.002075298837657039,26,5,equal-patient conditional error for this target; differing support across targets
+TAS-102,31,31,61,0.0013993944822842921,0.0016326899875114514,22,9,equal-patient conditional error for this target; differing support across targets
+Trametinib,31,31,61,0.00163605464505719,0.002030042416571887,19,12,equal-patient conditional error for this target; differing support across targets
+Volasertib,31,31,61,0.0013489157419117814,0.0024934233210357716,22,9,equal-patient conditional error for this target; differing support across targets

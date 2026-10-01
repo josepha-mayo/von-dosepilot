@@ -7,101 +7,98 @@
 **Team:** von DosePilot  
 **Author:** Joseph Ayanda
 
+**Repository edition updated 1 October 2026.** This file is the prepared writeup, not proof that the live Kaggle entry has been edited. The accepted entry already exists; no duplicate submission is intended.
+
+## Demo video and code
+
+**Demo video:** https://youtu.be/QeOGJIgx378  
+**Public code:** https://github.com/josepha-mayo/von-dosepilot  
+**Historical technical report:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/DosePilot_Technical_Report_Public.pdf  
+**Current result addendum:** [Protected22 execution, missingness and exposure disclosure](PROTECTED22_RESULT.md)
+
 ## Project Summary
 
-DosePilot addresses a practical bottleneck in dose-response experiments: when treatment wells are limited, should the assay repeat measurements for precision or spend those wells on broader dose coverage? The project treats that choice as part of the predictive method rather than as an invisible preprocessing decision.
+DosePilot addresses a practical decision in dose-response experiments: when treatment wells are limited, should a screen repeat measurements for precision or spend those wells on broader concentration coverage? The project treats acquisition as part of the predictive method, with every observation tied to its real sample, run, drug, concentration, plate and physical well.
 
-On a retrospective colorectal-cancer organoid task, DosePilot reconstructs 24 fixed drug-response summaries from exactly 64 identified treatment wells. The complete selected source curves contain **416 eligible target-treatment measurements per sample (208 per plate)**, so the evaluated 64-well policy uses **15.38% of that treatment-measurement count, an 84.62% reduction**. This is a retrospective measurement-budget comparison, not a measured 84.62% reduction in money, materials, or elapsed laboratory time. Acquisition planning, scaling and model selection stay inside whole-patient training folds. The retained R13 procedure uses broader dose coverage and 24 drug-specific sparse prediction heads. It achieved patient-balanced MSE **0.0011448587**, 33.49% lower than an earlier paired-well procedure and 34.13% lower than a matched paired-native control. A separately optimized interpolation acquisition policy reached **0.0024168103**, while R13 was 52.63% lower and improved all 59 patient means in that comparison.
+On a retrospective colorectal-cancer organoid task, the retained R13 procedure reconstructs 24 fixed drug-response summaries from exactly 64 treatment wells. Its complete source curves contain 416 eligible treatment measurements per sample. The 64-well policy therefore uses 15.38% of that retrospective measurement count, not necessarily 15.38% of laboratory cost or time. Whole-patient nested evaluation gave patient-balanced MSE 0.0011448587: 33.49% lower than the earlier paired-measurement procedure and 34.13% lower than a matched paired-native control. Planning, scaling and model selection remain inside each fitting split.
 
-DosePilot also turns the research method into an inspectable workflow: it binds every required value to a sample, run, drug, concentration, plate and physical well; rejects incompatible inventories; abstains when required inputs are missing; and recovers the same committed acquisition plan after an export failure. The complete historical R9/R13 result can now be reproduced from the exact public source workbook without the old private input bundle. The locked 24-drug result remains retrospective development. Separately sourced post-submission studies test adapted versions of the design pattern, not the original fitted R13 heads; none establishes prospective organ-on-chip or clinical validation.
+The operating software commits a layout before responses arrive, rejects incompatible measurements, withholds only affected outputs when required values are missing, and recovers the same layout after an export failure. The historical result has a public source-to-results reproduction route without the earlier private input bundle or a language-model API.
 
-## Why it matters
+Evidence is deliberately separated by strength. The original result is repeatedly reused development evidence. A separately sourced matched-CAF experiment passed its fixed support gate for an adapted design. FORECAST-1 and eLife assessments did not fully pass their gates. The latest approved 22-head transfer execution produced useful conditional evidence but no estimable full-cohort primary; previously recorded cross-session exposure also prevents an untouched-confirmation claim. These limits remain visible beside the positive results.
 
-Sparse drug screens force a practical choice: spend another well repeating a measurement, or use that well to cover another concentration. DosePilot makes that tradeoff explicit and carries the chosen measurement identities all the way from inventory to prediction.
+## Problem and contribution
 
-The system checks sample, drug, concentration, plate and physical-well identity, commits one 64-well layout before responses are supplied, and returns 24 drug-response summaries when the required measurements are complete. Missing measurements remain visible, incompatible concentrations are rejected, and an interrupted export can recover the same committed plan instead of selecting a new one.
+A sparse screen is not merely a matrix with fewer columns. Selecting a different concentration, averaging two technical measurements, or replacing a missing input can change what was physically purchased and what the predictor means.
 
-## Main result
+DosePilot makes the acquisition/reconstruction tradeoff executable. The intended research user supplies a supported inventory and model, receives one committed physical layout, measures those wells, and obtains supported response summaries or explicit abstentions. The method is task-specific linear reconstruction with careful experimental accounting, not a claim of new general regression theory, clinical treatment selection or universal superiority.
 
-We evaluated DosePilot retrospectively on **119 patient-derived organoid samples from 59 patients**, predicting **24 fixed drug-response summaries** under the same **64-treatment-well budget**.
+## Method and implementation
 
-The retained broader-coverage procedure achieved patient-balanced MSE **0.0011448587**, compared with **0.0017214230** for our earlier paired-measurement procedure: a **33.49% reduction**. **53 of 59 patients** and **all five outer-fold averages** improved. A matched paired-native control was also worse at the same well count.
+The development population contains **119 organoid samples grouped into 59 whole patients**. The targets are 24 fixed normalized log-dose AUCs of the supplied unclipped viability curves, averaged across two identified source plates. Repeated samples from one patient never cross a fitting/validation split.
 
-A stricter post-submission control separately optimized a piecewise-linear log-dose interpolation acquisition policy under the same 64-treatment-well budget. Its patient-balanced MSE was **0.0024168103**; R13 was **52.63% lower**, with lower patient-mean error for **59/59 patients** and lower mean error in **5/5 outer folds**. This is another comparison on the repeatedly reused development cohort, not independent confirmation.
+R13 assigns two native doses to every drug and sixteen third-dose upgrades, for **64 distinct physical treatment wells**. Acquisition uses fitting-only covariance scores. Each drug-specific ridge head sees only its own two or three purchased measurements. A common regularization penalty is selected inside three patient-grouped inner folds; five patient-grouped outer folds evaluate the complete procedure.
 
-### External CRC assessment — prefrozen gate not fully passed
+Two complementary plate layouts, A and B, each cost 64 wells, 32 per plate. Their historical squared losses are averaged to estimate the expected loss of choosing one alternative independently of outcomes. Their prediction vectors are never averaged into an unbudgeted 128-well ensemble. Controls are outside the stated treatment-well budget.
 
-We then froze a new sparse-reconstruction task on an **independent public metastatic-CRC organoid study** before accessing its FORECAST-1 confirmation responses. The model/design was fitted only on the study's community cohort. The external task used eight single agents and a fixed **21-measurement** budget: two concentrations for every drug plus five third-dose upgrades. A piecewise-linear interpolation comparator optimized its own acquisition policy under the identical measurement count.
+The measured endpoint includes purchased observations, so this is reconstruction of a measured response summary, not proof that a noiseless biological curve has been recovered. Repeated method development on the same patients limits confirmatory interpretation even with correct within-run split containment.
 
-The prefrozen complete-case rule retained 13 of 19 FORECAST-1 PDTO lines. On those 13 distinct patients, learned sparse reconstruction reached patient-balanced MSE **0.0021715** versus **0.0038552** for optimized interpolation, **43.67% lower**. It improved **10/13 patient means**, was nonworse on **7/8 target MSEs**, and improved the five-drug subset shared with the original DosePilot development task. The prespecified paired-patient bootstrap interval for learned-minus-interpolation MSE was **[-0.002809, -0.000581]**.
+## Results and validation
 
-We also froze a deliberately strict four-part support gate before opening FORECAST-1. Three parts passed, but the gate as a whole **failed** because it required at least 12 strict patient wins out of the original 19 source patients; six source lines were incomplete and the learned procedure won 10 of the 13 complete patients. We did not relax the gate after seeing the result. This experiment supports transfer of the sparse acquisition/reconstruction **design pattern**, not direct validation of the original fitted 24-drug R13 heads or a clinical claim. Full protocol, source identities and aggregate audit are in `docs/EXTERNAL_CRC_CONFIRMATION.md` and `evidence/external_crc_confirmation_20260930.json`.
+### Original 24-target development task
 
-**Stronger-control qualification.** A later post-hoc audit fitted training-only affine calibration for interpolation without adding measurements. Calibrated interpolation improved to MSE **0.0028731**; the unchanged learned result was **24.42% lower**, with **9/13** patient wins, but the descriptive paired interval **[-0.001586, +0.000105]** crossed zero. This reused already exposed predictions and is not another confirmation. The original support gate remains failed.
+| Complete procedure | Patient-balanced MSE |
+|---|---:|
+| Earlier paired-measurement procedure, R9 | 0.0017214230 |
+| Matched paired-native control | 0.0017379326 |
+| Retained broader-coverage procedure, R13 | **0.0011448587** |
+| Interpolation with independently optimized acquisition | 0.0024168103 |
 
-### External matched-CAF assessment — four-part gate passed
+Against R9, R13 improves 53/59 patient means and all five outer-fold means. Six patient means and six drug-average errors nevertheless regress. Against the separately optimized interpolation policy, R13 has 52.63% lower error and improves 59/59 patient means. All of these are repeated development comparisons, not separate independent cohorts.
 
-A second independently sourced post-submission experiment tested the same sparse-reconstruction **design pattern** under a tumor-microenvironment shift. Using the Farin et al. colorectal-cancer organoid/CAF biobank, we froze all metadata selection, normalization, endpoint, model/comparator code and a four-part gate **before decoding any RLU outcome field**. Development used 13 complete monoculture organoids. Primary confirmation used 15 different patient cases with matched tumor-CAF cocultures. A later response-free primary-source audit of the paper's published pseudonymous `Tnn/Onn/Fnn` patient-case key established zero overlap between the frozen sets; it did not change the score.
+### Separately sourced external assessments
 
-The task reconstructed four DMSO-normalized seven-dose AUC targets from **11 replicate-averaged dose-level readouts** out of 28 available positive-dose readouts. The learned method used training-only covariance allocation plus own-drug ridge prediction. The comparator independently optimized constant-tail log-dose interpolation under the same 11-readout count.
+**FORECAST-1:** an adapted eight-drug task used 21 dose-level readouts, with fitting restricted to its community cohort. The prespecified completeness rule retained 13 of 19 confirmation patients. Learned reconstruction reached MSE 0.0021715 versus 0.0038552 for independently optimized interpolation, winning 10/13 patient means. The original support gate failed because it required at least 12 wins against the original 19-patient denominator. It was not relaxed. A later training-calibrated interpolation audit narrowed the advantage to 24.42%, with 9/13 patient wins and a descriptive paired interval crossing zero. A separate six-drug analysis of the same FORECAST source is not another independent confirmation. See [the external record](EXTERNAL_CRC_CONFIRMATION.md) and [stronger-control audit](CALIBRATED_CONTROL_AUDIT.md).
 
-On the one-shot matched-CAF confirmation, learned reconstruction achieved MSE **0.0029697** versus **0.0052366** for optimized interpolation, a **43.29% reduction**. It improved **10/15 organoid means**, was nonworse on **3/4 drug MSEs**, and reduced p90 organoid RMSE from **0.10986** to **0.06666**. The fixed-seed descriptive bootstrap interval for learned-minus-interpolation mean organoid MSE was **[-0.004234, -0.000497]**. **All four prefrozen gate components passed.** A separately prespecified held-out monoculture diagnostic also favored learned reconstruction (MSE **0.0036080** versus **0.0057686**).
+**Matched tumor-CAF coculture:** an adapted four-drug task used 11 replicate-averaged dose-level readouts, trained on 13 monoculture cases and evaluated on 15 different matched-coculture cases. Learned MSE was 0.0029697 versus 0.0052366 for optimized interpolation, 43.29% lower. It won 10/15 organoid means, was nonworse on 3/4 drug MSEs, and reduced p90 RMSE from 0.10986 to 0.06666. All four original gate components passed. A later response-free audit of the published pseudonymous patient-case key established no overlap between the frozen case sets. A prespecified monoculture diagnostic also favored reconstruction. This supports an adapted design under a stromal context change, not direct validation of the original R13 fitted heads. See [the study](STROMA_CONTEXT_CONFIRMATION.md) and [identity audit](STROMA_PATIENT_IDENTITY_AUDIT.md).
 
-This is stronger evidence for transfer of the sparse acquisition/reconstruction pattern into a stromal coculture context, but the boundary remains explicit: dose-level summaries are not physical-well counts, and this does not directly validate the original 24 fitted R13 heads, clinical benefit, calibrated uncertainty or prospective OoC hardware. Full protocol, identity audit and reproducible aggregate check: `docs/STROMA_CONTEXT_CONFIRMATION.md`, `docs/STROMA_PATIENT_IDENTITY_AUDIT.md` and `evidence/stroma_context_confirmation_20260930.json`.
+**eLife retrospective stress test:** a separate five-drug, 12-organoid task used 13 of 54 target-support dose-level readouts. Learned MSE was 0.0041734 versus 0.0060423 for interpolation. The fixed gate failed: only 7/12 organoid losses improved and the paired interval crossed zero. Source values had been visible during structural inspection, so this is not blind confirmation. See [the full stress-test record](ELIFE_SPARSE_STRESS.md).
 
-### Additional public eLife retrospective stress test
+### Latest approved 22-head transfer: primary not estimable
 
-On a separate five-drug task across 12 patient-derived tumor-organoid sheets, both procedures used 13 of 54 target-support dose-level readouts. Learned own-drug reconstruction reached MSE **0.0041734** versus **0.0060423** for interpolation, **30.93% lower**, with lower drug-level MSE for **4/5** targets and better p90 organoid RMSE. The preset stress gate nevertheless **failed**: the method won only **7/12** organoid losses and the paired interval **[-0.004760, +0.000574]** crossed zero. Numerical values had been visible during source-structure inspection before protocol freeze, so this is not blind confirmation and does not test the original R13 weights.
+The 1 October execution projected the original final R13 model, without refitting, to the 22 heads supported at exact Lib2 concentrations. Gedatolisib and Palbociclib were excluded in the approved protocol before this run because of previously identified support gaps. Candidate and TRAIN-calibrated interpolation each used **58 physical treatment wells per alternative**.
 
-## Practical value and organ-on-chip path
+All **19,642** authorized endpoint-support cells in the planned **61-PDO / 31-patient** frame were processed. Five required responses were nonnumeric. Consequently the frozen full-cohort primary is **NOT_ESTIMABLE**, and confirmation did not pass. No missing value was imputed and no primary denominator was reduced.
 
-The immediate value is experimental decision support under a hard measurement budget: DosePilot makes the acquisition policy explicit, auditable and executable before response values enter the workflow. That matters whenever dose-response experiments cannot measure every desirable concentration or replicate.
+The prespecified complete-patient secondary population contains **54 PDOs from 29 patients**. On that population only, R13 expected MSE is **0.0017349427**, versus **0.0022689547** for calibrated interpolation: **23.54% lower**, with **26/29** patient wins and **16/22** nonworse target MSEs. These estimates cannot replace the unavailable full primary or establish performance for missing patients.
 
-For organ-on-chip work, the same software pattern can support dose-response planning and measurement provenance, but the present evidence does **not** validate microfluidic devices. The response-free logical resource compiler now encodes device/run, channel, reservoir, shared-flow circuit, compartment, exact exposure, timepoint and separate controls; it returns a deterministic constraint-compatible manifest or an explicit incompatibility. Its unauthenticated input and included fixture are synthetic, not proof of physical feasibility, a commercial protocol or a biological result. A real OoC deployment must still supply a reviewed inventory, add device-specific constraints and evaluate the full procedure prospectively. See `docs/OOC_FEASIBILITY.md`.
+A newer live project receipt, discovered after this run, records earlier access to 15 PDOs from 9 of the same patients before a different exact22 importer stopped. The coordinator should have reconciled that record before relying on the preaccess handoff. This execution therefore cannot be presented as untouched-cohort confirmation. The original failure remains preserved and all 61/31 records are now treated as exposed. See [the complete disclosure and verification](PROTECTED22_RESULT.md), [the earlier failed attempt](LIB2_EXACT22_INCOMPLETE.md), and [current access status](../evidence/PROTECTED22_ACCESS_STATUS.json).
 
-## What is technically distinctive
+## Operating demonstration and organ-on-chip path
 
-DosePilot combines:
-- explicit physical-well accounting instead of abstract feature counts;
-- patient-contained acquisition planning, scaling and model selection;
-- 24 block-sparse drug-specific prediction heads;
-- strict measurement identity checks at runtime;
-- explicit abstention when required values are missing;
-- recovery of an already committed layout after export failure;
-- a dose-aware operator prototype that exposes unsupported concentration/target requests instead of silently substituting measurements.
+The public demo uses **fictional measurements and parameters** to exercise the workflow without publishing patient data. It shows inventory validation, committing a plan, predictions from complete inputs, affected-head abstention, rejection of wrong concentrations and recovery after an export failure. Runtime behavior is not presented as another biological accuracy test.
 
-## Reliability and evidence boundary
+A response-free organ-on-chip constraint compiler separately represents device/run, channel, reservoir, shared-flow circuit, compartment, exact exposure, timepoint and controls. It returns a deterministic manifest compatible with the declared constraints or an explicit incompatibility. Its included fixture is synthetic. The compiler does not establish real hardware feasibility or measured OoC performance. A prospective deployment still requires a reviewed device inventory, assay-specific constraints and experimental evaluation. See [the compiler and limits](OOC_FEASIBILITY.md).
 
-The main result is intentionally not presented as a universal win. R13 is repeated adaptive development evidence; six drug-average errors and six patient averages regress versus R9. Later challengers, including nonlinear heads, alternative allocation rules, per-target regularization, calibration and cross-drug context, were retained as negative results when they failed promotion. The original independent Lib2 attempt failed before scoring, and the remaining protected cohort has not been reopened.
+## Reproducibility, rights and practical limits
 
-The public source-to-results replay verifies reproducibility of the historical result, not independence. External studies concern adapted procedures, not the original R13 heads. The matched-CAF patient-case-separated assessment passed its project-defined four-part gate. FORECAST-1 did not pass its complete gate, and its advantage narrowed against a post-hoc calibrated comparator with an interval crossing zero. The eLife retrospective task also failed its preset gate. No clinical effectiveness, calibrated uncertainty, realized reagent savings or prospective OoC performance is claimed.
-
-## Public assets
-
-**Code:** https://github.com/josepha-mayo/von-dosepilot
-
-**Technical report PDF:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/DosePilot_Technical_Report_Public.pdf
-
-**Demo video:** https://youtu.be/QeOGJIgx378
-
-Run the demo:
+Run the operating demo:
 
 ```bash
 python -m pip install -r requirements.txt
 python run_demo.py --output demo_run_001
 ```
 
-The operating demo uses fictional measurements and model parameters while exercising the same workflow behaviors.
+No GPU, paid model service or language-model API is required by the DosePilot runtime. The exact public Mendeley Data v3 `Data S4.xlsx` is hash-pinned. Its 15,886,254 bytes match SHA-256 `3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c`. The public route reconstructs all 49,504 historical Lib1 TRAIN measurements and reproduces all four locked R9/R13 metrics within `1e-12`. Commands and receipts are in [PUBLIC_REPRODUCTION.md](PUBLIC_REPRODUCTION.md).
 
-## Reproducibility
+The new saved-array verifier adds eight synthetic tests and checks 83 comparisons without a second source read or refit. Actual Protected22 saved-array verification still requires the author's hash-bound result and prediction files; that addendum is not a standalone public source-to-results distribution. This limit is separate from the working public Lib1 reproduction route.
 
-The historical source workbook is now pinned to an exact public artifact: Mendeley Data v3 `Data S4.xlsx` is listed at **15,886,254 bytes** with SHA-256 `3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c`, exactly matching DosePilot's frozen source identity. The dataset is listed as CC BY 4.0. `python study/acquire_public_source.py --check-only` verifies that live metadata anonymously, and the acquisition path has downloaded the same exact bytes locally.
+Original code and fictional fixtures are MIT-licensed. External papers and datasets retain their own rights; see [NOTICE](../NOTICE.md) and the individual study documentation. No patient-level arrays or fitted biological model weights are distributed in the new public addendum. The source paper's clinical findings are not validation of DosePilot.
 
-The public source-to-results route is now executable without the old private input bundle. `study/prepare_compact_source.py` reconstructs the exact 49,504-row Lib1 TRAIN curve CSV from the verified public workbook using a patient-free fixed catalog; `study/reproduce_compact.py` then rebuilds the historical models and predictions in a fresh environment. All four locked R9/R13 metrics matched within absolute MSE tolerance `1e-12`. Full commands and receipts are in `docs/PUBLIC_REPRODUCTION.md` and `evidence/r33_public_pipeline.json`. This is reproducibility of retrospective development results, **not independent validation or a new biological score**.
+No prospective laboratory cost saving, clinical treatment benefit, calibrated uncertainty, winning probability, official rank improvement or full24 external validation is claimed. The contribution is an inspectable measurement-budget method and usable research workflow with explicit scope, failures and reproductions.
 
 ## AI assistance
 
-ChatGPT assisted with research synthesis, implementation, numerical checking, documentation, and release preparation. Focused OpenCode reviews used Muse Spark 1.3 in later verified sessions. The DosePilot runtime itself uses no language-model API.
+ChatGPT assisted with research synthesis, implementation, numerical checking, documentation and release preparation. Prior completed OpenCode reviews used Muse Spark 1.3. The eight-session batch requested on 1 October did not launch because the laptop's available memory fell below the configured guard; it is not counted as completed review. The runtime itself uses no language-model API.
 
 ## Primary references
 
@@ -109,6 +106,6 @@ ChatGPT assisted with research synthesis, implementation, numerical checking, do
 2. Abdel-Rehim et al., *Bioinformatics* (2026), DOI: 10.1093/bioinformatics/btag293.
 3. Xi, Briol & Girolami, Bayesian Quadrature for Multiple Related Integrals, PMLR 80 (2018).
 4. Longi et al., Sensor Placement for Spatial Gaussian Processes with Integral Observations, PMLR 124 (2020).
-5. Tan et al., *Cell Reports Medicine* (2023), DOI: 10.1016/j.xcrm.2023.101335. Separate external CRC organoid cohort used only for the frozen post-submission sparse-reconstruction confirmation described above.
-6. Farin et al., *Cancer Discovery* (2023), DOI: 10.1158/2159-8290.CD-23-0050; Mendeley Data DOI: 10.17632/fypp6xhkjy.1. Separate organoid/CAF biobank used for the frozen matched-stroma stress test.
-7. Verissimo et al., *eLife* (2016), DOI: 10.7554/eLife.18489. Separate public retrospective stress-test source; not blind confirmation.
+5. Tan et al., *Cell Reports Medicine* (2023), DOI: 10.1016/j.xcrm.2023.101335.
+6. Farin et al., *Cancer Discovery* (2023), DOI: 10.1158/2159-8290.CD-23-0050; Mendeley Data DOI: 10.17632/fypp6xhkjy.1.
+7. Verissimo et al., *eLife* (2016), DOI: 10.7554/eLife.18489.

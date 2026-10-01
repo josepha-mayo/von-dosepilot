@@ -1,0 +1,17 @@
+{
+  "schema": "dosepilot.public_access_status.v1",
+  "as_of_utc": "2026-10-01T10:09:14.181349Z",
+  "scope": "historic_lib2_remainder_61pdo_31patient_22target",
+  "cohort_sha256": "8f875508931ccbd252f57fd3f3cc8dd288ad4d28dc6bd55aa9920220e4363e5d",
+  "source_workbook_sha256": "3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c",
+  "status": "EXPOSED_DO_NOT_TREAT_AS_HOLDOUT",
+  "all_planned_records_processed_by_current_run": true,
+  "numeric_cells": 19637,
+  "unavailable_cells": 5,
+  "primary": "NOT_ESTIMABLE",
+  "prior_access_also_recorded": true,
+  "original_failure_must_remain_preserved": true,
+  "automatic_retry_authorized": false,
+  "independent_confirmation": false,
+  "required_future_workflow": "Fetch latest project access ledger before starting a source read. A stale handoff or different chat does not restore holdout status."
+}
