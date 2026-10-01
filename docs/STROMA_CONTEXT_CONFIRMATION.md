@@ -6,13 +6,15 @@
 
 The source is Farin et al., *Cancer Discovery* (2023), DOI `10.1158/2159-8290.CD-23-0050`, PMCID `PMC10551667`. The matched organoid/CAF dataset is Mendeley Data v1, DOI `10.17632/fypp6xhkjy.1`. The exact source file used here is `Drug_sensitivity_all_lines.txt`, SHA-256 `f9a9a51fd77ae1a5b19ad71fc236ce446223b3c2fcc66631ab304ab69bec78f0`.
 
-The paper and dataset describe colorectal-cancer patient-derived tumor organoids tested against 5-FU, oxaliplatin, SN-38 and gefitinib in mono- and CAF coculture. Their CC BY-NC-ND 4.0 source data are not redistributed by this repository.
+The paper and dataset describe colorectal-cancer patient-derived tumor organoids tested against 5-FU, oxaliplatin, SN-38 and gefitinib in mono- and CAF coculture. Their rights statements are separate: the article states CC BY-NC-ND 4.0, while the Mendeley Data v1 deposit currently lists CC BY 4.0. The source file is not redistributed or relicensed by this repository. The dated metadata receipt is `evidence/farin_rights_metadata_20261001.json`.
 
 ## Frozen split before outcomes
 
 Only source metadata fields were decoded while defining the study. No RLU value had been interpreted when the protocol, parser, model family, comparator, split and gate were frozen.
 
-Development used 13 metadata-complete **monoculture organoid IDs**. Primary confirmation used 15 different organoid IDs with metadata-complete, same-numeric matched tumor-CAF cocultures. The two ID sets have zero overlap. We do not claim the IDs prove 28 distinct patients because that mapping was not independently established for this split.
+Development used 13 metadata-complete **monoculture organoid IDs**. Primary confirmation used 15 different organoid IDs with metadata-complete, same-numeric matched tumor-CAF cocultures. The two ID sets have zero overlap.
+
+A response-free primary-source audit on 1 October 2026 resolved the earlier identity limitation. Farin et al. describe a 30-patient/30-tumor cohort, and Figure 1A links `T01-T30`, `O01-O30` and `F01-F30` by patient-case suffix. The frozen development and confirmation suffix sets are disjoint, so the split is patient-case-separated: 13 development cases and 15 confirmation cases, zero overlap. See `docs/STROMA_PATIENT_IDENTITY_AUDIT.md` and `evidence/stroma_patient_identity_audit_20261001.json`. This clarification used no response values and did not produce a new score.
 
 One metadata-incomplete remaining organoid was excluded before any outcomes. No confirmation organoid was removed after outcomes.
 
@@ -73,7 +75,7 @@ The reproduction command rebuilds development selection and the held-out aggrega
 This result strengthens evidence that the **sparse acquisition/reconstruction pattern** can transfer to different organoid data and a stromal coculture context. It does not establish:
 - external validation of the original fitted R13 weights or all 24 original targets;
 - 64 physical-well savings in this source experiment;
-- unique-patient independence for every organoid ID in this split;
+- prospective independence or validation beyond the published patient-case mapping for this split;
 - clinical treatment benefit or calibrated uncertainty;
 - prospective microfluidic or organ-on-chip hardware performance;
 - an official competition score or rank.

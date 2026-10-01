@@ -1,0 +1,17 @@
+{
+  "checked_utc_date": "2026-10-01",
+  "dataset_api_url": "https://data.mendeley.com/public-api/datasets/fypp6xhkjy",
+  "dataset_id": "fypp6xhkjy",
+  "dataset_version": 1,
+  "dataset_doi": "10.17632/fypp6xhkjy.1",
+  "dataset_license_short_name": "CC BY 4.0",
+  "dataset_license_full_name": "Creative Commons Attribution 4.0 International",
+  "dataset_license_url": "http://creativecommons.org/licenses/by/4.0",
+  "api_response_sha256": "6988be12e2f9ad61307b6669ca4020122a983ea51ce46b2fb6398b95c27c3682",
+  "article_doi": "10.1158/2159-8290.CD-23-0050",
+  "article_pmcid": "PMC10551667",
+  "article_license": "CC BY-NC-ND 4.0",
+  "rights_are_separate": true,
+  "source_data_redistributed_by_repository": false,
+  "repository_mit_license_extended_to_dataset": false
+}

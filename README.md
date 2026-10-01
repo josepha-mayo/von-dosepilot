@@ -63,11 +63,11 @@ The deliberately strict prefrozen support gate nevertheless **did not fully pass
 
 ## External matched-CAF stromal stress test
 
-A second post-submission experiment used the separate Farin et al. public colorectal-cancer organoid/CAF biobank. The entire split, normalization, sparse model, independently optimized interpolation comparator and four-part gate were frozen before any RLU outcome was decoded. Development used 13 metadata-complete monoculture organoid IDs; confirmation used **15 different organoid IDs** with matched autologous tumor-CAF cocultures.
+A second post-submission experiment used the separate Farin et al. public colorectal-cancer organoid/CAF biobank. The entire split, normalization, sparse model, independently optimized interpolation comparator and four-part gate were frozen before any RLU outcome was decoded. Development used 13 metadata-complete monoculture organoids; confirmation used **15 different patient cases** with matched tumor-CAF cocultures. A later response-free audit of the paper's published pseudonymous `Tnn/Onn/Fnn` patient-case key established zero overlap between the frozen sets; it did not change the saved score.
 
 The new four-drug task used 11 replicate-averaged dose-level readouts out of 28 available positive-dose readouts. On the one-shot matched-CAF confirmation, learned sparse reconstruction reached MSE **0.0029697** versus **0.0052366** for optimized interpolation, **43.29% lower**. It won **10/15 organoid means**, was nonworse on **3/4 drug MSEs**, and improved p90 organoid RMSE from **0.10986** to **0.06666**. The fixed descriptive bootstrap interval for learned-minus-interpolation mean organoid MSE was **[-0.004234, -0.000497]**. **All four prefrozen gate components passed.**
 
-This is organoid-ID-distinct confirmation of the sparse reconstruction design under a stromal coculture context. It does **not** prove unique-patient independence for every ID, directly validate the original R13 weights, equate dose-level summaries with physical wells, or validate clinical/OoC hardware performance. See [the frozen protocol and aggregate evidence](docs/STROMA_CONTEXT_CONFIRMATION.md).
+This is patient-case-separated confirmation of the sparse reconstruction design under a stromal coculture context. It does **not** directly validate the original R13 weights, equate dose-level summaries with physical wells, or validate clinical/OoC hardware performance. See [the frozen protocol and aggregate evidence](docs/STROMA_CONTEXT_CONFIRMATION.md) and [the response-free identity audit](docs/STROMA_PATIENT_IDENTITY_AUDIT.md).
 
 ## Stronger comparator audit: important qualification
 
@@ -95,9 +95,11 @@ The fixed stress gate nevertheless **did not pass**: learned reconstruction won 
 - [Concise technical report PDF](docs/DosePilot_Technical_Report_Public.pdf) (historical report)
 - [R33 reproduction and R34 experiment addendum](docs/KAGGLE_R33_ADDENDUM.md)
 - [Separately optimized interpolation control](docs/POST_SUBMISSION_CONTROL.md)
-- [Separate external CRC confirmation](docs/EXTERNAL_CRC_CONFIRMATION.md)
-- [External matched-CAF stromal stress test](docs/STROMA_CONTEXT_CONFIRMATION.md)
+- [External CRC assessment — gate not fully passed](docs/EXTERNAL_CRC_CONFIRMATION.md)
+- [External matched-CAF assessment — gate passed](docs/STROMA_CONTEXT_CONFIRMATION.md)
+- [Response-free Farin patient-identity audit](docs/STROMA_PATIENT_IDENTITY_AUDIT.md)
 - [Calibrated interpolation comparator audit](docs/CALIBRATED_CONTROL_AUDIT.md)
+- [Organ-on-chip declared-constraint compiler](docs/OOC_FEASIBILITY.md)
 - [Evidence ledger and cohort deduplication](docs/EVIDENCE_LEDGER.md)
 - [Protected Lib2 exact22 incomplete-study record](docs/LIB2_EXACT22_INCOMPLETE.md)
 - [Public eLife sparse-reconstruction stress test](docs/ELIFE_SPARSE_STRESS.md)

@@ -1,0 +1,26 @@
+{
+  "audit_date": "2026-10-01",
+  "development_patient_case_suffixes": ["02", "03", "04", "09", "10", "12", "16", "18", "21", "23", "24", "28", "29"],
+  "confirmation_patient_case_suffixes": ["01", "05", "06", "07", "11", "13", "14", "15", "17", "19", "20", "22", "25", "26", "27"],
+  "overlap": [],
+  "development_case_count": 13,
+  "confirmation_case_count": 15,
+  "unique_case_count": 28,
+  "unused_cohort_suffixes": ["08", "30"],
+  "source_article": {
+    "doi": "10.1158/2159-8290.CD-23-0050",
+    "pmcid": "PMC10551667",
+    "cohort_statement": "30 patients and 30 tumors",
+    "identity_key": "Figure 1A links T01-T30, O01-O30 and F01-F30 by patient-case suffix"
+  },
+  "response_values_opened_for_this_audit": false,
+  "new_model_fit": false,
+  "new_prediction_or_score": false,
+  "conclusion": "The frozen development and confirmation sets are patient-case-separated under the article's published T/O/F identifier key.",
+  "claim_limits": [
+    "No direct validation of the original 24 fitted R13 heads",
+    "No prospective organ-on-chip validation",
+    "No clinical validation",
+    "No new efficacy estimate"
+  ]
+}
