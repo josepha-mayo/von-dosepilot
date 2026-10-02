@@ -1,0 +1,410 @@
+{
+  "schema": "dosepilot.durable_lifecycle_and_acquisition.v1",
+  "role": "Aggregate companion, not an exact-byte copy of underlying run records",
+  "accuracy_incumbent": {
+    "method": "additive drug-group kernel",
+    "mse": 0.001060552730112811,
+    "unchanged": true
+  },
+  "acquisition_study": {
+    "status": "COMPLETE_BOTH_ARMS_REJECTED",
+    "cohort": {
+      "samples": 119,
+      "whole_patients": 59,
+      "targets": 24,
+      "physical_wells_per_deployment": 64,
+      "per_plate": 32
+    },
+    "metrics": {
+      "additive": {
+        "mse": 0.001060552730112811,
+        "p90_rmse": 0.03807311159996259,
+        "fold_mse": [
+          0.001392763266981144,
+          0.0008973508689615259,
+          0.0010669493802393324,
+          0.0008114785018019455,
+          0.0011409188055316792
+        ],
+        "orientation_mse": [
+          0.0011083899915717312,
+          0.0010127154686538904
+        ]
+      },
+      "forced_sweep": {
+        "mse": 0.0010665434003468322,
+        "p90_rmse": 0.03939849436902649,
+        "fold_mse": [
+          0.0013142731832856936,
+          0.0009079488379990547,
+          0.001070690676850355,
+          0.000910511070254833,
+          0.001134997763616715
+        ],
+        "orientation_mse": [
+          0.0010860423476819659,
+          0.0010470444530116985
+        ]
+      },
+      "selected_plan": {
+        "mse": 0.001060552730112811,
+        "p90_rmse": 0.03807311159996259,
+        "fold_mse": [
+          0.001392763266981144,
+          0.0008973508689615259,
+          0.0010669493802393324,
+          0.0008114785018019455,
+          0.0011409188055316792
+        ],
+        "orientation_mse": [
+          0.0011083899915717312,
+          0.0010127154686538904
+        ]
+      },
+      "s2": {
+        "mse": 0.0010701439454817465,
+        "p90_rmse": 0.03873324205763431,
+        "fold_mse": [
+          0.0014029111880116722,
+          0.000902779328446231,
+          0.001069693279646614,
+          0.0008270440313440597,
+          0.0011553962594581923
+        ],
+        "orientation_mse": [
+          0.0011189862591732779,
+          0.001021301631790215
+        ]
+      },
+      "r13": {
+        "mse": 0.001144858681382854,
+        "p90_rmse": 0.04110782499169961,
+        "fold_mse": [
+          0.001511102293820073,
+          0.0009309062918224682,
+          0.001133117310775852,
+          0.0009198402687310413,
+          0.0012370062017995605
+        ],
+        "orientation_mse": [
+          0.0011924998549447887,
+          0.0010972175078209196
+        ]
+      },
+      "r18": {
+        "mse": 0.0011414048112341991,
+        "p90_rmse": 0.04095930575479935,
+        "fold_mse": [
+          0.0015065050020425241,
+          0.0009277053434741434,
+          0.0011360512581447993,
+          0.0009124504299761857,
+          0.0012318490417423575
+        ],
+        "orientation_mse": [
+          0.0011902913101605123,
+          0.0010925183123078862
+        ]
+      }
+    },
+    "comparisons": {
+      "forced_sweep": {
+        "additive": {
+          "relative_gain": -0.005648630250929765,
+          "patient_wins": 21,
+          "patient_losses": 38,
+          "ties": 0,
+          "fold_wins": 2,
+          "gate": {
+            "mse": false,
+            "patients": false,
+            "folds": false,
+            "p90": false
+          },
+          "pass": false,
+          "descriptive_delta_ci95": [
+            -6.141803083894456e-05,
+            6.0461883838246984e-05
+          ]
+        },
+        "s2": {
+          "relative_gain": 0.003364542826333028,
+          "patient_wins": 21,
+          "patient_losses": 38,
+          "ties": 0,
+          "fold_wins": 2,
+          "gate": {
+            "mse": true,
+            "patients": false,
+            "folds": false,
+            "p90": false
+          },
+          "pass": false,
+          "descriptive_delta_ci95": [
+            -7.223607583947095e-05,
+            5.065256051668955e-05
+          ]
+        },
+        "r13": {
+          "relative_gain": 0.06840606819823924,
+          "patient_wins": 32,
+          "patient_losses": 27,
+          "ties": 0,
+          "fold_wins": 5,
+          "gate": {
+            "mse": true,
+            "patients": false,
+            "folds": true,
+            "p90": true,
+            "each_orientation_below_reference_expected": true
+          },
+          "pass": false,
+          "descriptive_delta_ci95": [
+            -0.00016827402282997226,
+            -8.944386050950064e-06
+          ]
+        },
+        "r18": {
+          "relative_gain": 0.06558708194546636,
+          "patient_wins": 33,
+          "patient_losses": 26,
+          "ties": 0,
+          "fold_wins": 5,
+          "gate": {
+            "mse": true,
+            "patients": false,
+            "folds": true,
+            "p90": true,
+            "each_orientation_below_reference_expected": true
+          },
+          "pass": false,
+          "descriptive_delta_ci95": [
+            -0.0001626616618264434,
+            -6.72911266046851e-06
+          ]
+        }
+      },
+      "selected_plan": {
+        "additive": {
+          "relative_gain": 0.0,
+          "patient_wins": 0,
+          "patient_losses": 0,
+          "ties": 59,
+          "fold_wins": 0,
+          "gate": {
+            "mse": false,
+            "patients": false,
+            "folds": false,
+            "p90": true
+          },
+          "pass": false,
+          "descriptive_delta_ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        "s2": {
+          "relative_gain": 0.008962546963360074,
+          "patient_wins": 45,
+          "patient_losses": 14,
+          "ties": 0,
+          "fold_wins": 5,
+          "gate": {
+            "mse": true,
+            "patients": true,
+            "folds": true,
+            "p90": true
+          },
+          "pass": true,
+          "descriptive_delta_ci95": [
+            -1.3987911359321285e-05,
+            -5.220518866401969e-06
+          ]
+        },
+        "r13": {
+          "relative_gain": 0.07363874043232255,
+          "patient_wins": 49,
+          "patient_losses": 10,
+          "ties": 0,
+          "fold_wins": 5,
+          "gate": {
+            "mse": true,
+            "patients": true,
+            "folds": true,
+            "p90": true,
+            "each_orientation_below_reference_expected": true
+          },
+          "pass": true,
+          "descriptive_delta_ci95": [
+            -0.000117601522283827,
+            -5.469019835492895e-05
+          ]
+        },
+        "r18": {
+          "relative_gain": 0.07083558815032764,
+          "patient_wins": 47,
+          "patient_losses": 12,
+          "ties": 0,
+          "fold_wins": 5,
+          "gate": {
+            "mse": true,
+            "patients": true,
+            "folds": true,
+            "p90": true,
+            "each_orientation_below_reference_expected": true
+          },
+          "pass": true,
+          "descriptive_delta_ci95": [
+            -0.0001136815679125041,
+            -5.215266322123855e-05
+          ]
+        }
+      }
+    },
+    "decisions": {
+      "forced_sweep": "REJECT_RETAIN_ADDITIVE",
+      "selected_plan": "REJECT_RETAIN_ADDITIVE"
+    },
+    "changed_targets_per_outer_fit": [
+      11,
+      8,
+      9,
+      8,
+      9
+    ],
+    "inner_selector_retained_original_in_all_folds": true,
+    "input_route": "verified_historical_private_train_kit_cache",
+    "public_only_pipeline_executed_this_round": false,
+    "original_reference_reproduced": true,
+    "independent_validation": false,
+    "verification": {
+      "status": "PASS",
+      "utc": "2026-10-02T16:40:39.845107+00:00",
+      "metric_comparison_groups": 713,
+      "max_metric_difference": 2.3852447794681098e-18,
+      "fitting_contexts_checked": 20,
+      "full_solve_acquisition_steps": 480,
+      "max_direct_proxy_difference": 2.3852447794681098e-18,
+      "selected_model_artifacts_checked": 10,
+      "max_reloaded_prediction_difference": 2.220446049250313e-16,
+      "no_model_refit": true,
+      "protected_response_access": false,
+      "independent_biological_validation": false,
+      "source_sha256": "65dde32864fc972100dcf6e58c6c0d4f8eeba6894126a16db280b06369d20fde",
+      "result_sha256": "44a3612b4308827af9d33dc44e6bb620cf13a86b292e791e2d8b40d554557116"
+    },
+    "raw_source_workbook_opened": false,
+    "protected_lib2_accessed": false
+  },
+  "recovered_compiled_runtime": {
+    "earlier_completed_source_commit": "db4aff69d37656c8ba4bfe50016475bf8097fd5a",
+    "result_utc": "2026-10-02T15:31:55.591274+00:00",
+    "credited_as_new_experiment": false,
+    "same_fitted_model_no_refit": true,
+    "single_orientation_requests": 238,
+    "max_prediction_difference": 2.220446049250313e-16,
+    "median_warm_request_seconds": {
+      "original": 0.006916500203146825,
+      "compiled": 0.0032946544218930285
+    },
+    "speedup": 2.0993097659003555,
+    "time_reduction_fraction": 0.5236529566797312,
+    "timing_alternating_paired_rounds": 9,
+    "includes_identity_validation": true,
+    "includes_model_load_file_io_or_training": false,
+    "end_to_end_cli_speedup_claimed": false,
+    "bit_identical_predictions_claimed": false
+  },
+  "new_lifecycle": {
+    "policy": "dosepilot.durable_complete_lifecycle.v1",
+    "commands": [
+      "commit",
+      "recover",
+      "predict"
+    ],
+    "compiled_prediction_integrated": true,
+    "exclusive_durable_json_publication": true,
+    "automatic_recovery_history_check_on_predict": true,
+    "same_frame_advisory_process_lock": true,
+    "lock_released_after_process_death": true,
+    "different_frames_independent": true,
+    "optional_baseline_recovery_requires_explicit_ack": true,
+    "missing_case_primary_predictions": 0,
+    "single_missing_baseline_estimates": 23,
+    "affected_head_withheld": true,
+    "missing_value_imputation": false,
+    "original_legacy_entry_points_unchanged": true,
+    "fresh_code_bound_commitment_required": true,
+    "tested_platform": "local POSIX filesystem",
+    "physical_power_loss_certification": false,
+    "noncooperating_manual_edits_prevented": false
+  },
+  "actual_lifecycle_check": {
+    "status": "PASS",
+    "utc": "2026-10-02T16:50:36.383895+00:00",
+    "existing_saved_train_request_count": 1,
+    "source_values_newly_collected": false,
+    "primary_incomplete_rejected": true,
+    "baseline_outputs": 23,
+    "complete_primary_outputs": 24,
+    "changed_previously_observed_reading_rejected_automatically": true,
+    "max_primary_difference_vs_original": 1.1102230246251565e-16,
+    "max_baseline_difference": 0.0,
+    "export_recovered_byte_identically": true,
+    "primary_cannot_be_downgraded": true,
+    "canonical_complete_private_json_files": 4,
+    "control_reservations_synthetic": true,
+    "construction_sha256": "b55a3eb6c3bb4d058919b44fa70fcc897e8e37bda88bfcb74fb2a62029080d78",
+    "model_sha256": "cb2d6550bccf3b35e2cb25f44625cbd1529acd39670dcd344787a0befc0033d4",
+    "new_model_fit": false
+  },
+  "fictional_cli_demo": {
+    "status": "PASS",
+    "cli_invocations": 6,
+    "all_values_and_parameters_fictional": true,
+    "incomplete_primary_rejected": true,
+    "labelled_baseline_outputs": 23,
+    "changed_old_reading_rejected": true,
+    "complete_outputs": 24,
+    "export_restoration_exact": true,
+    "network_downloads_or_model_api_required": false
+  },
+  "tests": {
+    "new_acquisition_unique_cases": 9,
+    "new_lifecycle_and_lock_unique_cases": 21,
+    "total_new_unique_cases": 30,
+    "durable_runtime_suite_including_previous_cases": 55,
+    "previous_cases_in_that_suite": 34,
+    "independent_peer_review_claimed": false
+  },
+  "source_sha256": {
+    "durable_runtime/frame_lock.py": "c8654f2e6612bf04730bf4513a4c191c3899855f0fba812d79495bb9feae42b8",
+    "durable_runtime/lifecycle.py": "67a752603f298572753c27cadc48b2ee6cf6582f78599cffb4159655e8b38bbe",
+    "durable_runtime/run_lifecycle_demo.py": "2813eca39d016de5a54ef6634f3ae62e51b286d3c903f118e0a09e4dcdf3621c",
+    "durable_runtime/test_frame_lock.py": "7c8927dac6585a9b2e5c20f333efcbc7d41f475fdf2e7c2cd1b5ff73c3fdbca3",
+    "durable_runtime/test_lifecycle.py": "ac26f01e9341fc962fc4e47d099d355b6f86f468983767c01c60f5d804bfdea7",
+    "durable_runtime/verify_lifecycle.py": "03c00e4375c5d9ee6662d8d5a27541858c782042fdc2c809dd6aca5af1c7d878",
+    "multioutput_acquisition/PROTOCOL.md": "2d1458a7db6e2d0fea42d38fcb1a304039bdb2ab46f93c57da2d0d256b6a8593",
+    "multioutput_acquisition/global_acquisition.py": "09080dbc291ae22fca4683feca6250291ae80e7bd1b6b593db83914e48fcb437",
+    "multioutput_acquisition/run_study.py": "b46ecf2589aab184895ddebeb2e8019f76d71921993dedc40f774bd728109c04",
+    "multioutput_acquisition/test_global_acquisition.py": "53b5816ec5c16faf8c1e3e4e4b0bf1c81e2b1a77320a416481ef8eb36cc68a1f",
+    "multioutput_acquisition/verify_study.py": "65dde32864fc972100dcf6e58c6c0d4f8eeba6894126a16db280b06369d20fde"
+  },
+  "exact_artifact_sha256": {
+    "ACQUISITION_FREEZE.json": "91756f718b155464d7338738b00b5f1603db0d8483b9bf69106490bcb70d510f",
+    "acquisition_001/RESULT.json": "44a3612b4308827af9d33dc44e6bb620cf13a86b292e791e2d8b40d554557116",
+    "acquisition_001/predictions_private.npz": "7fc18b4b2f40a6f18c20f23e56aa25d7b0715cb62074e5cdb7d3dfbc05e64222",
+    "ACQUISITION_VERIFIED.json": "cbb27a2a5ab2fb21685ce34b9e20ddc561b128b36233f5d8ba262cf860550f9e",
+    "ACQUISITION_TESTS.log": "807c3ed017f2cbae23d1c09bd5964e7407cfc739be8440213bb6e3eadf5ec454",
+    "remote_prior_compiled/actual_runtime_001/RESULT.json": "cbd5f5a213b4a709863e06d3c3800b9644a1153718221687c46cba792121ce56",
+    "remote_prior_compiled/actual_runtime_001/TIMING_PROTOCOL.json": "72ffbd6623c51ba8bd9a2041e5d4882c287b60631a4ef30ee9f511a2fd480acc",
+    "remote_prior_compiled/COMPLETE_ENGINEERING_TESTS.log": "a5d1c3ad3595f3340543c83c6fbaf8db65770c507dc019855a7705aeda8c1191",
+    "remote_lifecycle/LIFECYCLE_TESTS_001.log": "44597edb34478eca22aa7c65ae01b8d285acf76eecc20a40dd93dd6c61b13ef4",
+    "remote_lifecycle/actual_lifecycle_001/RESULT.json": "a7f3f49b9e2abacaaef13022f9df6c8fa04b5367a46fd0b17523c3fdcd28f2f2"
+  },
+  "new_biological_accuracy_improvement": false,
+  "accepted_kaggle_entry_changed": false,
+  "protected_data_status_changed": false,
+  "private_model_weights_or_patient_arrays_published": false,
+  "official_score": null
+}
