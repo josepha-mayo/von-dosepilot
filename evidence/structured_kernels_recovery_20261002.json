@@ -1,0 +1,178 @@
+{
+  "schema": "dosepilot.structured_research_and_explicit_recovery.v1",
+  "as_of_utc": "2026-10-02T13:45:11.743259Z",
+  "record_role": "Aggregate companion to preserved exact run files; not a byte-identical copy of them",
+  "parent_source_commit": "4afbac69059d88d433186df96b94be104d36b608",
+  "research_source_commit": "0b3151d7b37c7e9ae5ffce23ce62aaec5030a1be",
+  "research": {
+    "cohort": {
+      "samples": 119,
+      "whole_patients": 59,
+      "targets": 24,
+      "physical_wells_per_alternative": 64,
+      "per_plate": 32
+    },
+    "mse": {
+      "r13": 0.0011448586813828537,
+      "s2": 0.0010701439454817462,
+      "recovered_additive_control": 0.001060552730112811,
+      "new_pair_mixture": 0.0010628861933534165,
+      "new_mean_contrast": 0.001064080098040721
+    },
+    "p90_rmse": {
+      "additive": 0.03807311159996259,
+      "pair_mixture": 0.03850226455898589,
+      "mean_contrast": 0.0382200879295055
+    },
+    "pair_mixture_vs_additive": {
+      "mse_change_percent": 0.22002331184016732,
+      "patient_wins": 25,
+      "patient_losses": 34,
+      "fold_wins": 2,
+      "all_four_successor_clauses_passed": false,
+      "descriptive_delta_ci95": [
+        -1.12818171722994e-06,
+        5.989020427467013e-06
+      ]
+    },
+    "mean_contrast_vs_additive": {
+      "mse_change_percent": 0.3325971286250784,
+      "patient_wins": 20,
+      "patient_losses": 39,
+      "fold_wins": 1,
+      "all_four_successor_clauses_passed": false,
+      "descriptive_delta_ci95": [
+        1.523328635025899e-06,
+        5.450588277259229e-06
+      ]
+    },
+    "both_new_arms_passed_original_r13_r18_checks": true,
+    "decisions": {
+      "pair_mixture": "REJECT_RETAIN_ADDITIVE",
+      "mean_contrast": "REJECT_RETAIN_ADDITIVE"
+    },
+    "control_prediction_max_error": 0.0,
+    "recovered_additive_control": {
+      "origin": "Earlier completed shared-workspace experiment, not a newly invented method in this run",
+      "vs_s2": {
+        "relative_gain_percent": 0.8962546963359852,
+        "patient_wins": 45,
+        "fold_wins": 5,
+        "all_successor_clauses_passed": true
+      },
+      "vs_r13": {
+        "relative_gain_percent": 7.363874043232232,
+        "patient_wins": 49,
+        "fold_wins": 5,
+        "all_original_clauses_passed": true
+      },
+      "vs_r18": {
+        "relative_gain_percent": 7.083558815032764,
+        "patient_wins": 47,
+        "fold_wins": 5,
+        "all_original_clauses_passed": true
+      }
+    },
+    "verification": {
+      "status": "PASS",
+      "comparison_groups": 216,
+      "selected_models": 10,
+      "maximum_metric_difference": 3.3306690738754696e-16,
+      "direct_solve_prediction_max_difference": 2.6237692574149207e-16,
+      "held_patient_prediction_max_difference": 2.220446049250313e-16,
+      "all_declared_gates_recomputed": true
+    },
+    "new_independent_validation": false,
+    "bootstrap_selection_corrected": false
+  },
+  "recovery": {
+    "status": "PASS",
+    "opt_in_required": true,
+    "mode": "EXPLICIT_OLDER_BASELINE_ONLY",
+    "single_missing_primary_outputs": 0,
+    "single_missing_baseline_outputs": 23,
+    "affected_head_withheld": true,
+    "imputation": false,
+    "kernel_prediction_on_missing_values": false,
+    "ordinary_primary_path_unchanged": true,
+    "observations_must_remain_identified": true,
+    "separate_append_only_recovery_records": true,
+    "recovery_reports_reject_rewritten_observations": true,
+    "cross_command_limit": "Use complete_recovery.py after baseline recovery to enforce unchanged prior observations during primary completion. The unchanged ordinary primary CLI does not consult the optional recovery journal.",
+    "artificial_masks_on_existing_records": 15232,
+    "existing_sample_orientation_records": 238,
+    "baseline_scalar_comparisons": 350336,
+    "maximum_baseline_difference": 2.220446049250313e-16,
+    "observed_file_workflow_baseline_counts": [
+      22,
+      23
+    ],
+    "later_complete_primary_outputs": 24,
+    "export_copy_recovery_passed": true,
+    "primary_result_not_replaced": true,
+    "real_missingness_accuracy_estimate": false,
+    "control_reservations_synthetic": true,
+    "model_kind": "dosepilot.additive_kernel.v1",
+    "construction_sha256": "b55a3eb6c3bb4d058919b44fa70fcc897e8e37bda88bfcb74fb2a62029080d78",
+    "model_sha256": "cb2d6550bccf3b35e2cb25f44625cbd1529acd39670dcd344787a0befc0033d4",
+    "guarded_completion": {
+      "status": "PASS",
+      "rewritten_observation_rejected_before_primary": true,
+      "complete_predictions_identical": true,
+      "history_receipt_saved": true,
+      "outputs": 24,
+      "replay_idempotent": true
+    }
+  },
+  "tests": {
+    "new_structured_kernel_tests": 12,
+    "new_recovery_tests": 18,
+    "new_unique_tests": 33,
+    "complete_kernel_runtime_regression_suite": 64,
+    "new_completion_tests": 3,
+    "regression_suite_includes_all_21_recovery_and_completion_tests": true
+  },
+  "failures_preserved": [
+    "Corrupt source transport rejected before extraction or numerical execution; replaced with readable hash-verified GitHub source.",
+    "Initial synthetic assertion incorrectly required equality of nonidentifiable dual coefficients. Corrected to compare identified training and query predictions; production solver unchanged."
+  ],
+  "source_sha256": {
+    "structured_kernel.py": "6e38a8bf86890182f2886e2e5aaf2d30990836c880aa17de847149f3dbc4d192",
+    "test_structured_kernel.py": "cd0bdb313e66d8f408dcd3c76b9624b7619bfaa87afcfcf0b3a4daf24f300258",
+    "run_structured.py": "105442ed3fc442e6ba523c6d30531748236d1e99e53a898a94ce728ae0316eee",
+    "PROTOCOL.md": "05bcad18e347f0e67d9b7602ea81a8ca9039f4f2ad8801eeaffbad49bb25ce4f",
+    "verify_structured.py": "919f54f78e0cd5b1ffba3d97edb776b88fe4f1d67a88db762cedc5218833e396",
+    "recover_baseline.py": "56066f02ea7b6fade0cd78f0a048db73abd4b6aa4bc30806a82c3676f3bb22f3",
+    "test_recover_baseline.py": "6a8ddbee4bcbca3468104f9bc8a5d6ed6212f7a298b60dd16cdc8f3b99bbb88d",
+    "verify_recovery.py": "a9bdf28a2ee99ef4cca959f61b611de9966c07da0d7d743e8193acbbffcb3b08",
+    "run_baseline_recovery_demo.py": "7f27043ee9ca082c65b6bd657917af4870a5d273ccc1ba0e56b7330d8742edd7",
+    "complete_recovery.py": "65e27be9bf133b15ce3c1f86c440824248025f33ff2653d88cb8fc5611f8e29e",
+    "test_complete_recovery.py": "98b9ba33b5d96e4486e5aeabb9983d978955d5f442d7a19a7b2f434cc9b7d2dd"
+  },
+  "exact_remote_artifact_sha256": {
+    "FREEZE.json": "a4fa403d8cd2d17e1169850d229d129d97841af6d4358a010b9201538d75b3f2",
+    "attempt_001/RESULT.json": "3bd7a54cbb69981d789f979164365490e830571ec359906320ed528e921ad849",
+    "attempt_001/predictions_private.npz": "dc5f1a69f6f483dd40d2e079653a1a2e183cc01693e18d25e42c0fc13d79eb1f",
+    "VERIFICATION.json": "2abf96c114963f6ddd9f5ca9268a53bfa4b32da06c8c84d7525d0cbf8d8a0b94",
+    "recovery_verification_001/RESULT.json": "252637fbe5a291f9b9dcce5def920cc013f5d568c9694e5c0c542992a1b0cf29",
+    "TESTS.log": "5bc297ba9aa04f0f34ad679221018ae4659784f44174fd4ca4a572bbc4421934",
+    "RECOVERY_TESTS.log": "2376dfab3e3f28cf4d30b75608ee155326ab32f3bb4ae5f6187e6119e867d42f",
+    "ALL_HYBRID_REGRESSION_TESTS.log": "a242d6a74bcad4d52a14959a2ebed06e89d1c710f0291cf9d0301d38fef6df90",
+    "GUARDED_HANDOFF_VERIFIED.json": "c1c52b0f948b01e4b71ba49a562dc8dd527bc40bfbf7ef92983aeea0450924fd",
+    "RECOVERED_CONTROL_GATE.json": "bd923ebb6eda248b446bcb7c34bfa0fa5a0ea11c9a59486c9e536ef6f3bbc8b9",
+    "fictional_demo_001/SUMMARY.json": "56a0665b7937df1d698cce39e8a76e965b291c171c83043ff90bcc94ce1b0ed7",
+    "FINAL_RUNTIME_TESTS.log": "a378de1e3d796f897cfd2e100b2f08e292925432dc9a14d2431c85634b7a5097"
+  },
+  "original_workbook_opened": false,
+  "protected_lib2_accessed": false,
+  "private_arrays_or_biological_weights_published": false,
+  "accepted_kaggle_entry_changed": false,
+  "official_score": null,
+  "fictional_demo": {
+    "status": "PASS",
+    "data_are_fictional": true,
+    "primary_outputs": 0,
+    "labelled_baseline_outputs": 23,
+    "patient_data_downloaded": false
+  }
+}
