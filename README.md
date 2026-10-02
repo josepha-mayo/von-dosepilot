@@ -6,9 +6,21 @@ MIT-licensed research software by Joseph Ayanda for the AI4S Open Innovation cha
 
 DosePilot treats measurement selection as part of the model. It chooses a fixed treatment-well layout, checks the identity of purchased observations, and reconstructs 24 dose-response curve areas. It is research software, not clinical treatment guidance.
 
-## Latest verified research result: spectral residual successor
+## 2 October update: stronger control, explicit missing-reading recovery
 
-The new S2 model improves patient-balanced MSE from **0.0011448587 to 0.0010701439**, a **6.53% reduction versus R13**, using the same 119 samples, 59 whole patients, 24 targets and 64 physical treatment wells per deployment alternative.
+A previously completed additive-kernel result was independently rebuilt at **MSE 0.001060552730**, versus S2's 0.001070143945, with the same 119 samples, 59 patients, 24 targets and 64-well budget. It improves 45/59 patient means and all five folds against S2, and passes the original R13/R18 development checks. This is a reproduced shared-workspace result, not a new independent validation. Two newly tested structured kernels did not beat that stronger control and were rejected.
+
+The new optional recovery command preserves a different kind of value: with one explicitly missing reading and otherwise valid committed identities, it can return **23 clearly labelled older own-drug baseline estimates** while withholding the affected head and **all additive-model predictions**. It never imputes the missing value. The normal primary path still requires all 64 inputs. A separate completion command verifies that observations recorded during recovery have not been rewritten before producing the complete primary result.
+
+```bash
+python study/hybrid_residual/run_baseline_recovery_demo.py --output recovery_demo_001
+```
+
+This one-command example is entirely fictional and downloads no patient data. It demonstrates 0 primary outputs and 23 baseline-only outputs, not new biological accuracy. [Results, commands and limits](docs/STRUCTURED_KERNELS_AND_RECOVERY.md) · [Source-bound evidence](evidence/structured_kernels_recovery_20261002.json)
+
+## S2 spectral successor: 1 October benchmark
+
+The S2 model improves patient-balanced MSE from **0.0011448587 to 0.0010701439**, a **6.53% reduction versus R13**, using the same 119 samples, 59 whole patients, 24 targets and 64 physical treatment wells per deployment alternative.
 
 | Comparison | S2 result |
 |---|---:|
@@ -76,20 +88,22 @@ No GPU, language-model API or paid model service is required for reproduction or
 
 **42 spectral/runtime tests and six fast-planner tests passed**, covering spectral algebra, physical-planner equivalence, serialization, response-independent commitment, trust anchors, exact inventory binding, controls, concurrent once-only recording, create-exclusive evidence and input rejection. A separate explicit-patient-loop audit passed **894 checks**, including all internal gates and five alternative-whitening model checks. The constructed artifact also passed **238 sample/orientation input comparisons** and all **64 single-missing-position checks**. Fifteen additional consistency tests reconcile the public evidence index with four independently pinned receipt hashes and finalized judge-facing documents. These are software checks, not independent biological observations. The attempted external reviewer batch produced zero completed reviews and is not counted as validation.
 
+The 2 October update adds 33 new synthetic cases. Its kernel/runtime regression suite passes 64 tests, including the 21 new recovery/completion cases. Separate audits verify 216 numerical comparison groups and 15,232 artificial missing-input cases. [Exact counts, overlap and limitations](docs/STRUCTURED_KERNELS_AND_RECOVERY.md#checks-completed).
+
 ## Evidence beyond the development score
 
 The external studies evaluate adaptations of the sparse-reconstruction design, not S2's fitted parameters. Their qualifications remain unchanged:
 
 - [Matched-CAF stromal assessment](docs/STROMA_CONTEXT_CONFIRMATION.md): original support gate passed; [published patient-case identities were checked separately](docs/STROMA_PATIENT_IDENTITY_AUDIT.md).
 - [FORECAST-1](docs/EXTERNAL_CRC_CONFIRMATION.md) and [eLife retrospective stress test](docs/ELIFE_SPARSE_STRESS.md): original support gates did not fully pass. [Calibrating the interpolation control](docs/CALIBRATED_CONTROL_AUDIT.md) narrowed the FORECAST advantage.
-- [Protected22](docs/PROTECTED22_RESULT.md): full primary not estimable because five required responses were nonnumeric; prior cross-session exposure prevents an untouched-cohort claim. [All planned records are marked exposed](evidence/PROTECTED22_ACCESS_STATUS.json). S2 did not read them.
+- [Protected22](docs/PROTECTED22_RESULT.md): full primary not estimable because five required responses were nonnumeric; prior cross-session exposure prevents an untouched-cohort claim. [All planned records are marked exposed](evidence/PROTECTED22_ACCESS_STATUS.json). S2 did not read them. The baseline-recovery utility does not repair that study or change its denominator.
 
 [Evidence ledger](docs/EVIDENCE_LEDGER.md) · [Full pre-spectral README, preserved unchanged](README_PRE_SPECTRAL_20261001.md)
 
 ## Submission materials and scope
 
-[Prepared Kaggle writeup](docs/KAGGLE_WRITEUP.md) · [Historical technical PDF](docs/DosePilot_Technical_Report_Public.pdf) · [Current spectral addendum](docs/SPECTRAL_SUCCESSOR.md) · [Declared organ-on-chip constraint compiler](docs/OOC_FEASIBILITY.md)
+[Prepared Kaggle writeup](docs/KAGGLE_WRITEUP.md) · [Historical technical PDF](docs/DosePilot_Technical_Report_Public.pdf) · [Spectral addendum](docs/SPECTRAL_SUCCESSOR.md) · [2 October research and recovery update](docs/STRUCTURED_KERNELS_AND_RECOVERY.md) · [Declared organ-on-chip constraint compiler](docs/OOC_FEASIBILITY.md)
 
-The historical PDF predates the spectral result; the prepared repository writeup and addendum now include the current research evidence. A file in this repository is not proof that the live Kaggle entry was edited. No duplicate entry, official rank improvement, prospective laboratory saving, clinical benefit or S2 external validation is claimed.
+The historical PDF predates the spectral result. The prepared repository writeup and spectral addendum include the 1 October evidence; the 2 October document supplies the newer work. A file in this repository is not proof that the live Kaggle entry was edited. No duplicate entry, official rank improvement, prospective laboratory saving, clinical benefit or new external validation is claimed.
 
 Original project code, documentation and fictional fixtures use the [MIT License](LICENSE). External papers, datasets and dependencies retain their own rights; see [NOTICE](NOTICE.md) and the study-specific documentation. The repository contains no patient arrays or fitted biological weights.
