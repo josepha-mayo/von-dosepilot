@@ -13,6 +13,7 @@ from inference import SpectralModel,digest
 from kernel_spectral import kernel
 
 class HybridModel(SpectralModel):
+    MODEL_KIND = 'dosepilot.hybrid_kernel.v1'
     def __init__(self,arrays,plan):
         if 'correction' in arrays:raise ValueError('Hybrid storage must not impersonate a linear-correction model')
         super().__init__(dict(arrays,correction=np.zeros((64,24))),plan)
@@ -23,14 +24,20 @@ class HybridModel(SpectralModel):
         if 'nonlinear' not in self.a or self.a['nonlinear'].shape!=() or self.a['nonlinear'].dtype.kind!='b' or not bool(self.a['nonlinear']):raise ValueError('The declared hybrid kernel must include its fixed nonlinear term')
         mean=self.a.get('train_kernel_mean');grand=self.a.get('kernel_grand')
         if mean is None or mean.shape!=(len(z),) or not np.isfinite(mean).all() or grand is None or grand.shape!=() or not np.isfinite(grand):raise ValueError('Invalid centering statistics')
-        recomputed=w@kernel(z,z,True)
+        self._check_kernel_metadata()
+        recomputed=w@self._kernel(z,z)
         if not np.allclose(recomputed,mean,atol=1e-11,rtol=0) or abs(float(recomputed@w)-float(grand))>1e-11:raise ValueError('Kernel centering statistics do not match the model')
+
+    def _check_kernel_metadata(self):
+        if 'kernel_owner' in self.a:raise ValueError('Use the additive backend for a dose-group kernel')
+
+    def _kernel(self,z,training):return kernel(z,training,True)
 
     @classmethod
     def load(cls,directory):
         directory=Path(directory)
         receipt=json.loads((directory/'CONSTRUCTION.json').read_text())
-        if receipt.get('model_kind')!='dosepilot.hybrid_kernel.v1':raise ValueError('Wrong model family; use its matching inference backend')
+        if receipt.get('model_kind')!=cls.MODEL_KIND:raise ValueError('Wrong model family; use its matching inference backend')
         for name,key in [('plan.json','plan_sha256'),('model_private.npz','model_sha256')]:
             if digest(directory/name)!=receipt[key]:raise ValueError('Constructed artifact digest mismatch: '+name)
         with np.load(directory/'model_private.npz',allow_pickle=False) as z:arrays={k:z[k].copy() for k in z.files}
@@ -41,9 +48,9 @@ class HybridModel(SpectralModel):
         supplied={r['native_id']:r['value'] for r in request['measurements']}
         paid=np.array([supplied[n] for n in self.native],float)[None,:]
         z=(paid-self.a['mean_x'])/self.a['scale_x']
-        raw=kernel(z,self.a['z_training'],True)
+        raw=self._kernel(z,self.a['z_training'])
         centered=raw-(raw@self.a['weights'])[:,None]-self.a['train_kernel_mean'][None,:]+self.a['kernel_grand']
         correction=(centered@self.a['dual_coefficients'])[0]
         prediction=np.array([original['predictions'][n] for n in self.targets])+correction
         if not np.isfinite(prediction).all():raise ValueError('Nonfinite output; all predictions withheld')
-        return dict(original,predictions=dict(zip(self.targets,map(float,prediction))),model_kind='dosepilot.hybrid_kernel.v1',requires_all64_values=True)
+        return dict(original,predictions=dict(zip(self.targets,map(float,prediction))),model_kind=self.MODEL_KIND,requires_all64_values=True)
