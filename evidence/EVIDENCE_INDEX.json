@@ -1,0 +1,97 @@
+{
+  "schema": "dosepilot.evidence_index.v1",
+  "as_of_date": "2026-10-02",
+  "cross_study_raw_mse_comparison_allowed": false,
+  "canonical_receipts": {
+    "protected22_access": {
+      "path": "evidence/PROTECTED22_ACCESS_STATUS.json",
+      "sha256": "02ad1bb10be00d0c26fa02589b9b1fc84b670c107110985f155646b11921c7d8"
+    },
+    "protected22_completed": {
+      "path": "evidence/protected22_result_20261001.json",
+      "sha256": "0bf74c4398c73e22cdb67cd1080a70a97c0607ab944cfbb7eb0eaf2a412fd7ba"
+    },
+    "protected22_prior_incomplete": {
+      "path": "evidence/lib2_exact22_incomplete_20260930.json",
+      "sha256": "7393b0de4fdd8a34191ea1afe1822d3a7f7a042db6ab84f35160be739a9e204f"
+    },
+    "spectral_successor": {
+      "path": "evidence/spectral_successor_20261001.json",
+      "sha256": "71e1de87f55010579c0b2e6f59fe408813ef039a5310d1ebdba0d9f3b99bceaa"
+    }
+  },
+  "protected22": {
+    "population": {
+      "pdos": 61,
+      "patients": 31,
+      "targets": 22
+    },
+    "access": {
+      "authorized_cells": 19642,
+      "accessed_cells": 19642,
+      "numeric_cells": 19637,
+      "unavailable_cells": 5,
+      "all_records_exposed": true,
+      "automatic_retry_authorized": false
+    },
+    "prior_incomplete_attempt": {
+      "status": "INCOMPLETE_NO_EFFICACY_SCORE",
+      "pdos_reached": 15,
+      "patients_reached": 9,
+      "predictions_constructed": false,
+      "efficacy_metrics_constructed": false,
+      "retained_separately": true
+    },
+    "completed_missingness_execution": {
+      "status": "PRIMARY_NOT_ESTIMABLE",
+      "gate_requirements": {
+        "full_primary_must_be_estimable": true,
+        "strict_patient_wins_min": 19,
+        "target_nonworse_min": 17,
+        "candidate_mse_must_be_lower": true,
+        "p90_must_be_nonworse": true
+      },
+      "observed_gate": {
+        "full_primary_estimable": false,
+        "candidate_mse_lower": null,
+        "p90_nonworse": null,
+        "strict_patient_wins": null,
+        "target_nonworse": null,
+        "confirmation_passed": false
+      },
+      "primary": null,
+      "untouched_confirmation": false,
+      "conditional_diagnostic_is_primary": false,
+      "conditional_diagnostic": {
+        "pdos": 54,
+        "patients": 29,
+        "candidate_mse": 0.0017349426720150692,
+        "comparator_mse": 0.002268954667464861,
+        "strict_patient_wins": 26,
+        "strict_patient_losses": 3,
+        "target_nonworse": 16,
+        "targets": 22
+      }
+    },
+    "future_interpretation": "All 61 PDOs and 31 patients are exposed. There is no estimable frozen full-cohort primary and no untouched confirmation; the 29-patient result is a prespecified conditional diagnostic only."
+  },
+  "spectral_successor": {
+    "population": {
+      "samples": 119,
+      "patients": 59,
+      "targets": 24,
+      "physical_wells_per_alternative": 64
+    },
+    "role": "REPEATED_ADAPTIVE_DEVELOPMENT",
+    "independent_validation": false,
+    "protected22_used": false,
+    "official_competition_score": null,
+    "mse": 0.0010701439454817465,
+    "r13_mse": 0.001144858681382854,
+    "r18_mse": 0.0011414048112341991,
+    "patient_wins_vs_r13": 49,
+    "patient_wins_vs_r18": 47,
+    "fold_wins_vs_each": 5,
+    "passes_internal_gate_vs_r13_and_r18": true
+  }
+}

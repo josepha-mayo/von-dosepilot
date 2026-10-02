@@ -48,17 +48,33 @@ python study/spectral_residual/reproduce.py --curves reconstructed_train/train_c
 
 A fresh repository clone on the author's laptop reproduced the new MSE and all 49 patient wins without the old private input kit or historical predictions. The final model constructor selected spectrum fraction 0.1 and ridge penalty 1 using a fixed training-only split. Construction is not another validation result.
 
+The recommended runtime is now a two-stage, hash-bound workflow: commit an exact caller-declared 64-well inventory before responses are supplied, then fill its template and predict. It requires 32 treatment wells per plate, separate declared vehicle and viability controls, an externally recorded construction hash and create-exclusive evidence records.
+
 ```bash
-python study/spectral_residual/inference.py --model-dir spectral_replay/final_model --measurements measurements.json --output prediction.json
+python study/spectral_residual/operating_workflow.py commit \
+  --model-dir spectral_replay/final_model \
+  --construction-sha256 <previously-recorded-sha256> \
+  --inventory inventory.json \
+  --commitment committed_plan.json \
+  --template measurements_to_fill.json \
+  --ledger-dir spectral_operating_ledger
+
+python study/spectral_residual/operating_workflow.py predict \
+  --model-dir spectral_replay/final_model \
+  --construction-sha256 <previously-recorded-sha256> \
+  --commitment committed_plan.json \
+  --measurements completed_measurements.json \
+  --output prediction.json \
+  --ledger-dir spectral_operating_ledger
 ```
 
-The [inference request format and missing-input rules](docs/SPECTRAL_SUCCESSOR.md#inference-and-the-important-missing-data-tradeoff) bind sample, run, drug, exact concentration, plate and well identities. The wrapper cannot verify the physical origin of a number supplied by a caller. It does not replace laboratory quality assurance or the existing inventory-commitment workflow.
+The [operating contract and missing-input rules](docs/SPECTRAL_SUCCESSOR.md#hash-bound-operating-workflow) bind model, plan, sample, run, drug, exact concentration, plate, well and measurement bytes. They cannot verify the physical origin of a caller-supplied number, make an editable filesystem immutable or replace laboratory quality assurance.
 
 No GPU, language-model API or paid model service is required for reproduction or runtime. Input acquisition uses the separately licensed public source; generated patient arrays and biological model weights should stay outside public commits.
 
 ## Verification
 
-**33 unique synthetic tests passed**, covering spectral algebra, physical-planner equivalence, serialization and input rejection. A separate explicit-patient-loop audit passed **894 checks**, including all internal gates and five alternative-whitening model checks. The constructed artifact also passed **238 sample/orientation input comparisons** and all **64 single-missing-position checks**. Those runtime checks use training records; they are not independent biological observations. The attempted external reviewer batch produced zero completed reviews and is not counted as validation.
+**42 spectral/runtime tests and six fast-planner tests passed**, covering spectral algebra, physical-planner equivalence, serialization, response-independent commitment, trust anchors, exact inventory binding, controls, concurrent once-only recording, create-exclusive evidence and input rejection. A separate explicit-patient-loop audit passed **894 checks**, including all internal gates and five alternative-whitening model checks. The constructed artifact also passed **238 sample/orientation input comparisons** and all **64 single-missing-position checks**. Fifteen additional consistency tests reconcile the public evidence index with four independently pinned receipt hashes and finalized judge-facing documents. These are software checks, not independent biological observations. The attempted external reviewer batch produced zero completed reviews and is not counted as validation.
 
 ## Evidence beyond the development score
 
@@ -74,6 +90,6 @@ The external studies evaluate adaptations of the sparse-reconstruction design, n
 
 [Prepared Kaggle writeup](docs/KAGGLE_WRITEUP.md) · [Historical technical PDF](docs/DosePilot_Technical_Report_Public.pdf) · [Current spectral addendum](docs/SPECTRAL_SUCCESSOR.md) · [Declared organ-on-chip constraint compiler](docs/OOC_FEASIBILITY.md)
 
-The historical PDF and prepared writeup predate the spectral result; the addendum supplies the current research evidence. A file in this repository is not proof that the live Kaggle entry was edited. No duplicate entry, official rank improvement, prospective laboratory saving, clinical benefit or S2 external validation is claimed.
+The historical PDF predates the spectral result; the prepared repository writeup and addendum now include the current research evidence. A file in this repository is not proof that the live Kaggle entry was edited. No duplicate entry, official rank improvement, prospective laboratory saving, clinical benefit or S2 external validation is claimed.
 
 Original project code, documentation and fictional fixtures use the [MIT License](LICENSE). External papers, datasets and dependencies retain their own rights; see [NOTICE](NOTICE.md) and the study-specific documentation. The repository contains no patient arrays or fitted biological weights.

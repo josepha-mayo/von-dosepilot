@@ -14,17 +14,19 @@
 **Demo video:** https://youtu.be/QeOGJIgx378  
 **Public code:** https://github.com/josepha-mayo/von-dosepilot  
 **Historical technical report:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/DosePilot_Technical_Report_Public.pdf  
-**Current result addendum:** [Protected22 execution, missingness and exposure disclosure](PROTECTED22_RESULT.md)
+**Current result addenda:** [S2 spectral successor](SPECTRAL_SUCCESSOR.md) · [Protected22 execution, missingness and exposure disclosure](PROTECTED22_RESULT.md)
 
 ## Project Summary
 
 DosePilot addresses a practical decision in dose-response experiments: when treatment wells are limited, should a screen repeat measurements for precision or spend those wells on broader concentration coverage? The project treats acquisition as part of the predictive method, with every observation tied to its real sample, run, drug, concentration, plate and physical well.
 
-On a retrospective colorectal-cancer organoid task, the retained R13 procedure reconstructs 24 fixed drug-response summaries from exactly 64 treatment wells. Its complete source curves contain 416 eligible treatment measurements per sample. The 64-well policy therefore uses 15.38% of that retrospective measurement count, not necessarily 15.38% of laboratory cost or time. Whole-patient nested evaluation gave patient-balanced MSE 0.0011448587: 33.49% lower than the earlier paired-measurement procedure and 34.13% lower than a matched paired-native control. Planning, scaling and model selection remain inside each fitting split.
+On a retrospective colorectal-cancer organoid task, R13 reconstructs 24 fixed drug-response summaries from exactly 64 treatment wells. Its complete source curves contain 416 eligible treatment measurements per sample. The 64-well policy therefore uses 15.38% of that retrospective measurement count, not necessarily 15.38% of laboratory cost or time. Whole-patient nested evaluation gave patient-balanced MSE 0.0011448587: 33.49% lower than the earlier paired-measurement procedure and 34.13% lower than a matched paired-native control. Planning, scaling and model selection remain inside each fitting split.
 
-The operating software commits a layout before responses arrive, rejects incompatible measurements, withholds only affected outputs when required values are missing, and recovers the same layout after an export failure. The historical result has a public source-to-results reproduction route without the earlier private input bundle or a language-model API.
+The latest S2 development successor keeps the same acquisition and own-drug baseline, then adds a spectrally regularized residual correction learned inside the same nested patient folds. At the unchanged 64-well budget, its MSE is **0.0010701439**, 6.53% below R13 and 6.24% below the archived R18 reference. It clears every unchanged internal replacement criterion against both references. These are selected, repeatedly reused development patients—not independent confirmation—and ten patient means and four target means regress versus R13.
 
-Evidence is deliberately separated by strength. The original result is repeatedly reused development evidence. A separately sourced matched-CAF experiment passed its fixed support gate for an adapted design. FORECAST-1 and eLife assessments did not fully pass their gates. The latest approved 22-head transfer execution produced useful conditional evidence but no estimable full-cohort primary; previously recorded cross-session exposure also prevents an untouched-confirmation claim. These limits remain visible beside the positive results.
+The historical R13 operating software commits a layout before responses arrive, rejects incompatible measurements, withholds only affected outputs when required values are missing, and recovers the same layout after an export failure. S2 instead requires all 64 identified values because its correction shares information across drugs. The biological results have a public source-to-results reproduction route without the earlier private input bundle or a language-model API.
+
+Evidence is deliberately separated by strength. The original result is repeatedly reused development evidence. A separately sourced matched-CAF experiment passed its fixed support gate for an adapted design. FORECAST-1 and eLife assessments did not fully pass their gates. The latest approved 22-head transfer execution produced a prespecified conditional diagnostic but no estimable full-cohort primary; previously recorded cross-session exposure also prevents an untouched-confirmation claim. These limits remain visible beside the positive results.
 
 ## Problem and contribution
 
@@ -37,6 +39,8 @@ DosePilot makes the acquisition/reconstruction tradeoff executable. The intended
 The development population contains **119 organoid samples grouped into 59 whole patients**. The targets are 24 fixed normalized log-dose AUCs of the supplied unclipped viability curves, averaged across two identified source plates. Repeated samples from one patient never cross a fitting/validation split.
 
 R13 assigns two native doses to every drug and sixteen third-dose upgrades, for **64 distinct physical treatment wells**. Acquisition uses fitting-only covariance scores. Each drug-specific ridge head sees only its own two or three purchased measurements. A common regularization penalty is selected inside three patient-grouped inner folds; five patient-grouped outer folds evaluate the complete procedure.
+
+S2 starts from those R13 predictions and fits a regularized cross-drug correction to the training residuals. It soft-thresholds the singular spectrum of the design-transformed correction coefficients, choosing one of nine fixed fraction/penalty pairs or no correction inside the same three inner whole-patient folds. It uses no additional measurement. Because the correction couples drugs, all 64 values are required; one missing value withholds all 24 outputs.
 
 Two complementary plate layouts, A and B, each cost 64 wells, 32 per plate. Their historical squared losses are averaged to estimate the expected loss of choosing one alternative independently of outcomes. Their prediction vectors are never averaged into an unbudgeted 128-well ensemble. Controls are outside the stated treatment-well budget.
 
@@ -51,9 +55,13 @@ The measured endpoint includes purchased observations, so this is reconstruction
 | Earlier paired-measurement procedure, R9 | 0.0017214230 |
 | Matched paired-native control | 0.0017379326 |
 | Retained broader-coverage procedure, R13 | **0.0011448587** |
+| Archived lower-point reference, R18 | 0.0011414048 |
+| S2 spectral residual successor | **0.0010701439** |
 | Interpolation with independently optimized acquisition | 0.0024168103 |
 
 Against R9, R13 improves 53/59 patient means and all five outer-fold means. Six patient means and six drug-average errors nevertheless regress. Against the separately optimized interpolation policy, R13 has 52.63% lower error and improves 59/59 patient means. All of these are repeated development comparisons, not separate independent cohorts.
+
+S2 improves 49/59 patient means versus R13 and 47/59 versus R18; all five outer-fold means improve against each. Its p90 patient expected RMSE is 0.038733, versus 0.041108 for R13. Both orientation-wide errors are below both reference expected errors. Four target means—Alisertib, Methotrexate, Napabucasin and Panobinostat—and ten patient means regress versus R13. The paired-patient interval is descriptive and not selection-corrected.
 
 ### Separately sourced external assessments
 
@@ -75,7 +83,7 @@ A newer live project receipt, discovered after this run, records earlier access 
 
 ## Operating demonstration and organ-on-chip path
 
-The public demo uses **fictional measurements and parameters** to exercise the workflow without publishing patient data. It shows inventory validation, committing a plan, predictions from complete inputs, affected-head abstention, rejection of wrong concentrations and recovery after an export failure. Runtime behavior is not presented as another biological accuracy test.
+The public demo uses **fictional measurements and parameters** to exercise the historical R13 workflow without publishing patient data. S2 adds a hash-bound commit→measure→predict interface: it validates a caller-declared 64-well inventory, exact plan identities, 32/32 plate balance, separate control declarations and an external construction hash; it then accepts all 64 identified values against the committed frame and records a hash-verifiable runtime record before exporting it. The create-exclusive local records detect mismatches but are not signed or immutable against filesystem administrators. Unlike R13, S2 cannot selectively abstain by affected head because its correction shares information across drugs. Runtime behavior is not presented as another biological accuracy test.
 
 A response-free organ-on-chip constraint compiler separately represents device/run, channel, reservoir, shared-flow circuit, compartment, exact exposure, timepoint and controls. It returns a deterministic manifest compatible with the declared constraints or an explicit incompatibility. Its included fixture is synthetic. The compiler does not establish real hardware feasibility or measured OoC performance. A prospective deployment still requires a reviewed device inventory, assay-specific constraints and experimental evaluation. See [the compiler and limits](OOC_FEASIBILITY.md).
 

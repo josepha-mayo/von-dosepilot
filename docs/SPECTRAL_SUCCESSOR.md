@@ -49,7 +49,7 @@ The optional final construction selects parameters using all 59 development pati
 
 S2's correction uses measurements from other drugs. **All 64 values are required.** It does not inherit R13's ability to withhold only one drug head when that head's measurement is missing.
 
-The new inference command validates model and plan digests, native identities, exact concentrations, drugs, complementary plates, unique physical-well labels, sample/run consistency and finite values. It reorders supplied records by identity, not list position. A missing input, duplicate or incompatible measurement yields no predictions; values are never imputed or clipped.
+The low-level inference command validates model and plan digests, native identities, exact concentrations, drugs, complementary plates, unique physical-well labels, sample/run consistency and finite values. It reorders supplied records by identity, not list position. A missing input, duplicate or incompatible measurement yields no predictions; values are never imputed or clipped.
 
 ```bash
 python study/spectral_residual/inference.py --model-dir spectral_replay/final_model --measurements measurements.json --output prediction.json
@@ -57,9 +57,58 @@ python study/spectral_residual/inference.py --model-dir spectral_replay/final_mo
 
 The JSON request has top-level `sample_id`, `run_id`, `orientation` (A or B) and `measurements`. Every one of the 64 records contains matching `sample_id` and `run_id`, plus `native_id`, `drug_id`, `dose_nM`, `plate` (p1 or p2), `well_id` and numeric `value`. Use the constructed plan's identities and concentrations. The caller supplies physical well labels; this wrapper cannot certify that a supplied number was actually measured in that well. It is not a replacement for the existing inventory/commitment workflow or laboratory quality assurance.
 
+### Hash-bound operating workflow
+
+`operating_workflow.py` closes the gap between that low-level arithmetic wrapper and an inspectable scientist workflow. Before any values are supplied, `commit` requires:
+
+- a caller-recorded SHA-256 trust anchor for `CONSTRUCTION.json`;
+- explicit sample, run and A/B orientation identities;
+- two distinct plate-instance identities;
+- exactly 64 caller-declared treatment wells whose native ID, drug, exact dose and plate match the fitted plan;
+- 32 treatment wells on each plate;
+- unique physical resources; and
+- separate declared vehicle and viability controls outside the 64-treatment-well count.
+
+It writes a create-exclusive commitment record before exporting a blank measurement template. `predict` accepts all 64 identified finite values only after rebuilding the commitment and matching it to that record. It writes the create-exclusive prediction record before exporting the 24-output result; the evidence includes construction, plan, model, commitment and measurement-file hashes. A changed commitment for the same model/sample/run frame or changed measurements after its recorded prediction are rejected. Repeating the exact same operation may recover a missing deterministic export after an interrupted write.
+
+After constructing a model, record the trust anchor somewhere outside the mutable model directory:
+
+```bash
+sha256sum spectral_replay/final_model/CONSTRUCTION.json
+mkdir spectral_operating_ledger
+```
+
+Prepare `inventory.json` using schema `dosepilot.spectral_inventory.v1`. It contains `sample_id`, `run_id`, `orientation`, `plate_instances`, 64 `treatment_wells`, and `controls`. Each treatment row contains `native_id`, `drug_id`, `dose_nM`, `plate`, and `well_id`; each control contains `control_type`, `plate`, and `well_id`.
+
+Commit before reading responses:
+
+```bash
+python study/spectral_residual/operating_workflow.py commit \
+  --model-dir spectral_replay/final_model \
+  --construction-sha256 <previously-recorded-sha256> \
+  --inventory inventory.json \
+  --commitment committed_plan.json \
+  --template measurements_to_fill.json \
+  --ledger-dir spectral_operating_ledger
+```
+
+After measurements are identified and filled, predict once:
+
+```bash
+python study/spectral_residual/operating_workflow.py predict \
+  --model-dir spectral_replay/final_model \
+  --construction-sha256 <previously-recorded-sha256> \
+  --commitment committed_plan.json \
+  --measurements completed_measurements.json \
+  --output prediction.json \
+  --ledger-dir spectral_operating_ledger
+```
+
+The records detect byte and identity mismatches under an ordinary, benign filesystem. They are not signed, WORM-protected or immutable against a user who can edit/delete the directory. They cannot prove that a declared inventory exists or that a submitted number came from a physical well. The presence of vehicle and viability declarations also does not establish whether controls are sufficient per plate or assay. Hardware feasibility, laboratory quality assurance and control design remain the scientist's responsibility.
+
 ## Verification and release boundary
 
-Thirty-three unique synthetic tests passed: 15 spectral-algebra tests, 12 input/serialization tests and six previously developed fast-planner tests. A separately written explicit-patient-loop verifier passed 894 checks, including 678 numerical comparisons, all gates and five alternative-whitening model checks. Maximum metric difference was 4.44e-16; the alternative-whitening coefficient discrepancy was at most 6.91e-17.
+Forty-two spectral/runtime tests now pass: the original 27 spectral-algebra and low-level inference tests plus 15 operating-workflow tests. The operating tests cover exact budgets and controls, caller trust anchors, commitment canonicalization/tampering, wrong identities, missing/nonfinite values, uncommitted use, changed-frame rejection, deterministic export recovery and a concurrent changed-measurement race. The six previously developed fast-planner tests remain separate. A separately written explicit-patient-loop verifier passed 894 checks, including 678 numerical comparisons, all gates and five alternative-whitening model checks. Maximum metric difference was 4.44e-16; the alternative-whitening coefficient discrepancy was at most 6.91e-17.
 
 On the independently constructed final artifact, 238 sample/orientation input sets matched direct matrix evaluation within 2.22e-16. Removing each of the 64 inputs in turn withheld every output. These are implementation tests on training records, not 238 independent validation observations.
 
