@@ -26,7 +26,7 @@ class Tests(unittest.TestCase):
         np.testing.assert_allclose(batch,rows,atol=2e-13,rtol=0)
     def test_finite_extrapolation(self):
         q=np.array([np.full(64,-30.),np.full(64,30.)])
-        np.testing.assert_allclose(c.predict(q),self.k.predict(q,self.coef),atol=1e-11,rtol=0)
+        np.testing.assert_allclose(self.c.predict(q),self.k.predict(q,self.coef),atol=1e-11,rtol=0)
     def test_no_array_mutation(self):
         before={k:np.array(v,copy=True) for k,v in self.a.items()};self.c.predict(self.z)
         for k,v in before.items():np.testing.assert_array_equal(self.a[k],v)
