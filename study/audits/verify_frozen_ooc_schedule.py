@@ -1,5 +1,3 @@
-[Reading 89 lines from start (total: 89 lines, 0 remaining)]
-
 #!/usr/bin/env python3
 """Response-free audit of the frozen bandwidth treatment schedules and OoC templates."""
 from pathlib import Path
