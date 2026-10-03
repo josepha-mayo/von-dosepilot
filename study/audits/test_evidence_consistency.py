@@ -1,3 +1,5 @@
+[Reading 228 lines from start (total: 228 lines, 0 remaining)]
+
 import copy
 import json
 import shutil
@@ -49,9 +51,10 @@ class EvidenceConsistencyTests(unittest.TestCase):
     def test_current_state_passes(self):
         result = verify(self.root)
         self.assertEqual(result["status"], "PASS")
-        self.assertEqual(result["canonical_receipts"], 7)
+        self.assertEqual(result["canonical_receipts"], 8)
         self.assertEqual(result["protected22_cells_reconciled"], 19642)
         self.assertAlmostEqual(result["additive_incumbent_mse"], 0.001060552730112811)
+        self.assertAlmostEqual(result["bandwidth_successor_mse"], 0.0010582750420801538)
         self.assertEqual(result["raw_ak_decision"], "REJECT_RETAIN_ADDITIVE")
         self.assertEqual(result["durable_runtime_tests"], 55)
 
@@ -115,13 +118,13 @@ class EvidenceConsistencyTests(unittest.TestCase):
         with self.assertRaises(EvidenceError):
             verify(self.root)
 
-    def test_index_cannot_replace_additive_incumbent(self):
+    def test_index_cannot_replace_bandwidth_incumbent(self):
         self.mutate_index(
-            lambda value: value["additive_incumbent"].update(
+            lambda value: value["bandwidth_successor"].update(
                 {"mse": 9.0, "current_internal_incumbent": False}
             )
         )
-        with self.assertRaisesRegex(EvidenceError, "INDEX_ADDITIVE"):
+        with self.assertRaisesRegex(EvidenceError, "INDEX_BANDWIDTH"):
             verify(self.root)
 
     def test_index_cannot_promote_raw_ak(self):
@@ -152,6 +155,14 @@ class EvidenceConsistencyTests(unittest.TestCase):
             lambda value: value["research"]["mse"].__setitem__("recovered_additive_control", 9.0),
         )
         with self.assertRaisesRegex(EvidenceError, "ADDITIVE_MSE"):
+            verify(self.root, enforce_pins=False)
+
+    def test_receipt_cannot_fake_bandwidth_successor(self):
+        self.mutate_receipt(
+            "bandwidth_successor",
+            lambda value: value["metrics"]["bandwidth07"].__setitem__("mse", 9.0),
+        )
+        with self.assertRaisesRegex(EvidenceError, "BANDWIDTH_MSE"):
             verify(self.root, enforce_pins=False)
 
     def test_receipt_cannot_promote_raw_ak(self):
@@ -217,3 +228,5 @@ class EvidenceConsistencyTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
