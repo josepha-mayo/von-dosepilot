@@ -15,7 +15,7 @@
 **Demo video:** https://youtu.be/QeOGJIgx378  
 **Public code:** https://github.com/josepha-mayo/von-dosepilot  
 **Historical technical report:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/DosePilot_Technical_Report_Public.pdf  
-**Current result addenda:** [structured-kernel results and recovery](STRUCTURED_KERNELS_AND_RECOVERY.md) · [durable lifecycle and acquisition](DURABLE_LIFECYCLE_AND_ACQUISITION.md) · [S2 spectral successor](SPECTRAL_SUCCESSOR.md) · [Protected22 execution, missingness and exposure disclosure](PROTECTED22_RESULT.md)
+**Current result addenda:** [bandwidth-0.7 successor](BANDWIDTH_SUCCESSOR.md) · [structured-kernel results and recovery](STRUCTURED_KERNELS_AND_RECOVERY.md) · [durable lifecycle and acquisition](DURABLE_LIFECYCLE_AND_ACQUISITION.md) · [S2 spectral successor](SPECTRAL_SUCCESSOR.md) · [Protected22 execution, missingness and exposure disclosure](PROTECTED22_RESULT.md)
 
 ## Project Summary
 
@@ -23,9 +23,9 @@ DosePilot addresses a practical decision in dose-response experiments: when trea
 
 On a retrospective colorectal-cancer organoid task, R13 reconstructs 24 fixed drug-response summaries from exactly 64 treatment wells. Its complete source curves contain 416 eligible treatment measurements per sample. The 64-well policy therefore uses 15.38% of that retrospective measurement count, not necessarily 15.38% of laboratory cost or time. Whole-patient nested evaluation gave patient-balanced MSE 0.0011448587: 33.49% lower than the earlier paired-measurement procedure and 34.13% lower than a matched paired-native control. Planning, scaling and model selection remain inside each fitting split.
 
-The current development incumbent keeps the same acquisition and own-drug baseline, then adds a drug-group additive residual kernel learned inside the same nested patient folds. At the unchanged 64-well budget, its MSE is **0.0010605527**: 0.8963% below S2, 7.3639% below R13 and 7.0836% below the archived R18 reference. It improves 45/59 patient means versus S2, 49/59 versus R13 and 47/59 versus R18, with all five outer-fold means favorable in each comparison. These are selected, repeatedly reused development patients—not independent confirmation or an official competition score.
+The current development successor keeps the exact same acquisition and own-drug baseline, but narrows the drug-group Gaussian component of the additive residual kernel from a global lengthscale multiplier of 1.0 to **0.7**. At the unchanged 64-well budget, its MSE is **0.0010582750**: 0.2148% below the previous additive model, 7.5628% below R13 and 7.2831% below the archived R18 reference. It improves **38/59 patient means and all 5/5 outer folds versus additive**, with p90 patient RMSE improving from 0.0380731 to 0.0378943. Against R13/R18 it wins 49/59 and 47/59 patient means respectively. These are selected, repeatedly reused development patients—not independent confirmation or an official competition score.
 
-A prespecified residual-alignment reweighting challenger was then rejected. Its MSE was **0.0010608378**, 0.0269% worse than additive, with 24/59 patient wins, 2/5 favorable folds, worse p90 and 12/24 target means regressing. This negative result is retained rather than tuned away.
+The wider prefrozen bandwidth 1.4 regressed to MSE 0.0010637094 with only 18/59 patient wins and zero favorable folds. Ten of 24 target means also regress under the promoted 0.7 model versus additive. Earlier residual-alignment and acquisition challengers were likewise rejected and remain public rather than tuned away.
 
 The historical R13 operating software commits a layout before responses arrive, rejects incompatible measurements, withholds only affected outputs when required values are missing, and recovers the same layout after an export failure. S2 instead requires all 64 identified values because its correction shares information across drugs. The biological results have a public source-to-results reproduction route without the earlier private input bundle or a language-model API.
 
@@ -43,7 +43,7 @@ The development population contains **119 organoid samples grouped into 59 whole
 
 R13 assigns two native doses to every drug and sixteen third-dose upgrades, for **64 distinct physical treatment wells**. Acquisition uses fitting-only covariance scores. Each drug-specific ridge head sees only its own two or three purchased measurements. A common regularization penalty is selected inside three patient-grouped inner folds; five patient-grouped outer folds evaluate the complete procedure.
 
-S2 starts from those R13 predictions and fits a regularized cross-drug correction to the training residuals. The current additive successor instead sums 24 Gaussian components, one over each drug's purchased coordinates, plus the linear component. One of nine fixed fraction/penalty pairs or no correction is selected inside the same three inner whole-patient folds. Neither successor uses additional measurements. Because both corrections couple outputs through shared fitting, all 64 values are required for the primary prediction; one missing value withholds all 24 primary outputs.
+S2 starts from those R13 predictions and fits a regularized cross-drug correction to the training residuals. The additive family instead sums 24 Gaussian components, one over each drug's purchased coordinates, plus the linear component. The current successor changes only the Gaussian group lengthscale multiplier from 1.0 to **0.7**; the linear component, acquisition, base model and ten residual spectral options stay fixed. Each fitting slice selects one common spectral option inside the same three inner whole-patient folds. No successor uses additional measurements. Because these corrections couple outputs through shared fitting, all 64 values are required for the primary prediction; one missing value withholds all 24 primary outputs.
 
 Two complementary plate layouts, A and B, each cost 64 wells, 32 per plate. Their historical squared losses are averaged to estimate the expected loss of choosing one alternative independently of outcomes. Their prediction vectors are never averaged into an unbudgeted 128-well ensemble. Controls are outside the stated treatment-well budget.
 
@@ -60,15 +60,16 @@ The measured endpoint includes purchased observations, so this is reconstruction
 | Retained broader-coverage procedure, R13 | **0.0011448587** |
 | Archived lower-point reference, R18 | 0.0011414048 |
 | S2 spectral residual successor | **0.0010701439** |
-| Additive drug-group kernel incumbent | **0.0010605527** |
+| Previous additive drug-group kernel | 0.0010605527 |
+| **Bandwidth-0.7 additive successor** | **0.0010582750** |
 | Residual-alignment reweighting challenger | 0.0010608378 |
 | Interpolation with independently optimized acquisition | 0.0024168103 |
 
 Against R9, R13 improves 53/59 patient means and all five outer-fold means. Six patient means and six drug-average errors nevertheless regress. Against the separately optimized interpolation policy, R13 has 52.63% lower error and improves 59/59 patient means. All of these are repeated development comparisons, not separate independent cohorts.
 
-The additive incumbent improves 45/59 patient means versus S2, 49/59 versus R13 and 47/59 versus R18; all five outer-fold means improve in every comparison. Its p90 patient expected RMSE is 0.038073, versus 0.038733 for S2 and 0.041108 for R13. Its two orientation-wide MSEs are 0.0011083900 and 0.0010127155. The paired-patient intervals are descriptive and not selection-corrected.
+The previous additive model improves 45/59 patient means versus S2, 49/59 versus R13 and 47/59 versus R18. The bandwidth-0.7 successor then improves **38/59 patient means versus additive**, all five outer-fold means, and p90 RMSE (0.037894 versus 0.038073). Its two orientation-wide MSEs are **0.0011047522** and **0.0010117979**. The descriptive paired-patient interval for bandwidth-0.7 minus additive mean loss is [-4.159e-6, -4.157e-7]. These intervals are descriptive and not selection-corrected.
 
-The later residual-alignment challenger still passed the older S2/R13/R18 screens, but it failed all four incumbent-facing clauses: higher MSE, only 24/59 patient wins, only 2/5 favorable folds and worse p90. Its descriptive paired interval versus additive crosses zero. Twelve target means and 23 patient means regress, so the additive model remains retained.
+Bandwidth 1.4 was rejected, as were residual-alignment, structured-kernel, consistency and acquisition challengers. The promoted bandwidth-0.7 model still regresses on ten target-average errors versus additive, so it is not described as uniformly superior.
 
 ### Separately sourced external assessments
 
@@ -103,7 +104,13 @@ python -m pip install -r requirements.txt
 python run_demo.py --output demo_run_001
 ```
 
-No GPU, paid model service or language-model API is required by the DosePilot runtime. The exact public Mendeley Data v3 `Data S4.xlsx` is hash-pinned. Its 15,886,254 bytes match SHA-256 `3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c`. The public route reconstructs all 49,504 historical Lib1 TRAIN measurements and reproduces all four locked R9/R13 metrics within `1e-12`. Commands and receipts are in [PUBLIC_REPRODUCTION.md](PUBLIC_REPRODUCTION.md).
+No GPU, paid model service or language-model API is required by the DosePilot runtime. The current successor can be replayed from the same public-derived TRAIN route with:
+
+```bash
+python study/hybrid_residual/reproduce_bandwidth.py --curves reconstructed_train/train_curves.csv --output bandwidth_replay --fit-final
+```
+
+A fresh replay reproduced bandwidth-0.7 MSE 0.001058275042, additive MSE 0.001060552730 and R13 MSE 0.001144858681 without historical prediction inputs. The exact public Mendeley Data v3 `Data S4.xlsx` is hash-pinned. Its 15,886,254 bytes match SHA-256 `3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c`. The public route reconstructs all 49,504 historical Lib1 TRAIN measurements and reproduces all four locked R9/R13 metrics within `1e-12`. Commands and receipts are in [PUBLIC_REPRODUCTION.md](PUBLIC_REPRODUCTION.md).
 
 The new saved-array verifier adds eight synthetic tests and checks 83 comparisons without a second source read or refit. Actual Protected22 saved-array verification still requires the author's hash-bound result and prediction files; that addendum is not a standalone public source-to-results distribution. This limit is separate from the working public Lib1 reproduction route.
 
