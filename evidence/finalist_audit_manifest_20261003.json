@@ -61,10 +61,10 @@
   "pinned_sha256": {
     "bandwidth_receipt": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758",
     "evidence_index": "15a721ba8dfdd97250bbbf862695746ed3efb8849e9aba52a61c133421fb6908",
-    "kaggle_writeup": "2abc47a63fbbb48362665464fe055b1e93ea65c784a4bc23c353acf6fa25ed34",
+    "kaggle_writeup": "0cfed9c0b9965d95fc20bd92aadfeff31fa48d610886db8b0e29ac8ce6e5a827",
     "bandwidth_method": "30723fbc8f6843c200891e14e5fb254e707298fa5514b668c4f005a4562edb30",
     "bandwidth_inference": "9d21905b4d9d03b639b895ce01e6fe891a8afad78ee3ad908887fa11467d9cb8",
     "bandwidth_reproduction": "d38527761bcc21c6de61a4e93f69665294792f1b1bdff28efb2fa3f1149cc2e4",
-    "target_delta_csv": "14be6ae52fae002fa01dd74d1bdc49d93daf897f0e2ed8a3a8868e35d0da2287"
+    "target_delta_csv": "f4a6e270329bfdf46db98b1d8051cc1bd229a3069fc26cbce05110faef4da560"
   }
 }
