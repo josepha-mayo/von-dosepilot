@@ -29,21 +29,22 @@ All three procedures below use the same **119 Lib1 samples, 59 whole patients, 2
 |---|---:|
 | Original own-drug R13 | 0.001144858681 |
 | S2 spectral correction | 0.001070143945 |
-| **Current additive drug-group kernel** | **0.001060552730** |
+| Previous additive drug-group kernel | 0.001060552730 |
+| **Current bandwidth-0.7 additive successor** | **0.001058275042** |
 
-The additive model improves **45/59 patient means and all five fold means versus S2** and passes the original R13/R18 internal checks. These are **repeated adaptive development results**, not independent biological confirmation, clinical performance or an official contest score.
+The bandwidth successor changes only the drug-group Gaussian lengthscale from 1.0 to **0.7**. It improves **38/59 patient means versus the previous additive model, all 5/5 outer-fold means, and p90 patient RMSE**, while preserving the exact same physical plans. It is **7.56% lower MSE than R13** and **7.28% lower than R18**, with 49/59 and 47/59 patient wins respectively. These are **repeated adaptive development results**, not independent biological confirmation, clinical performance or an official contest score.
 
-The latest model challenger, residual-alignment reweighting, reached MSE 0.001060837753—0.0269% worse than additive—with 24/59 patient wins, 2/5 favorable folds and worse p90. It was rejected without follow-up tuning. The earlier acquisition experiment also failed to beat additive. [Additive evidence](docs/STRUCTURED_KERNELS_AND_RECOVERY.md) · [Residual-alignment receipt](evidence/aligned_additive_20261003.json) · [Acquisition result](docs/DURABLE_LIFECYCLE_AND_ACQUISITION.md#1-new-acquisition-experiment-rejected) · [Spectral method](docs/SPECTRAL_SUCCESSOR.md).
+The wider 1.4 bandwidth failed, and ten of 24 target means still regress versus the previous additive model. Earlier residual-alignment and acquisition challengers were also rejected and remain public. [Bandwidth successor](docs/BANDWIDTH_SUCCESSOR.md) · [Aggregate receipt](evidence/bandwidth_successor_20261003.json) · [Previous additive evidence](docs/STRUCTURED_KERNELS_AND_RECOVERY.md) · [Residual-alignment receipt](evidence/aligned_additive_20261003.json) · [Acquisition result](docs/DURABLE_LIFECYCLE_AND_ACQUISITION.md#1-new-acquisition-experiment-rejected).
 
-## Reproduce and construct the additive model
+## Reproduce and construct the current successor
 
 Follow [the hash-bound public-workbook workflow](docs/PUBLIC_REPRODUCTION.md) to create the exact Lib1 TRAIN CSV and install `study/requirements.txt`. Then:
 
 ```bash
-python study/hybrid_residual/reproduce_additive.py --curves reconstructed_train/train_curves.csv --output additive_replay --fit-final
+python study/hybrid_residual/reproduce_bandwidth.py --curves reconstructed_train/train_curves.csv --output bandwidth_replay --fit-final
 ```
 
-The public replay runner is available for reconstructing the additive result and fitting final parameters from the hash-bound public input route. This repository does not currently pin a separate aggregate receipt for a completed public-input additive replay, so runner availability is not presented as a new execution result. Construction would not be another validation result. Generated kernel model archives contain fitted training features and must remain private.
+The public replay runner has reproduced the bandwidth-successor, previous additive and R13 scores from the hash-bound public-derived TRAIN input without historical predictions. Final construction selected spectral fraction 0.1 and ridge 1.0. Construction is not another validation result. Generated kernel model archives contain fitted training features and must remain private.
 
 Use the new lifecycle with a **fresh code-bound runtime commitment**, an independently recorded construction SHA-256 and an explicit 64-well inventory. It automatically checks recovery history before complete prediction. The legacy entry points remain available but are not silently migrated into this contract.
 
