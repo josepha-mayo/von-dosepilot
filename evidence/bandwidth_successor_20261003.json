@@ -1,5 +1,3 @@
-[Reading 128 lines from start (total: 128 lines, 0 remaining)]
-
 {
   "schema": "dosepilot.bandwidth_additive_successor.v1",
   "as_of_utc": "2026-10-03T15:53:03.913081+00:00",
@@ -128,5 +126,3 @@
   "accepted_kaggle_entry_changed": false,
   "official_competition_score": null
 }
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
