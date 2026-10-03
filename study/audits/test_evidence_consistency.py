@@ -36,6 +36,26 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
+        target_release = json.loads(
+            (self.source / "evidence/target_definitions_release_20261003.json").read_text()
+        )
+        for relative in target_release["source_sha256"]:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
+        reviewer_release = json.loads(
+            (self.source / "evidence/reviewer_path_release_20261003.json").read_text()
+        )
+        reviewer_paths = [reviewer_release["entrypoint"]["path"]]
+        reviewer_paths.extend(reviewer_release["bound_artifacts"])
+        for relative in reviewer_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
+        current_preflight_path = index["current_release_preflight"]["path"]
+        shutil.copy2(self.source / current_preflight_path, self.root / current_preflight_path)
+        predecessor_path = index["current_release_preflight"]["predecessor_path"]
+        shutil.copy2(self.source / predecessor_path, self.root / predecessor_path)
         lifecycle = json.loads(
             (self.source / "evidence/bandwidth_lifecycle_20261003.json").read_text()
         )
@@ -78,7 +98,7 @@ class EvidenceConsistencyTests(unittest.TestCase):
     def test_current_state_passes(self):
         result = verify(self.root)
         self.assertEqual(result["status"], "PASS")
-        self.assertEqual(result["canonical_receipts"], 10)
+        self.assertEqual(result["canonical_receipts"], 12)
         self.assertEqual(result["protected22_cells_reconciled"], 19642)
         self.assertAlmostEqual(result["additive_incumbent_mse"], 0.001060552730112811)
         self.assertAlmostEqual(result["bandwidth_successor_mse"], 0.0010582750420801538)
@@ -89,6 +109,9 @@ class EvidenceConsistencyTests(unittest.TestCase):
         self.assertEqual(result["frozen_ooc_schedule_tamper_tests"], 5)
         self.assertEqual(result["current_report_pages"], 10)
         self.assertTrue(result["current_report_deterministic"])
+        self.assertEqual(result["target_definitions_verified"], 24)
+        self.assertEqual(result["reviewer_path_seconds"], 90)
+        self.assertEqual(result["current_preflight_tests"], 155)
 
     def test_changed_receipt_byte_fails_hash(self):
         path = self.root / "evidence/PROTECTED22_ACCESS_STATUS.json"
@@ -264,7 +287,7 @@ class EvidenceConsistencyTests(unittest.TestCase):
                 path.write_bytes(path.read_bytes() + b" ")
                 with self.assertRaisesRegex(
                     EvidenceError,
-                    "PINNED_DOCUMENT_HASH|FROZEN_SCHEDULE_FILE_HASH",
+                    "PINNED_DOCUMENT_HASH|FROZEN_SCHEDULE_FILE_HASH|REVIEWER_PATH_FILE_HASH",
                 ):
                     verify(self.root)
 

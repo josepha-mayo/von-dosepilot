@@ -42,6 +42,14 @@
     "frozen_ooc_release_binding": {
       "path": "evidence/frozen_ooc_release_binding_20261003.json",
       "sha256": "bb2234239ff20484af50f6a5f0497934dc6ba4077f677deebdf12a33c6da28cf"
+    },
+    "target_definitions_release": {
+      "path": "evidence/target_definitions_release_20261003.json",
+      "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
+    },
+    "reviewer_path_release": {
+      "path": "evidence/reviewer_path_release_20261003.json",
+      "sha256": "0a5eee0ddd02561c9b969e5ede86c1cf2291cb50b425b6b42eda0f69a59381f3"
     }
   },
   "current_technical_report": {
@@ -57,6 +65,54 @@
     "historical_submitted_pdf_replaced": false,
     "accepted_kaggle_entry_changed": false,
     "biological_accuracy_result_created": false
+  },
+  "target_definitions": {
+    "role": "RESPONSE_FREE_ENDPOINT_AND_MEASUREMENT_CONTRACT",
+    "status": "PASS",
+    "targets": 24,
+    "full_source_treatment_measurements_two_plates": 416,
+    "selected_measurements_per_deployment": 64,
+    "selected_per_plate": {
+      "p1": 32,
+      "p2": 32
+    },
+    "two_dose_targets": 8,
+    "three_dose_targets": 16,
+    "quadrature_weights_verified": true,
+    "viability_values_numerically_converted_by_reproducer": 0,
+    "protected_response_access": false,
+    "biological_accuracy_result_created": false,
+    "official_competition_score": null
+  },
+  "reviewer_path": {
+    "role": "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY",
+    "status": "PASS",
+    "entrypoint": "00_REVIEWER_START_HERE.md",
+    "estimated_seconds": 90,
+    "current_model_mse": 0.0010582750420801538,
+    "physical_measurements_per_deployment": 64,
+    "outputs": 24,
+    "new_model_fit": false,
+    "biological_accuracy_result_created": false,
+    "protected_response_access": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
+  "current_release_preflight": {
+    "path": "evidence/release_preflight_target_bound_final_20261003.json",
+    "sha256": "b4662f2b8963a24842ae4dc1dc71fa9a7f6e4fe382b84077f193b2c485449bb5",
+    "predecessor_path": "evidence/release_preflight_target_bound_20261003.json",
+    "predecessor_sha256": "26d5467b3be9edb181308dd11ca275589cabfbf0c497e15eefd1e30d2ad99799",
+    "schema": "dosepilot.current_release_preflight.v1",
+    "status": "PASS",
+    "check_count": 14,
+    "orchestrated_response_free_tests": 155,
+    "target_definition_tests_included": true,
+    "target_definition_verifier_included": true,
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
   },
   "protected22": {
     "population": {

@@ -28,6 +28,8 @@ PINNED_RECEIPTS = {
     "bandwidth_successor": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
     "frozen_ooc_release_binding": "bb2234239ff20484af50f6a5f0497934dc6ba4077f677deebdf12a33c6da28cf",
+    "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
+    "reviewer_path_release": "0a5eee0ddd02561c9b969e5ede86c1cf2291cb50b425b6b42eda0f69a59381f3",
 }
 
 PINNED_DOCUMENTS = {
@@ -121,6 +123,114 @@ def verify(root, enforce_pins=True):
             "biological_accuracy_result_created": current_report["biological_accuracy_result_created"],
         }[key]
         same(report_index[key], receipt_value, "INDEX_CURRENT_REPORT_" + key.upper())
+
+    target_release = receipts["target_definitions_release"]
+    same(target_release["schema"], "dosepilot.target_definitions_release.v1", "TARGET_DEFINITIONS_SCHEMA")
+    same(target_release["status"], "PASS", "TARGET_DEFINITIONS_STATUS")
+    same(target_release["role"], "RESPONSE_FREE_ENDPOINT_AND_MEASUREMENT_CONTRACT", "TARGET_DEFINITIONS_ROLE")
+    for path, expected in target_release["source_sha256"].items():
+        same(sha(root / path), expected, "TARGET_DEFINITIONS_FILE_HASH: " + path)
+    target_population = target_release["population"]
+    same(target_population, {"samples": 119, "whole_patients": 59, "targets": 24}, "TARGET_DEFINITIONS_POPULATION")
+    target_endpoint = target_release["endpoint"]
+    same(target_endpoint["kind"], "unclipped normalized log-dose trapezoidal AUC", "TARGET_DEFINITIONS_ENDPOINT")
+    same(target_endpoint["target_aggregation"], "arithmetic mean of separately computed p1 and p2 AUCs", "TARGET_DEFINITIONS_AGGREGATION")
+    for key in ("clinical_response_endpoint", "ic50_endpoint", "drug_ranking_endpoint"):
+        same(target_endpoint[key], False, "TARGET_DEFINITIONS_FALSE_ENDPOINT: " + key)
+    accounting = target_release["measurement_accounting"]
+    same(accounting["full_source_nodes_one_plate"], 208, "TARGET_DEFINITIONS_ONE_PLATE")
+    same(accounting["full_source_treatment_measurements_two_plates"], 416, "TARGET_DEFINITIONS_FULL_MEASUREMENTS")
+    same(accounting["selected_measurements_per_deployment"], 64, "TARGET_DEFINITIONS_SELECTED")
+    same(accounting["selected_per_plate"], {"p1": 32, "p2": 32}, "TARGET_DEFINITIONS_PLATES")
+    same(accounting["two_dose_targets"], 8, "TARGET_DEFINITIONS_TWO_DOSE")
+    same(accounting["three_dose_targets"], 16, "TARGET_DEFINITIONS_THREE_DOSE")
+    target_verification = target_release["verification"]
+    same(target_verification["response_free_verifier_status"], "PASS", "TARGET_DEFINITIONS_VERIFIER")
+    same(target_verification["quadrature_weights_verified"], True, "TARGET_DEFINITIONS_QUADRATURE")
+    same(target_verification["target_table_rows_verified"], 24, "TARGET_DEFINITIONS_TABLE")
+    same(target_verification["tamper_tests_passed"], 7, "TARGET_DEFINITIONS_TESTS")
+    same(target_verification["public_train_byte_identical_reproduction"], True, "TARGET_DEFINITIONS_REPRODUCTION")
+    same(target_verification["viability_values_numerically_converted_by_reproducer"], 0, "TARGET_DEFINITIONS_NO_RESPONSES")
+    target_scope = target_release["scope"]
+    for key in ("new_model_fit", "biological_accuracy_result_created", "independent_validation", "protected_response_access", "private_patient_rows_read", "fitted_biological_weights_published", "accepted_kaggle_entry_changed"):
+        same(target_scope[key], False, "TARGET_DEFINITIONS_SCOPE: " + key)
+    same(target_scope["official_competition_score"], None, "TARGET_DEFINITIONS_NO_SCORE")
+    target_index = index["target_definitions"]
+    for key, receipt_value in (
+        ("role", target_release["role"]),
+        ("status", target_release["status"]),
+        ("targets", target_population["targets"]),
+        ("full_source_treatment_measurements_two_plates", accounting["full_source_treatment_measurements_two_plates"]),
+        ("selected_measurements_per_deployment", accounting["selected_measurements_per_deployment"]),
+        ("selected_per_plate", accounting["selected_per_plate"]),
+        ("two_dose_targets", accounting["two_dose_targets"]),
+        ("three_dose_targets", accounting["three_dose_targets"]),
+        ("quadrature_weights_verified", target_verification["quadrature_weights_verified"]),
+        ("viability_values_numerically_converted_by_reproducer", target_verification["viability_values_numerically_converted_by_reproducer"]),
+        ("protected_response_access", target_scope["protected_response_access"]),
+        ("biological_accuracy_result_created", target_scope["biological_accuracy_result_created"]),
+        ("official_competition_score", target_scope["official_competition_score"]),
+    ):
+        same(target_index[key], receipt_value, "INDEX_TARGET_DEFINITIONS_" + key.upper())
+
+    reviewer_release = receipts["reviewer_path_release"]
+    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v1", "REVIEWER_PATH_SCHEMA")
+    same(reviewer_release["status"], "PASS", "REVIEWER_PATH_STATUS")
+    same(reviewer_release["role"], "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY", "REVIEWER_PATH_ROLE")
+    reviewer_entry = reviewer_release["entrypoint"]
+    same(sha(root / reviewer_entry["path"]), reviewer_entry["sha256"], "REVIEWER_PATH_ENTRY_HASH")
+    for path, expected in reviewer_release["bound_artifacts"].items():
+        same(sha(root / path), expected, "REVIEWER_PATH_FILE_HASH: " + path)
+    reviewer_text = (root / reviewer_entry["path"]).read_text()
+    for phrase in (
+        "Current technical report",
+        "TARGET_DEFINITIONS.md",
+        "10/24 target-average errors regress",
+        "A/B prediction vectors are never combined into a 128-well predictor",
+        "Protected22/Lib2 is exposed",
+        "not an official competition score",
+    ):
+        if phrase not in reviewer_text:
+            raise EvidenceError("REVIEWER_PATH_REQUIRED_TEXT: " + phrase)
+    if "\\n" in reviewer_text:
+        raise EvidenceError("REVIEWER_PATH_TRANSPORT_ESCAPE")
+    reviewer_contract = reviewer_release["review_path"]
+    same(reviewer_contract["estimated_seconds"], 90, "REVIEWER_PATH_SECONDS")
+    same(reviewer_contract["current_model_mse"], 0.0010582750420801538, "REVIEWER_PATH_MSE", 1e-15)
+    same(reviewer_contract["physical_measurements_per_deployment"], 64, "REVIEWER_PATH_MEASUREMENTS")
+    same(reviewer_contract["outputs"], 24, "REVIEWER_PATH_OUTPUTS")
+    for key in ("target_definition_linked", "current_report_linked", "negative_results_linked", "prospective_boundary_linked"):
+        same(reviewer_contract[key], True, "REVIEWER_PATH_LINK: " + key)
+    reviewer_scope = reviewer_release["scope"]
+    for key in ("new_model_fit", "biological_accuracy_result_created", "independent_validation", "protected_response_access", "private_patient_rows_read", "accepted_kaggle_entry_changed"):
+        same(reviewer_scope[key], False, "REVIEWER_PATH_SCOPE: " + key)
+    same(reviewer_scope["official_competition_score"], None, "REVIEWER_PATH_NO_SCORE")
+    reviewer_index = index["reviewer_path"]
+    for key, receipt_value in (
+        ("role", reviewer_release["role"]),
+        ("status", reviewer_release["status"]),
+        ("entrypoint", reviewer_entry["path"]),
+        ("estimated_seconds", reviewer_contract["estimated_seconds"]),
+        ("current_model_mse", reviewer_contract["current_model_mse"]),
+        ("physical_measurements_per_deployment", reviewer_contract["physical_measurements_per_deployment"]),
+        ("outputs", reviewer_contract["outputs"]),
+        ("new_model_fit", reviewer_scope["new_model_fit"]),
+        ("biological_accuracy_result_created", reviewer_scope["biological_accuracy_result_created"]),
+        ("protected_response_access", reviewer_scope["protected_response_access"]),
+        ("accepted_kaggle_entry_changed", reviewer_scope["accepted_kaggle_entry_changed"]),
+        ("official_competition_score", reviewer_scope["official_competition_score"]),
+    ):
+        same(reviewer_index[key], receipt_value, "INDEX_REVIEWER_PATH_" + key.upper())
+
+    current_preflight_index = index["current_release_preflight"]
+    current_preflight_path = root / current_preflight_index["path"]
+    same(sha(current_preflight_path), current_preflight_index["sha256"], "CURRENT_PREFLIGHT_HASH")
+    same(sha(root / current_preflight_index["predecessor_path"]), current_preflight_index["predecessor_sha256"], "CURRENT_PREFLIGHT_PREDECESSOR_HASH")
+    current_preflight = load(current_preflight_path)
+    for key in ("schema", "status", "check_count", "target_definition_tests_included", "target_definition_verifier_included", "private_or_protected_inputs_read", "biological_accuracy_result_created", "accepted_kaggle_entry_changed", "official_competition_score"):
+        same(current_preflight[key], current_preflight_index[key], "CURRENT_PREFLIGHT_" + key.upper())
+    same(current_preflight["orchestrated_test_count"], current_preflight_index["orchestrated_response_free_tests"], "CURRENT_PREFLIGHT_TESTS")
+    same([item["name"] for item in current_preflight["checks"]][-4:], ["target_definition_tests", "target_definitions", "fictional_lifecycle_demo", "fictional_bandwidth_lifecycle_demo"], "CURRENT_PREFLIGHT_FINAL_STAGES")
 
     access = receipts["protected22_access"]
     completed = receipts["protected22_completed"]
@@ -578,6 +688,9 @@ def verify(root, enforce_pins=True):
         "frozen_ooc_schedule_tamper_tests": schedule_verification["new_tamper_tests_passed"],
         "current_report_pages": current_report["pdf"]["pages"],
         "current_report_deterministic": current_report["renderer"]["two_consecutive_builds_byte_identical"],
+        "target_definitions_verified": target_verification["target_table_rows_verified"],
+        "reviewer_path_seconds": reviewer_contract["estimated_seconds"],
+        "current_preflight_tests": current_preflight["orchestrated_test_count"],
         "raw_ak_decision": aligned["decision"],
         "durable_runtime_tests": lifecycle["tests"]["durable_runtime_suite_including_previous_cases"],
         "private_arrays_read": False,

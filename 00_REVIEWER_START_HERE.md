@@ -120,7 +120,9 @@ These commands require no protected cohort responses.
 
 ### Full response-free release preflight
 
-    python study/audits/release_preflight.py --output release_preflight.json
+    python study/audits/release_preflight_current.py --output release_preflight.json
+
+The current additive runner preserves the historical frozen-schedule preflight and adds the seven target-definition tamper tests plus the direct target-definition verifier. The bound public receipt records **14/14 stages and 155 response-free tests passed**; three runner-contract tests passed separately.
 
 ### Public TRAIN reconstruction and current-model replay
 
