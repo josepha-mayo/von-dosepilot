@@ -1,5 +1,3 @@
-[Reading 74 lines from start (total: 74 lines, 0 remaining)]
-
 #!/usr/bin/env python3
 """Response-free finalist audit for the public DosePilot evidence package."""
 from pathlib import Path
