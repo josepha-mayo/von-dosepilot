@@ -1,0 +1,85 @@
+{
+  "schema": "dosepilot.target_definitions_release.v1",
+  "status": "PASS",
+  "utc": "2026-10-03T20:04:07.267620+00:00",
+  "role": "RESPONSE_FREE_ENDPOINT_AND_MEASUREMENT_CONTRACT",
+  "target_definition_schema": "dosepilot.target_definitions.v1",
+  "population": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24
+  },
+  "endpoint": {
+    "kind": "unclipped normalized log-dose trapezoidal AUC",
+    "source_plates": [
+      "p1",
+      "p2"
+    ],
+    "target_aggregation": "arithmetic mean of separately computed p1 and p2 AUCs",
+    "clinical_response_endpoint": false,
+    "ic50_endpoint": false,
+    "drug_ranking_endpoint": false
+  },
+  "measurement_accounting": {
+    "full_source_nodes_one_plate": 208,
+    "full_source_treatment_measurements_two_plates": 416,
+    "selected_measurements_per_deployment": 64,
+    "selected_per_plate": {
+      "p1": 32,
+      "p2": 32
+    },
+    "selected_measurement_fraction": 0.15384615384615385,
+    "two_dose_targets": 8,
+    "three_dose_targets": 16
+  },
+  "interpolated_boundaries": [
+    [
+      "Gedatolisib",
+      "lower"
+    ],
+    [
+      "Palbociclib",
+      "lower"
+    ],
+    [
+      "SN-38",
+      "upper"
+    ],
+    [
+      "TAS-102",
+      "lower"
+    ]
+  ],
+  "verification": {
+    "response_free_verifier_status": "PASS",
+    "quadrature_weights_verified": true,
+    "target_table_rows_verified": 24,
+    "tamper_tests_passed": 7,
+    "public_train_byte_identical_reproduction": true,
+    "reproduced_definition_sha256": "cc925c1d8de068fa98cb0f4431936da9aafc08dee89d55e4fbf5d3a98c96bc68",
+    "viability_values_numerically_converted_by_reproducer": 0,
+    "historical_release_preflight_still_passes": true,
+    "historical_release_preflight_check_count": 12,
+    "historical_release_preflight_orchestrated_tests": 148
+  },
+  "source_sha256": {
+    "TARGET_DEFINITIONS.md": "24517c3a39343770474f39f9908fdd267d912b55bad11aa2d41420ce6517be30",
+    "docs/TARGET_DEFINITIONS.md": "a50135fc9d65515e699d37f2cb2f060c1f28679c995fa11ea7db2fc3a8d7a39a",
+    "evidence/target_definitions_20261003.json": "cc925c1d8de068fa98cb0f4431936da9aafc08dee89d55e4fbf5d3a98c96bc68",
+    "study/audits/reproduce_target_definitions.py": "bb9cf6be764294aa72c0b7e48e4943667055a0c4bd585f0f643123310f2314aa",
+    "study/audits/verify_target_definitions.py": "121c17a6db2a21ce84251f539dff4056b2f195fba5904ed29396e3d5487ffc30",
+    "study/audits/test_target_definitions.py": "2c17d2d03d4a84b324ec40b862285d6e9b79a4cc6c8cba778636547ad7a86396"
+  },
+  "test_log_sha256": "89259b5a338e4857dd884a67ae1243bae1ce3dc2f5f78dfbeb618c72851e7cb8",
+  "historical_release_preflight_sha256": "dcf7169ca90c34a1b82b05414bba64f5a3649f8be2e9990c86dc0597d6685899",
+  "scope": {
+    "new_model_fit": false,
+    "biological_accuracy_result_created": false,
+    "independent_validation": false,
+    "protected_response_access": false,
+    "private_patient_rows_read": false,
+    "fitted_biological_weights_published": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  }
+}
