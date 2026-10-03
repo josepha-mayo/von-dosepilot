@@ -6,6 +6,10 @@ Research software by **Joseph Ayanda** for AI4S Open Innovation. DosePilot choos
 
 ## Start with the complete fictional demonstration
 
+**Live fictional-data demo:** https://von-dosepilot.netlify.app
+
+The deployed static site is also versioned under [`site/`](site/) in this repository. It uses seeded fictional values only and makes no additional biological accuracy claim.
+
 On a supported local POSIX system, install the repository's dependencies and run:
 
 ```bash
