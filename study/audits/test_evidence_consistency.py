@@ -43,10 +43,12 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
-        reviewer_release = json.loads(
-            (self.source / "evidence/reviewer_path_release_20261003.json").read_text()
-        )
-        reviewer_paths = [reviewer_release["entrypoint"]["path"]]
+        reviewer_path = index["canonical_receipts"]["reviewer_path_release"]["path"]
+        reviewer_release = json.loads((self.source / reviewer_path).read_text())
+        reviewer_paths = [
+            reviewer_release["predecessor"]["path"],
+            reviewer_release["entrypoint"]["path"],
+        ]
         reviewer_paths.extend(reviewer_release["bound_artifacts"])
         for relative in reviewer_paths:
             destination = self.root / relative

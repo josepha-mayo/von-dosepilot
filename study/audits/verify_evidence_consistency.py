@@ -27,14 +27,14 @@ PINNED_RECEIPTS = {
     "aligned_additive": "fca4fff12f931caa9dbc4c70f5ebc05668a743f18f7fac0fa3e030a99581a550",
     "bandwidth_successor": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
-    "frozen_ooc_release_binding": "b0665747ba69d4871092d52211cc00ad5bdfcccab09143cc87065a6827013569",
+    "frozen_ooc_release_binding": "8467d8b3bc7ebe12cc4f3d009a5f114d9e2644106b6e71508d346fbb5a5ffb9b",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
-    "reviewer_path_release": "0a5eee0ddd02561c9b969e5ede86c1cf2291cb50b425b6b42eda0f69a59381f3",
+    "reviewer_path_release": "711d9fa232f56a3ca7faab7e95b5857f625e13c73220dea1cce023be6a7fbb4f",
 }
 
 PINNED_DOCUMENTS = {
     "docs/EVIDENCE_LEDGER.md": "d393517b7733e8e2788cd63e6619175249a03e0a96aa0c71e2ecaaa05663147e",
-    "docs/KAGGLE_WRITEUP.md": "da691ddf225508f786206851df852b9873052e8ec10b30b292be04649e54e16a",
+    "docs/KAGGLE_WRITEUP.md": "55f1441f4ad8b524888633a1c1f741e1486f9e29f1ddd0ae3c6bcfa90936ba24",
 }
 
 CURRENT_REPORT_RECEIPT_SHA256 = "e6efd0143083efc36e612ae0887ba086f94640c951aee1d523832a9da7836101"
@@ -174,9 +174,12 @@ def verify(root, enforce_pins=True):
         same(target_index[key], receipt_value, "INDEX_TARGET_DEFINITIONS_" + key.upper())
 
     reviewer_release = receipts["reviewer_path_release"]
-    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v1", "REVIEWER_PATH_SCHEMA")
+    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v2", "REVIEWER_PATH_SCHEMA")
     same(reviewer_release["status"], "PASS", "REVIEWER_PATH_STATUS")
     same(reviewer_release["role"], "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY", "REVIEWER_PATH_ROLE")
+    reviewer_predecessor = reviewer_release["predecessor"]
+    same(sha(root / reviewer_predecessor["path"]), reviewer_predecessor["sha256"], "REVIEWER_PATH_PREDECESSOR_HASH")
+    same(reviewer_predecessor["preserved_unchanged"], True, "REVIEWER_PATH_PREDECESSOR_PRESERVED")
     reviewer_entry = reviewer_release["entrypoint"]
     same(sha(root / reviewer_entry["path"]), reviewer_entry["sha256"], "REVIEWER_PATH_ENTRY_HASH")
     for path, expected in reviewer_release["bound_artifacts"].items():
@@ -194,12 +197,27 @@ def verify(root, enforce_pins=True):
             raise EvidenceError("REVIEWER_PATH_REQUIRED_TEXT: " + phrase)
     if "\\n" in reviewer_text:
         raise EvidenceError("REVIEWER_PATH_TRANSPORT_ESCAPE")
+    prepared_writeup = (root / "docs/KAGGLE_WRITEUP.md").read_text()
+    for phrase in (
+        "90-second reviewer path:",
+        "00_REVIEWER_START_HERE.md",
+        "Current ten-page technical report:",
+        "DosePilot_Technical_Report_Current.pdf",
+        "Exact definitions of all 24 outputs:",
+        "TARGET_DEFINITIONS.md",
+        "Historical submitted technical report:",
+        "DosePilot_Technical_Report_Public.pdf",
+    ):
+        if phrase not in prepared_writeup:
+            raise EvidenceError("PREPARED_WRITEUP_FAST_LANE: " + phrase)
+    if "\\n" in prepared_writeup:
+        raise EvidenceError("PREPARED_WRITEUP_TRANSPORT_ESCAPE")
     reviewer_contract = reviewer_release["review_path"]
     same(reviewer_contract["estimated_seconds"], 90, "REVIEWER_PATH_SECONDS")
     same(reviewer_contract["current_model_mse"], 0.0010582750420801538, "REVIEWER_PATH_MSE", 1e-15)
     same(reviewer_contract["physical_measurements_per_deployment"], 64, "REVIEWER_PATH_MEASUREMENTS")
     same(reviewer_contract["outputs"], 24, "REVIEWER_PATH_OUTPUTS")
-    for key in ("target_definition_linked", "current_report_linked", "negative_results_linked", "prospective_boundary_linked"):
+    for key in ("target_definition_linked", "current_report_linked", "negative_results_linked", "prospective_boundary_linked", "prepared_writeup_fast_lane_linked"):
         same(reviewer_contract[key], True, "REVIEWER_PATH_LINK: " + key)
     reviewer_scope = reviewer_release["scope"]
     for key in ("new_model_fit", "biological_accuracy_result_created", "independent_validation", "protected_response_access", "private_patient_rows_read", "accepted_kaggle_entry_changed"):
@@ -515,7 +533,7 @@ def verify(root, enforce_pins=True):
     same(current_lifecycle_index["accepted_kaggle_entry_changed"], False, "INDEX_BANDWIDTH_LIFECYCLE_NO_ENTRY_CHANGE")
     same(current_lifecycle_index["official_competition_score"], None, "INDEX_BANDWIDTH_LIFECYCLE_NO_SCORE")
 
-    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v2", "FROZEN_SCHEDULE_SCHEMA")
+    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v3", "FROZEN_SCHEDULE_SCHEMA")
     same(frozen_schedule["status"], "PASS", "FROZEN_SCHEDULE_STATUS")
     same(frozen_schedule["role"], "RESPONSE_FREE_ENGINEERING_AND_RELEASE_EVIDENCE", "FROZEN_SCHEDULE_ROLE")
     frozen_predecessor = frozen_schedule["predecessor"]

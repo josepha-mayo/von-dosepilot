@@ -1,0 +1,47 @@
+{
+  "schema": "dosepilot.reviewer_path_release.v2",
+  "status": "PASS",
+  "as_of_date": "2026-10-04",
+  "role": "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY",
+  "predecessor": {
+    "path": "evidence/reviewer_path_release_20261003.json",
+    "sha256": "0a5eee0ddd02561c9b969e5ede86c1cf2291cb50b425b6b42eda0f69a59381f3",
+    "preserved_unchanged": true
+  },
+  "supersedes_reason": "The prepared Kaggle writeup now exposes the 90-second reviewer path, current report, and exact target definitions in its first resource block.",
+  "entrypoint": {
+    "path": "00_REVIEWER_START_HERE.md",
+    "sha256": "f3af18adc6993d35dc64138b08041a72466d0546916cc1b62aebf9d042460f60"
+  },
+  "bound_artifacts": {
+    "CURRENT_TECHNICAL_REPORT.md": "261d22a1af9fec4256765ba86f6979694e4c959af6cfe4e861f02cb33b10fb47",
+    "TARGET_DEFINITIONS.md": "24517c3a39343770474f39f9908fdd267d912b55bad11aa2d41420ce6517be30",
+    "docs/KAGGLE_WRITEUP.md": "55f1441f4ad8b524888633a1c1f741e1486f9e29f1ddd0ae3c6bcfa90936ba24",
+    "docs/FINALIST_AUDIT.md": "102276bc285bf4a2d0f54de98ab79a3426e3f7152db72dceaaa157557667196f",
+    "docs/DosePilot_Technical_Report_Current.pdf": "d9a7c1ca31cc66a6bae13d1fa4fb07c32cfe6135f5f9f8be0f706ce4ff734120",
+    "evidence/target_definitions_release_20261003.json": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
+    "evidence/current_technical_report_20261003.json": "e6efd0143083efc36e612ae0887ba086f94640c951aee1d523832a9da7836101",
+    "study/audits/release_preflight_current.py": "483a43241ae5fecc8dff5a8e28dfa732253f3b6ca27075a1d59ce89db655e93a",
+    "study/audits/test_release_preflight_current.py": "8eef885979b7f1802978c23d47bccdc3d70b8ba6fecba444b8830fb12227b516"
+  },
+  "review_path": {
+    "estimated_seconds": 90,
+    "current_model_mse": 0.0010582750420801538,
+    "physical_measurements_per_deployment": 64,
+    "outputs": 24,
+    "target_definition_linked": true,
+    "current_report_linked": true,
+    "negative_results_linked": true,
+    "prospective_boundary_linked": true,
+    "prepared_writeup_fast_lane_linked": true
+  },
+  "scope": {
+    "new_model_fit": false,
+    "biological_accuracy_result_created": false,
+    "independent_validation": false,
+    "protected_response_access": false,
+    "private_patient_rows_read": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  }
+}

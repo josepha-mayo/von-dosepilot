@@ -11,10 +11,13 @@
 
 ## Demo video and code
 
-**Live fictional-data demo:** https://von-dosepilot.netlify.app  
-**Demo video:** https://youtu.be/QeOGJIgx378  
-**Public code:** https://github.com/josepha-mayo/von-dosepilot  
-**Historical technical report:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/DosePilot_Technical_Report_Public.pdf  
+- **Live fictional-data demo:** https://von-dosepilot.netlify.app
+- **Demo video:** https://youtu.be/QeOGJIgx378
+- **Public code:** https://github.com/josepha-mayo/von-dosepilot
+- **90-second reviewer path:** https://github.com/josepha-mayo/von-dosepilot/blob/master/00_REVIEWER_START_HERE.md
+- **Current ten-page technical report:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/DosePilot_Technical_Report_Current.pdf
+- **Exact definitions of all 24 outputs:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/TARGET_DEFINITIONS.md
+- **Historical submitted technical report:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/DosePilot_Technical_Report_Public.pdf
 **Current judge/audit package:** [finalist audit](FINALIST_AUDIT.md) · [bandwidth-0.7 successor](BANDWIDTH_SUCCESSOR.md) · [simulated assay robustness](SIMULATED_ASSAY_ROBUSTNESS.md) · [frozen 64-row OoC treatment schedule](FROZEN_OOC_EXECUTION_MANIFEST.md) · [prospective OoC validation contract](PROSPECTIVE_OOC_VALIDATION_CONTRACT.md) · [current-model lifecycle](BANDWIDTH_LIFECYCLE.md)
 
 **Evidence history:** [structured-kernel results and recovery](STRUCTURED_KERNELS_AND_RECOVERY.md) · [historical durable lifecycle and acquisition](DURABLE_LIFECYCLE_AND_ACQUISITION.md) · [S2 spectral successor](SPECTRAL_SUCCESSOR.md) · [Protected22 execution, missingness and exposure disclosure](PROTECTED22_RESULT.md)

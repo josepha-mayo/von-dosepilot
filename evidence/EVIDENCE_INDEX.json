@@ -40,16 +40,16 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r2_20261003.json",
-      "sha256": "b0665747ba69d4871092d52211cc00ad5bdfcccab09143cc87065a6827013569"
+      "path": "evidence/frozen_ooc_release_binding_r3_20261004.json",
+      "sha256": "8467d8b3bc7ebe12cc4f3d009a5f114d9e2644106b6e71508d346fbb5a5ffb9b"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_20261003.json",
-      "sha256": "0a5eee0ddd02561c9b969e5ede86c1cf2291cb50b425b6b42eda0f69a59381f3"
+      "path": "evidence/reviewer_path_release_r2_20261004.json",
+      "sha256": "711d9fa232f56a3ca7faab7e95b5857f625e13c73220dea1cce023be6a7fbb4f"
     }
   },
   "current_technical_report": {
@@ -99,10 +99,10 @@
     "official_competition_score": null
   },
   "current_release_preflight": {
-    "path": "evidence/release_preflight_site_bound_20261003.json",
-    "sha256": "c174c27b83bf3841c384f640e09ca0495dfdcd46dd8fc7c8f9b98cbdfa246595",
-    "predecessor_path": "evidence/release_preflight_target_bound_final_20261003.json",
-    "predecessor_sha256": "b4662f2b8963a24842ae4dc1dc71fa9a7f6e4fe382b84077f193b2c485449bb5",
+    "path": "evidence/release_preflight_kaggle_fastlane_final2_20261004.json",
+    "sha256": "3e2130e267584febce82ecd021edbb50f14b4884e5e892adfa53d97684bbe464",
+    "predecessor_path": "evidence/release_preflight_kaggle_fastlane_final_20261004.json",
+    "predecessor_sha256": "ab3b1f44b222f214f02686bb4e9dd8e7452675e172211ae6c4d6db78b8411695",
     "schema": "dosepilot.current_release_preflight.v1",
     "status": "PASS",
     "check_count": 14,
