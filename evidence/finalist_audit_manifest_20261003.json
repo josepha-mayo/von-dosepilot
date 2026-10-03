@@ -1,0 +1,70 @@
+{
+  "schema": "dosepilot.finalist_audit_manifest.v1",
+  "as_of_utc": "2026-10-03T17:15:00Z",
+  "source_commit_at_manifest_creation": "2745e9d09c03776af7e3044765a8b76944aff3d8",
+  "current_model": {
+    "model_kind": "dosepilot.additive_kernel_bandwidth.v1",
+    "bandwidth_multiplier": 0.7,
+    "mse": 0.0010582750420801538,
+    "p90_rmse": 0.0378942853087202,
+    "patient_wins_vs_additive": 38,
+    "fold_wins_vs_additive": 5,
+    "patient_wins_vs_r13": 49,
+    "patient_wins_vs_r18": 47,
+    "target_nonworse_vs_additive": 14
+  },
+  "evaluation_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "split_unit": "whole_patient",
+    "outer_folds": 5,
+    "inner_folds": 3,
+    "physical_wells_per_deployment": 64,
+    "plate_wells_per_deployment": [
+      32,
+      32
+    ],
+    "orientation_semantics": "A and B are alternative 64-well deployments. Score losses separately and average losses. Never average A/B predictions.",
+    "inference_access": "One deployed orientation supplies exactly its own 64 identified purchased values. Evaluation targets are scoring-only.",
+    "controls_accounting": "Controls are outside the stated treatment-well budget and must be declared separately."
+  },
+  "reproduction": {
+    "command": "python study/hybrid_residual/reproduce_bandwidth.py --curves reconstructed_train/train_curves.csv --output bandwidth_replay --fit-final",
+    "public_input_replay": "PASS",
+    "old_prediction_input": false,
+    "private_metadata_kit_used": false,
+    "runtime_record_checks": 238,
+    "runtime_max_prediction_difference": 2.220446049250313e-16,
+    "single_missing_positions_checked": 64,
+    "all_missing_cases_withheld": true
+  },
+  "limitations": {
+    "repeated_adaptive_development": true,
+    "independent_validation": false,
+    "protected22_used": false,
+    "official_competition_score": null,
+    "target_regressions_vs_additive": [
+      "Afatinib",
+      "Bemcentinib",
+      "Encorafenib",
+      "Idasanutlin",
+      "LCL161",
+      "Lapatinib",
+      "Regorafenib",
+      "SN-38",
+      "Trametinib",
+      "Volasertib"
+    ],
+    "selection_corrected_interval": false
+  },
+  "pinned_sha256": {
+    "bandwidth_receipt": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758",
+    "evidence_index": "15a721ba8dfdd97250bbbf862695746ed3efb8849e9aba52a61c133421fb6908",
+    "kaggle_writeup": "2abc47a63fbbb48362665464fe055b1e93ea65c784a4bc23c353acf6fa25ed34",
+    "bandwidth_method": "30723fbc8f6843c200891e14e5fb254e707298fa5514b668c4f005a4562edb30",
+    "bandwidth_inference": "9d21905b4d9d03b639b895ce01e6fe891a8afad78ee3ad908887fa11467d9cb8",
+    "bandwidth_reproduction": "d38527761bcc21c6de61a4e93f69665294792f1b1bdff28efb2fa3f1149cc2e4",
+    "target_delta_csv": "f4a6e270329bfdf46db98b1d8051cc1bd229a3069fc26cbce05110faef4da560"
+  }
+}
