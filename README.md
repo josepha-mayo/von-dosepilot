@@ -49,13 +49,13 @@ python study/hybrid_residual/reproduce_bandwidth.py --curves reconstructed_train
 
 The public replay runner has reproduced the bandwidth-successor, previous additive and R13 scores from the hash-bound public-derived TRAIN input without historical predictions. Final construction selected spectral fraction 0.1 and ridge 1.0. Construction is not another validation result. Generated kernel model archives contain fitted training features and must remain private.
 
-The promoted bandwidth-0.7 archive has an identity-checked all-input inference backend, but it is **not yet integrated** into the durable `commit` / `recover` / `predict` CLI. That lifecycle currently targets the previous additive-1.0 model. Do not present a predecessor lifecycle run as operation of the bandwidth successor. The legacy entry points remain available but are not silently migrated into the durable contract.
+The promoted bandwidth-0.7 archive now has its own durable `commit` / `recover` / `predict` adapter at `study/durable_runtime/bandwidth_lifecycle.py`. It requires a **fresh bandwidth-specific commitment**; predecessor additive-1.0 commitments are not silently migrated. Missing-input recovery still exposes only separately labelled older own-drug baseline heads, never a partial bandwidth prediction. [Current-model lifecycle](docs/BANDWIDTH_DURABLE_LIFECYCLE.md).
 
 ## Reliability and measured speed
 
 The previous additive-1.0 runtime publishes complete JSON records without overwriting existing evidence, serializes cooperating processes working on the same measurement frame and recovers after a worker exits. Its compiled prediction calculation was measured at **6.9165 to 3.2947 milliseconds per warm request**, a **2.10x speedup** including identity checks but excluding model loading, file I/O, ledger synchronization and training. This speed result does not describe the bandwidth-0.7 backend and is not an end-to-end CLI speedup claim.
 
-**55 durable-runtime tests pass**, including concurrency, process interruption and automatic recovery-history checks. Nine separate new acquisition tests pass, and an independent arithmetic implementation checked 713 numerical/acquisition comparison groups. These are software checks, not additional biological samples.
+**63 durable-runtime tests pass**: the previous 55 cases plus eight bandwidth-specific lifecycle tests, including exact current-model prediction parity, explicit baseline-only recovery, observation-history enforcement, and model-family separation. Nine separate new acquisition tests pass, and an independent arithmetic implementation checked 713 numerical/acquisition comparison groups. These are software checks, not additional biological samples.
 
 Run the response-free release preflight—which checks the evidence index, durable runtime, bandwidth successor, acquisition, structured kernels, residual-alignment unit tests, organ-on-chip constraint compiler and fictional lifecycle demo—with a fresh output path:
 
