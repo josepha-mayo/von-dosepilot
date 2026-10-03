@@ -1,0 +1,23 @@
+{
+  "schema": "dosepilot.public_release_preflight.v1",
+  "utc": "2026-10-03T08:04:04.216814+00:00",
+  "status": "PASS",
+  "checks": [
+    {"name": "evidence", "status": "PASS", "canonical_receipts": 7},
+    {"name": "audit_tests", "status": "PASS", "tests": 21},
+    {"name": "durable_runtime", "status": "PASS", "tests": 55},
+    {"name": "acquisition", "status": "PASS", "tests": 9},
+    {"name": "structured_kernels", "status": "PASS", "tests": 12},
+    {"name": "aligned_additive", "status": "PASS", "tests": 9},
+    {"name": "ooc_compiler", "status": "PASS", "tests": 17},
+    {"name": "fictional_lifecycle_demo", "status": "PASS", "cli_invocations": 6}
+  ],
+  "orchestrated_test_count": 123,
+  "preflight_runner_unit_tests_separately_passed": 2,
+  "exact_local_preflight_sha256": "1c228856f28f42a2a2cf4bcb61bc023b714dfaee8224a8b412f03d41f876e794",
+  "preflight_source_sha256": "78a21e489976bddebbe62bfa55248d56a549187ba47cdf40eecd92f49603338e",
+  "private_or_protected_inputs_read": false,
+  "biological_accuracy_result_created": false,
+  "accepted_kaggle_entry_changed": false,
+  "official_competition_score": null
+}

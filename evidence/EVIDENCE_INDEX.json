@@ -1,6 +1,6 @@
 {
   "schema": "dosepilot.evidence_index.v1",
-  "as_of_date": "2026-10-02",
+  "as_of_date": "2026-10-03",
   "cross_study_raw_mse_comparison_allowed": false,
   "canonical_receipts": {
     "protected22_access": {
@@ -18,6 +18,18 @@
     "spectral_successor": {
       "path": "evidence/spectral_successor_20261001.json",
       "sha256": "71e1de87f55010579c0b2e6f59fe408813ef039a5310d1ebdba0d9f3b99bceaa"
+    },
+    "structured_additive": {
+      "path": "evidence/structured_kernels_recovery_20261002.json",
+      "sha256": "95651af89e64f12b771b23f202a8824430d965aec124a798c81c6a929e792af6"
+    },
+    "lifecycle_acquisition": {
+      "path": "evidence/lifecycle_acquisition_20261002.json",
+      "sha256": "7dc4b086a5609d7ce7cefcbb17231bddbb029ae413c15fe734649f42b9c799a2"
+    },
+    "aligned_additive": {
+      "path": "evidence/aligned_additive_20261003.json",
+      "sha256": "fca4fff12f931caa9dbc4c70f5ebc05668a743f18f7fac0fa3e030a99581a550"
     }
   },
   "protected22": {
@@ -93,5 +105,72 @@
     "patient_wins_vs_r18": 47,
     "fold_wins_vs_each": 5,
     "passes_internal_gate_vs_r13_and_r18": true
+  },
+  "additive_incumbent": {
+    "population": {
+      "samples": 119,
+      "patients": 59,
+      "targets": 24,
+      "physical_wells_per_alternative": 64,
+      "per_plate": 32
+    },
+    "role": "REPEATED_ADAPTIVE_DEVELOPMENT",
+    "mse": 0.001060552730112811,
+    "p90_rmse": 0.03807311159996259,
+    "relative_gain_vs_s2": 0.008962546963360074,
+    "patient_wins_vs_s2": 45,
+    "fold_wins_vs_s2": 5,
+    "relative_gain_vs_r13": 0.07363874043232255,
+    "patient_wins_vs_r13": 49,
+    "relative_gain_vs_r18": 0.07083558815032764,
+    "patient_wins_vs_r18": 47,
+    "independent_validation": false,
+    "protected22_used": false,
+    "official_competition_score": null,
+    "current_internal_incumbent": true
+  },
+  "raw_ak_challenger": {
+    "status": "COMPLETE",
+    "decision": "REJECT_RETAIN_ADDITIVE",
+    "role": "REPEATED_ADAPTIVE_DEVELOPMENT_NEGATIVE_RESULT",
+    "mse": 0.0010608377525825187,
+    "additive_reference_mse": 0.001060552730112811,
+    "mse_change_percent": 0.026874898495377053,
+    "patient_wins": 24,
+    "patient_losses": 23,
+    "patient_ties": 12,
+    "fold_wins": 2,
+    "p90_nonworse": false,
+    "target_regressions": 12,
+    "patient_regressions": 23,
+    "passes_incumbent_gate": false,
+    "automatic_retry": false,
+    "independent_validation": false,
+    "protected_response_access": false,
+    "official_competition_score": null
+  },
+  "durable_lifecycle": {
+    "role": "ENGINEERING_AND_REPRODUCIBILITY_EVIDENCE",
+    "policy": "dosepilot.durable_complete_lifecycle.v1",
+    "commands": [
+      "commit",
+      "recover",
+      "predict"
+    ],
+    "durable_runtime_tests": 55,
+    "single_missing_primary_predictions": 0,
+    "single_missing_baseline_estimates": 23,
+    "affected_head_withheld": true,
+    "missing_value_imputation": false,
+    "automatic_recovery_history_check_on_predict": true,
+    "tested_platform": "local POSIX filesystem",
+    "physical_power_loss_certification": false,
+    "noncooperating_manual_edits_prevented": false,
+    "warm_prediction_speedup": 2.0993097659003555,
+    "end_to_end_cli_speedup_claimed": false,
+    "new_biological_accuracy_improvement": false,
+    "accepted_kaggle_entry_changed": false,
+    "protected_data_status_changed": false,
+    "official_competition_score": null
   }
 }

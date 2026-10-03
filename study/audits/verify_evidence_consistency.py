@@ -22,11 +22,14 @@ PINNED_RECEIPTS = {
     "protected22_completed": "0bf74c4398c73e22cdb67cd1080a70a97c0607ab944cfbb7eb0eaf2a412fd7ba",
     "protected22_prior_incomplete": "7393b0de4fdd8a34191ea1afe1822d3a7f7a042db6ab84f35160be739a9e204f",
     "spectral_successor": "71e1de87f55010579c0b2e6f59fe408813ef039a5310d1ebdba0d9f3b99bceaa",
+    "structured_additive": "95651af89e64f12b771b23f202a8824430d965aec124a798c81c6a929e792af6",
+    "lifecycle_acquisition": "7dc4b086a5609d7ce7cefcbb17231bddbb029ae413c15fe734649f42b9c799a2",
+    "aligned_additive": "fca4fff12f931caa9dbc4c70f5ebc05668a743f18f7fac0fa3e030a99581a550",
 }
 
 PINNED_DOCUMENTS = {
-    "docs/EVIDENCE_LEDGER.md": "2f4f56df93cde210c68e0c09b62c8e0d915b62035c59e9866fd0f117a10d1599",
-    "docs/KAGGLE_WRITEUP.md": "e7807b78879cf7697710ccaaac525937f4570797a65479a0d6ffb71c56435f57",
+    "docs/EVIDENCE_LEDGER.md": "d64bb4fb24fdf4bba2b231416fdc46baa65887afadf89850a56c35840e561df5",
+    "docs/KAGGLE_WRITEUP.md": "1823965ee93f86ce7e86479ae94bb7f0589d474bf69368e7acd39b4015ba81af",
 }
 
 
@@ -51,7 +54,7 @@ def verify(root, enforce_pins=True):
     index = load(root / "evidence/EVIDENCE_INDEX.json")
     if index.get("schema") != "dosepilot.evidence_index.v1":
         raise EvidenceError("INDEX_SCHEMA")
-    if index.get("as_of_date") != "2026-10-02":
+    if index.get("as_of_date") != "2026-10-03":
         raise EvidenceError("INDEX_DATE")
     if index.get("cross_study_raw_mse_comparison_allowed") is not False:
         raise EvidenceError("CROSS_STUDY_MSE_RULE")
@@ -70,6 +73,9 @@ def verify(root, enforce_pins=True):
     completed = receipts["protected22_completed"]
     prior = receipts["protected22_prior_incomplete"]
     spectral = receipts["spectral_successor"]
+    structured = receipts["structured_additive"]
+    lifecycle = receipts["lifecycle_acquisition"]
+    aligned = receipts["aligned_additive"]
     normalized = index["protected22"]
     same(
         normalized["future_interpretation"],
@@ -204,14 +210,124 @@ def verify(root, enforce_pins=True):
     )
     same(spectral_index["passes_internal_gate_vs_r13_and_r18"], all_gates, "INDEX_S2_GATE")
 
+    # The current internal incumbent and its two later uses must agree across
+    # independently pinned aggregate receipts.  These are same-task Lib1
+    # development comparisons, never cross-study or external validation.
+    same(structured["schema"], "dosepilot.structured_research_and_explicit_recovery.v1", "ADDITIVE_SCHEMA")
+    research = structured["research"]
+    additive_mse = research["mse"]["recovered_additive_control"]
+    additive_p90 = research["p90_rmse"]["additive"]
+    same(additive_mse, 0.001060552730112811, "ADDITIVE_MSE", 1e-15)
+    same(research["new_independent_validation"], False, "ADDITIVE_NOT_INDEPENDENT")
+    same(structured["protected_lib2_accessed"], False, "ADDITIVE_NO_LIB2")
+    same(structured["official_score"], None, "ADDITIVE_NO_OFFICIAL_SCORE")
+
+    additive_index = index["additive_incumbent"]
+    same(
+        additive_index["population"],
+        {
+            "samples": research["cohort"]["samples"],
+            "patients": research["cohort"]["whole_patients"],
+            "targets": research["cohort"]["targets"],
+            "physical_wells_per_alternative": research["cohort"]["physical_wells_per_alternative"],
+            "per_plate": research["cohort"]["per_plate"],
+        },
+        "INDEX_ADDITIVE_FRAME",
+    )
+    same(additive_index["role"], "REPEATED_ADAPTIVE_DEVELOPMENT", "INDEX_ADDITIVE_ROLE")
+    same(additive_index["mse"], additive_mse, "INDEX_ADDITIVE_MSE", 1e-15)
+    same(additive_index["p90_rmse"], additive_p90, "INDEX_ADDITIVE_P90", 1e-15)
+    for reference, index_suffix in (("s2", "s2"), ("r13", "r13"), ("r18", "r18")):
+        comparison = research["recovered_additive_control"]["vs_" + reference]
+        same(
+            additive_index["relative_gain_vs_" + index_suffix],
+            comparison["relative_gain_percent"] / 100.0,
+            "INDEX_ADDITIVE_GAIN_" + reference.upper(),
+            1e-15,
+        )
+        same(
+            additive_index["patient_wins_vs_" + index_suffix],
+            comparison["patient_wins"],
+            "INDEX_ADDITIVE_WINS_" + reference.upper(),
+        )
+        same(comparison["fold_wins"], 5, "ADDITIVE_FOLDS_" + reference.upper())
+        pass_key = "all_successor_clauses_passed" if reference == "s2" else "all_original_clauses_passed"
+        same(comparison[pass_key], True, "ADDITIVE_GATE_" + reference.upper())
+    same(additive_index["fold_wins_vs_s2"], research["recovered_additive_control"]["vs_s2"]["fold_wins"], "INDEX_ADDITIVE_FOLDS")
+    same(additive_index["independent_validation"], False, "INDEX_ADDITIVE_NOT_INDEPENDENT")
+    same(additive_index["protected22_used"], False, "INDEX_ADDITIVE_NO_LIB2")
+    same(additive_index["official_competition_score"], None, "INDEX_ADDITIVE_NO_SCORE")
+    same(additive_index["current_internal_incumbent"], True, "INDEX_ADDITIVE_INCUMBENT")
+
+    same(aligned["schema"], "dosepilot.residual_alignment_additive.v1", "RAW_AK_SCHEMA")
+    same(aligned["status"], "COMPLETE", "RAW_AK_STATUS")
+    same(aligned["decision"], "REJECT_RETAIN_ADDITIVE", "RAW_AK_DECISION")
+    same(aligned["metrics"]["additive"]["mse"], additive_mse, "RAW_AK_ADDITIVE_REFERENCE", 1e-15)
+    same(aligned["metrics"]["raw_ak"]["mse"] > additive_mse, True, "RAW_AK_NOT_LOWER")
+    same(aligned["raw_ak_vs_additive"]["passes_all"], False, "RAW_AK_GATE_FAILED")
+    same(all(value is False for value in aligned["raw_ak_vs_additive"]["gate"].values()), True, "RAW_AK_ALL_CLAUSES_FAILED")
+    same(aligned["repeated_adaptive_development"], True, "RAW_AK_REPEATED_DEVELOPMENT")
+    same(aligned["independent_validation"], False, "RAW_AK_NOT_INDEPENDENT")
+    same(aligned["protected_response_access"], False, "RAW_AK_NO_PROTECTED")
+    same(aligned["official_competition_score"], None, "RAW_AK_NO_SCORE")
+    raw_index = index["raw_ak_challenger"]
+    same(raw_index["status"], aligned["status"], "INDEX_RAW_AK_STATUS")
+    same(raw_index["decision"], aligned["decision"], "INDEX_RAW_AK_DECISION")
+    same(raw_index["role"], "REPEATED_ADAPTIVE_DEVELOPMENT_NEGATIVE_RESULT", "INDEX_RAW_AK_ROLE")
+    same(raw_index["mse"], aligned["metrics"]["raw_ak"]["mse"], "INDEX_RAW_AK_MSE", 1e-15)
+    same(raw_index["additive_reference_mse"], aligned["metrics"]["additive"]["mse"], "INDEX_RAW_AK_REFERENCE", 1e-15)
+    same(raw_index["mse_change_percent"], aligned["raw_ak_vs_additive"]["mse_change_percent"], "INDEX_RAW_AK_CHANGE", 1e-15)
+    for key in ("patient_wins", "patient_losses", "patient_ties", "fold_wins"):
+        same(raw_index[key], aligned["raw_ak_vs_additive"][key], "INDEX_RAW_AK_" + key.upper())
+    same(raw_index["p90_nonworse"], aligned["raw_ak_vs_additive"]["gate"]["p90_nonworse"], "INDEX_RAW_AK_P90")
+    same(raw_index["target_regressions"], len(aligned["target_regressions_vs_additive"]), "INDEX_RAW_AK_TARGET_REGRESSIONS")
+    same(raw_index["patient_regressions"], aligned["patient_regression_count_vs_additive"], "INDEX_RAW_AK_PATIENT_REGRESSIONS")
+    same(raw_index["passes_incumbent_gate"], aligned["raw_ak_vs_additive"]["passes_all"], "INDEX_RAW_AK_GATE")
+    same(raw_index["automatic_retry"], aligned["automatic_retry"], "INDEX_RAW_AK_NO_RETRY")
+    same(raw_index["independent_validation"], aligned["independent_validation"], "INDEX_RAW_AK_NOT_INDEPENDENT")
+    same(raw_index["protected_response_access"], aligned["protected_response_access"], "INDEX_RAW_AK_NO_PROTECTED")
+    same(raw_index["official_competition_score"], aligned["official_competition_score"], "INDEX_RAW_AK_NO_SCORE")
+
+    same(lifecycle["schema"], "dosepilot.durable_lifecycle_and_acquisition.v1", "LIFECYCLE_SCHEMA")
+    same(lifecycle["accuracy_incumbent"]["mse"], additive_mse, "LIFECYCLE_ADDITIVE_REFERENCE", 1e-15)
+    same(lifecycle["accuracy_incumbent"]["unchanged"], True, "LIFECYCLE_ACCURACY_UNCHANGED")
+    lifecycle_record = lifecycle["new_lifecycle"]
+    lifecycle_index = index["durable_lifecycle"]
+    same(lifecycle_index["role"], "ENGINEERING_AND_REPRODUCIBILITY_EVIDENCE", "INDEX_LIFECYCLE_ROLE")
+    same(lifecycle_index["policy"], lifecycle_record["policy"], "INDEX_LIFECYCLE_POLICY")
+    same(lifecycle_index["commands"], lifecycle_record["commands"], "INDEX_LIFECYCLE_COMMANDS")
+    same(lifecycle_index["durable_runtime_tests"], lifecycle["tests"]["durable_runtime_suite_including_previous_cases"], "INDEX_LIFECYCLE_TESTS")
+    same(lifecycle_index["single_missing_primary_predictions"], lifecycle_record["missing_case_primary_predictions"], "INDEX_LIFECYCLE_PRIMARY_WITHHELD")
+    same(lifecycle_index["single_missing_baseline_estimates"], lifecycle_record["single_missing_baseline_estimates"], "INDEX_LIFECYCLE_BASELINES")
+    for index_key, receipt_key in (
+        ("affected_head_withheld", "affected_head_withheld"),
+        ("missing_value_imputation", "missing_value_imputation"),
+        ("automatic_recovery_history_check_on_predict", "automatic_recovery_history_check_on_predict"),
+        ("tested_platform", "tested_platform"),
+        ("physical_power_loss_certification", "physical_power_loss_certification"),
+        ("noncooperating_manual_edits_prevented", "noncooperating_manual_edits_prevented"),
+    ):
+        same(lifecycle_index[index_key], lifecycle_record[receipt_key], "INDEX_LIFECYCLE_" + index_key.upper())
+    same(lifecycle_index["warm_prediction_speedup"], lifecycle["recovered_compiled_runtime"]["speedup"], "INDEX_LIFECYCLE_SPEEDUP", 1e-15)
+    same(lifecycle_index["end_to_end_cli_speedup_claimed"], lifecycle["recovered_compiled_runtime"]["end_to_end_cli_speedup_claimed"], "INDEX_LIFECYCLE_NOT_CLI_SPEED")
+    for key in ("new_biological_accuracy_improvement", "accepted_kaggle_entry_changed", "protected_data_status_changed"):
+        same(lifecycle_index[key], lifecycle[key], "INDEX_LIFECYCLE_" + key.upper())
+    same(lifecycle_index["official_competition_score"], lifecycle["official_score"], "INDEX_LIFECYCLE_NO_SCORE")
+
     for relative_path, expected_hash in PINNED_DOCUMENTS.items():
         if sha(root / relative_path) != expected_hash:
             raise EvidenceError("PINNED_DOCUMENT_HASH: " + relative_path)
     ledger = (root / "docs/EVIDENCE_LEDGER.md").read_text()
     ledger_required = [
-        "Reconciled 2 October 2026",
+        "Reconciled 3 October 2026",
         "Completed Protected22 missingness execution",
         "S2 spectral residual successor",
+        "Additive drug-group kernel incumbent",
+        "MSE 0.0010605527 is 0.8963% below S2",
+        "Residual-alignment additive challenger",
+        "MSE 0.0010608378 is 0.0269% worse than additive",
+        "Durable additive lifecycle",
+        "Engineering/reproducibility evidence only",
         "All 61 PDOs and 31 patients are exposed",
         "no estimable frozen full-cohort Lib2 primary",
         "conditional diagnostic",
@@ -229,8 +345,16 @@ def verify(root, enforce_pins=True):
     writeup_required = [
         "S2 spectral residual successor",
         "0.0010701439",
-        "6.53% below R13 and 6.24% below",
-        "49/59 patient means versus R13 and 47/59 versus R18",
+        "0.0010605527",
+        "0.8963% below S2, 7.3639% below R13 and 7.0836% below",
+        "45/59 patient means versus S2, 49/59 versus R13 and 47/59 versus R18",
+        "0.0010608378",
+        "0.0269% worse than additive",
+        "24/59 patient wins, 2/5 favorable folds, worse p90",
+        "current durable additive lifecycle",
+        "23 unaffected estimates when one reading is missing",
+        "additive primary itself requires all 64 readings",
+        "not another biological accuracy test",
         "19,642",
         "primary is **NOT_ESTIMABLE**",
         "54 PDOs from 29 patients",
@@ -244,6 +368,9 @@ def verify(root, enforce_pins=True):
     forbidden = [
         "S2 is independent prospective confirmation",
         "S2 is an official competition score",
+        "The additive incumbent is independent validation",
+        "The residual-alignment challenger is promoted",
+        "The durable lifecycle is new biological evidence",
         "Protected22 confirmation passed",
     ]
     for phrase in forbidden:
@@ -254,6 +381,9 @@ def verify(root, enforce_pins=True):
         "canonical_receipts": len(receipts),
         "protected22_cells_reconciled": cells["authorized_cells"],
         "spectral_mse": spectral["metrics"]["r13_soft"]["mse"],
+        "additive_incumbent_mse": additive_mse,
+        "raw_ak_decision": aligned["decision"],
+        "durable_runtime_tests": lifecycle["tests"]["durable_runtime_suite_including_previous_cases"],
         "private_arrays_read": False,
     }
 

@@ -40,10 +40,20 @@ class EvidenceConsistencyTests(unittest.TestCase):
         index["canonical_receipts"][name]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
         (self.root / "evidence/EVIDENCE_INDEX.json").write_text(json.dumps(index, indent=2) + "\n")
 
+    def mutate_index(self, mutation):
+        path = self.root / "evidence/EVIDENCE_INDEX.json"
+        value = json.loads(path.read_text())
+        mutation(value)
+        path.write_text(json.dumps(value, indent=2) + "\n")
+
     def test_current_state_passes(self):
         result = verify(self.root)
         self.assertEqual(result["status"], "PASS")
+        self.assertEqual(result["canonical_receipts"], 7)
         self.assertEqual(result["protected22_cells_reconciled"], 19642)
+        self.assertAlmostEqual(result["additive_incumbent_mse"], 0.001060552730112811)
+        self.assertEqual(result["raw_ak_decision"], "REJECT_RETAIN_ADDITIVE")
+        self.assertEqual(result["durable_runtime_tests"], 55)
 
     def test_changed_receipt_byte_fails_hash(self):
         path = self.root / "evidence/PROTECTED22_ACCESS_STATUS.json"
@@ -104,6 +114,61 @@ class EvidenceConsistencyTests(unittest.TestCase):
         path.write_text(json.dumps(value, indent=2) + "\n")
         with self.assertRaises(EvidenceError):
             verify(self.root)
+
+    def test_index_cannot_replace_additive_incumbent(self):
+        self.mutate_index(
+            lambda value: value["additive_incumbent"].update(
+                {"mse": 9.0, "current_internal_incumbent": False}
+            )
+        )
+        with self.assertRaisesRegex(EvidenceError, "INDEX_ADDITIVE"):
+            verify(self.root)
+
+    def test_index_cannot_promote_raw_ak(self):
+        self.mutate_index(
+            lambda value: value["raw_ak_challenger"].update(
+                {"decision": "PROMOTE", "passes_incumbent_gate": True}
+            )
+        )
+        with self.assertRaisesRegex(EvidenceError, "INDEX_RAW_AK"):
+            verify(self.root)
+
+    def test_index_cannot_turn_lifecycle_into_biological_evidence(self):
+        self.mutate_index(
+            lambda value: value["durable_lifecycle"].update(
+                {
+                    "role": "INDEPENDENT_BIOLOGICAL_VALIDATION",
+                    "new_biological_accuracy_improvement": True,
+                    "end_to_end_cli_speedup_claimed": True,
+                }
+            )
+        )
+        with self.assertRaisesRegex(EvidenceError, "INDEX_LIFECYCLE"):
+            verify(self.root)
+
+    def test_receipt_cannot_replace_additive_incumbent(self):
+        self.mutate_receipt(
+            "structured_additive",
+            lambda value: value["research"]["mse"].__setitem__("recovered_additive_control", 9.0),
+        )
+        with self.assertRaisesRegex(EvidenceError, "ADDITIVE_MSE"):
+            verify(self.root, enforce_pins=False)
+
+    def test_receipt_cannot_promote_raw_ak(self):
+        self.mutate_receipt(
+            "aligned_additive",
+            lambda value: value.__setitem__("decision", "PROMOTE"),
+        )
+        with self.assertRaisesRegex(EvidenceError, "RAW_AK_DECISION"):
+            verify(self.root, enforce_pins=False)
+
+    def test_receipt_cannot_expand_lifecycle_scope(self):
+        self.mutate_receipt(
+            "lifecycle_acquisition",
+            lambda value: value.__setitem__("new_biological_accuracy_improvement", True),
+        )
+        with self.assertRaisesRegex(EvidenceError, "INDEX_LIFECYCLE"):
+            verify(self.root, enforce_pins=False)
 
     def test_stale_ledger_claim_fails(self):
         path = self.root / "docs/EVIDENCE_LEDGER.md"

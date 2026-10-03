@@ -1,0 +1,131 @@
+{
+  "schema": "dosepilot.residual_alignment_additive.v1",
+  "as_of_utc": "2026-10-03T07:55:05.952013+00:00",
+  "role": "Public aggregate companion to a preserved private Lib1 development run; contains no patient rows, predictions, source workbook, or fitted biological weights",
+  "source_commit": "4ecd574681aebc91fe4fbf75c37b0c333e5fe94e",
+  "status": "COMPLETE",
+  "decision": "REJECT_RETAIN_ADDITIVE",
+  "hypothesis": "Fitting-only residual alignment can reweight the 24 additive drug-group kernels and improve held-patient error without changing acquisition.",
+  "cohort": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_wells_per_alternative": 64,
+    "per_plate": 32
+  },
+  "metrics": {
+    "raw_ak": {
+      "mse": 0.0010608377525825187,
+      "p90_rmse": 0.0381286900096395,
+      "fold_mse": [
+        0.0013921368521003423,
+        0.0008949646573261378,
+        0.0010669493802393324,
+        0.0008133731382787577,
+        0.0011436671879121593
+      ],
+      "orientation_mse": [
+        0.0011085257743383196,
+        0.0010131497308267174
+      ]
+    },
+    "additive": {
+      "mse": 0.001060552730112811,
+      "p90_rmse": 0.03807311159996259,
+      "fold_mse": [
+        0.001392763266981144,
+        0.0008973508689615259,
+        0.0010669493802393324,
+        0.0008114785018019455,
+        0.0011409188055316792
+      ],
+      "orientation_mse": [
+        0.0011083899915717312,
+        0.0010127154686538904
+      ]
+    },
+    "s2_mse": 0.0010701439454817465,
+    "r13_mse": 0.001144858681382854,
+    "r18_mse": 0.0011414048112341991
+  },
+  "raw_ak_vs_additive": {
+    "relative_gain": -0.00026874898495377053,
+    "mse_change_percent": 0.026874898495377053,
+    "patient_wins": 24,
+    "patient_losses": 23,
+    "patient_ties": 12,
+    "fold_wins": 2,
+    "descriptive_delta_ci95": [
+      -5.504810307036312e-7,
+      1.1969641503673945e-6
+    ],
+    "gate": {
+      "strictly_lower_mse": false,
+      "at_least_30_patient_wins": false,
+      "at_least_3_fold_wins": false,
+      "p90_nonworse": false
+    },
+    "passes_all": false
+  },
+  "other_comparisons": {
+    "s2": {
+      "relative_gain": 0.008696206653805216,
+      "patient_wins": 43,
+      "fold_wins": 5,
+      "passes_all": true
+    },
+    "r13": {
+      "relative_gain": 0.07338978178411315,
+      "patient_wins": 49,
+      "fold_wins": 5,
+      "passes_all": true
+    },
+    "r18": {
+      "relative_gain": 0.07058587615778789,
+      "patient_wins": 47,
+      "fold_wins": 5,
+      "passes_all": true
+    }
+  },
+  "selected_alignment_exponents_by_outer_fold": [0.5, 1.0, 0.0, 1.0, 1.0],
+  "target_regressions_vs_additive": [
+    "5-FU",
+    "Afatinib",
+    "Encorafenib",
+    "Gemcitabine",
+    "Idasanutlin",
+    "LCL161",
+    "Lapatinib",
+    "Methotrexate",
+    "Palbociclib",
+    "Panobinostat",
+    "Pevonedistat",
+    "SN-38"
+  ],
+  "patient_regression_count_vs_additive": 23,
+  "verification": {
+    "status": "PASS",
+    "arithmetic_checks": 64,
+    "selected_model_checks": 5,
+    "maximum_metric_difference": 3.3306690738754696e-16,
+    "alignment_reconstruction_max_difference": 0.0,
+    "held_patient_prediction_max_difference": 0.0,
+    "all_declared_gates_recomputed": true,
+    "model_fit_called": false
+  },
+  "exact_private_artifact_sha256": {
+    "FREEZE.json": "0513771140c6541f436c48f9108e18f5e48fbfd9076247e8bb1fdc436302cc14",
+    "RESULT.json": "53a7c45c75dbdb756994d0d405e6bd8857a1d26a00fba3fb0f63a0271424a34d",
+    "predictions_private.npz": "acfcf422fb762af248d0b52188f84438afedc71bc80974ffaae3039e7d3066a1",
+    "PREDICTIONS_COMMITTED.json": "30af52d79bd5a141f3343e0617b19866fac71790e16314964d6dd9e9d0b5c927",
+    "VERIFICATION.json": "ffe7544a4c8087ff60d67b6e57aee35c55cda320c5b79a242b0fd7e36b9a75e0"
+  },
+  "repeated_adaptive_development": true,
+  "independent_validation": false,
+  "protected_response_access": false,
+  "original_workbook_opened": false,
+  "private_arrays_or_fitted_weights_published": false,
+  "accepted_kaggle_entry_changed": false,
+  "official_competition_score": null,
+  "automatic_retry": false
+}

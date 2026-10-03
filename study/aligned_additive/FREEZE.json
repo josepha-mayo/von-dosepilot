@@ -1,0 +1,42 @@
+{
+  "schema": "dosepilot.raw_ak_freeze.v1",
+  "frozen_utc": "2026-10-03T07:51:16Z",
+  "parent_commit": "8fb2cb9d0040cf3779e3fac07d31545913834175",
+  "hypothesis": "Fitting-only centered residual alignment can reweight the 24 additive drug-group kernels and improve held-patient error without changing acquisition or target-specific rules.",
+  "automatic_retry": false,
+  "source": {
+    "PROTOCOL.md": "de2f80f22bd925d0cb73f7c480d4448bf8f3c5494d1ee0ef31ff3a872a0c910a",
+    "aligned_additive_kernel.py": "60cff1499577cb79aa5e962b9c9d3abd04d0a54ae8f3a691f2c449f5eaa3a9fe",
+    "run_study.py": "2415be9ecf4b42306a1c21b759a5bffe44c3922a6f203b16652738bf95895d95",
+    "test_aligned_additive.py": "adaa98f359809886cbbcc4bacdd1f839bd1914d55e0f6b7e224806a2b5231297",
+    "verify_study.py": "de8fc0499b426ea490a2ff667a4edb7a346bd837aaaf85ccc4c7ed1e514ddc28"
+  },
+  "parent_source": {
+    "hybrid_residual/additive_kernel.py": "683004e39904c6648c0283395697c914903e78db60a7e98f90362dc8b2c49b1a",
+    "hybrid_residual/kernel_spectral.py": "869bfc27cb72afe644f2e85ee5d255004e2afcf8b765b4cc56d8cd7d8927131e",
+    "acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e",
+    "engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "engine/evaluate.py": "24593a7d8608fd3ce98c367e1760af596b3b33554c1ef7a3f8ac645b046b700b",
+    "STUDY_LOCK.json": "8118b562b78b3f55866d6239a38280c942df2c7d81f0b7c4ce71ba0e39ce9ffc"
+  },
+  "cache_sha256": "2ccd4995699417db72316c8f403095b8ef560f94913b0c8a80fe7429a2d0cbef",
+  "r18_sha256": "253998d20b9425c4ceade4269b94f4ed97cb7039ac5ec60838bb15794d47a6e2",
+  "cohort": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "wells_per_alternative": 64,
+    "per_plate": 32
+  },
+  "candidate_option_order": [
+    "identity",
+    "eta increasing in [0,0.5,1]",
+    "fraction increasing in [0.1,0.3,0.6]",
+    "ridge increasing in [0.1,1,10]"
+  ],
+  "bootstrap_seed": 20261003,
+  "protected_response_access": false,
+  "original_workbook_access": false,
+  "independent_validation": false
+}
