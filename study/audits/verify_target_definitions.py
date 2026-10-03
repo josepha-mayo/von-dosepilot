@@ -1,5 +1,3 @@
-[Reading 139 lines from start (total: 139 lines, 0 remaining)]
-
 #!/usr/bin/env python3
 """Response-free verifier for the public DosePilot target-definition contract."""
 from __future__ import annotations
