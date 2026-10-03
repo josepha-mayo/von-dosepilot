@@ -1,3 +1,5 @@
+[Reading 182 lines from start (total: 182 lines, 0 remaining)]
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,7 +14,7 @@
   <header class="nav wrap">
     <a class="brand" href="#top"><span class="mark">v</span><span>von DosePilot</span></a>
     <nav>
-      <a href="#demo">Demo</a><a href="#evidence">Evidence</a><a href="#limits">Limits</a>
+      <a href="#demo">Demo</a><a href="#evidence">Evidence</a><a href="#research-log">Research log</a><a href="#limits">Limits</a>
       <a class="gh" href="https://github.com/josepha-mayo/von-dosepilot" target="_blank" rel="noreferrer">GitHub ↗</a>
     </nav>
   </header>
@@ -30,9 +32,9 @@
     </section>
 
     <section class="metrics wrap" aria-label="Verified development metrics">
-      <article><small>Current dev MSE ↓</small><strong>0.00106055</strong><span>Additive kernel, 119 samples / 59 patients</span></article>
-      <article><small>vs original R13</small><strong>−7.36%</strong><span>Same 24 targets and 64-well budget</span></article>
-      <article><small>vs S2</small><strong>45 / 59</strong><span>Patient-average wins, 5 / 5 folds</span></article>
+      <article><small>Current dev MSE ↓</small><strong>0.00105828</strong><span>Additive kernel, 119 samples / 59 patients</span></article>
+      <article><small>vs original R13</small><strong>−7.56%</strong><span>Same 24 targets and 64-well budget</span></article>
+      <article><small>vs S2</small><strong>47 / 59</strong><span>Patient-average wins, 5 / 5 folds</span></article>
       <article><small>Warm prediction</small><strong>2.10×</strong><span>Compiled implementation; not end-to-end CLI</span></article>
     </section>
 
@@ -86,7 +88,7 @@
           <table>
             <tr><td>Original R13</td><td>0.0011448587</td></tr>
             <tr><td>S2 spectral</td><td>0.0010701439</td></tr>
-            <tr class="best"><td>Additive kernel</td><td>0.0010605527</td></tr>
+            <tr class="best"><td>Bandwidth-0.7 additive</td><td>0.0010582750</td></tr>
           </table>
           <p>All use the same 119 samples, 59 whole patients, 24 targets and 64 physical treatment wells per deployment alternative.</p>
         </article>
@@ -105,6 +107,58 @@
           </ul>
         </article>
       </div>
+    </section>
+
+    <section class="section wrap" id="research-log">
+      <div class="section-head">
+        <div><div class="eyebrow">RESEARCH LEDGER • NO CHERRY-PICKING</div><h2>The incumbent had to survive challengers.</h2></div>
+        <p>Lower mean error alone is not enough. We require patient breadth, fold breadth, tail behavior, and the original safety screen.</p>
+      </div>
+      <div class="research-ledger">
+        <article class="trial incumbent">
+          <div class="trial-top"><span class="trial-badge keep">KEEP</span><code>0.0010582750</code></div>
+          <h3>Bandwidth-0.7 additive kernel</h3>
+          <p>Current verified development benchmark. The same additive family with a narrower global Gaussian group lengthscale. 38/59 patient wins versus the prior additive model, 5/5 folds, and better p90 at the same 64-well budget.</p>
+          <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/BANDWIDTH_SUCCESSOR.md" target="_blank" rel="noreferrer">Evidence ↗</a>
+        </article>
+        <article class="trial">
+          <div class="trial-top"><span class="trial-badge rule">PREVIOUS</span><code>0.0010605527</code></div>
+          <h3>Additive drug-group kernel</h3>
+          <p>Former incumbent. The bandwidth successor improves 38/59 patient means, all five outer folds, and p90 without changing the physical plan.</p>
+          <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/STRUCTURED_KERNELS_AND_RECOVERY.md" target="_blank" rel="noreferrer">Earlier evidence ↗</a>
+        </article>
+        <article class="trial">
+          <div class="trial-top"><span class="trial-badge reject">REJECT</span><code>0.0010608378</code></div>
+          <h3>Residual-alignment reweighting</h3>
+          <p>Only 24/59 patient wins, 2/5 favorable folds, and worse p90. A tiny point estimate is not a promotion.</p>
+          <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/evidence/aligned_additive_20261003.json" target="_blank" rel="noreferrer">Receipt ↗</a>
+        </article>
+        <article class="trial">
+          <div class="trial-top"><span class="trial-badge reject">REJECT</span><code>0.0010665434</code></div>
+          <h3>Multioutput dose-selection sweep</h3>
+          <p>Training proxy improved, held-patient performance did not: 21/59 wins and worse p90. The selector kept the incumbent in every fold.</p>
+          <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/DURABLE_LIFECYCLE_AND_ACQUISITION.md#1-new-acquisition-experiment-rejected" target="_blank" rel="noreferrer">Evidence ↗</a>
+        </article>
+        <article class="trial">
+          <div class="trial-top"><span class="trial-badge reject">REJECT</span><code>0.0011461852</code></div>
+          <h3>Matérn nonlinear challenger</h3>
+          <p>Worse than the matching ridge control. Frozen protocol, negative result retained.</p>
+          <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/R34_NEGATIVE_RESULT.md" target="_blank" rel="noreferrer">Negative result ↗</a>
+        </article>
+        <article class="trial warning">
+          <div class="trial-top"><span class="trial-badge incomplete">NOT ESTIMABLE</span><code>61 PDO / 31 patients</code></div>
+          <h3>Protected22 transfer study</h3>
+          <p>Five required responses were nonnumeric, so the full primary could not be estimated. Prior exposure also prevents an untouched-confirmation claim.</p>
+          <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/PROTECTED22_RESULT.md" target="_blank" rel="noreferrer">Disclosure ↗</a>
+        </article>
+        <article class="trial methodology">
+          <div class="trial-top"><span class="trial-badge rule">RULE</span><code>promotion ≠ lowest decimal</code></div>
+          <h3>Promotion contract</h3>
+          <p>A challenger must improve mean error, enough patient means, enough outer folds, and p90 while preserving the historical R13/R18 screen.</p>
+          <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/evidence/EVIDENCE_INDEX.json" target="_blank" rel="noreferrer">Evidence index ↗</a>
+        </article>
+      </div>
+      <div class="ledger-note">This site summarizes public receipts. Development hypotheses continued after these records, but unpublished local experiments are not presented as validated results here.</div>
     </section>
 
     <section class="section wrap" id="limits">
