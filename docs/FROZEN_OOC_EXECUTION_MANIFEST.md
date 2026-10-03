@@ -1,5 +1,3 @@
-[Reading 99 lines from start (total: 99 lines, 0 remaining)]
-
 # Frozen bandwidth treatment schedule for prospective organ-on-chip binding
 
 **Status: exact treatment schedule frozen; chip/device binding is intentionally unresolved. No organ-on-chip experiment has been executed.**
