@@ -1,5 +1,3 @@
-[Reading 150 lines from start (total: 150 lines, 0 remaining)]
-
 #!/usr/bin/env python3
 """Reproduce the frozen post-hoc measurement-perturbation audit.
 
