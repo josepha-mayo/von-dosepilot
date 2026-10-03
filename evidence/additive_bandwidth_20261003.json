@@ -1,0 +1,143 @@
+{
+  "schema": "dosepilot.additive_bandwidth_successor.v1",
+  "as_of_utc": "2026-10-03T14:00:00Z",
+  "status": "VERIFIED_DEVELOPMENT_SUCCESSOR",
+  "decision": "PROMOTE_AS_RESEARCH_SUCCESSOR",
+  "cohort": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_wells_per_alternative": 64,
+    "per_plate": 32
+  },
+  "method": {
+    "name": "additive drug-group kernel with global Gaussian bandwidth factor 0.7",
+    "incumbent_factor": 1.0,
+    "tested_factors": [1.0, 0.7, 1.4],
+    "new_acquisition": false,
+    "prediction_averaging": false
+  },
+  "metrics": {
+    "bandwidth_07": {
+      "mse": 0.0010582750420801538,
+      "p90_patient_rmse": 0.03789428530872023,
+      "fold_mse": [
+        0.0013921291183112416,
+        0.0008933246324477284,
+        0.0010633000716809172,
+        0.0008098063511711596,
+        0.001139591399945138
+      ],
+      "orientation_mse": [
+        0.0011047521616732163,
+        0.0010117979224870915
+      ],
+      "target_nonworse_vs_additive": 14
+    },
+    "additive_factor_1": {
+      "mse": 0.001060552730112811,
+      "p90_patient_rmse": 0.03807311159996259
+    },
+    "wider_factor_14": {
+      "mse": 0.0010637093585907204,
+      "decision": "REJECT"
+    },
+    "previous_private_combo": {
+      "name": "RMS-half target geometry plus half residual alignment",
+      "mse": 0.0010604110344403896,
+      "p90_patient_rmse": 0.038050494629207746
+    },
+    "r13_mse": 0.001144858681382854,
+    "r18_mse": 0.0011414048112341991
+  },
+  "comparisons": {
+    "vs_additive": {
+      "relative_gain": 0.0021476424207731437,
+      "patient_wins": 38,
+      "patient_losses": 21,
+      "fold_wins": 5,
+      "descriptive_delta_ci95": [
+        -0.0000041625546434969556,
+        -0.0000004365643521183554
+      ],
+      "passes_incumbent_screen": true
+    },
+    "vs_previous_private_combo": {
+      "relative_gain": 0.0020143060481855324,
+      "patient_wins": 34,
+      "patient_losses": 25,
+      "fold_wins": 5,
+      "descriptive_delta_ci95": [
+        -0.000004126442768738992,
+        -0.00000020082739152966592
+      ],
+      "passes_incumbent_screen": true
+    },
+    "vs_r13": {
+      "relative_gain": 0.075628,
+      "patient_wins": 49,
+      "patient_losses": 10,
+      "fold_wins": 5,
+      "descriptive_delta_ci95": [
+        -0.0001204910195195138,
+        -0.000056670329263708066
+      ],
+      "passes_original_screen": true
+    },
+    "vs_r18": {
+      "relative_gain": 0.072831,
+      "patient_wins": 47,
+      "patient_losses": 12,
+      "fold_wins": 5,
+      "descriptive_delta_ci95": [
+        -0.00011596330474204045,
+        -0.000053997710179286755
+      ],
+      "passes_original_screen": true
+    }
+  },
+  "outer_selected_spectral_options": [
+    [0.3, 1.0],
+    [0.1, 1.0],
+    [0.1, 1.0],
+    [0.1, 1.0],
+    [0.1, 1.0]
+  ],
+  "verification": {
+    "status": "PASS",
+    "no_refit": true,
+    "explicit_patient_arithmetic": true,
+    "historical_r13_r18_gates_recomputed": true,
+    "previous_combo_comparison_recomputed": true
+  },
+  "private_artifact_sha256": {
+    "FREEZE.json": "c02300093e38164bc6b8432e21ba1d34342ee9666e8104eb78829cbd68d50ad1",
+    "RESULT.json": "078fb8cd9281de8c0354bc79444535def32e61509260dcd728242552c41546ed",
+    "predictions_private.npz": "729b0fbfebb66f62ed27427e706e02025d5e18da1c211716eaac195a94f8a09f",
+    "VERIFICATION.json": "6cd8eb83337eebba35f06c3e9f3b3a95c31ec06769fce32e485bbe073c127514"
+  },
+  "final_private_construction": {
+    "selected_fraction": 0.1,
+    "selected_ridge": 1.0,
+    "model_sha256": "7a5a74d078f9e5f5e9b5958695d7f6f5231f3f4ca4918394621b15f00a1e861b",
+    "plan_sha256": "edb63f5496710c43f5a8b024cbfe09e103f05f8cbd4dbe4316fca7e3bb137472",
+    "construction_receipt_sha256": "7c88360b2bceb9bb198e20a9175023d7f0b1b4c0923cadd2cf4267e64d145e38",
+    "new_validation": false,
+    "requires_all_64_values": true
+  },
+  "followup_combo": {
+    "name": "bandwidth0.7 plus RMS-half plus half alignment",
+    "mse": 0.0010583230655228603,
+    "p90_patient_rmse": 0.0378563939096166,
+    "patient_wins_vs_bandwidth07": 33,
+    "fold_wins_vs_bandwidth07": 2,
+    "decision": "REJECT_RETAIN_BANDWIDTH07"
+  },
+  "repeated_adaptive_development": true,
+  "independent_validation": false,
+  "protected_response_access": false,
+  "private_arrays_or_fitted_weights_published": false,
+  "accepted_kaggle_entry_changed": false,
+  "official_competition_score": null,
+  "runtime_status": "NOT_YET_MIGRATED_TO_BANDWIDTH_AWARE_DEPLOYMENT"
+}
