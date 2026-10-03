@@ -1,0 +1,98 @@
+{
+  "schema": "dosepilot.bandwidth_simulated_robustness.v1",
+  "as_of_utc": "2026-10-03T17:40:00Z",
+  "status": "PASS",
+  "model_kind": "dosepilot.additive_kernel_bandwidth.v1",
+  "bandwidth_multiplier": 0.7,
+  "cohort": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_wells_per_alternative": 64,
+    "per_plate": 32
+  },
+  "baseline": {
+    "mse": 0.0010582750420801538,
+    "p90_rmse": 0.0378942853087202
+  },
+  "perturbations": {
+    "independent_gaussian_z_noise": {
+      "definition": "Add N(0, sigma * training_scale_x) independently to each purchased raw value; equivalent to sigma noise in model z-space. Five fixed seeds: 11,29,47,83,131. No clipping.",
+      "0.01": {
+        "mean_mse": 0.0010589339520289227,
+        "std_mse": 4.005956957117797e-7,
+        "worst_mse": 0.0010593670869181839,
+        "mean_relative_mse_change": 0.0006226263708097868
+      },
+      "0.05": {
+        "mean_mse": 0.0010728573553003982,
+        "std_mse": 0.000002668513883360566,
+        "worst_mse": 0.0010769165842503766,
+        "mean_relative_mse_change": 0.013779322615018241
+      },
+      "0.10": {
+        "mean_mse": 0.0011173454144345436,
+        "std_mse": 0.000008239245927504864,
+        "worst_mse": 0.0011239213475305674,
+        "mean_relative_mse_change": 0.055817599400511675
+      }
+    },
+    "coherent_single_plate_multiplicative_offset": {
+      "definition": "Within each A or B deployment independently, multiply all purchased values assigned to exactly one source plate by 0.95 or 1.05. No clipping.",
+      "p1_x_0_95": {
+        "mse": 0.0012358122973483775,
+        "p90_rmse": 0.04190427142199182,
+        "relative_mse_change": 0.16776097725904515,
+        "worst_target": "TAS-102"
+      },
+      "p1_x_1_05": {
+        "mse": 0.0012114912277999814,
+        "p90_rmse": 0.039019523153466365,
+        "relative_mse_change": 0.14477917330325085,
+        "worst_target": "Encorafenib"
+      },
+      "p2_x_0_95": {
+        "mse": 0.0012313800146150483,
+        "p90_rmse": 0.04212004904199981,
+        "relative_mse_change": 0.1635727628940753,
+        "worst_target": "TAS-102"
+      },
+      "p2_x_1_05": {
+        "mse": 0.0012145393305130188,
+        "p90_rmse": 0.03952942638151504,
+        "relative_mse_change": 0.1476594289946691,
+        "worst_target": "LCL161"
+      }
+    },
+    "single_missing_reading": {
+      "policy": "WITHHOLD_PRIMARY_NO_REPLACEMENT_WELL",
+      "positions_checked": 64,
+      "all_withheld": true
+    }
+  },
+  "verification": {
+    "saved_unperturbed_prediction_max_difference": 0,
+    "physical_plan_checks": 10,
+    "all_plan_checks_64_wells_32_per_plate": true,
+    "public_robustness_replay": "PASS",
+    "public_robustness_replay_sha256": "a0d5d405a9f7e4965a94917975cab8e065a59f7139486b7ab205306b55677723",
+    "bandwidth_public_replay_sha256": "ec79280064117ee512a9b761b5072e32567335e257b63b501e1d8b477939fd58",
+    "final_runtime_receipt_sha256": "307a9433506288d6fa583b61a73f10b1d1461672d7234aeefc15497751eaa848",
+    "runner_sha256": "8b01490cb4000d37aceb09c04d5100df2f59ac89bfd02223c4dd6d1f553fa1b0",
+    "frozen_protocol_sha256": "20ccbe59568da2edb33428a08b427bff6b5a29aac376c175ee14819605e4962d"
+  },
+  "interpretation": {
+    "small_independent_noise": "At sigma=0.01 z-units, mean MSE increases about 0.062%.",
+    "moderate_independent_noise": "At sigma=0.05 z-units, mean MSE increases about 1.38%.",
+    "large_independent_noise": "At sigma=0.10 z-units, mean MSE increases about 5.58%.",
+    "coherent_plate_drift": "A ±5% multiplicative offset affecting one source plate is substantially more damaging, increasing MSE about 14.5% to 16.8% in this synthetic test.",
+    "practical_implication": "Future laboratory use should prioritize explicit plate-level calibration/QC and prospectively validate any correction rule. This audit does not establish an acceptance threshold."
+  },
+  "new_model_fit": false,
+  "new_model_selection": false,
+  "repeated_adaptive_development": true,
+  "independent_validation": false,
+  "synthetic_perturbations_not_measured_assay_noise": true,
+  "protected_response_access": false,
+  "official_competition_score": null
+}
