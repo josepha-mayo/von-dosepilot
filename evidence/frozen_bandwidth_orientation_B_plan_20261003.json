@@ -1,0 +1,658 @@
+{
+  "schema": "von.acquisition.v1",
+  "status": "FROZEN_TREATMENT_SCHEDULE_DEVICE_BINDING_PENDING",
+  "orientation": "B",
+  "source_model_kind": "dosepilot.additive_kernel_bandwidth.v1",
+  "source_bandwidth_multiplier": 0.7,
+  "source_construction_sha256": "1699d858a9e359e39517b12d02046208d553f98d231392fc5bfe67acda8b4c3d",
+  "source_original_plan_sha256": "25b14b67b2e5ab82394f1409ed72f68ae264278095c280df9e552d4f1bdff2ca",
+  "physical_slot_semantics": "PROSPECTIVE_PLACEHOLDER_NOT_EXECUTED",
+  "treatment_wells": 64,
+  "controls_included": false,
+  "plate_counts": {
+    "p1": 32,
+    "p2": 32
+  },
+  "measurements": [
+    {
+      "position": 0,
+      "native_id": "q003",
+      "drug_id": "5-FU",
+      "concentration_nM": "1000",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_01"
+    },
+    {
+      "position": 1,
+      "native_id": "q004",
+      "drug_id": "5-FU",
+      "concentration_nM": "3000",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_01"
+    },
+    {
+      "position": 2,
+      "native_id": "q009",
+      "drug_id": "AZD7762",
+      "concentration_nM": "100",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_02"
+    },
+    {
+      "position": 3,
+      "native_id": "q010",
+      "drug_id": "AZD7762",
+      "concentration_nM": "300",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_02"
+    },
+    {
+      "position": 4,
+      "native_id": "q015",
+      "drug_id": "Afatinib",
+      "concentration_nM": "10",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_03"
+    },
+    {
+      "position": 5,
+      "native_id": "q017",
+      "drug_id": "Afatinib",
+      "concentration_nM": "100",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_03"
+    },
+    {
+      "position": 6,
+      "native_id": "q018",
+      "drug_id": "Afatinib",
+      "concentration_nM": "300",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_04"
+    },
+    {
+      "position": 7,
+      "native_id": "q023",
+      "drug_id": "Alisertib",
+      "concentration_nM": "100",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_04"
+    },
+    {
+      "position": 8,
+      "native_id": "q025",
+      "drug_id": "Alisertib",
+      "concentration_nM": "1000",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_05"
+    },
+    {
+      "position": 9,
+      "native_id": "q027",
+      "drug_id": "Alisertib",
+      "concentration_nM": "10000",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_05"
+    },
+    {
+      "position": 10,
+      "native_id": "q030",
+      "drug_id": "Atorvastatin",
+      "concentration_nM": "300",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_06"
+    },
+    {
+      "position": 11,
+      "native_id": "q031",
+      "drug_id": "Atorvastatin",
+      "concentration_nM": "1000",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_06"
+    },
+    {
+      "position": 12,
+      "native_id": "q032",
+      "drug_id": "Atorvastatin",
+      "concentration_nM": "3000",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_07"
+    },
+    {
+      "position": 13,
+      "native_id": "q037",
+      "drug_id": "Bemcentinib",
+      "concentration_nM": "300",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_08"
+    },
+    {
+      "position": 14,
+      "native_id": "q039",
+      "drug_id": "Bemcentinib",
+      "concentration_nM": "3000",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_07"
+    },
+    {
+      "position": 15,
+      "native_id": "q045",
+      "drug_id": "Encorafenib",
+      "concentration_nM": "30",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_09"
+    },
+    {
+      "position": 16,
+      "native_id": "q047",
+      "drug_id": "Encorafenib",
+      "concentration_nM": "300",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_08"
+    },
+    {
+      "position": 17,
+      "native_id": "lib1_d07_n05",
+      "drug_id": "Gedatolisib",
+      "concentration_nM": "30",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_09"
+    },
+    {
+      "position": 18,
+      "native_id": "lib1_d07_n06",
+      "drug_id": "Gedatolisib",
+      "concentration_nM": "100",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_10"
+    },
+    {
+      "position": 19,
+      "native_id": "lib1_d07_n07",
+      "drug_id": "Gedatolisib",
+      "concentration_nM": "300",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_10"
+    },
+    {
+      "position": 20,
+      "native_id": "q052",
+      "drug_id": "Gemcitabine",
+      "concentration_nM": "10",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_11"
+    },
+    {
+      "position": 21,
+      "native_id": "q054",
+      "drug_id": "Gemcitabine",
+      "concentration_nM": "100",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_11"
+    },
+    {
+      "position": 22,
+      "native_id": "q055",
+      "drug_id": "Gemcitabine",
+      "concentration_nM": "300",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_12"
+    },
+    {
+      "position": 23,
+      "native_id": "q061",
+      "drug_id": "Idasanutlin",
+      "concentration_nM": "300",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_12"
+    },
+    {
+      "position": 24,
+      "native_id": "q062",
+      "drug_id": "Idasanutlin",
+      "concentration_nM": "1000",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_13"
+    },
+    {
+      "position": 25,
+      "native_id": "q063",
+      "drug_id": "Idasanutlin",
+      "concentration_nM": "3000",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_13"
+    },
+    {
+      "position": 26,
+      "native_id": "q066",
+      "drug_id": "LCL161",
+      "concentration_nM": "250",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_14"
+    },
+    {
+      "position": 27,
+      "native_id": "q067",
+      "drug_id": "LCL161",
+      "concentration_nM": "750",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_14"
+    },
+    {
+      "position": 28,
+      "native_id": "q068",
+      "drug_id": "LCL161",
+      "concentration_nM": "25000",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_15"
+    },
+    {
+      "position": 29,
+      "native_id": "q070",
+      "drug_id": "LGK974",
+      "concentration_nM": "10",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_15"
+    },
+    {
+      "position": 30,
+      "native_id": "q074",
+      "drug_id": "LGK974",
+      "concentration_nM": "1000",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_16"
+    },
+    {
+      "position": 31,
+      "native_id": "q075",
+      "drug_id": "LGK974",
+      "concentration_nM": "3000",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_16"
+    },
+    {
+      "position": 32,
+      "native_id": "q079",
+      "drug_id": "Lapatinib",
+      "concentration_nM": "30",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_17"
+    },
+    {
+      "position": 33,
+      "native_id": "q080",
+      "drug_id": "Lapatinib",
+      "concentration_nM": "100",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_17"
+    },
+    {
+      "position": 34,
+      "native_id": "q081",
+      "drug_id": "Lapatinib",
+      "concentration_nM": "300",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_18"
+    },
+    {
+      "position": 35,
+      "native_id": "q086",
+      "drug_id": "Luminespib",
+      "concentration_nM": "10",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_18"
+    },
+    {
+      "position": 36,
+      "native_id": "q087",
+      "drug_id": "Luminespib",
+      "concentration_nM": "30",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_19"
+    },
+    {
+      "position": 37,
+      "native_id": "q089",
+      "drug_id": "Luminespib",
+      "concentration_nM": "300",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_19"
+    },
+    {
+      "position": 38,
+      "native_id": "q095",
+      "drug_id": "Methotrexate",
+      "concentration_nM": "150",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_20"
+    },
+    {
+      "position": 39,
+      "native_id": "q096",
+      "drug_id": "Methotrexate",
+      "concentration_nM": "500",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_20"
+    },
+    {
+      "position": 40,
+      "native_id": "q097",
+      "drug_id": "Methotrexate",
+      "concentration_nM": "1500",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_21"
+    },
+    {
+      "position": 41,
+      "native_id": "q103",
+      "drug_id": "Napabucasin",
+      "concentration_nM": "600",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_22"
+    },
+    {
+      "position": 42,
+      "native_id": "q104",
+      "drug_id": "Napabucasin",
+      "concentration_nM": "2000",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_21"
+    },
+    {
+      "position": 43,
+      "native_id": "lib1_d16_n05",
+      "drug_id": "Palbociclib",
+      "concentration_nM": "300",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_22"
+    },
+    {
+      "position": 44,
+      "native_id": "lib1_d16_n06",
+      "drug_id": "Palbociclib",
+      "concentration_nM": "1000",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_23"
+    },
+    {
+      "position": 45,
+      "native_id": "lib1_d16_n07",
+      "drug_id": "Palbociclib",
+      "concentration_nM": "3000",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_23"
+    },
+    {
+      "position": 46,
+      "native_id": "q108",
+      "drug_id": "Panobinostat",
+      "concentration_nM": "10",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_24"
+    },
+    {
+      "position": 47,
+      "native_id": "q109",
+      "drug_id": "Panobinostat",
+      "concentration_nM": "30",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_24"
+    },
+    {
+      "position": 48,
+      "native_id": "q110",
+      "drug_id": "Panobinostat",
+      "concentration_nM": "100",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_25"
+    },
+    {
+      "position": 49,
+      "native_id": "q117",
+      "drug_id": "Pevonedistat",
+      "concentration_nM": "300",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_26"
+    },
+    {
+      "position": 50,
+      "native_id": "q118",
+      "drug_id": "Pevonedistat",
+      "concentration_nM": "1000",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_25"
+    },
+    {
+      "position": 51,
+      "native_id": "q123",
+      "drug_id": "Regorafenib",
+      "concentration_nM": "300",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_27"
+    },
+    {
+      "position": 52,
+      "native_id": "q125",
+      "drug_id": "Regorafenib",
+      "concentration_nM": "3000",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_26"
+    },
+    {
+      "position": 53,
+      "native_id": "q128",
+      "drug_id": "SN-38",
+      "concentration_nM": "3",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_27"
+    },
+    {
+      "position": 54,
+      "native_id": "q129",
+      "drug_id": "SN-38",
+      "concentration_nM": "100",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_28"
+    },
+    {
+      "position": 55,
+      "native_id": "q130",
+      "drug_id": "SN-38",
+      "concentration_nM": "300",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_28"
+    },
+    {
+      "position": 56,
+      "native_id": "q131",
+      "drug_id": "TAS-102",
+      "concentration_nM": "100",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_29"
+    },
+    {
+      "position": 57,
+      "native_id": "q132",
+      "drug_id": "TAS-102",
+      "concentration_nM": "1000",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_29"
+    },
+    {
+      "position": 58,
+      "native_id": "q133",
+      "drug_id": "TAS-102",
+      "concentration_nM": "10000",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_30"
+    },
+    {
+      "position": 59,
+      "native_id": "q137",
+      "drug_id": "Trametinib",
+      "concentration_nM": "2.5",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_30"
+    },
+    {
+      "position": 60,
+      "native_id": "q138",
+      "drug_id": "Trametinib",
+      "concentration_nM": "7.5",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_31"
+    },
+    {
+      "position": 61,
+      "native_id": "q140",
+      "drug_id": "Trametinib",
+      "concentration_nM": "75",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_31"
+    },
+    {
+      "position": 62,
+      "native_id": "q145",
+      "drug_id": "Volasertib",
+      "concentration_nM": "10",
+      "unit": "nM",
+      "plate": "p2",
+      "plate_instance": "PROSPECTIVE_B_P2",
+      "well": "PROSPECTIVE_SLOT_32"
+    },
+    {
+      "position": 63,
+      "native_id": "q147",
+      "drug_id": "Volasertib",
+      "concentration_nM": "100",
+      "unit": "nM",
+      "plate": "p1",
+      "plate_instance": "PROSPECTIVE_B_P1",
+      "well": "PROSPECTIVE_SLOT_32"
+    }
+  ]
+}
