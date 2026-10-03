@@ -1,5 +1,3 @@
-[Reading 68 lines from start (total: 68 lines, 0 remaining)]
-
 # Evidence ledger: what is independent, and what is not
 
 Reconciled 3 October 2026 from the recorded source identities, access records, protocols and execution receipts. This ledger distinguishes development, external adaptations, incomplete attempts, conditional diagnostics and software reproductions. It does not certify that every historical access across all sessions has been reconstructed.
@@ -68,5 +66,3 @@ python study/audits/verify_evidence_consistency.py --root .
 ```
 
 The verifier checks receipt hashes, cell arithmetic, prior-exposure linkage, primary/conditional separation, all-exposed status and S2's repeated-development classification. It reads no source workbook, patient array, prediction array or fitted model.
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
