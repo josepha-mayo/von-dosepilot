@@ -12,7 +12,7 @@
   <header class="nav wrap">
     <a class="brand" href="#top"><span class="mark">v</span><span>von DosePilot</span></a>
     <nav>
-      <a href="#demo">Demo</a><a href="#evidence">Evidence</a><a href="#research-log">Research log</a><a href="#limits">Limits</a>
+      <a href="#demo">Demo</a><a href="#evidence">Evidence</a><a href="#frozen-schedule">Schedule</a><a href="#research-log">Research log</a><a href="#limits">Limits</a>
       <a class="gh" href="https://github.com/josepha-mayo/von-dosepilot" target="_blank" rel="noreferrer">GitHub ↗</a>
     </nav>
   </header>
@@ -114,6 +114,25 @@
       </div>
     </section>
 
+    <section class="section wrap" id="frozen-schedule">
+      <div class="section-head">
+        <div><div class="eyebrow">FROZEN PLAN • EXACT TREATMENTS</div><h2>One deployment. 64 treatments. 32 + 32.</h2></div>
+        <p>Switch A/B to inspect the current bandwidth model's exact drug-dose schedule. A and B contain the same 64 treatments with complementary source-plate assignment.</p>
+      </div>
+      <div class="schedule-toolbar">
+        <div class="orientation-switch" role="group" aria-label="Frozen schedule orientation">
+          <button id="scheduleA" class="button primary" type="button">Orientation A</button>
+          <button id="scheduleB" class="button" type="button">Orientation B</button>
+        </div>
+        <div class="schedule-counts"><span id="scheduleCount">64 treatments</span><span>•</span><span>p1 32</span><span>•</span><span>p2 32</span></div>
+      </div>
+      <div class="plate-pair">
+        <article class="plate-card"><div class="plate-title"><b>Source plate p1</b><span>32 frozen treatments</span></div><div id="frozenP1" class="plate-grid"></div></article>
+        <article class="plate-card"><div class="plate-title"><b>Source plate p2</b><span>32 frozen treatments</span></div><div id="frozenP2" class="plate-grid"></div></article>
+      </div>
+      <div class="schedule-note"><b>What is frozen:</b> drug, exact dose, treatment identity, and A/B source-plate assignment. <b>What is not:</b> chip device, compartment, circuit, reservoir, channel, dosing route, exposure duration, or readout. Those remain prospective by design. <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FROZEN_OOC_EXECUTION_MANIFEST.md" target="_blank" rel="noreferrer">Audit the 64-row manifests ↗</a></div>
+    </section>
+
     <section class="section wrap" id="research-log">
       <div class="section-head">
         <div><div class="eyebrow">RESEARCH LEDGER • NO CHERRY-PICKING</div><h2>The incumbent had to survive challengers.</h2></div>
@@ -184,6 +203,6 @@
       <a href="https://youtu.be/QeOGJIgx378" target="_blank" rel="noreferrer">Video ↗</a>
     </div>
   </footer>
-  <script src="app.js"></script>
+  <script src="frozen_schedule.js"></script>\n  <script src="app.js"></script>
 </body>
 </html>
