@@ -1,0 +1,58 @@
+{
+  "schema": "dosepilot.bandwidth_durable_lifecycle.v1",
+  "as_of_utc": "2026-10-03T17:55:00Z",
+  "status": "PASS",
+  "role": "ENGINEERING_AND_REPRODUCIBILITY_EVIDENCE",
+  "model_kind": "dosepilot.additive_kernel_bandwidth.v1",
+  "bandwidth_multiplier": 0.7,
+  "lifecycle_policy": "dosepilot.bandwidth_durable_complete_lifecycle.v1",
+  "runtime_implementation": "dosepilot.bandwidth_durable.v1",
+  "model_accuracy_reference": {
+    "mse": 0.0010582750420801538,
+    "note": "Accuracy is inherited from the separately verified bandwidth development receipt; this lifecycle run creates no new accuracy estimate."
+  },
+  "behavior": {
+    "commit": "Binds fresh inventory, current bandwidth model/plan hashes, sample/run, A/B orientation, exact 64 treatment wells, controls, and runtime source hashes.",
+    "predict": "Requires all 64 identified finite purchased values and emits 24 bandwidth-model outputs.",
+    "recover": "Explicit opt-in only. A missing purchased value produces zero bandwidth primary outputs and may expose unaffected older own-drug baseline heads under separate labels.",
+    "completion": "If recovery history exists, complete prediction automatically verifies that earlier observed values were not rewritten.",
+    "old_commitments_migrated": false,
+    "predecessor_additive_lifecycle_modified": false
+  },
+  "tests": {
+    "durable_runtime_suite_total": 63,
+    "previous_durable_runtime_cases": 55,
+    "new_bandwidth_lifecycle_cases": 8,
+    "suite_status": "PASS",
+    "suite_log_sha256": "ce14c56770588846ae1edc3e723441f564399727d854e3582d460ec07e1b3972"
+  },
+  "actual_constructed_model_check": {
+    "status": "PASS",
+    "construction_sha256": "1699d858a9e359e39517b12d02046208d553f98d231392fc5bfe67acda8b4c3d",
+    "model_sha256": "d6acd2ef219e4c10611ffd7c240f1ee545baa9d50c6178c0a5c4dc43d49d976c",
+    "complete_primary_outputs": 24,
+    "maximum_difference_vs_direct_backend": 0,
+    "recovery_baseline_outputs": 23,
+    "recovery_primary_outputs": 0,
+    "completed_recovery_primary_outputs": 24,
+    "verification_sha256": "050283830df5ef3dc84f4395cfa90ba09f3a18d0b1dc65b1504c737f50221ef4"
+  },
+  "source_sha256": {
+    "bandwidth_durable_workflow": "cda61ade2ef699c764160b06d03625ca0732f41ee590661af228849667da29f0",
+    "bandwidth_lifecycle": "0691bc780f00aea384d60012d221d1c1cc57960397039aec8b700f5661d71b83",
+    "test_bandwidth_lifecycle": "d51cc54c7b2a7c4cc94cf9ea44e53a6ad289f6aed600815db6883ed45086f19f"
+  },
+  "limitations": {
+    "local_posix_advisory_lock_contract": true,
+    "network_filesystems_validated": false,
+    "physical_power_loss_certified": false,
+    "laboratory_execution_certified": false,
+    "clinical_use_validated": false,
+    "compiled_speedup_applies_to_bandwidth_model": false
+  },
+  "new_model_fit": false,
+  "new_source_response_read": false,
+  "protected_response_access": false,
+  "independent_validation": false,
+  "official_competition_score": null
+}
