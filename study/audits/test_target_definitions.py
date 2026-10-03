@@ -1,5 +1,3 @@
-[Reading 61 lines from start (total: 61 lines, 0 remaining)]
-
 import copy,json,shutil,tempfile,unittest
 from pathlib import Path
 import sys
