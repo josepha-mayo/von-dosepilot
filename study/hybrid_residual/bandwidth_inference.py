@@ -1,5 +1,3 @@
-[Reading 28 lines from start (total: 28 lines, 0 remaining)]
-
 """Identity-checked inference for the verified 0.7x additive bandwidth model."""
 from __future__ import annotations
 import numpy as np
@@ -28,5 +26,3 @@ class BandwidthAdditiveModel(AdditiveModel):
             distance=np.maximum((a*a).sum(1)[:,None]+(b*b).sum(1)[None,:]-2*a@b.T,0.)
             result+=len(g)*np.exp(-distance/(2*len(g)*scale))
         return result
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
