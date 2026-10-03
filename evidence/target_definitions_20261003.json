@@ -1,0 +1,1002 @@
+[Reading 1000 lines from start (total: 2092 lines, 1092 remaining)]
+
+{
+  "schema": "dosepilot.target_definitions.v1",
+  "status": "FROZEN_TARGET_DEFINITIONS_DERIVED_FROM_PUBLIC_TRAIN",
+  "source_curve_sha256": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+  "catalog_sha256": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+  "orientation_A_plan_sha256": "8eeb8a1c2fa945f034357e8f61f5d2f0a1feeff0332c5d87b5717db3ae558e8f",
+  "orientation_B_plan_sha256": "bedb4c6f1e785afc94d3e73ec0cb3b51643d80d5b86477e17537f72148d8722e",
+  "samples": 119,
+  "whole_patients": 59,
+  "targets": 24,
+  "target_aggregation": "For each target, compute normalized log-dose trapezoidal AUC separately on p1 and p2 full source curves, then take their arithmetic mean.",
+  "unclipped_viability": true,
+  "clinical_response_endpoint": false,
+  "ic50_endpoint": false,
+  "drug_ranking_endpoint": false,
+  "viability_values_converted_by_this_script": 0,
+  "protected_response_access": false,
+  "definitions": [
+    {
+      "target_index": 0,
+      "drug_id": "5-FU",
+      "compound_drum_id": "MO00000218",
+      "endpoint": "mean of p1 and p2 normalized log-dose trapezoidal AUCs of unclipped supplied viability",
+      "full_source_dose_grid_nM": [
+        "1",
+        "3",
+        "1E+1",
+        "3E+1",
+        "1E+2",
+        "3E+2",
+        "1E+3",
+        "3E+3",
+        "1E+4"
+      ],
+      "source_dose_count": 9,
+      "integration_interval_nM": [
+        "3E+1",
+        "1E+4"
+      ],
+      "lower_bound_is_source_dose": true,
+      "upper_bound_is_source_dose": true,
+      "boundary_rule": "linear interpolation in log-dose at an integration bound when the bound is not an exact source dose",
+      "nonzero_reference_quadrature": [
+        {
+          "dose_nM": "3E+1",
+          "weight": 0.10362740307248425
+        },
+        {
+          "dose_nM": "1E+2",
+          "weight": 0.19818629846375785
+        },
+        {
+          "dose_nM": "3E+2",
+          "weight": 0.19818629846375782
+        },
+        {
+          "dose_nM": "1E+3",
+          "weight": 0.19818629846375782
+        },
+        {
+          "dose_nM": "3E+3",
+          "weight": 0.198186298463758
+        },
+        {
+          "dose_nM": "1E+4",
+          "weight": 0.10362740307248436
+        }
+      ],
+      "quadrature_weight_sum": 1.0,
+      "nonzero_reference_node_count": 6,
+      "selected_predictor_inputs": [
+        {
+          "position": 0,
+          "native_id": "q003",
+          "dose_nM": "1E+3",
+          "orientation_A_plate": "p1",
+          "orientation_B_plate": "p2"
+        },
+        {
+          "position": 1,
+          "native_id": "q004",
+          "dose_nM": "3E+3",
+          "orientation_A_plate": "p2",
+          "orientation_B_plate": "p1"
+        }
+      ],
+      "selected_input_count": 2,
+      "orientation_A_plate_counts": {
+        "p1": 1,
+        "p2": 1
+      },
+      "orientation_B_plate_counts": {
+        "p1": 1,
+        "p2": 1
+      }
+    },
+    {
+      "target_index": 1,
+      "drug_id": "AZD7762",
+      "compound_drum_id": "MO00000083",
+      "endpoint": "mean of p1 and p2 normalized log-dose trapezoidal AUCs of unclipped supplied viability",
+      "full_source_dose_grid_nM": [
+        "0.1",
+        "0.3",
+        "1",
+        "3",
+        "1E+1",
+        "3E+1",
+        "1E+2",
+        "3E+2",
+        "1E+3"
+      ],
+      "source_dose_count": 9,
+      "integration_interval_nM": [
+        "3",
+        "1E+3"
+      ],
+      "lower_bound_is_source_dose": true,
+      "upper_bound_is_source_dose": true,
+      "boundary_rule": "linear interpolation in log-dose at an integration bound when the bound is not an exact source dose",
+      "nonzero_reference_quadrature": [
+        {
+          "dose_nM": "3",
+          "weight": 0.10362740307248423
+        },
+        {
+          "dose_nM": "1E+1",
+          "weight": 0.19818629846375793
+        },
+        {
+          "dose_nM": "3E+1",
+          "weight": 0.19818629846375793
+        },
+        {
+          "dose_nM": "1E+2",
+          "weight": 0.1981862984637579
+        },
+        {
+          "dose_nM": "3E+2",
+          "weight": 0.19818629846375785
+        },
+        {
+          "dose_nM": "1E+3",
+          "weight": 0.10362740307248422
+        }
+      ],
+      "quadrature_weight_sum": 1.0,
+      "nonzero_reference_node_count": 6,
+      "selected_predictor_inputs": [
+        {
+          "position": 2,
+          "native_id": "q009",
+          "dose_nM": "1E+2",
+          "orientation_A_plate": "p1",
+          "orientation_B_plate": "p2"
+        },
+        {
+          "position": 3,
+          "native_id": "q010",
+          "dose_nM": "3E+2",
+          "orientation_A_plate": "p2",
+          "orientation_B_plate": "p1"
+        }
+      ],
+      "selected_input_count": 2,
+      "orientation_A_plate_counts": {
+        "p1": 1,
+        "p2": 1
+      },
+      "orientation_B_plate_counts": {
+        "p1": 1,
+        "p2": 1
+      }
+    },
+    {
+      "target_index": 2,
+      "drug_id": "Afatinib",
+      "compound_drum_id": "MO00000020",
+      "endpoint": "mean of p1 and p2 normalized log-dose trapezoidal AUCs of unclipped supplied viability",
+      "full_source_dose_grid_nM": [
+        "0.1",
+        "0.3",
+        "1",
+        "3",
+        "1E+1",
+        "3E+1",
+        "1E+2",
+        "3E+2",
+        "1E+3"
+      ],
+      "source_dose_count": 9,
+      "integration_interval_nM": [
+        "0.3",
+        "1E+3"
+      ],
+      "lower_bound_is_source_dose": true,
+      "upper_bound_is_source_dose": true,
+      "boundary_rule": "linear interpolation in log-dose at an integration bound when the bound is not an exact source dose",
+      "nonzero_reference_quadrature": [
+        {
+          "dose_nM": "0.3",
+          "weight": 0.07421185670679802
+        },
+        {
+          "dose_nM": "1",
+          "weight": 0.141929381097734
+        },
+        {
+          "dose_nM": "3",
+          "weight": 0.141929381097734
+        },
+        {
+          "dose_nM": "1E+1",
+          "weight": 0.141929381097734
+        },
+        {
+          "dose_nM": "3E+1",
+          "weight": 0.141929381097734
+        },
+        {
+          "dose_nM": "1E+2",
+          "weight": 0.14192938109773398
+        },
+        {
+          "dose_nM": "3E+2",
+          "weight": 0.14192938109773395
+        },
+        {
+          "dose_nM": "1E+3",
+          "weight": 0.074211856706798
+        }
+      ],
+      "quadrature_weight_sum": 1.0,
+      "nonzero_reference_node_count": 8,
+      "selected_predictor_inputs": [
+        {
+          "position": 4,
+          "native_id": "q015",
+          "dose_nM": "1E+1",
+          "orientation_A_plate": "p1",
+          "orientation_B_plate": "p2"
+        },
+        {
+          "position": 5,
+          "native_id": "q017",
+          "dose_nM": "1E+2",
+          "orientation_A_plate": "p2",
+          "orientation_B_plate": "p1"
+        },
+        {
+          "position": 6,
+          "native_id": "q018",
+          "dose_nM": "3E+2",
+          "orientation_A_plate": "p1",
+          "orientation_B_plate": "p2"
+        }
+      ],
+      "selected_input_count": 3,
+      "orientation_A_plate_counts": {
+        "p1": 2,
+        "p2": 1
+      },
+      "orientation_B_plate_counts": {
+        "p1": 1,
+        "p2": 2
+      }
+    },
+    {
+      "target_index": 3,
+      "drug_id": "Alisertib",
+      "compound_drum_id": "MO00000026",
+      "endpoint": "mean of p1 and p2 normalized log-dose trapezoidal AUCs of unclipped supplied viability",
+      "full_source_dose_grid_nM": [
+        "1",
+        "3",
+        "1E+1",
+        "3E+1",
+        "1E+2",
+        "3E+2",
+        "1E+3",
+        "3E+3",
+        "1E+4"
+      ],
+      "source_dose_count": 9,
+      "integration_interval_nM": [
+        "3",
+        "1E+4"
+      ],
+      "lower_bound_is_source_dose": true,
+      "upper_bound_is_source_dose": true,
+      "boundary_rule": "linear interpolation in log-dose at an integration bound when the bound is not an exact source dose",
+      "nonzero_reference_quadrature": [
+        {
+          "dose_nM": "3",
+          "weight": 0.074211856706798
+        },
+        {
+          "dose_nM": "1E+1",
+          "weight": 0.14192938109773398
+        },
+        {
+          "dose_nM": "3E+1",
+          "weight": 0.14192938109773398
+        },
+        {
+          "dose_nM": "1E+2",
+          "weight": 0.14192938109773395
+        },
+        {
+          "dose_nM": "3E+2",
+          "weight": 0.14192938109773393
+        },
+        {
+          "dose_nM": "1E+3",
+          "weight": 0.14192938109773393
+        },
+        {
+          "dose_nM": "3E+3",
+          "weight": 0.14192938109773404
+        },
+        {
+          "dose_nM": "1E+4",
+          "weight": 0.0742118567067981
+        }
+      ],
+      "quadrature_weight_sum": 0.9999999999999999,
+      "nonzero_reference_node_count": 8,
+      "selected_predictor_inputs": [
+        {
+          "position": 7,
+          "native_id": "q023",
+          "dose_nM": "1E+2",
+          "orientation_A_plate": "p2",
+          "orientation_B_plate": "p1"
+        },
+        {
+          "position": 8,
+          "native_id": "q025",
+          "dose_nM": "1E+3",
+          "orientation_A_plate": "p1",
+          "orientation_B_plate": "p2"
+        },
+        {
+          "position": 9,
+          "native_id": "q027",
+          "dose_nM": "1E+4",
+          "orientation_A_plate": "p2",
+          "orientation_B_plate": "p1"
+        }
+      ],
+      "selected_input_count": 3,
+      "orientation_A_plate_counts": {
+        "p1": 1,
+        "p2": 2
+      },
+      "orientation_B_plate_counts": {
+        "p1": 2,
+        "p2": 1
+      }
+    },
+    {
+      "target_index": 4,
+      "drug_id": "Atorvastatin",
+      "compound_drum_id": "MO00000059",
+      "endpoint": "mean of p1 and p2 normalized log-dose trapezoidal AUCs of unclipped supplied viability",
+      "full_source_dose_grid_nM": [
+        "1",
+        "3",
+        "1E+1",
+        "3E+1",
+        "1E+2",
+        "3E+2",
+        "1E+3",
+        "3E+3",
+        "1E+4"
+      ],
+      "source_dose_count": 9,
+      "integration_interval_nM": [
+        "3E+1",
+        "1E+4"
+      ],
+      "lower_bound_is_source_dose": true,
+      "upper_bound_is_source_dose": true,
+      "boundary_rule": "linear interpolation in log-dose at an integration bound when the bound is not an exact source dose",
+      "nonzero_reference_quadrature": [
+        {
+          "dose_nM": "3E+1",
+          "weight": 0.10362740307248425
+        },
+        {
+          "dose_nM": "1E+2",
+          "weight": 0.19818629846375785
+        },
+        {
+          "dose_nM": "3E+2",
+          "weight": 0.19818629846375782
+        },
+        {
+          "dose_nM": "1E+3",
+          "weight": 0.19818629846375782
+        },
+        {
+          "dose_nM": "3E+3",
+          "weight": 0.198186298463758
+        },
+        {
+          "dose_nM": "1E+4",
+          "weight": 0.10362740307248436
+        }
+      ],
+      "quadrature_weight_sum": 1.0,
+      "nonzero_reference_node_count": 6,
+      "selected_predictor_inputs": [
+        {
+          "position": 10,
+          "native_id": "q030",
+          "dose_nM": "3E+2",
+          "orientation_A_plate": "p1",
+          "orientation_B_plate": "p2"
+        },
+        {
+          "position": 11,
+          "native_id": "q031",
+          "dose_nM": "1E+3",
+          "orientation_A_plate": "p2",
+          "orientation_B_plate": "p1"
+        },
+        {
+          "position": 12,
+          "native_id": "q032",
+          "dose_nM": "3E+3",
+          "orientation_A_plate": "p1",
+          "orientation_B_plate": "p2"
+        }
+      ],
+      "selected_input_count": 3,
+      "orientation_A_plate_counts": {
+        "p1": 2,
+        "p2": 1
+      },
+      "orientation_B_plate_counts": {
+        "p1": 1,
+        "p2": 2
+      }
+    },
+    {
+      "target_index": 5,
+      "drug_id": "Bemcentinib",
+      "compound_drum_id": "MO00000094",
+      "endpoint": "mean of p1 and p2 normalized log-dose trapezoidal AUCs of unclipped supplied viability",
+      "full_source_dose_grid_nM": [
+        "1",
+        "3",
+        "1E+1",
+        "3E+1",
+        "1E+2",
+        "3E+2",
+        "1E+3",
+        "3E+3",
+        "1E+4"
+      ],
+      "source_dose_count": 9,
+      "integration_interval_nM": [
+        "1E+1",
+        "1E+4"
+      ],
+      "lower_bound_is_source_dose": true,
+      "upper_bound_is_source_dose": true,
+      "boundary_rule": "linear interpolation in log-dose at an integration bound when the bound is not an exact source dose",
+      "nonzero_reference_quadrature": [
+        {
+          "dose_nM": "1E+1",
+          "weight": 0.07952020911994372
+        },
+        {
+          "dose_nM": "3E+1",
+          "weight": 0.16666666666666666
+        },
+        {
+          "dose_nM": "1E+2",
+          "weight": 0.16666666666666663
+        },
+        {
+          "dose_nM": "3E+2",
+          "weight": 0.1666666666666666
+        },
+        {
+          "dose_nM": "1E+3",
+          "weight": 0.1666666666666666
+        },
+        {
+          "dose_nM": "3E+3",
+          "weight": 0.16666666666666674
+        },
+        {
+          "dose_nM": "1E+4",
+          "weight": 0.08714645754672304
+        }
+      ],
+      "quadrature_weight_sum": 1.0,
+      "nonzero_reference_node_count": 7,
+      "selected_predictor_inputs": [
+        {
+          "position": 13,
+          "native_id": "q037",
+          "dose_nM": "3E+2",
+          "orientation_A_plate": "p1",
+          "orientation_B_plate": "p2"
+        },
+        {
+          "position": 14,
+          "native_id": "q039",
+          "dose_nM": "3E+3",
+          "orientation_A_plate": "p2",
+          "orientation_B_plate": "p1"
+        }
+      ],
+      "selected_input_count": 2,
+      "orientation_A_plate_counts": {
+        "p1": 1,
+        "p2": 1
+      },
+      "orientation_B_plate_counts": {
+        "p1": 1,
+        "p2": 1
+      }
+    },
+    {
+      "target_index": 6,
+      "drug_id": "Encorafenib",
+      "compound_drum_id": "MO00000189",
+      "endpoint": "mean of p1 and p2 normalized log-dose trapezoidal AUCs of unclipped supplied viability",
+      "full_source_dose_grid_nM": [
+        "0.1",
+        "0.3",
+        "1",
+        "3",
+        "1E+1",
+        "3E+1",
+        "1E+2",
+        "3E+2",
+        "1E+3"
+      ],
+      "source_dose_count": 9,
+      "integration_interval_nM": [
+        "0.3",
+        "1E+3"
+      ],
+      "lower_bound_is_source_dose": true,
+      "upper_bound_is_source_dose": true,
+      "boundary_rule": "linear interpolation in log-dose at an integration bound when the bound is not an exact source dose",
+      "nonzero_reference_quadrature": [
+        {
+          "dose_nM": "0.3",
+          "weight": 0.07421185670679802
+        },
+        {
+          "dose_nM": "1",
+          "weight": 0.141929381097734
+        },
+        {
+          "dose_nM": "3",
+          "weight": 0.141929381097734
+        },
+        {
+          "dose_nM": "1E+1",
+          "weight": 0.141929381097734
+        },
+        {
+          "dose_nM": "3E+1",
+          "weight": 0.141929381097734
+        },
+        {
+          "dose_nM": "1E+2",
+          "weight": 0.14192938109773398
+        },
+        {
+          "dose_nM": "3E+2",
+          "weight": 0.14192938109773395
+        },
+        {
+          "dose_nM": "1E+3",
+          "weight": 0.074211856706798
+        }
+      ],
+      "quadrature_weight_sum": 1.0,
+      "nonzero_reference_node_count": 8,
+      "selected_predictor_inputs": [
+        {
+          "position": 15,
+          "native_id": "q045",
+          "dose_nM": "3E+1",
+          "orientation_A_plate": "p1",
+          "orientation_B_plate": "p2"
+        },
+        {
+          "position": 16,
+          "native_id": "q047",
+          "dose_nM": "3E+2",
+          "orientation_A_plate": "p2",
+          "orientation_B_plate": "p1"
+        }
+      ],
+      "selected_input_count": 2,
+      "orientation_A_plate_counts": {
+        "p1": 1,
+        "p2": 1
+      },
+      "orientation_B_plate_counts": {
+        "p1": 1,
+        "p2": 1
+      }
+    },
+    {
+      "target_index": 7,
+      "drug_id": "Gedatolisib",
+      "compound_drum_id": "MO00000233",
+      "endpoint": "mean of p1 and p2 normalized log-dose trapezoidal AUCs of unclipped supplied viability",
+      "full_source_dose_grid_nM": [
+        "0.1",
+        "0.3",
+        "1",
+        "3",
+        "1E+1",
+        "3E+1",
+        "1E+2",
+        "3E+2",
+        "1E+3"
+      ],
+      "source_dose_count": 9,
+      "integration_interval_nM": [
+        "2.5",
+        "1E+3"
+      ],
+      "lower_bound_is_source_dose": false,
+      "upper_bound_is_source_dose": true,
+      "boundary_rule": "linear interpolation in log-dose at an integration bound when the bound is not an exact source dose",
+      "nonzero_reference_quadrature": [
+        {
+          "dose_nM": "1",
+          "weight": 0.002525041957239039
+        },
+        {
+          "dose_nM": "3",
+          "weight": 0.1283791723279811
+        },
+        {
+          "dose_nM": "1E+1",
+          "weight": 0.19215544671006024
+        },
+        {
+          "dose_nM": "3E+1",
+          "weight": 0.19215544671006024
+        },
+        {
+          "dose_nM": "1E+2",
+          "weight": 0.19215544671006018
+        },
+        {
+          "dose_nM": "3E+2",
+          "weight": 0.19215544671006016
+        },
+        {
+          "dose_nM": "1E+3",
+          "weight": 0.10047399887453905
+        }
+      ],
+      "quadrature_weight_sum": 1.0,
+      "nonzero_reference_node_count": 7,
+      "selected_predictor_inputs": [
+        {
+          "position": 17,
+          "native_id": "lib1_d07_n05",
+          "dose_nM": "3E+1",
+          "orientation_A_plate": "p2",
+          "orientation_B_plate": "p1"
+        },
+        {
+          "position": 18,
+          "native_id": "lib1_d07_n06",
+          "dose_nM": "1E+2",
+          "orientation_A_plate": "p1",
+          "orientation_B_plate": "p2"
+        },
+        {
+          "position": 19,
+          "native_id": "lib1_d07_n07",
+          "dose_nM": "3E+2",
+          "orientation_A_plate": "p2",
+          "orientation_B_plate": "p1"
+        }
+      ],
+      "selected_input_count": 3,
+      "orientation_A_plate_counts": {
+        "p1": 1,
+        "p2": 2
+      },
+      "orientation_B_plate_counts": {
+        "p1": 2,
+        "p2": 1
+      }
+    },
+    {
+      "target_index": 8,
+      "drug_id": "Gemcitabine",
+      "compound_drum_id": "MO00000235",
+      "endpoint": "mean of p1 and p2 normalized log-dose trapezoidal AUCs of unclipped supplied viability",
+      "full_source_dose_grid_nM": [
+        "0.1",
+        "0.3",
+        "1",
+        "3",
+        "1E+1",
+        "3E+1",
+        "1E+2",
+        "3E+2",
+        "1E+3"
+      ],
+      "source_dose_count": 9,
+      "integration_interval_nM": [
+        "0.3",
+        "1E+3"
+      ],
+      "lower_bound_is_source_dose": true,
+      "upper_bound_is_source_dose": true,
+      "boundary_rule": "linear interpolation in log-dose at an integration bound when the bound is not an exact source dose",
+      "nonzero_reference_quadrature": [
+        {
+          "dose_nM": "0.3",
+          "weight": 0.07421185670679802
+        },
+        {
+          "dose_nM": "1",
+          "weight": 0.141929381097734
+        },
+        {
+          "dose_nM": "3",
+          "weight": 0.141929381097734
+        },
+        {
+          "dose_nM": "1E+1",
+          "weight": 0.141929381097734
+        },
+        {
+          "dose_nM": "3E+1",
+          "weight": 0.141929381097734
+        },
+        {
+          "dose_nM": "1E+2",
+          "weight": 0.14192938109773398
+        },
+        {
+          "dose_nM": "3E+2",
+          "weight": 0.14192938109773395
+        },
+        {
+          "dose_nM": "1E+3",
+          "weight": 0.074211856706798
+        }
+      ],
+      "quadrature_weight_sum": 1.0,
+      "nonzero_reference_node_count": 8,
+      "selected_predictor_inputs": [
+        {
+          "position": 20,
+          "native_id": "q052",
+          "dose_nM": "1E+1",
+          "orientation_A_plate": "p1",
+          "orientation_B_plate": "p2"
+        },
+        {
+          "position": 21,
+          "native_id": "q054",
+          "dose_nM": "1E+2",
+          "orientation_A_plate": "p2",
+          "orientation_B_plate": "p1"
+        },
+        {
+          "position": 22,
+          "native_id": "q055",
+          "dose_nM": "3E+2",
+          "orientation_A_plate": "p1",
+          "orientation_B_plate": "p2"
+        }
+      ],
+      "selected_input_count": 3,
+      "orientation_A_plate_counts": {
+        "p1": 2,
+        "p2": 1
+      },
+      "orientation_B_plate_counts": {
+        "p1": 1,
+        "p2": 2
+      }
+    },
+    {
+      "target_index": 9,
+      "drug_id": "Idasanutlin",
+      "compound_drum_id": "MO00000270",
+      "endpoint": "mean of p1 and p2 normalized log-dose trapezoidal AUCs of unclipped supplied viability",
+      "full_source_dose_grid_nM": [
+        "1",
+        "3",
+        "1E+1",
+        "3E+1",
+        "1E+2",
+        "3E+2",
+        "1E+3",
+        "3E+3",
+        "1E+4"
+      ],
+      "source_dose_count": 9,
+      "integration_interval_nM": [
+        "3",
+        "1E+4"
+      ],
+      "lower_bound_is_source_dose": true,
+      "upper_bound_is_source_dose": true,
+      "boundary_rule": "linear interpolation in log-dose at an integration bound when the bound is not an exact source dose",
+      "nonzero_reference_quadrature": [
+        {
+          "dose_nM": "3",
+          "weight": 0.074211856706798
+        },
+        {
+          "dose_nM": "1E+1",
+          "weight": 0.14192938109773398
+        },
+        {
+          "dose_nM": "3E+1",
+          "weight": 0.14192938109773398
+        },
+        {
+          "dose_nM": "1E+2",
+          "weight": 0.14192938109773395
+        },
+        {
+          "dose_nM": "3E+2",
+          "weight": 0.14192938109773393
+        },
+        {
+          "dose_nM": "1E+3",
+          "weight": 0.14192938109773393
+        },
+        {
+          "dose_nM": "3E+3",
+          "weight": 0.14192938109773404
+        },
+        {
+          "dose_nM": "1E+4",
+          "weight": 0.0742118567067981
+        }
+      ],
+      "quadrature_weight_sum": 0.9999999999999999,
+      "nonzero_reference_node_count": 8,
+      "selected_predictor_inputs": [
+        {
+          "position": 23,
+          "native_id": "q061",
+          "dose_nM": "3E+2",
+          "orientation_A_plate": "p2",
+          "orientation_B_plate": "p1"
+        },
+        {
+          "position": 24,
+          "native_id": "q062",
+          "dose_nM": "1E+3",
+          "orientation_A_plate": "p1",
+          "orientation_B_plate": "p2"
+        },
+        {
+          "position": 25,
+          "native_id": "q063",
+          "dose_nM": "3E+3",
+          "orientation_A_plate": "p2",
+          "orientation_B_plate": "p1"
+        }
+      ],
+      "selected_input_count": 3,
+      "orientation_A_plate_counts": {
+        "p1": 1,
+        "p2": 2
+      },
+      "orientation_B_plate_counts": {
+        "p1": 2,
+        "p2": 1
+      }
+    },
+    {
+      "target_index": 10,
+      "drug_id": "LCL161",
+      "compound_drum_id": "MO00000372",
+      "endpoint": "mean of p1 and p2 normalized log-dose trapezoidal AUCs of unclipped supplied viability",
+      "full_source_dose_grid_nM": [
+        "2.5",
+        "7.5",
+        "2.5E+2",
+        "7.5E+2",
+        "2.5E+4"
+      ],
+      "source_dose_count": 5,
+      "integration_interval_nM": [
+        "7.5",
+        "2.5E+4"
+      ],
+      "lower_bound_is_source_dose": true,
+      "upper_bound_is_source_dose": true,
+      "boundary_rule": "linear interpolation in log-dose at an integration bound when the bound is not an exact source dose",
+      "nonzero_reference_quadrature": [
+        {
+          "dose_nM": "7.5",
+          "weight": 0.21614123780453198
+        },
+        {
+          "dose_nM": "2.5E+2",
+          "weight": 0.283858762195468
+        },
+        {
+          "dose_nM": "7.5E+2",
+          "weight": 0.283858762195468
+        },
+        {
+          "dose_nM": "2.5E+4",
+          "weight": 0.216141237804532
+        }
+      ],
+      "quadrature_weight_sum": 1.0,
+      "nonzero_reference_node_count": 4,
+      "selected_predictor_inputs": [
+        {
+          "position": 26,
+          "native_id": "q066",
+          "dose_nM": "2.5E+2",
+          "orientation_A_plate": "p1",
+          "orientation_B_plate": "p2"
+        },
+        {
+          "position": 27,
+          "native_id": "q067",
+          "dose_nM": "7.5E+2",
+          "orientation_A_plate": "p2",
+          "orientation_B_plate": "p1"
+        },
+        {
+          "position": 28,
+          "native_id": "q068",
+          "dose_nM": "2.5E+4",
+          "orientation_A_plate": "p1",
+          "orientation_B_plate": "p2"
+        }
+      ],
+      "selected_input_count": 3,
+      "orientation_A_plate_counts": {
+        "p1": 2,
+        "p2": 1
+      },
+      "orientation_B_plate_counts": {
+        "p1": 1,
+        "p2": 2
+      }
+    },
+    {
+      "target_index": 11,
+      "drug_id": "LGK974",
+      "compound_drum_id": "MO00000373",
+      "endpoint": "mean of p1 and p2 normalized log-dose trapezoidal AUCs of unclipped supplied viability",
+      "full_source_dose_grid_nM": [
+        "1",
+        "3",
+        "1E+1",
+        "3E+1",
+        "1E+2",
+        "3E+2",
+        "1E+3",
+        "3E+3",
+        "1E+4"
+      ],
+      "source_dose_count": 9,
+      "integration_interval_nM": [
+        "3",
+        "1E+4"
+      ],
+      "lower_bound_is_source_dose": true,
+      "upper_bound_is_source_dose": true,
+      "boundary_rule": "linear interpolation in log-dose at an integration bound when the bound is not an exact source dose",
+      "nonzero_reference_quadrature": [
+        {
+          "dose_nM": "3",
+          "weight": 0.074211856706798
+        },
+        {
+          "dose_nM": "1E+1",
+          "weight": 0.14192938109773398
+        },
+        {
+          "dose_nM": "3E+1",
+          "weight": 0.14192938109773398
+        },
+        {
+          "dose_nM": "1E+2",
