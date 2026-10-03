@@ -1,5 +1,3 @@
-[Reading 125 lines from start (total: 125 lines, 0 remaining)]
-
 # DosePilot finalist audit
 
 **Purpose:** make the central 64-well claim auditable without asking a judge to reconstruct it from scattered experiment folders.
