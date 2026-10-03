@@ -1,5 +1,3 @@
-[Reading 228 lines from start (total: 228 lines, 0 remaining)]
-
 import copy
 import json
 import shutil
@@ -228,5 +226,3 @@ class EvidenceConsistencyTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
