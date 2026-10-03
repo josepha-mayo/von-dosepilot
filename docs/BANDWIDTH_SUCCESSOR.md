@@ -1,5 +1,3 @@
-[Reading 90 lines from start (total: 90 lines, 0 remaining)]
-
 # von DosePilot bandwidth successor
 
 **Joseph Ayanda | 3 October 2026 | repeated adaptive development**
@@ -90,5 +88,3 @@ On the author's machine, all **238 sample/orientation training-record requests**
 No Lib2 response was read. Protected22 remains exposed and its full primary remains not estimable. No external cohort was newly evaluated. The live Kaggle entry was not silently replaced by this model. The public demo remains a fictional operating demonstration.
 
 The current result is a stronger **development** model, not proof of clinical benefit, prospective cost savings, or a competition win.
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
