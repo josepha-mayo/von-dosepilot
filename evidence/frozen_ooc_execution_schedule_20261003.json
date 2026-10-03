@@ -1,0 +1,45 @@
+{
+  "schema": "dosepilot.frozen_ooc_execution_schedule.v1",
+  "status": "TREATMENT_SCHEDULE_FROZEN_DEVICE_BINDING_PENDING",
+  "model_kind": "dosepilot.additive_kernel_bandwidth.v1",
+  "bandwidth_multiplier": 0.7,
+  "original_plan_sha256": "25b14b67b2e5ab82394f1409ed72f68ae264278095c280df9e552d4f1bdff2ca",
+  "construction_sha256": "1699d858a9e359e39517b12d02046208d553f98d231392fc5bfe67acda8b4c3d",
+  "orientations": {
+    "A": {
+      "treatment_wells": 64,
+      "plate_counts": {
+        "p1": 32,
+        "p2": 32
+      },
+      "plan_sha256": "8eeb8a1c2fa945f034357e8f61f5d2f0a1feeff0332c5d87b5717db3ae558e8f",
+      "binding_template_sha256": "863bb1c6e084619cbd45fe778be2bdbe3e562b69ecc004c7e245e326380e2d24"
+    },
+    "B": {
+      "treatment_wells": 64,
+      "plate_counts": {
+        "p1": 32,
+        "p2": 32
+      },
+      "plan_sha256": "bedb4c6f1e785afc94d3e73ec0cb3b51643d80d5b86477e17537f72148d8722e",
+      "binding_template_sha256": "d47cf214c1b1a6fa7888a71d0c12f715a48a86d03bdd35e61c90483d660fa549"
+    }
+  },
+  "unresolved_fields": [
+    "chip_device_id",
+    "chip_compartment_id",
+    "circuit_id",
+    "reservoir_id",
+    "channel_id",
+    "dosing_route",
+    "exposure_hours",
+    "readout_timepoint_hours",
+    "readout_type"
+  ],
+  "controls_required_separately": [
+    "vehicle",
+    "viability"
+  ],
+  "prospective_experiment_executed": false,
+  "biological_validation_created": false
+}
