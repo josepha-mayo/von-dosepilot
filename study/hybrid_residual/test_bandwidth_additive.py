@@ -1,5 +1,3 @@
-[Reading 40 lines from start (total: 40 lines, 0 remaining)]
-
 import unittest
 import numpy as np
 from additive_kernel import AdditiveKernel
@@ -40,5 +38,3 @@ class Tests(unittest.TestCase):
         with self.assertRaises(ValueError):fake._check_kernel_metadata()
 
 if __name__=='__main__':unittest.main(verbosity=2)
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
