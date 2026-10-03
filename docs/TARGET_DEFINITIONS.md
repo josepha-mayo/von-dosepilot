@@ -1,5 +1,3 @@
-[Reading 103 lines from start (total: 103 lines, 0 remaining)]
-
 # DosePilot target definitions
 
 **Status: frozen development endpoint definition.** This page defines exactly what the 24 reported outputs mean. It adds no new biological result.
