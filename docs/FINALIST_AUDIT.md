@@ -136,4 +136,6 @@ See also:
 - evidence/bandwidth_target_deltas_20261003.csv
 - evidence/bandwidth_successor_20261003.json
 - docs/BANDWIDTH_SUCCESSOR.md
+- docs/SIMULATED_ASSAY_ROBUSTNESS.md
+- docs/PROSPECTIVE_OOC_VALIDATION_CONTRACT.md
 - live fictional-data demo: https://von-dosepilot.netlify.app
