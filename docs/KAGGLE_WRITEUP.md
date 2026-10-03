@@ -1,3 +1,5 @@
+[Reading 133 lines from start (total: 133 lines, 0 remaining)]
+
 **Submission category: Model & Algorithm**
 
 # von DosePilot: 24 response summaries from 64 traceable wells
@@ -69,7 +71,7 @@ Against R9, R13 improves 53/59 patient means and all five outer-fold means. Six 
 
 The previous additive model improves 45/59 patient means versus S2, 49/59 versus R13 and 47/59 versus R18. The bandwidth-0.7 successor then improves **38/59 patient means versus additive**, all five outer-fold means, and p90 RMSE (0.037894 versus 0.038073). Its two orientation-wide MSEs are **0.0011047522** and **0.0010117979**. The descriptive paired-patient interval for bandwidth-0.7 minus additive mean loss is [-4.159e-6, -4.157e-7]. These intervals are descriptive and not selection-corrected.
 
-Bandwidth 1.4 was rejected, as were residual-alignment, structured-kernel, consistency and acquisition challengers. The promoted bandwidth-0.7 model still regresses on ten target-average errors versus additive, so it is not described as uniformly superior.
+Bandwidth 1.4 was rejected. Residual-alignment reweighting also remained 0.0269% worse than additive, with 24/59 patient wins, 2/5 favorable folds, worse p90; structured-kernel, consistency and acquisition challengers were rejected as well. The promoted bandwidth-0.7 model still regresses on ten target-average errors versus additive, so it is not described as uniformly superior.
 
 ### Separately sourced external assessments
 
@@ -131,3 +133,5 @@ ChatGPT assisted with research synthesis, implementation, numerical checking, do
 5. Tan et al., *Cell Reports Medicine* (2023), DOI: 10.1016/j.xcrm.2023.101335.
 6. Farin et al., *Cancer Discovery* (2023), DOI: 10.1158/2159-8290.CD-23-0050; Mendeley Data DOI: 10.17632/fypp6xhkjy.1.
 7. Verissimo et al., *eLife* (2016), DOI: 10.7554/eLife.18489.
+
+[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
