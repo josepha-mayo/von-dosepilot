@@ -44,6 +44,20 @@
       "sha256": "bb2234239ff20484af50f6a5f0497934dc6ba4077f677deebdf12a33c6da28cf"
     }
   },
+  "current_technical_report": {
+    "path": "evidence/current_technical_report_20261003.json",
+    "sha256": "e6efd0143083efc36e612ae0887ba086f94640c951aee1d523832a9da7836101",
+    "role": "CURRENT_JUDGE_FACING_TECHNICAL_REPORT",
+    "status": "PASS",
+    "pages": 10,
+    "preflight_path": "evidence/release_preflight_current_report_20261003.json",
+    "preflight_sha256": "56d7a8c273361c56dbf8ff91918525323dddb4552160177cae501f715de6ad1d",
+    "preflight_status": "PASS",
+    "preflight_response_free_tests": 148,
+    "historical_submitted_pdf_replaced": false,
+    "accepted_kaggle_entry_changed": false,
+    "biological_accuracy_result_created": false
+  },
   "protected22": {
     "population": {
       "pdos": 61,

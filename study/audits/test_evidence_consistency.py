@@ -24,6 +24,18 @@ class EvidenceConsistencyTests(unittest.TestCase):
         shutil.copy2(self.source / "evidence/EVIDENCE_INDEX.json", self.root / "evidence/EVIDENCE_INDEX.json")
         for record in index["canonical_receipts"].values():
             shutil.copy2(self.source / record["path"], self.root / record["path"])
+        report_index = index["current_technical_report"]
+        report_receipt_path = report_index["path"]
+        shutil.copy2(self.source / report_receipt_path, self.root / report_receipt_path)
+        report_preflight_path = report_index["preflight_path"]
+        shutil.copy2(self.source / report_preflight_path, self.root / report_preflight_path)
+        report = json.loads((self.source / report_receipt_path).read_text())
+        report_paths = [report[part]["path"] for part in ("entrypoint", "source", "pdf", "renderer")]
+        report_paths.append(report["historical_submitted_pdf"]["path"])
+        for relative in report_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         lifecycle = json.loads(
             (self.source / "evidence/bandwidth_lifecycle_20261003.json").read_text()
         )
@@ -75,6 +87,8 @@ class EvidenceConsistencyTests(unittest.TestCase):
         self.assertEqual(result["bandwidth_lifecycle_tests"], 65)
         self.assertEqual(result["frozen_ooc_schedule_rows"], 64)
         self.assertEqual(result["frozen_ooc_schedule_tamper_tests"], 5)
+        self.assertEqual(result["current_report_pages"], 10)
+        self.assertTrue(result["current_report_deterministic"])
 
     def test_changed_receipt_byte_fails_hash(self):
         path = self.root / "evidence/PROTECTED22_ACCESS_STATUS.json"

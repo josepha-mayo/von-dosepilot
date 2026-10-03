@@ -1,0 +1,224 @@
+{
+  "schema": "dosepilot.release_preflight.v1",
+  "status": "PASS",
+  "utc": "2026-10-03T20:09:10.530783+00:00",
+  "checks": [
+    {
+      "name": "evidence",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "study/audits/verify_evidence_consistency.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.03271899100218434,
+      "output_sha256": "7c82f28bcdc5e6624e9726c0b0324708b2b3599f2daae39df378c11bf767aeae",
+      "output_tail": "{\n  \"additive_incumbent_mse\": 0.001060552730112811,\n  \"bandwidth_lifecycle_tests\": 65,\n  \"bandwidth_successor_mse\": 0.0010582750420801538,\n  \"canonical_receipts\": 10,\n  \"current_report_deterministic\": true,\n  \"current_report_pages\": 10,\n  \"durable_runtime_tests\": 55,\n  \"frozen_ooc_schedule_rows\": 64,\n  \"frozen_ooc_schedule_tamper_tests\": 5,\n  \"private_arrays_read\": false,\n  \"protected22_cells_reconciled\": 19642,\n  \"raw_ak_decision\": \"REJECT_RETAIN_ADDITIVE\",\n  \"spectral_mse\": 0.0010701439454817465,\n  \"status\": \"PASS\"\n}\n",
+      "unittest_count": 0
+    },
+    {
+      "name": "audit_tests",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "study/audits",
+        "-p",
+        "test_*evidence_consistency.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.22973119100788608,
+      "output_sha256": "ced2306ef584eaf7df0b08e3ecb32a506284170c88317bc509c784afa4dedd1a",
+      "output_tail": "test_any_judge_facing_document_byte_change_fails_pin (test_evidence_consistency.EvidenceConsistencyTests.test_any_judge_facing_document_byte_change_fails_pin) ... ok\ntest_cell_arithmetic_contradiction_fails (test_evidence_consistency.EvidenceConsistencyTests.test_cell_arithmetic_contradiction_fails) ... ok\ntest_changed_receipt_byte_fails_hash (test_evidence_consistency.EvidenceConsistencyTests.test_changed_receipt_byte_fails_hash) ... ok\ntest_current_state_passes (test_evidence_consistency.EvidenceConsistencyTests.test_current_state_passes) ... ok\ntest_frozen_schedule_public_surface_tamper_fails (test_evidence_consistency.EvidenceConsistencyTests.test_frozen_schedule_public_surface_tamper_fails) ... ok\ntest_future_interpretation_is_exact (test_evidence_consistency.EvidenceConsistencyTests.test_future_interpretation_is_exact) ... ok\ntest_index_cannot_label_s2_independent (test_evidence_consistency.EvidenceConsistencyTests.test_index_cannot_label_s2_independent) ... ok\ntest_index_cannot_promote_conditional_to_primary (test_evidence_consistency.EvidenceConsistencyTests.test_index_cannot_promote_conditional_to_primary) ... ok\ntest_index_cannot_promote_frozen_schedule_to_validation (test_evidence_consistency.EvidenceConsistencyTests.test_index_cannot_promote_frozen_schedule_to_validation) ... ok\ntest_index_cannot_promote_raw_ak (test_evidence_consistency.EvidenceConsistencyTests.test_index_cannot_promote_raw_ak) ... ok\ntest_index_cannot_relabel_current_bandwidth_lifecycle (test_evidence_consistency.EvidenceConsistencyTests.test_index_cannot_relabel_current_bandwidth_lifecycle) ... ok\ntest_index_cannot_replace_bandwidth_incumbent (test_evidence_consistency.EvidenceConsistencyTests.test_index_cannot_replace_bandwidth_incumbent) ... ok\ntest_index_cannot_turn_lifecycle_into_biological_evidence (test_evidence_consistency.EvidenceConsistencyTests.test_index_cannot_turn_lifecycle_into_biological_evidence) ... ok\ntest_index_conditional_metric_must_match_receipt (test_evidence_consistency.EvidenceConsistencyTests.test_index_conditional_metric_must_match_receipt) ... ok\ntest_index_spectral_wins_must_match_receipt (test_evidence_consistency.EvidenceConsistencyTests.test_index_spectral_wins_must_match_receipt) ... ok\ntest_ledger_numeric_claim_must_match (test_evidence_consistency.EvidenceConsistencyTests.test_ledger_numeric_claim_must_match) ... ok\ntest_missing_prior_exposure_link_fails (test_evidence_consistency.EvidenceConsistencyTests.test_missing_prior_exposure_link_fails) ... ok\ntest_nonnull_primary_or_confirmation_pass_fails (test_evidence_consistency.EvidenceConsistencyTests.test_nonnull_primary_or_confirmation_pass_fails) ... ok\ntest_paired_receipt_and_index_change_fails_external_pin (test_evidence_consistency.EvidenceConsistencyTests.test_paired_receipt_and_index_change_fails_external_pin) ... ok\ntest_receipt_cannot_expand_lifecycle_scope (test_evidence_consistency.EvidenceConsistencyTests.test_receipt_cannot_expand_lifecycle_scope) ... ok\ntest_receipt_cannot_fake_bandwidth_lifecycle (test_evidence_consistency.EvidenceConsistencyTests.test_receipt_cannot_fake_bandwidth_lifecycle) ... ok\ntest_receipt_cannot_fake_bandwidth_successor (test_evidence_consistency.EvidenceConsistencyTests.test_receipt_cannot_fake_bandwidth_successor) ... ok\ntest_receipt_cannot_promote_raw_ak (test_evidence_consistency.EvidenceConsistencyTests.test_receipt_cannot_promote_raw_ak) ... ok\ntest_receipt_cannot_replace_additive_incumbent (test_evidence_consistency.EvidenceConsistencyTests.test_receipt_cannot_replace_additive_incumbent) ... ok\ntest_stale_ledger_claim_fails (test_evidence_consistency.EvidenceConsistencyTests.test_stale_ledger_claim_fails) ... ok\ntest_writeup_false_validation_claim_fails (test_evidence_consistency.EvidenceConsistencyTests.test_writeup_false_validation_claim_fails) ... ok\n\n----------------------------------------------------------------------\nRan 26 tests in 0.179s\n\nOK\n",
+      "unittest_count": 26
+    },
+    {
+      "name": "durable_runtime",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "study/durable_runtime",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.79043829299917,
+      "output_sha256": "4f44e45589c58fe85c143fcad71259c7620fc75c78fbec9b9d61607e0c54034d",
+      "output_tail": "_wins) ... ok\ntest_success_has_private_permissions (test_durable_json.Tests.test_success_has_private_permissions) ... ok\ntest_symlink_parent_rejected (test_durable_json.Tests.test_symlink_parent_rejected) ... ok\ntest_symlink_target_does_not_overwrite (test_durable_json.Tests.test_symlink_target_does_not_overwrite) ... ok\ntest_distinct_frames_do_not_block (test_frame_lock.Tests.test_distinct_frames_do_not_block) ... ok\ntest_invalid_id (test_frame_lock.Tests.test_invalid_id) ... ok\ntest_persistent_filename_not_stale_job (test_frame_lock.Tests.test_persistent_filename_not_stale_job) ... ok\ntest_same_frame_exclusive (test_frame_lock.Tests.test_same_frame_exclusive) ... ok\ntest_symlink_or_linked_lock_rejected (test_frame_lock.Tests.test_symlink_or_linked_lock_rejected) ... ok\ntest_symlink_root_rejected (test_frame_lock.Tests.test_symlink_root_rejected) ... ok\ntest_after_publication_export_recovers_exactly (test_lifecycle.Tests.test_after_publication_export_recovers_exactly) ... ok\ntest_complete_missing_reading_preserves_primary (test_lifecycle.Tests.test_complete_missing_reading_preserves_primary) ... ok\ntest_complete_path_matches_original (test_lifecycle.Tests.test_complete_path_matches_original) ... ok\ntest_completed_primary_prevents_later_recovery (test_lifecycle.Tests.test_completed_primary_prevents_later_recovery) ... ok\ntest_concurrent_conflicting_recoveries_cannot_fork (test_lifecycle.Tests.test_concurrent_conflicting_recoveries_cannot_fork) ... ok\ntest_dead_process_releases_frame_without_deleting_lock_file (test_lifecycle.Tests.test_dead_process_releases_frame_without_deleting_lock_file) ... ok\ntest_explicit_recovery_retains_23_older_estimates (test_lifecycle.Tests.test_explicit_recovery_retains_23_older_estimates) ... ok\ntest_input_identity_change_during_lock_rejected (test_lifecycle.Tests.test_input_identity_change_during_lock_rejected) ... ok\ntest_missing_primary_withheld (test_lifecycle.Tests.test_missing_primary_withheld) ... ok\ntest_non_object_identity_rejected (test_lifecycle.Tests.test_non_object_identity_rejected) ... ok\ntest_old_commitment_not_silently_migrated (test_lifecycle.Tests.test_old_commitment_not_silently_migrated) ... ok\ntest_original_recovery_module_remains_unmodified (test_lifecycle.Tests.test_original_recovery_module_remains_unmodified) ... ok\ntest_partial_publication_exposes_no_final_name (test_lifecycle.Tests.test_partial_publication_exposes_no_final_name) ... ok\ntest_predict_automatically_checks_recovery_history (test_lifecycle.Tests.test_predict_automatically_checks_recovery_history) ... ok\ntest_recovery_requires_acknowledgement (test_lifecycle.Tests.test_recovery_requires_acknowledgement) ... ok\ntest_changed_measurement_no_overwrite (test_workflow.Tests.test_changed_measurement_no_overwrite) ... ok\ntest_complete_numerical_parity (test_workflow.Tests.test_complete_numerical_parity) ... ok\ntest_identity_check_matrix (test_workflow.Tests.test_identity_check_matrix) ... ok\ntest_interrupted_commit_all_publication_sites (test_workflow.Tests.test_interrupted_commit_all_publication_sites) ... ok\ntest_interrupted_prediction_all_publication_sites (test_workflow.Tests.test_interrupted_prediction_all_publication_sites) ... ok\ntest_legacy_interrupted_dump_leaves_partial_final (test_workflow.Tests.test_legacy_interrupted_dump_leaves_partial_final) ... ok\ntest_missing_all64_positions_rejected (test_workflow.Tests.test_missing_all64_positions_rejected) ... ok\ntest_old_commitment_not_silently_replayed (test_workflow.Tests.test_old_commitment_not_silently_replayed) ... ok\ntest_order_independence (test_workflow.Tests.test_order_independence) ... ok\ntest_original_backend_unmodified (test_workflow.Tests.test_original_backend_unmodified) ... ok\ntest_prediction_export_recovery (test_workflow.Tests.test_prediction_export_recovery) ... ok\ntest_runtime_identity_bound (test_workflow.Tests.test_runtime_identity_bound) ... ok\n\n----------------------------------------------------------------------\nRan 65 tests in 2.655s\n\nOK\n",
+      "unittest_count": 65
+    },
+    {
+      "name": "acquisition",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "study/multioutput_acquisition",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.4754988839995349,
+      "output_sha256": "fbb8709bf7653bf3d0cfe5ea1544900dd61ca1521016cfedc2aa457a546efcca",
+      "output_tail": "test_cached_selected_moments_match_reference (test_global_acquisition.Tests.test_cached_selected_moments_match_reference) ... ok\ntest_no_mutation (test_global_acquisition.Tests.test_no_mutation) ... ok\ntest_nonfinite_rejected (test_global_acquisition.Tests.test_nonfinite_rejected) ... ok\ntest_one_sweep_budget_and_monotone (test_global_acquisition.Tests.test_one_sweep_budget_and_monotone) ... ok\ntest_patient_replication_invariance (test_global_acquisition.Tests.test_patient_replication_invariance) ... ok\ntest_permutation_invariance (test_global_acquisition.Tests.test_permutation_invariance) ... ok\ntest_schur_matches_full_solve (test_global_acquisition.Tests.test_schur_matches_full_solve) ... ok\ntest_unpaid_values_irrelevant (test_global_acquisition.Tests.test_unpaid_values_irrelevant) ... ok\ntest_zero_target_signal_preserves_start (test_global_acquisition.Tests.test_zero_target_signal_preserves_start) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.418s\n\nOK\n",
+      "unittest_count": 9
+    },
+    {
+      "name": "structured_kernels",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "study/structured_kernels",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.18603108600655105,
+      "output_sha256": "40aee06a885cbdd01411544da205cc69244c508685c583092ca71b68d7bc21bc",
+      "output_tail": "test_direct_dual_ridge (test_structured_kernel.Tests.test_direct_dual_ridge) ... ok\ntest_global_group_shift_invariant_nonlinear (test_structured_kernel.Tests.test_global_group_shift_invariant_nonlinear) ... ok\ntest_group_identity (test_structured_kernel.Tests.test_group_identity) ... ok\ntest_nonfinite (test_structured_kernel.Tests.test_nonfinite) ... ok\ntest_pair_energy_matching (test_structured_kernel.Tests.test_pair_energy_matching) ... ok\ntest_pair_formula_explicit (test_structured_kernel.Tests.test_pair_formula_explicit) ... ok\ntest_psd (test_structured_kernel.Tests.test_psd) ... ok\ntest_query_batch_invariance (test_structured_kernel.Tests.test_query_batch_invariance) ... ok\ntest_row_order (test_structured_kernel.Tests.test_row_order) ... ok\ntest_training_centering (test_structured_kernel.Tests.test_training_centering) ... ok\ntest_unknown_kind (test_structured_kernel.Tests.test_unknown_kind) ... ok\ntest_zero_features (test_structured_kernel.Tests.test_zero_features) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.086s\n\nOK\n",
+      "unittest_count": 12
+    },
+    {
+      "name": "aligned_additive",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "study/aligned_additive",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.20394179598952178,
+      "output_sha256": "50b1d59954267aeb14f191c98f343f350f272abdf3d3994b62a3c6b5f459bec4",
+      "output_tail": "test_constant_residual_falls_back_to_equal_weights (test_aligned_additive.AlignedAdditiveTests.test_constant_residual_falls_back_to_equal_weights) ... ok\ntest_energy_normalization (test_aligned_additive.AlignedAdditiveTests.test_energy_normalization) ... ok\ntest_eta_zero_matches_incumbent (test_aligned_additive.AlignedAdditiveTests.test_eta_zero_matches_incumbent) ... ok\ntest_explicit_center_alignment_and_energy (test_aligned_additive.AlignedAdditiveTests.test_explicit_center_alignment_and_energy) ... ok\ntest_group_label_permutation_invariance (test_aligned_additive.AlignedAdditiveTests.test_group_label_permutation_invariance) ... ok\ntest_invalid_inputs (test_aligned_additive.AlignedAdditiveTests.test_invalid_inputs) ... ok\ntest_positive_semidefinite (test_aligned_additive.AlignedAdditiveTests.test_positive_semidefinite) ... ok\ntest_query_batching (test_aligned_additive.AlignedAdditiveTests.test_query_batching) ... ok\ntest_tiny_nonconstant_residual_uses_declared_fallback (test_aligned_additive.AlignedAdditiveTests.test_tiny_nonconstant_residual_uses_declared_fallback) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.119s\n\nOK\n",
+      "unittest_count": 9
+    },
+    {
+      "name": "bandwidth_successor",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "study/hybrid_residual",
+        "-p",
+        "test_bandwidth_additive.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.13694477200624533,
+      "output_sha256": "29ea3f45954fbe9831c77623553b0b342c7b3bb248088fc9a83ad20218bbf612",
+      "output_tail": "test_inference_kernel_matches_training_kernel (test_bandwidth_additive.Tests.test_inference_kernel_matches_training_kernel) ... ok\ntest_inference_rejects_wrong_declared_multiplier (test_bandwidth_additive.Tests.test_inference_rejects_wrong_declared_multiplier) ... ok\ntest_invalid_multiplier (test_bandwidth_additive.Tests.test_invalid_multiplier) ... ok\ntest_metadata_roundtrip (test_bandwidth_additive.Tests.test_metadata_roundtrip) ... ok\ntest_multiplier_one_matches_historical_kernel (test_bandwidth_additive.Tests.test_multiplier_one_matches_historical_kernel) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.035s\n\nOK\n",
+      "unittest_count": 5
+    },
+    {
+      "name": "ooc_compiler",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.12669000100868288,
+      "output_sha256": "83cc97026a1da670646de1a4201e75e6b2b99983ab10e7661325509adf65cbfa",
+      "output_tail": "test_cli_preserves_incompatibility_reason_and_no_output (test_ooc_feasibility.OocFeasibilityTests.test_cli_preserves_incompatibility_reason_and_no_output) ... {\"reason\": \"MISSING_SEPARATE_CONTROLS_FOR_SYNTHETIC_OOC_RUN: vehicle,viability\", \"status\": \"INCOMPATIBLE\"}\nok\ntest_compatible_manifest_has_exact_resource_union (test_ooc_feasibility.OocFeasibilityTests.test_compatible_manifest_has_exact_resource_union) ... ok\ntest_control_cannot_reuse_treatment_channel (test_ooc_feasibility.OocFeasibilityTests.test_control_cannot_reuse_treatment_channel) ... ok\ntest_control_cannot_share_treatment_flow_circuit (test_ooc_feasibility.OocFeasibilityTests.test_control_cannot_share_treatment_flow_circuit) ... ok\ntest_control_cannot_share_treatment_reservoir (test_ooc_feasibility.OocFeasibilityTests.test_control_cannot_share_treatment_reservoir) ... ok\ntest_controls_cannot_share_flow_or_reservoir (test_ooc_feasibility.OocFeasibilityTests.test_controls_cannot_share_flow_or_reservoir) ... ok\ntest_duplicate_action_and_control_ids_are_rejected (test_ooc_feasibility.OocFeasibilityTests.test_duplicate_action_and_control_ids_are_rejected) ... ok\ntest_duplicate_native_id_is_rejected (test_ooc_feasibility.OocFeasibilityTests.test_duplicate_native_id_is_rejected) ... ok\ntest_exact_dose_substitution_is_rejected (test_ooc_feasibility.OocFeasibilityTests.test_exact_dose_substitution_is_rejected) ... ok\ntest_manifest_is_deterministic (test_ooc_feasibility.OocFeasibilityTests.test_manifest_is_deterministic) ... ok\ntest_missing_separate_control_is_rejected (test_ooc_feasibility.OocFeasibilityTests.test_missing_separate_control_is_rejected) ... ok\ntest_missing_treatment_is_rejected (test_ooc_feasibility.OocFeasibilityTests.test_missing_treatment_is_rejected) ... ok\ntest_plan_budget_and_controls_commitment_cannot_be_tampered (test_ooc_feasibility.OocFeasibilityTests.test_plan_budget_and_controls_commitment_cannot_be_tampered) ... ok\ntest_plan_plate_counts_cannot_be_tampered (test_ooc_feasibility.OocFeasibilityTests.test_plan_plate_counts_cannot_be_tampered) ... ok\ntest_required_control_policy_cannot_be_weakened (test_ooc_feasibility.OocFeasibilityTests.test_required_control_policy_cannot_be_weakened) ... ok\ntest_shared_flow_conflicting_exposure_is_rejected (test_ooc_feasibility.OocFeasibilityTests.test_shared_flow_conflicting_exposure_is_rejected) ... ok\ntest_shared_reservoir_conflicting_exposure_is_rejected (test_ooc_feasibility.OocFeasibilityTests.test_shared_reservoir_conflicting_exposure_is_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.035s\n\nOK\n",
+      "unittest_count": 17
+    },
+    {
+      "name": "frozen_ooc_schedule_tests",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "study/audits",
+        "-p",
+        "test_frozen_ooc_schedule.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.09679287299513817,
+      "output_sha256": "57591a38f6791fef3063fe5e334cdd3757ee2decee5f8abf89d0e98faeb2b871",
+      "output_tail": "test_ab_complementarity_survives_paired_hash_updates (test_frozen_ooc_schedule.FrozenOocScheduleTests.test_ab_complementarity_survives_paired_hash_updates) ... ok\ntest_claim_boundary_cannot_be_promoted (test_frozen_ooc_schedule.FrozenOocScheduleTests.test_claim_boundary_cannot_be_promoted) ... ok\ntest_current_schedule_and_public_surface_pass (test_frozen_ooc_schedule.FrozenOocScheduleTests.test_current_schedule_and_public_surface_pass) ... ok\ntest_literal_transport_escape_is_rejected (test_frozen_ooc_schedule.FrozenOocScheduleTests.test_literal_transport_escape_is_rejected) ... ok\ntest_site_schedule_copy_cannot_drift_from_plan (test_frozen_ooc_schedule.FrozenOocScheduleTests.test_site_schedule_copy_cannot_drift_from_plan) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.048s\n\nOK\n",
+      "unittest_count": 5
+    },
+    {
+      "name": "frozen_ooc_schedule",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "study/audits/verify_frozen_ooc_schedule.py",
+        "--root",
+        "evidence",
+        "--repo",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.03759171400452033,
+      "output_sha256": "b7f82dcb7ad12910294a519221c6a2f8d02f2d0574e1fd45f95ee9e8ed4775cf",
+      "output_tail": "{\n  \"status\": \"PASS\",\n  \"model_kind\": \"dosepilot.additive_kernel_bandwidth.v1\",\n  \"bandwidth_multiplier\": 0.7,\n  \"orientations\": {\n    \"A\": {\n      \"wells\": 64,\n      \"p1\": 32,\n      \"p2\": 32\n    },\n    \"B\": {\n      \"wells\": 64,\n      \"p1\": 32,\n      \"p2\": 32\n    }\n  },\n  \"ab_same_treatments\": true,\n  \"ab_complementary_plate_assignment\": true,\n  \"targets\": 24,\n  \"two_dose_targets\": 8,\n  \"three_dose_targets\": 16,\n  \"public_schedule_rows\": 64,\n  \"public_site_schedule_exact\": true,\n  \"manifest_table_exact\": true,\n  \"transport_escape_literals\": 0,\n  \"public_surface_sha256\": {\n    \"site/frozen_schedule.js\": \"c094e00e37c418739835598290d12fa162887a1a60a43913357f80b107279503\",\n    \"site/index.html\": \"f71fcc38505dad16568965706450df14bf9ed9afafc8f9da2f7e7fa5b093c1a2\",\n    \"docs/FROZEN_OOC_EXECUTION_MANIFEST.md\": \"16848f1548fd9c589318806aac2ea30a45d58cc4502f6eeccddfa4f33b2137c6\",\n    \"docs/KAGGLE_WRITEUP.md\": \"da691ddf225508f786206851df852b9873052e8ec10b30b292be04649e54e16a\"\n  },\n  \"unresolved_device_binding_fields\": 9,\n  \"separate_control_types\": 2,\n  \"synthetic_compiler_witness\": {\n    \"A\": {\n      \"inventory_sha256\": \"f743a89917c2961d7f85c44d57d0500d4d2bd6c4dd4154054559198ad1e51fa4\",\n      \"manifest_payload_sha256\": \"c9048cb5869c6469ea2d8c3df5caf93d8951c2f84b32aa19193b8c8613e1e52f\",\n      \"treatment_actions\": 64,\n      \"separate_controls\": 2\n    },\n    \"B\": {\n      \"inventory_sha256\": \"f743a89917c2961d7f85c44d57d0500d4d2bd6c4dd4154054559198ad1e51fa4\",\n      \"manifest_payload_sha256\": \"f8982b7e0f844c3cc0f8049f9c7ca1cdce9809d3130da00e2e075ae304be4400\",\n      \"treatment_actions\": 64,\n      \"separate_controls\": 2\n    }\n  },\n  \"prospective_experiment_executed\": false,\n  \"protected_response_access\": false,\n  \"private_patient_rows_read\": false,\n  \"biological_validation_created\": false\n}\n",
+      "unittest_count": 0
+    },
+    {
+      "name": "fictional_lifecycle_demo",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "study/durable_runtime/run_lifecycle_demo.py",
+        "--output",
+        "/tmp/dosepilot-release-6wl6cc2z/fictional_lifecycle"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.7046835770015605,
+      "output_sha256": "f8a6b0865154486ac578649ad669d732442623ce6227c76901fe8d322fd85b82",
+      "output_tail": "{\n  \"status\": \"PASS\",\n  \"data\": \"ALL FICTIONAL; NO BIOLOGICAL VALIDATION\",\n  \"lifecycle_policy\": \"dosepilot.durable_complete_lifecycle.v1\",\n  \"cli_invocations\": 6,\n  \"missing_primary_rejected\": true,\n  \"explicit_baseline_outputs\": 23,\n  \"changed_old_reading_rejected_automatically\": true,\n  \"complete_primary_outputs\": 24,\n  \"lost_export_recovered_identically\": true,\n  \"private_data_downloaded\": false,\n  \"clinical_use_validated\": false,\n  \"source_sha256\": \"2813eca39d016de5a54ef6634f3ae62e51b286d3c903f118e0a09e4dcdf3621c\"\n}\n",
+      "unittest_count": 0
+    },
+    {
+      "name": "fictional_bandwidth_lifecycle_demo",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "study/durable_runtime/run_bandwidth_lifecycle_demo.py",
+        "--output",
+        "/tmp/dosepilot-release-6wl6cc2z/fictional_bandwidth_lifecycle"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.6841285590053303,
+      "output_sha256": "0fffc9887a00aea3aabd3920242c80a9dfcf7a37a8f2ab94307020d170c8f576",
+      "output_tail": "{\n  \"status\": \"PASS\",\n  \"data\": \"ALL FICTIONAL; NO BIOLOGICAL VALIDATION\",\n  \"model_kind\": \"dosepilot.additive_kernel_bandwidth.v1\",\n  \"bandwidth_multiplier\": 0.7,\n  \"lifecycle_policy\": \"dosepilot.bandwidth07_complete_lifecycle.v1\",\n  \"cli_invocations\": 6,\n  \"missing_primary_rejected\": true,\n  \"explicit_baseline_outputs\": 23,\n  \"changed_old_reading_rejected_automatically\": true,\n  \"complete_primary_outputs\": 24,\n  \"lost_export_recovered_identically\": true,\n  \"private_data_downloaded\": false,\n  \"clinical_use_validated\": false,\n  \"source_sha256\": \"34eedd805f14373220a630ed8217d2d19f567cb92cb267de65d348035d08a262\"\n}\n",
+      "unittest_count": 0
+    }
+  ],
+  "check_count": 12,
+  "orchestrated_test_count": 148,
+  "fictional_lifecycle_demo_completed": true,
+  "fictional_bandwidth_lifecycle_demo_completed": true,
+  "source_sha256": "c871c5561ef3c3e5f507c6d894cadc47c4fff3fb45a81c15adff9024f920398c",
+  "private_or_protected_inputs_read": false,
+  "biological_accuracy_result_created": false
+}

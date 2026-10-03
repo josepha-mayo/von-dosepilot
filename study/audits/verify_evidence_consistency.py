@@ -35,6 +35,8 @@ PINNED_DOCUMENTS = {
     "docs/KAGGLE_WRITEUP.md": "da691ddf225508f786206851df852b9873052e8ec10b30b292be04649e54e16a",
 }
 
+CURRENT_REPORT_RECEIPT_SHA256 = "e6efd0143083efc36e612ae0887ba086f94640c951aee1d523832a9da7836101"
+
 
 def load(path):
     return json.loads(Path(path).read_text())
@@ -71,6 +73,54 @@ def verify(root, enforce_pins=True):
         if sha(path) != record["sha256"]:
             raise EvidenceError("RECEIPT_HASH: " + name)
         receipts[name] = load(path)
+
+    report_index = index["current_technical_report"]
+    same(report_index["sha256"], CURRENT_REPORT_RECEIPT_SHA256, "INDEX_CURRENT_REPORT_RECEIPT_PIN")
+    report_receipt_path = root / report_index["path"]
+    same(sha(report_receipt_path), report_index["sha256"], "CURRENT_REPORT_RECEIPT_HASH")
+    current_report = load(report_receipt_path)
+    same(current_report["schema"], "dosepilot.current_technical_report_release.v1", "CURRENT_REPORT_SCHEMA")
+    same(current_report["status"], "PASS", "CURRENT_REPORT_STATUS")
+    same(current_report["role"], "CURRENT_JUDGE_FACING_TECHNICAL_REPORT", "CURRENT_REPORT_ROLE")
+    for part in ("entrypoint", "source", "pdf", "renderer"):
+        record = current_report[part]
+        same(sha(root / record["path"]), record["sha256"], "CURRENT_REPORT_FILE_HASH: " + record["path"])
+    historical_report = current_report["historical_submitted_pdf"]
+    same(sha(root / historical_report["path"]), historical_report["sha256"], "CURRENT_REPORT_HISTORICAL_HASH")
+    same(historical_report["replaced"], False, "CURRENT_REPORT_HISTORICAL_PRESERVED")
+    same((root / current_report["pdf"]["path"]).stat().st_size, current_report["pdf"]["bytes"], "CURRENT_REPORT_PDF_BYTES")
+    same(current_report["pdf"]["pages"], 10, "CURRENT_REPORT_PAGES")
+    same(current_report["pdf"]["blank_pages"], 0, "CURRENT_REPORT_NO_BLANK_PAGES")
+    same(current_report["pdf"]["visual_review"], "PASS", "CURRENT_REPORT_VISUAL_REVIEW")
+    same(current_report["renderer"]["invariant_output"], True, "CURRENT_REPORT_INVARIANT")
+    same(current_report["renderer"]["two_consecutive_builds_byte_identical"], True, "CURRENT_REPORT_DETERMINISTIC")
+    report_preflight_path = root / report_index["preflight_path"]
+    same(sha(report_preflight_path), report_index["preflight_sha256"], "CURRENT_REPORT_PREFLIGHT_HASH")
+    report_preflight = load(report_preflight_path)
+    same(report_preflight["status"], report_index["preflight_status"], "CURRENT_REPORT_PREFLIGHT_STATUS")
+    same(report_preflight["orchestrated_test_count"], report_index["preflight_response_free_tests"], "CURRENT_REPORT_PREFLIGHT_TESTS")
+    same(report_preflight["private_or_protected_inputs_read"], False, "CURRENT_REPORT_PREFLIGHT_NO_PRIVATE")
+    same(report_preflight["biological_accuracy_result_created"], False, "CURRENT_REPORT_PREFLIGHT_NO_ACCURACY")
+    claim_checks = current_report["claim_checks"]
+    same(claim_checks["bandwidth_successor_mse"], 0.0010582750420801538, "CURRENT_REPORT_MSE", 1e-15)
+    same(claim_checks["protected22_primary"], "NOT_ESTIMABLE", "CURRENT_REPORT_PROTECTED22")
+    same(claim_checks["release_preflight_tests"], 148, "CURRENT_REPORT_PREFLIGHT")
+    for key in ("repeated_adaptive_development_disclosed", "adverse_target_slices_disclosed"):
+        same(claim_checks[key], True, "CURRENT_REPORT_DISCLOSURE: " + key)
+    same(claim_checks["prospective_ooc_experiment_claimed"], False, "CURRENT_REPORT_NO_OOC_CLAIM")
+    same(claim_checks["official_competition_score"], None, "CURRENT_REPORT_NO_SCORE")
+    for key in ("private_or_protected_inputs_read", "biological_accuracy_result_created", "accepted_kaggle_entry_changed"):
+        same(current_report[key], False, "CURRENT_REPORT_BOUNDARY: " + key)
+    for key in ("role", "status", "pages", "historical_submitted_pdf_replaced", "accepted_kaggle_entry_changed", "biological_accuracy_result_created"):
+        receipt_value = {
+            "role": current_report["role"],
+            "status": current_report["status"],
+            "pages": current_report["pdf"]["pages"],
+            "historical_submitted_pdf_replaced": historical_report["replaced"],
+            "accepted_kaggle_entry_changed": current_report["accepted_kaggle_entry_changed"],
+            "biological_accuracy_result_created": current_report["biological_accuracy_result_created"],
+        }[key]
+        same(report_index[key], receipt_value, "INDEX_CURRENT_REPORT_" + key.upper())
 
     access = receipts["protected22_access"]
     completed = receipts["protected22_completed"]
@@ -526,6 +576,8 @@ def verify(root, enforce_pins=True):
         "bandwidth_lifecycle_tests": lifecycle_verification["durable_runtime_tests_total"],
         "frozen_ooc_schedule_rows": schedule_verification["public_schedule_rows"],
         "frozen_ooc_schedule_tamper_tests": schedule_verification["new_tamper_tests_passed"],
+        "current_report_pages": current_report["pdf"]["pages"],
+        "current_report_deterministic": current_report["renderer"]["two_consecutive_builds_byte_identical"],
         "raw_ak_decision": aligned["decision"],
         "durable_runtime_tests": lifecycle["tests"]["durable_runtime_suite_including_previous_cases"],
         "private_arrays_read": False,

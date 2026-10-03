@@ -1,0 +1,47 @@
+{
+  "schema": "dosepilot.current_technical_report_release.v1",
+  "status": "PASS",
+  "as_of_date": "2026-10-03",
+  "role": "CURRENT_JUDGE_FACING_TECHNICAL_REPORT",
+  "entrypoint": {
+    "path": "CURRENT_TECHNICAL_REPORT.md",
+    "sha256": "261d22a1af9fec4256765ba86f6979694e4c959af6cfe4e861f02cb33b10fb47"
+  },
+  "source": {
+    "path": "docs/DosePilot_Technical_Report_Current.md",
+    "sha256": "a60bd9a1cbeacd042507d21677c1fa12f185c8c67e8e10e5b4baa7e575c67b35"
+  },
+  "pdf": {
+    "path": "docs/DosePilot_Technical_Report_Current.pdf",
+    "sha256": "d9a7c1ca31cc66a6bae13d1fa4fb07c32cfe6135f5f9f8be0f706ce4ff734120",
+    "bytes": 90071,
+    "pages": 10,
+    "page_size": "A4",
+    "blank_pages": 0,
+    "visual_review": "PASS"
+  },
+  "renderer": {
+    "path": "tools/build_current_report.py",
+    "sha256": "4befa4b36ca171f833662d9544510ec971a202b28b7d31ff593e256f1158889d",
+    "engine": "ReportLab",
+    "invariant_output": true,
+    "two_consecutive_builds_byte_identical": true
+  },
+  "claim_checks": {
+    "bandwidth_successor_mse": 0.0010582750420801538,
+    "protected22_primary": "NOT_ESTIMABLE",
+    "release_preflight_tests": 148,
+    "repeated_adaptive_development_disclosed": true,
+    "adverse_target_slices_disclosed": true,
+    "prospective_ooc_experiment_claimed": false,
+    "official_competition_score": null
+  },
+  "historical_submitted_pdf": {
+    "path": "docs/DosePilot_Technical_Report_Public.pdf",
+    "sha256": "14361cb6ad867e729be138e68d27cda4d1fca73df4339ea0649c510454b7d32f",
+    "replaced": false
+  },
+  "private_or_protected_inputs_read": false,
+  "biological_accuracy_result_created": false,
+  "accepted_kaggle_entry_changed": false
+}
