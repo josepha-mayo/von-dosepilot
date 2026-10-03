@@ -1,5 +1,3 @@
-[Reading 152 lines from start (total: 152 lines, 0 remaining)]
-
 #!/usr/bin/env python3
 """Derive the 24 DosePilot target definitions from the authenticated public TRAIN CSV.
 
