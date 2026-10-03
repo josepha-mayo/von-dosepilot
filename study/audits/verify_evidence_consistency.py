@@ -1,5 +1,3 @@
-[Reading 453 lines from start (total: 453 lines, 0 remaining)]
-
 #!/usr/bin/env python3
 """Verify the normalized public evidence index against canonical receipts.
 
@@ -453,5 +451,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
