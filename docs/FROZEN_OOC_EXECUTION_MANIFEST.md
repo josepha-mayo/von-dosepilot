@@ -85,6 +85,8 @@ python study/audits/verify_frozen_ooc_schedule.py --root evidence --repo .
 
 The verifier checks the bandwidth construction/plan hashes, 64-treatment counts, 32+32 plate counts, treatment identity parity across A/B, complementary A/B plate assignment, 24-target 2/3-dose allocation, every unresolved template field, and separate control policy.
 
+The release preflight executes this verifier and five dedicated tamper tests. Those tests reject a drifted public JavaScript schedule, literal transport escapes in judge-facing text, a promoted biological claim, and a non-complementary A/B plan even when its plan and template hashes are updated together. The verified public map is therefore derived-equivalent to the frozen JSON plans rather than an unchecked visual copy.
+
 It also runs each schedule through the existing organ-on-chip compiler using an explicitly **synthetic one-independent-circuit-per-treatment witness**. Both compile to 64 treatment actions plus two separate control resources. That compiler PASS proves only encoded logical consistency with the invented witness; it is not evidence of device availability, tissue compatibility, flow adequacy, or biological validation.
 
 Synthetic witness manifest hashes recorded by this audit:

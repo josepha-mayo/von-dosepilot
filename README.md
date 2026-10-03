@@ -13,6 +13,8 @@ Research software by **Joseph Ayanda** for AI4S Open Innovation. DosePilot choos
 
 **Current-model lifecycle:** [bandwidth-0.7 commit, recover and predict](docs/BANDWIDTH_LIFECYCLE.md)
 
+**Frozen prospective schedule:** [exact 64-treatment A/B manifests with device binding still explicitly unresolved](docs/FROZEN_OOC_EXECUTION_MANIFEST.md)
+
 The deployed static site is also versioned under [`site/`](site/) in this repository. It uses seeded fictional values only and makes no additional biological accuracy claim.
 
 On a supported local POSIX system, install the repository's dependencies and run:
@@ -59,13 +61,13 @@ The bandwidth-0.7 lifecycle publishes complete JSON records without overwriting 
 
 Nine separate acquisition tests pass, and an independent arithmetic implementation checked 713 numerical/acquisition comparison groups. These are software checks, not additional biological samples.
 
-Run the response-free release preflight—which checks the evidence index, durable runtime, bandwidth successor, acquisition, structured kernels, residual-alignment unit tests, organ-on-chip constraint compiler and fictional lifecycle demo—with a fresh output path:
+Run the response-free release preflight—which checks the evidence index, durable runtime, bandwidth successor, acquisition, structured kernels, residual-alignment unit tests, organ-on-chip constraint compiler, frozen schedule/public-display parity and fictional lifecycle demo—with a fresh output path:
 
 ```bash
 python study/audits/release_preflight.py --output release_preflight.json
 ```
 
-The latest aggregate [current-model release preflight receipt](evidence/release_preflight_bandwidth_lifecycle_20261003.json) records **141 orchestrated response-free tests**, the preserved predecessor demo and the current bandwidth-0.7 fictional lifecycle demo; three unit tests for the preflight runner itself passed separately.
+The latest aggregate [schedule-bound release preflight receipt](evidence/release_preflight_frozen_ooc_final_20261003.json) records **12 completed stages and 148 orchestrated response-free tests**, including five schedule-tamper tests, exact public-display parity, the preserved predecessor demo and the current bandwidth-0.7 fictional lifecycle demo. Three unit tests for the preflight runner itself passed separately.
 
 Local POSIX synchronization and advisory-lock guarantees depend on the operating system and storage. They do not certify physical power-loss behavior, laboratory execution, hostile filesystem edits or network filesystems. [Full verification and limitations](docs/DURABLE_LIFECYCLE_AND_ACQUISITION.md) · [Source-bound receipt](evidence/lifecycle_acquisition_20261002.json).
 

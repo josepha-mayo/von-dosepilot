@@ -21,6 +21,11 @@ CHECKS = [
     ("bandwidth_successor", [sys.executable, "-m", "unittest", "discover", "-s", "study/hybrid_residual", "-p", "test_bandwidth_additive.py", "-v"],
      ["study/hybrid_residual", "study/spectral_residual"]),
     ("ooc_compiler", [sys.executable, "-m", "unittest", "discover", "-s", "demo", "-p", "test_*.py", "-v"], ["demo"]),
+    ("frozen_ooc_schedule_tests", [sys.executable, "-m", "unittest", "discover",
+     "-s", "study/audits", "-p", "test_frozen_ooc_schedule.py", "-v"],
+     ["study/audits", "demo"]),
+    ("frozen_ooc_schedule", [sys.executable, "study/audits/verify_frozen_ooc_schedule.py",
+     "--root", "evidence", "--repo", "."], ["demo"]),
 ]
 
 

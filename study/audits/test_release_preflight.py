@@ -9,6 +9,7 @@ class ReleasePreflightTests(unittest.TestCase):
         self.assertEqual(set(names), {
             "evidence", "audit_tests", "durable_runtime", "acquisition", "structured_kernels",
             "aligned_additive", "bandwidth_successor", "ooc_compiler",
+            "frozen_ooc_schedule_tests", "frozen_ooc_schedule",
         })
 
     def test_every_check_is_python_and_has_no_private_input_flag(self):

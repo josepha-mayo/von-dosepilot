@@ -31,6 +31,16 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
+        frozen = json.loads(
+            (self.source / "evidence/frozen_ooc_release_binding_20261003.json").read_text()
+        )
+        frozen_paths = [frozen["schedule_receipt"]["path"]]
+        for group in ("source_files_sha256", "audit_code_sha256", "public_surface_sha256"):
+            frozen_paths.extend(frozen[group])
+        for relative in frozen_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         shutil.copy2(self.source / "docs/EVIDENCE_LEDGER.md", self.root / "docs/EVIDENCE_LEDGER.md")
         shutil.copy2(self.source / "docs/KAGGLE_WRITEUP.md", self.root / "docs/KAGGLE_WRITEUP.md")
 
@@ -56,13 +66,15 @@ class EvidenceConsistencyTests(unittest.TestCase):
     def test_current_state_passes(self):
         result = verify(self.root)
         self.assertEqual(result["status"], "PASS")
-        self.assertEqual(result["canonical_receipts"], 9)
+        self.assertEqual(result["canonical_receipts"], 10)
         self.assertEqual(result["protected22_cells_reconciled"], 19642)
         self.assertAlmostEqual(result["additive_incumbent_mse"], 0.001060552730112811)
         self.assertAlmostEqual(result["bandwidth_successor_mse"], 0.0010582750420801538)
         self.assertEqual(result["raw_ak_decision"], "REJECT_RETAIN_ADDITIVE")
         self.assertEqual(result["durable_runtime_tests"], 55)
         self.assertEqual(result["bandwidth_lifecycle_tests"], 65)
+        self.assertEqual(result["frozen_ooc_schedule_rows"], 64)
+        self.assertEqual(result["frozen_ooc_schedule_tamper_tests"], 5)
 
     def test_changed_receipt_byte_fails_hash(self):
         path = self.root / "evidence/PROTECTED22_ACCESS_STATUS.json"
@@ -165,6 +177,22 @@ class EvidenceConsistencyTests(unittest.TestCase):
         with self.assertRaisesRegex(EvidenceError, "INDEX_BANDWIDTH_LIFECYCLE"):
             verify(self.root)
 
+    def test_index_cannot_promote_frozen_schedule_to_validation(self):
+        self.mutate_index(
+            lambda value: value["frozen_ooc_release_binding"].update(
+                {"prospective_experiment_executed": True,
+                 "biological_validation_created": True}
+            )
+        )
+        with self.assertRaisesRegex(EvidenceError, "INDEX_FROZEN_SCHEDULE"):
+            verify(self.root)
+
+    def test_frozen_schedule_public_surface_tamper_fails(self):
+        path = self.root / "site/frozen_schedule.js"
+        path.write_bytes(path.read_bytes() + b" ")
+        with self.assertRaisesRegex(EvidenceError, "FROZEN_SCHEDULE_FILE_HASH"):
+            verify(self.root)
+
     def test_receipt_cannot_replace_additive_incumbent(self):
         self.mutate_receipt(
             "structured_additive",
@@ -220,7 +248,10 @@ class EvidenceConsistencyTests(unittest.TestCase):
                 self.setUp()
                 path = self.root / relative
                 path.write_bytes(path.read_bytes() + b" ")
-                with self.assertRaisesRegex(EvidenceError, "PINNED_DOCUMENT_HASH"):
+                with self.assertRaisesRegex(
+                    EvidenceError,
+                    "PINNED_DOCUMENT_HASH|FROZEN_SCHEDULE_FILE_HASH",
+                ):
                     verify(self.root)
 
     def test_future_interpretation_is_exact(self):

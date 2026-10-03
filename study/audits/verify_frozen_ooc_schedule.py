@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Response-free audit of the frozen bandwidth treatment schedules and OoC templates."""
 from pathlib import Path
-import argparse,csv,hashlib,importlib.util,json
+import argparse,csv,hashlib,importlib.util,json,re
 
 TBD='TBD_BEFORE_PROSPECTIVE_COLLECTION'
 UNRESOLVED=['chip_device_id','chip_compartment_id','circuit_id','reservoir_id','channel_id',
@@ -14,6 +14,12 @@ def require(ok,msg):
 def load_module(path):
     spec=importlib.util.spec_from_file_location('ooc_feasibility_audit',path)
     m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
+
+def load_public_schedule(path):
+    text=Path(path).read_text()
+    match=re.search(r"const frozenSchedule=(\[.*?\]);\s*const frozenAbbr=",text,re.S)
+    require(match is not None,'SITE_SCHEDULE_PARSE')
+    return json.loads(match.group(1))
 
 def verify(root,repo):
     root=Path(root);repo=Path(repo)
@@ -71,10 +77,48 @@ def verify(root,repo):
     for row in a:counts[row['drug_id']]=counts.get(row['drug_id'],0)+1
     require(len(counts)==24,'TARGET_COUNT')
     require(sorted(counts.values())==[2]*8+[3]*16,'TARGET_ALLOCATION')
+
+    # Bind the judge-facing schedule to the verified plans rather than trusting
+    # a separately hand-copied JavaScript array or Markdown table.
+    expected_public=[]
+    for ra,rb in zip(a,b):
+        expected_public.append({
+            'drug':ra['drug_id'],'dose':str(ra['concentration_nM']),
+            'native':ra['native_id'],'a':0 if ra['plate']=='p1' else 1,
+            'b':0 if rb['plate']=='p1' else 1,
+        })
+    public_schedule=load_public_schedule(repo/'site/frozen_schedule.js')
+    require(public_schedule==expected_public,'SITE_SCHEDULE_MISMATCH')
+
+    manifest_doc=(repo/'docs/FROZEN_OOC_EXECUTION_MANIFEST.md').read_text()
+    writeup=(repo/'docs/KAGGLE_WRITEUP.md').read_text()
+    site_html=(repo/'site/index.html').read_text()
+    for label,text in (('MANIFEST_DOC',manifest_doc),('WRITEUP',writeup),('SITE_HTML',site_html)):
+        require('\\n' not in text,'TRANSPORT_ESCAPE_'+label)
+    require('<script src="frozen_schedule.js"></script>' in site_html,'SITE_SCRIPT_LINK')
+    require('id="frozen-schedule"' in site_html,'SITE_SECTION')
+
+    grouped={}
+    for ra,rb in zip(a,b):
+        item=grouped.setdefault(ra['drug_id'],{'doses':[],'a':[],'b':[]})
+        item['doses'].append(str(ra['concentration_nM']))
+        item['a'].append(ra['plate'])
+        item['b'].append(rb['plate'])
+    for drug,item in grouped.items():
+        expected='| '+drug+' | '+', '.join(item['doses'])+' | '+', '.join(item['a'])+' | '+', '.join(item['b'])+' |'
+        require(expected in manifest_doc,'MANIFEST_TABLE_'+drug)
+
     return {'status':'PASS','model_kind':summary['model_kind'],'bandwidth_multiplier':.7,
         'orientations':{'A':{'wells':64,'p1':32,'p2':32},'B':{'wells':64,'p1':32,'p2':32}},
         'ab_same_treatments':True,'ab_complementary_plate_assignment':True,
         'targets':24,'two_dose_targets':8,'three_dose_targets':16,
+        'public_schedule_rows':len(public_schedule),'public_site_schedule_exact':True,
+        'manifest_table_exact':True,'transport_escape_literals':0,
+        'public_surface_sha256':{
+            'site/frozen_schedule.js':sha(repo/'site/frozen_schedule.js'),
+            'site/index.html':sha(repo/'site/index.html'),
+            'docs/FROZEN_OOC_EXECUTION_MANIFEST.md':sha(repo/'docs/FROZEN_OOC_EXECUTION_MANIFEST.md'),
+            'docs/KAGGLE_WRITEUP.md':sha(repo/'docs/KAGGLE_WRITEUP.md')},
         'unresolved_device_binding_fields':len(UNRESOLVED),'separate_control_types':2,
         'synthetic_compiler_witness':synthetic,'prospective_experiment_executed':False,
         'protected_response_access':False,'private_patient_rows_read':False,'biological_validation_created':False}

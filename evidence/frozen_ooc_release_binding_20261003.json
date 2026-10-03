@@ -1,0 +1,63 @@
+{
+  "schema": "dosepilot.frozen_ooc_release_binding.v1",
+  "status": "PASS",
+  "role": "RESPONSE_FREE_ENGINEERING_AND_RELEASE_EVIDENCE",
+  "schedule_receipt": {
+    "path": "evidence/frozen_ooc_execution_schedule_20261003.json",
+    "sha256": "82e9e629a12342f0f4a47afaa243d5d6a841ed9dafd80199be3c871f6ec7a65f"
+  },
+  "source_files_sha256": {
+    "evidence/frozen_bandwidth_orientation_A_plan_20261003.json": "8eeb8a1c2fa945f034357e8f61f5d2f0a1feeff0332c5d87b5717db3ae558e8f",
+    "evidence/frozen_bandwidth_orientation_B_plan_20261003.json": "bedb4c6f1e785afc94d3e73ec0cb3b51643d80d5b86477e17537f72148d8722e",
+    "evidence/prospective_ooc_binding_template_A_20261003.csv": "863bb1c6e084619cbd45fe778be2bdbe3e562b69ecc004c7e245e326380e2d24",
+    "evidence/prospective_ooc_binding_template_B_20261003.csv": "d47cf214c1b1a6fa7888a71d0c12f715a48a86d03bdd35e61c90483d660fa549"
+  },
+  "audit_code_sha256": {
+    "study/audits/verify_frozen_ooc_schedule.py": "400373559b573bc082569eaf50df27d4e87bd1a0766cc038c37b2ce068484e32",
+    "study/audits/test_frozen_ooc_schedule.py": "a6f1f88ba4b007e7071de780e25c586d1fd41da80ef3a96709098ffb74e9ee45",
+    "study/audits/release_preflight.py": "c871c5561ef3c3e5f507c6d894cadc47c4fff3fb45a81c15adff9024f920398c"
+  },
+  "public_surface_sha256": {
+    "site/frozen_schedule.js": "c094e00e37c418739835598290d12fa162887a1a60a43913357f80b107279503",
+    "site/index.html": "f71fcc38505dad16568965706450df14bf9ed9afafc8f9da2f7e7fa5b093c1a2",
+    "docs/FROZEN_OOC_EXECUTION_MANIFEST.md": "16848f1548fd9c589318806aac2ea30a45d58cc4502f6eeccddfa4f33b2137c6",
+    "docs/KAGGLE_WRITEUP.md": "da691ddf225508f786206851df852b9873052e8ec10b30b292be04649e54e16a",
+    "README.md": "4162807efa1f71cfed513db8c26e523ecf0078aa2a2539c34a2b63b77fc6c466"
+  },
+  "verification": {
+    "orientations": 2,
+    "treatment_wells_per_orientation": 64,
+    "plate_counts_per_orientation": {
+      "p1": 32,
+      "p2": 32
+    },
+    "targets": 24,
+    "two_dose_targets": 8,
+    "three_dose_targets": 16,
+    "ab_same_treatments": true,
+    "ab_complementary_plate_assignment": true,
+    "public_schedule_rows": 64,
+    "public_site_schedule_exact": true,
+    "manifest_table_exact": true,
+    "transport_escape_literals": 0,
+    "new_tamper_tests": 5,
+    "new_tamper_tests_passed": 5,
+    "release_preflight_stage_added": true,
+    "release_preflight_check_count": 12,
+    "orchestrated_response_free_tests": 148
+  },
+  "preserved_failure": {
+    "command": "python -m unittest study.audits.test_release_preflight -v",
+    "status": "IMPORT_PATH_FAILURE",
+    "scientific_or_product_failure": false,
+    "correct_documented_invocation": "python -m unittest discover -s study/audits -p test_release_preflight.py -v",
+    "correct_invocation_tests_passed": 3
+  },
+  "prospective_experiment_executed": false,
+  "biological_validation_created": false,
+  "protected_response_access": false,
+  "private_patient_rows_read": false,
+  "fitted_biological_weights_published": false,
+  "accepted_kaggle_entry_changed": false,
+  "official_competition_score": null
+}

@@ -27,11 +27,12 @@ PINNED_RECEIPTS = {
     "aligned_additive": "fca4fff12f931caa9dbc4c70f5ebc05668a743f18f7fac0fa3e030a99581a550",
     "bandwidth_successor": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
+    "frozen_ooc_release_binding": "bb2234239ff20484af50f6a5f0497934dc6ba4077f677deebdf12a33c6da28cf",
 }
 
 PINNED_DOCUMENTS = {
-    "docs/EVIDENCE_LEDGER.md": "a15a977996bf657d252859c98d73ab80872858573eccaa07ca0029e40c54fcc8",
-    "docs/KAGGLE_WRITEUP.md": "ea533e6e1e9d1e6d84b7f9c8b312470b14bd48edd084c5fd1cfdb2adfd69c325",
+    "docs/EVIDENCE_LEDGER.md": "d393517b7733e8e2788cd63e6619175249a03e0a96aa0c71e2ecaaa05663147e",
+    "docs/KAGGLE_WRITEUP.md": "da691ddf225508f786206851df852b9873052e8ec10b30b292be04649e54e16a",
 }
 
 
@@ -80,6 +81,7 @@ def verify(root, enforce_pins=True):
     aligned = receipts["aligned_additive"]
     bandwidth = receipts["bandwidth_successor"]
     bandwidth_lifecycle = receipts["bandwidth_lifecycle"]
+    frozen_schedule = receipts["frozen_ooc_release_binding"]
     normalized = index["protected22"]
     same(
         normalized["future_interpretation"],
@@ -353,6 +355,41 @@ def verify(root, enforce_pins=True):
     same(current_lifecycle_index["accepted_kaggle_entry_changed"], False, "INDEX_BANDWIDTH_LIFECYCLE_NO_ENTRY_CHANGE")
     same(current_lifecycle_index["official_competition_score"], None, "INDEX_BANDWIDTH_LIFECYCLE_NO_SCORE")
 
+    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v1", "FROZEN_SCHEDULE_SCHEMA")
+    same(frozen_schedule["status"], "PASS", "FROZEN_SCHEDULE_STATUS")
+    same(frozen_schedule["role"], "RESPONSE_FREE_ENGINEERING_AND_RELEASE_EVIDENCE", "FROZEN_SCHEDULE_ROLE")
+    schedule_receipt = frozen_schedule["schedule_receipt"]
+    same(sha(root / schedule_receipt["path"]), schedule_receipt["sha256"], "FROZEN_SCHEDULE_RECEIPT_HASH")
+    for group in ("source_files_sha256", "audit_code_sha256", "public_surface_sha256"):
+        for path, expected in frozen_schedule[group].items():
+            same(sha(root / path), expected, "FROZEN_SCHEDULE_FILE_HASH: " + path)
+    schedule_verification = frozen_schedule["verification"]
+    same(schedule_verification["orientations"], 2, "FROZEN_SCHEDULE_ORIENTATIONS")
+    same(schedule_verification["treatment_wells_per_orientation"], 64, "FROZEN_SCHEDULE_WELLS")
+    same(schedule_verification["plate_counts_per_orientation"], {"p1": 32, "p2": 32}, "FROZEN_SCHEDULE_PLATES")
+    same(schedule_verification["targets"], 24, "FROZEN_SCHEDULE_TARGETS")
+    same(schedule_verification["two_dose_targets"], 8, "FROZEN_SCHEDULE_TWO_DOSE")
+    same(schedule_verification["three_dose_targets"], 16, "FROZEN_SCHEDULE_THREE_DOSE")
+    for key in ("ab_same_treatments", "ab_complementary_plate_assignment", "public_site_schedule_exact", "manifest_table_exact", "release_preflight_stage_added"):
+        same(schedule_verification[key], True, "FROZEN_SCHEDULE_TRUE: " + key)
+    same(schedule_verification["public_schedule_rows"], 64, "FROZEN_SCHEDULE_PUBLIC_ROWS")
+    same(schedule_verification["transport_escape_literals"], 0, "FROZEN_SCHEDULE_ESCAPES")
+    same(schedule_verification["new_tamper_tests"], 5, "FROZEN_SCHEDULE_TESTS")
+    same(schedule_verification["new_tamper_tests_passed"], 5, "FROZEN_SCHEDULE_TESTS_PASS")
+    same(schedule_verification["release_preflight_check_count"], 12, "FROZEN_SCHEDULE_PREFLIGHT_COUNT")
+    same(schedule_verification["orchestrated_response_free_tests"], 148, "FROZEN_SCHEDULE_PREFLIGHT_ORCHESTRATED")
+    for key in ("prospective_experiment_executed", "biological_validation_created", "protected_response_access", "private_patient_rows_read", "fitted_biological_weights_published", "accepted_kaggle_entry_changed"):
+        same(frozen_schedule[key], False, "FROZEN_SCHEDULE_FALSE_BOUNDARY: " + key)
+    same(frozen_schedule["official_competition_score"], None, "FROZEN_SCHEDULE_NO_SCORE")
+
+    schedule_index = index["frozen_ooc_release_binding"]
+    for key in ("role", "status"):
+        same(schedule_index[key], frozen_schedule[key], "INDEX_FROZEN_SCHEDULE_" + key.upper())
+    for key in ("treatment_wells_per_orientation", "plate_counts_per_orientation", "targets", "two_dose_targets", "three_dose_targets", "ab_same_treatments", "ab_complementary_plate_assignment", "public_schedule_rows", "public_site_schedule_exact", "manifest_table_exact", "transport_escape_literals", "new_tamper_tests_passed", "release_preflight_check_count", "orchestrated_response_free_tests"):
+        same(schedule_index[key], schedule_verification[key], "INDEX_FROZEN_SCHEDULE_" + key.upper())
+    for key in ("prospective_experiment_executed", "biological_validation_created", "protected_response_access", "private_patient_rows_read", "accepted_kaggle_entry_changed", "official_competition_score"):
+        same(schedule_index[key], frozen_schedule[key], "INDEX_FROZEN_SCHEDULE_BOUNDARY_" + key.upper())
+
     same(aligned["schema"], "dosepilot.residual_alignment_additive.v1", "RAW_AK_SCHEMA")
     same(aligned["status"], "COMPLETE", "RAW_AK_STATUS")
     same(aligned["decision"], "REJECT_RETAIN_ADDITIVE", "RAW_AK_DECISION")
@@ -487,6 +524,8 @@ def verify(root, enforce_pins=True):
         "additive_incumbent_mse": additive_mse,
         "bandwidth_successor_mse": bandwidth["metrics"]["bandwidth07"]["mse"],
         "bandwidth_lifecycle_tests": lifecycle_verification["durable_runtime_tests_total"],
+        "frozen_ooc_schedule_rows": schedule_verification["public_schedule_rows"],
+        "frozen_ooc_schedule_tamper_tests": schedule_verification["new_tamper_tests_passed"],
         "raw_ak_decision": aligned["decision"],
         "durable_runtime_tests": lifecycle["tests"]["durable_runtime_suite_including_previous_cases"],
         "private_arrays_read": False,
