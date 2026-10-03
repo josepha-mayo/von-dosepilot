@@ -27,7 +27,7 @@ PINNED_RECEIPTS = {
     "aligned_additive": "fca4fff12f931caa9dbc4c70f5ebc05668a743f18f7fac0fa3e030a99581a550",
     "bandwidth_successor": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
-    "frozen_ooc_release_binding": "bb2234239ff20484af50f6a5f0497934dc6ba4077f677deebdf12a33c6da28cf",
+    "frozen_ooc_release_binding": "b0665747ba69d4871092d52211cc00ad5bdfcccab09143cc87065a6827013569",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
     "reviewer_path_release": "0a5eee0ddd02561c9b969e5ede86c1cf2291cb50b425b6b42eda0f69a59381f3",
 }
@@ -515,9 +515,12 @@ def verify(root, enforce_pins=True):
     same(current_lifecycle_index["accepted_kaggle_entry_changed"], False, "INDEX_BANDWIDTH_LIFECYCLE_NO_ENTRY_CHANGE")
     same(current_lifecycle_index["official_competition_score"], None, "INDEX_BANDWIDTH_LIFECYCLE_NO_SCORE")
 
-    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v1", "FROZEN_SCHEDULE_SCHEMA")
+    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v2", "FROZEN_SCHEDULE_SCHEMA")
     same(frozen_schedule["status"], "PASS", "FROZEN_SCHEDULE_STATUS")
     same(frozen_schedule["role"], "RESPONSE_FREE_ENGINEERING_AND_RELEASE_EVIDENCE", "FROZEN_SCHEDULE_ROLE")
+    frozen_predecessor = frozen_schedule["predecessor"]
+    same(sha(root / frozen_predecessor["path"]), frozen_predecessor["sha256"], "FROZEN_SCHEDULE_PREDECESSOR_HASH")
+    same(frozen_predecessor["preserved_unchanged"], True, "FROZEN_SCHEDULE_PREDECESSOR_PRESERVED")
     schedule_receipt = frozen_schedule["schedule_receipt"]
     same(sha(root / schedule_receipt["path"]), schedule_receipt["sha256"], "FROZEN_SCHEDULE_RECEIPT_HASH")
     for group in ("source_files_sha256", "audit_code_sha256", "public_surface_sha256"):
@@ -536,8 +539,8 @@ def verify(root, enforce_pins=True):
     same(schedule_verification["transport_escape_literals"], 0, "FROZEN_SCHEDULE_ESCAPES")
     same(schedule_verification["new_tamper_tests"], 5, "FROZEN_SCHEDULE_TESTS")
     same(schedule_verification["new_tamper_tests_passed"], 5, "FROZEN_SCHEDULE_TESTS_PASS")
-    same(schedule_verification["release_preflight_check_count"], 12, "FROZEN_SCHEDULE_PREFLIGHT_COUNT")
-    same(schedule_verification["orchestrated_response_free_tests"], 148, "FROZEN_SCHEDULE_PREFLIGHT_ORCHESTRATED")
+    same(schedule_verification["release_preflight_check_count"], 14, "FROZEN_SCHEDULE_PREFLIGHT_COUNT")
+    same(schedule_verification["orchestrated_response_free_tests"], 155, "FROZEN_SCHEDULE_PREFLIGHT_ORCHESTRATED")
     for key in ("prospective_experiment_executed", "biological_validation_created", "protected_response_access", "private_patient_rows_read", "fitted_biological_weights_published", "accepted_kaggle_entry_changed"):
         same(frozen_schedule[key], False, "FROZEN_SCHEDULE_FALSE_BOUNDARY: " + key)
     same(frozen_schedule["official_competition_score"], None, "FROZEN_SCHEDULE_NO_SCORE")

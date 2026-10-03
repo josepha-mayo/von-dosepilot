@@ -63,10 +63,9 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
-        frozen = json.loads(
-            (self.source / "evidence/frozen_ooc_release_binding_20261003.json").read_text()
-        )
-        frozen_paths = [frozen["schedule_receipt"]["path"]]
+        frozen_path = index["canonical_receipts"]["frozen_ooc_release_binding"]["path"]
+        frozen = json.loads((self.source / frozen_path).read_text())
+        frozen_paths = [frozen["predecessor"]["path"], frozen["schedule_receipt"]["path"]]
         for group in ("source_files_sha256", "audit_code_sha256", "public_surface_sha256"):
             frozen_paths.extend(frozen[group])
         for relative in frozen_paths:
