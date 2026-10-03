@@ -116,7 +116,7 @@ See `docs/SIMULATED_ASSAY_ROBUSTNESS.md` and `evidence/bandwidth_robustness_2026
 
 **Demonstrated development prediction performance:** whole-patient nested Lib1 evaluation above.
 
-**Demonstrated software execution:** identity-bound 64-well runtime, missing-input withholding, durable lifecycle, public-input replay, source/evidence consistency tests.
+**Demonstrated software execution:** identity-bound 64-well runtime, missing-input withholding, public-input replay, source/evidence consistency tests, and a separate durable commit/recover/predict lifecycle for the current bandwidth-0.7 model. The predecessor additive lifecycle remains a distinct historical contract.
 
 **Prospective biological utility:** organ-on-chip execution and actual laboratory savings still require a future independently specified assay study. The software contains a constraint compiler and execution-manifest path, but that is not measured chip performance.
 
@@ -138,4 +138,5 @@ See also:
 - docs/BANDWIDTH_SUCCESSOR.md
 - docs/SIMULATED_ASSAY_ROBUSTNESS.md
 - docs/PROSPECTIVE_OOC_VALIDATION_CONTRACT.md
+- docs/BANDWIDTH_DURABLE_LIFECYCLE.md
 - live fictional-data demo: https://von-dosepilot.netlify.app
