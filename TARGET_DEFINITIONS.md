@@ -1,5 +1,3 @@
-[Reading 19 lines from start (total: 19 lines, 0 remaining)]
-
 # DosePilot target definitions
 
 The exact 24 endpoint definitions, full source dose grids, integration bounds, quadrature rules, and frozen predictor doses are documented in:
