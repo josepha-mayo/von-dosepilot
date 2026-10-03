@@ -13,7 +13,7 @@
         "p2": 32
       },
       "plan_sha256": "8eeb8a1c2fa945f034357e8f61f5d2f0a1feeff0332c5d87b5717db3ae558e8f",
-      "binding_template_sha256": "284b208bd5b1bb00119fd3794b7217571674f052c0d5c7b7d0658a81e46e4b29"
+      "binding_template_sha256": "863bb1c6e084619cbd45fe778be2bdbe3e562b69ecc004c7e245e326380e2d24"
     },
     "B": {
       "treatment_wells": 64,
@@ -22,7 +22,7 @@
         "p2": 32
       },
       "plan_sha256": "bedb4c6f1e785afc94d3e73ec0cb3b51643d80d5b86477e17537f72148d8722e",
-      "binding_template_sha256": "8bc418d6d86d5d291a8f0d1ec4e232f8a5bfc99e325db3caf37bbb1ae2dfb794"
+      "binding_template_sha256": "d47cf214c1b1a6fa7888a71d0c12f715a48a86d03bdd35e61c90483d660fa549"
     }
   },
   "unresolved_fields": [
