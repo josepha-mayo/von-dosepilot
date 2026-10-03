@@ -12,7 +12,7 @@
   <header class="nav wrap">
     <a class="brand" href="#top"><span class="mark">v</span><span>von DosePilot</span></a>
     <nav>
-      <a href="#demo">Demo</a><a href="#evidence">Evidence</a><a href="#frozen-schedule">Schedule</a><a href="#research-log">Research log</a><a href="#limits">Limits</a>
+      <a href="#reviewer">Start here</a><a href="#demo">Demo</a><a href="#evidence">Evidence</a><a href="#frozen-schedule">Schedule</a><a href="#research-log">Research log</a><a href="#limits">Limits</a>
       <a class="gh" href="https://github.com/josepha-mayo/von-dosepilot" target="_blank" rel="noreferrer">GitHub ↗</a>
     </nav>
   </header>
@@ -23,10 +23,39 @@
       <h1>24 response summaries.<br><span>64 traceable wells.</span></h1>
       <p class="lede">DosePilot treats measurement selection as part of the model: commit the assay layout first, measure exactly what was purchased, then reconstruct fixed dose-response summaries with identity checks and explicit abstention.</p>
       <div class="hero-actions">
-        <a class="button primary" href="#demo">Run the fictional workflow</a>
+        <a class="button primary" href="#demo">Run the fictional workflow</a>\n        <a class="button" href="https://github.com/josepha-mayo/von-dosepilot/blob/master/00_REVIEWER_START_HERE.md" target="_blank" rel="noreferrer">90-second reviewer path ↗</a>
         <a class="button" href="https://youtu.be/QeOGJIgx378" target="_blank" rel="noreferrer">Watch original demo ↗</a>
       </div>
       <div class="notice"><b>Important:</b> this website uses seeded fictional measurements. It is not clinical software, a prospective lab result, or new validation.</div>
+    </section>
+
+    <section class="section wrap" id="reviewer">
+      <div class="section-head">
+        <div><div class="eyebrow">JUDGE FAST LANE • 90 SECONDS</div><h2>Audit the central claim without repo archaeology.</h2></div>
+        <p>Four public artifacts answer what is predicted, what 64 wells means, what is frozen for chip execution, and what remains only prospective.</p>
+      </div>
+      <div class="evidence-grid">
+        <article class="evidence-card">
+          <h3>Start here</h3>
+          <p>The compact reviewer path: problem, current result, 64-well semantics, failure modes, and reproducibility commands.</p>
+          <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/00_REVIEWER_START_HERE.md" target="_blank" rel="noreferrer">90-second review ↗</a>
+        </article>
+        <article class="evidence-card">
+          <h3>What are the 24 outputs?</h3>
+          <p>Dimensionless normalized <b>log-dose AUC</b> summaries of full viability curves, averaged across the two source plates. Not IC50, not a drug rank, not a clinical label.</p>
+          <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/TARGET_DEFINITIONS.md" target="_blank" rel="noreferrer">Exact target definitions ↗</a>
+        </article>
+        <article class="evidence-card">
+          <h3>Is 64 wells really 64?</h3>
+          <p>Yes per deployment: 32 p1 + 32 p2. A and B are separate alternative deployments; they meet only when their losses are averaged for retrospective evaluation.</p>
+          <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FROZEN_OOC_EXECUTION_MANIFEST.md" target="_blank" rel="noreferrer">Frozen 64-row schedule ↗</a>
+        </article>
+        <article class="evidence-card">
+          <h3>Current technical report</h3>
+          <p>The present model, evidence hierarchy, reproducibility path, negative results, robustness findings, and prospective validation boundary in one report.</p>
+          <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/CURRENT_TECHNICAL_REPORT.md" target="_blank" rel="noreferrer">Read current report ↗</a>
+        </article>
+      </div>
     </section>
 
     <section class="metrics wrap" aria-label="Verified development metrics">
