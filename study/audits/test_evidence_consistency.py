@@ -24,6 +24,13 @@ class EvidenceConsistencyTests(unittest.TestCase):
         shutil.copy2(self.source / "evidence/EVIDENCE_INDEX.json", self.root / "evidence/EVIDENCE_INDEX.json")
         for record in index["canonical_receipts"].values():
             shutil.copy2(self.source / record["path"], self.root / record["path"])
+        lifecycle = json.loads(
+            (self.source / "evidence/bandwidth_lifecycle_20261003.json").read_text()
+        )
+        for relative in lifecycle["code_sha256"]:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         shutil.copy2(self.source / "docs/EVIDENCE_LEDGER.md", self.root / "docs/EVIDENCE_LEDGER.md")
         shutil.copy2(self.source / "docs/KAGGLE_WRITEUP.md", self.root / "docs/KAGGLE_WRITEUP.md")
 
@@ -49,12 +56,13 @@ class EvidenceConsistencyTests(unittest.TestCase):
     def test_current_state_passes(self):
         result = verify(self.root)
         self.assertEqual(result["status"], "PASS")
-        self.assertEqual(result["canonical_receipts"], 8)
+        self.assertEqual(result["canonical_receipts"], 9)
         self.assertEqual(result["protected22_cells_reconciled"], 19642)
         self.assertAlmostEqual(result["additive_incumbent_mse"], 0.001060552730112811)
         self.assertAlmostEqual(result["bandwidth_successor_mse"], 0.0010582750420801538)
         self.assertEqual(result["raw_ak_decision"], "REJECT_RETAIN_ADDITIVE")
         self.assertEqual(result["durable_runtime_tests"], 55)
+        self.assertEqual(result["bandwidth_lifecycle_tests"], 65)
 
     def test_changed_receipt_byte_fails_hash(self):
         path = self.root / "evidence/PROTECTED22_ACCESS_STATUS.json"
@@ -147,6 +155,16 @@ class EvidenceConsistencyTests(unittest.TestCase):
         with self.assertRaisesRegex(EvidenceError, "INDEX_LIFECYCLE"):
             verify(self.root)
 
+    def test_index_cannot_relabel_current_bandwidth_lifecycle(self):
+        self.mutate_index(
+            lambda value: value["bandwidth_lifecycle"].update(
+                {"model_kind": "dosepilot.additive_kernel.v1",
+                 "new_biological_accuracy_improvement": True}
+            )
+        )
+        with self.assertRaisesRegex(EvidenceError, "INDEX_BANDWIDTH_LIFECYCLE"):
+            verify(self.root)
+
     def test_receipt_cannot_replace_additive_incumbent(self):
         self.mutate_receipt(
             "structured_additive",
@@ -177,6 +195,16 @@ class EvidenceConsistencyTests(unittest.TestCase):
             lambda value: value.__setitem__("new_biological_accuracy_improvement", True),
         )
         with self.assertRaisesRegex(EvidenceError, "INDEX_LIFECYCLE"):
+            verify(self.root, enforce_pins=False)
+
+    def test_receipt_cannot_fake_bandwidth_lifecycle(self):
+        self.mutate_receipt(
+            "bandwidth_lifecycle",
+            lambda value: value["verification"].__setitem__(
+                "wrong_bandwidth_rejected", False
+            ),
+        )
+        with self.assertRaisesRegex(EvidenceError, "BANDWIDTH_LIFECYCLE"):
             verify(self.root, enforce_pins=False)
 
     def test_stale_ledger_claim_fails(self):

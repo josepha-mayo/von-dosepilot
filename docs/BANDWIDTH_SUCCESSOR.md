@@ -83,6 +83,14 @@ The constructed model has its own model kind: `dosepilot.additive_kernel_bandwid
 
 On the author's machine, all **238 sample/orientation training-record requests** matched direct matrix evaluation within **2.22e-16**. Every one of the **64 single-missing-position cases** withheld the primary output. These are software checks on training records, not new biological samples.
 
+The current model also has a dedicated durable lifecycle at
+`study/durable_runtime/bandwidth_lifecycle.py`. It binds the bandwidth model,
+plan, construction trust anchor and runtime sources into a fresh commitment;
+enforces recovery history; and restores lost exports without rewriting the
+authoritative ledger. See [Bandwidth-0.7 durable lifecycle](BANDWIDTH_LIFECYCLE.md).
+The older additive-1.0 compiled speed result remains separately labelled and
+is not transferred to this backend.
+
 ## Evidence boundary
 
 No Lib2 response was read. Protected22 remains exposed and its full primary remains not estimable. No external cohort was newly evaluated. The live Kaggle entry was not silently replaced by this model. The public demo remains a fictional operating demonstration.

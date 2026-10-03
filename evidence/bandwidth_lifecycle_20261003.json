@@ -1,0 +1,68 @@
+{
+  "schema": "dosepilot.bandwidth07_durable_lifecycle.v1",
+  "status": "PASS",
+  "date": "2026-10-03",
+  "role": "ENGINEERING_AND_REPRODUCIBILITY_EVIDENCE",
+  "model_kind": "dosepilot.additive_kernel_bandwidth.v1",
+  "bandwidth_multiplier": 0.7,
+  "lifecycle_policy": "dosepilot.bandwidth07_complete_lifecycle.v1",
+  "commands": [
+    "commit",
+    "recover",
+    "predict"
+  ],
+  "physical_contract": {
+    "treatment_wells": 64,
+    "per_plate": 32,
+    "controls_declared_separately": true,
+    "caller_declared_inventory": true,
+    "physical_execution_certified": false
+  },
+  "verification": {
+    "new_bandwidth_lifecycle_tests": 10,
+    "durable_runtime_tests_total": 65,
+    "fictional_cli_invocations": 6,
+    "complete_primary_outputs": 24,
+    "single_missing_primary_outputs": 0,
+    "single_missing_historical_baseline_outputs": 23,
+    "wrong_model_family_rejected": true,
+    "wrong_bandwidth_rejected": true,
+    "all_64_single_missing_positions_withheld": true,
+    "changed_recorded_measurement_rejected": true,
+    "lost_export_recovered_byte_identically": true,
+    "historical_lifecycle_unmodified": true
+  },
+  "code_sha256": {
+    "study/durable_runtime/bandwidth_workflow.py": "99a39035ba8823d0184bfd97ce79b29d3f49bcbf1e85026235c02dfe5cbae440",
+    "study/durable_runtime/bandwidth_lifecycle.py": "b8bb756ee09fe43b5b71034c8834279a20031b13f51e6054deda31414d2a3615",
+    "study/durable_runtime/bandwidth_fixture.py": "7516beec56ab9e5a2371cff9f951cbea0913d6786611e5477d447ab790553395",
+    "study/durable_runtime/run_bandwidth_lifecycle_demo.py": "34eedd805f14373220a630ed8217d2d19f567cb92cb267de65d348035d08a262",
+    "study/durable_runtime/test_bandwidth_lifecycle.py": "02835be1d2099e51985b6fa0c3739002cfd8c1a0cc97aa71cf22f08709948bfe",
+    "study/hybrid_residual/bandwidth_inference.py": "9d21905b4d9d03b639b895ce01e6fe891a8afad78ee3ad908887fa11467d9cb8",
+    "study/hybrid_residual/recover_baseline.py": "56066f02ea7b6fade0cd78f0a048db73abd4b6aa4bc30806a82c3676f3bb22f3",
+    "study/hybrid_residual/complete_recovery.py": "65e27be9bf133b15ce3c1f86c440824248025f33ff2653d88cb8fc5611f8e29e",
+    "study/durable_runtime/frame_lock.py": "c8654f2e6612bf04730bf4513a4c191c3899855f0fba812d79495bb9feae42b8",
+    "study/durable_runtime/durable_json.py": "98805f1ea6c63877df89ad45d865907a2dce7b0088e84e1b9bdeed8fb2e4105e"
+  },
+  "first_fixture_attempt": {
+    "status": "REJECTED_BEFORE_DEMO",
+    "reason": "Bandwidth-1.0 kernel-centering statistics did not match a relabelled 0.7 fixture",
+    "scientific_result_created": false,
+    "correction": "Recompute fictional 0.7 centering moments; production rejection retained as expected behavior"
+  },
+  "accuracy_mse_changed": false,
+  "new_model_fit": false,
+  "new_biological_validation": false,
+  "protected_response_access": false,
+  "private_patient_arrays_read": false,
+  "fitted_biological_weights_published": false,
+  "accepted_kaggle_entry_changed": false,
+  "official_competition_score": null,
+  "limitations": {
+    "signed_or_worm": false,
+    "administrator_immutable": false,
+    "physical_provenance_proven": false,
+    "clinical_use_validated": false,
+    "bandwidth07_speedup_claimed": false
+  }
+}

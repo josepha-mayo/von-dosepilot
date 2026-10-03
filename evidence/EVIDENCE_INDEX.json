@@ -34,6 +34,10 @@
     "bandwidth_successor": {
       "path": "evidence/bandwidth_successor_20261003.json",
       "sha256": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758"
+    },
+    "bandwidth_lifecycle": {
+      "path": "evidence/bandwidth_lifecycle_20261003.json",
+      "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     }
   },
   "protected22": {
@@ -206,5 +210,28 @@
     "protected22_used": false,
     "official_competition_score": null,
     "current_internal_incumbent": true
+  },
+  "bandwidth_lifecycle": {
+    "role": "ENGINEERING_AND_REPRODUCIBILITY_EVIDENCE",
+    "model_kind": "dosepilot.additive_kernel_bandwidth.v1",
+    "bandwidth_multiplier": 0.7,
+    "policy": "dosepilot.bandwidth07_complete_lifecycle.v1",
+    "commands": [
+      "commit",
+      "recover",
+      "predict"
+    ],
+    "new_adapter_tests": 10,
+    "durable_runtime_tests_total": 65,
+    "fictional_cli_invocations": 6,
+    "single_missing_primary_predictions": 0,
+    "single_missing_historical_baseline_estimates": 23,
+    "wrong_model_family_rejected": true,
+    "wrong_bandwidth_rejected": true,
+    "lost_export_recovered_byte_identically": true,
+    "new_biological_accuracy_improvement": false,
+    "protected_response_access": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
   }
 }

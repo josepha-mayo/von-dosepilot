@@ -39,9 +39,14 @@ def run(output):
     records = []
     with tempfile.TemporaryDirectory(prefix="dosepilot-release-") as temporary:
         demo_output = Path(temporary) / "fictional_lifecycle"
+        bandwidth_demo_output = Path(temporary) / "fictional_bandwidth_lifecycle"
         checks = CHECKS + [("fictional_lifecycle_demo", [
             sys.executable, "study/durable_runtime/run_lifecycle_demo.py",
             "--output", str(demo_output)],
+            ["study/durable_runtime", "study/hybrid_residual", "study/spectral_residual"]),
+            ("fictional_bandwidth_lifecycle_demo", [
+            sys.executable, "study/durable_runtime/run_bandwidth_lifecycle_demo.py",
+            "--output", str(bandwidth_demo_output)],
             ["study/durable_runtime", "study/hybrid_residual", "study/spectral_residual"])]
         for name, command, python_paths in checks:
             environment = os.environ.copy()
@@ -79,6 +84,9 @@ def run(output):
         "fictional_lifecycle_demo_completed": any(
             item["name"] == "fictional_lifecycle_demo" and item["exit_code"] == 0
             for item in records),
+        "fictional_bandwidth_lifecycle_demo_completed": any(
+            item["name"] == "fictional_bandwidth_lifecycle_demo"
+            and item["exit_code"] == 0 for item in records),
         "source_sha256": digest(Path(__file__)),
         "private_or_protected_inputs_read": False,
         "biological_accuracy_result_created": False,

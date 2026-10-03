@@ -26,11 +26,12 @@ PINNED_RECEIPTS = {
     "lifecycle_acquisition": "7dc4b086a5609d7ce7cefcbb17231bddbb029ae413c15fe734649f42b9c799a2",
     "aligned_additive": "fca4fff12f931caa9dbc4c70f5ebc05668a743f18f7fac0fa3e030a99581a550",
     "bandwidth_successor": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758",
+    "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
 }
 
 PINNED_DOCUMENTS = {
-    "docs/EVIDENCE_LEDGER.md": "3d6e723d4cf576869664985d11fe0ee850e0e31714da0baa0beab3b4361b47bd",
-    "docs/KAGGLE_WRITEUP.md": "2941a51a25c568009adbd90b0928e1d99e807186cf27f6ee27a4a6fd63bbf6b5",
+    "docs/EVIDENCE_LEDGER.md": "a15a977996bf657d252859c98d73ab80872858573eccaa07ca0029e40c54fcc8",
+    "docs/KAGGLE_WRITEUP.md": "6c362cd3bdbd0d8af7d96f8975b15faee4e32c3cc43f74797cc5bff811416cd6",
 }
 
 
@@ -78,6 +79,7 @@ def verify(root, enforce_pins=True):
     lifecycle = receipts["lifecycle_acquisition"]
     aligned = receipts["aligned_additive"]
     bandwidth = receipts["bandwidth_successor"]
+    bandwidth_lifecycle = receipts["bandwidth_lifecycle"]
     normalized = index["protected22"]
     same(
         normalized["future_interpretation"],
@@ -300,6 +302,57 @@ def verify(root, enforce_pins=True):
     same(bandwidth_index["official_competition_score"], None, "INDEX_BANDWIDTH_NO_SCORE")
     same(bandwidth_index["current_internal_incumbent"], True, "INDEX_BANDWIDTH_INCUMBENT")
 
+    same(bandwidth_lifecycle["schema"], "dosepilot.bandwidth07_durable_lifecycle.v1", "BANDWIDTH_LIFECYCLE_SCHEMA")
+    same(bandwidth_lifecycle["status"], "PASS", "BANDWIDTH_LIFECYCLE_STATUS")
+    same(bandwidth_lifecycle["role"], "ENGINEERING_AND_REPRODUCIBILITY_EVIDENCE", "BANDWIDTH_LIFECYCLE_ROLE")
+    same(bandwidth_lifecycle["model_kind"], bandwidth["model_kind"], "BANDWIDTH_LIFECYCLE_MODEL_KIND")
+    same(bandwidth_lifecycle["bandwidth_multiplier"], bandwidth["bandwidth_multiplier"], "BANDWIDTH_LIFECYCLE_MULTIPLIER")
+    same(bandwidth_lifecycle["lifecycle_policy"], "dosepilot.bandwidth07_complete_lifecycle.v1", "BANDWIDTH_LIFECYCLE_POLICY")
+    lifecycle_verification = bandwidth_lifecycle["verification"]
+    same(lifecycle_verification["new_bandwidth_lifecycle_tests"], 10, "BANDWIDTH_LIFECYCLE_NEW_TESTS")
+    same(lifecycle_verification["durable_runtime_tests_total"], 65, "BANDWIDTH_LIFECYCLE_TOTAL_TESTS")
+    same(lifecycle_verification["fictional_cli_invocations"], 6, "BANDWIDTH_LIFECYCLE_CLI_CALLS")
+    same(lifecycle_verification["complete_primary_outputs"], 24, "BANDWIDTH_LIFECYCLE_OUTPUTS")
+    same(lifecycle_verification["single_missing_primary_outputs"], 0, "BANDWIDTH_LIFECYCLE_MISSING_PRIMARY")
+    same(lifecycle_verification["single_missing_historical_baseline_outputs"], 23, "BANDWIDTH_LIFECYCLE_BASELINE")
+    for key in (
+        "wrong_model_family_rejected", "wrong_bandwidth_rejected",
+        "all_64_single_missing_positions_withheld",
+        "changed_recorded_measurement_rejected",
+        "lost_export_recovered_byte_identically", "historical_lifecycle_unmodified",
+    ):
+        same(lifecycle_verification[key], True, "BANDWIDTH_LIFECYCLE_" + key.upper())
+    for path, expected in bandwidth_lifecycle["code_sha256"].items():
+        same(sha(root / path), expected, "BANDWIDTH_LIFECYCLE_CODE_HASH: " + path)
+    for key in (
+        "accuracy_mse_changed", "new_model_fit", "new_biological_validation",
+        "protected_response_access", "private_patient_arrays_read",
+        "fitted_biological_weights_published", "accepted_kaggle_entry_changed",
+    ):
+        same(bandwidth_lifecycle[key], False, "BANDWIDTH_LIFECYCLE_FALSE_BOUNDARY: " + key)
+    same(bandwidth_lifecycle["official_competition_score"], None, "BANDWIDTH_LIFECYCLE_NO_SCORE")
+    current_lifecycle_index = index["bandwidth_lifecycle"]
+    same(current_lifecycle_index["role"], bandwidth_lifecycle["role"], "INDEX_BANDWIDTH_LIFECYCLE_ROLE")
+    same(current_lifecycle_index["model_kind"], bandwidth_lifecycle["model_kind"], "INDEX_BANDWIDTH_LIFECYCLE_MODEL")
+    same(current_lifecycle_index["bandwidth_multiplier"], bandwidth_lifecycle["bandwidth_multiplier"], "INDEX_BANDWIDTH_LIFECYCLE_MULTIPLIER")
+    same(current_lifecycle_index["policy"], bandwidth_lifecycle["lifecycle_policy"], "INDEX_BANDWIDTH_LIFECYCLE_POLICY")
+    same(current_lifecycle_index["commands"], bandwidth_lifecycle["commands"], "INDEX_BANDWIDTH_LIFECYCLE_COMMANDS")
+    for index_key, receipt_key in (
+        ("new_adapter_tests", "new_bandwidth_lifecycle_tests"),
+        ("durable_runtime_tests_total", "durable_runtime_tests_total"),
+        ("fictional_cli_invocations", "fictional_cli_invocations"),
+        ("single_missing_primary_predictions", "single_missing_primary_outputs"),
+        ("single_missing_historical_baseline_estimates", "single_missing_historical_baseline_outputs"),
+        ("wrong_model_family_rejected", "wrong_model_family_rejected"),
+        ("wrong_bandwidth_rejected", "wrong_bandwidth_rejected"),
+        ("lost_export_recovered_byte_identically", "lost_export_recovered_byte_identically"),
+    ):
+        same(current_lifecycle_index[index_key], lifecycle_verification[receipt_key], "INDEX_BANDWIDTH_LIFECYCLE_" + index_key.upper())
+    same(current_lifecycle_index["new_biological_accuracy_improvement"], False, "INDEX_BANDWIDTH_LIFECYCLE_NO_ACCURACY")
+    same(current_lifecycle_index["protected_response_access"], False, "INDEX_BANDWIDTH_LIFECYCLE_NO_PROTECTED")
+    same(current_lifecycle_index["accepted_kaggle_entry_changed"], False, "INDEX_BANDWIDTH_LIFECYCLE_NO_ENTRY_CHANGE")
+    same(current_lifecycle_index["official_competition_score"], None, "INDEX_BANDWIDTH_LIFECYCLE_NO_SCORE")
+
     same(aligned["schema"], "dosepilot.residual_alignment_additive.v1", "RAW_AK_SCHEMA")
     same(aligned["status"], "COMPLETE", "RAW_AK_STATUS")
     same(aligned["decision"], "REJECT_RETAIN_ADDITIVE", "RAW_AK_DECISION")
@@ -370,8 +423,10 @@ def verify(root, enforce_pins=True):
         "38/59 patient wins, 5/5 favorable folds",
         "Residual-alignment additive challenger",
         "MSE 0.0010608378 is 0.0269% worse than additive",
+        "Current bandwidth-0.7 lifecycle",
+        "Ten current-model adapter tests",
         "Durable predecessor additive-1.0 lifecycle",
-        "Engineering/reproducibility evidence only",
+        "65 tests",
         "All 61 PDOs and 31 patients are exposed",
         "no estimable frozen full-cohort Lib2 primary",
         "conditional diagnostic",
@@ -396,9 +451,11 @@ def verify(root, enforce_pins=True):
         "0.0010608378",
         "0.0269% worse than additive",
         "24/59 patient wins, 2/5 favorable folds, worse p90",
-        "durable lifecycle currently targets the previous additive-1.0 model",
+        "durable CLI now has an explicit bandwidth-0.7 path",
+        "rejects additive-1.0 artifacts and wrong bandwidth metadata",
         "23 unaffected estimates when one reading is missing",
-        "additive-1.0 primary itself requires all 64 readings",
+        "bandwidth-0.7 primary itself requires all 64 readings",
+        "65 durable-runtime tests pass in total",
         "not another biological accuracy test",
         "19,642",
         "primary is **NOT_ESTIMABLE**",
@@ -429,6 +486,7 @@ def verify(root, enforce_pins=True):
         "spectral_mse": spectral["metrics"]["r13_soft"]["mse"],
         "additive_incumbent_mse": additive_mse,
         "bandwidth_successor_mse": bandwidth["metrics"]["bandwidth07"]["mse"],
+        "bandwidth_lifecycle_tests": lifecycle_verification["durable_runtime_tests_total"],
         "raw_ak_decision": aligned["decision"],
         "durable_runtime_tests": lifecycle["tests"]["durable_runtime_suite_including_previous_cases"],
         "private_arrays_read": False,

@@ -11,6 +11,8 @@ Research software by **Joseph Ayanda** for AI4S Open Innovation. DosePilot choos
 **One-page finalist audit:** [64-well contract, current benchmark, all 24 target deltas, selection history](docs/FINALIST_AUDIT.md)  
 **Synthetic robustness audit:** [noise, plate-drift, and missing-reading stress tests](docs/SIMULATED_ASSAY_ROBUSTNESS.md)
 
+**Current-model lifecycle:** [bandwidth-0.7 commit, recover and predict](docs/BANDWIDTH_LIFECYCLE.md)
+
 The deployed static site is also versioned under [`site/`](site/) in this repository. It uses seeded fictional values only and makes no additional biological accuracy claim.
 
 On a supported local POSIX system, install the repository's dependencies and run:
@@ -22,7 +24,7 @@ python study/durable_runtime/run_lifecycle_demo.py --output lifecycle_demo_001
 
 This example uses **only seeded fictional model parameters and measurements**. It requires no patient data, GPU or model API. Six actual CLI calls demonstrate: committing the inventory, rejecting an incomplete primary request, explicitly recovering 23 older baseline estimates, refusing a changed recorded reading, completing all 24 primary predictions and restoring a lost export copy.
 
-The new interface is `study/durable_runtime/lifecycle.py`, with **commit**, **recover** and **predict** commands. Its primary model still requires all 64 readings. Recovery never imputes a missing value or labels baseline estimates with the newer model's accuracy. [Commands and operating limits](docs/DURABLE_LIFECYCLE_AND_ACQUISITION.md).
+The current-model interface is `study/durable_runtime/bandwidth_lifecycle.py`, with **commit**, **recover** and **predict** commands. Its primary model requires all 64 readings. Recovery never imputes a missing value or labels historical own-drug estimates with the newer model's accuracy. The previous additive-1.0 lifecycle remains preserved separately. [Current lifecycle](docs/BANDWIDTH_LIFECYCLE.md) · [historical lifecycle and limits](docs/DURABLE_LIFECYCLE_AND_ACQUISITION.md).
 
 ## Current verified development benchmark
 
@@ -49,13 +51,13 @@ python study/hybrid_residual/reproduce_bandwidth.py --curves reconstructed_train
 
 The public replay runner has reproduced the bandwidth-successor, previous additive and R13 scores from the hash-bound public-derived TRAIN input without historical predictions. Final construction selected spectral fraction 0.1 and ridge 1.0. Construction is not another validation result. Generated kernel model archives contain fitted training features and must remain private.
 
-The promoted bandwidth-0.7 archive has an identity-checked all-input inference backend, but it is **not yet integrated** into the durable `commit` / `recover` / `predict` CLI. That lifecycle currently targets the previous additive-1.0 model. Do not present a predecessor lifecycle run as operation of the bandwidth successor. The legacy entry points remain available but are not silently migrated into the durable contract.
+The promoted bandwidth-0.7 archive now has a dedicated durable `commit` / `recover` / `predict` CLI. The adapter requires the exact bandwidth model kind and scalar multiplier `0.7`, binds its runtime sources into each receipt, and rejects historical additive-1.0 artifacts. The old lifecycle remains available for old commitments and is never silently migrated. The public repository still excludes fitted biological weights; users construct those privately from the source-bound reproduction route.
 
 ## Reliability and measured speed
 
-The previous additive-1.0 runtime publishes complete JSON records without overwriting existing evidence, serializes cooperating processes working on the same measurement frame and recovers after a worker exits. Its compiled prediction calculation was measured at **6.9165 to 3.2947 milliseconds per warm request**, a **2.10x speedup** including identity checks but excluding model loading, file I/O, ledger synchronization and training. This speed result does not describe the bandwidth-0.7 backend and is not an end-to-end CLI speedup claim.
+The bandwidth-0.7 lifecycle publishes complete JSON records without overwriting existing evidence, serializes cooperating processes working on the same measurement frame, rejects a changed recorded value and recovers a lost export. **65 durable-runtime tests pass**, including ten current-model adapter tests and all preserved historical cases. The previous additive-1.0 compiled calculation was measured at **6.9165 to 3.2947 milliseconds per warm request**, a **2.10x speedup** including identity checks but excluding model loading, file I/O, ledger synchronization and training. That speed result does not describe the bandwidth-0.7 backend and is not an end-to-end CLI speedup claim.
 
-**55 durable-runtime tests pass**, including concurrency, process interruption and automatic recovery-history checks. Nine separate new acquisition tests pass, and an independent arithmetic implementation checked 713 numerical/acquisition comparison groups. These are software checks, not additional biological samples.
+Nine separate acquisition tests pass, and an independent arithmetic implementation checked 713 numerical/acquisition comparison groups. These are software checks, not additional biological samples.
 
 Run the response-free release preflight—which checks the evidence index, durable runtime, bandwidth successor, acquisition, structured kernels, residual-alignment unit tests, organ-on-chip constraint compiler and fictional lifecycle demo—with a fresh output path:
 
@@ -63,7 +65,7 @@ Run the response-free release preflight—which checks the evidence index, durab
 python study/audits/release_preflight.py --output release_preflight.json
 ```
 
-The latest aggregate [bandwidth-release preflight receipt](evidence/release_preflight_bandwidth_20261003.json) records 129 orchestrated response-free tests plus the fictional lifecycle demo; three unit tests for the preflight runner itself passed separately.
+The latest aggregate [current-model release preflight receipt](evidence/release_preflight_bandwidth_lifecycle_20261003.json) records **141 orchestrated response-free tests**, the preserved predecessor demo and the current bandwidth-0.7 fictional lifecycle demo; three unit tests for the preflight runner itself passed separately.
 
 Local POSIX synchronization and advisory-lock guarantees depend on the operating system and storage. They do not certify physical power-loss behavior, laboratory execution, hostile filesystem edits or network filesystems. [Full verification and limitations](docs/DURABLE_LIFECYCLE_AND_ACQUISITION.md) · [Source-bound receipt](evidence/lifecycle_acquisition_20261002.json).
 
