@@ -1,3 +1,5 @@
+[Reading 453 lines from start (total: 453 lines, 0 remaining)]
+
 #!/usr/bin/env python3
 """Verify the normalized public evidence index against canonical receipts.
 
@@ -25,11 +27,12 @@ PINNED_RECEIPTS = {
     "structured_additive": "95651af89e64f12b771b23f202a8824430d965aec124a798c81c6a929e792af6",
     "lifecycle_acquisition": "7dc4b086a5609d7ce7cefcbb17231bddbb029ae413c15fe734649f42b9c799a2",
     "aligned_additive": "fca4fff12f931caa9dbc4c70f5ebc05668a743f18f7fac0fa3e030a99581a550",
+    "bandwidth_successor": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758",
 }
 
 PINNED_DOCUMENTS = {
-    "docs/EVIDENCE_LEDGER.md": "d64bb4fb24fdf4bba2b231416fdc46baa65887afadf89850a56c35840e561df5",
-    "docs/KAGGLE_WRITEUP.md": "1823965ee93f86ce7e86479ae94bb7f0589d474bf69368e7acd39b4015ba81af",
+    "docs/EVIDENCE_LEDGER.md": "8627feb386f1285865974f09b461edb311fefe9f85f93c243072dbd6f319e44c",
+    "docs/KAGGLE_WRITEUP.md": "2abc47a63fbbb48362665464fe055b1e93ea65c784a4bc23c353acf6fa25ed34",
 }
 
 
@@ -76,6 +79,7 @@ def verify(root, enforce_pins=True):
     structured = receipts["structured_additive"]
     lifecycle = receipts["lifecycle_acquisition"]
     aligned = receipts["aligned_additive"]
+    bandwidth = receipts["bandwidth_successor"]
     normalized = index["protected22"]
     same(
         normalized["future_interpretation"],
@@ -257,7 +261,46 @@ def verify(root, enforce_pins=True):
     same(additive_index["independent_validation"], False, "INDEX_ADDITIVE_NOT_INDEPENDENT")
     same(additive_index["protected22_used"], False, "INDEX_ADDITIVE_NO_LIB2")
     same(additive_index["official_competition_score"], None, "INDEX_ADDITIVE_NO_SCORE")
-    same(additive_index["current_internal_incumbent"], True, "INDEX_ADDITIVE_INCUMBENT")
+    same(additive_index["current_internal_incumbent"], False, "INDEX_ADDITIVE_NOT_INCUMBENT")
+
+    same(bandwidth["schema"], "dosepilot.bandwidth_additive_successor.v1", "BANDWIDTH_SCHEMA")
+    same(bandwidth["status"], "PASSES_INCUMBENT_AND_HISTORICAL_DEVELOPMENT_SCREENS", "BANDWIDTH_STATUS")
+    same(bandwidth["model_kind"], "dosepilot.additive_kernel_bandwidth.v1", "BANDWIDTH_MODEL_KIND")
+    same(bandwidth["bandwidth_multiplier"], 0.7, "BANDWIDTH_MULTIPLIER")
+    same(bandwidth["metrics"]["bandwidth07"]["mse"], 0.0010582750420801538, "BANDWIDTH_MSE", 1e-15)
+    same(bandwidth["metrics"]["bandwidth07"]["p90_rmse"], 0.0378942853087202, "BANDWIDTH_P90", 1e-15)
+    same(bandwidth["metrics"]["additive"]["mse"], additive_mse, "BANDWIDTH_ADDITIVE_REFERENCE", 1e-15)
+    same(bandwidth["comparisons"]["additive"]["patient_wins"], 38, "BANDWIDTH_ADDITIVE_WINS")
+    same(bandwidth["comparisons"]["additive"]["fold_wins"], 5, "BANDWIDTH_ADDITIVE_FOLDS")
+    same(bandwidth["comparisons"]["additive"]["passes_all"], True, "BANDWIDTH_ADDITIVE_GATE")
+    same(bandwidth["comparisons"]["r13"]["patient_wins"], 49, "BANDWIDTH_R13_WINS")
+    same(bandwidth["comparisons"]["r13"]["passes_all"], True, "BANDWIDTH_R13_GATE")
+    same(bandwidth["comparisons"]["r18"]["patient_wins"], 47, "BANDWIDTH_R18_WINS")
+    same(bandwidth["comparisons"]["r18"]["passes_all"], True, "BANDWIDTH_R18_GATE")
+    same(bandwidth["target_nonworse_vs_additive"], 14, "BANDWIDTH_TARGET_NONWORSE")
+    same(bandwidth["repeated_adaptive_development"], True, "BANDWIDTH_REPEATED_DEVELOPMENT")
+    same(bandwidth["independent_validation"], False, "BANDWIDTH_NOT_INDEPENDENT")
+    same(bandwidth["protected_response_access"], False, "BANDWIDTH_NO_PROTECTED")
+    same(bandwidth["official_competition_score"], None, "BANDWIDTH_NO_SCORE")
+    bandwidth_index = index["bandwidth_successor"]
+    same(bandwidth_index["role"], "REPEATED_ADAPTIVE_DEVELOPMENT", "INDEX_BANDWIDTH_ROLE")
+    same(bandwidth_index["model_kind"], bandwidth["model_kind"], "INDEX_BANDWIDTH_MODEL_KIND")
+    same(bandwidth_index["bandwidth_multiplier"], bandwidth["bandwidth_multiplier"], "INDEX_BANDWIDTH_MULTIPLIER")
+    same(bandwidth_index["mse"], bandwidth["metrics"]["bandwidth07"]["mse"], "INDEX_BANDWIDTH_MSE", 1e-15)
+    same(bandwidth_index["p90_rmse"], bandwidth["metrics"]["bandwidth07"]["p90_rmse"], "INDEX_BANDWIDTH_P90", 1e-15)
+    same(bandwidth_index["additive_reference_mse"], additive_mse, "INDEX_BANDWIDTH_ADDITIVE", 1e-15)
+    same(bandwidth_index["patient_wins_vs_additive"], bandwidth["comparisons"]["additive"]["patient_wins"], "INDEX_BANDWIDTH_ADDITIVE_WINS")
+    same(bandwidth_index["fold_wins_vs_additive"], bandwidth["comparisons"]["additive"]["fold_wins"], "INDEX_BANDWIDTH_ADDITIVE_FOLDS")
+    same(bandwidth_index["patient_wins_vs_r13"], bandwidth["comparisons"]["r13"]["patient_wins"], "INDEX_BANDWIDTH_R13_WINS")
+    same(bandwidth_index["patient_wins_vs_r18"], bandwidth["comparisons"]["r18"]["patient_wins"], "INDEX_BANDWIDTH_R18_WINS")
+    same(bandwidth_index["target_nonworse_vs_additive"], bandwidth["target_nonworse_vs_additive"], "INDEX_BANDWIDTH_TARGETS")
+    same(bandwidth_index["passes_incumbent_gate"], True, "INDEX_BANDWIDTH_INCUMBENT_GATE")
+    same(bandwidth_index["passes_internal_gate_vs_r13_and_r18"], True, "INDEX_BANDWIDTH_HISTORICAL_GATE")
+    same(bandwidth_index["physical_plan_changed"], False, "INDEX_BANDWIDTH_PLAN")
+    same(bandwidth_index["independent_validation"], False, "INDEX_BANDWIDTH_NOT_INDEPENDENT")
+    same(bandwidth_index["protected22_used"], False, "INDEX_BANDWIDTH_NO_LIB2")
+    same(bandwidth_index["official_competition_score"], None, "INDEX_BANDWIDTH_NO_SCORE")
+    same(bandwidth_index["current_internal_incumbent"], True, "INDEX_BANDWIDTH_INCUMBENT")
 
     same(aligned["schema"], "dosepilot.residual_alignment_additive.v1", "RAW_AK_SCHEMA")
     same(aligned["status"], "COMPLETE", "RAW_AK_STATUS")
@@ -322,8 +365,11 @@ def verify(root, enforce_pins=True):
         "Reconciled 3 October 2026",
         "Completed Protected22 missingness execution",
         "S2 spectral residual successor",
-        "Additive drug-group kernel incumbent",
+        "Previous additive drug-group kernel",
         "MSE 0.0010605527 is 0.8963% below S2",
+        "Bandwidth-0.7 additive successor",
+        "MSE 0.0010582750 is 0.2148% below additive",
+        "38/59 patient wins, 5/5 favorable folds",
         "Residual-alignment additive challenger",
         "MSE 0.0010608378 is 0.0269% worse than additive",
         "Durable additive lifecycle",
@@ -346,8 +392,9 @@ def verify(root, enforce_pins=True):
         "S2 spectral residual successor",
         "0.0010701439",
         "0.0010605527",
-        "0.8963% below S2, 7.3639% below R13 and 7.0836% below",
-        "45/59 patient means versus S2, 49/59 versus R13 and 47/59 versus R18",
+        "Bandwidth-0.7 additive successor",
+        "0.0010582750",
+        "38/59 patient means and all 5/5 outer folds versus additive",
         "0.0010608378",
         "0.0269% worse than additive",
         "24/59 patient wins, 2/5 favorable folds, worse p90",
@@ -369,6 +416,7 @@ def verify(root, enforce_pins=True):
         "S2 is independent prospective confirmation",
         "S2 is an official competition score",
         "The additive incumbent is independent validation",
+        "The bandwidth-0.7 successor is independent validation",
         "The residual-alignment challenger is promoted",
         "The durable lifecycle is new biological evidence",
         "Protected22 confirmation passed",
@@ -382,6 +430,7 @@ def verify(root, enforce_pins=True):
         "protected22_cells_reconciled": cells["authorized_cells"],
         "spectral_mse": spectral["metrics"]["r13_soft"]["mse"],
         "additive_incumbent_mse": additive_mse,
+        "bandwidth_successor_mse": bandwidth["metrics"]["bandwidth07"]["mse"],
         "raw_ak_decision": aligned["decision"],
         "durable_runtime_tests": lifecycle["tests"]["durable_runtime_suite_including_previous_cases"],
         "private_arrays_read": False,
@@ -404,3 +453,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
