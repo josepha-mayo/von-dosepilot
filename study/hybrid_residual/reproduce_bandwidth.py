@@ -1,5 +1,3 @@
-[Reading 139 lines from start (total: 139 lines, 0 remaining)]
-
 #!/usr/bin/env python3
 """Reproduce the verified 0.7x additive-kernel bandwidth successor from public TRAIN.
 
@@ -139,5 +137,3 @@ def main():
         if a.output.exists():write_new(a.output/'FAILURE.json',{'error':str(exc),'traceback':traceback.format_exc(),'automatic_retry':False})
         raise
 if __name__=='__main__':main()
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
