@@ -30,6 +30,10 @@
     "aligned_additive": {
       "path": "evidence/aligned_additive_20261003.json",
       "sha256": "fca4fff12f931caa9dbc4c70f5ebc05668a743f18f7fac0fa3e030a99581a550"
+    },
+    "bandwidth_successor": {
+      "path": "evidence/bandwidth_successor_20261003.json",
+      "sha256": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758"
     }
   },
   "protected22": {
@@ -127,7 +131,7 @@
     "independent_validation": false,
     "protected22_used": false,
     "official_competition_score": null,
-    "current_internal_incumbent": true
+    "current_internal_incumbent": false
   },
   "raw_ak_challenger": {
     "status": "COMPLETE",
@@ -172,5 +176,35 @@
     "accepted_kaggle_entry_changed": false,
     "protected_data_status_changed": false,
     "official_competition_score": null
+  },
+  "bandwidth_successor": {
+    "population": {
+      "samples": 119,
+      "patients": 59,
+      "targets": 24,
+      "physical_wells_per_alternative": 64,
+      "per_plate": 32
+    },
+    "role": "REPEATED_ADAPTIVE_DEVELOPMENT",
+    "model_kind": "dosepilot.additive_kernel_bandwidth.v1",
+    "bandwidth_multiplier": 0.7,
+    "mse": 0.0010582750420801538,
+    "p90_rmse": 0.0378942853087202,
+    "additive_reference_mse": 0.001060552730112811,
+    "relative_gain_vs_additive": 0.0021476424207731437,
+    "patient_wins_vs_additive": 38,
+    "fold_wins_vs_additive": 5,
+    "relative_gain_vs_r13": 0.07562823317033074,
+    "patient_wins_vs_r13": 49,
+    "relative_gain_vs_r18": 0.07283110105708912,
+    "patient_wins_vs_r18": 47,
+    "target_nonworse_vs_additive": 14,
+    "passes_incumbent_gate": true,
+    "passes_internal_gate_vs_r13_and_r18": true,
+    "physical_plan_changed": false,
+    "independent_validation": false,
+    "protected22_used": false,
+    "official_competition_score": null,
+    "current_internal_incumbent": true
   }
 }
