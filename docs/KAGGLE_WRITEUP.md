@@ -1,5 +1,3 @@
-[Reading 133 lines from start (total: 133 lines, 0 remaining)]
-
 **Submission category: Model & Algorithm**
 
 # von DosePilot: 24 response summaries from 64 traceable wells
@@ -133,5 +131,3 @@ ChatGPT assisted with research synthesis, implementation, numerical checking, do
 5. Tan et al., *Cell Reports Medicine* (2023), DOI: 10.1016/j.xcrm.2023.101335.
 6. Farin et al., *Cancer Discovery* (2023), DOI: 10.1158/2159-8290.CD-23-0050; Mendeley Data DOI: 10.17632/fypp6xhkjy.1.
 7. Verissimo et al., *eLife* (2016), DOI: 10.7554/eLife.18489.
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
