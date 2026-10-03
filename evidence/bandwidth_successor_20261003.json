@@ -1,0 +1,132 @@
+[Reading 128 lines from start (total: 128 lines, 0 remaining)]
+
+{
+  "schema": "dosepilot.bandwidth_additive_successor.v1",
+  "as_of_utc": "2026-10-03T15:53:03.913081+00:00",
+  "status": "PASSES_INCUMBENT_AND_HISTORICAL_DEVELOPMENT_SCREENS",
+  "model_kind": "dosepilot.additive_kernel_bandwidth.v1",
+  "bandwidth_multiplier": 0.7,
+  "cohort": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_wells_per_alternative": 64,
+    "per_plate": 32
+  },
+  "metrics": {
+    "bandwidth07": {
+      "mse": 0.0010582750420801538,
+      "p90_rmse": 0.0378942853087202,
+      "orientation_mse": [
+        0.0011047521616732161,
+        0.0010117979224870915
+      ]
+    },
+    "additive": {
+      "mse": 0.001060552730112811,
+      "p90_rmse": 0.03807311159996259
+    },
+    "r13": {
+      "mse": 0.001144858681382854
+    },
+    "r18": {
+      "mse": 0.0011414048112341991
+    }
+  },
+  "comparisons": {
+    "additive": {
+      "relative_gain": 0.0021476424207731437,
+      "patient_wins": 38,
+      "patient_losses": 21,
+      "fold_wins": 5,
+      "passes_all": true,
+      "descriptive_delta_ci95": [
+        -0.000004158770296406933,
+        -4.156695014266991e-7
+      ]
+    },
+    "r13": {
+      "relative_gain": 0.07562823317033074,
+      "patient_wins": 49,
+      "patient_losses": 10,
+      "fold_wins": 5,
+      "passes_all": true,
+      "descriptive_delta_ci95": [
+        -0.00012011537571348373,
+        -0.000056884501927730843
+      ]
+    },
+    "r18": {
+      "relative_gain": 0.07283110105708912,
+      "patient_wins": 47,
+      "patient_losses": 12,
+      "fold_wins": 5,
+      "passes_all": true,
+      "descriptive_delta_ci95": [
+        -0.00011577045431497056,
+        -0.00005439437725237926
+      ]
+    }
+  },
+  "target_nonworse_vs_additive": 14,
+  "target_regressions_vs_additive": [
+    "Afatinib",
+    "Bemcentinib",
+    "Encorafenib",
+    "Idasanutlin",
+    "LCL161",
+    "Lapatinib",
+    "Regorafenib",
+    "SN-38",
+    "Trametinib",
+    "Volasertib"
+  ],
+  "rejected_wider_bandwidth": {
+    "multiplier": 1.4,
+    "mse": 0.00106370935859072,
+    "patient_wins": 18,
+    "fold_wins": 0,
+    "decision": "REJECT"
+  },
+  "verification": {
+    "independent_saved_array_audit": "PASS",
+    "bw1_exact_prediction_max_error": 0,
+    "physical_plan_parity_all_outer_folds": true,
+    "public_input_replay": "PASS",
+    "runtime_record_checks": 238,
+    "runtime_max_prediction_difference": 2.220446049250313e-16,
+    "single_missing_positions_checked": 64,
+    "all_missing_cases_withheld": true
+  },
+  "public_replay": {
+    "result_sha256": "ec79280064117ee512a9b761b5072e32567335e257b63b501e1d8b477939fd58",
+    "predictions_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "old_prediction_input": false,
+    "private_metadata_kit_used": false
+  },
+  "final_model": {
+    "selected": [
+      0.1,
+      1
+    ],
+    "plan_sha256": "25b14b67b2e5ab82394f1409ed72f68ae264278095c280df9e552d4f1bdff2ca",
+    "model_sha256": "d6acd2ef219e4c10611ffd7c240f1ee545baa9d50c6178c0a5c4dc43d49d976c",
+    "construction_sha256": "1699d858a9e359e39517b12d02046208d553f98d231392fc5bfe67acda8b4c3d",
+    "new_validation": false
+  },
+  "source_sha256": {
+    "bandwidth_additive.py": "30723fbc8f6843c200891e14e5fb254e707298fa5514b668c4f005a4562edb30",
+    "bandwidth_inference.py": "9d21905b4d9d03b639b895ce01e6fe891a8afad78ee3ad908887fa11467d9cb8",
+    "reproduce_bandwidth.py": "d38527761bcc21c6de61a4e93f69665294792f1b1bdff28efb2fa3f1149cc2e4",
+    "test_bandwidth_additive.py": "20dbed14da0273a1c40653cfcb714cbbe752c6b8989f21b3d86624594fe5ca82"
+  },
+  "private_verification_sha256": "e1f06c3d519342bc7d9f92ac0c38f228d43781cb066d408d338d1c01cb09e3d8",
+  "final_runtime_verification_sha256": "307a9433506288d6fa583b61a73f10b1d1461672d7234aeefc15497751eaa848",
+  "repeated_adaptive_development": true,
+  "independent_validation": false,
+  "protected_response_access": false,
+  "accepted_kaggle_entry_changed": false,
+  "official_competition_score": null
+}
+
+[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
