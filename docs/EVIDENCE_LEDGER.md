@@ -1,5 +1,3 @@
-[Reading 68 lines from start (total: 68 lines, 0 remaining)]
-
 # Evidence ledger: what is independent, and what is not
 
 Reconciled 3 October 2026 from the recorded source identities, access records, protocols and execution receipts. This ledger distinguishes development, external adaptations, incomplete attempts, conditional diagnostics and software reproductions. It does not certify that every historical access across all sessions has been reconstructed.
@@ -11,7 +9,7 @@ Reconciled 3 October 2026 from the recorded source identities, access records, p
 | Previous additive drug-group kernel | Same 119-sample / 59-patient / 24-target / 64-well Lib1 development task | Repeated adaptive development. MSE 0.0010605527 is 0.8963% below S2, with 45/59 patient wins and 5/5 favorable folds; it is retained as the direct predecessor/control. |
 | **Bandwidth-0.7 additive successor** | Same 119-sample / 59-patient / 24-target / 64-well Lib1 development task and identical physical plans | **Current repeated-development incumbent.** MSE 0.0010582750 is 0.2148% below additive, with 38/59 patient wins, 5/5 favorable folds and lower p90. It also passes the historical R13/R18 screen. Not independent validation or an official competition score. |
 | Residual-alignment additive challenger | Same original Lib1 development task and physical budget | Prespecified bounded negative result. MSE 0.0010608378 is 0.0269% worse than additive, with 24/59 patient wins, 12 ties, 2/5 favorable folds, worse p90 and 12/24 target regressions. Additive is retained. |
-| Durable additive lifecycle | Fictional CLI fixtures plus replay of an already fitted model | Engineering/reproducibility evidence only. Commit, recover and predict behavior passed 55 tests; warm calculation was 2.0993× faster in the recorded microbenchmark. This is not new biological evidence or end-to-end speed. |
+| Durable predecessor additive-1.0 lifecycle | Fictional CLI fixtures plus replay of an already fitted model | Engineering/reproducibility evidence only. Commit, recover and predict behavior passed 55 tests; warm calculation was 2.0993× faster in the recorded microbenchmark. The bandwidth-0.7 successor is not integrated into this lifecycle. This is not new biological evidence or end-to-end speed. |
 | R33 and comparison replays | Same original population and algorithms | Reproducibility checks, not new cohorts or independent accuracy gains. |
 | First eight-drug FORECAST-1 assessment | Separate Tan et al. study; 64 complete community lines from 63 patients used for fitting; 13 complete FORECAST-1 patients of 19 source patients; 21 dose-level readouts | External assessment of an adapted sparse-reconstruction design. The original support gate failed. It does not directly validate the fitted 24-drug R13 model. |
 | Later six-drug FORECAST-1 analysis | Same Tan et al. community and FORECAST-1 source workbooks; different panel, budget and eligible population | A further analysis of the same external cohort. It must not be counted as a second independent confirmation or substituted for the first task's failed gate. |
@@ -68,5 +66,3 @@ python study/audits/verify_evidence_consistency.py --root .
 ```
 
 The verifier checks receipt hashes, cell arithmetic, prior-exposure linkage, primary/conditional separation, all-exposed status and S2's repeated-development classification. It reads no source workbook, patient array, prediction array or fitted model.
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]

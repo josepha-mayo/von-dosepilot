@@ -46,21 +46,21 @@ python study/hybrid_residual/reproduce_bandwidth.py --curves reconstructed_train
 
 The public replay runner has reproduced the bandwidth-successor, previous additive and R13 scores from the hash-bound public-derived TRAIN input without historical predictions. Final construction selected spectral fraction 0.1 and ridge 1.0. Construction is not another validation result. Generated kernel model archives contain fitted training features and must remain private.
 
-Use the new lifecycle with a **fresh code-bound runtime commitment**, an independently recorded construction SHA-256 and an explicit 64-well inventory. It automatically checks recovery history before complete prediction. The legacy entry points remain available but are not silently migrated into this contract.
+The promoted bandwidth-0.7 archive has an identity-checked all-input inference backend, but it is **not yet integrated** into the durable `commit` / `recover` / `predict` CLI. That lifecycle currently targets the previous additive-1.0 model. Do not present a predecessor lifecycle run as operation of the bandwidth successor. The legacy entry points remain available but are not silently migrated into the durable contract.
 
 ## Reliability and measured speed
 
-The new runtime publishes complete JSON records without overwriting existing evidence, serializes cooperating processes working on the same measurement frame and recovers after a worker exits. Its compiled prediction calculation was previously measured at **6.9165 to 3.2947 milliseconds per warm request**, a **2.10x speedup** including identity checks but excluding model loading, file I/O, ledger synchronization and training. It is not an end-to-end CLI speedup claim.
+The previous additive-1.0 runtime publishes complete JSON records without overwriting existing evidence, serializes cooperating processes working on the same measurement frame and recovers after a worker exits. Its compiled prediction calculation was measured at **6.9165 to 3.2947 milliseconds per warm request**, a **2.10x speedup** including identity checks but excluding model loading, file I/O, ledger synchronization and training. This speed result does not describe the bandwidth-0.7 backend and is not an end-to-end CLI speedup claim.
 
 **55 durable-runtime tests pass**, including concurrency, process interruption and automatic recovery-history checks. Nine separate new acquisition tests pass, and an independent arithmetic implementation checked 713 numerical/acquisition comparison groups. These are software checks, not additional biological samples.
 
-Run the response-free release preflight—which checks the evidence index, durable runtime, acquisition, structured kernels, residual-alignment unit tests, organ-on-chip constraint compiler and fictional lifecycle demo—with a fresh output path:
+Run the response-free release preflight—which checks the evidence index, durable runtime, bandwidth successor, acquisition, structured kernels, residual-alignment unit tests, organ-on-chip constraint compiler and fictional lifecycle demo—with a fresh output path:
 
 ```bash
 python study/audits/release_preflight.py --output release_preflight.json
 ```
 
-The latest aggregate [release-preflight receipt](evidence/release_preflight_20261003.json) records 123 orchestrated response-free tests plus the fictional lifecycle demo; two unit tests for the preflight runner itself passed separately.
+The latest aggregate [bandwidth-release preflight receipt](evidence/release_preflight_bandwidth_20261003.json) records 129 orchestrated response-free tests plus the fictional lifecycle demo; three unit tests for the preflight runner itself passed separately.
 
 Local POSIX synchronization and advisory-lock guarantees depend on the operating system and storage. They do not certify physical power-loss behavior, laboratory execution, hostile filesystem edits or network filesystems. [Full verification and limitations](docs/DURABLE_LIFECYCLE_AND_ACQUISITION.md) · [Source-bound receipt](evidence/lifecycle_acquisition_20261002.json).
 

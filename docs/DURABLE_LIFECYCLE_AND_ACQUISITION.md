@@ -2,9 +2,11 @@
 
 **Joseph Ayanda | 2 October 2026 | Research software**
 
+> **Historical 2 October snapshot.** The bandwidth-0.7 successor became the current repeated-development incumbent on 3 October. The durable lifecycle and 2.10× warm-step measurement documented here still target the previous additive-1.0 model; they are not a runtime claim for the bandwidth successor. See [the current result](BANDWIDTH_SUCCESSOR.md).
+
 ## What changes, and what does not
 
-The additive model remains the accuracy incumbent at **patient-balanced MSE 0.001060552730112811**. A new, fitting-only dose-selection procedure failed to improve it and is rejected. Neither the accepted Kaggle entry nor the biological model weights are replaced by this release.
+At the time of this snapshot, the additive-1.0 model was the accuracy incumbent at **patient-balanced MSE 0.001060552730112811**. A new, fitting-only dose-selection procedure failed to improve it and is rejected. Neither the accepted Kaggle entry nor the biological model weights were replaced by this release.
 
 The completed engineering change is one explicit runtime interface for **commit, recover and predict**. It combines the previously verified faster additive predictor with durable evidence-file publication, automatic recovery-history checks and per-frame process serialization. Users no longer need to remember a special completion command to prevent previously recorded readings from being rewritten.
 

@@ -2,7 +2,7 @@
 """Run the public, response-free release checks from one command."""
 from __future__ import annotations
 from pathlib import Path
-import argparse, datetime, hashlib, json, os, subprocess, sys, tempfile, time
+import argparse, datetime, hashlib, json, os, re, subprocess, sys, tempfile, time
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -18,12 +18,19 @@ CHECKS = [
      ["study/hybrid_residual", "study/structured_kernels"]),
     ("aligned_additive", [sys.executable, "-m", "unittest", "discover", "-s", "study/aligned_additive", "-p", "test_*.py", "-v"],
      ["study/hybrid_residual", "study/aligned_additive"]),
+    ("bandwidth_successor", [sys.executable, "-m", "unittest", "discover", "-s", "study/hybrid_residual", "-p", "test_bandwidth_additive.py", "-v"],
+     ["study/hybrid_residual", "study/spectral_residual"]),
     ("ooc_compiler", [sys.executable, "-m", "unittest", "discover", "-s", "demo", "-p", "test_*.py", "-v"], ["demo"]),
 ]
 
 
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def unittest_count(output):
+    match = re.search(r"Ran (\d+) tests?", output)
+    return int(match.group(1)) if match else 0
 
 
 def run(output):
@@ -53,6 +60,7 @@ def run(output):
                 "elapsed_seconds": time.monotonic() - started,
                 "output_sha256": hashlib.sha256(completed.stdout.encode()).hexdigest(),
                 "output_tail": completed.stdout[-4000:],
+                "unittest_count": unittest_count(completed.stdout),
             }
             records.append(record)
             if completed.returncode:
@@ -67,6 +75,10 @@ def run(output):
         "utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "checks": records,
         "check_count": len(records),
+        "orchestrated_test_count": sum(item["unittest_count"] for item in records),
+        "fictional_lifecycle_demo_completed": any(
+            item["name"] == "fictional_lifecycle_demo" and item["exit_code"] == 0
+            for item in records),
         "source_sha256": digest(Path(__file__)),
         "private_or_protected_inputs_read": False,
         "biological_accuracy_result_created": False,

@@ -1,5 +1,3 @@
-[Reading 453 lines from start (total: 453 lines, 0 remaining)]
-
 #!/usr/bin/env python3
 """Verify the normalized public evidence index against canonical receipts.
 
@@ -31,8 +29,8 @@ PINNED_RECEIPTS = {
 }
 
 PINNED_DOCUMENTS = {
-    "docs/EVIDENCE_LEDGER.md": "8627feb386f1285865974f09b461edb311fefe9f85f93c243072dbd6f319e44c",
-    "docs/KAGGLE_WRITEUP.md": "2abc47a63fbbb48362665464fe055b1e93ea65c784a4bc23c353acf6fa25ed34",
+    "docs/EVIDENCE_LEDGER.md": "3d6e723d4cf576869664985d11fe0ee850e0e31714da0baa0beab3b4361b47bd",
+    "docs/KAGGLE_WRITEUP.md": "2941a51a25c568009adbd90b0928e1d99e807186cf27f6ee27a4a6fd63bbf6b5",
 }
 
 
@@ -372,7 +370,7 @@ def verify(root, enforce_pins=True):
         "38/59 patient wins, 5/5 favorable folds",
         "Residual-alignment additive challenger",
         "MSE 0.0010608378 is 0.0269% worse than additive",
-        "Durable additive lifecycle",
+        "Durable predecessor additive-1.0 lifecycle",
         "Engineering/reproducibility evidence only",
         "All 61 PDOs and 31 patients are exposed",
         "no estimable frozen full-cohort Lib2 primary",
@@ -398,9 +396,9 @@ def verify(root, enforce_pins=True):
         "0.0010608378",
         "0.0269% worse than additive",
         "24/59 patient wins, 2/5 favorable folds, worse p90",
-        "current durable additive lifecycle",
+        "durable lifecycle currently targets the previous additive-1.0 model",
         "23 unaffected estimates when one reading is missing",
-        "additive primary itself requires all 64 readings",
+        "additive-1.0 primary itself requires all 64 readings",
         "not another biological accuracy test",
         "19,642",
         "primary is **NOT_ESTIMABLE**",
@@ -453,5 +451,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]

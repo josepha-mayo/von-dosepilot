@@ -1,5 +1,3 @@
-[Reading 133 lines from start (total: 133 lines, 0 remaining)]
-
 **Submission category: Model & Algorithm**
 
 # von DosePilot: 24 response summaries from 64 traceable wells
@@ -93,7 +91,7 @@ A newer live project receipt, discovered after this run, records earlier access 
 
 ## Operating demonstration and organ-on-chip path
 
-The public demo uses **fictional measurements and parameters** without publishing patient data. The current durable additive lifecycle exposes commit→recover→predict commands, validates a caller-declared 64-well inventory, exact plan identities and 32/32 plate balance, and records hash-bound create-exclusive state before user-facing exports. It automatically rejects changed previously recorded measurements and can recover a failed export. An optional, explicitly labelled older baseline can return 23 unaffected estimates when one reading is missing; the additive primary itself requires all 64 readings and returns no primary outputs when incomplete. These local POSIX records are not signed, WORM or administrator-immutable. Runtime behavior is not another biological accuracy test.
+The public demo uses **fictional measurements and parameters** without publishing patient data. The durable lifecycle currently targets the previous additive-1.0 model; the bandwidth-0.7 successor is not yet integrated into that CLI. The lifecycle exposes commit→recover→predict commands, validates a caller-declared 64-well inventory, exact plan identities and 32/32 plate balance, and records hash-bound create-exclusive state before user-facing exports. It automatically rejects changed previously recorded measurements and can recover a failed export. An optional, explicitly labelled older baseline can return 23 unaffected estimates when one reading is missing; the additive-1.0 primary itself requires all 64 readings and returns no primary outputs when incomplete. These local POSIX records are not signed, WORM or administrator-immutable. Runtime behavior is not another biological accuracy test.
 
 A response-free organ-on-chip constraint compiler separately represents device/run, channel, reservoir, shared-flow circuit, compartment, exact exposure, timepoint and controls. It returns a deterministic manifest compatible with the declared constraints or an explicit incompatibility. Its included fixture is synthetic. The compiler does not establish real hardware feasibility or measured OoC performance. A prospective deployment still requires a reviewed device inventory, assay-specific constraints and experimental evaluation. See [the compiler and limits](OOC_FEASIBILITY.md).
 
@@ -133,5 +131,3 @@ ChatGPT assisted with research synthesis, implementation, numerical checking, do
 5. Tan et al., *Cell Reports Medicine* (2023), DOI: 10.1016/j.xcrm.2023.101335.
 6. Farin et al., *Cancer Discovery* (2023), DOI: 10.1158/2159-8290.CD-23-0050; Mendeley Data DOI: 10.17632/fypp6xhkjy.1.
 7. Verissimo et al., *eLife* (2016), DOI: 10.7554/eLife.18489.
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]

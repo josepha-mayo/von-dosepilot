@@ -12,5 +12,3 @@ document.querySelector('#missingBtn').onclick=()=>{if(state==='fresh')document.q
 document.querySelector('#recoverBtn').onclick=()=>{if(missing<0){document.querySelector('#missingBtn').click()}state='recovered';renderWells();setStatus('Baseline-only recovery • explicitly labelled','warn');primaryEl.textContent='0';baselineEl.textContent='23';predictions('baseline');explainEl.textContent='23 older own-drug estimates remain available. The affected head and all additive-model outputs remain withheld.'}
 document.querySelector('#completeBtn').onclick=()=>{if(state==='fresh')document.querySelector('#commitBtn').click();state='complete';missing=-1;renderWells();setStatus('Complete • 24 additive outputs recorded','good');primaryEl.textContent='24';baselineEl.textContent='0';predictions('primary');explainEl.textContent='Previously observed fictional readings are preserved; the missing reading is now present, so the complete primary path can run.'}
 document.querySelector('#resetBtn').onclick=reset;reset();
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]

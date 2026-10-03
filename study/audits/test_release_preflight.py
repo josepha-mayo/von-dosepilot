@@ -1,5 +1,5 @@
 import unittest
-from release_preflight import CHECKS
+from release_preflight import CHECKS, unittest_count
 
 
 class ReleasePreflightTests(unittest.TestCase):
@@ -8,7 +8,7 @@ class ReleasePreflightTests(unittest.TestCase):
         self.assertEqual(len(names), len(set(names)))
         self.assertEqual(set(names), {
             "evidence", "audit_tests", "durable_runtime", "acquisition", "structured_kernels",
-            "aligned_additive", "ooc_compiler",
+            "aligned_additive", "bandwidth_successor", "ooc_compiler",
         })
 
     def test_every_check_is_python_and_has_no_private_input_flag(self):
@@ -18,6 +18,11 @@ class ReleasePreflightTests(unittest.TestCase):
             self.assertNotIn("protected22", joined)
             self.assertNotIn("private", joined)
             self.assertNotIn("workbook", joined)
+
+    def test_unittest_count_is_explicit_and_safe(self):
+        self.assertEqual(unittest_count("Ran 22 tests in 0.1s\nOK\n"), 22)
+        self.assertEqual(unittest_count("Ran 1 test in 0.1s\nOK\n"), 1)
+        self.assertEqual(unittest_count("fictional demo complete"), 0)
 
 
 if __name__ == "__main__":
