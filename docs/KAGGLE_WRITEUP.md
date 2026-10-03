@@ -11,6 +11,7 @@
 
 ## Demo video and code
 
+**Live fictional-data demo:** https://von-dosepilot.netlify.app  
 **Demo video:** https://youtu.be/QeOGJIgx378  
 **Public code:** https://github.com/josepha-mayo/von-dosepilot  
 **Historical technical report:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/DosePilot_Technical_Report_Public.pdf  
