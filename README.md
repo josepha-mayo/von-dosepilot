@@ -8,6 +8,9 @@ Research software by **Joseph Ayanda** for AI4S Open Innovation. DosePilot choos
 
 **Live fictional-data demo:** https://von-dosepilot.netlify.app
 
+**One-page finalist audit:** [64-well contract, current benchmark, all 24 target deltas, selection history](docs/FINALIST_AUDIT.md)  
+**Synthetic robustness audit:** [noise, plate-drift, and missing-reading stress tests](docs/SIMULATED_ASSAY_ROBUSTNESS.md)
+
 The deployed static site is also versioned under [`site/`](site/) in this repository. It uses seeded fictional values only and makes no additional biological accuracy claim.
 
 On a supported local POSIX system, install the repository's dependencies and run:
