@@ -98,6 +98,20 @@ The largest absolute regressions are visible directly in the table. This is why 
 
 Many other exploratory branches are preserved in project history. This table does not imply independent replication. It shows that the current estimator survived explicit incumbent-facing screens rather than being reported only because its decimal was lowest.
 
+## Synthetic failure-envelope audit
+
+The frozen bandwidth model was also evaluated **post hoc, without refitting or selecting a new model**, under simple synthetic measurement perturbations.
+
+- Independent Gaussian noise at 0.01 z-units increased mean MSE by about **0.062%** across five fixed seeds.
+- At 0.05 z-units, mean MSE increased about **1.38%**.
+- At 0.10 z-units, mean MSE increased about **5.58%**.
+- A coherent ±5% multiplicative offset affecting one source plate was much more damaging, increasing MSE by about **14.5% to 16.8%**.
+- A single missing purchased value still withholds the primary model output; no replacement treatment well or silent imputation is used.
+
+These are synthetic software stress tests on the reused development population, **not estimates of real assay CV or biological robustness**. Their practical implication is narrower: future wet-lab integration should prioritize plate-level calibration/QC and prospectively validate any correction rule.
+
+See `docs/SIMULATED_ASSAY_ROBUSTNESS.md` and `evidence/bandwidth_robustness_20261003.json`.
+
 ## Evidence levels
 
 **Demonstrated development prediction performance:** whole-patient nested Lib1 evaluation above.
