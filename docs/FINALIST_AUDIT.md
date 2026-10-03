@@ -125,5 +125,3 @@ See also:
 - evidence/bandwidth_successor_20261003.json
 - docs/BANDWIDTH_SUCCESSOR.md
 - live fictional-data demo: https://von-dosepilot.netlify.app
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
