@@ -1,5 +1,3 @@
-[Reading 30 lines from start (total: 30 lines, 0 remaining)]
-
 """Additive drug-group Gaussian kernel with an explicit global lengthscale.
 
 The historical additive model corresponds to multiplier 1.0. The verified
@@ -30,5 +28,3 @@ class BandwidthAdditive(AdditiveKernel):
     def arrays(self,coefficients):
         return dict(super().arrays(coefficients),
                     kernel_bandwidth_multiplier=np.asarray(self.multiplier))
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
