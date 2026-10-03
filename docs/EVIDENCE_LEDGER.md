@@ -1,3 +1,5 @@
+[Reading 68 lines from start (total: 68 lines, 0 remaining)]
+
 # Evidence ledger: what is independent, and what is not
 
 Reconciled 3 October 2026 from the recorded source identities, access records, protocols and execution receipts. This ledger distinguishes development, external adaptations, incomplete attempts, conditional diagnostics and software reproductions. It does not certify that every historical access across all sessions has been reconstructed.
@@ -6,7 +8,8 @@ Reconciled 3 October 2026 from the recorded source identities, access records, p
 |---|---|---|
 | Original R13 development | 119 organoid samples from 59 patients; 24 drugs; 64 physical treatment wells | Repeated adaptive development. The retained model and historical MSE are unchanged. |
 | S2 spectral residual successor | Same 119-sample / 59-patient / 24-target / 64-well Lib1 development task | Repeated adaptive development on the same population. MSE 0.0010701439 passes the unchanged internal screen against R13 and R18, but it is not independent validation or an official competition score. |
-| Additive drug-group kernel incumbent | Same 119-sample / 59-patient / 24-target / 64-well Lib1 development task | Repeated adaptive development. MSE 0.0010605527 is 0.8963% below S2, with 45/59 patient wins and 5/5 favorable folds; it remains the current internal incumbent. |
+| Previous additive drug-group kernel | Same 119-sample / 59-patient / 24-target / 64-well Lib1 development task | Repeated adaptive development. MSE 0.0010605527 is 0.8963% below S2, with 45/59 patient wins and 5/5 favorable folds; it is retained as the direct predecessor/control. |
+| **Bandwidth-0.7 additive successor** | Same 119-sample / 59-patient / 24-target / 64-well Lib1 development task and identical physical plans | **Current repeated-development incumbent.** MSE 0.0010582750 is 0.2148% below additive, with 38/59 patient wins, 5/5 favorable folds and lower p90. It also passes the historical R13/R18 screen. Not independent validation or an official competition score. |
 | Residual-alignment additive challenger | Same original Lib1 development task and physical budget | Prespecified bounded negative result. MSE 0.0010608378 is 0.0269% worse than additive, with 24/59 patient wins, 12 ties, 2/5 favorable folds, worse p90 and 12/24 target regressions. Additive is retained. |
 | Durable additive lifecycle | Fictional CLI fixtures plus replay of an already fitted model | Engineering/reproducibility evidence only. Commit, recover and predict behavior passed 55 tests; warm calculation was 2.0993× faster in the recorded microbenchmark. This is not new biological evidence or end-to-end speed. |
 | R33 and comparison replays | Same original population and algorithms | Reproducibility checks, not new cohorts or independent accuracy gains. |
@@ -38,9 +41,11 @@ The prespecified complete-patient conditional diagnostic contains 54 PDOs from 2
 
 ## Current Lib1 development successor
 
-S2 keeps the same R13 acquisition and 64-well physical budget, then learns a spectrally regularized correction to the own-drug baseline. Its patient-balanced full24 MSE is **0.0010701439**, versus 0.0011448587 for R13 and 0.0011414048 for R18. It passes the unchanged internal screen against both references, with 49/59 and 47/59 patient wins and five favorable outer-fold means against each. Four target means and ten patient means regress versus R13.
+The current model keeps the exact R13 acquisition, own-drug baseline and 64-well physical budget, and retains the additive drug-group residual kernel. It changes only one global nonlinear geometry parameter: the Gaussian group lengthscale multiplier is **0.7** instead of 1.0. Its patient-balanced full24 MSE is **0.0010582750**, versus 0.0010605527 for the previous additive model, 0.0010701439 for S2, 0.0011448587 for R13 and 0.0011414048 for R18.
 
-S2 is still selected repeated-development evidence on the same 59 patients. It is not selection-corrected, externally validated, prospectively validated or an official competition score. It did not use Protected22 responses. See [the complete result and limitations](SPECTRAL_SUCCESSOR.md).
+Against additive it improves **38/59 patient means, all 5/5 outer-fold means and p90 RMSE**. Against R13/R18 it records 49/59 and 47/59 patient wins and all five folds. Both candidate orientation means stay below each historical reference's expected MSE. The physical plans are identical to additive in all five outer folds.
+
+This is still selected repeated-development evidence on the same 59 patients. Ten of 24 target-average errors regress versus additive, the paired intervals are not selection-corrected, and no external cohort was newly evaluated. The prefrozen wider 1.4 bandwidth failed and was retained as a negative result. See [the complete bandwidth result and limitations](BANDWIDTH_SUCCESSOR.md), [the previous additive evidence](STRUCTURED_KERNELS_AND_RECOVERY.md), and [the S2 history](SPECTRAL_SUCCESSOR.md).
 
 ## Reporting rules
 
@@ -63,3 +68,5 @@ python study/audits/verify_evidence_consistency.py --root .
 ```
 
 The verifier checks receipt hashes, cell arithmetic, prior-exposure linkage, primary/conditional separation, all-exposed status and S2's repeated-development classification. It reads no source workbook, patient array, prediction array or fitted model.
+
+[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
