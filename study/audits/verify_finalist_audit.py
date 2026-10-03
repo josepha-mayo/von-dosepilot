@@ -74,5 +74,3 @@ def main():
         a.output.write_text(text)
     print(text,end='')
 if __name__=='__main__':main()
-
-[executed on device: joseph-hp-elitebook (952b4ec0-09f4-4bcf-9153-2dd8c5e6a1d5)]
