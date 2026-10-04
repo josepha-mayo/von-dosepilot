@@ -52,16 +52,16 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r7_20261004.json",
-      "sha256": "cd503cc69c8026d60c52a85e5e5970c2d66f6ecbba38579b4a6551cca607b1c3"
+      "path": "evidence/frozen_ooc_release_binding_r8_20261004.json",
+      "sha256": "4db59dd23fbe164c0b07aa7dd207921a5e7c91996b98511ef52f5d50d7ec2e19"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r5_20261004.json",
-      "sha256": "4a68f8b0e2d1d4b586979f97f83120c54ad781a8091ffdd60f72bd9c9d701e56"
+      "path": "evidence/reviewer_path_release_r6_20261004.json",
+      "sha256": "53a2673142032cbb177178de0f2deac9541139a8167aae82fa9ba229043a37ba"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r2_20261004.json",
@@ -114,7 +114,10 @@
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null,
     "rubric_evidence_map_linked": true,
-    "rubric_self_score_assigned": false
+    "rubric_self_score_assigned": false,
+    "verification_chronology_linked": true,
+    "latest_release_test_count": 173,
+    "report_bound_historical_test_count": 168
   },
   "finalist_rubric_evidence": {
     "path": "evidence/finalist_rubric_evidence_20261004.json",
@@ -144,16 +147,27 @@
     "official_competition_score": null
   },
   "current_release_preflight": {
-    "path": "evidence/release_preflight_site_cpm_sync_pass1_20261004.json",
-    "sha256": "3746dc0fb82e9aa9b8d563e45b935f5701f48b1cdc4ef8401ecf3c06bc46ba45",
-    "predecessor_path": "evidence/release_preflight_report_sync_pass1_20261004.json",
-    "predecessor_sha256": "d2ca6de2f405324094a9c7c79127d8da92c1ea72bdd11f7d1e2d7fcd2a745a96",
+    "path": "evidence/release_preflight_rubric_map_pass1_20261004.json",
+    "sha256": "92ca10dc68228ff438618d160859a5b5d86ae2d934a798041be45e515dc42d2b",
+    "predecessor_path": "evidence/release_preflight_site_cpm_sync_pass1_20261004.json",
+    "predecessor_sha256": "3746dc0fb82e9aa9b8d563e45b935f5701f48b1cdc4ef8401ecf3c06bc46ba45",
     "schema": "dosepilot.current_release_preflight.v1",
     "status": "PASS",
     "check_count": 14,
-    "orchestrated_response_free_tests": 168,
+    "orchestrated_response_free_tests": 173,
     "target_definition_tests_included": true,
     "target_definition_verifier_included": true,
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
+  "verification_chronology": {
+    "path": "evidence/verification_chronology_20261004.json",
+    "sha256": "589b0ce6f62ab2b30c39b838bc984cce1664cf8e2ff200efa0bc3d471108a593",
+    "status": "PASS",
+    "latest_orchestrated_response_free_tests": 173,
+    "historical_receipts_preserved": true,
     "private_or_protected_inputs_read": false,
     "biological_accuracy_result_created": false,
     "accepted_kaggle_entry_changed": false,
@@ -446,7 +460,8 @@
     "historical_fold_counts_pinned": true,
     "new_tamper_tests_passed": 7,
     "release_preflight_check_count": 14,
-    "orchestrated_response_free_tests": 168,
+    "orchestrated_response_free_tests": 173,
+    "verification_chronology_linked": true,
     "prospective_experiment_executed": false,
     "biological_validation_created": false,
     "protected_response_access": false,

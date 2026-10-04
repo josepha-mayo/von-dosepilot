@@ -145,7 +145,8 @@ class EvidenceConsistencyTests(unittest.TestCase):
         self.assertEqual(result["reviewer_path_seconds"], 90)
         self.assertEqual(result["rubric_evidence_criteria"], 5)
         self.assertEqual(result["rubric_evidence_weight_sum"], 100)
-        self.assertEqual(result["current_preflight_tests"], 168)
+        self.assertEqual(result["current_preflight_tests"], 173)
+        self.assertEqual(result["verification_chronology_latest_tests"], 173)
         self.assertEqual(result["development_governance_families"], 22)
         self.assertEqual(result["development_governance_tests"], 33)
 

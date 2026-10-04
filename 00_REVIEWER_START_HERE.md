@@ -128,7 +128,7 @@ These commands require no protected cohort responses.
 
     python study/audits/release_preflight_current.py --output release_preflight.json
 
-The current additive runner preserves the historical frozen-schedule preflight and adds endpoint-definition, Kaggle-link-portability and current-quickstart checks. The bound public receipt records **14/14 stages and 168 response-free tests passed**; three runner-contract tests passed separately.
+The current additive runner preserves the historical frozen-schedule preflight and adds endpoint-definition, Kaggle-link-portability, development-governance and current-quickstart checks. The latest bound public receipt records **14/14 stages and 173 response-free tests passed**; three runner-contract tests passed separately. The current technical report remains bound to its earlier 168-test receipt, which is preserved rather than rewritten; see the [verification chronology](docs/VERIFICATION_CHRONOLOGY.md) for the additive test-count history.
 
 ### Public TRAIN reconstruction and current-model replay
 

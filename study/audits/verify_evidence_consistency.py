@@ -17,6 +17,10 @@ from verify_finalist_rubric_evidence import (
     RubricEvidenceError,
     verify as verify_finalist_rubric_evidence,
 )
+from verify_verification_chronology import (
+    ChronologyError,
+    verify as verify_verification_chronology,
+)
 
 
 class EvidenceError(ValueError):
@@ -36,9 +40,9 @@ PINNED_RECEIPTS = {
     "simplex_stacking": "8af8887860ef738c2657f100a1a5031e02309b718ac1bd10473c319c0b0e3464",
     "isotonic_paid_features": "01934ca5139a219814572bd5b3e28923c98b8ad37ee3146a405f5ddd247476da",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
-    "frozen_ooc_release_binding": "cd503cc69c8026d60c52a85e5e5970c2d66f6ecbba38579b4a6551cca607b1c3",
+    "frozen_ooc_release_binding": "4db59dd23fbe164c0b07aa7dd207921a5e7c91996b98511ef52f5d50d7ec2e19",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
-    "reviewer_path_release": "4a68f8b0e2d1d4b586979f97f83120c54ad781a8091ffdd60f72bd9c9d701e56",
+    "reviewer_path_release": "53a2673142032cbb177178de0f2deac9541139a8167aae82fa9ba229043a37ba",
     "development_search_governance": "8dfc4b3fbcfdf8f45cb626edb872fc240b4add41fccfbace350499246aabecce",
 }
 
@@ -225,7 +229,7 @@ def verify(root, enforce_pins=True):
         same(target_index[key], receipt_value, "INDEX_TARGET_DEFINITIONS_" + key.upper())
 
     reviewer_release = receipts["reviewer_path_release"]
-    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v5", "REVIEWER_PATH_SCHEMA")
+    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v6", "REVIEWER_PATH_SCHEMA")
     same(reviewer_release["status"], "PASS", "REVIEWER_PATH_STATUS")
     same(reviewer_release["role"], "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY", "REVIEWER_PATH_ROLE")
     reviewer_predecessor = reviewer_release["predecessor"]
@@ -297,9 +301,12 @@ def verify(root, enforce_pins=True):
         "bandwidth_post_selection_disclosed",
         "uniform_ab_estimand_disclosed",
         "rubric_evidence_map_linked",
+        "verification_chronology_linked",
     ):
         same(reviewer_contract[key], True, "REVIEWER_PATH_LINK: " + key)
     same(reviewer_contract["rubric_self_score_assigned"], False, "REVIEWER_PATH_NO_SELF_SCORE")
+    same(reviewer_contract["latest_release_test_count"], 173, "REVIEWER_PATH_LATEST_TESTS")
+    same(reviewer_contract["report_bound_historical_test_count"], 168, "REVIEWER_PATH_REPORT_TESTS")
     reviewer_scope = reviewer_release["scope"]
     for key in ("new_model_fit", "biological_accuracy_result_created", "independent_validation", "protected_response_access", "private_patient_rows_read", "accepted_kaggle_entry_changed"):
         same(reviewer_scope[key], False, "REVIEWER_PATH_SCOPE: " + key)
@@ -320,6 +327,9 @@ def verify(root, enforce_pins=True):
         ("official_competition_score", reviewer_scope["official_competition_score"]),
         ("rubric_evidence_map_linked", reviewer_contract["rubric_evidence_map_linked"]),
         ("rubric_self_score_assigned", reviewer_contract["rubric_self_score_assigned"]),
+        ("verification_chronology_linked", reviewer_contract["verification_chronology_linked"]),
+        ("latest_release_test_count", reviewer_contract["latest_release_test_count"]),
+        ("report_bound_historical_test_count", reviewer_contract["report_bound_historical_test_count"]),
     ):
         same(reviewer_index[key], receipt_value, "INDEX_REVIEWER_PATH_" + key.upper())
 
@@ -706,7 +716,7 @@ def verify(root, enforce_pins=True):
     same(current_lifecycle_index["accepted_kaggle_entry_changed"], False, "INDEX_BANDWIDTH_LIFECYCLE_NO_ENTRY_CHANGE")
     same(current_lifecycle_index["official_competition_score"], None, "INDEX_BANDWIDTH_LIFECYCLE_NO_SCORE")
 
-    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v7", "FROZEN_SCHEDULE_SCHEMA")
+    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v8", "FROZEN_SCHEDULE_SCHEMA")
     same(frozen_schedule["status"], "PASS", "FROZEN_SCHEDULE_STATUS")
     same(frozen_schedule["role"], "RESPONSE_FREE_ENGINEERING_AND_RELEASE_EVIDENCE", "FROZEN_SCHEDULE_ROLE")
     frozen_predecessor = frozen_schedule["predecessor"]
@@ -724,7 +734,7 @@ def verify(root, enforce_pins=True):
     same(schedule_verification["targets"], 24, "FROZEN_SCHEDULE_TARGETS")
     same(schedule_verification["two_dose_targets"], 8, "FROZEN_SCHEDULE_TWO_DOSE")
     same(schedule_verification["three_dose_targets"], 16, "FROZEN_SCHEDULE_THREE_DOSE")
-    for key in ("ab_same_treatments", "ab_complementary_plate_assignment", "public_site_schedule_exact", "manifest_table_exact", "release_preflight_stage_added"):
+    for key in ("ab_same_treatments", "ab_complementary_plate_assignment", "public_site_schedule_exact", "manifest_table_exact", "release_preflight_stage_added", "verification_chronology_linked"):
         same(schedule_verification[key], True, "FROZEN_SCHEDULE_TRUE: " + key)
     same(schedule_verification["public_schedule_rows"], 64, "FROZEN_SCHEDULE_PUBLIC_ROWS")
     same(schedule_verification["transport_escape_literals"], 0, "FROZEN_SCHEDULE_ESCAPES")
@@ -738,7 +748,7 @@ def verify(root, enforce_pins=True):
     same(schedule_verification["new_tamper_tests"], 7, "FROZEN_SCHEDULE_TESTS")
     same(schedule_verification["new_tamper_tests_passed"], 7, "FROZEN_SCHEDULE_TESTS_PASS")
     same(schedule_verification["release_preflight_check_count"], 14, "FROZEN_SCHEDULE_PREFLIGHT_COUNT")
-    same(schedule_verification["orchestrated_response_free_tests"], 168, "FROZEN_SCHEDULE_PREFLIGHT_ORCHESTRATED")
+    same(schedule_verification["orchestrated_response_free_tests"], 173, "FROZEN_SCHEDULE_PREFLIGHT_ORCHESTRATED")
     for key in ("prospective_experiment_executed", "biological_validation_created", "protected_response_access", "private_patient_rows_read", "fitted_biological_weights_published", "accepted_kaggle_entry_changed"):
         same(frozen_schedule[key], False, "FROZEN_SCHEDULE_FALSE_BOUNDARY: " + key)
     same(frozen_schedule["official_competition_score"], None, "FROZEN_SCHEDULE_NO_SCORE")
@@ -746,7 +756,7 @@ def verify(root, enforce_pins=True):
     schedule_index = index["frozen_ooc_release_binding"]
     for key in ("role", "status"):
         same(schedule_index[key], frozen_schedule[key], "INDEX_FROZEN_SCHEDULE_" + key.upper())
-    for key in ("treatment_wells_per_orientation", "plate_counts_per_orientation", "targets", "two_dose_targets", "three_dose_targets", "ab_same_treatments", "ab_complementary_plate_assignment", "public_schedule_rows", "public_site_schedule_exact", "manifest_table_exact", "transport_escape_literals", "bandwidth_post_selection_disclosed", "overstated_search_label_absent", "cross_patient_negative_disclosed", "cross_patient_negative_linked", "promotion_gate_predicates_derived", "orientation_vector_validated", "additive_p90_crosschecked", "historical_fold_counts_pinned", "new_tamper_tests_passed", "release_preflight_check_count", "orchestrated_response_free_tests"):
+    for key in ("treatment_wells_per_orientation", "plate_counts_per_orientation", "targets", "two_dose_targets", "three_dose_targets", "ab_same_treatments", "ab_complementary_plate_assignment", "public_schedule_rows", "public_site_schedule_exact", "manifest_table_exact", "transport_escape_literals", "bandwidth_post_selection_disclosed", "overstated_search_label_absent", "cross_patient_negative_disclosed", "cross_patient_negative_linked", "promotion_gate_predicates_derived", "orientation_vector_validated", "additive_p90_crosschecked", "historical_fold_counts_pinned", "verification_chronology_linked", "new_tamper_tests_passed", "release_preflight_check_count", "orchestrated_response_free_tests"):
         same(schedule_index[key], schedule_verification[key], "INDEX_FROZEN_SCHEDULE_" + key.upper())
     for key in ("prospective_experiment_executed", "biological_validation_created", "protected_response_access", "private_patient_rows_read", "accepted_kaggle_entry_changed", "official_competition_score"):
         same(schedule_index[key], frozen_schedule[key], "INDEX_FROZEN_SCHEDULE_BOUNDARY_" + key.upper())
@@ -990,6 +1000,12 @@ def verify(root, enforce_pins=True):
     same(rubric_index["official_competition_score"], rubric_result["official_competition_score"], "INDEX_RUBRIC_EVIDENCE_NO_SCORE")
     same(rubric_index["accepted_kaggle_entry_changed"], False, "INDEX_RUBRIC_EVIDENCE_NO_KAGGLE_CHANGE")
     same(rubric_index["protected_response_access"], False, "INDEX_RUBRIC_EVIDENCE_NO_PROTECTED")
+    try:
+        chronology_result = verify_verification_chronology(root)
+    except ChronologyError as exc:
+        raise EvidenceError("VERIFICATION_CHRONOLOGY: " + str(exc)) from exc
+    same(chronology_result["latest_orchestrated_test_count"], 173, "VERIFICATION_CHRONOLOGY_LATEST")
+    same(chronology_result["historical_receipts_preserved"], True, "VERIFICATION_CHRONOLOGY_HISTORY")
     return {
         "status": "PASS",
         "canonical_receipts": len(receipts),
@@ -1007,6 +1023,7 @@ def verify(root, enforce_pins=True):
         "rubric_evidence_criteria": rubric_result["criteria"],
         "rubric_evidence_weight_sum": rubric_result["weight_sum"],
         "current_preflight_tests": current_preflight["orchestrated_test_count"],
+        "verification_chronology_latest_tests": chronology_result["latest_orchestrated_test_count"],
         "raw_ak_decision": aligned["decision"],
         "cross_patient_bandwidth_decision": cross_patient["decision"],
         "simplex_stacking_decision": simplex["decision"],
