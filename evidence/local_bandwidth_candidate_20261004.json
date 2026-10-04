@@ -104,7 +104,7 @@
   },
   "source_sha256": {
     "local_bandwidth_additive": "3cf5f56ed356d8de297568f22fcd4bcc66a7a3c6cb358422ecff2aca21f7fa9a",
-    "local_bandwidth_inference": "ec9d9b110826b7e2bd71fd53b8bc3b8b0db1b06bb9c3e187f1ec17cd1a39b5",
+    "local_bandwidth_inference": "ec9d9b110826b7e2bd71fd53b8bc3b8b8b0db1b06bb9c3e187f1ec17cd1a39b5",
     "reproduce_local_bandwidth": "a0f4b85367845ea2c1897ed7bee91de24bb0b3994822fb8c968f774d62a8d847",
     "test_local_bandwidth_additive": "568605d36303a82ac6ff04b58b7060323864a5455012f32348101a484ab3c384"
   },
