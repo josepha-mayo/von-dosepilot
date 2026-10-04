@@ -97,6 +97,14 @@ def verify(root,repo):
         require('\\n' not in text,'TRANSPORT_ESCAPE_'+label)
     require('<script src="frozen_schedule.js"></script>' in site_html,'SITE_SCRIPT_LINK')
     require('id="frozen-schedule"' in site_html,'SITE_SECTION')
+    selection_disclosure=(
+        'bandwidth 0.7 was selected from the prefrozen {1.0, 0.7, 1.4} menu '
+        'after comparing reused outer-fold development results. Its displayed MSE '
+        'is a post-selection development point estimate, not an unbiased nested '
+        'estimate of bandwidth selection.'
+    )
+    require(selection_disclosure in site_html,'SITE_SELECTION_DISCLOSURE')
+    require('NO CHERRY-PICKING' not in site_html,'SITE_OVERSTATED_SEARCH_LABEL')
 
     grouped={}
     for ra,rb in zip(a,b):
@@ -114,6 +122,8 @@ def verify(root,repo):
         'targets':24,'two_dose_targets':8,'three_dose_targets':16,
         'public_schedule_rows':len(public_schedule),'public_site_schedule_exact':True,
         'manifest_table_exact':True,'transport_escape_literals':0,
+        'bandwidth_post_selection_disclosed':True,
+        'overstated_search_label_absent':True,
         'public_surface_sha256':{
             'site/frozen_schedule.js':sha(repo/'site/frozen_schedule.js'),
             'site/index.html':sha(repo/'site/index.html'),

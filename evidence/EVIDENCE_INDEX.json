@@ -40,8 +40,8 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r4_20261004.json",
-      "sha256": "6cec0fec4bafd343f776b65de7c0ef8c589b7fe1c5090b757f33a6f8dfc42832"
+      "path": "evidence/frozen_ooc_release_binding_r5_20261004.json",
+      "sha256": "115d56a777619c4a7da8733dbe37ccad384e1f3afbed32bcb8a2dc9f50b77464"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
@@ -99,14 +99,14 @@
     "official_competition_score": null
   },
   "current_release_preflight": {
-    "path": "evidence/release_preflight_portable_quickstart_final2_20261004.json",
-    "sha256": "9c0913235ee5b81aafc234581d7beea6c0aa5352b6ca346e3fc69f0263177d3b",
-    "predecessor_path": "evidence/release_preflight_portable_quickstart_final_20261004.json",
-    "predecessor_sha256": "70c8be2c8b9404f35589a863f56941a6161183054db6205eca2ebc98544dc18a",
+    "path": "evidence/release_preflight_selection_disclosure_final_20261004.json",
+    "sha256": "89d04b79bb55ebce8607037c8e96592ddb87c5468d6d1789923e3831fcaabd2c",
+    "predecessor_path": "evidence/release_preflight_selection_disclosure_pass1_20261004.json",
+    "predecessor_sha256": "042d10dcf7b20c61280931d456e32c44a6201d31e0e2ad02494d3249143e9e5a",
     "schema": "dosepilot.current_release_preflight.v1",
     "status": "PASS",
     "check_count": 14,
-    "orchestrated_response_free_tests": 157,
+    "orchestrated_response_free_tests": 165,
     "target_definition_tests_included": true,
     "target_definition_verifier_included": true,
     "private_or_protected_inputs_read": false,
@@ -325,9 +325,11 @@
     "public_site_schedule_exact": true,
     "manifest_table_exact": true,
     "transport_escape_literals": 0,
-    "new_tamper_tests_passed": 5,
+    "bandwidth_post_selection_disclosed": true,
+    "overstated_search_label_absent": true,
+    "new_tamper_tests_passed": 7,
     "release_preflight_check_count": 14,
-    "orchestrated_response_free_tests": 157,
+    "orchestrated_response_free_tests": 165,
     "prospective_experiment_executed": false,
     "biological_validation_created": false,
     "protected_response_access": false,

@@ -65,6 +65,26 @@ class FrozenOocScheduleTests(unittest.TestCase):
         self.assertTrue(result["public_site_schedule_exact"])
         self.assertTrue(result["manifest_table_exact"])
         self.assertEqual(result["transport_escape_literals"], 0)
+        self.assertTrue(result["bandwidth_post_selection_disclosed"])
+        self.assertTrue(result["overstated_search_label_absent"])
+
+    def test_site_selection_disclosure_is_required(self):
+        path = self.repo / "site/index.html"
+        path.write_text(
+            path.read_text().replace(
+                "post-selection development point estimate",
+                "development point estimate",
+                1,
+            )
+        )
+        with self.assertRaisesRegex(ValueError, "SITE_SELECTION_DISCLOSURE"):
+            verify(self.repo / "evidence", self.repo)
+
+    def test_overstated_no_cherry_picking_label_is_rejected(self):
+        path = self.repo / "site/index.html"
+        path.write_text(path.read_text() + "\nNO CHERRY-PICKING\n")
+        with self.assertRaisesRegex(ValueError, "SITE_OVERSTATED_SEARCH_LABEL"):
+            verify(self.repo / "evidence", self.repo)
 
     def test_site_schedule_copy_cannot_drift_from_plan(self):
         path = self.repo / "site/frozen_schedule.js"
