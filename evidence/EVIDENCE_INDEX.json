@@ -39,6 +39,14 @@
       "path": "evidence/cross_patient_bandwidth_20261004.json",
       "sha256": "3293f76dfc7e48f81087d971864066dc4b6c8d257b4d9fdc8d464b8396562caf"
     },
+    "simplex_stacking": {
+      "path": "evidence/simplex_stacking_20261004.json",
+      "sha256": "8af8887860ef738c2657f100a1a5031e02309b718ac1bd10473c319c0b0e3464"
+    },
+    "isotonic_paid_features": {
+      "path": "evidence/isotonic_paid_features_20261004.json",
+      "sha256": "01934ca5139a219814572bd5b3e28923c98b8ad37ee3146a405f5ddd247476da"
+    },
     "bandwidth_lifecycle": {
       "path": "evidence/bandwidth_lifecycle_20261003.json",
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
@@ -52,8 +60,12 @@
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r4_20261004.json",
-      "sha256": "dcf122c08924dae94a80aa8a8c562d1dd4e4690bd0ae7ecc8c551c8a55206bbe"
+      "path": "evidence/reviewer_path_release_r5_20261004.json",
+      "sha256": "4a68f8b0e2d1d4b586979f97f83120c54ad781a8091ffdd60f72bd9c9d701e56"
+    },
+    "development_search_governance": {
+      "path": "evidence/development_search_governance_r2_20261004.json",
+      "sha256": "8dfc4b3fbcfdf8f45cb626edb872fc240b4add41fccfbace350499246aabecce"
     }
   },
   "current_technical_report": {
@@ -99,6 +111,35 @@
     "new_model_fit": false,
     "biological_accuracy_result_created": false,
     "protected_response_access": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null,
+    "rubric_evidence_map_linked": true,
+    "rubric_self_score_assigned": false
+  },
+  "finalist_rubric_evidence": {
+    "path": "evidence/finalist_rubric_evidence_20261004.json",
+    "sha256": "6f6db1375116a3cbde3ea7cccb448a2881ae51c8dea61488624ede312233ddb7",
+    "status": "PASS",
+    "criteria": 5,
+    "weight_sum": 100,
+    "official_competition_score": null,
+    "accepted_kaggle_entry_changed": false,
+    "protected_response_access": false
+  },
+  "development_search_governance": {
+    "role": "ADAPTIVE_DEVELOPMENT_GOVERNANCE_UPDATE",
+    "status": "PASS",
+    "registered_families": 22,
+    "rejected_families": 15,
+    "unpromoted_references": 3,
+    "incumbent": "bandwidth07_additive",
+    "incumbent_mse": 0.0010582750420801538,
+    "response_free_tests": 33,
+    "strict_proposal_protocol_binding": true,
+    "exhaustive_historical_search_claimed": false,
+    "new_model_fit": false,
+    "biological_accuracy_result_created": false,
+    "private_or_protected_inputs_read": false,
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null
   },
@@ -304,6 +345,51 @@
     "p90_nonworse": true,
     "target_regressions": 9,
     "passes_incumbent_gate": false,
+    "automatic_retry": false,
+    "independent_validation": false,
+    "protected_response_access": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
+  "simplex_stacking_challenger": {
+    "status": "COMPLETE",
+    "decision": "REJECT_RETAIN_BANDWIDTH07",
+    "role": "REPEATED_ADAPTIVE_DEVELOPMENT_NEGATIVE_RESULT",
+    "mse": 0.0010620901334091122,
+    "bandwidth07_reference_mse": 0.0010582750420801538,
+    "relative_gain": -0.003605009262487524,
+    "patient_wins": 23,
+    "patient_losses": 36,
+    "patient_ties": 0,
+    "fold_wins": 2,
+    "required_fold_wins": 5,
+    "p90_nonworse": false,
+    "target_regressions": 16,
+    "all_inner_objectives_improved": true,
+    "passes_incumbent_gate": false,
+    "independent_no_refit_verification": "PASS",
+    "automatic_retry": false,
+    "independent_validation": false,
+    "protected_response_access": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
+  "isotonic_paid_features_challenger": {
+    "status": "COMPLETE",
+    "decision": "REJECT_RETAIN_BANDWIDTH07",
+    "role": "REPEATED_ADAPTIVE_DEVELOPMENT_NEGATIVE_RESULT",
+    "mse": 0.0010731733783205333,
+    "bandwidth07_reference_mse": 0.0010582750420801538,
+    "relative_gain": -0.014077943491037193,
+    "patient_wins": 24,
+    "patient_losses": 35,
+    "patient_ties": 0,
+    "fold_wins": 2,
+    "required_fold_wins": 5,
+    "p90_nonworse": false,
+    "target_regressions": 13,
+    "passes_incumbent_gate": false,
+    "independent_no_refit_verification": "PASS",
     "automatic_retry": false,
     "independent_validation": false,
     "protected_response_access": false,

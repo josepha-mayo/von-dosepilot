@@ -1,0 +1,93 @@
+{
+  "schema": "dosepilot.simplex_stacking.freeze.v1",
+  "state": "FROZEN_BEFORE_FIRST_LIB1_FIT",
+  "utc": "2026-10-04T05:16:01Z",
+  "base_public_commit": "73d410a5fabadb2fc1d9b1c60dcd84ab082cb9a0",
+  "base_public_tree": "5e160bc562a6fd87a3b5bcb3facaafca22beb3b8",
+  "hypothesis": "A global nonnegative simplex combination of the ten existing bandwidth-0.7 residual spectral settings, learned only from inner patient-separated OOF predictions and collapsed to one coefficient matrix, may reduce hard-selection variance without changing the physical plan.",
+  "source_sha256": {
+    "study/simplex_stacking/PROTOCOL.md": "2814fde7e2c6ddeed46ccebac0fab467d21bf60dea6fa4c4a1fae42d7d24187a",
+    "study/simplex_stacking/simplex_stack.py": "e11ae758b270235c48e01003bbd29eda16e8a77f2c8e90981e6a1cc535d9a289",
+    "study/simplex_stacking/run_study.py": "bbb66fbe871245d93edd5261cf483358440f1a8b313278509b3b82a723e19833",
+    "study/simplex_stacking/verify_study.py": "76144a07e1603eb64079b99ef017edf2c4b76edabd7ce658ec499382e4959149",
+    "study/simplex_stacking/test_simplex_stack.py": "c23d7ef770471ddec6e8f0ded4956f911b1da2d7e731cab6925be4700d0f0408",
+    "study/simplex_stacking/test_study_contract.py": "54ee659c4946eff32e4ddd4f00d5176214c46af6ea5e26917aad623c617b9263"
+  },
+  "parent_source_sha256": {
+    "study/STUDY_LOCK.json": "8118b562b78b3f55866d6239a38280c942df2c7d81f0b7c4ce71ba0e39ce9ffc",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e",
+    "study/hybrid_residual/additive_kernel.py": "683004e39904c6648c0283395697c914903e78db60a7e98f90362dc8b2c49b1a",
+    "study/hybrid_residual/bandwidth_additive.py": "30723fbc8f6843c200891e14e5fb254e707298fa5514b668c4f005a4562edb30",
+    "study/hybrid_residual/kernel_spectral.py": "869bfc27cb72afe644f2e85ee5d255004e2afcf8b765b4cc56d8cd7d8927131e",
+    "study/cross_patient_bandwidth/run_study.py": "4410b6381aab528e9d9d6bd4846718859f6ba1f5c34941fa46c9b88b2650c025",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/TRAIN_CATALOG.json": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e"
+  },
+  "cache_sha256": "2ccd4995699417db72316c8f403095b8ef560f94913b0c8a80fe7429a2d0cbef",
+  "r18_sha256": "253998d20b9425c4ceade4269b94f4ed97cb7039ac5ec60838bb15794d47a6e2",
+  "cohort": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "treatment_wells_per_orientation": 64,
+    "wells_per_plate": 32,
+    "orientation_loss_weight": 0.5
+  },
+  "options": [
+    ["identity", 0.0],
+    [0.1, 0.1],
+    [0.1, 1.0],
+    [0.1, 10.0],
+    [0.3, 0.1],
+    [0.3, 1.0],
+    [0.3, 10.0],
+    [0.6, 0.1],
+    [0.6, 1.0],
+    [0.6, 10.0]
+  ],
+  "stacking_rule": {
+    "weights": "one global ten-vector per outer fold",
+    "constraints": "nonnegative and sum exactly one",
+    "objective": "equal whole-patient, equal target and equal orientation inner-OOF squared loss",
+    "solver": "enumerate all 1023 nonempty simplex faces and solve each equality-constrained KKT system",
+    "tie_break": "objective, then squared weight norm, then fixed option order",
+    "target_specific_weights": false,
+    "orientation_specific_weights": false,
+    "outer_outcome_input": false,
+    "runtime_ensemble": false,
+    "extra_measurements": 0
+  },
+  "promotion_gate": {
+    "bandwidth07": {
+      "mse": "strictly_lower",
+      "patient_wins": 30,
+      "fold_wins": 5,
+      "p90": "nonworse"
+    },
+    "r13_and_r18": {
+      "relative_gain": 0.05,
+      "patient_wins": 40,
+      "fold_wins": 4,
+      "p90": "nonworse",
+      "both_orientations_below_reference_mse": true
+    },
+    "prediction_equivalence_atol": 1e-12
+  },
+  "bootstrap": {
+    "whole_patient_resamples": 10000,
+    "seed": 20261004,
+    "role": "descriptive_not_selection_corrected_not_a_gate"
+  },
+  "synthetic_and_contract_tests_passed_before_freeze": 10,
+  "automatic_retry": false,
+  "private_train_kit_used": true,
+  "protected_response_access": false,
+  "lib2_access_authorized": false,
+  "independent_validation": false,
+  "accepted_kaggle_entry_change_authorized": false,
+  "official_competition_score": null
+}

@@ -1,0 +1,288 @@
+{
+  "schema": "dosepilot.development_search_registry.v1",
+  "as_of_date": "2026-10-04",
+  "scope": "curated public aggregate registry for the original Lib1 TRAIN repeated-development task",
+  "coverage": {
+    "registered_families": 22,
+    "exhaustive_historical_search_claimed": false,
+    "inclusion_rule": "Public aggregate model or acquisition candidates; conventional and reproduction-only controls are not enumerated as candidate families.",
+    "limitation": "The gate blocks exact IDs and fingerprints recorded here; it does not prove novelty against every private or historical experiment."
+  },
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across the two separately costed 64-well orientations; never average predictions"
+  },
+  "incumbent": {
+    "family_id": "bandwidth07_additive",
+    "mse": 0.0010582750420801538,
+    "p90_rmse": 0.0378942853087202,
+    "evidence": "evidence/bandwidth_successor_20261003.json",
+    "independent_validation": false
+  },
+  "protected_data_policy": {
+    "protected22_lib2_status": "EXPOSED_CLOSED_FOR_MODEL_DEVELOPMENT",
+    "future_model_tuning_allowed": false,
+    "rescue_or_subgroup_search_allowed": false,
+    "policy_sources": [
+      "evidence/PROTECTED22_ACCESS_STATUS.json",
+      "docs/PROTECTED22_RESULT.md",
+      "docs/EVIDENCE_LEDGER.md"
+    ]
+  },
+  "prefit_rule": {
+    "unique_family_id_required": true,
+    "unique_family_fingerprint_required": true,
+    "prefrozen_protocol_required": true,
+    "same_task_denominator_required": true,
+    "automatic_retry_of_rejected_family_allowed": false,
+    "outer_outcome_target_or_fold_splicing_allowed": false,
+    "protected22_access_allowed": false,
+    "proposal_checker": "study/governance/check_candidate_proposal.py"
+  },
+  "families": [
+    {
+      "family_id": "r13_own_drug_ridge",
+      "family_fingerprint": "own-drug-ridge-fixed64",
+      "status": "HISTORICAL_REFERENCE",
+      "decision": "SUPERSEDED_AS_INCUMBENT",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.001144858681382854,
+      "evidence": "evidence/spectral_successor_20261001.json"
+    },
+    {
+      "family_id": "r18_exploratory",
+      "family_fingerprint": "r18-lower-point-unpromoted",
+      "status": "UNPROMOTED_REFERENCE",
+      "decision": "DO_NOT_PROMOTE",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.0011414048112341991,
+      "evidence": "evidence/spectral_successor_20261001.json"
+    },
+    {
+      "family_id": "s2_soft_spectral",
+      "family_fingerprint": "soft-spectral-residual-shrinkage",
+      "status": "SUPERSEDED",
+      "decision": "SUPERSEDED_AS_INCUMBENT",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.0010701439454817465,
+      "evidence": "evidence/spectral_successor_20261001.json"
+    },
+    {
+      "family_id": "s1_hard_reduced_rank_residual",
+      "family_fingerprint": "s1-hard-reduced-rank-residual",
+      "status": "REJECTED",
+      "decision": "REJECT_R18_MARGIN",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.0010871592831997162,
+      "evidence": "evidence/spectral_successor_20261001.json"
+    },
+    {
+      "family_id": "s1_full_rank_residual",
+      "family_fingerprint": "s1-full-rank-residual-control",
+      "status": "REJECTED",
+      "decision": "REJECT_R18_MARGIN",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.0010848257091747118,
+      "evidence": "evidence/spectral_successor_20261001.json"
+    },
+    {
+      "family_id": "s3_fixed_plan_full_residual",
+      "family_fingerprint": "s3-fixed-plan-full-residual",
+      "status": "REJECTED",
+      "decision": "REJECT_MARGIN_AND_BREADTH",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.0010977058957504665,
+      "evidence": "evidence/spectral_successor_20261001.json"
+    },
+    {
+      "family_id": "s4_fixed_plan_soft_residual",
+      "family_fingerprint": "s4-fixed-plan-soft-residual",
+      "status": "REJECTED",
+      "decision": "REJECT_PATIENT_BREADTH",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.0010790799124368396,
+      "evidence": "evidence/spectral_successor_20261001.json"
+    },
+    {
+      "family_id": "r22_prior_center",
+      "family_fingerprint": "r22-prior-center",
+      "status": "UNPROMOTED_REFERENCE",
+      "decision": "DO_NOT_PROMOTE",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.001143256661767395,
+      "evidence": "evidence/aggregate_results.json"
+    },
+    {
+      "family_id": "r23_corrected_covariance",
+      "family_fingerprint": "r23-corrected-covariance",
+      "status": "UNPROMOTED_REFERENCE",
+      "decision": "DO_NOT_PROMOTE",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.0011421341320843055,
+      "evidence": "evidence/aggregate_results.json"
+    },
+    {
+      "family_id": "optimized_interpolation_control",
+      "family_fingerprint": "optimized-piecewise-linear-interpolation-acquisition",
+      "status": "REJECTED",
+      "decision": "REJECT_RETAIN_R13",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.002416810289196867,
+      "evidence": "evidence/optimized_interpolation_control.json"
+    },
+    {
+      "family_id": "shift_constraint",
+      "family_fingerprint": "shift-constrained-r13-head",
+      "status": "REJECTED",
+      "decision": "REJECT_RETAIN_R13",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.0011448586813828537,
+      "evidence": "evidence/public_comparison_replay_20260930.json"
+    },
+    {
+      "family_id": "structured_additive",
+      "family_fingerprint": "structured-additive-group-kernel",
+      "status": "SUPERSEDED",
+      "decision": "SUPERSEDED_AS_INCUMBENT",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.001060552730112811,
+      "evidence": "evidence/structured_kernels_recovery_20261002.json"
+    },
+    {
+      "family_id": "pairwise_anova_interaction",
+      "family_fingerprint": "centered-pairwise-group-product-kernel",
+      "status": "REJECTED",
+      "decision": "REJECT_RETAIN_ADDITIVE",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.0010628861933534165,
+      "evidence": "evidence/structured_kernels_recovery_20261002.json"
+    },
+    {
+      "family_id": "mean_contrast_kernel",
+      "family_fingerprint": "group-mean-within-group-contrast-kernel",
+      "status": "REJECTED",
+      "decision": "REJECT_RETAIN_ADDITIVE",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.001064080098040721,
+      "evidence": "evidence/structured_kernels_recovery_20261002.json"
+    },
+    {
+      "family_id": "raw_ak_alignment",
+      "family_fingerprint": "raw-feature-additive-kernel-alignment",
+      "status": "REJECTED",
+      "decision": "REJECT_RETAIN_ADDITIVE",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.0010608377525825187,
+      "evidence": "evidence/aligned_additive_20261003.json"
+    },
+    {
+      "family_id": "forced_multioutput_acquisition_sweep",
+      "family_fingerprint": "forced-multioutput-acquisition-sweep-existing-head",
+      "status": "REJECTED",
+      "decision": "REJECT_RETAIN_ADDITIVE",
+      "closed": true,
+      "automatic_retry": false,
+      "metric_variant": "forced_sweep",
+      "mse": 0.0010665434003468322,
+      "evidence": "evidence/lifecycle_acquisition_20261002.json"
+    },
+    {
+      "family_id": "bandwidth07_additive",
+      "family_fingerprint": "structured-additive-bandwidth-0.7",
+      "status": "INCUMBENT",
+      "decision": "PROMOTE",
+      "closed": false,
+      "automatic_retry": false,
+      "mse": 0.0010582750420801538,
+      "evidence": "evidence/bandwidth_successor_20261003.json"
+    },
+    {
+      "family_id": "bandwidth14_additive",
+      "family_fingerprint": "structured-additive-bandwidth-1.4",
+      "status": "REJECTED",
+      "decision": "REJECT_RETAIN_BANDWIDTH07",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.00106370935859072,
+      "evidence": "evidence/bandwidth_successor_20261003.json"
+    },
+    {
+      "family_id": "cross_patient_median_bandwidth",
+      "family_fingerprint": "cross-patient-median-distance-bandwidth",
+      "status": "REJECTED",
+      "decision": "REJECT_RETAIN_BANDWIDTH07",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.0010574875414830203,
+      "evidence": "evidence/cross_patient_bandwidth_20261004.json",
+      "gate_rationale": {
+        "lower_point_estimate": true,
+        "all_five_folds_required": true,
+        "observed_favorable_folds": 4,
+        "promotion_gate_passed": false,
+        "reason": "Lower adaptive point estimate did not pass the prefrozen all-five-fold successor gate."
+      }
+    },
+    {
+      "family_id": "simplex_spectral_stacking",
+      "family_fingerprint": "patient-balanced-simplex-spectral-stack",
+      "status": "REJECTED",
+      "decision": "REJECT_RETAIN_BANDWIDTH07",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.0010620901334091122,
+      "evidence": "evidence/simplex_stacking_20261004.json"
+    },
+    {
+      "family_id": "isotonic_paid_features",
+      "family_fingerprint": "fixed-equal-weight-within-drug-nonincreasing-pava-before-own-drug-and-bandwidth07-features-v1",
+      "status": "REJECTED",
+      "decision": "REJECT_RETAIN_BANDWIDTH07",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.0010731733783205333,
+      "evidence": "evidence/isotonic_paid_features_20261004.json"
+    },
+    {
+      "family_id": "matern32_own_drug",
+      "family_fingerprint": "linear-plus-matern32-own-drug",
+      "status": "REJECTED",
+      "decision": "REJECT_AND_RETAIN_R13",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.001146185234155711,
+      "evidence": "evidence/r34_nonlinear_challenger.json"
+    }
+  ],
+  "claim_boundary": {
+    "role": "machine-checkable adaptive-development governance",
+    "new_model_fit": false,
+    "new_biological_accuracy_result": false,
+    "independent_validation": false,
+    "private_or_protected_inputs_read": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  }
+}

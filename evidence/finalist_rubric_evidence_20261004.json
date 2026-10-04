@@ -1,0 +1,113 @@
+{
+  "schema": "dosepilot.finalist_rubric_evidence.v1",
+  "status": "PASS",
+  "as_of_date": "2026-10-04",
+  "role": "JUDGE_CRITERION_TO_EVIDENCE_MAP",
+  "rubric": {
+    "source_url": "https://www.kaggle.com/competitions/ai-4-s-open-innovation-artificial-intelligence-for-life-scien/overview/evaluation",
+    "last_verified_on_platform": "2026-10-01",
+    "current_run_public_retrieval": "UNAVAILABLE_NO_REFRESH_CLAIM",
+    "weights": {
+      "problem_importance_impact": 30,
+      "technical_approach_innovation": 30,
+      "results_validation": 20,
+      "reproducibility_implementation": 10,
+      "presentation": 10
+    },
+    "combined_self_score": null
+  },
+  "criteria": {
+    "problem_importance_impact": {
+      "weight": 30,
+      "evidence": [
+        "24 fixed response summaries from 64 identified treatment measurements versus 416 eligible measurements in the retrospective two-plate source profile",
+        "Exact endpoint, quadrature, dose identity, and per-plate accounting are published"
+      ],
+      "limitations": [
+        "Measurement-count compression is not measured cost, time, material, clinical, or organ-on-chip benefit"
+      ]
+    },
+    "technical_approach_innovation": {
+      "weight": 30,
+      "evidence": [
+        "Frozen 64-well/32-per-plate acquisition contract and separate A/B expected-loss accounting",
+        "Bandwidth-0.7 additive cross-drug residual estimator with identity-bound commit/recover/predict execution",
+        "Missing primary readings are withheld rather than silently imputed"
+      ],
+      "limitations": [
+        "Repeated adaptive development and component-method prior art are disclosed; no patent-style novelty claim"
+      ]
+    },
+    "results_validation": {
+      "weight": 20,
+      "evidence": [
+        "Same-task development MSE 0.0010582750420801538; p90 0.0378942853087202; 38/59 patient wins and 5/5 favorable folds versus the immediate additive control",
+        "Separate matched-CAF adapted-design confirmation passed its own frozen gate"
+      ],
+      "limitations": [
+        "Ten of 24 target means regress versus the immediate control",
+        "Incumbent result is not selection-corrected independent validation",
+        "Protected22 primary is NOT_ESTIMABLE and matched-CAF does not validate incumbent fitted weights"
+      ]
+    },
+    "reproducibility_implementation": {
+      "weight": 10,
+      "evidence": [
+        "Public source-to-results reconstruction PASS",
+        "Current bandwidth replay PASS without historical prediction input",
+        "Durable lifecycle 65 tests and fresh response-free preflight 173 orchestrated tests"
+      ],
+      "limitations": [
+        "Reproduction is not new predictive evidence; public code excludes patient arrays and fitted biological weights"
+      ]
+    },
+    "presentation": {
+      "weight": 10,
+      "evidence": [
+        "90-second reviewer path, live fictional-demo link, video link, current ten-page report, exact target definitions, evidence index, and failure ledger"
+      ],
+      "limitations": [
+        "Link presence is not playback or deployment availability verification; accepted Kaggle entry was not changed"
+      ]
+    }
+  },
+  "artifact_sha256": {
+    "docs/FINALIST_RUBRIC_EVIDENCE.md": "7272be4d67ebd79203aca4cf3e106e04cafb70701eaf77e70a611668f7537926",
+    "evidence/target_definitions_release_20261003.json": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
+    "evidence/bandwidth_successor_20261003.json": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758",
+    "evidence/PROTECTED22_ACCESS_STATUS.json": "02ad1bb10be00d0c26fa02589b9b1fc84b670c107110985f155646b11921c7d8",
+    "evidence/stroma_context_confirmation_20260930.json": "d40873c1c002e59a9957b3190a45fa9ea876cd1b03bef54a2f79bcd0a24a102e",
+    "evidence/r33_public_pipeline.json": "a7d89058e78bf48e12ace0f04d94d58da22d054e660f07dd07f539fd855cbc01",
+    "evidence/bandwidth_lifecycle_20261003.json": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
+    "evidence/current_technical_report_r4_20261004.json": "8179b404fca98bc7117fecbab352db4f4c339ddae04fb7f6a560ff8961ee9cdf",
+    "study/audits/verify_finalist_rubric_evidence.py": "56f297ec767140d72aeb48eabc6c4f7702ecf49457c269a49a38ab09a9b40975",
+    "study/audits/test_finalist_rubric_evidence.py": "2598be3d93b5993bdd470fa8cbc3729c33cd962c4b5d3ad38a1de1db652fcbf8"
+  },
+  "current_release_preflight": {
+    "path": "evidence/release_preflight_rubric_map_pass1_20261004.json",
+    "sha256": "92ca10dc68228ff438618d160859a5b5d86ae2d934a798041be45e515dc42d2b"
+  },
+  "verification": {
+    "standalone_verifier": "PASS",
+    "rubric_tamper_tests": 12,
+    "artifact_hashes_verified": 10,
+    "existing_central_evidence_tests": 42,
+    "python_compile": "PASS",
+    "source_workbook_opened": false,
+    "patient_or_prediction_arrays_opened": false,
+    "protected_response_access": false
+  },
+  "claim_boundary": {
+    "new_model_fit": false,
+    "biological_accuracy_result_created": false,
+    "independent_validation_created": false,
+    "protected_response_access": false,
+    "private_patient_arrays_read": false,
+    "accepted_kaggle_entry_changed": false,
+    "finalist_status_claimed": false,
+    "prospective_ooc_performance_claimed": false,
+    "clinical_utility_claimed": false,
+    "realized_cost_or_time_saving_claimed": false,
+    "official_competition_score": null
+  }
+}

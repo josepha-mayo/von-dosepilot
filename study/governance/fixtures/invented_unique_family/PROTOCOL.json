@@ -1,0 +1,32 @@
+{
+  "schema": "dosepilot.frozen_protocol.v1",
+  "state": "PREFROZEN_BEFORE_FIT",
+  "family_id": "invented_unique_family",
+  "family_fingerprint": "invented-unique-mechanism-v1",
+  "falsifiable_hypothesis": "A fixed invented mechanism lowers complete-task error.",
+  "comparator_family_id": "bandwidth07_additive",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across the two separately costed 64-well orientations; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": false,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "method_summary": "This fictional response-free fixture exists only to test strict proposal-to-protocol binding; it does not authorize or describe a biological fit."
+}

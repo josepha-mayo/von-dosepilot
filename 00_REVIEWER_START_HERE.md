@@ -8,6 +8,8 @@ DosePilot is a measurement-aware drug-response reconstruction method: commit a p
 **Prepared Kaggle writeup:** [docs/KAGGLE_WRITEUP.md](docs/KAGGLE_WRITEUP.md)  
 **Current technical report:** [CURRENT_TECHNICAL_REPORT.md](CURRENT_TECHNICAL_REPORT.md)
 
+**Criterion evidence map:** [docs/FINALIST_RUBRIC_EVIDENCE.md](docs/FINALIST_RUBRIC_EVIDENCE.md)
+
 This page is a navigation aid. It creates no new accuracy or biological-validation claim.
 
 ## 90-second review path
@@ -147,6 +149,7 @@ Useful machine-readable anchors:
 - [evidence/target_definitions_release_20261003.json](evidence/target_definitions_release_20261003.json)
 - [evidence/frozen_ooc_execution_schedule_20261003.json](evidence/frozen_ooc_execution_schedule_20261003.json)
 - [evidence/bandwidth_robustness_20261003.json](evidence/bandwidth_robustness_20261003.json)
+- [evidence/finalist_rubric_evidence_20261004.json](evidence/finalist_rubric_evidence_20261004.json)
 
 ## Important limitations
 

@@ -1,0 +1,52 @@
+{
+  "schema": "dosepilot.development_search_governance_release.v2",
+  "as_of_utc": "2026-10-04T07:20:00Z",
+  "status": "PASS",
+  "role": "ADAPTIVE_DEVELOPMENT_GOVERNANCE_UPDATE",
+  "predecessor": {
+    "path": "evidence/development_search_governance_20261004.json",
+    "sha256": "a33226c581ae54440eab1484ddee2c9f2f33924baf17436147388acf8c794649",
+    "preserved_unchanged": true
+  },
+  "registry": {
+    "path": "evidence/DEVELOPMENT_SEARCH_REGISTRY.json",
+    "sha256": "0e1c005d0f57f8d0064fea6820d14ba335532365c498ac19395f135f58d364e7",
+    "registered_families": 22,
+    "rejected_families": 15,
+    "unpromoted_references": 3,
+    "current_incumbent": "bandwidth07_additive",
+    "current_incumbent_mse": 0.0010582750420801538,
+    "exhaustive_historical_search_claimed": false
+  },
+  "new_closed_family": {
+    "family_id": "isotonic_paid_features",
+    "decision": "REJECT_RETAIN_BANDWIDTH07",
+    "evidence_path": "evidence/isotonic_paid_features_20261004.json",
+    "evidence_sha256": "01934ca5139a219814572bd5b3e28923c98b8ad37ee3146a405f5ddd247476da",
+    "protocol_path": "study/isotonic_paid_features/PROTOCOL.json",
+    "protocol_sha256": "7939dac279b2baa8fc312de421261451d124e93e04434ceee170748320727604",
+    "automatic_retry": false
+  },
+  "source_sha256": {
+    "study/governance/check_development_registry.py": "1cccc08f972b0caffae35ecfa77a95a9630bd0a85305b00dc24dc1e1d4c41265",
+    "study/governance/check_candidate_proposal.py": "ddcbb5a05b3742b1090d7e9937f889846a2396c2812ab3b8d9f46c65d72d9b05",
+    "study/governance/test_development_registry.py": "f11cc72e390087ec070d31acba692a1593aad47b5d463fa0151e12ad804a7cb3",
+    "study/governance/fixtures/invented_unique_family/PROTOCOL.json": "ea0bd78cbcaec33e301aaef1fbca22c096e75e7f100fec5cc6280cf30d0029f2",
+    "docs/DEVELOPMENT_SEARCH_GOVERNANCE.md": "a6d8e40bc5aaa188247c4c6ee5e0435b6871da6d15758efded51c47a7d6bdced",
+    "docs/ISOTONIC_PAID_FEATURES_NEGATIVE.md": "e7510db6efbed377e4c95d49912b85e2184714c826ed041ec0de6a4a6ed20af8"
+  },
+  "verification": {
+    "registry_cli": "PASS",
+    "response_free_governance_tests": 33,
+    "isotonic_synthetic_tests_before_fit": 7,
+    "isotonic_independent_no_refit_arithmetic_audit": "PASS",
+    "python_compile": "PASS"
+  },
+  "claim_boundary": {
+    "incumbent_changed": false,
+    "new_independent_validation": false,
+    "protected_response_access": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  }
+}

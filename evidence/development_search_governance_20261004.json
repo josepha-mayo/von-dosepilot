@@ -1,0 +1,59 @@
+{
+  "schema": "dosepilot.development_search_governance_release.v1",
+  "as_of_utc": "2026-10-04T06:20:00Z",
+  "status": "PASS",
+  "role": "RESPONSE_FREE_ADAPTIVE_DEVELOPMENT_GOVERNANCE",
+  "registry": {
+    "path": "evidence/DEVELOPMENT_SEARCH_REGISTRY.json",
+    "sha256": "13e86fc8c049f0fb21623230bb601a16ba3c10aae8ed8b869d3be52499fba707",
+    "registered_families": 21,
+    "rejected_families": 14,
+    "unpromoted_references": 3,
+    "current_incumbent": "bandwidth07_additive",
+    "current_incumbent_mse": 0.0010582750420801538,
+    "exhaustive_historical_search_claimed": false
+  },
+  "source_sha256": {
+    "study/governance/check_development_registry.py": "07fc3ec1499316a0b7a7eaf55bf34e0819a0a70283a129b7ec83219315544e23",
+    "study/governance/check_candidate_proposal.py": "ddcbb5a05b3742b1090d7e9937f889846a2396c2812ab3b8d9f46c65d72d9b05",
+    "study/governance/test_development_registry.py": "f11cc72e390087ec070d31acba692a1593aad47b5d463fa0151e12ad804a7cb3",
+    "study/governance/fixtures/invented_unique_family/PROTOCOL.json": "ea0bd78cbcaec33e301aaef1fbca22c096e75e7f100fec5cc6280cf30d0029f2",
+    "docs/DEVELOPMENT_SEARCH_GOVERNANCE.md": "f6a7af90a4cf70f0ed89ef43d8b8cbce6803056f27311fafc8977cf5cad5d885"
+  },
+  "verification": {
+    "registry_cli": "PASS",
+    "response_free_tests": 33,
+    "python_compile": "PASS",
+    "current_release_preflight": "PASS",
+    "current_release_preflight_orchestrated_tests": 171,
+    "independent_code_audit": "PASS",
+    "independent_evidence_audit": "PASS"
+  },
+  "enforced_declarations": {
+    "exact_task_contract": true,
+    "exact_primary_metric": true,
+    "ab_losses_not_predictions": true,
+    "current_incumbent_comparator": true,
+    "strict_json_duplicate_and_extra_key_rejection": true,
+    "protocol_content_sha256_verified": true,
+    "proposal_protocol_exact_binding": true,
+    "outer_target_or_fold_splicing_forbidden": true,
+    "protected22_access_forbidden": true,
+    "automatic_retry_forbidden": true,
+    "promotion_gate_pinned": true
+  },
+  "limitations": {
+    "declaration_and_consistency_gate_only": true,
+    "access_control_or_sandbox": false,
+    "later_runner_compliance_proven": false,
+    "complete_historical_novelty_proven": false
+  },
+  "claim_boundary": {
+    "new_model_fit": false,
+    "new_biological_accuracy_result": false,
+    "independent_validation": false,
+    "private_or_protected_inputs_read": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  }
+}

@@ -13,6 +13,11 @@ import math
 import re
 from pathlib import Path
 
+from verify_finalist_rubric_evidence import (
+    RubricEvidenceError,
+    verify as verify_finalist_rubric_evidence,
+)
+
 
 class EvidenceError(ValueError):
     pass
@@ -28,14 +33,17 @@ PINNED_RECEIPTS = {
     "aligned_additive": "fca4fff12f931caa9dbc4c70f5ebc05668a743f18f7fac0fa3e030a99581a550",
     "bandwidth_successor": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758",
     "cross_patient_bandwidth": "3293f76dfc7e48f81087d971864066dc4b6c8d257b4d9fdc8d464b8396562caf",
+    "simplex_stacking": "8af8887860ef738c2657f100a1a5031e02309b718ac1bd10473c319c0b0e3464",
+    "isotonic_paid_features": "01934ca5139a219814572bd5b3e28923c98b8ad37ee3146a405f5ddd247476da",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
     "frozen_ooc_release_binding": "cd503cc69c8026d60c52a85e5e5970c2d66f6ecbba38579b4a6551cca607b1c3",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
-    "reviewer_path_release": "dcf122c08924dae94a80aa8a8c562d1dd4e4690bd0ae7ecc8c551c8a55206bbe",
+    "reviewer_path_release": "4a68f8b0e2d1d4b586979f97f83120c54ad781a8091ffdd60f72bd9c9d701e56",
+    "development_search_governance": "8dfc4b3fbcfdf8f45cb626edb872fc240b4add41fccfbace350499246aabecce",
 }
 
 PINNED_DOCUMENTS = {
-    "docs/EVIDENCE_LEDGER.md": "546687704ac35759fdf3f96aecafbc1db58050581f3339c05d33605e8ebeea44",
+    "docs/EVIDENCE_LEDGER.md": "012da3d9fb39b240e7161fc05e96d904c185e0df975002642ffa6044c2c50e1a",
     "docs/KAGGLE_WRITEUP.md": "f3de611b5bc3bf951a6f0766f7f087f399c58d3dadc35350845447440b988d3d",
 }
 
@@ -217,7 +225,7 @@ def verify(root, enforce_pins=True):
         same(target_index[key], receipt_value, "INDEX_TARGET_DEFINITIONS_" + key.upper())
 
     reviewer_release = receipts["reviewer_path_release"]
-    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v4", "REVIEWER_PATH_SCHEMA")
+    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v5", "REVIEWER_PATH_SCHEMA")
     same(reviewer_release["status"], "PASS", "REVIEWER_PATH_STATUS")
     same(reviewer_release["role"], "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY", "REVIEWER_PATH_ROLE")
     reviewer_predecessor = reviewer_release["predecessor"]
@@ -231,6 +239,7 @@ def verify(root, enforce_pins=True):
     for phrase in (
         "Current technical report",
         "TARGET_DEFINITIONS.md",
+        "FINALIST_RUBRIC_EVIDENCE.md",
         "10/24 target-average errors regress",
         "A/B prediction vectors are never combined into a 128-well predictor",
         "Protected22/Lib2 is exposed",
@@ -287,8 +296,10 @@ def verify(root, enforce_pins=True):
         "current_release_preflight_documented",
         "bandwidth_post_selection_disclosed",
         "uniform_ab_estimand_disclosed",
+        "rubric_evidence_map_linked",
     ):
         same(reviewer_contract[key], True, "REVIEWER_PATH_LINK: " + key)
+    same(reviewer_contract["rubric_self_score_assigned"], False, "REVIEWER_PATH_NO_SELF_SCORE")
     reviewer_scope = reviewer_release["scope"]
     for key in ("new_model_fit", "biological_accuracy_result_created", "independent_validation", "protected_response_access", "private_patient_rows_read", "accepted_kaggle_entry_changed"):
         same(reviewer_scope[key], False, "REVIEWER_PATH_SCOPE: " + key)
@@ -307,8 +318,61 @@ def verify(root, enforce_pins=True):
         ("protected_response_access", reviewer_scope["protected_response_access"]),
         ("accepted_kaggle_entry_changed", reviewer_scope["accepted_kaggle_entry_changed"]),
         ("official_competition_score", reviewer_scope["official_competition_score"]),
+        ("rubric_evidence_map_linked", reviewer_contract["rubric_evidence_map_linked"]),
+        ("rubric_self_score_assigned", reviewer_contract["rubric_self_score_assigned"]),
     ):
         same(reviewer_index[key], receipt_value, "INDEX_REVIEWER_PATH_" + key.upper())
+
+    governance = receipts["development_search_governance"]
+    same(governance["schema"], "dosepilot.development_search_governance_release.v2", "GOVERNANCE_SCHEMA")
+    same(governance["status"], "PASS", "GOVERNANCE_STATUS")
+    same(governance["role"], "ADAPTIVE_DEVELOPMENT_GOVERNANCE_UPDATE", "GOVERNANCE_ROLE")
+    governance_predecessor = governance["predecessor"]
+    same(sha(root / governance_predecessor["path"]), governance_predecessor["sha256"], "GOVERNANCE_PREDECESSOR_HASH")
+    same(governance_predecessor["preserved_unchanged"], True, "GOVERNANCE_PREDECESSOR_PRESERVED")
+    for path, expected in governance["source_sha256"].items():
+        same(sha(root / path), expected, "GOVERNANCE_FILE_HASH: " + path)
+    governance_registry = governance["registry"]
+    same(sha(root / governance_registry["path"]), governance_registry["sha256"], "GOVERNANCE_REGISTRY_HASH")
+    same(governance_registry["registered_families"], 22, "GOVERNANCE_FAMILIES")
+    same(governance_registry["rejected_families"], 15, "GOVERNANCE_REJECTED")
+    same(governance_registry["unpromoted_references"], 3, "GOVERNANCE_UNPROMOTED")
+    same(governance_registry["current_incumbent"], "bandwidth07_additive", "GOVERNANCE_INCUMBENT")
+    same(governance_registry["current_incumbent_mse"], 0.0010582750420801538, "GOVERNANCE_MSE", 1e-15)
+    same(governance_registry["exhaustive_historical_search_claimed"], False, "GOVERNANCE_NONEXHAUSTIVE")
+    governance_verification = governance["verification"]
+    same(governance_verification["response_free_governance_tests"], 33, "GOVERNANCE_TESTS")
+    same(governance_verification["registry_cli"], "PASS", "GOVERNANCE_CLI")
+    same(governance_verification["isotonic_synthetic_tests_before_fit"], 7, "GOVERNANCE_ISOTONIC_TESTS")
+    same(governance_verification["isotonic_independent_no_refit_arithmetic_audit"], "PASS", "GOVERNANCE_ISOTONIC_AUDIT")
+    new_family = governance["new_closed_family"]
+    same(new_family["family_id"], "isotonic_paid_features", "GOVERNANCE_NEW_FAMILY")
+    same(new_family["decision"], "REJECT_RETAIN_BANDWIDTH07", "GOVERNANCE_NEW_DECISION")
+    same(sha(root / new_family["evidence_path"]), new_family["evidence_sha256"], "GOVERNANCE_NEW_EVIDENCE_HASH")
+    same(sha(root / new_family["protocol_path"]), new_family["protocol_sha256"], "GOVERNANCE_NEW_PROTOCOL_HASH")
+    same(new_family["automatic_retry"], False, "GOVERNANCE_NEW_NO_RETRY")
+    for key in ("incumbent_changed", "new_independent_validation", "protected_response_access", "accepted_kaggle_entry_changed"):
+        same(governance["claim_boundary"][key], False, "GOVERNANCE_BOUNDARY: " + key)
+    same(governance["claim_boundary"]["official_competition_score"], None, "GOVERNANCE_NO_SCORE")
+    governance_index = index["development_search_governance"]
+    expected_governance_index = {
+        "role": governance["role"],
+        "status": governance["status"],
+        "registered_families": governance_registry["registered_families"],
+        "rejected_families": governance_registry["rejected_families"],
+        "unpromoted_references": governance_registry["unpromoted_references"],
+        "incumbent": governance_registry["current_incumbent"],
+        "incumbent_mse": governance_registry["current_incumbent_mse"],
+        "response_free_tests": governance_verification["response_free_governance_tests"],
+        "strict_proposal_protocol_binding": True,
+        "exhaustive_historical_search_claimed": governance_registry["exhaustive_historical_search_claimed"],
+        "new_model_fit": False,
+        "biological_accuracy_result_created": False,
+        "private_or_protected_inputs_read": governance["claim_boundary"]["protected_response_access"],
+        "accepted_kaggle_entry_changed": governance["claim_boundary"]["accepted_kaggle_entry_changed"],
+        "official_competition_score": governance["claim_boundary"]["official_competition_score"],
+    }
+    same(governance_index, expected_governance_index, "INDEX_GOVERNANCE")
 
     current_preflight_index = index["current_release_preflight"]
     current_preflight_path = root / current_preflight_index["path"]
@@ -329,6 +393,8 @@ def verify(root, enforce_pins=True):
     aligned = receipts["aligned_additive"]
     bandwidth = receipts["bandwidth_successor"]
     cross_patient = receipts["cross_patient_bandwidth"]
+    simplex = receipts["simplex_stacking"]
+    isotonic = receipts["isotonic_paid_features"]
     bandwidth_lifecycle = receipts["bandwidth_lifecycle"]
     frozen_schedule = receipts["frozen_ooc_release_binding"]
     normalized = index["protected22"]
@@ -748,6 +814,66 @@ def verify(root, enforce_pins=True):
     for key in ("automatic_retry", "independent_validation", "protected_response_access", "accepted_kaggle_entry_changed", "official_competition_score"):
         same(cpm_index[key], cross_patient[key], "INDEX_CPM_" + key.upper())
 
+    same(simplex["schema"], "dosepilot.simplex_stacking.public_evidence.v1", "SIMPLEX_SCHEMA")
+    same(simplex["status"], "COMPLETE", "SIMPLEX_STATUS")
+    same(simplex["decision"], "REJECT_RETAIN_BANDWIDTH07", "SIMPLEX_DECISION")
+    same(simplex["candidate"]["mse"] > simplex["bandwidth07_incumbent"]["mse"], True, "SIMPLEX_MEAN_WORSE")
+    same(simplex["bandwidth07_incumbent"]["mse"], bandwidth["metrics"]["bandwidth07"]["mse"], "SIMPLEX_BANDWIDTH_REFERENCE", 1e-15)
+    comparison_record = simplex["comparison_to_incumbent"]
+    same(comparison_record["patient_wins"], 23, "SIMPLEX_PATIENT_WINS")
+    same(comparison_record["fold_wins"], 2, "SIMPLEX_FOLD_WINS")
+    same(comparison_record["p90_nonworse"], False, "SIMPLEX_P90_FAILED")
+    same(comparison_record["target_regressions"], 16, "SIMPLEX_TARGET_REGRESSIONS")
+    same(simplex["inner_stacking_diagnostic"]["interpretation"], "Every inner objective improved, but held-patient mean, breadth, fold consistency and tail worsened.", "SIMPLEX_INNER_OUTER_DIVERGENCE")
+    same(simplex["promotion_gate"]["all_gates_passed"], False, "SIMPLEX_GATE_FAILED")
+    same(simplex["verification"]["independent_no_refit_status"], "PASS", "SIMPLEX_VERIFICATION")
+    same(simplex["verification"]["simplex_kkt_folds_verified"], 5, "SIMPLEX_KKT")
+    same(simplex["verification"]["held_target_predictions_reconstructed"], 5712, "SIMPLEX_RECONSTRUCTION")
+    for key in ("automatic_retry", "independent_validation", "protected_response_access", "accepted_kaggle_entry_changed", "official_competition_score"):
+        expected = False if key != "official_competition_score" else None
+        same(simplex[key], expected, "SIMPLEX_BOUNDARY_" + key.upper())
+    simplex_index = index["simplex_stacking_challenger"]
+    for key in ("status", "decision", "role", "automatic_retry", "independent_validation", "protected_response_access", "accepted_kaggle_entry_changed", "official_competition_score"):
+        same(simplex_index[key], simplex[key], "INDEX_SIMPLEX_" + key.upper())
+    same(simplex_index["mse"], simplex["candidate"]["mse"], "INDEX_SIMPLEX_MSE", 1e-15)
+    same(simplex_index["bandwidth07_reference_mse"], simplex["bandwidth07_incumbent"]["mse"], "INDEX_SIMPLEX_REFERENCE", 1e-15)
+    for key in ("relative_gain", "patient_wins", "patient_losses", "patient_ties", "fold_wins", "p90_nonworse"):
+        same(simplex_index[key], comparison_record[key], "INDEX_SIMPLEX_" + key.upper(), 1e-15 if key == "relative_gain" else 0.0)
+    same(simplex_index["target_regressions"], comparison_record["target_regressions"], "INDEX_SIMPLEX_TARGETS")
+    same(simplex_index["all_inner_objectives_improved"], True, "INDEX_SIMPLEX_INNER")
+    same(simplex_index["passes_incumbent_gate"], False, "INDEX_SIMPLEX_GATE")
+    same(simplex_index["independent_no_refit_verification"], "PASS", "INDEX_SIMPLEX_VERIFICATION")
+
+    same(isotonic["schema"], "dosepilot.isotonic_paid_features.public_result.v1", "ISOTONIC_SCHEMA")
+    same(isotonic["status"], "COMPLETE", "ISOTONIC_STATUS")
+    same(isotonic["decision"], "REJECT_RETAIN_BANDWIDTH07", "ISOTONIC_DECISION")
+    candidate_metric = isotonic["metrics"]["isotonic_candidate"]
+    incumbent_metric = isotonic["metrics"]["bandwidth07_incumbent"]
+    same(candidate_metric["mse"], 0.0010731733783205333, "ISOTONIC_MSE", 1e-15)
+    same(incumbent_metric["mse"], bandwidth["metrics"]["bandwidth07"]["mse"], "ISOTONIC_REFERENCE", 1e-15)
+    same(candidate_metric["mse"] > incumbent_metric["mse"], True, "ISOTONIC_MEAN_WORSE")
+    isotonic_comparison = isotonic["candidate_vs_bandwidth07"]
+    same(isotonic_comparison["patient_wins"], 24, "ISOTONIC_PATIENT_WINS")
+    same(isotonic_comparison["patient_losses"], 35, "ISOTONIC_PATIENT_LOSSES")
+    same(isotonic_comparison["fold_wins"], 2, "ISOTONIC_FOLD_WINS")
+    same(isotonic_comparison["p90_nonworse"], False, "ISOTONIC_P90_FAILED")
+    same(isotonic_comparison["target_regressions"], 13, "ISOTONIC_TARGET_REGRESSIONS")
+    same(isotonic["promotion_gate"]["all_gates_passed"], False, "ISOTONIC_GATE_FAILED")
+    same(isotonic["independent_no_refit_verification"], "PASS", "ISOTONIC_VERIFICATION")
+    for key in ("automatic_retry", "independent_validation", "protected_response_access", "accepted_kaggle_entry_changed", "official_competition_score"):
+        expected = False if key != "official_competition_score" else None
+        same(isotonic[key], expected, "ISOTONIC_BOUNDARY_" + key.upper())
+    isotonic_index = index["isotonic_paid_features_challenger"]
+    for key in ("status", "decision", "role", "automatic_retry", "independent_validation", "protected_response_access", "accepted_kaggle_entry_changed", "official_competition_score"):
+        same(isotonic_index[key], isotonic[key], "INDEX_ISOTONIC_" + key.upper())
+    same(isotonic_index["mse"], candidate_metric["mse"], "INDEX_ISOTONIC_MSE", 1e-15)
+    same(isotonic_index["bandwidth07_reference_mse"], incumbent_metric["mse"], "INDEX_ISOTONIC_REFERENCE", 1e-15)
+    for key in ("relative_gain", "patient_wins", "patient_losses", "patient_ties", "fold_wins", "p90_nonworse"):
+        same(isotonic_index[key], isotonic_comparison[key], "INDEX_ISOTONIC_" + key.upper(), 1e-15 if key == "relative_gain" else 0.0)
+    same(isotonic_index["target_regressions"], isotonic_comparison["target_regressions"], "INDEX_ISOTONIC_TARGETS")
+    same(isotonic_index["passes_incumbent_gate"], False, "INDEX_ISOTONIC_GATE")
+    same(isotonic_index["independent_no_refit_verification"], "PASS", "INDEX_ISOTONIC_VERIFICATION")
+
     same(lifecycle["schema"], "dosepilot.durable_lifecycle_and_acquisition.v1", "LIFECYCLE_SCHEMA")
     same(lifecycle["accuracy_incumbent"]["mse"], additive_mse, "LIFECYCLE_ADDITIVE_REFERENCE", 1e-15)
     same(lifecycle["accuracy_incumbent"]["unchanged"], True, "LIFECYCLE_ACCURACY_UNCHANGED")
@@ -851,6 +977,19 @@ def verify(root, enforce_pins=True):
     for phrase in forbidden:
         if phrase in writeup:
             raise EvidenceError("WRITEUP_FORBIDDEN: " + phrase)
+
+    rubric_index = index["finalist_rubric_evidence"]
+    same(sha(root / rubric_index["path"]), rubric_index["sha256"], "INDEX_RUBRIC_EVIDENCE_HASH")
+    try:
+        rubric_result = verify_finalist_rubric_evidence(root)
+    except RubricEvidenceError as exc:
+        raise EvidenceError("RUBRIC_EVIDENCE: " + str(exc)) from exc
+    same(rubric_index["status"], rubric_result["status"], "INDEX_RUBRIC_EVIDENCE_STATUS")
+    same(rubric_index["criteria"], rubric_result["criteria"], "INDEX_RUBRIC_EVIDENCE_CRITERIA")
+    same(rubric_index["weight_sum"], rubric_result["weight_sum"], "INDEX_RUBRIC_EVIDENCE_WEIGHT_SUM")
+    same(rubric_index["official_competition_score"], rubric_result["official_competition_score"], "INDEX_RUBRIC_EVIDENCE_NO_SCORE")
+    same(rubric_index["accepted_kaggle_entry_changed"], False, "INDEX_RUBRIC_EVIDENCE_NO_KAGGLE_CHANGE")
+    same(rubric_index["protected_response_access"], False, "INDEX_RUBRIC_EVIDENCE_NO_PROTECTED")
     return {
         "status": "PASS",
         "canonical_receipts": len(receipts),
@@ -865,9 +1004,15 @@ def verify(root, enforce_pins=True):
         "current_report_deterministic": current_report["renderer"]["two_consecutive_builds_byte_identical"],
         "target_definitions_verified": target_verification["target_table_rows_verified"],
         "reviewer_path_seconds": reviewer_contract["estimated_seconds"],
+        "rubric_evidence_criteria": rubric_result["criteria"],
+        "rubric_evidence_weight_sum": rubric_result["weight_sum"],
         "current_preflight_tests": current_preflight["orchestrated_test_count"],
         "raw_ak_decision": aligned["decision"],
         "cross_patient_bandwidth_decision": cross_patient["decision"],
+        "simplex_stacking_decision": simplex["decision"],
+        "isotonic_paid_features_decision": isotonic["decision"],
+        "development_governance_families": governance_registry["registered_families"],
+        "development_governance_tests": governance_verification["response_free_governance_tests"],
         "durable_runtime_tests": lifecycle["tests"]["durable_runtime_suite_including_previous_cases"],
         "private_arrays_read": False,
     }

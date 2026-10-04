@@ -1,0 +1,64 @@
+{
+  "schema": "dosepilot.reviewer_path_release.v5",
+  "status": "PASS",
+  "as_of_date": "2026-10-04",
+  "role": "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY",
+  "predecessor": {
+    "path": "evidence/reviewer_path_release_r4_20261004.json",
+    "sha256": "dcf122c08924dae94a80aa8a8c562d1dd4e4690bd0ae7ecc8c551c8a55206bbe",
+    "preserved_unchanged": true
+  },
+  "supersedes_reason": "Adds a response-free criterion-to-evidence map for the recorded Kaggle rubric without changing the incumbent model, accepted entry, report, physical schedule, or biological evidence.",
+  "entrypoint": {
+    "path": "00_REVIEWER_START_HERE.md",
+    "sha256": "8563d39eaacb62ee54766f0b8f425ae9f3012b7b5487d81077d6e3f4fb232358"
+  },
+  "bound_artifacts": {
+    "README.md": "130e2be222bd3ba1244ac75d67a9076d3df2f61a8432d48ff2a64dc1a306741a",
+    "CURRENT_TECHNICAL_REPORT.md": "403a97c8fa2e346d6eb277207897f14be3300b5318703fdafe548a0c99566abe",
+    "TARGET_DEFINITIONS.md": "24517c3a39343770474f39f9908fdd267d912b55bad11aa2d41420ce6517be30",
+    "docs/KAGGLE_WRITEUP.md": "f3de611b5bc3bf951a6f0766f7f087f399c58d3dadc35350845447440b988d3d",
+    "docs/FINALIST_AUDIT.md": "f4fc580ff8e34768e3709d0c6b8bc9cde9b3158ce42449886fda52b362c92a7a",
+    "docs/FINALIST_RUBRIC_EVIDENCE.md": "7272be4d67ebd79203aca4cf3e106e04cafb70701eaf77e70a611668f7537926",
+    "docs/PROSPECTIVE_OOC_VALIDATION_CONTRACT.md": "b6ed4f2c546f17c795c38e1ac93bde81230ec427de64e89561f9ce955207b417",
+    "docs/PUBLIC_REPRODUCTION.md": "9bf7c58da588bbe9c684024cbbda11bf61a29622327035186b40145cdf9e4aa3",
+    "docs/CROSS_PATIENT_BANDWIDTH.md": "821351cbeb119d98a72731b71f48d6c7bbf5592133b4e96bdccb4c2b3a5354f9",
+    "docs/DosePilot_Technical_Report_Current.pdf": "5e0f8a64aa6472ec8814dc999518045d31d95da4168b65e248c5440d52c4848d",
+    "evidence/cross_patient_bandwidth_20261004.json": "3293f76dfc7e48f81087d971864066dc4b6c8d257b4d9fdc8d464b8396562caf",
+    "evidence/target_definitions_release_20261003.json": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
+    "evidence/current_technical_report_r4_20261004.json": "8179b404fca98bc7117fecbab352db4f4c339ddae04fb7f6a560ff8961ee9cdf",
+    "evidence/finalist_rubric_evidence_20261004.json": "6f6db1375116a3cbde3ea7cccb448a2881ae51c8dea61488624ede312233ddb7",
+    "study/audits/verify_finalist_rubric_evidence.py": "56f297ec767140d72aeb48eabc6c4f7702ecf49457c269a49a38ab09a9b40975",
+    "study/audits/test_finalist_rubric_evidence.py": "2598be3d93b5993bdd470fa8cbc3729c33cd962c4b5d3ad38a1de1db652fcbf8",
+    "study/audits/release_preflight_current.py": "483a43241ae5fecc8dff5a8e28dfa732253f3b6ca27075a1d59ce89db655e93a",
+    "study/audits/test_release_preflight_current.py": "8eef885979b7f1802978c23d47bccdc3d70b8ba6fecba444b8830fb12227b516"
+  },
+  "review_path": {
+    "estimated_seconds": 90,
+    "current_model_mse": 0.0010582750420801538,
+    "physical_measurements_per_deployment": 64,
+    "outputs": 24,
+    "target_definition_linked": true,
+    "current_report_linked": true,
+    "negative_results_linked": true,
+    "cross_patient_negative_linked": true,
+    "prospective_boundary_linked": true,
+    "prepared_writeup_fast_lane_linked": true,
+    "prepared_writeup_links_portable": true,
+    "current_model_demo_documented": true,
+    "current_release_preflight_documented": true,
+    "bandwidth_post_selection_disclosed": true,
+    "uniform_ab_estimand_disclosed": true,
+    "rubric_evidence_map_linked": true,
+    "rubric_self_score_assigned": false
+  },
+  "scope": {
+    "new_model_fit": false,
+    "biological_accuracy_result_created": false,
+    "independent_validation": false,
+    "protected_response_access": false,
+    "private_patient_rows_read": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  }
+}

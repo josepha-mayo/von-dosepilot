@@ -65,6 +65,23 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
+        rubric_index = index["finalist_rubric_evidence"]
+        rubric_receipt = json.loads((self.source / rubric_index["path"]).read_text())
+        rubric_paths = list(rubric_receipt["artifact_sha256"])
+        rubric_paths.append(rubric_receipt["current_release_preflight"]["path"])
+        for relative in rubric_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
+        governance_path = index["canonical_receipts"]["development_search_governance"]["path"]
+        governance = json.loads((self.source / governance_path).read_text())
+        governance_paths = [governance["registry"]["path"], governance["predecessor"]["path"],
+                            governance["new_closed_family"]["protocol_path"]]
+        governance_paths.extend(governance["source_sha256"])
+        for relative in governance_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         current_preflight_path = index["current_release_preflight"]["path"]
         shutil.copy2(self.source / current_preflight_path, self.root / current_preflight_path)
         predecessor_path = index["current_release_preflight"]["predecessor_path"]
@@ -110,12 +127,14 @@ class EvidenceConsistencyTests(unittest.TestCase):
     def test_current_state_passes(self):
         result = verify(self.root)
         self.assertEqual(result["status"], "PASS")
-        self.assertEqual(result["canonical_receipts"], 13)
+        self.assertEqual(result["canonical_receipts"], 16)
         self.assertEqual(result["protected22_cells_reconciled"], 19642)
         self.assertAlmostEqual(result["additive_incumbent_mse"], 0.001060552730112811)
         self.assertAlmostEqual(result["bandwidth_successor_mse"], 0.0010582750420801538)
         self.assertEqual(result["raw_ak_decision"], "REJECT_RETAIN_ADDITIVE")
         self.assertEqual(result["cross_patient_bandwidth_decision"], "REJECT_RETAIN_BANDWIDTH07")
+        self.assertEqual(result["simplex_stacking_decision"], "REJECT_RETAIN_BANDWIDTH07")
+        self.assertEqual(result["isotonic_paid_features_decision"], "REJECT_RETAIN_BANDWIDTH07")
         self.assertEqual(result["durable_runtime_tests"], 55)
         self.assertEqual(result["bandwidth_lifecycle_tests"], 65)
         self.assertEqual(result["frozen_ooc_schedule_rows"], 64)
@@ -124,7 +143,19 @@ class EvidenceConsistencyTests(unittest.TestCase):
         self.assertTrue(result["current_report_deterministic"])
         self.assertEqual(result["target_definitions_verified"], 24)
         self.assertEqual(result["reviewer_path_seconds"], 90)
+        self.assertEqual(result["rubric_evidence_criteria"], 5)
+        self.assertEqual(result["rubric_evidence_weight_sum"], 100)
         self.assertEqual(result["current_preflight_tests"], 168)
+        self.assertEqual(result["development_governance_families"], 22)
+        self.assertEqual(result["development_governance_tests"], 33)
+
+    def test_governance_receipt_cannot_weaken_boundaries(self):
+        self.mutate_receipt(
+            "development_search_governance",
+            lambda value: value["claim_boundary"].__setitem__("new_independent_validation", True),
+        )
+        with self.assertRaisesRegex(EvidenceError, "GOVERNANCE_BOUNDARY"):
+            verify(self.root, enforce_pins=False)
 
     def test_changed_receipt_byte_fails_hash(self):
         path = self.root / "evidence/PROTECTED22_ACCESS_STATUS.json"
@@ -339,6 +370,40 @@ class EvidenceConsistencyTests(unittest.TestCase):
             lambda value: value.__setitem__("decision", "PROMOTE"),
         )
         with self.assertRaisesRegex(EvidenceError, "RAW_AK_DECISION"):
+            verify(self.root, enforce_pins=False)
+
+    def test_receipt_cannot_promote_simplex_stacking(self):
+        self.mutate_receipt(
+            "simplex_stacking",
+            lambda value: value.__setitem__("decision", "PROMOTE"),
+        )
+        with self.assertRaisesRegex(EvidenceError, "SIMPLEX_DECISION"):
+            verify(self.root, enforce_pins=False)
+
+    def test_index_cannot_promote_simplex_stacking(self):
+        self.mutate_index(
+            lambda value: value["simplex_stacking_challenger"].update(
+                {"passes_incumbent_gate": True}
+            )
+        )
+        with self.assertRaisesRegex(EvidenceError, "INDEX_SIMPLEX_GATE"):
+            verify(self.root, enforce_pins=False)
+
+    def test_receipt_cannot_promote_isotonic_features(self):
+        self.mutate_receipt(
+            "isotonic_paid_features",
+            lambda value: value.__setitem__("decision", "PROMOTE"),
+        )
+        with self.assertRaisesRegex(EvidenceError, "GOVERNANCE_NEW_EVIDENCE_HASH|ISOTONIC_DECISION"):
+            verify(self.root, enforce_pins=False)
+
+    def test_index_cannot_promote_isotonic_features(self):
+        self.mutate_index(
+            lambda value: value["isotonic_paid_features_challenger"].update(
+                {"passes_incumbent_gate": True}
+            )
+        )
+        with self.assertRaisesRegex(EvidenceError, "INDEX_ISOTONIC_GATE"):
             verify(self.root, enforce_pins=False)
 
     def test_receipt_cannot_expand_lifecycle_scope(self):

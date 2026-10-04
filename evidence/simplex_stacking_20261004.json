@@ -1,0 +1,131 @@
+{
+  "schema": "dosepilot.simplex_stacking.public_evidence.v1",
+  "as_of_date": "2026-10-04",
+  "status": "COMPLETE",
+  "decision": "REJECT_RETAIN_BANDWIDTH07",
+  "role": "REPEATED_ADAPTIVE_DEVELOPMENT_NEGATIVE_RESULT",
+  "hypothesis": "Global patient-balanced nonnegative simplex stacking of the ten existing bandwidth-0.7 residual spectral settings may reduce hard-selection variance without changing the 64-well plan.",
+  "population": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "physical_treatment_wells_per_alternative": 64,
+    "wells_per_plate": 32
+  },
+  "candidate": {
+    "mse": 0.0010620901334091122,
+    "p90_patient_rmse": 0.03834324296924964,
+    "fold_mse": [
+      0.001387625136036163,
+      0.0009017696602346485,
+      0.0010617014451094317,
+      0.0008192359941339799,
+      0.0011472119131788134
+    ],
+    "orientation_mse": [
+      0.0011101395683923273,
+      0.001014040698425897
+    ]
+  },
+  "bandwidth07_incumbent": {
+    "mse": 0.0010582750420801538,
+    "p90_patient_rmse": 0.03789428530872024,
+    "fold_mse": [
+      0.0013921291183112416,
+      0.0008933246324477287,
+      0.0010633000716809172,
+      0.0008098063511711599,
+      0.0011395913999451377
+    ],
+    "orientation_mse": [
+      0.0011047521616732163,
+      0.0010117979224870915
+    ]
+  },
+  "comparison_to_incumbent": {
+    "relative_gain": -0.003605009262487524,
+    "patient_wins": 23,
+    "patient_losses": 36,
+    "patient_ties": 0,
+    "fold_wins": 2,
+    "required_fold_wins": 5,
+    "p90_nonworse": false,
+    "target_regressions": 16,
+    "regressing_targets": [
+      "Afatinib",
+      "Atorvastatin",
+      "Bemcentinib",
+      "Encorafenib",
+      "Idasanutlin",
+      "LCL161",
+      "LGK974",
+      "Lapatinib",
+      "Napabucasin",
+      "Palbociclib",
+      "Pevonedistat",
+      "Regorafenib",
+      "SN-38",
+      "TAS-102",
+      "Trametinib",
+      "Volasertib"
+    ],
+    "bootstrap_candidate_minus_incumbent": {
+      "point": 0.0000038150913289583,
+      "lower_2_5pct": -4.190283472391973e-7,
+      "upper_97_5pct": 0.000008402943622104429,
+      "whole_patient_replicates": 10000,
+      "seed": 20261004,
+      "selection_corrected": false
+    }
+  },
+  "inner_stacking_diagnostic": {
+    "active_options_by_outer_fold": [3, 3, 3, 4, 3],
+    "minimum_relative_inner_gain": 0.0010470430083188154,
+    "maximum_relative_inner_gain": 0.00625987663577332,
+    "interpretation": "Every inner objective improved, but held-patient mean, breadth, fold consistency and tail worsened."
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": false,
+    "patient_wins_at_least_30": false,
+    "all_five_folds_favorable": false,
+    "p90_nonworse": false,
+    "not_prediction_equivalent": true,
+    "historical_r13_screen_passed": true,
+    "historical_r18_screen_passed": true,
+    "all_gates_passed": false
+  },
+  "controls": {
+    "bandwidth07_mse_reproduced": true,
+    "additive_mse_reproduced": true,
+    "r13_mse_reproduced": true,
+    "r18_mse_reproduced": true,
+    "candidate_and_incumbent_outer_plans_identical": true,
+    "ab_predictions_averaged": false,
+    "ab_losses_averaged": true
+  },
+  "verification": {
+    "synthetic_and_contract_tests_before_fit": 10,
+    "independent_no_refit_status": "PASS",
+    "simplex_kkt_folds_verified": 5,
+    "held_target_predictions_reconstructed": 5712,
+    "metric_and_gate_recomputed_without_refit": true
+  },
+  "hashes": {
+    "freeze_sha256": "840fee86302e2c6f2feba0d193ae103cad78b10c9b8247c80e5072c1173a33e2",
+    "result_sha256": "38e1d9ceda1b0977e7c1535016303dbb5b46305c167516704755c63d11631144",
+    "verification_sha256": "0fc7b843dbdd8a3209e6cf538d55748ae84e48f11ae3ae10d5bf076630e7d276",
+    "private_prediction_sha256": "1f694508ccdcd2e056b065fe62e7852c889988961dad4b6bf5d2eebe0e57fde6",
+    "train_cache_sha256": "2ccd4995699417db72316c8f403095b8ef560f94913b0c8a80fe7429a2d0cbef",
+    "r18_sha256": "253998d20b9425c4ceade4269b94f4ed97cb7039ac5ec60838bb15794d47a6e2"
+  },
+  "automatic_retry": false,
+  "independent_validation": false,
+  "protected_response_access": false,
+  "private_arrays_published": false,
+  "fitted_biological_weights_published": false,
+  "physical_plan_changed": false,
+  "accepted_kaggle_entry_changed": false,
+  "official_competition_score": null
+}
