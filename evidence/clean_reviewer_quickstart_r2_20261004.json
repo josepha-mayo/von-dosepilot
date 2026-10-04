@@ -1,0 +1,58 @@
+{
+  "schema": "dosepilot.clean_reviewer_quickstart_release.v2",
+  "status": "PASS",
+  "role": "CLEAN_PUBLIC_CLONE_SOFTWARE_EXECUTION",
+  "predecessor": {
+    "path": "evidence/clean_reviewer_quickstart_20261004.json",
+    "sha256": "05cdb52809daf581a51b24523ec0a26a02a1cf57f6f4c6b7bc620b3d4bfe731a",
+    "preserved_unchanged": true
+  },
+  "documentation": {
+    "path": "docs/CLEAN_REVIEWER_QUICKSTART.md",
+    "sha256": "866c82ec9b7ea0eaaf59e45b28cf855fdf40109df3ba067095a25692012a70ad"
+  },
+  "verification_documentation": {
+    "path": "docs/CLEAN_REVIEWER_VERIFICATION.md",
+    "sha256": "2e60426f6610aae0c5255348af2809126314032ce0d85141ec02238c43bf46f2"
+  },
+  "artifact_sha256": {
+    "docs/CLEAN_REVIEWER_QUICKSTART.md": "866c82ec9b7ea0eaaf59e45b28cf855fdf40109df3ba067095a25692012a70ad",
+    "docs/CLEAN_REVIEWER_VERIFICATION.md": "2e60426f6610aae0c5255348af2809126314032ce0d85141ec02238c43bf46f2",
+    "evidence/clean_reviewer_quickstart_20261004.json": "05cdb52809daf581a51b24523ec0a26a02a1cf57f6f4c6b7bc620b3d4bfe731a",
+    "requirements.txt": "7bd6b8946940b79948c548c8048e545684b91c8edc9444d8dfc0c8f76a97c0a7",
+    "study/requirements.txt": "9acc457aff7a05718b8869947b3b11cf89e5b64dbab9dff9a8fc8ec7e75cddbb",
+    "study/durable_runtime/run_bandwidth_lifecycle_demo.py": "34eedd805f14373220a630ed8217d2d19f567cb92cb267de65d348035d08a262",
+    "study/audits/release_preflight_current.py": "483a43241ae5fecc8dff5a8e28dfa732253f3b6ca27075a1d59ce89db655e93a"
+  },
+  "implementation_sha256": {
+    "study/audits/verify_clean_reviewer_quickstart.py": "7dec74ad553942deba76eed42b37a40d752ea63fc9b40bd2895731e69bdec6c4",
+    "study/audits/test_clean_reviewer_quickstart.py": "8adaf52b926b8ccff2aa329b3e7d6b6549ff7929f0ffedefb2b68844366fd65e"
+  },
+  "verification": {
+    "standalone_verifier": "PASS",
+    "adversarial_tests_passed": 8,
+    "canonical_release_preflight_unchanged": true,
+    "canonical_release_preflight_stages": 14,
+    "canonical_orchestrated_response_free_tests": 173
+  },
+  "preserved_operational_failure": {
+    "status": "INITIAL_LITERAL_ASSERTION_FAILURE",
+    "cause": "Markdown line wrapping split a required phrase",
+    "scientific_or_product_failure": false,
+    "correction": "Normalize Markdown emphasis and whitespace before checking required limitation phrases",
+    "corrected_tests_passed": 8
+  },
+  "claim_boundary": {
+    "fresh_public_clone": true,
+    "fresh_virtual_environment": true,
+    "clean_new_machine_certification": false,
+    "public_workbook_reconstruction_executed": false,
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "independent_biological_validation": false,
+    "prospective_ooc_execution": false,
+    "accepted_kaggle_entry_changed": false,
+    "netlify_deployment_changed": false,
+    "official_competition_score": null
+  }
+}
