@@ -68,6 +68,14 @@ const predictions = () => elements['#predictions'].children;
 const countState = state => predictions().filter(item => item.dataset.outputState === state).length;
 const assertHash = value => assert.match(value, /^[0-9a-f]{64}$/);
 const assertNoHash = value => assert.equal(value, '');
+const assertTraceRecord = (state, plan, measurement, result, kind) => {
+  assert.match(trace().innerHTML, /Inspect full evidence record/);
+  assert.match(trace().innerHTML, new RegExp(`"state": "${state}"`));
+  assert.match(trace().innerHTML, new RegExp(`"plan_sha256": ${plan ? `"${plan}"` : 'null'}`));
+  assert.match(trace().innerHTML, new RegExp(`"measurement_sha256": ${measurement ? `"${measurement}"` : 'null'}`));
+  assert.match(trace().innerHTML, new RegExp(`"result_sha256": ${result ? `"${result}"` : 'null'}`));
+  assert.match(trace().innerHTML, new RegExp(`"result_kind": "${kind}"`));
+};
 const assertNoNumericalLeak = items => items.forEach(item => {
   assert.equal(item.dataset.outputState, 'withheld');
   assert.equal(Object.hasOwn(item.dataset, 'value'), false);
@@ -107,6 +115,7 @@ async function main() {
   assertNoHash(trace().dataset.planSha256);
   assertNoHash(trace().dataset.measurementSha256);
   assertNoHash(trace().dataset.resultSha256);
+  assertTraceRecord('fresh', '', '', '', 'withheld');
 
   elements['#commitBtn'].click();
   await waitTrace('committed');
@@ -129,6 +138,7 @@ async function main() {
   assert.equal(planHash, expectedPlanHash);
   assertNoHash(trace().dataset.measurementSha256);
   assertNoHash(trace().dataset.resultSha256);
+  assertTraceRecord('committed', planHash, '', '', 'withheld');
 
   elements['#missingBtn'].click();
   await waitTrace('missing');
@@ -137,6 +147,7 @@ async function main() {
   assert.equal(trace().dataset.planSha256, planHash);
   assertNoHash(trace().dataset.measurementSha256);
   assertNoHash(trace().dataset.resultSha256);
+  assertTraceRecord('missing', planHash, '', '', 'withheld');
 
   elements['#recoverBtn'].click();
   await waitTrace('recovered');
@@ -155,6 +166,7 @@ async function main() {
     outputs: independentResponses('baseline'),
     withheld: ['Afatinib']
   }));
+  assertTraceRecord('recovered', planHash, '', baselineHash, 'historical baseline • 23 outputs');
 
   elements['#completeBtn'].click();
   await waitTrace('complete');
@@ -177,6 +189,7 @@ async function main() {
     measurement_sha256: expectedMeasurementHash,
     outputs: independentResponses('primary')
   }));
+  assertTraceRecord('complete', planHash, expectedMeasurementHash, trace().dataset.resultSha256, 'bandwidth-0.7 primary • 24 outputs');
 
   elements['#resetBtn'].click();
   await waitTrace('fresh');
@@ -184,6 +197,7 @@ async function main() {
   assertNoHash(trace().dataset.planSha256);
   assertNoHash(trace().dataset.measurementSha256);
   assertNoHash(trace().dataset.resultSha256);
+  assertTraceRecord('fresh', '', '', '', 'withheld');
 
   process.stdout.write(JSON.stringify({
     status: 'PASS',
@@ -197,7 +211,9 @@ async function main() {
     precompletion_primary_hash_withheld: true,
     baseline_result_hash_present: true,
     complete_measurement_hash_present: true,
-    complete_primary_hash_present: true
+    complete_primary_hash_present: true,
+    full_record_inspectable: true,
+    withheld_record_fields_are_null: true
   }) + '\n');
 }
 

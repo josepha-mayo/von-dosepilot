@@ -108,6 +108,17 @@ function displayHash(value) {
   return value ? `sha256:${value.slice(0, 12)}…${value.slice(-8)}` : 'WITHHELD';
 }
 
+function traceRecord(mode, planHash, measurementHash, resultHash, resultKind) {
+  return JSON.stringify({
+    schema: 'dosepilot.browser_demo_trace.v1',
+    state: mode,
+    plan_sha256: planHash || null,
+    measurement_sha256: measurementHash || null,
+    result_sha256: resultHash || null,
+    result_kind: resultKind
+  }, null, 2);
+}
+
 async function renderTrace(mode) {
   const epoch = ++traceEpoch;
   const committed = mode !== 'fresh';
@@ -151,6 +162,10 @@ async function renderTrace(mode) {
     <div class="trace-row"><span>Measurement record</span><code title="${measurementHash}">${displayHash(measurementHash)}</code></div>
     <div class="trace-row"><span>Result record</span><code title="${resultHash}">${displayHash(resultHash)}</code></div>
     <div class="trace-kind">${resultKind}</div>
+    <details class="trace-details">
+      <summary>Inspect full evidence record</summary>
+      <pre>${traceRecord(mode, planHash, measurementHash, resultHash, resultKind)}</pre>
+    </details>
     <p>SHA-256 over fictional browser payloads. This preview is not signed, WORM storage, physical provenance, or control validation.</p>`;
 }
 
