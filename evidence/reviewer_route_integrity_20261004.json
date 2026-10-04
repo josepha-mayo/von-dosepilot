@@ -1,0 +1,65 @@
+{
+  "schema": "dosepilot.reviewer_route_integrity.v1",
+  "status": "PASS",
+  "role": "REVIEWER_NAVIGATION_TARGET_INTEGRITY",
+  "documentation": {
+    "path": "docs/REVIEWER_ROUTE_INTEGRITY.md",
+    "sha256": "757827125bea09a80e782c5fa0d034daf568a25e3a3cb726613491b5c54e57a8"
+  },
+  "implementation_sha256": {
+    "study/audits/verify_reviewer_routes.py": "1dc41ad297a337fafa23d98dc9257d7fc28b5130533a55351a57d0d8f4f7f64f",
+    "study/audits/test_reviewer_routes.py": "018c6a283500a4b4456790176c0cb7ff13be28a867b7561ba1d2c5078f7e49d5"
+  },
+  "audited_surfaces": {
+    "README.md": "46c6d4dda7c09aefd7d3f118988ab844f1a31a9849b21ed2f41b3766bc53ff11",
+    "00_REVIEWER_START_HERE.md": "501f513635342f6e1eacf1b3a501d399b44bee530329116a5bfd6eace48eb624",
+    "CURRENT_TECHNICAL_REPORT.md": "403a97c8fa2e346d6eb277207897f14be3300b5318703fdafe548a0c99566abe",
+    "docs/KAGGLE_WRITEUP.md": "f3de611b5bc3bf951a6f0766f7f087f399c58d3dadc35350845447440b988d3d",
+    "docs/FINALIST_RUBRIC_EVIDENCE.md": "7272be4d67ebd79203aca4cf3e106e04cafb70701eaf77e70a611668f7537926"
+  },
+  "verification": {
+    "local_targets": 52,
+    "github_master_targets": 22,
+    "anchors": 1,
+    "required_urls": 5,
+    "network_requests": 0,
+    "adversarial_tests_passed": 8,
+    "canonical_release_preflight_unchanged": true,
+    "canonical_release_preflight_stages": 14,
+    "canonical_orchestrated_response_free_tests": 173
+  },
+  "preserved_operational_failure": {
+    "status": "INITIAL_TEST_FIXTURE_ERROR",
+    "initial_passes": 1,
+    "initial_errors": 7,
+    "cause": "Temporary adversarial fixtures omitted the two hash-bound implementation files",
+    "route_scientific_or_product_failure": false,
+    "correction": "Copy every documentation and implementation file bound by the receipt into each temporary fixture",
+    "corrected_tests_passed": 8
+  },
+  "preserved_integration_rejection": {
+    "status": "CENTRAL_VERIFIER_REJECTED_DRAFT",
+    "error": "REVIEWER_PATH_ENTRY_HASH",
+    "cause": "Draft edits changed an entry surface bound by the preserved reviewer-path receipt",
+    "scientific_or_product_failure": false,
+    "correction": "Preserve the bound public entry surfaces byte-for-byte and release the route verifier as an indexed standalone addendum"
+  },
+  "preserved_broad_discovery_failure": {
+    "status": "TWO_HISTORICAL_IMPORT_ERRORS",
+    "cause": "Undocumented broad discovery omitted the study/engine import path required by two historical audit modules",
+    "scientific_or_product_failure": false,
+    "canonical_preflight_status": "PASS",
+    "affected_tests_with_required_path_passed": 24,
+    "canonical_orchestrated_count_changed": false
+  },
+  "claim_boundary": {
+    "external_playback_verified": false,
+    "external_availability_verified": false,
+    "new_model_fit": false,
+    "biological_accuracy_result_created": false,
+    "private_or_protected_inputs_read": false,
+    "accepted_kaggle_entry_changed": false,
+    "netlify_deployment_changed": false,
+    "official_competition_score": null
+  }
+}

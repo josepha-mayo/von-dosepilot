@@ -193,6 +193,22 @@
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null
   },
+  "reviewer_route_integrity": {
+    "path": "evidence/reviewer_route_integrity_20261004.json",
+    "sha256": "0cd6f0451a8f40a573d0c054a91d5e02aadadd1bacd89ae64074a46cb74f49f8",
+    "status": "PASS",
+    "audited_surfaces": 5,
+    "local_targets": 52,
+    "github_master_targets": 22,
+    "anchors": 1,
+    "required_urls": 5,
+    "network_requests": 0,
+    "external_playback_verified": false,
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
   "protected22": {
     "population": {
       "pdos": 61,
