@@ -209,6 +209,22 @@
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null
   },
+  "live_demo_withholding": {
+    "path": "evidence/live_demo_withholding_20261004.json",
+    "sha256": "50b45d04abaabf0ce36ffcd79006bdeb9b641653faea641d782e0dd34f8995a8",
+    "status": "PASS",
+    "verified_states": 6,
+    "fresh_withheld": 24,
+    "baseline_numeric_outputs": 23,
+    "baseline_withheld": 1,
+    "complete_current_outputs": 24,
+    "production_deploy_id": "6ac25f15cbb08b59f33ed4c6",
+    "site_origin_console_errors": 0,
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
   "protected22": {
     "population": {
       "pdos": 61,
