@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import json
 import math
+import re
 from pathlib import Path
 
 
@@ -27,17 +28,17 @@ PINNED_RECEIPTS = {
     "aligned_additive": "fca4fff12f931caa9dbc4c70f5ebc05668a743f18f7fac0fa3e030a99581a550",
     "bandwidth_successor": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
-    "frozen_ooc_release_binding": "8467d8b3bc7ebe12cc4f3d009a5f114d9e2644106b6e71508d346fbb5a5ffb9b",
+    "frozen_ooc_release_binding": "6cec0fec4bafd343f776b65de7c0ef8c589b7fe1c5090b757f33a6f8dfc42832",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
-    "reviewer_path_release": "711d9fa232f56a3ca7faab7e95b5857f625e13c73220dea1cce023be6a7fbb4f",
+    "reviewer_path_release": "b2ea60877b628d6b0aa1944f14b2a5d63d14638fffed30516a6fac431898a585",
 }
 
 PINNED_DOCUMENTS = {
     "docs/EVIDENCE_LEDGER.md": "d393517b7733e8e2788cd63e6619175249a03e0a96aa0c71e2ecaaa05663147e",
-    "docs/KAGGLE_WRITEUP.md": "55f1441f4ad8b524888633a1c1f741e1486f9e29f1ddd0ae3c6bcfa90936ba24",
+    "docs/KAGGLE_WRITEUP.md": "f3de611b5bc3bf951a6f0766f7f087f399c58d3dadc35350845447440b988d3d",
 }
 
-CURRENT_REPORT_RECEIPT_SHA256 = "e6efd0143083efc36e612ae0887ba086f94640c951aee1d523832a9da7836101"
+CURRENT_REPORT_RECEIPT_SHA256 = "f9a50b2fa0ea5de0e831b66b338de4143bb538499056ba7428e4dffef1db52f2"
 
 
 def load(path):
@@ -56,12 +57,40 @@ def same(actual, expected, label, tolerance=0.0):
         raise EvidenceError(label)
 
 
+def ensure_portable_kaggle_links(text):
+    """Kaggle-rendered Markdown must not rely on GitHub-relative targets."""
+    targets = re.findall(r"\[[^\]]+\]\(([^)]+)\)", text)
+    nonportable = [
+        target
+        for target in targets
+        if not target.startswith(("https://", "http://", "mailto:", "#"))
+    ]
+    if nonportable:
+        raise EvidenceError("KAGGLE_WRITEUP_NONPORTABLE_LINK: " + nonportable[0])
+
+
+def ensure_current_quickstart(readme, reviewer, writeup):
+    current_demo = "study/durable_runtime/run_bandwidth_lifecycle_demo.py"
+    current_preflight = "study/audits/release_preflight_current.py"
+    current_verifier = "study/audits/verify_evidence_consistency.py --root ."
+    if current_demo not in readme:
+        raise EvidenceError("README_CURRENT_DEMO")
+    if current_preflight not in readme:
+        raise EvidenceError("README_CURRENT_PREFLIGHT")
+    if "python -m pip install -r study/requirements.txt" not in readme:
+        raise EvidenceError("README_PREFLIGHT_DEPENDENCIES")
+    if current_verifier not in reviewer:
+        raise EvidenceError("REVIEWER_CURRENT_VERIFIER")
+    if current_demo not in writeup:
+        raise EvidenceError("WRITEUP_CURRENT_DEMO")
+
+
 def verify(root, enforce_pins=True):
     root = Path(root)
     index = load(root / "evidence/EVIDENCE_INDEX.json")
     if index.get("schema") != "dosepilot.evidence_index.v1":
         raise EvidenceError("INDEX_SCHEMA")
-    if index.get("as_of_date") != "2026-10-03":
+    if index.get("as_of_date") != "2026-10-04":
         raise EvidenceError("INDEX_DATE")
     if index.get("cross_study_raw_mse_comparison_allowed") is not False:
         raise EvidenceError("CROSS_STUDY_MSE_RULE")
@@ -81,9 +110,15 @@ def verify(root, enforce_pins=True):
     report_receipt_path = root / report_index["path"]
     same(sha(report_receipt_path), report_index["sha256"], "CURRENT_REPORT_RECEIPT_HASH")
     current_report = load(report_receipt_path)
-    same(current_report["schema"], "dosepilot.current_technical_report_release.v1", "CURRENT_REPORT_SCHEMA")
+    same(current_report["schema"], "dosepilot.current_technical_report_release.v3", "CURRENT_REPORT_SCHEMA")
     same(current_report["status"], "PASS", "CURRENT_REPORT_STATUS")
     same(current_report["role"], "CURRENT_JUDGE_FACING_TECHNICAL_REPORT", "CURRENT_REPORT_ROLE")
+    report_predecessor = current_report["predecessor"]
+    same(sha(root / report_predecessor["path"]), report_predecessor["sha256"], "CURRENT_REPORT_PREDECESSOR_HASH")
+    same(report_predecessor["preserved_unchanged"], True, "CURRENT_REPORT_PREDECESSOR_PRESERVED")
+    report_entrypoint_text = (root / current_report["entrypoint"]["path"]).read_text()
+    if report_index["path"] not in report_entrypoint_text:
+        raise EvidenceError("CURRENT_REPORT_ENTRYPOINT_STALE_RECEIPT_LINK")
     for part in ("entrypoint", "source", "pdf", "renderer"):
         record = current_report[part]
         same(sha(root / record["path"]), record["sha256"], "CURRENT_REPORT_FILE_HASH: " + record["path"])
@@ -106,7 +141,10 @@ def verify(root, enforce_pins=True):
     claim_checks = current_report["claim_checks"]
     same(claim_checks["bandwidth_successor_mse"], 0.0010582750420801538, "CURRENT_REPORT_MSE", 1e-15)
     same(claim_checks["protected22_primary"], "NOT_ESTIMABLE", "CURRENT_REPORT_PROTECTED22")
-    same(claim_checks["release_preflight_tests"], 148, "CURRENT_REPORT_PREFLIGHT")
+    same(claim_checks["release_preflight_tests"], 157, "CURRENT_REPORT_PREFLIGHT")
+    same(claim_checks["release_preflight_stages"], 14, "CURRENT_REPORT_PREFLIGHT_STAGES")
+    same(claim_checks["bandwidth_point_estimate_post_selection"], True, "CURRENT_REPORT_SELECTION_DISCLOSURE")
+    same(claim_checks["ab_expected_loss_uniform_assignment"], True, "CURRENT_REPORT_AB_ESTIMAND")
     for key in ("repeated_adaptive_development_disclosed", "adverse_target_slices_disclosed"):
         same(claim_checks[key], True, "CURRENT_REPORT_DISCLOSURE: " + key)
     same(claim_checks["prospective_ooc_experiment_claimed"], False, "CURRENT_REPORT_NO_OOC_CLAIM")
@@ -174,7 +212,7 @@ def verify(root, enforce_pins=True):
         same(target_index[key], receipt_value, "INDEX_TARGET_DEFINITIONS_" + key.upper())
 
     reviewer_release = receipts["reviewer_path_release"]
-    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v2", "REVIEWER_PATH_SCHEMA")
+    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v3", "REVIEWER_PATH_SCHEMA")
     same(reviewer_release["status"], "PASS", "REVIEWER_PATH_STATUS")
     same(reviewer_release["role"], "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY", "REVIEWER_PATH_ROLE")
     reviewer_predecessor = reviewer_release["predecessor"]
@@ -198,6 +236,7 @@ def verify(root, enforce_pins=True):
     if "\\n" in reviewer_text:
         raise EvidenceError("REVIEWER_PATH_TRANSPORT_ESCAPE")
     prepared_writeup = (root / "docs/KAGGLE_WRITEUP.md").read_text()
+    ensure_portable_kaggle_links(prepared_writeup)
     for phrase in (
         "90-second reviewer path:",
         "00_REVIEWER_START_HERE.md",
@@ -212,12 +251,36 @@ def verify(root, enforce_pins=True):
             raise EvidenceError("PREPARED_WRITEUP_FAST_LANE: " + phrase)
     if "\\n" in prepared_writeup:
         raise EvidenceError("PREPARED_WRITEUP_TRANSPORT_ESCAPE")
+    readme_text = (root / "README.md").read_text()
+    ensure_current_quickstart(readme_text, reviewer_text, prepared_writeup)
+    finalist_text = (root / "docs/FINALIST_AUDIT.md").read_text()
+    if "python study/audits/verify_evidence_consistency.py --root ." not in finalist_text:
+        raise EvidenceError("FINALIST_AUDIT_CURRENT_VERIFIER")
+    if "python study/audits/verify_finalist_audit.py --root ." in finalist_text:
+        raise EvidenceError("FINALIST_AUDIT_STALE_VERIFIER")
+    for phrase in (
+        "post-selection development point estimate",
+        "uniform 1:1 choice between A and B",
+    ):
+        if phrase not in reviewer_text:
+            raise EvidenceError("REVIEWER_SELECTION_OR_ESTIMAND_DISCLOSURE: " + phrase)
     reviewer_contract = reviewer_release["review_path"]
     same(reviewer_contract["estimated_seconds"], 90, "REVIEWER_PATH_SECONDS")
     same(reviewer_contract["current_model_mse"], 0.0010582750420801538, "REVIEWER_PATH_MSE", 1e-15)
     same(reviewer_contract["physical_measurements_per_deployment"], 64, "REVIEWER_PATH_MEASUREMENTS")
     same(reviewer_contract["outputs"], 24, "REVIEWER_PATH_OUTPUTS")
-    for key in ("target_definition_linked", "current_report_linked", "negative_results_linked", "prospective_boundary_linked", "prepared_writeup_fast_lane_linked"):
+    for key in (
+        "target_definition_linked",
+        "current_report_linked",
+        "negative_results_linked",
+        "prospective_boundary_linked",
+        "prepared_writeup_fast_lane_linked",
+        "prepared_writeup_links_portable",
+        "current_model_demo_documented",
+        "current_release_preflight_documented",
+        "bandwidth_post_selection_disclosed",
+        "uniform_ab_estimand_disclosed",
+    ):
         same(reviewer_contract[key], True, "REVIEWER_PATH_LINK: " + key)
     reviewer_scope = reviewer_release["scope"]
     for key in ("new_model_fit", "biological_accuracy_result_created", "independent_validation", "protected_response_access", "private_patient_rows_read", "accepted_kaggle_entry_changed"):
@@ -533,7 +596,7 @@ def verify(root, enforce_pins=True):
     same(current_lifecycle_index["accepted_kaggle_entry_changed"], False, "INDEX_BANDWIDTH_LIFECYCLE_NO_ENTRY_CHANGE")
     same(current_lifecycle_index["official_competition_score"], None, "INDEX_BANDWIDTH_LIFECYCLE_NO_SCORE")
 
-    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v3", "FROZEN_SCHEDULE_SCHEMA")
+    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v4", "FROZEN_SCHEDULE_SCHEMA")
     same(frozen_schedule["status"], "PASS", "FROZEN_SCHEDULE_STATUS")
     same(frozen_schedule["role"], "RESPONSE_FREE_ENGINEERING_AND_RELEASE_EVIDENCE", "FROZEN_SCHEDULE_ROLE")
     frozen_predecessor = frozen_schedule["predecessor"]
@@ -555,10 +618,11 @@ def verify(root, enforce_pins=True):
         same(schedule_verification[key], True, "FROZEN_SCHEDULE_TRUE: " + key)
     same(schedule_verification["public_schedule_rows"], 64, "FROZEN_SCHEDULE_PUBLIC_ROWS")
     same(schedule_verification["transport_escape_literals"], 0, "FROZEN_SCHEDULE_ESCAPES")
+    same(schedule_verification["prepared_kaggle_relative_links"], 0, "FROZEN_SCHEDULE_KAGGLE_LINKS")
     same(schedule_verification["new_tamper_tests"], 5, "FROZEN_SCHEDULE_TESTS")
     same(schedule_verification["new_tamper_tests_passed"], 5, "FROZEN_SCHEDULE_TESTS_PASS")
     same(schedule_verification["release_preflight_check_count"], 14, "FROZEN_SCHEDULE_PREFLIGHT_COUNT")
-    same(schedule_verification["orchestrated_response_free_tests"], 155, "FROZEN_SCHEDULE_PREFLIGHT_ORCHESTRATED")
+    same(schedule_verification["orchestrated_response_free_tests"], 157, "FROZEN_SCHEDULE_PREFLIGHT_ORCHESTRATED")
     for key in ("prospective_experiment_executed", "biological_validation_created", "protected_response_access", "private_patient_rows_read", "fitted_biological_weights_published", "accepted_kaggle_entry_changed"):
         same(frozen_schedule[key], False, "FROZEN_SCHEDULE_FALSE_BOUNDARY: " + key)
     same(frozen_schedule["official_competition_score"], None, "FROZEN_SCHEDULE_NO_SCORE")
@@ -685,6 +749,12 @@ def verify(root, enforce_pins=True):
     for phrase in writeup_required:
         if phrase not in writeup:
             raise EvidenceError("WRITEUP_MISSING: " + phrase)
+    for phrase in (
+        "post-selection development point estimate",
+        "uniform 1:1 assignment",
+    ):
+        if phrase not in writeup:
+            raise EvidenceError("WRITEUP_SELECTION_OR_ESTIMAND_DISCLOSURE: " + phrase)
     forbidden = [
         "S2 is independent prospective confirmation",
         "S2 is an official competition score",

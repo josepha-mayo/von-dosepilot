@@ -38,7 +38,7 @@ For each prospective deployment:
 - do **not** run both A and B and combine them as one 128-well prediction;
 - vehicle and viability controls remain separate declared resources and are not hidden inside the 64-treatment budget.
 
-If both orientations are studied across the cohort, randomize or otherwise prespecify orientation assignment before outcomes and report orientation-stratified results.
+The retrospective headline averages A and B squared losses with equal weight, so its estimand is the expected loss under a **uniform 1:1 orientation assignment**. A prospective study that tests that headline must randomize A/B assignment 1:1 before outcomes and report orientation-stratified results. A different prespecified assignment rule is allowed only if its estimand is reported separately rather than compared directly with the 1:1 headline.
 
 ## 4. Chip execution manifest
 

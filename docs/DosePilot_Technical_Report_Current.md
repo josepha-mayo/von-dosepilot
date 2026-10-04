@@ -2,7 +2,7 @@
 
 ## 24 response summaries from 64 traceable treatment wells
 
-Joseph Ayanda | Model & Algorithm | Current public report | 3 October 2026
+Joseph Ayanda | Model & Algorithm | Current public report | 4 October 2026
 
 > A measurement-aware reconstruction system that commits the physical assay layout before responses arrive, checks every purchased drug-dose-plate identity, and returns 24 fixed research summaries or an explicit abstention.
 
@@ -36,13 +36,15 @@ The acquisition and evaluation contract is intentionally strict:
 - All samples from a patient stay on the same side of every inner and outer fold.
 - Alternative layouts A and B are scored separately; their losses are averaged.
 - A/B prediction vectors are never averaged into a hidden 128-well ensemble.
-- Planning, scaling, model fitting, and hyperparameter selection occur inside fitting splits.
+- Planning, scaling, model fitting, and residual spectral-option selection occur inside fitting splits.
 
 ## What is currently demonstrated
 
 The bandwidth-0.7 additive successor reaches patient-balanced MSE 0.001058275042, 7.56% below original R13 and 7.28% below archived R18. Against its immediate additive predecessor, the gain is smaller - 0.215% - but broad: 38/59 patient means improve, all five outer folds improve, and p90 patient RMSE falls from 0.038073112 to 0.037894285. The same physical plans are used.
 
-Public-input replay rebuilds the result from the hash-bound public source route. A separate runtime checks model kind, bandwidth, plan, construction anchor, sample/run/drug/dose/plate/well identity, and missingness. The response-free release preflight passes 12 stages and 148 tests.
+For each fixed bandwidth, the residual spectral option is selected inside the inner patient folds. Bandwidth 0.7 itself was selected from the prefrozen {1.0, 0.7, 1.4} menu after comparing reused outer-fold development results. The displayed 0.7 MSE is therefore a post-selection development point estimate, not an unbiased nested estimate of a bandwidth-selecting procedure.
+
+Public-input replay rebuilds the result from the hash-bound public source route. A separate runtime checks model kind, bandwidth, plan, construction anchor, sample/run/drug/dose/plate/well identity, and missingness. The response-free current-release preflight passes 14 stages and 157 tests.
 
 ## What is not demonstrated
 
@@ -80,7 +82,7 @@ The complete selected source curves contain 416 eligible target-treatment measur
 
 That is 15.38% of the source treatment-measurement count. It does not imply an 84.62% reduction in money, material, labor, or elapsed time. Vehicle and viability controls remain separate resources outside this treatment-well count.
 
-Two complementary layouts map the same 64 drug-dose identities across p1 and p2. Each is a complete 64-well alternative, not half of a joint 128-well design.
+Two complementary layouts map the same 64 drug-dose identities across p1 and p2. Each is a complete 64-well alternative, not half of a joint 128-well design. The reported expected loss uses a uniform 1:1 assignment to A or B; a prospective study must retain that assignment rule or prespecify and report a different estimand.
 
 | Frozen schedule property | A | B |
 |---|---:|---:|
@@ -213,7 +215,7 @@ The ledger records model, plan, construction, commitment, measurement, and sourc
 | Durable-runtime tests | 65 |
 | Current-model adapter tests within that suite | 10 |
 | Acquisition tests | 9 |
-| Full response-free release preflight | 12 stages / 148 tests |
+| Full response-free release preflight | 14 stages / 157 tests |
 
 The fictional lifecycle demonstration makes six CLI calls and verifies plan commitment, incomplete-primary rejection, explicit baseline recovery, changed-reading rejection, complete prediction, and exact export recovery. It uses seeded fictional parameters and measurements, not patient data.
 
@@ -308,12 +310,12 @@ The project does not claim calibrated uncertainty, clinical treatment benefit, p
 | Current runtime lifecycle | docs/BANDWIDTH_LIFECYCLE.md; evidence/bandwidth_lifecycle_20261003.json |
 | Frozen treatment schedule | docs/FROZEN_OOC_EXECUTION_MANIFEST.md; evidence/frozen_ooc_execution_schedule_20261003.json |
 | Evidence reconciliation | docs/EVIDENCE_LEDGER.md; evidence/EVIDENCE_INDEX.json |
-| Release preflight | evidence/release_preflight_frozen_ooc_final_20261003.json |
+| Current release preflight | canonical path in evidence/EVIDENCE_INDEX.json |
 
 Run the response-free public release check from the repository root:
 
 ```text
-python study/audits/release_preflight.py --output release_preflight.json
+python study/audits/release_preflight_current.py --output release_preflight.json
 ```
 
 This current report is an additive public artifact. The historical five-page PDF linked from the already accepted entry remains preserved unchanged. No Kaggle page was modified by creating this report.

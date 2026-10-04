@@ -1,6 +1,6 @@
 {
   "schema": "dosepilot.evidence_index.v1",
-  "as_of_date": "2026-10-03",
+  "as_of_date": "2026-10-04",
   "cross_study_raw_mse_comparison_allowed": false,
   "canonical_receipts": {
     "protected22_access": {
@@ -40,28 +40,28 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r3_20261004.json",
-      "sha256": "8467d8b3bc7ebe12cc4f3d009a5f114d9e2644106b6e71508d346fbb5a5ffb9b"
+      "path": "evidence/frozen_ooc_release_binding_r4_20261004.json",
+      "sha256": "6cec0fec4bafd343f776b65de7c0ef8c589b7fe1c5090b757f33a6f8dfc42832"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r2_20261004.json",
-      "sha256": "711d9fa232f56a3ca7faab7e95b5857f625e13c73220dea1cce023be6a7fbb4f"
+      "path": "evidence/reviewer_path_release_r3_20261004.json",
+      "sha256": "b2ea60877b628d6b0aa1944f14b2a5d63d14638fffed30516a6fac431898a585"
     }
   },
   "current_technical_report": {
-    "path": "evidence/current_technical_report_20261003.json",
-    "sha256": "e6efd0143083efc36e612ae0887ba086f94640c951aee1d523832a9da7836101",
+    "path": "evidence/current_technical_report_r3_20261004.json",
+    "sha256": "f9a50b2fa0ea5de0e831b66b338de4143bb538499056ba7428e4dffef1db52f2",
     "role": "CURRENT_JUDGE_FACING_TECHNICAL_REPORT",
     "status": "PASS",
     "pages": 10,
-    "preflight_path": "evidence/release_preflight_current_report_20261003.json",
-    "preflight_sha256": "56d7a8c273361c56dbf8ff91918525323dddb4552160177cae501f715de6ad1d",
+    "preflight_path": "evidence/release_preflight_portable_quickstart_final2_20261004.json",
+    "preflight_sha256": "9c0913235ee5b81aafc234581d7beea6c0aa5352b6ca346e3fc69f0263177d3b",
     "preflight_status": "PASS",
-    "preflight_response_free_tests": 148,
+    "preflight_response_free_tests": 157,
     "historical_submitted_pdf_replaced": false,
     "accepted_kaggle_entry_changed": false,
     "biological_accuracy_result_created": false
@@ -99,14 +99,14 @@
     "official_competition_score": null
   },
   "current_release_preflight": {
-    "path": "evidence/release_preflight_kaggle_fastlane_final2_20261004.json",
-    "sha256": "3e2130e267584febce82ecd021edbb50f14b4884e5e892adfa53d97684bbe464",
-    "predecessor_path": "evidence/release_preflight_kaggle_fastlane_final_20261004.json",
-    "predecessor_sha256": "ab3b1f44b222f214f02686bb4e9dd8e7452675e172211ae6c4d6db78b8411695",
+    "path": "evidence/release_preflight_portable_quickstart_final2_20261004.json",
+    "sha256": "9c0913235ee5b81aafc234581d7beea6c0aa5352b6ca346e3fc69f0263177d3b",
+    "predecessor_path": "evidence/release_preflight_portable_quickstart_final_20261004.json",
+    "predecessor_sha256": "70c8be2c8b9404f35589a863f56941a6161183054db6205eca2ebc98544dc18a",
     "schema": "dosepilot.current_release_preflight.v1",
     "status": "PASS",
     "check_count": 14,
-    "orchestrated_response_free_tests": 155,
+    "orchestrated_response_free_tests": 157,
     "target_definition_tests_included": true,
     "target_definition_verifier_included": true,
     "private_or_protected_inputs_read": false,
@@ -327,7 +327,7 @@
     "transport_escape_literals": 0,
     "new_tamper_tests_passed": 5,
     "release_preflight_check_count": 14,
-    "orchestrated_response_free_tests": 155,
+    "orchestrated_response_free_tests": 157,
     "prospective_experiment_executed": false,
     "biological_validation_created": false,
     "protected_response_access": false,

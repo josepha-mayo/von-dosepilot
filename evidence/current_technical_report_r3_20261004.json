@@ -1,0 +1,56 @@
+{
+  "schema": "dosepilot.current_technical_report_release.v3",
+  "status": "PASS",
+  "as_of_date": "2026-10-04",
+  "role": "CURRENT_JUDGE_FACING_TECHNICAL_REPORT",
+  "predecessor": {
+    "path": "evidence/current_technical_report_r2_20261004.json",
+    "sha256": "d0b034c6c90cafe1a2dd8b40c2430400e1aa74f61b29562dd34c638a085fb9a9",
+    "preserved_unchanged": true
+  },
+  "supersedes_reason": "The human-facing report entrypoint now links to this current receipt rather than the original 3 October receipt. The corrected report PDF and scientific claims are unchanged from R2.",
+  "entrypoint": {
+    "path": "CURRENT_TECHNICAL_REPORT.md",
+    "sha256": "715c2aec49118b54f2219b42502016fec3b99ba34b820e3da86f2d6ad2ac0b6b"
+  },
+  "source": {
+    "path": "docs/DosePilot_Technical_Report_Current.md",
+    "sha256": "a5abbb225bc08f571969bc01d14364b021268fb67a07efab29a83241724c2ae4"
+  },
+  "pdf": {
+    "path": "docs/DosePilot_Technical_Report_Current.pdf",
+    "sha256": "ce79b8fc5263c6408007dbccef1006c2faad91d660bc7827d1c35a35b1108fbc",
+    "bytes": 90417,
+    "pages": 10,
+    "page_size": "A4",
+    "blank_pages": 0,
+    "visual_review": "PASS"
+  },
+  "renderer": {
+    "path": "tools/build_current_report.py",
+    "sha256": "4befa4b36ca171f833662d9544510ec971a202b28b7d31ff593e256f1158889d",
+    "engine": "ReportLab",
+    "invariant_output": true,
+    "two_consecutive_builds_byte_identical": true
+  },
+  "claim_checks": {
+    "bandwidth_successor_mse": 0.0010582750420801538,
+    "bandwidth_point_estimate_post_selection": true,
+    "ab_expected_loss_uniform_assignment": true,
+    "protected22_primary": "NOT_ESTIMABLE",
+    "release_preflight_tests": 157,
+    "release_preflight_stages": 14,
+    "repeated_adaptive_development_disclosed": true,
+    "adverse_target_slices_disclosed": true,
+    "prospective_ooc_experiment_claimed": false,
+    "official_competition_score": null
+  },
+  "historical_submitted_pdf": {
+    "path": "docs/DosePilot_Technical_Report_Public.pdf",
+    "sha256": "14361cb6ad867e729be138e68d27cda4d1fca73df4339ea0649c510454b7d32f",
+    "replaced": false
+  },
+  "private_or_protected_inputs_read": false,
+  "biological_accuracy_result_created": false,
+  "accepted_kaggle_entry_changed": false
+}

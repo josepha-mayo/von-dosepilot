@@ -10,12 +10,19 @@ Use Python 3.12 or 3.13 and install the pinned study dependencies in a new envir
 python -m venv .study-venv
 # Linux/macOS:
 source .study-venv/bin/activate
-# Windows instead: .study-venv\Scripts\activate
 python -m pip install -r study/requirements.txt
 python study/acquire_public_source.py --output Data_S4.xlsx
 python study/prepare_compact_source.py --source-xlsx Data_S4.xlsx --output reconstructed_train --execute-lib1-only
 python study/reproduce_compact.py --curves reconstructed_train/train_curves.csv --output reconstructed_results
 ```
+
+On PowerShell, activate the environment with:
+
+```powershell
+.\.study-venv\Scripts\Activate.ps1
+```
+
+On `cmd.exe`, use `.study-venv\Scripts\activate.bat`.
 
 All output paths must be new. Do not overwrite, delete or silently retry a failed attempt. The acquisition step requires internet access; reconstruction and fitting need no API, GPU, paid service or private account. If the exact verified workbook is already present, use that file rather than downloading it again.
 

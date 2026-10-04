@@ -7,7 +7,12 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from verify_evidence_consistency import EvidenceError, verify
+from verify_evidence_consistency import (
+    EvidenceError,
+    ensure_current_quickstart,
+    ensure_portable_kaggle_links,
+    verify,
+)
 
 
 class EvidenceConsistencyTests(unittest.TestCase):
@@ -30,6 +35,12 @@ class EvidenceConsistencyTests(unittest.TestCase):
         report_preflight_path = report_index["preflight_path"]
         shutil.copy2(self.source / report_preflight_path, self.root / report_preflight_path)
         report = json.loads((self.source / report_receipt_path).read_text())
+        report_predecessor = report.get("predecessor")
+        if report_predecessor:
+            shutil.copy2(
+                self.source / report_predecessor["path"],
+                self.root / report_predecessor["path"],
+            )
         report_paths = [report[part]["path"] for part in ("entrypoint", "source", "pdf", "renderer")]
         report_paths.append(report["historical_submitted_pdf"]["path"])
         for relative in report_paths:
@@ -112,7 +123,7 @@ class EvidenceConsistencyTests(unittest.TestCase):
         self.assertTrue(result["current_report_deterministic"])
         self.assertEqual(result["target_definitions_verified"], 24)
         self.assertEqual(result["reviewer_path_seconds"], 90)
-        self.assertEqual(result["current_preflight_tests"], 155)
+        self.assertEqual(result["current_preflight_tests"], 157)
 
     def test_changed_receipt_byte_fails_hash(self):
         path = self.root / "evidence/PROTECTED22_ACCESS_STATUS.json"
@@ -319,6 +330,18 @@ class EvidenceConsistencyTests(unittest.TestCase):
         path.write_text(path.read_text() + "\nS2 is independent prospective confirmation.\n")
         with self.assertRaises(EvidenceError):
             verify(self.root)
+
+    def test_kaggle_writeup_relative_link_is_rejected(self):
+        with self.assertRaisesRegex(EvidenceError, "KAGGLE_WRITEUP_NONPORTABLE_LINK"):
+            ensure_portable_kaggle_links("[audit](FINALIST_AUDIT.md)")
+
+    def test_current_quickstart_rejects_historical_demo(self):
+        with self.assertRaisesRegex(EvidenceError, "README_CURRENT_DEMO"):
+            ensure_current_quickstart(
+                "python study/durable_runtime/run_lifecycle_demo.py",
+                "python study/audits/verify_evidence_consistency.py --root .",
+                "python study/durable_runtime/run_bandwidth_lifecycle_demo.py",
+            )
 
 
 if __name__ == "__main__":

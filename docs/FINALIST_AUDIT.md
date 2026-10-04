@@ -126,13 +126,14 @@ See `docs/SIMULATED_ASSAY_ROBUSTNESS.md` and `evidence/bandwidth_robustness_2026
 
 Run:
 
-    python study/audits/verify_finalist_audit.py --root .
+    python study/audits/verify_evidence_consistency.py --root .
 
-The verifier is response-free. It checks pinned public receipt/source hashes, the current benchmark, 64 / 32+32 physical budget, reproduction status, runtime check counts, all 24 target aggregate rows, target regression identities, and validation-scope labels. It reads no private patient rows or Protected22 responses.
+The central verifier is response-free. It checks the current canonical receipts, current benchmark, 64 / 32+32 physical budget, reproduction status, runtime checks, all 24 target aggregate rows, target regression identities, link portability, current quickstarts, and validation-scope labels. It reads no private patient rows or Protected22 responses.
 
 See also:
 
-- evidence/finalist_audit_manifest_20261003.json
+- evidence/EVIDENCE_INDEX.json (current canonical map)
+- evidence/finalist_audit_manifest_20261003.json (preserved earlier snapshot)
 - evidence/bandwidth_target_deltas_20261003.csv
 - evidence/bandwidth_successor_20261003.json
 - docs/BANDWIDTH_SUCCESSOR.md

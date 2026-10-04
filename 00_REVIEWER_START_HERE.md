@@ -35,6 +35,8 @@ Against the previous additive model, the current frozen estimator improves **38/
 
 It is not uniformly better: **10/24 target-average errors regress**.
 
+For each fixed bandwidth, the residual spectral option is selected inside inner patient folds. Bandwidth 0.7 itself was selected from the prefrozen `{1.0, 0.7, 1.4}` menu after comparing reused outer-fold development results. Its displayed MSE is therefore a **post-selection development point estimate**, not an unbiased nested estimate of a bandwidth-selecting procedure.
+
 Compact audit with all 24 target deltas: [docs/FINALIST_AUDIT.md](docs/FINALIST_AUDIT.md).
 
 ### 3. Is the 64-well claim real?
@@ -47,6 +49,7 @@ Yes, under the reported retrospective evaluation contract:
 - B prediction uses only B's 64 purchased values.
 - Historical scoring computes A and B losses separately, then averages the **losses**.
 - A/B prediction vectors are never combined into a 128-well predictor.
+- The reported expected loss is the estimand for a **uniform 1:1 choice between A and B**; a prospective test must preserve that assignment rule or prespecify and report a different estimand.
 
 Exact frozen schedules and audit: [docs/FROZEN_OOC_EXECUTION_MANIFEST.md](docs/FROZEN_OOC_EXECUTION_MANIFEST.md).
 
@@ -116,13 +119,13 @@ These commands require no protected cohort responses.
 
 ### Central evidence package
 
-    python study/audits/verify_finalist_audit.py --root .
+    python study/audits/verify_evidence_consistency.py --root .
 
 ### Full response-free release preflight
 
     python study/audits/release_preflight_current.py --output release_preflight.json
 
-The current additive runner preserves the historical frozen-schedule preflight and adds the seven target-definition tamper tests plus the direct target-definition verifier. The bound public receipt records **14/14 stages and 155 response-free tests passed**; three runner-contract tests passed separately.
+The current additive runner preserves the historical frozen-schedule preflight and adds endpoint-definition, Kaggle-link-portability and current-quickstart checks. The bound public receipt records **14/14 stages and 157 response-free tests passed**; three runner-contract tests passed separately.
 
 ### Public TRAIN reconstruction and current-model replay
 

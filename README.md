@@ -21,7 +21,7 @@ On a supported local POSIX system, install the repository's dependencies and run
 
 ```bash
 python -m pip install -r requirements.txt
-python study/durable_runtime/run_lifecycle_demo.py --output lifecycle_demo_001
+python study/durable_runtime/run_bandwidth_lifecycle_demo.py --output bandwidth_lifecycle_demo_001
 ```
 
 This example uses **only seeded fictional model parameters and measurements**. It requires no patient data, GPU or model API. Six actual CLI calls demonstrate: committing the inventory, rejecting an incomplete primary request, explicitly recovering 23 older baseline estimates, refusing a changed recorded reading, completing all 24 primary predictions and restoring a lost export copy.
@@ -30,7 +30,7 @@ The current-model interface is `study/durable_runtime/bandwidth_lifecycle.py`, w
 
 ## Current verified development benchmark
 
-All three procedures below use the same **119 Lib1 samples, 59 whole patients, 24 targets and 64 physical treatment wells per deployment, 32 per plate**. Complementary A/B squared losses are averaged, not prediction vectors.
+All four procedures below use the same **119 Lib1 samples, 59 whole patients, 24 targets and 64 physical treatment wells per deployment, 32 per plate**. Complementary A/B squared losses are averaged, not prediction vectors.
 
 | Complete procedure | Patient-balanced MSE, lower is better |
 |---|---:|
@@ -42,6 +42,8 @@ All three procedures below use the same **119 Lib1 samples, 59 whole patients, 2
 The bandwidth successor changes only the drug-group Gaussian lengthscale from 1.0 to **0.7**. It improves **38/59 patient means versus the previous additive model, all 5/5 outer-fold means, and p90 patient RMSE**, while preserving the exact same physical plans. It is **7.56% lower MSE than R13** and **7.28% lower than R18**, with 49/59 and 47/59 patient wins respectively. These are **repeated adaptive development results**, not independent biological confirmation, clinical performance or an official contest score.
 
 The wider 1.4 bandwidth failed, and ten of 24 target means still regress versus the previous additive model. Earlier residual-alignment and acquisition challengers were also rejected and remain public. [Bandwidth successor](docs/BANDWIDTH_SUCCESSOR.md) · [Aggregate receipt](evidence/bandwidth_successor_20261003.json) · [Previous additive evidence](docs/STRUCTURED_KERNELS_AND_RECOVERY.md) · [Residual-alignment receipt](evidence/aligned_additive_20261003.json) · [Acquisition result](docs/DURABLE_LIFECYCLE_AND_ACQUISITION.md#1-new-acquisition-experiment-rejected).
+
+For each fixed bandwidth, the residual spectral option is selected inside the inner patient folds. Bandwidth 0.7 itself was then selected from the prefrozen `{1.0, 0.7, 1.4}` menu after comparing reused outer-fold development results. The displayed bandwidth-0.7 MSE is therefore a **post-selection development point estimate**, not an unbiased nested estimate of a bandwidth-selecting procedure.
 
 ## Reproduce and construct the current successor
 
@@ -64,10 +66,11 @@ Nine separate acquisition tests pass, and an independent arithmetic implementati
 Run the response-free release preflight—which checks the evidence index, durable runtime, bandwidth successor, acquisition, structured kernels, residual-alignment unit tests, organ-on-chip constraint compiler, frozen schedule/public-display parity and fictional lifecycle demo—with a fresh output path:
 
 ```bash
-python study/audits/release_preflight.py --output release_preflight.json
+python -m pip install -r study/requirements.txt
+python study/audits/release_preflight_current.py --output release_preflight.json
 ```
 
-The latest aggregate [schedule-bound release preflight receipt](evidence/release_preflight_frozen_ooc_final_20261003.json) records **12 completed stages and 148 orchestrated response-free tests**, including five schedule-tamper tests, exact public-display parity, the preserved predecessor demo and the current bandwidth-0.7 fictional lifecycle demo. Three unit tests for the preflight runner itself passed separately.
+The latest aggregate current-release receipt records **14 completed stages and 157 orchestrated response-free tests**, including five schedule-tamper tests, exact public-display parity, endpoint-definition checks, Kaggle-link portability and current-quickstart checks, the preserved predecessor demo and the bandwidth-0.7 fictional lifecycle demo. Three unit tests for the current preflight runner itself passed separately. The canonical receipt path is recorded in [the evidence index](evidence/EVIDENCE_INDEX.json).
 
 Local POSIX synchronization and advisory-lock guarantees depend on the operating system and storage. They do not certify physical power-loss behavior, laboratory execution, hostile filesystem edits or network filesystems. [Full verification and limitations](docs/DURABLE_LIFECYCLE_AND_ACQUISITION.md) · [Source-bound receipt](evidence/lifecycle_acquisition_20261002.json).
 
