@@ -28,7 +28,7 @@ PINNED_RECEIPTS = {
     "aligned_additive": "fca4fff12f931caa9dbc4c70f5ebc05668a743f18f7fac0fa3e030a99581a550",
     "bandwidth_successor": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
-    "frozen_ooc_release_binding": "115d56a777619c4a7da8733dbe37ccad384e1f3afbed32bcb8a2dc9f50b77464",
+    "frozen_ooc_release_binding": "44615ba617c19d1da66dfcd6eb6dad2705e71f9b3a8a7e3f5e10751e9e4aa4fc",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
     "reviewer_path_release": "b2ea60877b628d6b0aa1944f14b2a5d63d14638fffed30516a6fac431898a585",
 }
@@ -515,6 +515,14 @@ def verify(root, enforce_pins=True):
     same(bandwidth["metrics"]["additive"]["mse"], additive_mse, "BANDWIDTH_ADDITIVE_REFERENCE", 1e-15)
     candidate_metrics = bandwidth["metrics"]["bandwidth07"]
     additive_metrics = bandwidth["metrics"]["additive"]
+    same(additive_metrics["p90_rmse"], additive_p90, "BANDWIDTH_ADDITIVE_P90_REFERENCE", 1e-15)
+    candidate_orientations = candidate_metrics["orientation_mse"]
+    same(len(candidate_orientations), 2, "BANDWIDTH_ORIENTATION_COUNT")
+    same(
+        all(isinstance(value, (int, float)) and math.isfinite(value) and value >= 0 for value in candidate_orientations),
+        True,
+        "BANDWIDTH_ORIENTATION_VALUES",
+    )
     additive_comparison = bandwidth["comparisons"]["additive"]
     same(additive_comparison["patient_wins"], 38, "BANDWIDTH_ADDITIVE_WINS")
     same(additive_comparison["patient_wins"] + additive_comparison["patient_losses"], 59, "BANDWIDTH_ADDITIVE_PATIENT_ACCOUNTING")
@@ -538,13 +546,13 @@ def verify(root, enforce_pins=True):
         same(comparison["relative_gain"], derived_relative_gain, "BANDWIDTH_" + reference.upper() + "_GAIN", 1e-15)
         same(comparison["patient_wins"], expected_wins, "BANDWIDTH_" + reference.upper() + "_WINS")
         same(comparison["patient_wins"] + comparison["patient_losses"], 59, "BANDWIDTH_" + reference.upper() + "_PATIENT_ACCOUNTING")
-        same(0 <= comparison["fold_wins"] <= 5, True, "BANDWIDTH_" + reference.upper() + "_FOLD_RANGE")
+        same(comparison["fold_wins"], 5, "BANDWIDTH_" + reference.upper() + "_FOLDS")
         derived_historical_gate = (
             derived_relative_gain >= 0.05
             and comparison["patient_wins"] >= 40
             and comparison["fold_wins"] >= 4
             and candidate_metrics["p90_rmse"] <= reference_metrics["p90_rmse"]
-            and all(value < reference_metrics["mse"] for value in candidate_metrics["orientation_mse"])
+            and all(value < reference_metrics["mse"] for value in candidate_orientations)
         )
         same(comparison["passes_all"], derived_historical_gate, "BANDWIDTH_" + reference.upper() + "_DERIVED_GATE")
         same(derived_historical_gate, True, "BANDWIDTH_" + reference.upper() + "_GATE")
@@ -624,7 +632,7 @@ def verify(root, enforce_pins=True):
     same(current_lifecycle_index["accepted_kaggle_entry_changed"], False, "INDEX_BANDWIDTH_LIFECYCLE_NO_ENTRY_CHANGE")
     same(current_lifecycle_index["official_competition_score"], None, "INDEX_BANDWIDTH_LIFECYCLE_NO_SCORE")
 
-    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v5", "FROZEN_SCHEDULE_SCHEMA")
+    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v6", "FROZEN_SCHEDULE_SCHEMA")
     same(frozen_schedule["status"], "PASS", "FROZEN_SCHEDULE_STATUS")
     same(frozen_schedule["role"], "RESPONSE_FREE_ENGINEERING_AND_RELEASE_EVIDENCE", "FROZEN_SCHEDULE_ROLE")
     frozen_predecessor = frozen_schedule["predecessor"]
@@ -649,10 +657,12 @@ def verify(root, enforce_pins=True):
     same(schedule_verification["prepared_kaggle_relative_links"], 0, "FROZEN_SCHEDULE_KAGGLE_LINKS")
     same(schedule_verification["bandwidth_post_selection_disclosed"], True, "FROZEN_SCHEDULE_SELECTION_DISCLOSURE")
     same(schedule_verification["overstated_search_label_absent"], True, "FROZEN_SCHEDULE_SEARCH_LABEL")
+    for key in ("promotion_gate_predicates_derived", "orientation_vector_validated", "additive_p90_crosschecked", "historical_fold_counts_pinned"):
+        same(schedule_verification[key], True, "FROZEN_SCHEDULE_GATE_HARDENING: " + key)
     same(schedule_verification["new_tamper_tests"], 7, "FROZEN_SCHEDULE_TESTS")
     same(schedule_verification["new_tamper_tests_passed"], 7, "FROZEN_SCHEDULE_TESTS_PASS")
     same(schedule_verification["release_preflight_check_count"], 14, "FROZEN_SCHEDULE_PREFLIGHT_COUNT")
-    same(schedule_verification["orchestrated_response_free_tests"], 165, "FROZEN_SCHEDULE_PREFLIGHT_ORCHESTRATED")
+    same(schedule_verification["orchestrated_response_free_tests"], 168, "FROZEN_SCHEDULE_PREFLIGHT_ORCHESTRATED")
     for key in ("prospective_experiment_executed", "biological_validation_created", "protected_response_access", "private_patient_rows_read", "fitted_biological_weights_published", "accepted_kaggle_entry_changed"):
         same(frozen_schedule[key], False, "FROZEN_SCHEDULE_FALSE_BOUNDARY: " + key)
     same(frozen_schedule["official_competition_score"], None, "FROZEN_SCHEDULE_NO_SCORE")
@@ -660,7 +670,7 @@ def verify(root, enforce_pins=True):
     schedule_index = index["frozen_ooc_release_binding"]
     for key in ("role", "status"):
         same(schedule_index[key], frozen_schedule[key], "INDEX_FROZEN_SCHEDULE_" + key.upper())
-    for key in ("treatment_wells_per_orientation", "plate_counts_per_orientation", "targets", "two_dose_targets", "three_dose_targets", "ab_same_treatments", "ab_complementary_plate_assignment", "public_schedule_rows", "public_site_schedule_exact", "manifest_table_exact", "transport_escape_literals", "bandwidth_post_selection_disclosed", "overstated_search_label_absent", "new_tamper_tests_passed", "release_preflight_check_count", "orchestrated_response_free_tests"):
+    for key in ("treatment_wells_per_orientation", "plate_counts_per_orientation", "targets", "two_dose_targets", "three_dose_targets", "ab_same_treatments", "ab_complementary_plate_assignment", "public_schedule_rows", "public_site_schedule_exact", "manifest_table_exact", "transport_escape_literals", "bandwidth_post_selection_disclosed", "overstated_search_label_absent", "promotion_gate_predicates_derived", "orientation_vector_validated", "additive_p90_crosschecked", "historical_fold_counts_pinned", "new_tamper_tests_passed", "release_preflight_check_count", "orchestrated_response_free_tests"):
         same(schedule_index[key], schedule_verification[key], "INDEX_FROZEN_SCHEDULE_" + key.upper())
     for key in ("prospective_experiment_executed", "biological_validation_created", "protected_response_access", "private_patient_rows_read", "accepted_kaggle_entry_changed", "official_competition_score"):
         same(schedule_index[key], frozen_schedule[key], "INDEX_FROZEN_SCHEDULE_BOUNDARY_" + key.upper())

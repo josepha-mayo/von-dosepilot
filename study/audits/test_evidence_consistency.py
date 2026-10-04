@@ -123,7 +123,7 @@ class EvidenceConsistencyTests(unittest.TestCase):
         self.assertTrue(result["current_report_deterministic"])
         self.assertEqual(result["target_definitions_verified"], 24)
         self.assertEqual(result["reviewer_path_seconds"], 90)
-        self.assertEqual(result["current_preflight_tests"], 165)
+        self.assertEqual(result["current_preflight_tests"], 168)
 
     def test_changed_receipt_byte_fails_hash(self):
         path = self.root / "evidence/PROTECTED22_ACCESS_STATUS.json"
@@ -271,7 +271,7 @@ class EvidenceConsistencyTests(unittest.TestCase):
             "bandwidth_successor",
             lambda value: value["comparisons"]["r18"].__setitem__("fold_wins", 3),
         )
-        with self.assertRaisesRegex(EvidenceError, "BANDWIDTH_R18_DERIVED_GATE"):
+        with self.assertRaisesRegex(EvidenceError, "BANDWIDTH_R18_FOLDS"):
             verify(self.root, enforce_pins=False)
 
     def test_bandwidth_gate_recomputes_reference_p90_clause(self):
@@ -292,6 +292,30 @@ class EvidenceConsistencyTests(unittest.TestCase):
         with self.assertRaisesRegex(EvidenceError, "BANDWIDTH_R13_DERIVED_GATE"):
             verify(self.root, enforce_pins=False)
 
+    def test_bandwidth_gate_rejects_empty_orientation_vector(self):
+        self.mutate_receipt(
+            "bandwidth_successor",
+            lambda value: value["metrics"]["bandwidth07"].__setitem__("orientation_mse", []),
+        )
+        with self.assertRaisesRegex(EvidenceError, "BANDWIDTH_ORIENTATION_COUNT"):
+            verify(self.root, enforce_pins=False)
+
+    def test_bandwidth_gate_crosschecks_additive_p90_reference(self):
+        self.mutate_receipt(
+            "bandwidth_successor",
+            lambda value: value["metrics"]["additive"].__setitem__("p90_rmse", 1.0),
+        )
+        with self.assertRaisesRegex(EvidenceError, "BANDWIDTH_ADDITIVE_P90_REFERENCE"):
+            verify(self.root, enforce_pins=False)
+
+    def test_bandwidth_gate_pins_reported_five_historical_folds(self):
+        self.mutate_receipt(
+            "bandwidth_successor",
+            lambda value: value["comparisons"]["r18"].__setitem__("fold_wins", 4),
+        )
+        with self.assertRaisesRegex(EvidenceError, "BANDWIDTH_R18_FOLDS"):
+            verify(self.root, enforce_pins=False)
+
     def test_bandwidth_gate_checks_patient_accounting(self):
         self.mutate_receipt(
             "bandwidth_successor",
@@ -305,7 +329,7 @@ class EvidenceConsistencyTests(unittest.TestCase):
             "bandwidth_successor",
             lambda value: value["metrics"]["additive"].__setitem__("p90_rmse", 0.03),
         )
-        with self.assertRaisesRegex(EvidenceError, "BANDWIDTH_ADDITIVE_DERIVED_GATE"):
+        with self.assertRaisesRegex(EvidenceError, "BANDWIDTH_ADDITIVE_P90_REFERENCE"):
             verify(self.root, enforce_pins=False)
 
     def test_receipt_cannot_promote_raw_ak(self):
