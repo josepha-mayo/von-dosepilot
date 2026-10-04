@@ -52,20 +52,20 @@
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r3_20261004.json",
-      "sha256": "b2ea60877b628d6b0aa1944f14b2a5d63d14638fffed30516a6fac431898a585"
+      "path": "evidence/reviewer_path_release_r4_20261004.json",
+      "sha256": "dcf122c08924dae94a80aa8a8c562d1dd4e4690bd0ae7ecc8c551c8a55206bbe"
     }
   },
   "current_technical_report": {
-    "path": "evidence/current_technical_report_r3_20261004.json",
-    "sha256": "f9a50b2fa0ea5de0e831b66b338de4143bb538499056ba7428e4dffef1db52f2",
+    "path": "evidence/current_technical_report_r4_20261004.json",
+    "sha256": "8179b404fca98bc7117fecbab352db4f4c339ddae04fb7f6a560ff8961ee9cdf",
     "role": "CURRENT_JUDGE_FACING_TECHNICAL_REPORT",
     "status": "PASS",
     "pages": 10,
-    "preflight_path": "evidence/release_preflight_portable_quickstart_final2_20261004.json",
-    "preflight_sha256": "9c0913235ee5b81aafc234581d7beea6c0aa5352b6ca346e3fc69f0263177d3b",
+    "preflight_path": "evidence/release_preflight_report_sync_pass1_20261004.json",
+    "preflight_sha256": "d2ca6de2f405324094a9c7c79127d8da92c1ea72bdd11f7d1e2d7fcd2a745a96",
     "preflight_status": "PASS",
-    "preflight_response_free_tests": 157,
+    "preflight_response_free_tests": 168,
     "historical_submitted_pdf_replaced": false,
     "accepted_kaggle_entry_changed": false,
     "biological_accuracy_result_created": false
@@ -103,10 +103,10 @@
     "official_competition_score": null
   },
   "current_release_preflight": {
-    "path": "evidence/release_preflight_cross_patient_final_20261004.json",
-    "sha256": "38243df32862ff096a656e8268bc2482341aa8656e4d5d002caa3a43f6293140",
-    "predecessor_path": "evidence/release_preflight_gate_hardening_final_20261004.json",
-    "predecessor_sha256": "922c70f61264ffaf2be549916d3abccd6a79f146ac147d5f6f7e885e354d7ac1",
+    "path": "evidence/release_preflight_report_sync_pass1_20261004.json",
+    "sha256": "d2ca6de2f405324094a9c7c79127d8da92c1ea72bdd11f7d1e2d7fcd2a745a96",
+    "predecessor_path": "evidence/release_preflight_cross_patient_final_20261004.json",
+    "predecessor_sha256": "38243df32862ff096a656e8268bc2482341aa8656e4d5d002caa3a43f6293140",
     "schema": "dosepilot.current_release_preflight.v1",
     "status": "PASS",
     "check_count": 14,

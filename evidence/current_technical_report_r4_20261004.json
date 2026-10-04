@@ -1,0 +1,60 @@
+{
+  "schema": "dosepilot.current_technical_report_release.v4",
+  "status": "PASS",
+  "as_of_date": "2026-10-04",
+  "role": "CURRENT_JUDGE_FACING_TECHNICAL_REPORT",
+  "predecessor": {
+    "path": "evidence/current_technical_report_r3_20261004.json",
+    "sha256": "f9a50b2fa0ea5de0e831b66b338de4143bb538499056ba7428e4dffef1db52f2",
+    "preserved_unchanged": true
+  },
+  "supersedes_reason": "Adds the prespecified rejected cross-patient-bandwidth result and synchronizes the response-free verification count from 157 to 168 without changing the incumbent model or accepted Kaggle entry.",
+  "entrypoint": {
+    "path": "CURRENT_TECHNICAL_REPORT.md",
+    "sha256": "403a97c8fa2e346d6eb277207897f14be3300b5318703fdafe548a0c99566abe"
+  },
+  "source": {
+    "path": "docs/DosePilot_Technical_Report_Current.md",
+    "sha256": "5ef2f04aa4eb1be35ca6078b2cc5ca9b0f10c512a79d4de64d2fc47dd8df04e8"
+  },
+  "pdf": {
+    "path": "docs/DosePilot_Technical_Report_Current.pdf",
+    "sha256": "5e0f8a64aa6472ec8814dc999518045d31d95da4168b65e248c5440d52c4848d",
+    "bytes": 90701,
+    "pages": 10,
+    "page_size": "A4",
+    "blank_pages": 0,
+    "visual_review": "PASS"
+  },
+  "renderer": {
+    "path": "tools/build_current_report.py",
+    "sha256": "4befa4b36ca171f833662d9544510ec971a202b28b7d31ff593e256f1158889d",
+    "engine": "ReportLab",
+    "invariant_output": true,
+    "two_consecutive_builds_byte_identical": true
+  },
+  "claim_checks": {
+    "bandwidth_successor_mse": 0.0010582750420801538,
+    "bandwidth_point_estimate_post_selection": true,
+    "ab_expected_loss_uniform_assignment": true,
+    "cross_patient_bandwidth_decision": "REJECT_RETAIN_BANDWIDTH07",
+    "cross_patient_bandwidth_mse": 0.0010574875414830203,
+    "cross_patient_bandwidth_fold_wins": 4,
+    "cross_patient_bandwidth_target_regressions": 9,
+    "protected22_primary": "NOT_ESTIMABLE",
+    "release_preflight_tests": 168,
+    "release_preflight_stages": 14,
+    "repeated_adaptive_development_disclosed": true,
+    "adverse_target_slices_disclosed": true,
+    "prospective_ooc_experiment_claimed": false,
+    "official_competition_score": null
+  },
+  "historical_submitted_pdf": {
+    "path": "docs/DosePilot_Technical_Report_Public.pdf",
+    "sha256": "14361cb6ad867e729be138e68d27cda4d1fca73df4339ea0649c510454b7d32f",
+    "replaced": false
+  },
+  "private_or_protected_inputs_read": false,
+  "biological_accuracy_result_created": false,
+  "accepted_kaggle_entry_changed": false
+}

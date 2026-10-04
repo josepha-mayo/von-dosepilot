@@ -74,6 +74,7 @@ See [docs/TARGET_DEFINITIONS.md](docs/TARGET_DEFINITIONS.md).
 The project deliberately preserves negative results and failure modes.
 
 - bandwidth 1.4: rejected;
+- cross-patient median bandwidth: rejected despite a 0.0744% lower point estimate because only 4/5 folds improved;
 - residual-alignment reweighting: rejected;
 - multioutput acquisition sweep: rejected;
 - iterated additive correction: rejected;
@@ -125,7 +126,7 @@ These commands require no protected cohort responses.
 
     python study/audits/release_preflight_current.py --output release_preflight.json
 
-The current additive runner preserves the historical frozen-schedule preflight and adds endpoint-definition, Kaggle-link-portability and current-quickstart checks. The bound public receipt records **14/14 stages and 157 response-free tests passed**; three runner-contract tests passed separately.
+The current additive runner preserves the historical frozen-schedule preflight and adds endpoint-definition, Kaggle-link-portability and current-quickstart checks. The bound public receipt records **14/14 stages and 168 response-free tests passed**; three runner-contract tests passed separately.
 
 ### Public TRAIN reconstruction and current-model replay
 
@@ -141,6 +142,7 @@ Useful machine-readable anchors:
 
 - [evidence/EVIDENCE_INDEX.json](evidence/EVIDENCE_INDEX.json)
 - [evidence/bandwidth_successor_20261003.json](evidence/bandwidth_successor_20261003.json)
+- [evidence/cross_patient_bandwidth_20261004.json](evidence/cross_patient_bandwidth_20261004.json)
 - [evidence/finalist_audit_manifest_20261003.json](evidence/finalist_audit_manifest_20261003.json)
 - [evidence/target_definitions_release_20261003.json](evidence/target_definitions_release_20261003.json)
 - [evidence/frozen_ooc_execution_schedule_20261003.json](evidence/frozen_ooc_execution_schedule_20261003.json)

@@ -31,7 +31,7 @@ PINNED_RECEIPTS = {
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
     "frozen_ooc_release_binding": "44615ba617c19d1da66dfcd6eb6dad2705e71f9b3a8a7e3f5e10751e9e4aa4fc",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
-    "reviewer_path_release": "b2ea60877b628d6b0aa1944f14b2a5d63d14638fffed30516a6fac431898a585",
+    "reviewer_path_release": "dcf122c08924dae94a80aa8a8c562d1dd4e4690bd0ae7ecc8c551c8a55206bbe",
 }
 
 PINNED_DOCUMENTS = {
@@ -39,7 +39,7 @@ PINNED_DOCUMENTS = {
     "docs/KAGGLE_WRITEUP.md": "f3de611b5bc3bf951a6f0766f7f087f399c58d3dadc35350845447440b988d3d",
 }
 
-CURRENT_REPORT_RECEIPT_SHA256 = "f9a50b2fa0ea5de0e831b66b338de4143bb538499056ba7428e4dffef1db52f2"
+CURRENT_REPORT_RECEIPT_SHA256 = "8179b404fca98bc7117fecbab352db4f4c339ddae04fb7f6a560ff8961ee9cdf"
 
 
 def load(path):
@@ -111,7 +111,7 @@ def verify(root, enforce_pins=True):
     report_receipt_path = root / report_index["path"]
     same(sha(report_receipt_path), report_index["sha256"], "CURRENT_REPORT_RECEIPT_HASH")
     current_report = load(report_receipt_path)
-    same(current_report["schema"], "dosepilot.current_technical_report_release.v3", "CURRENT_REPORT_SCHEMA")
+    same(current_report["schema"], "dosepilot.current_technical_report_release.v4", "CURRENT_REPORT_SCHEMA")
     same(current_report["status"], "PASS", "CURRENT_REPORT_STATUS")
     same(current_report["role"], "CURRENT_JUDGE_FACING_TECHNICAL_REPORT", "CURRENT_REPORT_ROLE")
     report_predecessor = current_report["predecessor"]
@@ -142,7 +142,11 @@ def verify(root, enforce_pins=True):
     claim_checks = current_report["claim_checks"]
     same(claim_checks["bandwidth_successor_mse"], 0.0010582750420801538, "CURRENT_REPORT_MSE", 1e-15)
     same(claim_checks["protected22_primary"], "NOT_ESTIMABLE", "CURRENT_REPORT_PROTECTED22")
-    same(claim_checks["release_preflight_tests"], 157, "CURRENT_REPORT_PREFLIGHT")
+    same(claim_checks["cross_patient_bandwidth_decision"], "REJECT_RETAIN_BANDWIDTH07", "CURRENT_REPORT_CPM_DECISION")
+    same(claim_checks["cross_patient_bandwidth_mse"], 0.0010574875414830203, "CURRENT_REPORT_CPM_MSE", 1e-15)
+    same(claim_checks["cross_patient_bandwidth_fold_wins"], 4, "CURRENT_REPORT_CPM_FOLDS")
+    same(claim_checks["cross_patient_bandwidth_target_regressions"], 9, "CURRENT_REPORT_CPM_TARGETS")
+    same(claim_checks["release_preflight_tests"], 168, "CURRENT_REPORT_PREFLIGHT")
     same(claim_checks["release_preflight_stages"], 14, "CURRENT_REPORT_PREFLIGHT_STAGES")
     same(claim_checks["bandwidth_point_estimate_post_selection"], True, "CURRENT_REPORT_SELECTION_DISCLOSURE")
     same(claim_checks["ab_expected_loss_uniform_assignment"], True, "CURRENT_REPORT_AB_ESTIMAND")
@@ -213,7 +217,7 @@ def verify(root, enforce_pins=True):
         same(target_index[key], receipt_value, "INDEX_TARGET_DEFINITIONS_" + key.upper())
 
     reviewer_release = receipts["reviewer_path_release"]
-    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v3", "REVIEWER_PATH_SCHEMA")
+    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v4", "REVIEWER_PATH_SCHEMA")
     same(reviewer_release["status"], "PASS", "REVIEWER_PATH_STATUS")
     same(reviewer_release["role"], "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY", "REVIEWER_PATH_ROLE")
     reviewer_predecessor = reviewer_release["predecessor"]
@@ -230,6 +234,7 @@ def verify(root, enforce_pins=True):
         "10/24 target-average errors regress",
         "A/B prediction vectors are never combined into a 128-well predictor",
         "Protected22/Lib2 is exposed",
+        "cross-patient median bandwidth",
         "not an official competition score",
     ):
         if phrase not in reviewer_text:
@@ -274,6 +279,7 @@ def verify(root, enforce_pins=True):
         "target_definition_linked",
         "current_report_linked",
         "negative_results_linked",
+        "cross_patient_negative_linked",
         "prospective_boundary_linked",
         "prepared_writeup_fast_lane_linked",
         "prepared_writeup_links_portable",

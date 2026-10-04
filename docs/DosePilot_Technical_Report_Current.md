@@ -44,7 +44,7 @@ The bandwidth-0.7 additive successor reaches patient-balanced MSE 0.001058275042
 
 For each fixed bandwidth, the residual spectral option is selected inside the inner patient folds. Bandwidth 0.7 itself was selected from the prefrozen {1.0, 0.7, 1.4} menu after comparing reused outer-fold development results. The displayed 0.7 MSE is therefore a post-selection development point estimate, not an unbiased nested estimate of a bandwidth-selecting procedure.
 
-Public-input replay rebuilds the result from the hash-bound public source route. A separate runtime checks model kind, bandwidth, plan, construction anchor, sample/run/drug/dose/plate/well identity, and missingness. The response-free current-release preflight passes 14 stages and 157 tests.
+Public-input replay rebuilds the result from the hash-bound public source route. A separate runtime checks model kind, bandwidth, plan, construction anchor, sample/run/drug/dose/plate/well identity, and missingness. The response-free current-release preflight passes 14 stages and 168 tests.
 
 ## What is not demonstrated
 
@@ -173,6 +173,9 @@ The descriptive paired-patient interval for current-minus-additive mean loss is 
 | Iterated additive, two cycles | 0.0010693535 | incumbent screen failed |
 | A/B consistency regularization | 0.00108007+ | incumbent screen failed |
 | Additive linear plus Matern 3/2 | 0.001146185234 | 0.116% worse than control |
+| Cross-patient median bandwidth | 0.001057487541 | 4/5 folds; incumbent retained |
+
+The cross-patient bandwidth candidate produced a 0.0744% lower point estimate and a slightly lower p90 than the incumbent, but failed the prefrozen all-five-fold clause, regressed nine target means, and had a descriptive paired-patient interval crossing zero. It was rejected without a retry, fold splice, target splice, or alternate multiplier.
 
 These failures matter: the project did not promote the literal lowest decimal from every exploratory branch, did not splice targets using outer-fold outcomes, and did not retune rejected families to erase adverse evidence.
 
@@ -215,7 +218,7 @@ The ledger records model, plan, construction, commitment, measurement, and sourc
 | Durable-runtime tests | 65 |
 | Current-model adapter tests within that suite | 10 |
 | Acquisition tests | 9 |
-| Full response-free release preflight | 14 stages / 157 tests |
+| Full response-free release preflight | 14 stages / 168 tests |
 
 The fictional lifecycle demonstration makes six CLI calls and verifies plan commitment, incomplete-primary rejection, explicit baseline recovery, changed-reading rejection, complete prediction, and exact export recovery. It uses seeded fictional parameters and measurements, not patient data.
 
