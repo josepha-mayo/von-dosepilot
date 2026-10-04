@@ -81,8 +81,9 @@ The project deliberately preserves negative results and failure modes.
 - multioutput acquisition sweep: rejected;
 - iterated additive correction: rejected;
 - A/B consistency regularization: rejected;
-- within-drug Mahalanobis geometry: rejected;
-- phenotype-space kernel mixing: rejected.
+- additional private exploratory branches are not used as public evidence unless they are bound to a public aggregate receipt.
+
+The curated development registry is intentionally not claimed to be an exhaustive history. A method name mentioned in private development notes is not counted as evidence here unless a public receipt and decision are published.
 
 Synthetic measurement stress testing also found a real weakness: coherent **±5% single-plate scaling** increases MSE much more than small independent per-well noise. That is why the prospective validation contract requires a prespecified plate-calibration/QC rule.
 
