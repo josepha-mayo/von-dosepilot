@@ -9,7 +9,7 @@ from verify_live_demo_withholding import WithholdingVerificationError, verify
 
 
 ROOT = Path(__file__).resolve().parents[2]
-RECEIPT = "evidence/live_demo_withholding_r2_20261004.json"
+RECEIPT = "evidence/live_demo_withholding_r3_20261004.json"
 
 
 class LiveDemoWithholdingTests(unittest.TestCase):
@@ -18,9 +18,7 @@ class LiveDemoWithholdingTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         receipt = json.loads((ROOT / RECEIPT).read_text())
         required = {
-            "evidence/EVIDENCE_INDEX.json",
-            RECEIPT,
-            receipt["predecessor"]["path"],
+            "evidence/EVIDENCE_INDEX.json", RECEIPT, receipt["predecessor"]["path"],
             *receipt["artifact_sha256"],
         }
         for relative in required:
@@ -45,34 +43,45 @@ class LiveDemoWithholdingTests(unittest.TestCase):
         self.assertEqual(verify(self.root)["status"], "PASS")
 
     def test_rejects_predecessor_tampering(self):
-        path = self.root / "evidence/live_demo_withholding_20261004.json"
+        path = self.root / "evidence/live_demo_withholding_r2_20261004.json"
         path.write_text(path.read_text() + " ")
         with self.assertRaises(WithholdingVerificationError):
             verify(self.root)
 
-    def test_rejects_plan_hash_tampering(self):
-        self.mutate_receipt(lambda x: x["trace_contract"].__setitem__("plan_sha256", "0" * 64))
+    def test_rejects_syntactically_valid_wrong_baseline_digest(self):
+        self.mutate_receipt(lambda x: x["trace_contract"].__setitem__("baseline_result_sha256", "1" * 64))
         with self.assertRaises(WithholdingVerificationError):
             verify(self.root)
 
-    def test_rejects_precompletion_measurement_claim(self):
-        self.mutate_receipt(lambda x: x["trace_contract"].__setitem__("precompletion_measurement_hash_withheld", False))
+    def test_rejects_browser_digest_disagreement(self):
+        self.mutate_receipt(lambda x: x["production_browser_verification"].__setitem__("baseline_result_sha256", "2" * 64))
         with self.assertRaises(WithholdingVerificationError):
             verify(self.root)
 
-    def test_rejects_baseline_count_inflation(self):
-        self.mutate_receipt(lambda x: x["production_browser_verification"].__setitem__("baseline_numeric_outputs", 24))
+    def test_rejects_missing_null_semantics_rewrite(self):
+        self.mutate_receipt(lambda x: x["production_browser_verification"].__setitem__("missing_measurement_sha256", "WITHHELD"))
         with self.assertRaises(WithholdingVerificationError):
             verify(self.root)
 
-    def test_rejects_nonready_deployment(self):
-        self.mutate_receipt(lambda x: x["production_deployment"].__setitem__("state", "building"))
+    def test_rejects_false_full_record_claim(self):
+        self.mutate_receipt(lambda x: x["local_state_verification"].__setitem__("full_record_inspectable", False))
         with self.assertRaises(WithholdingVerificationError):
             verify(self.root)
 
-    def test_rejects_app_drift(self):
-        with (self.root / "site/app.js").open("a") as handle:
+    def test_rejects_public_schedule_drift(self):
+        with (self.root / "site/frozen_schedule.js").open("a") as handle:
             handle.write("\n// drift\n")
+        with self.assertRaises(WithholdingVerificationError):
+            verify(self.root)
+
+    def test_rejects_harness_drift(self):
+        with (self.root / "site/test_app_state.js").open("a") as handle:
+            handle.write("\n// drift\n")
+        with self.assertRaises(WithholdingVerificationError):
+            verify(self.root)
+
+    def test_rejects_hidden_predecessor_defect(self):
+        self.mutate_receipt(lambda x: x["predecessor"].__setitem__("baseline_digest_record_correct", True))
         with self.assertRaises(WithholdingVerificationError):
             verify(self.root)
 
