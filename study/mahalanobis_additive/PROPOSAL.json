@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_BEFORE_FIT",
+  "family_id": "mahalanobis_group_additive",
+  "family_fingerprint": "bandwidth07-additive-within-drug-correlation-mahalanobis-rho0.5-trace-normalized",
+  "falsifiable_hypothesis": "A fitting-only, response-free 50%-shrunk within-drug correlation Mahalanobis geometry will improve the bandwidth-0.7 additive residual kernel while preserving the exact 64-well acquisition and all evaluation semantics.",
+  "protocol_path": "study/mahalanobis_additive/PROTOCOL.json",
+  "protocol_sha256": "cea2aa7296ded78e9c57d46ceadf1fe37015257f83808d1cfd9805d9b2f78b1e",
+  "comparator_family_id": "bandwidth07_additive",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across the two separately costed 64-well orientations; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": false,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false
+}
