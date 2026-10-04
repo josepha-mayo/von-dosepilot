@@ -44,8 +44,8 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r6_20261004.json",
-      "sha256": "44615ba617c19d1da66dfcd6eb6dad2705e71f9b3a8a7e3f5e10751e9e4aa4fc"
+      "path": "evidence/frozen_ooc_release_binding_r7_20261004.json",
+      "sha256": "cd503cc69c8026d60c52a85e5e5970c2d66f6ecbba38579b4a6551cca607b1c3"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
@@ -62,8 +62,8 @@
     "role": "CURRENT_JUDGE_FACING_TECHNICAL_REPORT",
     "status": "PASS",
     "pages": 10,
-    "preflight_path": "evidence/release_preflight_report_sync_pass1_20261004.json",
-    "preflight_sha256": "d2ca6de2f405324094a9c7c79127d8da92c1ea72bdd11f7d1e2d7fcd2a745a96",
+    "preflight_path": "evidence/release_preflight_site_cpm_sync_pass1_20261004.json",
+    "preflight_sha256": "3746dc0fb82e9aa9b8d563e45b935f5701f48b1cdc4ef8401ecf3c06bc46ba45",
     "preflight_status": "PASS",
     "preflight_response_free_tests": 168,
     "historical_submitted_pdf_replaced": false,
@@ -103,10 +103,10 @@
     "official_competition_score": null
   },
   "current_release_preflight": {
-    "path": "evidence/release_preflight_report_sync_pass1_20261004.json",
-    "sha256": "d2ca6de2f405324094a9c7c79127d8da92c1ea72bdd11f7d1e2d7fcd2a745a96",
-    "predecessor_path": "evidence/release_preflight_cross_patient_final_20261004.json",
-    "predecessor_sha256": "38243df32862ff096a656e8268bc2482341aa8656e4d5d002caa3a43f6293140",
+    "path": "evidence/release_preflight_site_cpm_sync_pass1_20261004.json",
+    "sha256": "3746dc0fb82e9aa9b8d563e45b935f5701f48b1cdc4ef8401ecf3c06bc46ba45",
+    "predecessor_path": "evidence/release_preflight_report_sync_pass1_20261004.json",
+    "predecessor_sha256": "d2ca6de2f405324094a9c7c79127d8da92c1ea72bdd11f7d1e2d7fcd2a745a96",
     "schema": "dosepilot.current_release_preflight.v1",
     "status": "PASS",
     "check_count": 14,
@@ -352,6 +352,8 @@
     "transport_escape_literals": 0,
     "bandwidth_post_selection_disclosed": true,
     "overstated_search_label_absent": true,
+    "cross_patient_negative_disclosed": true,
+    "cross_patient_negative_linked": true,
     "promotion_gate_predicates_derived": true,
     "orientation_vector_validated": true,
     "additive_p90_crosschecked": true,

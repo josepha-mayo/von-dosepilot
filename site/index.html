@@ -123,8 +123,9 @@
         </article>
         <article class="evidence-card">
           <h3>Failure is part of the record</h3>
-          <p>New multioutput dose selection was tested and rejected: <b>0.0010665434</b>, only 21/59 patient wins versus the incumbent, and worse p90 error.</p>
-          <p>The selector retained the existing acquisition in every outer fold.</p>
+          <p>The cross-patient median-bandwidth challenger reached a slightly lower mean, <b>0.0010574875</b>, but only 4/5 outer folds improved. Its paired-patient interval crossed zero and nine target means regressed.</p>
+          <p>The prefrozen gate was enforced: the candidate was rejected and bandwidth-0.7 remains the incumbent.</p>
+          <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/CROSS_PATIENT_BANDWIDTH.md" target="_blank" rel="noreferrer">Negative result ↗</a>
         </article>
         <article class="evidence-card">
           <h3>Operational checks</h3>
@@ -177,6 +178,12 @@
           <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/BANDWIDTH_SUCCESSOR.md" target="_blank" rel="noreferrer">Evidence ↗</a>
         </article>
         <article class="trial">
+          <div class="trial-top"><span class="trial-badge reject">REJECT</span><code>0.0010574875</code></div>
+          <h3>Cross-patient median bandwidth</h3>
+          <p>Mean MSE and p90 improved slightly, but only 4/5 outer folds improved, nine target means regressed, and the descriptive patient interval crossed zero. The fixed gate retained bandwidth-0.7.</p>
+          <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/CROSS_PATIENT_BANDWIDTH.md" target="_blank" rel="noreferrer">Negative result ↗</a>
+        </article>
+        <article class="trial">
           <div class="trial-top"><span class="trial-badge rule">PREVIOUS</span><code>0.0010605527</code></div>
           <h3>Additive drug-group kernel</h3>
           <p>Former incumbent. The bandwidth successor improves 38/59 patient means, all five outer folds, and p90 without changing the physical plan.</p>
@@ -213,7 +220,7 @@
           <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/evidence/EVIDENCE_INDEX.json" target="_blank" rel="noreferrer">Evidence index ↗</a>
         </article>
       </div>
-      <div class="ledger-note">This site summarizes public receipts. Development hypotheses continued after these records, but unpublished local experiments are not presented as validated results here.</div>
+      <div class="ledger-note">This site summarizes public, evidence-bound receipts. Unpublished local experiments are not presented as validated results here.</div>
     </section>
 
     <section class="section wrap" id="limits">

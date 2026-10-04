@@ -105,6 +105,12 @@ def verify(root,repo):
     )
     require(selection_disclosure in site_html,'SITE_SELECTION_DISCLOSURE')
     require('NO CHERRY-PICKING' not in site_html,'SITE_OVERSTATED_SEARCH_LABEL')
+    cpm_link='https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/CROSS_PATIENT_BANDWIDTH.md'
+    require('Cross-patient median bandwidth' in site_html,'SITE_CPM_TITLE')
+    require('0.0010574875' in site_html,'SITE_CPM_MSE')
+    require('only 4/5 outer folds improved' in site_html,'SITE_CPM_FOLD_FAILURE')
+    require('bandwidth-0.7 remains the incumbent' in site_html,'SITE_CPM_INCUMBENT')
+    require(cpm_link in site_html,'SITE_CPM_LINK')
 
     grouped={}
     for ra,rb in zip(a,b):
@@ -124,6 +130,8 @@ def verify(root,repo):
         'manifest_table_exact':True,'transport_escape_literals':0,
         'bandwidth_post_selection_disclosed':True,
         'overstated_search_label_absent':True,
+        'cross_patient_negative_disclosed':True,
+        'cross_patient_negative_linked':True,
         'public_surface_sha256':{
             'site/frozen_schedule.js':sha(repo/'site/frozen_schedule.js'),
             'site/index.html':sha(repo/'site/index.html'),

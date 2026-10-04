@@ -29,7 +29,7 @@ PINNED_RECEIPTS = {
     "bandwidth_successor": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758",
     "cross_patient_bandwidth": "3293f76dfc7e48f81087d971864066dc4b6c8d257b4d9fdc8d464b8396562caf",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
-    "frozen_ooc_release_binding": "44615ba617c19d1da66dfcd6eb6dad2705e71f9b3a8a7e3f5e10751e9e4aa4fc",
+    "frozen_ooc_release_binding": "cd503cc69c8026d60c52a85e5e5970c2d66f6ecbba38579b4a6551cca607b1c3",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
     "reviewer_path_release": "dcf122c08924dae94a80aa8a8c562d1dd4e4690bd0ae7ecc8c551c8a55206bbe",
 }
@@ -640,7 +640,7 @@ def verify(root, enforce_pins=True):
     same(current_lifecycle_index["accepted_kaggle_entry_changed"], False, "INDEX_BANDWIDTH_LIFECYCLE_NO_ENTRY_CHANGE")
     same(current_lifecycle_index["official_competition_score"], None, "INDEX_BANDWIDTH_LIFECYCLE_NO_SCORE")
 
-    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v6", "FROZEN_SCHEDULE_SCHEMA")
+    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v7", "FROZEN_SCHEDULE_SCHEMA")
     same(frozen_schedule["status"], "PASS", "FROZEN_SCHEDULE_STATUS")
     same(frozen_schedule["role"], "RESPONSE_FREE_ENGINEERING_AND_RELEASE_EVIDENCE", "FROZEN_SCHEDULE_ROLE")
     frozen_predecessor = frozen_schedule["predecessor"]
@@ -665,6 +665,8 @@ def verify(root, enforce_pins=True):
     same(schedule_verification["prepared_kaggle_relative_links"], 0, "FROZEN_SCHEDULE_KAGGLE_LINKS")
     same(schedule_verification["bandwidth_post_selection_disclosed"], True, "FROZEN_SCHEDULE_SELECTION_DISCLOSURE")
     same(schedule_verification["overstated_search_label_absent"], True, "FROZEN_SCHEDULE_SEARCH_LABEL")
+    same(schedule_verification["cross_patient_negative_disclosed"], True, "FROZEN_SCHEDULE_CPM_DISCLOSURE")
+    same(schedule_verification["cross_patient_negative_linked"], True, "FROZEN_SCHEDULE_CPM_LINK")
     for key in ("promotion_gate_predicates_derived", "orientation_vector_validated", "additive_p90_crosschecked", "historical_fold_counts_pinned"):
         same(schedule_verification[key], True, "FROZEN_SCHEDULE_GATE_HARDENING: " + key)
     same(schedule_verification["new_tamper_tests"], 7, "FROZEN_SCHEDULE_TESTS")
@@ -678,7 +680,7 @@ def verify(root, enforce_pins=True):
     schedule_index = index["frozen_ooc_release_binding"]
     for key in ("role", "status"):
         same(schedule_index[key], frozen_schedule[key], "INDEX_FROZEN_SCHEDULE_" + key.upper())
-    for key in ("treatment_wells_per_orientation", "plate_counts_per_orientation", "targets", "two_dose_targets", "three_dose_targets", "ab_same_treatments", "ab_complementary_plate_assignment", "public_schedule_rows", "public_site_schedule_exact", "manifest_table_exact", "transport_escape_literals", "bandwidth_post_selection_disclosed", "overstated_search_label_absent", "promotion_gate_predicates_derived", "orientation_vector_validated", "additive_p90_crosschecked", "historical_fold_counts_pinned", "new_tamper_tests_passed", "release_preflight_check_count", "orchestrated_response_free_tests"):
+    for key in ("treatment_wells_per_orientation", "plate_counts_per_orientation", "targets", "two_dose_targets", "three_dose_targets", "ab_same_treatments", "ab_complementary_plate_assignment", "public_schedule_rows", "public_site_schedule_exact", "manifest_table_exact", "transport_escape_literals", "bandwidth_post_selection_disclosed", "overstated_search_label_absent", "cross_patient_negative_disclosed", "cross_patient_negative_linked", "promotion_gate_predicates_derived", "orientation_vector_validated", "additive_p90_crosschecked", "historical_fold_counts_pinned", "new_tamper_tests_passed", "release_preflight_check_count", "orchestrated_response_free_tests"):
         same(schedule_index[key], schedule_verification[key], "INDEX_FROZEN_SCHEDULE_" + key.upper())
     for key in ("prospective_experiment_executed", "biological_validation_created", "protected_response_access", "private_patient_rows_read", "accepted_kaggle_entry_changed", "official_competition_score"):
         same(schedule_index[key], frozen_schedule[key], "INDEX_FROZEN_SCHEDULE_BOUNDARY_" + key.upper())

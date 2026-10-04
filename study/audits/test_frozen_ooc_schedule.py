@@ -67,6 +67,8 @@ class FrozenOocScheduleTests(unittest.TestCase):
         self.assertEqual(result["transport_escape_literals"], 0)
         self.assertTrue(result["bandwidth_post_selection_disclosed"])
         self.assertTrue(result["overstated_search_label_absent"])
+        self.assertTrue(result["cross_patient_negative_disclosed"])
+        self.assertTrue(result["cross_patient_negative_linked"])
 
     def test_site_selection_disclosure_is_required(self):
         path = self.repo / "site/index.html"
