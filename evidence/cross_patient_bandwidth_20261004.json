@@ -1,0 +1,173 @@
+{
+  "schema": "dosepilot.cross_patient_bandwidth.public_aggregate.v1",
+  "as_of_utc": "2026-10-04T02:16:00Z",
+  "role": "REPEATED_ADAPTIVE_DEVELOPMENT_NEGATIVE_RESULT",
+  "status": "COMPLETE",
+  "decision": "REJECT_RETAIN_BANDWIDTH07",
+  "hypothesis": "A fitting-only cross-patient weighted-median normalization of each drug group's squared feature distance may improve the fixed bandwidth-0.7 additive residual kernel without changing acquisition or physical budget.",
+  "frozen_base_commit": "b80ca4c6668adfa2a82173aed1dc6cd8119bdd3c",
+  "cohort": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "physical_wells_per_alternative": 64,
+    "per_plate": 32
+  },
+  "method": {
+    "geometry_uses_outcomes": false,
+    "pair_universe": "unordered fitting-row pairs from different whole patients",
+    "pair_weight": "product of equal-patient stacked-row weights",
+    "distance": "unnormalized squared Euclidean distance within each drug group",
+    "weighted_median": "first sorted distance whose cumulative positive pair weight reaches at least half total pair weight",
+    "bandwidth_formula": "0.7 * sqrt(weighted_median_squared_distance / theoretical_chi_square_median_for_group_dimension)",
+    "candidate_outer_bandwidth_minimum": 0.34767951881381237,
+    "candidate_outer_bandwidth_median": 0.6437896106824982,
+    "candidate_outer_bandwidth_maximum": 0.7148560300274116,
+    "geometry_menu_size": 1,
+    "spectral_option_count": 10,
+    "candidate_and_incumbent_plans_identical": true,
+    "average_orientation_losses_not_predictions": true
+  },
+  "metrics": {
+    "cross_patient_median": {
+      "mse": 0.0010574875414830203,
+      "p90_rmse": 0.03787340752388308,
+      "fold_mse": [
+        0.0013921651932869868,
+        0.0008916224116161949,
+        0.001062296320822324,
+        0.000808785116756861,
+        0.0011393942216099818
+      ],
+      "orientation_mse": [
+        0.0011037287016921113,
+        0.001011246381273929
+      ]
+    },
+    "bandwidth07": {
+      "mse": 0.0010582750420801538,
+      "p90_rmse": 0.03789428530872024,
+      "fold_mse": [
+        0.0013921291183112416,
+        0.0008933246324477287,
+        0.0010633000716809172,
+        0.0008098063511711599,
+        0.0011395913999451377
+      ],
+      "orientation_mse": [
+        0.0011047521616732163,
+        0.0010117979224870915
+      ]
+    },
+    "additive": {
+      "mse": 0.001060552730112811
+    },
+    "r13": {
+      "mse": 0.001144858681382854
+    },
+    "r18": {
+      "mse": 0.0011414048112341991
+    }
+  },
+  "candidate_vs_bandwidth07": {
+    "relative_gain": 0.000744136038194454,
+    "mse_reduction_percent": 0.0744136038194454,
+    "patient_wins": 33,
+    "patient_losses": 26,
+    "patient_ties": 0,
+    "fold_wins": 4,
+    "p90_nonworse": true,
+    "target_regressions": 9,
+    "maximum_absolute_prediction_difference": 0.0022773959919669684,
+    "prediction_equivalent": false,
+    "descriptive_delta_ci95": [
+      -1.6537165733331406e-6,
+      9.66545554055545e-8
+    ],
+    "gate": {
+      "strictly_lower_mse": true,
+      "patient_wins_at_least_30": true,
+      "all_five_folds_favorable": false,
+      "p90_nonworse": true,
+      "not_prediction_equivalent": true
+    },
+    "passes_all": false
+  },
+  "failed_promotion_clause": "ALL_FIVE_FOLDS_FAVORABLE_VS_BANDWIDTH07",
+  "historical_gate": {
+    "r13": {
+      "relative_gain": 0.0763160915147183,
+      "patient_wins": 49,
+      "patient_losses": 10,
+      "patient_ties": 0,
+      "fold_wins": 5,
+      "p90_nonworse": true,
+      "both_orientation_mse_below_reference_expected_mse": true,
+      "passes_all": true
+    },
+    "r18": {
+      "relative_gain": 0.07352104084828526,
+      "patient_wins": 47,
+      "patient_losses": 12,
+      "patient_ties": 0,
+      "fold_wins": 5,
+      "p90_nonworse": true,
+      "both_orientation_mse_below_reference_expected_mse": true,
+      "passes_all": true
+    },
+    "promotion_requires_immediate_and_both_historical_gates": true
+  },
+  "regressing_targets_vs_bandwidth07": [
+    "Afatinib",
+    "Atorvastatin",
+    "Bemcentinib",
+    "Idasanutlin",
+    "Lapatinib",
+    "Luminespib",
+    "Napabucasin",
+    "Regorafenib",
+    "SN-38"
+  ],
+  "selected_spectral_options_by_outer_fold": [
+    [0.3, 1.0],
+    [0.1, 1.0],
+    [0.1, 1.0],
+    [0.1, 1.0],
+    [0.1, 1.0]
+  ],
+  "verification": {
+    "status": "PASS",
+    "fit_routine_called": false,
+    "outer_models_reconstructed": 10,
+    "inner_selections_recomputed": 15,
+    "group_bandwidth_vectors_recomputed": 5,
+    "prediction_sha256": "fb79cb2b4c7bfa7c8c604a0d0a56e420fa576e56210a2e2fe81091c2d5916bfe"
+  },
+  "descriptive_bootstrap": {
+    "definition": "candidate minus bandwidth-0.7 patient-balanced MSE; negative favors candidate",
+    "point": -7.875005971336458e-7,
+    "lower_2_5pct": -1.6537165733331406e-6,
+    "upper_97_5pct": 9.66545554055545e-8,
+    "replicates": 10000,
+    "seed": 20261004,
+    "selection_corrected": false
+  },
+  "exact_private_artifact_sha256": {
+    "FREEZE.json": "1a1c722abb63150318b94c107392deb9b2a19fc82906ff122876f36f9be9412d",
+    "RESULT.json": "0b3e62fb7dafcf8c7b599abb7064ad091be90ffc4274e72eae6392db1c5030eb",
+    "predictions_private.npz": "fb79cb2b4c7bfa7c8c604a0d0a56e420fa576e56210a2e2fe81091c2d5916bfe",
+    "PREDICTIONS_COMMITTED.json": "eee434578127243062e94bbbacde4c4dc55182edb07d9d574d73c70259c35d19",
+    "VERIFICATION.json": "64e71f0dc2ec255a2f0c1d81e06b8a13dea18fadd85ae94169ee769d78adc686"
+  },
+  "synthetic_tests_passed_before_fit": 15,
+  "repeated_adaptive_development": true,
+  "independent_validation": false,
+  "protected_response_access": false,
+  "original_workbook_opened": false,
+  "private_arrays_or_fitted_weights_published": false,
+  "accepted_kaggle_entry_changed": false,
+  "official_competition_score": null,
+  "automatic_retry": false
+}

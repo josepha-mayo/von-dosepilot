@@ -1,0 +1,92 @@
+{
+  "schema": "dosepilot.cross_patient_bandwidth.freeze.v1",
+  "state": "FROZEN_BEFORE_FIRST_LIB1_FIT",
+  "utc": "2026-10-04T02:14:43Z",
+  "base_public_commit": "b80ca4c6668adfa2a82173aed1dc6cd8119bdd3c",
+  "base_public_tree": "d8fd900fa8a46e411a446b8fd9c68065a919747a",
+  "hypothesis": "One response-free cross-patient weighted-median normalization per drug group may make the incumbent 0.7-local Gaussian geometry more comparable across the 24 fixed two/three-coordinate groups.",
+  "source_sha256": {
+    "study/cross_patient_bandwidth/PROTOCOL.md": "012b7f37f8fcabee675286987ad852619bcbc9e4c5f8b8147fa3e20dfb153619",
+    "study/cross_patient_bandwidth/median_bandwidth.py": "0fd74185951cbae848ec2b415d97aa8d993badcc16f476e79ad71c04f86ff239",
+    "study/cross_patient_bandwidth/run_study.py": "4410b6381aab528e9d9d6bd4846718859f6ba1f5c34941fa46c9b88b2650c025",
+    "study/cross_patient_bandwidth/verify_study.py": "183ad218d1c37f56195e17e75a35adb89a02539a49dcaca3af55d6b868099fd5",
+    "study/cross_patient_bandwidth/test_median_bandwidth.py": "3aa638f50b7bc0106043c2722fe48c47661786d7215eee926ecf67502166659a",
+    "study/cross_patient_bandwidth/test_study_contract.py": "e176c3bee042cf8c49d8d9754e4f6985ff489cc9894e32b2729caba80349a0f5"
+  },
+  "parent_source_sha256": {
+    "study/STUDY_LOCK.json": "8118b562b78b3f55866d6239a38280c942df2c7d81f0b7c4ce71ba0e39ce9ffc",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e",
+    "study/hybrid_residual/additive_kernel.py": "683004e39904c6648c0283395697c914903e78db60a7e98f90362dc8b2c49b1a",
+    "study/hybrid_residual/bandwidth_additive.py": "30723fbc8f6843c200891e14e5fb254e707298fa5514b668c4f005a4562edb30",
+    "study/hybrid_residual/kernel_spectral.py": "869bfc27cb72afe644f2e85ee5d255004e2afcf8b765b4cc56d8cd7d8927131e",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/TRAIN_CATALOG.json": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e"
+  },
+  "cache_sha256": "2ccd4995699417db72316c8f403095b8ef560f94913b0c8a80fe7429a2d0cbef",
+  "r18_sha256": "253998d20b9425c4ceade4269b94f4ed97cb7039ac5ec60838bb15794d47a6e2",
+  "cohort": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "treatment_wells_per_orientation": 64,
+    "wells_per_plate": 32,
+    "orientation_loss_weight": 0.5
+  },
+  "options": [
+    ["identity", 0.0],
+    [0.1, 0.1],
+    [0.1, 1.0],
+    [0.1, 10.0],
+    [0.3, 0.1],
+    [0.3, 1.0],
+    [0.3, 10.0],
+    [0.6, 0.1],
+    [0.6, 1.0],
+    [0.6, 10.0]
+  ],
+  "bandwidth_rule": {
+    "pair_universe": "unordered fitting-row pairs from different whole patients, including all cross-patient A/A, A/B, B/A and B/B combinations",
+    "pair_weight": "w_i*w_k",
+    "distance": "unnormalized squared Euclidean distance within one drug group",
+    "weighted_median": "first sorted distance whose cumulative positive pair weight is at least half total pair weight",
+    "reference_median_dimension_2": 2.772588722239781,
+    "reference_median_dimension_3": 4.731947768750675,
+    "anchor": 0.7,
+    "formula": "b_j=0.7*sqrt(median_squared_distance/reference_median[d_j])",
+    "minimum_allowed_median": 1e-12,
+    "fallback": null
+  },
+  "promotion_gate": {
+    "bandwidth07": {
+      "mse": "strictly_lower",
+      "patient_wins": 30,
+      "fold_wins": 5,
+      "p90": "nonworse"
+    },
+    "r13_and_r18": {
+      "relative_gain": 0.05,
+      "patient_wins": 40,
+      "fold_wins": 4,
+      "p90": "nonworse",
+      "both_orientations_below_reference_mse": true
+    },
+    "prediction_equivalence_atol": 1e-12
+  },
+  "bootstrap": {
+    "whole_patient_resamples": 10000,
+    "seed": 20261004,
+    "role": "descriptive_not_selection_corrected_not_a_gate"
+  },
+  "synthetic_tests_passed_before_freeze": 15,
+  "automatic_retry": false,
+  "private_train_kit_used": true,
+  "protected_response_access": false,
+  "lib2_access_authorized": false,
+  "independent_validation": false,
+  "accepted_kaggle_entry_change_authorized": false,
+  "official_competition_score": null
+}

@@ -27,6 +27,7 @@ PINNED_RECEIPTS = {
     "lifecycle_acquisition": "7dc4b086a5609d7ce7cefcbb17231bddbb029ae413c15fe734649f42b9c799a2",
     "aligned_additive": "fca4fff12f931caa9dbc4c70f5ebc05668a743f18f7fac0fa3e030a99581a550",
     "bandwidth_successor": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758",
+    "cross_patient_bandwidth": "3293f76dfc7e48f81087d971864066dc4b6c8d257b4d9fdc8d464b8396562caf",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
     "frozen_ooc_release_binding": "44615ba617c19d1da66dfcd6eb6dad2705e71f9b3a8a7e3f5e10751e9e4aa4fc",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
@@ -34,7 +35,7 @@ PINNED_RECEIPTS = {
 }
 
 PINNED_DOCUMENTS = {
-    "docs/EVIDENCE_LEDGER.md": "d393517b7733e8e2788cd63e6619175249a03e0a96aa0c71e2ecaaa05663147e",
+    "docs/EVIDENCE_LEDGER.md": "546687704ac35759fdf3f96aecafbc1db58050581f3339c05d33605e8ebeea44",
     "docs/KAGGLE_WRITEUP.md": "f3de611b5bc3bf951a6f0766f7f087f399c58d3dadc35350845447440b988d3d",
 }
 
@@ -321,6 +322,7 @@ def verify(root, enforce_pins=True):
     lifecycle = receipts["lifecycle_acquisition"]
     aligned = receipts["aligned_additive"]
     bandwidth = receipts["bandwidth_successor"]
+    cross_patient = receipts["cross_patient_bandwidth"]
     bandwidth_lifecycle = receipts["bandwidth_lifecycle"]
     frozen_schedule = receipts["frozen_ooc_release_binding"]
     normalized = index["protected22"]
@@ -704,6 +706,40 @@ def verify(root, enforce_pins=True):
     same(raw_index["protected_response_access"], aligned["protected_response_access"], "INDEX_RAW_AK_NO_PROTECTED")
     same(raw_index["official_competition_score"], aligned["official_competition_score"], "INDEX_RAW_AK_NO_SCORE")
 
+    same(cross_patient["schema"], "dosepilot.cross_patient_bandwidth.public_aggregate.v1", "CPM_SCHEMA")
+    same(cross_patient["status"], "COMPLETE", "CPM_STATUS")
+    same(cross_patient["decision"], "REJECT_RETAIN_BANDWIDTH07", "CPM_DECISION")
+    same(cross_patient["metrics"]["bandwidth07"]["mse"], bandwidth["metrics"]["bandwidth07"]["mse"], "CPM_BANDWIDTH_REFERENCE", 1e-15)
+    same(cross_patient["metrics"]["cross_patient_median"]["mse"] < cross_patient["metrics"]["bandwidth07"]["mse"], True, "CPM_MEAN_LOWER")
+    same(cross_patient["candidate_vs_bandwidth07"]["patient_wins"] >= 30, True, "CPM_PATIENT_BREADTH")
+    same(cross_patient["candidate_vs_bandwidth07"]["fold_wins"], 4, "CPM_FOLD_WINS")
+    same(cross_patient["candidate_vs_bandwidth07"]["gate"]["all_five_folds_favorable"], False, "CPM_FOLD_GATE_FAILED")
+    same(cross_patient["candidate_vs_bandwidth07"]["passes_all"], False, "CPM_GATE_FAILED")
+    same(cross_patient["failed_promotion_clause"], "ALL_FIVE_FOLDS_FAVORABLE_VS_BANDWIDTH07", "CPM_FAILED_CLAUSE")
+    same(cross_patient["historical_gate"]["r13"]["passes_all"], True, "CPM_R13_GATE")
+    same(cross_patient["historical_gate"]["r18"]["passes_all"], True, "CPM_R18_GATE")
+    same(cross_patient["verification"]["status"], "PASS", "CPM_VERIFICATION")
+    same(cross_patient["verification"]["fit_routine_called"], False, "CPM_NO_REFIT_VERIFIER")
+    same(cross_patient["repeated_adaptive_development"], True, "CPM_REPEATED_DEVELOPMENT")
+    same(cross_patient["independent_validation"], False, "CPM_NOT_INDEPENDENT")
+    same(cross_patient["protected_response_access"], False, "CPM_NO_PROTECTED")
+    same(cross_patient["accepted_kaggle_entry_changed"], False, "CPM_NO_ENTRY_CHANGE")
+    same(cross_patient["official_competition_score"], None, "CPM_NO_SCORE")
+    same(cross_patient["automatic_retry"], False, "CPM_NO_RETRY")
+    cpm_index = index["cross_patient_bandwidth_challenger"]
+    same(cpm_index["status"], cross_patient["status"], "INDEX_CPM_STATUS")
+    same(cpm_index["decision"], cross_patient["decision"], "INDEX_CPM_DECISION")
+    same(cpm_index["role"], cross_patient["role"], "INDEX_CPM_ROLE")
+    same(cpm_index["mse"], cross_patient["metrics"]["cross_patient_median"]["mse"], "INDEX_CPM_MSE", 1e-15)
+    same(cpm_index["bandwidth07_reference_mse"], cross_patient["metrics"]["bandwidth07"]["mse"], "INDEX_CPM_REFERENCE", 1e-15)
+    for key in ("relative_gain", "patient_wins", "patient_losses", "patient_ties", "fold_wins", "p90_nonworse"):
+        same(cpm_index[key], cross_patient["candidate_vs_bandwidth07"][key], "INDEX_CPM_" + key.upper(), 1e-15 if key == "relative_gain" else 0.0)
+    same(cpm_index["required_fold_wins"], 5, "INDEX_CPM_REQUIRED_FOLDS")
+    same(cpm_index["target_regressions"], len(cross_patient["regressing_targets_vs_bandwidth07"]), "INDEX_CPM_TARGET_REGRESSIONS")
+    same(cpm_index["passes_incumbent_gate"], cross_patient["candidate_vs_bandwidth07"]["passes_all"], "INDEX_CPM_GATE")
+    for key in ("automatic_retry", "independent_validation", "protected_response_access", "accepted_kaggle_entry_changed", "official_competition_score"):
+        same(cpm_index[key], cross_patient[key], "INDEX_CPM_" + key.upper())
+
     same(lifecycle["schema"], "dosepilot.durable_lifecycle_and_acquisition.v1", "LIFECYCLE_SCHEMA")
     same(lifecycle["accuracy_incumbent"]["mse"], additive_mse, "LIFECYCLE_ADDITIVE_REFERENCE", 1e-15)
     same(lifecycle["accuracy_incumbent"]["unchanged"], True, "LIFECYCLE_ACCURACY_UNCHANGED")
@@ -823,6 +859,7 @@ def verify(root, enforce_pins=True):
         "reviewer_path_seconds": reviewer_contract["estimated_seconds"],
         "current_preflight_tests": current_preflight["orchestrated_test_count"],
         "raw_ak_decision": aligned["decision"],
+        "cross_patient_bandwidth_decision": cross_patient["decision"],
         "durable_runtime_tests": lifecycle["tests"]["durable_runtime_suite_including_previous_cases"],
         "private_arrays_read": False,
     }

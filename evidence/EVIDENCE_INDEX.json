@@ -35,6 +35,10 @@
       "path": "evidence/bandwidth_successor_20261003.json",
       "sha256": "a98b574217bb433b363ac6f8077032c036552268a09af129e2e038d8ba2c5758"
     },
+    "cross_patient_bandwidth": {
+      "path": "evidence/cross_patient_bandwidth_20261004.json",
+      "sha256": "3293f76dfc7e48f81087d971864066dc4b6c8d257b4d9fdc8d464b8396562caf"
+    },
     "bandwidth_lifecycle": {
       "path": "evidence/bandwidth_lifecycle_20261003.json",
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
@@ -99,10 +103,10 @@
     "official_competition_score": null
   },
   "current_release_preflight": {
-    "path": "evidence/release_preflight_gate_hardening_final_20261004.json",
-    "sha256": "922c70f61264ffaf2be549916d3abccd6a79f146ac147d5f6f7e885e354d7ac1",
-    "predecessor_path": "evidence/release_preflight_gate_hardening_pass1_20261004.json",
-    "predecessor_sha256": "b45023f82e5bbd224c32f66781ea2ac84cadffce4ba6a434c658bd0aa4fad713",
+    "path": "evidence/release_preflight_cross_patient_final_20261004.json",
+    "sha256": "38243df32862ff096a656e8268bc2482341aa8656e4d5d002caa3a43f6293140",
+    "predecessor_path": "evidence/release_preflight_gate_hardening_final_20261004.json",
+    "predecessor_sha256": "922c70f61264ffaf2be549916d3abccd6a79f146ac147d5f6f7e885e354d7ac1",
     "schema": "dosepilot.current_release_preflight.v1",
     "status": "PASS",
     "check_count": 14,
@@ -284,6 +288,27 @@
     "protected22_used": false,
     "official_competition_score": null,
     "current_internal_incumbent": true
+  },
+  "cross_patient_bandwidth_challenger": {
+    "status": "COMPLETE",
+    "decision": "REJECT_RETAIN_BANDWIDTH07",
+    "role": "REPEATED_ADAPTIVE_DEVELOPMENT_NEGATIVE_RESULT",
+    "mse": 0.0010574875414830203,
+    "bandwidth07_reference_mse": 0.0010582750420801538,
+    "relative_gain": 0.000744136038194454,
+    "patient_wins": 33,
+    "patient_losses": 26,
+    "patient_ties": 0,
+    "fold_wins": 4,
+    "required_fold_wins": 5,
+    "p90_nonworse": true,
+    "target_regressions": 9,
+    "passes_incumbent_gate": false,
+    "automatic_retry": false,
+    "independent_validation": false,
+    "protected_response_access": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
   },
   "bandwidth_lifecycle": {
     "role": "ENGINEERING_AND_REPRODUCIBILITY_EVIDENCE",

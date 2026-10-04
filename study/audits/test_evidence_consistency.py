@@ -110,11 +110,12 @@ class EvidenceConsistencyTests(unittest.TestCase):
     def test_current_state_passes(self):
         result = verify(self.root)
         self.assertEqual(result["status"], "PASS")
-        self.assertEqual(result["canonical_receipts"], 12)
+        self.assertEqual(result["canonical_receipts"], 13)
         self.assertEqual(result["protected22_cells_reconciled"], 19642)
         self.assertAlmostEqual(result["additive_incumbent_mse"], 0.001060552730112811)
         self.assertAlmostEqual(result["bandwidth_successor_mse"], 0.0010582750420801538)
         self.assertEqual(result["raw_ak_decision"], "REJECT_RETAIN_ADDITIVE")
+        self.assertEqual(result["cross_patient_bandwidth_decision"], "REJECT_RETAIN_BANDWIDTH07")
         self.assertEqual(result["durable_runtime_tests"], 55)
         self.assertEqual(result["bandwidth_lifecycle_tests"], 65)
         self.assertEqual(result["frozen_ooc_schedule_rows"], 64)
