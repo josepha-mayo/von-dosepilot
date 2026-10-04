@@ -1,0 +1,131 @@
+{
+  "schema": "dosepilot.nested_bandwidth_selection.public_evidence.v1",
+  "status": "PASS",
+  "as_of_utc": "2026-10-04T19:38:00Z",
+  "decision": "EVALUATION_ONLY_RETAIN_BANDWIDTH07",
+  "role": "RETROSPECTIVE_NESTED_PROCEDURE_EVALUATION_WITHIN_REPEATED_DEVELOPMENT",
+  "question": "Would the already opened 0.7/1.0/1.4 bandwidth menu choose a different setting when selection is performed wholly inside each outer training set?",
+  "cohort": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_wells_per_alternative": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3
+  },
+  "selection_menu": {
+    "bandwidth_multipliers": [0.7, 1.0, 1.4],
+    "residual_spectral_options": 10,
+    "joint_options_per_outer_training_set": 30,
+    "selection_metric": "equal-patient/equal-target/equal-orientation inner OOF MSE",
+    "tie_rule": "bandwidth order, then residual option order"
+  },
+  "selection_counts": {
+    "0.7": 5,
+    "1.0": 0,
+    "1.4": 0
+  },
+  "foldwise_selections": [
+    {"fold": 0, "bandwidth": 0.7, "fraction": 0.3, "ridge": 1.0},
+    {"fold": 1, "bandwidth": 0.7, "fraction": 0.1, "ridge": 1.0},
+    {"fold": 2, "bandwidth": 0.7, "fraction": 0.1, "ridge": 1.0},
+    {"fold": 3, "bandwidth": 0.7, "fraction": 0.1, "ridge": 1.0},
+    {"fold": 4, "bandwidth": 0.7, "fraction": 0.1, "ridge": 1.0}
+  ],
+  "metrics": {
+    "nested": {
+      "mse": 0.0010582750420801538,
+      "p90_rmse": 0.03789428530872024,
+      "fold_mse": [
+        0.0013921291183112416,
+        0.0008933246324477287,
+        0.0010633000716809172,
+        0.0008098063511711599,
+        0.0011395913999451377
+      ],
+      "orientation_mse": [0.0011047521616732163, 0.0010117979224870915]
+    },
+    "bandwidth07": {
+      "mse": 0.0010582750420801538,
+      "p90_rmse": 0.03789428530872024,
+      "fold_mse": [
+        0.0013921291183112416,
+        0.0008933246324477287,
+        0.0010633000716809172,
+        0.0008098063511711599,
+        0.0011395913999451377
+      ],
+      "orientation_mse": [0.0011047521616732163, 0.0010117979224870915]
+    },
+    "bandwidth10": {
+      "mse": 0.001060552730112811,
+      "p90_rmse": 0.03807311159996259
+    },
+    "bandwidth14": {
+      "mse": 0.0010637093585907204,
+      "p90_rmse": 0.038304142994977315
+    },
+    "r13": {"mse": 0.001144858681382854},
+    "r18": {"mse": 0.0011414048112341991}
+  },
+  "nested_vs_fixed07": {
+    "prediction_max_absolute_difference": 0.0,
+    "patient_ties": 59,
+    "fold_ties": 5,
+    "target_ties": 24,
+    "orientation_ties": 2
+  },
+  "verification": {
+    "independent_no_refit_audit": "PASS",
+    "inner_scores_recomputed": 150,
+    "outer_joint_selections_recomputed": 5,
+    "fixed_bandwidth_option_selections_recomputed": 15,
+    "physical_plans_checked": 5,
+    "private_attempt_result_sha256": "6a9c9f8cf682b49df7bf6368d47dd323f3c60c6e0797028b6795ac11fb294fb2",
+    "private_no_refit_verification_sha256": "41106fdb4a8661752e8e21d5b9c48da6642cf77c3e9966ed72eeba66cb2bf4ea",
+    "private_prediction_sha256": "0d007814fa04d02ec2f0233880c7790ffbaa45b5c3be176edee7567c8a68e150",
+    "private_prediction_arrays_published": false
+  },
+  "public_receipt_verification": {
+    "standalone_verifier": "PASS",
+    "adversarial_tests_passed": 6,
+    "selection_unit_tests_passed": 3,
+    "existing_central_evidence_tests_passed": 42,
+    "canonical_release_preflight_stages_passed": 14,
+    "canonical_orchestrated_response_free_tests": 173
+  },
+  "preserved_operational_failures": [
+    {
+      "event": "Initial adversarial fixture omitted the already-bound docs/BANDWIDTH_SUCCESSOR.md file and produced five FileNotFoundError test errors.",
+      "resolution": "The fixture was completed without changing the verifier contract; all 6 tests then passed.",
+      "scientific_or_model_failure": false
+    },
+    {
+      "event": "The first canonical preflight invocation supplied an unsupported --root argument.",
+      "resolution": "The documented output-only invocation then passed all 14 stages and 173 response-free tests.",
+      "scientific_or_model_failure": false
+    }
+  ],
+  "public_artifact_sha256": {
+    "docs/NESTED_BANDWIDTH_EVALUATION.md": "9b45a3bd6693786a55717cd018008b78ab5d0a4a55eafad01f8fa5a647775646",
+    "docs/BANDWIDTH_SUCCESSOR.md": "2d25833ad86bf5fb263995f8b3321d10453543fae2cd218cf2e113b5a5e44bcd",
+    "study/nested_bandwidth_selection/PROTOCOL.md": "66f0259e58bb10bf638164fd80d7ba97c8698f54470c3151590e8d9cbb2bdbfc",
+    "study/nested_bandwidth_selection/FREEZE.json": "189e83251b148f3a680a29e93dfd776a5886f4ab5dec6566296e3d8d9be2d9cc",
+    "study/nested_bandwidth_selection/run_study.py": "4d13c515f8279fd4abc89b62100f7945c7680ac7820466f5f61cc65ecee86247",
+    "study/nested_bandwidth_selection/verify_study.py": "1ae497f1ff1daf1675e9f16aef185560e01b4c27c812a7065ba8697aaec8ea49",
+    "study/nested_bandwidth_selection/test_selection.py": "aba4c3ccb84daa9c1e9a176d2f1bbe5efdea4c4785f3a2dc5405cb0d121ac817",
+    "study/audits/verify_nested_bandwidth_evidence.py": "edf3619d81eaef61190149744180a76424ed97782a921489da6859ae5cc91370",
+    "study/audits/test_nested_bandwidth_evidence.py": "e9500130c668c4dd1ca0b8e73e86f3c9e67160642aa7839fa7e31e40d3643323"
+  },
+  "claim_boundary": {
+    "algorithmically_nested_bandwidth_choice": true,
+    "same_task_repeated_adaptive_development": true,
+    "selection_corrected_for_wider_historical_campaign": false,
+    "independent_validation": false,
+    "prospective_ooc_validation": false,
+    "protected_response_access": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  }
+}

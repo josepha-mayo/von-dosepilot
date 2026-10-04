@@ -18,6 +18,16 @@ Against R13, the candidate is **7.5628% lower MSE**, wins **49/59** patient mean
 
 This is not independent validation. It is another model selected after substantial reuse of the same Lib1 development population.
 
+## Retrospective nested stability check
+
+A later prefrozen replay selected bandwidth and residual option wholly inside
+each outer training set. All **5/5** outer training sets selected bandwidth
+**0.7**, so its held-patient predictions, MSE, p90, patient losses, fold means,
+orientation errors and target means exactly match the fixed-0.7 incumbent.
+This rules out a foldwise bandwidth splice within the opened three-bandwidth
+menu, but it does not turn the reused 59-patient campaign into independent
+validation. See [Nested bandwidth-selection evaluation](NESTED_BANDWIDTH_EVALUATION.md).
+
 ## What changed
 
 The previous additive residual kernel used, for every drug group j,

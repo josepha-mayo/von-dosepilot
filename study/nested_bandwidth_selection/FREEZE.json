@@ -1,0 +1,63 @@
+{
+  "schema": "dosepilot.nested_bandwidth_selection.freeze.v1",
+  "state": "FROZEN_BEFORE_FIRST_LIB1_FIT",
+  "utc": "2026-10-04T19:31:00Z",
+  "base_public_commit": "6c8cb34fcb7170afa39c71e828f0a2267a670b50",
+  "base_local_commit": "d2c76b0e5cd789d756fc82f0aca541b35237c6dd",
+  "base_tree": "35ff26b59b1956931d02cf853dfd2589f6b904b6",
+  "question": "What held-patient error results when the already opened additive bandwidth and residual-spectral option are selected wholly inside each outer training fold?",
+  "source_sha256": {
+    "study/nested_bandwidth_selection/PROTOCOL.md": "66f0259e58bb10bf638164fd80d7ba97c8698f54470c3151590e8d9cbb2bdbfc",
+    "study/nested_bandwidth_selection/run_study.py": "4d13c515f8279fd4abc89b62100f7945c7680ac7820466f5f61cc65ecee86247",
+    "study/nested_bandwidth_selection/verify_study.py": "1ae497f1ff1daf1675e9f16aef185560e01b4c27c812a7065ba8697aaec8ea49",
+    "study/nested_bandwidth_selection/test_selection.py": "aba4c3ccb84daa9c1e9a176d2f1bbe5efdea4c4785f3a2dc5405cb0d121ac817",
+    "study/STUDY_LOCK.json": "8118b562b78b3f55866d6239a38280c942df2c7d81f0b7c4ce71ba0e39ce9ffc",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e",
+    "study/hybrid_residual/additive_kernel.py": "683004e39904c6648c0283395697c914903e78db60a7e98f90362dc8b2c49b1a",
+    "study/hybrid_residual/bandwidth_additive.py": "30723fbc8f6843c200891e14e5fb254e707298fa5514b668c4f005a4562edb30",
+    "study/hybrid_residual/kernel_spectral.py": "869bfc27cb72afe644f2e85ee5d255004e2afcf8b765b4cc56d8cd7d8927131e",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/TRAIN_CATALOG.json": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e"
+  },
+  "cache_sha256": "2ccd4995699417db72316c8f403095b8ef560f94913b0c8a80fe7429a2d0cbef",
+  "r18_sha256": "253998d20b9425c4ceade4269b94f4ed97cb7039ac5ec60838bb15794d47a6e2",
+  "cohort": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "treatment_wells_per_orientation": 64,
+    "wells_per_plate": 32,
+    "orientation_loss_weight": 0.5
+  },
+  "multipliers": [0.7, 1.0, 1.4],
+  "options": [
+    ["identity", 0.0],
+    [0.1, 0.1],
+    [0.1, 1.0],
+    [0.1, 10.0],
+    [0.3, 0.1],
+    [0.3, 1.0],
+    [0.3, 10.0],
+    [0.6, 0.1],
+    [0.6, 1.0],
+    [0.6, 10.0]
+  ],
+  "selection": "minimum inner patient-balanced full24 expected-loss MSE; exact ties prefer multiplier order then spectral option order",
+  "interpretation": "algorithmically nested bandwidth-procedure replay within an already exposed repeated-development campaign; not independent confirmation and not a promotion study",
+  "bootstrap": {
+    "whole_patient_resamples": 10000,
+    "seed": 20261004,
+    "role": "descriptive only"
+  },
+  "synthetic_tests_passed_before_freeze": 3,
+  "automatic_retry": false,
+  "private_lib1_train_used": true,
+  "protected_response_access": false,
+  "lib2_access_authorized": false,
+  "accepted_kaggle_entry_change_authorized": false,
+  "official_competition_score": null
+}
