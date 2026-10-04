@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the fictional demo's withholding and inspectable trace contract."""
+"""Verify the fictional demo's withholding and downloadable trace contract."""
 from __future__ import annotations
 
 import argparse
@@ -39,15 +39,15 @@ def verify(root):
     receipt_path = root / record.get("path", "")
     require(sha(receipt_path) == record.get("sha256"), "INDEX_RECEIPT_HASH")
     receipt = load(receipt_path)
-    require(receipt.get("schema") == "dosepilot.live_demo_withholding.v3", "SCHEMA")
+    require(receipt.get("schema") == "dosepilot.live_demo_withholding.v4", "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
-    require(receipt.get("role") == "PUBLIC_DEMO_INSPECTABLE_TRACE_INTEGRITY", "ROLE")
+    require(receipt.get("role") == "PUBLIC_DEMO_STATE_BOUND_TRACE_EXPORT", "ROLE")
 
     predecessor = receipt.get("predecessor", {})
     predecessor_path = root / predecessor.get("path", "")
     require(sha(predecessor_path) == predecessor.get("sha256"), "PREDECESSOR_HASH")
-    require(load(predecessor_path).get("schema") == "dosepilot.live_demo_withholding.v2", "PREDECESSOR_SCHEMA")
-    require(predecessor.get("baseline_digest_record_correct") is False, "PREDECESSOR_DEFECT_DISCLOSED")
+    require(load(predecessor_path).get("schema") == "dosepilot.live_demo_withholding.v3", "PREDECESSOR_SCHEMA")
+    require(predecessor.get("baseline_digest_record_correct") is True, "PREDECESSOR_CORRECTION_PRESERVED")
 
     for relative, expected in receipt.get("artifact_sha256", {}).items():
         require(sha(root / relative) == expected, "ARTIFACT_HASH: " + relative)
@@ -63,7 +63,9 @@ def verify(root):
         "primary_outputs", "plan_hash_stable_across_committed_states",
         "precompletion_measurement_hash_withheld", "precompletion_primary_hash_withheld",
         "baseline_result_hash_present", "complete_measurement_hash_present", "complete_primary_hash_present",
-        "full_record_inspectable", "withheld_record_fields_are_null",
+        "full_record_inspectable", "exact_record_downloadable",
+        "exported_record_matches_visible_record", "export_contains_raw_readings_or_outputs",
+        "withheld_record_fields_are_null",
     ):
         require(node_receipt.get(key) == expected.get(key), "NODE_TEST_" + key.upper())
 
@@ -87,6 +89,14 @@ def verify(root):
     browser = receipt.get("production_browser_verification", {})
     require(browser.get("full_record_disclosure_present") is True, "BROWSER_DISCLOSURE")
     require(browser.get("full_record_expands") is True, "BROWSER_DISCLOSURE_EXPANDS")
+    require(browser.get("exact_record_downloadable") is True, "BROWSER_DOWNLOADABLE")
+    require(browser.get("fresh_export_filename") == "dosepilot-trace-fresh.json", "BROWSER_FRESH_FILENAME")
+    require(browser.get("recovery_export_filename") == "dosepilot-trace-recovered.json", "BROWSER_RECOVERY_FILENAME")
+    require(browser.get("complete_export_filename") == "dosepilot-trace-complete.json", "BROWSER_COMPLETE_FILENAME")
+    require(browser.get("fresh_export_matches_visible_record") is True, "BROWSER_FRESH_EXPORT_MATCH")
+    require(browser.get("recovery_export_matches_visible_record") is True, "BROWSER_RECOVERY_EXPORT_MATCH")
+    require(browser.get("complete_export_matches_visible_record") is True, "BROWSER_COMPLETE_EXPORT_MATCH")
+    require(browser.get("export_contains_raw_readings_or_outputs") is False, "BROWSER_EXPORT_BOUNDARY")
     require(browser.get("missing_measurement_sha256") is None, "BROWSER_MISSING_MEASUREMENT_NULL")
     require(browser.get("missing_result_sha256") is None, "BROWSER_MISSING_RESULT_NULL")
     require(browser.get("baseline_numeric_outputs") == 23, "BROWSER_BASELINE_OUTPUTS")
@@ -99,15 +109,20 @@ def verify(root):
 
     deployment = receipt.get("production_deployment", {})
     require(deployment.get("site_id") == "d313109a-8052-441a-9439-f42b0ef8034f", "DEPLOY_SITE")
-    require(deployment.get("deploy_id") == "6ac278604e8e6176fb3424ea", "DEPLOY_ID")
-    require(deployment.get("build_id") == "6ac278604e8e6176fb3424e8", "BUILD_ID")
+    require(deployment.get("deploy_id") == "6ac287127500d0d5ddec246a", "DEPLOY_ID")
+    require(deployment.get("build_id") == "6ac287127500d0d5ddec2468", "BUILD_ID")
     require(deployment.get("state") == "ready", "DEPLOY_STATE")
     require(deployment.get("url") == "https://von-dosepilot.netlify.app", "DEPLOY_URL")
 
-    correction = receipt.get("correction", {})
-    require(correction.get("predecessor_baseline_digest_was_incorrect") is True, "CORRECTION_DISCLOSED")
-    require(correction.get("application_digest_arithmetic_was_incorrect") is False, "CORRECTION_APP_BOUNDARY")
-    require(correction.get("scientific_or_model_result_affected") is False, "CORRECTION_SCIENCE_BOUNDARY")
+    export_contract = receipt.get("export_contract", {})
+    require(export_contract.get("transport") == "data:application/json;charset=utf-8", "EXPORT_TRANSPORT")
+    require(export_contract.get("visible_and_exported_record_identical") is True, "EXPORT_IDENTICAL")
+    require(export_contract.get("fields") == [
+        "schema", "state", "plan_sha256", "measurement_sha256", "result_sha256", "result_kind",
+    ], "EXPORT_FIELDS")
+    require(export_contract.get("contains_raw_readings") is False, "EXPORT_NO_READINGS")
+    require(export_contract.get("contains_model_outputs") is False, "EXPORT_NO_OUTPUTS")
+    require(export_contract.get("contains_patient_or_protected_data") is False, "EXPORT_NO_PROTECTED_DATA")
 
     limitations = receipt.get("limitations", {})
     for key in ("signed", "worm_storage", "physical_provenance", "control_validation", "biological_validation"):
@@ -127,6 +142,8 @@ def verify(root):
         "verified_states": len(expected.get("states", [])),
         "computed_trace_hashes_verified": len(expected_hashes),
         "full_record_inspectable": expected.get("full_record_inspectable"),
+        "exact_record_downloadable": expected.get("exact_record_downloadable"),
+        "exported_record_matches_visible_record": expected.get("exported_record_matches_visible_record"),
         "baseline_numeric_outputs": browser.get("baseline_numeric_outputs"),
         "complete_current_outputs": browser.get("complete_current_outputs"),
         "deploy_id": deployment.get("deploy_id"),

@@ -9,7 +9,7 @@ from verify_live_demo_withholding import WithholdingVerificationError, verify
 
 
 ROOT = Path(__file__).resolve().parents[2]
-RECEIPT = "evidence/live_demo_withholding_r3_20261004.json"
+RECEIPT = "evidence/live_demo_withholding_r4_20261004.json"
 
 
 class LiveDemoWithholdingTests(unittest.TestCase):
@@ -43,7 +43,7 @@ class LiveDemoWithholdingTests(unittest.TestCase):
         self.assertEqual(verify(self.root)["status"], "PASS")
 
     def test_rejects_predecessor_tampering(self):
-        path = self.root / "evidence/live_demo_withholding_r2_20261004.json"
+        path = self.root / "evidence/live_demo_withholding_r3_20261004.json"
         path.write_text(path.read_text() + " ")
         with self.assertRaises(WithholdingVerificationError):
             verify(self.root)
@@ -80,8 +80,28 @@ class LiveDemoWithholdingTests(unittest.TestCase):
         with self.assertRaises(WithholdingVerificationError):
             verify(self.root)
 
-    def test_rejects_hidden_predecessor_defect(self):
-        self.mutate_receipt(lambda x: x["predecessor"].__setitem__("baseline_digest_record_correct", True))
+    def test_rejects_hidden_predecessor_correction(self):
+        self.mutate_receipt(lambda x: x["predecessor"].__setitem__("baseline_digest_record_correct", False))
+        with self.assertRaises(WithholdingVerificationError):
+            verify(self.root)
+
+    def test_rejects_false_downloadable_claim(self):
+        self.mutate_receipt(lambda x: x["local_state_verification"].__setitem__("exact_record_downloadable", False))
+        with self.assertRaises(WithholdingVerificationError):
+            verify(self.root)
+
+    def test_rejects_export_visible_record_mismatch(self):
+        self.mutate_receipt(lambda x: x["production_browser_verification"].__setitem__("complete_export_matches_visible_record", False))
+        with self.assertRaises(WithholdingVerificationError):
+            verify(self.root)
+
+    def test_rejects_raw_reading_export_claim(self):
+        self.mutate_receipt(lambda x: x["export_contract"].__setitem__("contains_raw_readings", True))
+        with self.assertRaises(WithholdingVerificationError):
+            verify(self.root)
+
+    def test_rejects_export_filename_drift(self):
+        self.mutate_receipt(lambda x: x["production_browser_verification"].__setitem__("recovery_export_filename", "dosepilot-trace-complete.json"))
         with self.assertRaises(WithholdingVerificationError):
             verify(self.root)
 
