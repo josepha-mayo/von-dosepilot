@@ -3,7 +3,7 @@
   "as_of_date": "2026-10-04",
   "scope": "curated public aggregate registry for the original Lib1 TRAIN repeated-development task",
   "coverage": {
-    "registered_families": 22,
+    "registered_families": 23,
     "exhaustive_historical_search_claimed": false,
     "inclusion_rule": "Public aggregate model or acquisition candidates; conventional and reproduction-only controls are not enumerated as candidate families.",
     "limitation": "The gate blocks exact IDs and fingerprints recorded here; it does not prove novelty against every private or historical experiment."
@@ -264,6 +264,16 @@
       "automatic_retry": false,
       "mse": 0.0010731733783205333,
       "evidence": "evidence/isotonic_paid_features_20261004.json"
+    },
+    {
+      "family_id": "cooptimized_calibrated_interpolation_control",
+      "family_fingerprint": "own-drug-interpolation-exhaustive-native-subset-joint-affine-calibration-v1",
+      "status": "REJECTED",
+      "decision": "REJECT_RETAIN_BANDWIDTH07",
+      "closed": true,
+      "automatic_retry": false,
+      "mse": 0.0014389065202742948,
+      "evidence": "evidence/cooptimized_calibrated_control_20261004.json"
     },
     {
       "family_id": "matern32_own_drug",

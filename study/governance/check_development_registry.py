@@ -43,6 +43,7 @@ REQUIRED_CLOSED = {
     "cross_patient_median_bandwidth",
     "simplex_spectral_stacking",
     "isotonic_paid_features",
+    "cooptimized_calibrated_interpolation_control",
     "matern32_own_drug",
 }
 
@@ -68,6 +69,7 @@ EXPECTED_MSE = {
     "cross_patient_median_bandwidth": 0.0010574875414830203,
     "simplex_spectral_stacking": 0.0010620901334091122,
     "isotonic_paid_features": 0.0010731733783205333,
+    "cooptimized_calibrated_interpolation_control": 0.0014389065202742948,
     "matern32_own_drug": 0.001146185234155711,
 }
 
@@ -93,6 +95,7 @@ EXPECTED_FAMILY = {
     "cross_patient_median_bandwidth": ("cross-patient-median-distance-bandwidth", "REJECTED", "REJECT_RETAIN_BANDWIDTH07", "evidence/cross_patient_bandwidth_20261004.json"),
     "simplex_spectral_stacking": ("patient-balanced-simplex-spectral-stack", "REJECTED", "REJECT_RETAIN_BANDWIDTH07", "evidence/simplex_stacking_20261004.json"),
     "isotonic_paid_features": ("fixed-equal-weight-within-drug-nonincreasing-pava-before-own-drug-and-bandwidth07-features-v1", "REJECTED", "REJECT_RETAIN_BANDWIDTH07", "evidence/isotonic_paid_features_20261004.json"),
+    "cooptimized_calibrated_interpolation_control": ("own-drug-interpolation-exhaustive-native-subset-joint-affine-calibration-v1", "REJECTED", "REJECT_RETAIN_BANDWIDTH07", "evidence/cooptimized_calibrated_control_20261004.json"),
     "matern32_own_drug": ("linear-plus-matern32-own-drug", "REJECTED", "REJECT_AND_RETAIN_R13", "evidence/r34_nonlinear_challenger.json"),
 }
 
@@ -136,6 +139,8 @@ def evidence_mse(root: Path, family_id: str) -> float:
         return load(root / "evidence/simplex_stacking_20261004.json")["candidate"]["mse"]
     if family_id == "isotonic_paid_features":
         return load(root / "evidence/isotonic_paid_features_20261004.json")["metrics"]["isotonic_candidate"]["mse"]
+    if family_id == "cooptimized_calibrated_interpolation_control":
+        return load(root / "evidence/cooptimized_calibrated_control_20261004.json")["metrics"]["cooptimized_calibrated_interpolation"]["mse"]
     if family_id == "matern32_own_drug":
         return load(root / "evidence/r34_nonlinear_challenger.json")["candidate_mse"]
     fail("UNKNOWN_FAMILY: " + family_id)
@@ -161,7 +166,7 @@ def verify_registry(root: Path, registry_path: Path | None = None) -> dict:
         fail("REGISTRY_SCOPE")
     coverage = registry.get("coverage", {})
     if coverage != {
-        "registered_families": 22,
+        "registered_families": 23,
         "exhaustive_historical_search_claimed": False,
         "inclusion_rule": "Public aggregate model or acquisition candidates; conventional and reproduction-only controls are not enumerated as candidate families.",
         "limitation": "The gate blocks exact IDs and fingerprints recorded here; it does not prove novelty against every private or historical experiment.",

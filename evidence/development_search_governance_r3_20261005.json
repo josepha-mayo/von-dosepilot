@@ -1,0 +1,52 @@
+{
+  "schema": "dosepilot.development_search_governance_release.v3",
+  "as_of_utc": "2026-10-04T23:25:00Z",
+  "status": "PASS",
+  "role": "ADAPTIVE_DEVELOPMENT_GOVERNANCE_UPDATE",
+  "predecessor": {
+    "path": "evidence/development_search_governance_r2_20261004.json",
+    "sha256": "8dfc4b3fbcfdf8f45cb626edb872fc240b4add41fccfbace350499246aabecce",
+    "preserved_unchanged": true
+  },
+  "registry": {
+    "path": "evidence/DEVELOPMENT_SEARCH_REGISTRY.json",
+    "sha256": "c84c984ee02ce721338732ac70648e6825f61691ecdca4f37d95a4d725ddafd2",
+    "registered_families": 23,
+    "rejected_families": 16,
+    "unpromoted_references": 3,
+    "current_incumbent": "bandwidth07_additive",
+    "current_incumbent_mse": 0.0010582750420801538,
+    "exhaustive_historical_search_claimed": false
+  },
+  "new_closed_family": {
+    "family_id": "cooptimized_calibrated_interpolation_control",
+    "decision": "REJECT_RETAIN_BANDWIDTH07",
+    "evidence_path": "evidence/cooptimized_calibrated_control_20261004.json",
+    "evidence_sha256": "1238e432ed0a9abffce855440b6f290c056373f988ced6b3d3b57ce85c1cd74e",
+    "protocol_path": "study/cooptimized_calibrated_control/PROTOCOL.json",
+    "protocol_sha256": "8996f2f42aa47134fd2c7c176940636add20116295a36a51e48cc7e9cbfaf468",
+    "automatic_retry": false
+  },
+  "source_sha256": {
+    "study/governance/check_development_registry.py": "f6a5cf634c455659fe5453ba0417e39241cb941da25db9308421790eb699b7f9",
+    "study/governance/check_candidate_proposal.py": "ddcbb5a05b3742b1090d7e9937f889846a2396c2812ab3b8d9f46c65d72d9b05",
+    "study/governance/test_development_registry.py": "f334d33c55728b8ad3d49a34d81f4b0484dbf9da1619d2a8dbe1d6fe51aac43d",
+    "study/governance/fixtures/invented_unique_family/PROTOCOL.json": "ea0bd78cbcaec33e301aaef1fbca22c096e75e7f100fec5cc6280cf30d0029f2",
+    "docs/DEVELOPMENT_SEARCH_GOVERNANCE.md": "132b4397b02df98fdc627fdac5c3c4ddfa53fd244d9f91ddc2abded2565aa154",
+    "docs/COOPTIMIZED_CALIBRATED_CONTROL_NEGATIVE.md": "f7f6af1b486a79e717c008d210087ef4c150eb99031836b891635421c869b02b"
+  },
+  "verification": {
+    "registry_cli": "PASS",
+    "response_free_governance_tests": 33,
+    "cooptimized_invented_data_tests_before_fit": 4,
+    "cooptimized_independent_no_refit_arithmetic_and_budget_audit": "PASS",
+    "python_compile": "PASS"
+  },
+  "claim_boundary": {
+    "incumbent_changed": false,
+    "new_independent_validation": false,
+    "protected_response_access": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  }
+}

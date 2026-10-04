@@ -39,11 +39,12 @@ PINNED_RECEIPTS = {
     "cross_patient_bandwidth": "3293f76dfc7e48f81087d971864066dc4b6c8d257b4d9fdc8d464b8396562caf",
     "simplex_stacking": "8af8887860ef738c2657f100a1a5031e02309b718ac1bd10473c319c0b0e3464",
     "isotonic_paid_features": "01934ca5139a219814572bd5b3e28923c98b8ad37ee3146a405f5ddd247476da",
+    "cooptimized_calibrated_control": "1238e432ed0a9abffce855440b6f290c056373f988ced6b3d3b57ce85c1cd74e",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
     "frozen_ooc_release_binding": "80919f1172f40db176447dcc6954985f132188a3dbfe3978b27121c2da11d62f",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
     "reviewer_path_release": "54103ece0e38e7701116f6fa0cbb271e0308f6acf1d03cd597ed0cba7c9ca59d",
-    "development_search_governance": "8dfc4b3fbcfdf8f45cb626edb872fc240b4add41fccfbace350499246aabecce",
+    "development_search_governance": "06bf56a3658c47a99e4f9e07c1e06e11ad348de4a840aba1dad495e2b8495d35",
 }
 
 PINNED_DOCUMENTS = {
@@ -370,7 +371,7 @@ def verify(root, enforce_pins=True):
         same(reviewer_index[key], receipt_value, "INDEX_REVIEWER_PATH_" + key.upper())
 
     governance = receipts["development_search_governance"]
-    same(governance["schema"], "dosepilot.development_search_governance_release.v2", "GOVERNANCE_SCHEMA")
+    same(governance["schema"], "dosepilot.development_search_governance_release.v3", "GOVERNANCE_SCHEMA")
     same(governance["status"], "PASS", "GOVERNANCE_STATUS")
     same(governance["role"], "ADAPTIVE_DEVELOPMENT_GOVERNANCE_UPDATE", "GOVERNANCE_ROLE")
     governance_predecessor = governance["predecessor"]
@@ -380,8 +381,8 @@ def verify(root, enforce_pins=True):
         same(sha(root / path), expected, "GOVERNANCE_FILE_HASH: " + path)
     governance_registry = governance["registry"]
     same(sha(root / governance_registry["path"]), governance_registry["sha256"], "GOVERNANCE_REGISTRY_HASH")
-    same(governance_registry["registered_families"], 22, "GOVERNANCE_FAMILIES")
-    same(governance_registry["rejected_families"], 15, "GOVERNANCE_REJECTED")
+    same(governance_registry["registered_families"], 23, "GOVERNANCE_FAMILIES")
+    same(governance_registry["rejected_families"], 16, "GOVERNANCE_REJECTED")
     same(governance_registry["unpromoted_references"], 3, "GOVERNANCE_UNPROMOTED")
     same(governance_registry["current_incumbent"], "bandwidth07_additive", "GOVERNANCE_INCUMBENT")
     same(governance_registry["current_incumbent_mse"], 0.0010582750420801538, "GOVERNANCE_MSE", 1e-15)
@@ -389,10 +390,10 @@ def verify(root, enforce_pins=True):
     governance_verification = governance["verification"]
     same(governance_verification["response_free_governance_tests"], 33, "GOVERNANCE_TESTS")
     same(governance_verification["registry_cli"], "PASS", "GOVERNANCE_CLI")
-    same(governance_verification["isotonic_synthetic_tests_before_fit"], 7, "GOVERNANCE_ISOTONIC_TESTS")
-    same(governance_verification["isotonic_independent_no_refit_arithmetic_audit"], "PASS", "GOVERNANCE_ISOTONIC_AUDIT")
+    same(governance_verification["cooptimized_invented_data_tests_before_fit"], 4, "GOVERNANCE_COOPTIMIZED_TESTS")
+    same(governance_verification["cooptimized_independent_no_refit_arithmetic_and_budget_audit"], "PASS", "GOVERNANCE_COOPTIMIZED_AUDIT")
     new_family = governance["new_closed_family"]
-    same(new_family["family_id"], "isotonic_paid_features", "GOVERNANCE_NEW_FAMILY")
+    same(new_family["family_id"], "cooptimized_calibrated_interpolation_control", "GOVERNANCE_NEW_FAMILY")
     same(new_family["decision"], "REJECT_RETAIN_BANDWIDTH07", "GOVERNANCE_NEW_DECISION")
     same(sha(root / new_family["evidence_path"]), new_family["evidence_sha256"], "GOVERNANCE_NEW_EVIDENCE_HASH")
     same(sha(root / new_family["protocol_path"]), new_family["protocol_sha256"], "GOVERNANCE_NEW_PROTOCOL_HASH")
@@ -441,6 +442,7 @@ def verify(root, enforce_pins=True):
     cross_patient = receipts["cross_patient_bandwidth"]
     simplex = receipts["simplex_stacking"]
     isotonic = receipts["isotonic_paid_features"]
+    cooptimized = receipts["cooptimized_calibrated_control"]
     bandwidth_lifecycle = receipts["bandwidth_lifecycle"]
     frozen_schedule = receipts["frozen_ooc_release_binding"]
     normalized = index["protected22"]
@@ -925,6 +927,38 @@ def verify(root, enforce_pins=True):
     same(isotonic_index["passes_incumbent_gate"], False, "INDEX_ISOTONIC_GATE")
     same(isotonic_index["independent_no_refit_verification"], "PASS", "INDEX_ISOTONIC_VERIFICATION")
 
+    same(cooptimized["schema"], "dosepilot.cooptimized_calibrated_control.public_result.v1", "COOPTIMIZED_SCHEMA")
+    same(cooptimized["status"], "COMPLETE", "COOPTIMIZED_STATUS")
+    same(cooptimized["decision"], "REJECT_RETAIN_BANDWIDTH07", "COOPTIMIZED_DECISION")
+    cooptimized_metric = cooptimized["metrics"]["cooptimized_calibrated_interpolation"]
+    cooptimized_reference = cooptimized["metrics"]["bandwidth07_incumbent"]
+    same(cooptimized_metric["mse"], 0.0014389065202742948, "COOPTIMIZED_MSE", 1e-15)
+    same(cooptimized_reference["mse"], bandwidth["metrics"]["bandwidth07"]["mse"], "COOPTIMIZED_REFERENCE", 1e-15)
+    same(cooptimized_metric["mse"] > cooptimized_reference["mse"], True, "COOPTIMIZED_MEAN_WORSE")
+    cooptimized_comparison = cooptimized["candidate_vs_bandwidth07"]
+    same(cooptimized_comparison["patient_wins"], 3, "COOPTIMIZED_PATIENT_WINS")
+    same(cooptimized_comparison["patient_losses"], 56, "COOPTIMIZED_PATIENT_LOSSES")
+    same(cooptimized_comparison["fold_wins"], 0, "COOPTIMIZED_FOLD_WINS")
+    same(cooptimized_comparison["p90_nonworse"], False, "COOPTIMIZED_P90_FAILED")
+    same(cooptimized_comparison["target_regressions"], 22, "COOPTIMIZED_TARGET_REGRESSIONS")
+    same(cooptimized_comparison["both_orientations_below_reference_expected_mse"], False, "COOPTIMIZED_ORIENTATIONS_FAILED")
+    same(cooptimized_comparison["all_gates_passed"], False, "COOPTIMIZED_GATE_FAILED")
+    same(cooptimized["verification"]["independent_no_refit_arithmetic_and_budget_audit"], "PASS", "COOPTIMIZED_VERIFICATION")
+    same(cooptimized["verification"]["physical_outer_plans_checked"], 5, "COOPTIMIZED_PLANS")
+    same(cooptimized["verification"]["fit_routine_called_by_audit"], False, "COOPTIMIZED_NO_REFIT")
+    for key in ("automatic_retry", "family_closed", "independent_validation", "protected_response_access", "accepted_kaggle_entry_changed", "official_competition_score"):
+        expected = True if key == "family_closed" else (None if key == "official_competition_score" else False)
+        same(cooptimized[key], expected, "COOPTIMIZED_BOUNDARY_" + key.upper())
+    cooptimized_index = index["cooptimized_calibrated_control_challenger"]
+    for key in ("status", "decision", "role", "automatic_retry", "family_closed", "independent_validation", "protected_response_access", "accepted_kaggle_entry_changed", "official_competition_score"):
+        same(cooptimized_index[key], cooptimized[key], "INDEX_COOPTIMIZED_" + key.upper())
+    same(cooptimized_index["mse"], cooptimized_metric["mse"], "INDEX_COOPTIMIZED_MSE", 1e-15)
+    same(cooptimized_index["bandwidth07_reference_mse"], cooptimized_reference["mse"], "INDEX_COOPTIMIZED_REFERENCE", 1e-15)
+    for key in ("relative_gain", "patient_wins", "patient_losses", "patient_ties", "fold_wins", "required_fold_wins", "p90_nonworse", "target_regressions", "both_orientations_below_reference_expected_mse"):
+        same(cooptimized_index[key], cooptimized_comparison[key], "INDEX_COOPTIMIZED_" + key.upper(), 1e-15 if key == "relative_gain" else 0.0)
+    same(cooptimized_index["passes_incumbent_gate"], False, "INDEX_COOPTIMIZED_GATE")
+    same(cooptimized_index["independent_no_refit_verification"], "PASS", "INDEX_COOPTIMIZED_VERIFICATION")
+
     same(lifecycle["schema"], "dosepilot.durable_lifecycle_and_acquisition.v1", "LIFECYCLE_SCHEMA")
     same(lifecycle["accuracy_incumbent"]["mse"], additive_mse, "LIFECYCLE_ADDITIVE_REFERENCE", 1e-15)
     same(lifecycle["accuracy_incumbent"]["unchanged"], True, "LIFECYCLE_ACCURACY_UNCHANGED")
@@ -1071,6 +1105,7 @@ def verify(root, enforce_pins=True):
         "cross_patient_bandwidth_decision": cross_patient["decision"],
         "simplex_stacking_decision": simplex["decision"],
         "isotonic_paid_features_decision": isotonic["decision"],
+        "cooptimized_calibrated_control_decision": cooptimized["decision"],
         "development_governance_families": governance_registry["registered_families"],
         "development_governance_tests": governance_verification["response_free_governance_tests"],
         "durable_runtime_tests": lifecycle["tests"]["durable_runtime_suite_including_previous_cases"],

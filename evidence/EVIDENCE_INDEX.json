@@ -47,6 +47,10 @@
       "path": "evidence/isotonic_paid_features_20261004.json",
       "sha256": "01934ca5139a219814572bd5b3e28923c98b8ad37ee3146a405f5ddd247476da"
     },
+    "cooptimized_calibrated_control": {
+      "path": "evidence/cooptimized_calibrated_control_20261004.json",
+      "sha256": "1238e432ed0a9abffce855440b6f290c056373f988ced6b3d3b57ce85c1cd74e"
+    },
     "bandwidth_lifecycle": {
       "path": "evidence/bandwidth_lifecycle_20261003.json",
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
@@ -64,8 +68,8 @@
       "sha256": "54103ece0e38e7701116f6fa0cbb271e0308f6acf1d03cd597ed0cba7c9ca59d"
     },
     "development_search_governance": {
-      "path": "evidence/development_search_governance_r2_20261004.json",
-      "sha256": "8dfc4b3fbcfdf8f45cb626edb872fc240b4add41fccfbace350499246aabecce"
+      "path": "evidence/development_search_governance_r3_20261005.json",
+      "sha256": "06bf56a3658c47a99e4f9e07c1e06e11ad348de4a840aba1dad495e2b8495d35"
     }
   },
   "current_technical_report": {
@@ -137,8 +141,8 @@
   "development_search_governance": {
     "role": "ADAPTIVE_DEVELOPMENT_GOVERNANCE_UPDATE",
     "status": "PASS",
-    "registered_families": 22,
-    "rejected_families": 15,
+    "registered_families": 23,
+    "rejected_families": 16,
     "unpromoted_references": 3,
     "incumbent": "bandwidth07_additive",
     "incumbent_mse": 0.0010582750420801538,
@@ -475,6 +479,30 @@
     "passes_incumbent_gate": false,
     "independent_no_refit_verification": "PASS",
     "automatic_retry": false,
+    "independent_validation": false,
+    "protected_response_access": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
+  "cooptimized_calibrated_control_challenger": {
+    "status": "COMPLETE",
+    "decision": "REJECT_RETAIN_BANDWIDTH07",
+    "role": "REPEATED_ADAPTIVE_DEVELOPMENT_NEGATIVE_RESULT",
+    "mse": 0.0014389065202742948,
+    "bandwidth07_reference_mse": 0.0010582750420801538,
+    "relative_gain": -0.35967160053776626,
+    "patient_wins": 3,
+    "patient_losses": 56,
+    "patient_ties": 0,
+    "fold_wins": 0,
+    "required_fold_wins": 5,
+    "p90_nonworse": false,
+    "target_regressions": 22,
+    "both_orientations_below_reference_expected_mse": false,
+    "passes_incumbent_gate": false,
+    "independent_no_refit_verification": "PASS",
+    "automatic_retry": false,
+    "family_closed": true,
     "independent_validation": false,
     "protected_response_access": false,
     "accepted_kaggle_entry_changed": false,

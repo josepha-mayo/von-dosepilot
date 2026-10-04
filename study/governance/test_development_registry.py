@@ -119,7 +119,7 @@ class DevelopmentRegistryTests(unittest.TestCase):
 
     def test_family_metric_cannot_drift(self):
         value = copy.deepcopy(self.registry)
-        next(item for item in value["families"] if item["family_id"] == "pairwise_anova_interaction")["mse"] = 0.0
+        next(item for item in value["families"] if item["family_id"] == "cooptimized_calibrated_interpolation_control")["mse"] = 0.0
         with self.assertRaisesRegex(RegistryError, "FAMILY_MSE"):
             verify_registry(self.root, self.write_registry(value))
 

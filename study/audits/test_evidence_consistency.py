@@ -127,7 +127,7 @@ class EvidenceConsistencyTests(unittest.TestCase):
     def test_current_state_passes(self):
         result = verify(self.root)
         self.assertEqual(result["status"], "PASS")
-        self.assertEqual(result["canonical_receipts"], 16)
+        self.assertEqual(result["canonical_receipts"], 17)
         self.assertEqual(result["protected22_cells_reconciled"], 19642)
         self.assertAlmostEqual(result["additive_incumbent_mse"], 0.001060552730112811)
         self.assertAlmostEqual(result["bandwidth_successor_mse"], 0.0010582750420801538)
@@ -135,6 +135,7 @@ class EvidenceConsistencyTests(unittest.TestCase):
         self.assertEqual(result["cross_patient_bandwidth_decision"], "REJECT_RETAIN_BANDWIDTH07")
         self.assertEqual(result["simplex_stacking_decision"], "REJECT_RETAIN_BANDWIDTH07")
         self.assertEqual(result["isotonic_paid_features_decision"], "REJECT_RETAIN_BANDWIDTH07")
+        self.assertEqual(result["cooptimized_calibrated_control_decision"], "REJECT_RETAIN_BANDWIDTH07")
         self.assertEqual(result["durable_runtime_tests"], 55)
         self.assertEqual(result["bandwidth_lifecycle_tests"], 65)
         self.assertEqual(result["frozen_ooc_schedule_rows"], 64)
@@ -147,7 +148,7 @@ class EvidenceConsistencyTests(unittest.TestCase):
         self.assertEqual(result["rubric_evidence_weight_sum"], 100)
         self.assertEqual(result["current_preflight_tests"], 173)
         self.assertEqual(result["verification_chronology_latest_tests"], 173)
-        self.assertEqual(result["development_governance_families"], 22)
+        self.assertEqual(result["development_governance_families"], 23)
         self.assertEqual(result["development_governance_tests"], 33)
 
     def test_governance_receipt_cannot_weaken_boundaries(self):
@@ -391,21 +392,32 @@ class EvidenceConsistencyTests(unittest.TestCase):
             verify(self.root, enforce_pins=False)
 
     def test_receipt_cannot_promote_isotonic_features(self):
-        self.mutate_receipt(
-            "isotonic_paid_features",
-            lambda value: value.__setitem__("decision", "PROMOTE"),
-        )
-        with self.assertRaisesRegex(EvidenceError, "GOVERNANCE_NEW_EVIDENCE_HASH|ISOTONIC_DECISION"):
-            verify(self.root, enforce_pins=False)
+        for receipt, label in (
+            ("isotonic_paid_features", "ISOTONIC_DECISION"),
+            ("cooptimized_calibrated_control", "GOVERNANCE_NEW_EVIDENCE_HASH|COOPTIMIZED_DECISION"),
+        ):
+            with self.subTest(receipt=receipt):
+                self.tearDown()
+                self.setUp()
+                self.mutate_receipt(receipt, lambda value: value.__setitem__("decision", "PROMOTE"))
+                with self.assertRaisesRegex(EvidenceError, label):
+                    verify(self.root, enforce_pins=False)
 
     def test_index_cannot_promote_isotonic_features(self):
-        self.mutate_index(
-            lambda value: value["isotonic_paid_features_challenger"].update(
-                {"passes_incumbent_gate": True}
-            )
-        )
-        with self.assertRaisesRegex(EvidenceError, "INDEX_ISOTONIC_GATE"):
-            verify(self.root, enforce_pins=False)
+        for section, label in (
+            ("isotonic_paid_features_challenger", "INDEX_ISOTONIC_GATE"),
+            ("cooptimized_calibrated_control_challenger", "INDEX_COOPTIMIZED_GATE"),
+        ):
+            with self.subTest(section=section):
+                self.tearDown()
+                self.setUp()
+                self.mutate_index(
+                    lambda value, key=section: value[key].update(
+                        {"passes_incumbent_gate": True}
+                    )
+                )
+                with self.assertRaisesRegex(EvidenceError, label):
+                    verify(self.root, enforce_pins=False)
 
     def test_receipt_cannot_expand_lifecycle_scope(self):
         self.mutate_receipt(
