@@ -1,0 +1,79 @@
+{
+  "schema": "dosepilot.clean_reviewer_quickstart.v1",
+  "status": "PASS",
+  "role": "CLEAN_PUBLIC_CLONE_SOFTWARE_EXECUTION",
+  "completed_utc": "2026-10-04T10:59:10.216305+00:00",
+  "source": {
+    "repository": "https://github.com/josepha-mayo/von-dosepilot",
+    "branch": "master",
+    "clone_kind": "fresh shallow public clone",
+    "commit": "edcb892d77ed6fdbed5548646b80f7b9a8ebd1a5",
+    "tree": "56bb7cf055720ac007d0a968cd41df85eb1b0527"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "pip": "25.0.1",
+    "operating_system": "Ubuntu 24.04.3 LTS",
+    "kernel": "Linux 6.18.44 x86_64",
+    "fresh_virtual_environment": true,
+    "new_machine": false
+  },
+  "requirements": {
+    "requirements.txt": "7bd6b8946940b79948c548c8048e545684b91c8edc9444d8dfc0c8f76a97c0a7",
+    "study/requirements.txt": "9acc457aff7a05718b8869947b3b11cf89e5b64dbab9dff9a8fc8ec7e75cddbb",
+    "installation_status": "PASS",
+    "resolved_direct_versions": {
+      "joblib": "1.5.3",
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "scikit-learn": "1.8.0",
+      "scipy": "1.17.0",
+      "threadpoolctl": "3.6.0"
+    }
+  },
+  "fictional_bandwidth_lifecycle": {
+    "command": "python study/durable_runtime/run_bandwidth_lifecycle_demo.py --output bandwidth_lifecycle_demo_001",
+    "status": "PASS",
+    "elapsed_wall_seconds_integer": 1,
+    "summary_sha256": "0fffc9887a00aea3aabd3920242c80a9dfcf7a37a8f2ab94307020d170c8f576",
+    "transcript_sha256": "157e04001f32c7f166e282b605538d7d344704be071e94a5229f6987347614a8",
+    "runner_sha256": "34eedd805f14373220a630ed8217d2d19f567cb92cb267de65d348035d08a262",
+    "model_kind": "dosepilot.additive_kernel_bandwidth.v1",
+    "bandwidth_multiplier": 0.7,
+    "cli_invocations": 6,
+    "missing_primary_rejected": true,
+    "explicit_baseline_outputs": 23,
+    "changed_old_reading_rejected_automatically": true,
+    "complete_primary_outputs": 24,
+    "lost_export_recovered_identically": true,
+    "data": "ALL FICTIONAL; NO BIOLOGICAL VALIDATION"
+  },
+  "current_release_preflight": {
+    "command": "python study/audits/release_preflight_current.py --output release_preflight.json",
+    "status": "PASS",
+    "elapsed_wall_seconds_integer": 11,
+    "receipt_sha256": "e97151e6d7b6fe32ff1cca64ae8e70f8ac1ef02b38bfeab4159f45682b4638d1",
+    "runner_sha256": "483a43241ae5fecc8dff5a8e28dfa732253f3b6ca27075a1d59ce89db655e93a",
+    "check_count": 14,
+    "orchestrated_response_free_tests": 173,
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
+  "scope": {
+    "public_aggregate_evidence_receipts_read": true,
+    "protected_responses_read": false,
+    "private_patient_arrays_read": false,
+    "source_workbook_read": false,
+    "public_workbook_reconstruction_executed": false,
+    "new_model_fit": false,
+    "new_biological_result": false,
+    "independent_biological_validation": false,
+    "prospective_ooc_execution": false,
+    "clean_new_machine_certification": false,
+    "accepted_kaggle_entry_changed": false,
+    "netlify_deployment_changed": false,
+    "official_competition_score": null
+  }
+}

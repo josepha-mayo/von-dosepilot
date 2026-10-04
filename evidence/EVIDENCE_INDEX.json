@@ -173,6 +173,24 @@
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null
   },
+  "clean_reviewer_quickstart": {
+    "path": "evidence/clean_reviewer_quickstart_20261004.json",
+    "sha256": "05cdb52809daf581a51b24523ec0a26a02a1cf57f6f4c6b7bc620b3d4bfe731a",
+    "documentation_path": "docs/CLEAN_REVIEWER_QUICKSTART.md",
+    "documentation_sha256": "866c82ec9b7ea0eaaf59e45b28cf855fdf40109df3ba067095a25692012a70ad",
+    "status": "PASS",
+    "source_commit": "edcb892d77ed6fdbed5548646b80f7b9a8ebd1a5",
+    "source_tree": "56bb7cf055720ac007d0a968cd41df85eb1b0527",
+    "fresh_public_clone": true,
+    "fresh_virtual_environment": true,
+    "clean_new_machine_certification": false,
+    "release_preflight_stages": 14,
+    "orchestrated_response_free_tests": 173,
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
   "protected22": {
     "population": {
       "pdos": 61,
