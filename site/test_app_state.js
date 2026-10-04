@@ -53,13 +53,11 @@ const document = {
   querySelector(selector) { assert.ok(elements[selector], `unknown selector ${selector}`); return elements[selector]; },
   createElement() { return new Element(); }
 };
-const frozenSchedule = Array.from({ length: 64 }, (_, index) => ({
-  drug: `drug_${String(index).padStart(2, '0')}`,
-  dose: String((index + 1) * 10),
-  native: `q${String(index + 1).padStart(3, '0')}`,
-  a: index % 2,
-  b: 1 - (index % 2)
-}));
+const scheduleSource = fs.readFileSync(path.join(__dirname, 'frozen_schedule.js'), 'utf8');
+const scheduleMatch = scheduleSource.match(/^const frozenSchedule=(\[.*\]);/m);
+assert.ok(scheduleMatch, 'frozen schedule literal not found');
+const frozenSchedule = JSON.parse(scheduleMatch[1]);
+assert.equal(frozenSchedule.length, 64);
 const source = fs.readFileSync(path.join(__dirname, 'app.js'), 'utf8');
 vm.runInNewContext(source, { document, frozenSchedule, crypto, TextEncoder, Math, Number, Array, String, Object, JSON, Uint8Array });
 
@@ -189,6 +187,7 @@ async function main() {
     measurement_sha256: expectedMeasurementHash,
     outputs: independentResponses('primary')
   }));
+  const primaryHash = trace().dataset.resultSha256;
   assertTraceRecord('complete', planHash, expectedMeasurementHash, trace().dataset.resultSha256, 'bandwidth-0.7 primary • 24 outputs');
 
   elements['#resetBtn'].click();
@@ -213,7 +212,13 @@ async function main() {
     complete_measurement_hash_present: true,
     complete_primary_hash_present: true,
     full_record_inspectable: true,
-    withheld_record_fields_are_null: true
+    withheld_record_fields_are_null: true,
+    trace_sha256: {
+      plan: planHash,
+      baseline_result: baselineHash,
+      measurement: expectedMeasurementHash,
+      primary_result: primaryHash
+    }
   }) + '\n');
 }
 
