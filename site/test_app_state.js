@@ -73,6 +73,21 @@ const assertTraceRecord = (state, plan, measurement, result, kind) => {
   assert.match(trace().innerHTML, new RegExp(`"measurement_sha256": ${measurement ? `"${measurement}"` : 'null'}`));
   assert.match(trace().innerHTML, new RegExp(`"result_sha256": ${result ? `"${result}"` : 'null'}`));
   assert.match(trace().innerHTML, new RegExp(`"result_kind": "${kind}"`));
+  const exported = JSON.parse(trace().dataset.exportJson);
+  assert.deepEqual(exported, {
+    schema: 'dosepilot.browser_demo_trace.v1',
+    state,
+    plan_sha256: plan || null,
+    measurement_sha256: measurement || null,
+    result_sha256: result || null,
+    result_kind: kind
+  });
+  const href = trace().innerHTML.match(/href="(data:application\/json;charset=utf-8,[^"]+)"/);
+  assert.ok(href, 'download link not found');
+  const decoded = decodeURIComponent(href[1].split(',', 2)[1]);
+  assert.equal(decoded, trace().dataset.exportJson);
+  assert.match(trace().innerHTML, new RegExp(`download="dosepilot-trace-${state}\\.json"`));
+  assert.match(trace().innerHTML, /Digest-only fictional record; no raw readings or model outputs\./);
 };
 const assertNoNumericalLeak = items => items.forEach(item => {
   assert.equal(item.dataset.outputState, 'withheld');
@@ -212,6 +227,9 @@ async function main() {
     complete_measurement_hash_present: true,
     complete_primary_hash_present: true,
     full_record_inspectable: true,
+    exact_record_downloadable: true,
+    exported_record_matches_visible_record: true,
+    export_contains_raw_readings_or_outputs: false,
     withheld_record_fields_are_null: true,
     trace_sha256: {
       plan: planHash,

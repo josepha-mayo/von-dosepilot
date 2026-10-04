@@ -151,11 +151,14 @@ async function renderTrace(mode) {
   }
 
   if (epoch !== traceEpoch) return;
+  const record = traceRecord(mode, planHash, measurementHash, resultHash, resultKind);
+  const recordHref = `data:application/json;charset=utf-8,${encodeURIComponent(record)}`;
   traceEl.dataset.traceState = mode;
   traceEl.dataset.planSha256 = planHash;
   traceEl.dataset.measurementSha256 = measurementHash;
   traceEl.dataset.resultSha256 = resultHash;
   traceEl.dataset.resultKind = resultKind;
+  traceEl.dataset.exportJson = record;
   traceEl.innerHTML = `
     <div class="trace-title"><b>Browser-local evidence preview</b><span>${mode}</span></div>
     <div class="trace-row"><span>Plan commitment</span><code title="${planHash}">${displayHash(planHash)}</code></div>
@@ -164,7 +167,11 @@ async function renderTrace(mode) {
     <div class="trace-kind">${resultKind}</div>
     <details class="trace-details">
       <summary>Inspect full evidence record</summary>
-      <pre>${traceRecord(mode, planHash, measurementHash, resultHash, resultKind)}</pre>
+      <pre>${record}</pre>
+      <div class="trace-actions">
+        <a href="${recordHref}" download="dosepilot-trace-${mode}.json">Download exact JSON</a>
+        <span>Digest-only fictional record; no raw readings or model outputs.</span>
+      </div>
     </details>
     <p>SHA-256 over fictional browser payloads. This preview is not signed, WORM storage, physical provenance, or control validation.</p>`;
 }
