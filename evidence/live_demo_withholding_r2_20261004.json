@@ -1,0 +1,118 @@
+{
+  "schema": "dosepilot.live_demo_withholding.v2",
+  "status": "PASS",
+  "role": "PUBLIC_DEMO_STATE_AND_TRACE_INTEGRITY",
+  "date_utc": "2026-10-04",
+  "predecessor": {
+    "path": "evidence/live_demo_withholding_20261004.json",
+    "sha256": "50b45d04abaabf0ce36ffcd79006bdeb9b641653faea641d782e0dd34f8995a8",
+    "preserved_byte_unchanged": true
+  },
+  "source_release": {
+    "parent_commit": "6625b7a5dbb6d74f1474d4c721100483e0e77c90",
+    "parent_tree": "ac1aaf2e4880d61b62c50bea593ef8faa13c79fc",
+    "implementation_commit": "6fce1164f8190ccca210cd3baaa53f9e36992ad5",
+    "implementation_tree": "eb2ba1496cdba7d47d9e0590004fe710266d270c"
+  },
+  "artifact_sha256": {
+    "docs/LIVE_DEMO_TRACE.md": "fd675413e0cc9ba122fdde630cc5db858953a2099753b249e77e565cb9578c55",
+    "site/app.js": "645fcc1465168556b5d2a554859f9cc690402321357d1187a4c9a3598db8a7d8",
+    "site/styles.css": "b0708f8e00c4b9e64b0929708fa51dcf7a57299d9613a6adf05f020d8a370132",
+    "site/test_app_state.js": "5f45fd67d4782a8891f405790dbd1a109c35d1a86249aa173dd274be3c78d873",
+    "study/audits/verify_live_demo_withholding.py": "e680a439bb011f226b6f33e62a4c1f389dce564869a0303e449ee39783571638",
+    "study/audits/test_live_demo_withholding.py": "4967b0a71d15b0e84aaac7a39cbc3b0d9acd0738e019c0a1f91e86c087806f57"
+  },
+  "trace_contract": {
+    "algorithm": "SHA-256 via Web Crypto",
+    "payloads": [
+      "plan",
+      "measurements",
+      "baseline_result",
+      "primary_result"
+    ],
+    "plan_sha256": "e1f2b0c63bb4a3db78568cbf331b247475b6eba7d6794c835a9d42941b3e748e",
+    "baseline_result_sha256": "90ff9f3bfd8c192604d7e130cb042477d1f1753fbe8bef18c6ff510739644194",
+    "measurement_sha256": "71a23a872e794f60751def3dcd2a27b54453b9b481fa736099269d549941573d",
+    "primary_result_sha256": "ed48e0320d740685b350373e72dce6f736a86c78992bfdd481a92439ca9181a6",
+    "plan_stable_across_committed_states": true,
+    "precompletion_measurement_hash_withheld": true,
+    "precompletion_primary_hash_withheld": true
+  },
+  "local_state_verification": {
+    "status": "PASS",
+    "states": [
+      "fresh",
+      "committed",
+      "missing",
+      "baseline_recovery",
+      "complete",
+      "reset"
+    ],
+    "withheld_before_complete": 24,
+    "baseline_outputs": 23,
+    "baseline_withheld": 1,
+    "primary_outputs": 24,
+    "plan_hash_stable_across_committed_states": true,
+    "precompletion_measurement_hash_withheld": true,
+    "precompletion_primary_hash_withheld": true,
+    "baseline_result_hash_present": true,
+    "complete_measurement_hash_present": true,
+    "complete_primary_hash_present": true,
+    "digest_arithmetic_independently_reconstructed": true
+  },
+  "production_deployment": {
+    "site_id": "d313109a-8052-441a-9439-f42b0ef8034f",
+    "deploy_id": "6ac26bba8ecb6d2873e98282",
+    "build_id": "6ac26bba8ecb6d2873e98280",
+    "state": "ready",
+    "context": "production",
+    "url": "https://von-dosepilot.netlify.app",
+    "created_at": "2026-10-04T15:07:38.699Z",
+    "published_at": "2026-10-04T15:07:43.975Z",
+    "deploy_source": "api",
+    "assets_changed": 3
+  },
+  "production_browser_verification": {
+    "browser": "isolated cloud Chrome",
+    "fresh_withheld": 24,
+    "fresh_numeric_outputs": 0,
+    "missing_wells_present": 63,
+    "missing_current_outputs": 0,
+    "missing_baseline_outputs": 0,
+    "baseline_numeric_outputs": 23,
+    "baseline_withheld": 1,
+    "baseline_withheld_label": "Afatinib: withheld",
+    "complete_current_outputs": 24,
+    "complete_withheld": 0,
+    "plan_hash_stable_across_committed_states": true,
+    "precompletion_measurement_hash_withheld": true,
+    "precompletion_primary_hash_withheld": true,
+    "baseline_result_hash_present": true,
+    "complete_measurement_hash_present": true,
+    "complete_primary_hash_present": true,
+    "site_origin_console_errors": 0,
+    "browser_extension_metadata_errors_excluded": true
+  },
+  "repository_verification": {
+    "release_preflight_status": "PASS",
+    "release_preflight_stages": 14,
+    "orchestrated_response_free_tests": 173,
+    "central_evidence_verifier": "PASS"
+  },
+  "limitations": {
+    "signed": false,
+    "worm_storage": false,
+    "physical_provenance": false,
+    "control_validation": false,
+    "biological_validation": false
+  },
+  "claim_boundary": {
+    "new_model_fit": false,
+    "biological_accuracy_result_created": false,
+    "independent_validation_created": false,
+    "private_or_protected_inputs_read": false,
+    "accepted_kaggle_entry_changed": false,
+    "netlify_production_deployment_changed": true,
+    "official_competition_score": null
+  }
+}
