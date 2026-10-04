@@ -80,13 +80,23 @@ def verify(root):
     receipt_path = root / record.get("path", "")
     require(sha(receipt_path) == record.get("sha256"), "INDEX_RECEIPT_HASH")
     receipt = load(receipt_path)
-    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v1", "SCHEMA")
+    require(receipt.get("schema") in {
+        "dosepilot.reviewer_route_integrity.v1",
+        "dosepilot.reviewer_route_integrity.v2",
+    }, "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
-    require(receipt.get("role") == "REVIEWER_NAVIGATION_TARGET_INTEGRITY", "ROLE")
+    require(receipt.get("role") in {
+        "REVIEWER_NAVIGATION_TARGET_INTEGRITY",
+        "REVIEWER_NAVIGATION_AND_TRACE_DISCOVERY",
+    }, "ROLE")
 
-    documentation = receipt.get("documentation", {})
-    require(sha(root / documentation.get("path", "")) == documentation.get("sha256"), "DOCUMENTATION_HASH")
-    for relative, expected in receipt.get("implementation_sha256", {}).items():
+    if receipt.get("schema") == "dosepilot.reviewer_route_integrity.v1":
+        documentation = receipt.get("documentation", {})
+        require(sha(root / documentation.get("path", "")) == documentation.get("sha256"), "DOCUMENTATION_HASH")
+        implementation = receipt.get("implementation_sha256", {})
+    else:
+        implementation = receipt.get("artifact_sha256", {})
+    for relative, expected in implementation.items():
         require(sha(root / relative) == expected, "IMPLEMENTATION_HASH: " + relative)
 
     surfaces = receipt.get("audited_surfaces", {})
@@ -144,19 +154,20 @@ def verify(root):
     require(expected.get("required_urls") == len(REQUIRED_URLS), "REQUIRED_URL_COUNT")
     require(expected.get("network_requests") == 0, "NETWORK_REQUESTS")
 
-    failure = receipt.get("preserved_operational_failure", {})
-    require(failure.get("status") == "INITIAL_TEST_FIXTURE_ERROR", "PRESERVED_FAILURE_STATUS")
-    require(failure.get("initial_passes") == 1, "PRESERVED_FAILURE_PASSES")
-    require(failure.get("initial_errors") == 7, "PRESERVED_FAILURE_ERRORS")
-    require(failure.get("route_scientific_or_product_failure") is False, "PRESERVED_FAILURE_SCOPE")
-    require(failure.get("corrected_tests_passed") == 8, "PRESERVED_FAILURE_CORRECTION")
+    if receipt.get("schema") == "dosepilot.reviewer_route_integrity.v1":
+        failure = receipt.get("preserved_operational_failure", {})
+        require(failure.get("status") == "INITIAL_TEST_FIXTURE_ERROR", "PRESERVED_FAILURE_STATUS")
+        require(failure.get("initial_passes") == 1, "PRESERVED_FAILURE_PASSES")
+        require(failure.get("initial_errors") == 7, "PRESERVED_FAILURE_ERRORS")
+        require(failure.get("route_scientific_or_product_failure") is False, "PRESERVED_FAILURE_SCOPE")
+        require(failure.get("corrected_tests_passed") == 8, "PRESERVED_FAILURE_CORRECTION")
 
-    discovery = receipt.get("preserved_broad_discovery_failure", {})
-    require(discovery.get("status") == "TWO_HISTORICAL_IMPORT_ERRORS", "DISCOVERY_FAILURE_STATUS")
-    require(discovery.get("scientific_or_product_failure") is False, "DISCOVERY_FAILURE_SCOPE")
-    require(discovery.get("canonical_preflight_status") == "PASS", "DISCOVERY_PREFLIGHT_STATUS")
-    require(discovery.get("affected_tests_with_required_path_passed") == 24, "DISCOVERY_CORRECTED_TESTS")
-    require(discovery.get("canonical_orchestrated_count_changed") is False, "DISCOVERY_COUNT_BOUNDARY")
+        discovery = receipt.get("preserved_broad_discovery_failure", {})
+        require(discovery.get("status") == "TWO_HISTORICAL_IMPORT_ERRORS", "DISCOVERY_FAILURE_STATUS")
+        require(discovery.get("scientific_or_product_failure") is False, "DISCOVERY_FAILURE_SCOPE")
+        require(discovery.get("canonical_preflight_status") == "PASS", "DISCOVERY_PREFLIGHT_STATUS")
+        require(discovery.get("affected_tests_with_required_path_passed") == 24, "DISCOVERY_CORRECTED_TESTS")
+        require(discovery.get("canonical_orchestrated_count_changed") is False, "DISCOVERY_COUNT_BOUNDARY")
 
     boundary = receipt.get("claim_boundary", {})
     for key in (

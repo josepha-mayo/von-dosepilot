@@ -8,6 +8,8 @@ Research software by **Joseph Ayanda** for AI4S Open Innovation. DosePilot choos
 
 **Live fictional-data demo:** https://von-dosepilot.netlify.app
 
+**Downloadable state-bound evidence:** expand **Inspect full evidence record** in the live demo, then download the exact digest-only JSON shown there. The [export contract and verification](docs/LIVE_DEMO_TRACE_EXPORT.md) explain what is included and explicitly excluded.
+
 **One-page finalist audit:** [64-well contract, current benchmark, all 24 target deltas, selection history](docs/FINALIST_AUDIT.md)  
 **Synthetic robustness audit:** [noise, plate-drift, and missing-reading stress tests](docs/SIMULATED_ASSAY_ROBUSTNESS.md)
 

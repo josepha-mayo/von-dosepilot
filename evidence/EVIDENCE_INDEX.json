@@ -52,16 +52,16 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r8_20261004.json",
-      "sha256": "4db59dd23fbe164c0b07aa7dd207921a5e7c91996b98511ef52f5d50d7ec2e19"
+      "path": "evidence/frozen_ooc_release_binding_r9_20261004.json",
+      "sha256": "938718a5c4982419c97977308fcd3c8bf795166d13497eea9ec164b00b8bdbc7"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r6_20261004.json",
-      "sha256": "53a2673142032cbb177178de0f2deac9541139a8167aae82fa9ba229043a37ba"
+      "path": "evidence/reviewer_path_release_r7_20261004.json",
+      "sha256": "7a5113d630c4262fe4bb5b56bdbfb654520fc7e28c4d1aadbc9e7e781600e135"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r2_20261004.json",
@@ -116,6 +116,8 @@
     "rubric_evidence_map_linked": true,
     "rubric_self_score_assigned": false,
     "verification_chronology_linked": true,
+    "downloadable_trace_linked": true,
+    "downloadable_trace_export_contains_raw_readings_or_outputs": false,
     "latest_release_test_count": 173,
     "report_bound_historical_test_count": 168
   },
@@ -163,8 +165,8 @@
     "official_competition_score": null
   },
   "verification_chronology": {
-    "path": "evidence/verification_chronology_20261004.json",
-    "sha256": "589b0ce6f62ab2b30c39b838bc984cce1664cf8e2ff200efa0bc3d471108a593",
+    "path": "evidence/verification_chronology_r2_20261004.json",
+    "sha256": "9064b20c3f394d20fe96609a80eca93b051e874e818f7a448d30c3fce10ff7ef",
     "status": "PASS",
     "latest_orchestrated_response_free_tests": 173,
     "historical_receipts_preserved": true,
@@ -194,16 +196,19 @@
     "official_competition_score": null
   },
   "reviewer_route_integrity": {
-    "path": "evidence/reviewer_route_integrity_20261004.json",
-    "sha256": "0cd6f0451a8f40a573d0c054a91d5e02aadadd1bacd89ae64074a46cb74f49f8",
+    "path": "evidence/reviewer_route_integrity_r2_20261004.json",
+    "sha256": "619b659de87e2a69c652b5f01c19d68c41d6e356add64094cc92e892e46d7938",
     "status": "PASS",
     "audited_surfaces": 5,
-    "local_targets": 52,
+    "local_targets": 54,
     "github_master_targets": 22,
     "anchors": 1,
     "required_urls": 5,
+    "trace_links": 3,
     "network_requests": 0,
     "external_playback_verified": false,
+    "downloadable_trace_linked": true,
+    "export_contains_raw_readings_or_outputs": false,
     "private_or_protected_inputs_read": false,
     "biological_accuracy_result_created": false,
     "accepted_kaggle_entry_changed": false,
@@ -519,6 +524,8 @@
     "orientation_vector_validated": true,
     "additive_p90_crosschecked": true,
     "historical_fold_counts_pinned": true,
+    "downloadable_trace_linked": true,
+    "export_contains_raw_readings_or_outputs": false,
     "new_tamper_tests_passed": 7,
     "release_preflight_check_count": 14,
     "orchestrated_response_free_tests": 173,

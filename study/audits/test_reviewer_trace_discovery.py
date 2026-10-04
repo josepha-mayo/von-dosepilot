@@ -1,0 +1,148 @@
+import hashlib
+import json
+import shutil
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+from urllib.parse import unquote, urlsplit
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from verify_reviewer_routes import AUDITED_SURFACES, GITHUB_BLOB_PREFIX, MARKDOWN_LINK, split_markdown_target
+from verify_reviewer_trace_discovery import ReviewerTraceDiscoveryError, verify
+
+
+class ReviewerTraceDiscoveryTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.source = Path(__file__).resolve().parents[2]
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        index = json.loads((self.source / "evidence/EVIDENCE_INDEX.json").read_text())
+        receipt_relative = index["reviewer_route_integrity"]["path"]
+        receipt = json.loads((self.source / receipt_relative).read_text())
+        paths = {
+            "evidence/EVIDENCE_INDEX.json",
+            receipt_relative,
+            receipt["predecessor"]["path"],
+            receipt["live_demo_trace"]["path"],
+            *receipt["artifact_sha256"],
+            *AUDITED_SURFACES,
+        }
+        directories = set()
+        for relative in AUDITED_SURFACES:
+            source = self.source / relative
+            for match in MARKDOWN_LINK.finditer(source.read_text()):
+                path_part, _ = split_markdown_target(match.group(1))
+                parsed = urlsplit(path_part)
+                if parsed.scheme in ("http", "https"):
+                    if parsed.netloc == "github.com" and parsed.path.startswith(GITHUB_BLOB_PREFIX):
+                        paths.add(unquote(parsed.path[len(GITHUB_BLOB_PREFIX):]))
+                elif path_part:
+                    target = (source.parent / path_part).resolve()
+                    relative_target = target.relative_to(self.source)
+                    if target.is_dir():
+                        directories.add(str(relative_target))
+                    else:
+                        paths.add(str(relative_target))
+        for relative in paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
+        for relative in directories:
+            (self.root / relative).mkdir(parents=True, exist_ok=True)
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def receipt(self):
+        index = json.loads((self.root / "evidence/EVIDENCE_INDEX.json").read_text())
+        path = self.root / index["reviewer_route_integrity"]["path"]
+        return index, path, json.loads(path.read_text())
+
+    def rehash_receipt(self, receipt):
+        index, path, _ = self.receipt()
+        path.write_text(json.dumps(receipt, indent=2) + "\n")
+        index["reviewer_route_integrity"]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+        (self.root / "evidence/EVIDENCE_INDEX.json").write_text(json.dumps(index, indent=2) + "\n")
+
+    def rehash_surface(self, relative, receipt):
+        receipt["audited_surfaces"][relative] = hashlib.sha256((self.root / relative).read_bytes()).hexdigest()
+        self.rehash_receipt(receipt)
+
+    def test_current_state_passes(self):
+        result = verify(self.root)
+        self.assertEqual(result["status"], "PASS")
+        self.assertTrue(result["downloadable_trace_linked"])
+
+    def test_receipt_tamper_fails(self):
+        _, path, _ = self.receipt()
+        path.write_bytes(path.read_bytes() + b" ")
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "INDEX_RECEIPT_HASH"):
+            verify(self.root)
+
+    def test_predecessor_tamper_fails(self):
+        _, _, receipt = self.receipt()
+        path = self.root / receipt["predecessor"]["path"]
+        path.write_bytes(path.read_bytes() + b" ")
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "PREDECESSOR_HASH"):
+            verify(self.root)
+
+    def test_readme_trace_link_removal_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / "README.md"
+        path.write_text(path.read_text().replace("docs/LIVE_DEMO_TRACE_EXPORT.md", "docs/FINALIST_AUDIT.md", 1))
+        self.rehash_surface("README.md", receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "README_TRACE_LINK"):
+            verify(self.root)
+
+    def test_reviewer_boundary_removal_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / "00_REVIEWER_START_HERE.md"
+        path.write_text(path.read_text().replace("no raw readings or model outputs", "opaque trace payload", 1))
+        self.rehash_surface("00_REVIEWER_START_HERE.md", receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "REVIEWER_TRACE_BOUNDARY"):
+            verify(self.root)
+
+    def test_writeup_trace_link_removal_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / "docs/KAGGLE_WRITEUP.md"
+        path.write_text(path.read_text().replace("docs/LIVE_DEMO_TRACE_EXPORT.md", "docs/FINALIST_AUDIT.md", 1))
+        self.rehash_surface("docs/KAGGLE_WRITEUP.md", receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "WRITEUP_TRACE_LINK"):
+            verify(self.root)
+
+    def test_nonportable_writeup_link_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / "docs/KAGGLE_WRITEUP.md"
+        path.write_text(path.read_text() + "\n[bad](../README.md)\n")
+        self.rehash_surface("docs/KAGGLE_WRITEUP.md", receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "KAGGLE_WRITEUP_NONPORTABLE_LINK"):
+            verify(self.root)
+
+    def test_live_trace_receipt_tamper_fails(self):
+        _, _, receipt = self.receipt()
+        path = self.root / receipt["live_demo_trace"]["path"]
+        path.write_bytes(path.read_bytes() + b" ")
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "ARTIFACT_HASH|LIVE_TRACE_RECEIPT_HASH"):
+            verify(self.root)
+
+    def test_false_export_boundary_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        receipt["claim_boundary"]["export_contains_raw_readings_or_outputs"] = True
+        self.rehash_receipt(receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "BOUNDARY_EXPORT_CONTAINS_RAW_READINGS_OR_OUTPUTS"):
+            verify(self.root)
+
+    def test_false_kaggle_change_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        receipt["claim_boundary"]["accepted_kaggle_entry_changed"] = True
+        self.rehash_receipt(receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "BOUNDARY_ACCEPTED_KAGGLE_ENTRY_CHANGED"):
+            verify(self.root)
+
+
+if __name__ == "__main__":
+    unittest.main()

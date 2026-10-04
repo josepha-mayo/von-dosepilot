@@ -5,6 +5,8 @@
 DosePilot is a measurement-aware drug-response reconstruction method: commit a physical assay layout before responses arrive, consume **64 identified treatment measurements**, then reconstruct **24 fixed normalized log-dose AUC summaries** with explicit identity, missing-data, and provenance rules.
 
 **Live fictional-data demo:** https://von-dosepilot.netlify.app  
+**Downloadable browser-local evidence:** [state-bound digest-only JSON trace contract](docs/LIVE_DEMO_TRACE_EXPORT.md)
+
 **Prepared Kaggle writeup:** [docs/KAGGLE_WRITEUP.md](docs/KAGGLE_WRITEUP.md)  
 **Current technical report:** [CURRENT_TECHNICAL_REPORT.md](CURRENT_TECHNICAL_REPORT.md)
 
@@ -100,6 +102,7 @@ See [docs/SIMULATED_ASSAY_ROBUSTNESS.md](docs/SIMULATED_ASSAY_ROBUSTNESS.md).
 - identity-bound 64-well workflow;
 - missing-input withholding;
 - durable commit/recover/predict lifecycle;
+- inspectable and downloadable state-bound digest record with no raw readings or model outputs;
 - response-free organ-on-chip constraint compiler;
 - frozen A/B schedule.
 

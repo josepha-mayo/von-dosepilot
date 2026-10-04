@@ -32,10 +32,14 @@ class ReviewerRouteTests(unittest.TestCase):
         paths = {
             "evidence/EVIDENCE_INDEX.json",
             receipt_relative,
-            receipt["documentation"]["path"],
-            *receipt["implementation_sha256"],
             *AUDITED_SURFACES,
         }
+        if "documentation" in receipt:
+            paths.add(receipt["documentation"]["path"])
+        paths.update(receipt.get("implementation_sha256", {}))
+        paths.update(receipt.get("artifact_sha256", {}))
+        if "predecessor" in receipt:
+            paths.add(receipt["predecessor"]["path"])
         directories = set()
         for relative in AUDITED_SURFACES:
             source = self.source / relative
