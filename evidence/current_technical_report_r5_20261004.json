@@ -1,0 +1,68 @@
+{
+  "schema": "dosepilot.current_technical_report_release.v5",
+  "status": "PASS",
+  "as_of_date": "2026-10-04",
+  "role": "CURRENT_JUDGE_FACING_TECHNICAL_REPORT",
+  "predecessor": {
+    "path": "evidence/current_technical_report_r4_20261004.json",
+    "sha256": "8179b404fca98bc7117fecbab352db4f4c339ddae04fb7f6a560ff8961ee9cdf",
+    "preserved_unchanged": true
+  },
+  "supersedes_reason": "Adds the completed five-fold nested bandwidth-selection replay, synchronizes the response-free verification count from 168 to 173, and preserves the wider repeated-development boundary without changing the incumbent model or accepted Kaggle entry.",
+  "entrypoint": {
+    "path": "CURRENT_TECHNICAL_REPORT.md",
+    "sha256": "69c1fc4e576f841020a9a2cb2c44c2a557986e9e7f296d80a59bce737bc6df66"
+  },
+  "source": {
+    "path": "docs/DosePilot_Technical_Report_Current.md",
+    "sha256": "c4a61771bfc43e704f69e3a722043133e1e680d71c5a68b8d6b672a89e334546"
+  },
+  "pdf": {
+    "path": "docs/DosePilot_Technical_Report_Current.pdf",
+    "sha256": "14c8c6d4acf4fd797b6541d0974dd90f643c9d3d60fde4a7fafc55173b2e2f6b",
+    "bytes": 91194,
+    "pages": 10,
+    "page_size": "A4",
+    "blank_pages": 0,
+    "visual_review": "PASS"
+  },
+  "renderer": {
+    "path": "tools/build_current_report.py",
+    "sha256": "4befa4b36ca171f833662d9544510ec971a202b28b7d31ff593e256f1158889d",
+    "engine": "ReportLab",
+    "invariant_output": true,
+    "two_consecutive_builds_byte_identical": true
+  },
+  "claim_checks": {
+    "bandwidth_successor_mse": 0.0010582750420801538,
+    "bandwidth_point_estimate_post_selection": true,
+    "ab_expected_loss_uniform_assignment": true,
+    "nested_bandwidth_menu": [0.7, 1.0, 1.4],
+    "nested_bandwidth_selection_counts": {"0.7": 5, "1.0": 0, "1.4": 0},
+    "nested_bandwidth_prediction_max_absolute_difference_vs_fixed07": 0.0,
+    "nested_bandwidth_patient_loss_ties_vs_fixed07": 59,
+    "nested_bandwidth_fold_mean_ties_vs_fixed07": 5,
+    "nested_bandwidth_target_mean_ties_vs_fixed07": 24,
+    "nested_bandwidth_orientation_ties_vs_fixed07": 2,
+    "nested_bandwidth_independent_validation": false,
+    "cross_patient_bandwidth_decision": "REJECT_RETAIN_BANDWIDTH07",
+    "cross_patient_bandwidth_mse": 0.0010574875414830203,
+    "cross_patient_bandwidth_fold_wins": 4,
+    "cross_patient_bandwidth_target_regressions": 9,
+    "protected22_primary": "NOT_ESTIMABLE",
+    "release_preflight_tests": 173,
+    "release_preflight_stages": 14,
+    "repeated_adaptive_development_disclosed": true,
+    "adverse_target_slices_disclosed": true,
+    "prospective_ooc_experiment_claimed": false,
+    "official_competition_score": null
+  },
+  "historical_submitted_pdf": {
+    "path": "docs/DosePilot_Technical_Report_Public.pdf",
+    "sha256": "14361cb6ad867e729be138e68d27cda4d1fca73df4339ea0649c510454b7d32f",
+    "replaced": false
+  },
+  "private_or_protected_inputs_read": false,
+  "biological_accuracy_result_created": false,
+  "accepted_kaggle_entry_changed": false
+}

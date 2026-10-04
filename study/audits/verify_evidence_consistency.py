@@ -42,7 +42,7 @@ PINNED_RECEIPTS = {
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
     "frozen_ooc_release_binding": "80919f1172f40db176447dcc6954985f132188a3dbfe3978b27121c2da11d62f",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
-    "reviewer_path_release": "7701083343caf093b72874a14f75391e409df64ad10e1c02ceb03d6407fe9c11",
+    "reviewer_path_release": "54103ece0e38e7701116f6fa0cbb271e0308f6acf1d03cd597ed0cba7c9ca59d",
     "development_search_governance": "8dfc4b3fbcfdf8f45cb626edb872fc240b4add41fccfbace350499246aabecce",
 }
 
@@ -51,7 +51,7 @@ PINNED_DOCUMENTS = {
     "docs/KAGGLE_WRITEUP.md": "494197b5e27d32fa84dc1959f3ba4efe68ae6e7b4fc9717a2821e86a389c6b16",
 }
 
-CURRENT_REPORT_RECEIPT_SHA256 = "8179b404fca98bc7117fecbab352db4f4c339ddae04fb7f6a560ff8961ee9cdf"
+CURRENT_REPORT_RECEIPT_SHA256 = "236865a7939df17caa4588714a564cc927f4278549446d9b8575bf6eeaaeb329"
 
 
 def load(path):
@@ -135,7 +135,7 @@ def verify(root, enforce_pins=True):
     report_receipt_path = root / report_index["path"]
     same(sha(report_receipt_path), report_index["sha256"], "CURRENT_REPORT_RECEIPT_HASH")
     current_report = load(report_receipt_path)
-    same(current_report["schema"], "dosepilot.current_technical_report_release.v4", "CURRENT_REPORT_SCHEMA")
+    same(current_report["schema"], "dosepilot.current_technical_report_release.v5", "CURRENT_REPORT_SCHEMA")
     same(current_report["status"], "PASS", "CURRENT_REPORT_STATUS")
     same(current_report["role"], "CURRENT_JUDGE_FACING_TECHNICAL_REPORT", "CURRENT_REPORT_ROLE")
     report_predecessor = current_report["predecessor"]
@@ -170,10 +170,18 @@ def verify(root, enforce_pins=True):
     same(claim_checks["cross_patient_bandwidth_mse"], 0.0010574875414830203, "CURRENT_REPORT_CPM_MSE", 1e-15)
     same(claim_checks["cross_patient_bandwidth_fold_wins"], 4, "CURRENT_REPORT_CPM_FOLDS")
     same(claim_checks["cross_patient_bandwidth_target_regressions"], 9, "CURRENT_REPORT_CPM_TARGETS")
-    same(claim_checks["release_preflight_tests"], 168, "CURRENT_REPORT_PREFLIGHT")
+    same(claim_checks["release_preflight_tests"], 173, "CURRENT_REPORT_PREFLIGHT")
     same(claim_checks["release_preflight_stages"], 14, "CURRENT_REPORT_PREFLIGHT_STAGES")
     same(claim_checks["bandwidth_point_estimate_post_selection"], True, "CURRENT_REPORT_SELECTION_DISCLOSURE")
     same(claim_checks["ab_expected_loss_uniform_assignment"], True, "CURRENT_REPORT_AB_ESTIMAND")
+    same(claim_checks["nested_bandwidth_menu"], [0.7, 1.0, 1.4], "CURRENT_REPORT_NESTED_MENU")
+    same(claim_checks["nested_bandwidth_selection_counts"], {"0.7": 5, "1.0": 0, "1.4": 0}, "CURRENT_REPORT_NESTED_SELECTIONS")
+    same(claim_checks["nested_bandwidth_prediction_max_absolute_difference_vs_fixed07"], 0.0, "CURRENT_REPORT_NESTED_PREDICTIONS")
+    same(claim_checks["nested_bandwidth_patient_loss_ties_vs_fixed07"], 59, "CURRENT_REPORT_NESTED_PATIENTS")
+    same(claim_checks["nested_bandwidth_fold_mean_ties_vs_fixed07"], 5, "CURRENT_REPORT_NESTED_FOLDS")
+    same(claim_checks["nested_bandwidth_target_mean_ties_vs_fixed07"], 24, "CURRENT_REPORT_NESTED_TARGETS")
+    same(claim_checks["nested_bandwidth_orientation_ties_vs_fixed07"], 2, "CURRENT_REPORT_NESTED_ORIENTATIONS")
+    same(claim_checks["nested_bandwidth_independent_validation"], False, "CURRENT_REPORT_NESTED_BOUNDARY")
     for key in ("repeated_adaptive_development_disclosed", "adverse_target_slices_disclosed"):
         same(claim_checks[key], True, "CURRENT_REPORT_DISCLOSURE: " + key)
     same(claim_checks["prospective_ooc_experiment_claimed"], False, "CURRENT_REPORT_NO_OOC_CLAIM")
@@ -241,7 +249,7 @@ def verify(root, enforce_pins=True):
         same(target_index[key], receipt_value, "INDEX_TARGET_DEFINITIONS_" + key.upper())
 
     reviewer_release = receipts["reviewer_path_release"]
-    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v8", "REVIEWER_PATH_SCHEMA")
+    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v9", "REVIEWER_PATH_SCHEMA")
     same(reviewer_release["status"], "PASS", "REVIEWER_PATH_STATUS")
     same(reviewer_release["role"], "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY", "REVIEWER_PATH_ROLE")
     reviewer_predecessor = reviewer_release["predecessor"]
@@ -329,7 +337,7 @@ def verify(root, enforce_pins=True):
     same(reviewer_contract["downloadable_trace_export_contains_raw_readings_or_outputs"], False, "REVIEWER_PATH_TRACE_BOUNDARY")
     same(reviewer_contract["nested_bandwidth_independent_validation"], False, "REVIEWER_PATH_NESTED_BOUNDARY")
     same(reviewer_contract["latest_release_test_count"], 173, "REVIEWER_PATH_LATEST_TESTS")
-    same(reviewer_contract["report_bound_historical_test_count"], 168, "REVIEWER_PATH_REPORT_TESTS")
+    same(reviewer_contract["report_bound_historical_test_count"], 173, "REVIEWER_PATH_REPORT_TESTS")
     reviewer_scope = reviewer_release["scope"]
     for key in ("new_model_fit", "biological_accuracy_result_created", "independent_validation", "protected_response_access", "private_patient_rows_read", "accepted_kaggle_entry_changed"):
         same(reviewer_scope[key], False, "REVIEWER_PATH_SCOPE: " + key)

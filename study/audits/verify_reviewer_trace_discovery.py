@@ -58,14 +58,14 @@ def verify(root):
     receipt_path = root / record.get("path", "")
     require(sha(receipt_path) == record.get("sha256"), "INDEX_RECEIPT_HASH")
     receipt = load(receipt_path)
-    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v3", "SCHEMA")
+    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v4", "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
-    require(receipt.get("role") == "REVIEWER_NAVIGATION_TRACE_AND_NESTED_EVIDENCE", "ROLE")
+    require(receipt.get("role") == "REVIEWER_NAVIGATION_TRACE_NESTED_AND_REPORT_EVIDENCE", "ROLE")
 
     predecessor = receipt.get("predecessor", {})
     predecessor_path = root / predecessor.get("path", "")
     require(sha(predecessor_path) == predecessor.get("sha256"), "PREDECESSOR_HASH")
-    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v2", "PREDECESSOR_SCHEMA")
+    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v3", "PREDECESSOR_SCHEMA")
     require(predecessor.get("preserved_unchanged") is True, "PREDECESSOR_PRESERVED")
 
     for relative, expected in receipt.get("artifact_sha256", {}).items():
@@ -166,6 +166,18 @@ def verify(root):
     require(nested.get("nested_vs_fixed07", {}).get("prediction_max_absolute_difference") == 0.0, "NESTED_EXACT_EQUALITY")
     require(nested.get("claim_boundary", {}).get("independent_validation") is False, "NESTED_NOT_INDEPENDENT")
     require(nested.get("claim_boundary", {}).get("protected_response_access") is False, "NESTED_NO_PROTECTED")
+
+    report_record = receipt.get("current_report", {})
+    report_path = root / report_record.get("path", "")
+    require(sha(report_path) == report_record.get("sha256"), "CURRENT_REPORT_RECEIPT_HASH")
+    report = load(report_path)
+    require(report.get("schema") == "dosepilot.current_technical_report_release.v5", "CURRENT_REPORT_SCHEMA")
+    require(report.get("status") == "PASS", "CURRENT_REPORT_STATUS")
+    claims = report.get("claim_checks", {})
+    require(claims.get("nested_bandwidth_selection_counts") == {"0.7": 5, "1.0": 0, "1.4": 0}, "CURRENT_REPORT_NESTED_SELECTIONS")
+    require(claims.get("nested_bandwidth_prediction_max_absolute_difference_vs_fixed07") == 0.0, "CURRENT_REPORT_NESTED_EQUALITY")
+    require(claims.get("nested_bandwidth_independent_validation") is False, "CURRENT_REPORT_NESTED_BOUNDARY")
+    require(claims.get("release_preflight_tests") == 173, "CURRENT_REPORT_PREFLIGHT_TESTS")
 
     verification = receipt.get("verification", {})
     require(local_targets == verification.get("local_targets"), "LOCAL_TARGET_COUNT")

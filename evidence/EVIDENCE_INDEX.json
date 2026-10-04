@@ -60,8 +60,8 @@
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r8_20261004.json",
-      "sha256": "7701083343caf093b72874a14f75391e409df64ad10e1c02ceb03d6407fe9c11"
+      "path": "evidence/reviewer_path_release_r9_20261004.json",
+      "sha256": "54103ece0e38e7701116f6fa0cbb271e0308f6acf1d03cd597ed0cba7c9ca59d"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r2_20261004.json",
@@ -69,15 +69,15 @@
     }
   },
   "current_technical_report": {
-    "path": "evidence/current_technical_report_r4_20261004.json",
-    "sha256": "8179b404fca98bc7117fecbab352db4f4c339ddae04fb7f6a560ff8961ee9cdf",
+    "path": "evidence/current_technical_report_r5_20261004.json",
+    "sha256": "236865a7939df17caa4588714a564cc927f4278549446d9b8575bf6eeaaeb329",
     "role": "CURRENT_JUDGE_FACING_TECHNICAL_REPORT",
     "status": "PASS",
     "pages": 10,
-    "preflight_path": "evidence/release_preflight_site_cpm_sync_pass1_20261004.json",
-    "preflight_sha256": "3746dc0fb82e9aa9b8d563e45b935f5701f48b1cdc4ef8401ecf3c06bc46ba45",
+    "preflight_path": "evidence/release_preflight_rubric_map_pass1_20261004.json",
+    "preflight_sha256": "92ca10dc68228ff438618d160859a5b5d86ae2d934a798041be45e515dc42d2b",
     "preflight_status": "PASS",
-    "preflight_response_free_tests": 168,
+    "preflight_response_free_tests": 173,
     "historical_submitted_pdf_replaced": false,
     "accepted_kaggle_entry_changed": false,
     "biological_accuracy_result_created": false
@@ -122,7 +122,7 @@
     "downloadable_trace_linked": true,
     "downloadable_trace_export_contains_raw_readings_or_outputs": false,
     "latest_release_test_count": 173,
-    "report_bound_historical_test_count": 168
+    "report_bound_historical_test_count": 173
   },
   "finalist_rubric_evidence": {
     "path": "evidence/finalist_rubric_evidence_20261004.json",
@@ -199,8 +199,8 @@
     "official_competition_score": null
   },
   "reviewer_route_integrity": {
-    "path": "evidence/reviewer_route_integrity_r3_20261004.json",
-    "sha256": "91ba9d2a5804633d7fa48726012c954f3f0a9ea8b74b15afe8d14fa4df1a04cf",
+    "path": "evidence/reviewer_route_integrity_r4_20261004.json",
+    "sha256": "e63edd36bba7d9e1a5a178e008b7a23704b6ffa674d6689e08a83771b3b02763",
     "status": "PASS",
     "audited_surfaces": 5,
     "local_targets": 58,

@@ -42,9 +42,9 @@ The acquisition and evaluation contract is intentionally strict:
 
 The bandwidth-0.7 additive successor reaches patient-balanced MSE 0.001058275042, 7.56% below original R13 and 7.28% below archived R18. Against its immediate additive predecessor, the gain is smaller - 0.215% - but broad: 38/59 patient means improve, all five outer folds improve, and p90 patient RMSE falls from 0.038073112 to 0.037894285. The same physical plans are used.
 
-For each fixed bandwidth, the residual spectral option is selected inside the inner patient folds. Bandwidth 0.7 itself was selected from the prefrozen {1.0, 0.7, 1.4} menu after comparing reused outer-fold development results. The displayed 0.7 MSE is therefore a post-selection development point estimate, not an unbiased nested estimate of a bandwidth-selecting procedure.
+For each fixed bandwidth, the residual spectral option is selected inside the inner patient folds. A later prefrozen replay selected the bandwidth from {0.7, 1.0, 1.4} wholly inside every outer training set; all 5/5 selected 0.7, so its held-patient predictions exactly equal fixed 0.7 across all 59 patient losses, five fold means, 24 target means, and both orientations. This rules out a foldwise bandwidth splice within that opened menu. It does not correct the wider adaptive campaign, so the displayed MSE remains a repeated-development point estimate rather than independent confirmation.
 
-Public-input replay rebuilds the result from the hash-bound public source route. A separate runtime checks model kind, bandwidth, plan, construction anchor, sample/run/drug/dose/plate/well identity, and missingness. The response-free current-release preflight passes 14 stages and 168 tests.
+Public-input replay rebuilds the result from the hash-bound public source route. A separate runtime checks model kind, bandwidth, plan, construction anchor, sample/run/drug/dose/plate/well identity, and missingness. The response-free current-release preflight passes 14 stages and 173 tests.
 
 ## What is not demonstrated
 
@@ -143,6 +143,8 @@ The internal promotion rule requires improvement against both R13 and archived R
 
 The current model is 7.56% below R13, 7.28% below R18, 0.215% below the immediate additive predecessor, and 56.21% below the separately optimized interpolation control. These comparisons use the same 119 samples, 59 patients, 24 targets, and 64-well treatment budget.
 
+The prefrozen nested bandwidth-selection replay chose 0.7 in every outer training set. Its held-patient predictions therefore tie fixed 0.7 exactly across all 59 patient losses, five fold means, 24 target means, and both orientations. This is evidence against a fold-specific bandwidth splice within the already opened three-value menu, not an independent validation result.
+
 ## Breadth and tail
 
 | Comparison | Relative MSE gain | Patient wins | Favorable folds | Tail result |
@@ -218,7 +220,7 @@ The ledger records model, plan, construction, commitment, measurement, and sourc
 | Durable-runtime tests | 65 |
 | Current-model adapter tests within that suite | 10 |
 | Acquisition tests | 9 |
-| Full response-free release preflight | 14 stages / 168 tests |
+| Full response-free release preflight | 14 stages / 173 tests |
 
 The fictional lifecycle demonstration makes six CLI calls and verifies plan commitment, incomplete-primary rejection, explicit baseline recovery, changed-reading rejection, complete prediction, and exact export recovery. It uses seeded fictional parameters and measurements, not patient data.
 
@@ -306,6 +308,7 @@ The project does not claim calibrated uncertainty, clinical treatment benefit, p
 | Claim family | Public artifact |
 |---|---|
 | Current result and adverse slices | docs/BANDWIDTH_SUCCESSOR.md; evidence/bandwidth_successor_20261003.json |
+| Nested bandwidth selection | docs/NESTED_BANDWIDTH_EVALUATION.md; evidence/nested_bandwidth_selection_20261004.json |
 | All 24 target deltas and selection history | docs/FINALIST_AUDIT.md |
 | Public source-to-results route | docs/PUBLIC_REPRODUCTION.md; evidence/r33_public_pipeline.json |
 | Protected22 failure and exposure | docs/PROTECTED22_RESULT.md; evidence/PROTECTED22_ACCESS_STATUS.json |

@@ -84,12 +84,14 @@ def verify(root):
         "dosepilot.reviewer_route_integrity.v1",
         "dosepilot.reviewer_route_integrity.v2",
         "dosepilot.reviewer_route_integrity.v3",
+        "dosepilot.reviewer_route_integrity.v4",
     }, "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
     require(receipt.get("role") in {
         "REVIEWER_NAVIGATION_TARGET_INTEGRITY",
         "REVIEWER_NAVIGATION_AND_TRACE_DISCOVERY",
         "REVIEWER_NAVIGATION_TRACE_AND_NESTED_EVIDENCE",
+        "REVIEWER_NAVIGATION_TRACE_NESTED_AND_REPORT_EVIDENCE",
     }, "ROLE")
 
     if receipt.get("schema") == "dosepilot.reviewer_route_integrity.v1":

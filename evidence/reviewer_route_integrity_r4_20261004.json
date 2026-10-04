@@ -1,0 +1,85 @@
+{
+  "schema": "dosepilot.reviewer_route_integrity.v4",
+  "status": "PASS",
+  "role": "REVIEWER_NAVIGATION_TRACE_NESTED_AND_REPORT_EVIDENCE",
+  "predecessor": {
+    "path": "evidence/reviewer_route_integrity_r3_20261004.json",
+    "sha256": "91ba9d2a5804633d7fa48726012c954f3f0a9ea8b74b15afe8d14fa4df1a04cf",
+    "preserved_unchanged": true
+  },
+  "supersedes_reason": "Rebinds the zero-network reviewer-route audit to the current ten-page report after adding the completed nested bandwidth-selection replay and the 173-test release state. The accepted entry, incumbent and biological evidence are unchanged.",
+  "live_demo_trace": {
+    "path": "evidence/live_demo_withholding_r4_20261004.json",
+    "sha256": "03a8f8b6aeef7c9df5a800312c8cce9c254e11615c8c65ebde8d0791a5c6319f"
+  },
+  "nested_bandwidth_evidence": {
+    "path": "evidence/nested_bandwidth_selection_20261004.json",
+    "sha256": "328cd770b957c48b20e652494f1de28c7f710cc49a9242e0d66ba56190981bdb"
+  },
+  "current_report": {
+    "path": "evidence/current_technical_report_r5_20261004.json",
+    "sha256": "236865a7939df17caa4588714a564cc927f4278549446d9b8575bf6eeaaeb329"
+  },
+  "artifact_sha256": {
+    "docs/LIVE_DEMO_TRACE_EXPORT.md": "465a34a8065a465eb2a6e252a209325c722a5cb6438ba44f7e6761dcd3b41eb2",
+    "evidence/live_demo_withholding_r4_20261004.json": "03a8f8b6aeef7c9df5a800312c8cce9c254e11615c8c65ebde8d0791a5c6319f",
+    "docs/NESTED_BANDWIDTH_EVALUATION.md": "9b45a3bd6693786a55717cd018008b78ab5d0a4a55eafad01f8fa5a647775646",
+    "evidence/nested_bandwidth_selection_20261004.json": "328cd770b957c48b20e652494f1de28c7f710cc49a9242e0d66ba56190981bdb",
+    "docs/DosePilot_Technical_Report_Current.md": "c4a61771bfc43e704f69e3a722043133e1e680d71c5a68b8d6b672a89e334546",
+    "docs/DosePilot_Technical_Report_Current.pdf": "14c8c6d4acf4fd797b6541d0974dd90f643c9d3d60fde4a7fafc55173b2e2f6b",
+    "evidence/current_technical_report_r5_20261004.json": "236865a7939df17caa4588714a564cc927f4278549446d9b8575bf6eeaaeb329",
+    "evidence/reviewer_path_release_r9_20261004.json": "54103ece0e38e7701116f6fa0cbb271e0308f6acf1d03cd597ed0cba7c9ca59d",
+    "evidence/frozen_ooc_release_binding_r10_20261004.json": "80919f1172f40db176447dcc6954985f132188a3dbfe3978b27121c2da11d62f",
+    "study/audits/verify_reviewer_routes.py": "6c976072687d655323d01bbee9288f9084f26bafee6e9f2752f3be1fffe12f06",
+    "study/audits/test_reviewer_routes.py": "010e515ebd48c29a5c7c3e6d43d1c1ed67b6229463e223d89d4b3a6f0cd0593c",
+    "study/audits/verify_reviewer_trace_discovery.py": "11f04823fe88a783a2a3e4a3afedf05da859315b4e2bce05e2d293136ddcd899",
+    "study/audits/test_reviewer_trace_discovery.py": "b648ed487c862432024304bed5571231fbdb5a4713d18afe7e4096f98aca59ff"
+  },
+  "audited_surfaces": {
+    "README.md": "a8e0ca80c9c9bdbf11bdbd1268160208f95f595d935e690874524ef203d61aaf",
+    "00_REVIEWER_START_HERE.md": "fef111904a2a202f7ffc122497ab51863b639799f6bc15714e9557adeb6c871f",
+    "CURRENT_TECHNICAL_REPORT.md": "69c1fc4e576f841020a9a2cb2c44c2a557986e9e7f296d80a59bce737bc6df66",
+    "docs/KAGGLE_WRITEUP.md": "494197b5e27d32fa84dc1959f3ba4efe68ae6e7b4fc9717a2821e86a389c6b16",
+    "docs/FINALIST_RUBRIC_EVIDENCE.md": "7272be4d67ebd79203aca4cf3e106e04cafb70701eaf77e70a611668f7537926"
+  },
+  "verification": {
+    "local_targets": 58,
+    "github_master_targets": 24,
+    "anchors": 1,
+    "required_urls": 5,
+    "trace_links": 3,
+    "nested_links": 3,
+    "network_requests": 0,
+    "adversarial_tests_passed": 13,
+    "canonical_release_preflight_unchanged": true,
+    "canonical_release_preflight_stages": 14,
+    "canonical_orchestrated_response_free_tests": 173
+  },
+  "preserved_operational_failure": {
+    "status": "INITIAL_MARKDOWN_NORMALIZATION_DEFECT",
+    "initial_passes": 9,
+    "initial_failures": 3,
+    "initial_errors": 1,
+    "resolution": "The verifier normalizes Markdown bold markers before enforcing the exact 5/5 nested-selection wording; all 13 adversarial tests pass.",
+    "scientific_or_product_failure": false,
+    "corrected_tests_passed": 13
+  },
+  "preserved_current_report_rendering_failure": {
+    "status": "DISALLOWED_TEMP_CLEANUP_COMMAND",
+    "command_intent": "remove stale temporary PNG renders before visual inspection",
+    "resolution": "Rendered into a fresh mktemp directory and completed the ten-page visual inspection without deleting existing files.",
+    "scientific_or_product_failure": false,
+    "pdf_build_or_content_failure": false
+  },
+  "claim_boundary": {
+    "external_playback_verified": false,
+    "external_availability_verified": false,
+    "new_model_fit": false,
+    "biological_accuracy_result_created": false,
+    "private_or_protected_inputs_read": false,
+    "accepted_kaggle_entry_changed": false,
+    "netlify_deployment_changed": false,
+    "export_contains_raw_readings_or_outputs": false,
+    "official_competition_score": null
+  }
+}
