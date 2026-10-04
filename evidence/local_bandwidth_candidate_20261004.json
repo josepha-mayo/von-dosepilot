@@ -1,0 +1,123 @@
+{
+  "schema": "dosepilot.local_bandwidth_candidate.v1",
+  "status": "VERIFIED_DEVELOPMENT_CANDIDATE_NOT_PUBLIC_INCUMBENT",
+  "date": "2026-10-04",
+  "method": "response-free per-drug local Gaussian bandwidth",
+  "global_bandwidth_anchor": 0.7,
+  "bandwidths_use_target_labels": false,
+  "population": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_wells_per_alternative": 64,
+    "per_plate": 32
+  },
+  "metrics": {
+    "local": {
+      "mse": 0.0010581496990391417,
+      "p90_rmse": 0.037893995608699084
+    },
+    "bandwidth07": {
+      "mse": 0.0010582750420801538,
+      "p90_rmse": 0.0378942853087202
+    },
+    "r13": {
+      "mse": 0.0011448586813828537
+    }
+  },
+  "comparison_vs_bandwidth07": {
+    "relative_gain": 0.00011844089298918004,
+    "patient_wins": 32,
+    "patient_losses": 27,
+    "fold_wins": 4,
+    "p90_nonworse": true,
+    "descriptive_delta_ci95": [
+      -5.570507706797376e-7,
+      3.26365370809281e-7
+    ],
+    "selection_corrected": false
+  },
+  "historical_checks": {
+    "vs_r13": {
+      "relative_gain": 0.07573771658784811,
+      "patient_wins": 49,
+      "fold_wins": 5,
+      "passes_full_historical": true
+    },
+    "vs_r18": {
+      "relative_gain": 0.0729409157694314,
+      "patient_wins": 48,
+      "fold_wins": 5,
+      "passes_full_historical": true
+    }
+  },
+  "target_nonworse_vs_bandwidth07": 12,
+  "target_regressions_vs_bandwidth07": [
+    "Afatinib",
+    "Alisertib",
+    "Bemcentinib",
+    "Gedatolisib",
+    "Gemcitabine",
+    "Methotrexate",
+    "Napabucasin",
+    "Panobinostat",
+    "Pevonedistat",
+    "Regorafenib",
+    "SN-38",
+    "TAS-102"
+  ],
+  "geometry_stability": {
+    "outer_fold_correlations_vs_full_fit": [
+      0.9503112841182113,
+      0.952277004940998,
+      0.9491091486711616,
+      0.982903503621446,
+      0.9645438518533108
+    ],
+    "min_correlation": 0.9491091486711616,
+    "mean_correlation": 0.9598289586410255,
+    "median_target_cv": 0.010500169850621662,
+    "max_target_cv": 0.022682295552387585,
+    "final_min": 0.5282725126222259,
+    "final_max": 0.7346347714202197,
+    "final_geomean": 0.7
+  },
+  "public_reproduction": {
+    "status": "PASS",
+    "local_mse": 0.0010581496990391417,
+    "bandwidth07_mse": 0.0010582750420801538,
+    "r13_mse": 0.0011448586813828537,
+    "old_prediction_input": false,
+    "private_metadata_kit_used": false,
+    "protected_response_access": false,
+    "result_sha256": "ed6a8497334cbed8ddbdca066f6c3e2c0969910d0a5d5774d2fa11ddd15cb2dc"
+  },
+  "runtime_verification": {
+    "status": "PASS",
+    "requests_checked": 238,
+    "maximum_prediction_difference": 2.220446049250313e-16,
+    "single_missing_positions_checked": 64,
+    "all_missing_cases_withheld": true,
+    "model_sha256": "71c56bd3919ab9205e2333c3fce7152a386865513a3de6869a410e7020ed6734",
+    "construction_sha256": "252e88973b5e700922ce3cea1c423c8e641cf8bdae3a69e2f8664c6b024cbd3b",
+    "receipt_sha256": "e9c9b1cc981d49f467516928452ab5c24f150698106bead2fa64b1c510466b6c"
+  },
+  "source_sha256": {
+    "local_bandwidth_additive": "3cf5f56ed356d8de297568f22fcd4bcc66a7a3c6cb358422ecff2aca21f7fa9a",
+    "local_bandwidth_inference": "ec9d9b110826b7e2bd71fd53b8bc3b8b0db1b06bb9c3e187f1ec17cd1a39b5",
+    "reproduce_local_bandwidth": "a0f4b85367845ea2c1897ed7bee91de24bb0b3994822fb8c968f774d62a8d847",
+    "test_local_bandwidth_additive": "568605d36303a82ac6ff04b58b7060323864a5455012f32348101a484ab3c384"
+  },
+  "tests": {
+    "unique_new_tests": 9,
+    "test_log_sha256": "a756542108b6dd9b2bc27fccb861279e8c3510de94ebeb68d8490ef08197ab5d"
+  },
+  "release_decision": {
+    "public_incumbent_replaced": false,
+    "rationale": "Candidate passes the prefrozen internal gate, but the incremental point gain is 0.01184%, the descriptive paired interval crosses zero, and 12/24 target means regress. Keep the simpler verified bandwidth-0.7 estimator as the judge-facing stable release until a stronger practical reason exists to absorb the extra model family."
+  },
+  "repeated_adaptive_development": true,
+  "independent_validation": false,
+  "official_competition_score": null,
+  "protected22_used": false
+}
