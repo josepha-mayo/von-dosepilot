@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_BEFORE_FIT",
+  "family_id": "cooptimized_calibrated_interpolation_control",
+  "family_fingerprint": "own-drug-interpolation-exhaustive-native-subset-joint-affine-calibration-v1",
+  "falsifiable_hypothesis": "A fairly co-optimized own-drug affine interpolation control can beat the bandwidth-0.7 incumbent on the complete same-budget development task.",
+  "protocol_path": "study/cooptimized_calibrated_control/PROTOCOL.json",
+  "protocol_sha256": "8996f2f42aa47134fd2c7c176940636add20116295a36a51e48cc7e9cbfaf468",
+  "comparator_family_id": "bandwidth07_additive",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across the two separately costed 64-well orientations; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": false,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false
+}

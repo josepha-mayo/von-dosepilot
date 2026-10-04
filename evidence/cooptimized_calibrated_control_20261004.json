@@ -1,0 +1,92 @@
+{
+  "schema": "dosepilot.cooptimized_calibrated_control.public_result.v1",
+  "as_of_date": "2026-10-04",
+  "status": "COMPLETE",
+  "decision": "REJECT_RETAIN_BANDWIDTH07",
+  "role": "REPEATED_ADAPTIVE_DEVELOPMENT_NEGATIVE_RESULT",
+  "task": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "physical_treatment_wells_per_alternative": 64,
+    "plate_counts_per_alternative": [32, 32],
+    "third_dose_upgrades": 16,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across separately costed alternatives; never average predictions"
+  },
+  "hypothesis": "Joint native-dose allocation and one shared training-only affine calibration can make the own-drug interpolation control beat the bandwidth-0.7 incumbent on the unchanged task.",
+  "metrics": {
+    "cooptimized_calibrated_interpolation": {
+      "mse": 0.0014389065202742948,
+      "p90_rmse": 0.04803001839646981,
+      "orientation_mse": [0.0014334330187845276, 0.0014443800217640622]
+    },
+    "raw_optimized_interpolation": {
+      "mse": 0.002416810289196867,
+      "p90_rmse": 0.06272152185506742
+    },
+    "calibrated_original_interpolation": {
+      "mse": 0.0017862573214951596,
+      "p90_rmse": 0.05254924977877864
+    },
+    "bandwidth07_incumbent": {
+      "mse": 0.0010582750420801538,
+      "p90_rmse": 0.03789428530872024
+    },
+    "r13": {"mse": 0.001144858681382854},
+    "r18": {"mse": 0.0011414048112341991}
+  },
+  "candidate_vs_bandwidth07": {
+    "relative_gain": -0.35967160053776626,
+    "patient_wins": 3,
+    "patient_losses": 56,
+    "patient_ties": 0,
+    "fold_wins": 0,
+    "required_fold_wins": 5,
+    "p90_nonworse": false,
+    "target_regressions": 22,
+    "both_orientations_below_reference_expected_mse": false,
+    "all_gates_passed": false
+  },
+  "descriptive_bootstrap_candidate_minus_incumbent": {
+    "point": 0.0003806314781941408,
+    "lower_2_5pct": 0.00026607213924802897,
+    "upper_97_5pct": 0.00047904096948686754,
+    "replicates": 10000,
+    "seed": 20261004,
+    "selection_corrected": false
+  },
+  "outer_selected_candidate_calibration_options": [0.0, 0.0, 0.0, 0.0, 0.0],
+  "outer_selected_original_plan_calibration_options": [0.0, 0.01, 0.01, 0.01, 0.01],
+  "verification": {
+    "invented_data_tests_before_fit": 4,
+    "invented_data_tests_status": "PASS",
+    "independent_no_refit_arithmetic_and_budget_audit": "PASS",
+    "physical_outer_plans_checked": 5,
+    "fit_routine_called_by_audit": false
+  },
+  "private_artifact_hashes": {
+    "result_json_sha256": "22581741489125ab0026ab95da31925478499ef39fa0d4a1dbb1372ba73c8889",
+    "predictions_npz_sha256": "bc4068a86a82438dfb647339329d590492abb7fea2692f01f079f86e15033ded",
+    "started_json_sha256": "8abf57170530e102485b25d50e3ac477272de93b175c36d87f8fe80a29c3947b",
+    "prediction_commitment_sha256": "3464df32de2ec9d22cfc46fc3ea950a98380f43208c235b3ce592f7cee31cc13",
+    "no_refit_audit_sha256": "1703c46a206352ca05f4688a9b58761f4fe7e186cfbe9a948cc139891fc40683"
+  },
+  "source_hashes": {
+    "protocol": "8996f2f42aa47134fd2c7c176940636add20116295a36a51e48cc7e9cbfaf468",
+    "freeze": "86e46f4b9056fdd0a282e264327416f738a0e558d08cd668a035c779ef5082e3",
+    "implementation": "52f8cc3b449600a56b32010e21792ba5def50cea7151866fade9ab4ad2b4066f",
+    "runner": "81ef14914e2d9f98e5822feab84e73ad211844384b957274047764959c2a6904",
+    "tests": "00d1a755cb93c98e906b257496beed0b3f0991d626b9ba68badc66db56e3df9e",
+    "no_refit_verifier": "5c8e4ec43cb6a2848e91927c3c465081e0b6a1f62a90314e8b3bc6776572050b"
+  },
+  "automatic_retry": false,
+  "family_closed": true,
+  "same_task_repeated_adaptive_development": true,
+  "independent_validation": false,
+  "protected_response_access": false,
+  "accepted_kaggle_entry_changed": false,
+  "official_competition_score": null
+}

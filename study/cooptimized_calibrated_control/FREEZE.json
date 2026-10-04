@@ -1,0 +1,31 @@
+{
+  "schema": "dosepilot.cooptimized_control.freeze.v1",
+  "state": "FROZEN_BEFORE_FIRST_LIB1_FIT",
+  "frozen_utc": "2026-10-04T22:33:00Z",
+  "base_public_commit": "1b56f08d74e85c30b83fa65f95429e90054ec203",
+  "cache_sha256": "2ccd4995699417db72316c8f403095b8ef560f94913b0c8a80fe7429a2d0cbef",
+  "incumbent_reference_sha256": "0d007814fa04d02ec2f0233880c7790ffbaa45b5c3be176edee7567c8a68e150",
+  "r18_sha256": "253998d20b9425c4ceade4269b94f4ed97cb7039ac5ec60838bb15794d47a6e2",
+  "source_sha256": {
+    "study/cooptimized_calibrated_control/PROTOCOL.json": "8996f2f42aa47134fd2c7c176940636add20116295a36a51e48cc7e9cbfaf468",
+    "study/cooptimized_calibrated_control/PROPOSAL.json": "dde0e91700624f12ed91c42d38b7dc88aa847a5efb065b5bdff8087f9e8d45ee",
+    "study/cooptimized_calibrated_control/cooptimized_control.py": "52f8cc3b449600a56b32010e21792ba5def50cea7151866fade9ab4ad2b4066f",
+    "study/cooptimized_calibrated_control/run_study.py": "81ef14914e2d9f98e5822feab84e73ad211844384b957274047764959c2a6904",
+    "study/cooptimized_calibrated_control/test_cooptimized_control.py": "00d1a755cb93c98e906b257496beed0b3f0991d626b9ba68badc66db56e3df9e",
+    "study/TRAIN_CATALOG.json": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/audits/interpolation_policy.py": "ce16748d17e4d214f5b75bfb5665420b91fca8bbe4da5d0344c126f5deeb1a12",
+    "study/calibrated_control/calibrated_control.py": "295abb78dc19931b091829898d293d3407812dc83e599a977a506feff7c86f55",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/evaluate.py": "24593a7d8608fd3ce98c367e1760af596b3b33554c1ef7a3f8ac645b046b700b"
+  },
+  "unit_tests_before_fit": {
+    "command": "PYTHONPATH=study/cooptimized_calibrated_control:study/calibrated_control:study/audits:study/engine python -m unittest discover -s study/cooptimized_calibrated_control -p test_*.py -v",
+    "tests": 4,
+    "status": "PASS"
+  },
+  "options": ["identity", 0.0, 0.01, 0.1, 1.0, 10.0],
+  "automatic_retry": false,
+  "protected_response_access": false
+}
