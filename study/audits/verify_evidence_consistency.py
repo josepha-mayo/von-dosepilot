@@ -40,15 +40,15 @@ PINNED_RECEIPTS = {
     "simplex_stacking": "8af8887860ef738c2657f100a1a5031e02309b718ac1bd10473c319c0b0e3464",
     "isotonic_paid_features": "01934ca5139a219814572bd5b3e28923c98b8ad37ee3146a405f5ddd247476da",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
-    "frozen_ooc_release_binding": "938718a5c4982419c97977308fcd3c8bf795166d13497eea9ec164b00b8bdbc7",
+    "frozen_ooc_release_binding": "80919f1172f40db176447dcc6954985f132188a3dbfe3978b27121c2da11d62f",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
-    "reviewer_path_release": "7a5113d630c4262fe4bb5b56bdbfb654520fc7e28c4d1aadbc9e7e781600e135",
+    "reviewer_path_release": "7701083343caf093b72874a14f75391e409df64ad10e1c02ceb03d6407fe9c11",
     "development_search_governance": "8dfc4b3fbcfdf8f45cb626edb872fc240b4add41fccfbace350499246aabecce",
 }
 
 PINNED_DOCUMENTS = {
     "docs/EVIDENCE_LEDGER.md": "012da3d9fb39b240e7161fc05e96d904c185e0df975002642ffa6044c2c50e1a",
-    "docs/KAGGLE_WRITEUP.md": "d726a39a12459ec53b07e3cf57df40d86dbc62a89f9574708082736e452c2e79",
+    "docs/KAGGLE_WRITEUP.md": "494197b5e27d32fa84dc1959f3ba4efe68ae6e7b4fc9717a2821e86a389c6b16",
 }
 
 CURRENT_REPORT_RECEIPT_SHA256 = "8179b404fca98bc7117fecbab352db4f4c339ddae04fb7f6a560ff8961ee9cdf"
@@ -102,6 +102,12 @@ def ensure_current_quickstart(readme, reviewer, writeup):
         raise EvidenceError("REVIEWER_TRACE_EXPORT")
     if "docs/LIVE_DEMO_TRACE_EXPORT.md" not in writeup:
         raise EvidenceError("WRITEUP_TRACE_EXPORT")
+    if "docs/NESTED_BANDWIDTH_EVALUATION.md" not in readme:
+        raise EvidenceError("README_NESTED_EVIDENCE")
+    if "docs/NESTED_BANDWIDTH_EVALUATION.md" not in reviewer:
+        raise EvidenceError("REVIEWER_NESTED_EVIDENCE")
+    if "docs/NESTED_BANDWIDTH_EVALUATION.md" not in writeup:
+        raise EvidenceError("WRITEUP_NESTED_EVIDENCE")
 
 
 def verify(root, enforce_pins=True):
@@ -235,7 +241,7 @@ def verify(root, enforce_pins=True):
         same(target_index[key], receipt_value, "INDEX_TARGET_DEFINITIONS_" + key.upper())
 
     reviewer_release = receipts["reviewer_path_release"]
-    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v7", "REVIEWER_PATH_SCHEMA")
+    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v8", "REVIEWER_PATH_SCHEMA")
     same(reviewer_release["status"], "PASS", "REVIEWER_PATH_STATUS")
     same(reviewer_release["role"], "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY", "REVIEWER_PATH_ROLE")
     reviewer_predecessor = reviewer_release["predecessor"]
@@ -257,6 +263,8 @@ def verify(root, enforce_pins=True):
         "not an official competition score",
         "LIVE_DEMO_TRACE_EXPORT.md",
         "no raw readings or model outputs",
+        "all 5/5 outer training sets",
+        "not independent validation",
     ):
         if phrase not in reviewer_text:
             raise EvidenceError("REVIEWER_PATH_REQUIRED_TEXT: " + phrase)
@@ -313,10 +321,13 @@ def verify(root, enforce_pins=True):
         "rubric_evidence_map_linked",
         "verification_chronology_linked",
         "downloadable_trace_linked",
+        "nested_bandwidth_selection_linked",
+        "nested_bandwidth_all_outer_training_sets_selected_07",
     ):
         same(reviewer_contract[key], True, "REVIEWER_PATH_LINK: " + key)
     same(reviewer_contract["rubric_self_score_assigned"], False, "REVIEWER_PATH_NO_SELF_SCORE")
     same(reviewer_contract["downloadable_trace_export_contains_raw_readings_or_outputs"], False, "REVIEWER_PATH_TRACE_BOUNDARY")
+    same(reviewer_contract["nested_bandwidth_independent_validation"], False, "REVIEWER_PATH_NESTED_BOUNDARY")
     same(reviewer_contract["latest_release_test_count"], 173, "REVIEWER_PATH_LATEST_TESTS")
     same(reviewer_contract["report_bound_historical_test_count"], 168, "REVIEWER_PATH_REPORT_TESTS")
     reviewer_scope = reviewer_release["scope"]
@@ -341,6 +352,9 @@ def verify(root, enforce_pins=True):
         ("rubric_self_score_assigned", reviewer_contract["rubric_self_score_assigned"]),
         ("verification_chronology_linked", reviewer_contract["verification_chronology_linked"]),
         ("downloadable_trace_linked", reviewer_contract["downloadable_trace_linked"]),
+        ("nested_bandwidth_selection_linked", reviewer_contract["nested_bandwidth_selection_linked"]),
+        ("nested_bandwidth_all_outer_training_sets_selected_07", reviewer_contract["nested_bandwidth_all_outer_training_sets_selected_07"]),
+        ("nested_bandwidth_independent_validation", reviewer_contract["nested_bandwidth_independent_validation"]),
         ("downloadable_trace_export_contains_raw_readings_or_outputs", reviewer_contract["downloadable_trace_export_contains_raw_readings_or_outputs"]),
         ("latest_release_test_count", reviewer_contract["latest_release_test_count"]),
         ("report_bound_historical_test_count", reviewer_contract["report_bound_historical_test_count"]),
@@ -730,7 +744,7 @@ def verify(root, enforce_pins=True):
     same(current_lifecycle_index["accepted_kaggle_entry_changed"], False, "INDEX_BANDWIDTH_LIFECYCLE_NO_ENTRY_CHANGE")
     same(current_lifecycle_index["official_competition_score"], None, "INDEX_BANDWIDTH_LIFECYCLE_NO_SCORE")
 
-    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v9", "FROZEN_SCHEDULE_SCHEMA")
+    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v10", "FROZEN_SCHEDULE_SCHEMA")
     same(frozen_schedule["status"], "PASS", "FROZEN_SCHEDULE_STATUS")
     same(frozen_schedule["role"], "RESPONSE_FREE_ENGINEERING_AND_RELEASE_EVIDENCE", "FROZEN_SCHEDULE_ROLE")
     frozen_predecessor = frozen_schedule["predecessor"]
@@ -765,6 +779,9 @@ def verify(root, enforce_pins=True):
     same(schedule_verification["orchestrated_response_free_tests"], 173, "FROZEN_SCHEDULE_PREFLIGHT_ORCHESTRATED")
     same(schedule_verification["downloadable_trace_linked"], True, "FROZEN_SCHEDULE_TRACE_LINK")
     same(schedule_verification["export_contains_raw_readings_or_outputs"], False, "FROZEN_SCHEDULE_TRACE_BOUNDARY")
+    same(schedule_verification["nested_bandwidth_selection_linked"], True, "FROZEN_SCHEDULE_NESTED_LINK")
+    same(schedule_verification["nested_bandwidth_all_outer_training_sets_selected_07"], True, "FROZEN_SCHEDULE_NESTED_SELECTION")
+    same(schedule_verification["nested_bandwidth_independent_validation"], False, "FROZEN_SCHEDULE_NESTED_BOUNDARY")
     for key in ("prospective_experiment_executed", "biological_validation_created", "protected_response_access", "private_patient_rows_read", "fitted_biological_weights_published", "accepted_kaggle_entry_changed"):
         same(frozen_schedule[key], False, "FROZEN_SCHEDULE_FALSE_BOUNDARY: " + key)
     same(frozen_schedule["official_competition_score"], None, "FROZEN_SCHEDULE_NO_SCORE")
@@ -772,7 +789,7 @@ def verify(root, enforce_pins=True):
     schedule_index = index["frozen_ooc_release_binding"]
     for key in ("role", "status"):
         same(schedule_index[key], frozen_schedule[key], "INDEX_FROZEN_SCHEDULE_" + key.upper())
-    for key in ("treatment_wells_per_orientation", "plate_counts_per_orientation", "targets", "two_dose_targets", "three_dose_targets", "ab_same_treatments", "ab_complementary_plate_assignment", "public_schedule_rows", "public_site_schedule_exact", "manifest_table_exact", "transport_escape_literals", "bandwidth_post_selection_disclosed", "overstated_search_label_absent", "cross_patient_negative_disclosed", "cross_patient_negative_linked", "promotion_gate_predicates_derived", "orientation_vector_validated", "additive_p90_crosschecked", "historical_fold_counts_pinned", "verification_chronology_linked", "downloadable_trace_linked", "export_contains_raw_readings_or_outputs", "new_tamper_tests_passed", "release_preflight_check_count", "orchestrated_response_free_tests"):
+    for key in ("treatment_wells_per_orientation", "plate_counts_per_orientation", "targets", "two_dose_targets", "three_dose_targets", "ab_same_treatments", "ab_complementary_plate_assignment", "public_schedule_rows", "public_site_schedule_exact", "manifest_table_exact", "transport_escape_literals", "bandwidth_post_selection_disclosed", "nested_bandwidth_selection_linked", "nested_bandwidth_all_outer_training_sets_selected_07", "nested_bandwidth_independent_validation", "overstated_search_label_absent", "cross_patient_negative_disclosed", "cross_patient_negative_linked", "promotion_gate_predicates_derived", "orientation_vector_validated", "additive_p90_crosschecked", "historical_fold_counts_pinned", "verification_chronology_linked", "downloadable_trace_linked", "export_contains_raw_readings_or_outputs", "new_tamper_tests_passed", "release_preflight_check_count", "orchestrated_response_free_tests"):
         same(schedule_index[key], schedule_verification[key], "INDEX_FROZEN_SCHEDULE_" + key.upper())
     for key in ("prospective_experiment_executed", "biological_validation_created", "protected_response_access", "private_patient_rows_read", "accepted_kaggle_entry_changed", "official_competition_score"):
         same(schedule_index[key], frozen_schedule[key], "INDEX_FROZEN_SCHEDULE_BOUNDARY_" + key.upper())
@@ -981,6 +998,8 @@ def verify(root, enforce_pins=True):
         "0.0017349427",
         "0.0022689547",
         "not independent confirmation",
+        "all 5/5 outer training sets",
+        "exactly identical to fixed 0.7",
     ]
     for phrase in writeup_required:
         if phrase not in writeup:

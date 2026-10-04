@@ -122,6 +122,30 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "KAGGLE_WRITEUP_NONPORTABLE_LINK"):
             verify(self.root)
 
+    def test_readme_nested_link_removal_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / "README.md"
+        path.write_text(path.read_text().replace("docs/NESTED_BANDWIDTH_EVALUATION.md", "docs/BANDWIDTH_SUCCESSOR.md", 1))
+        self.rehash_surface("README.md", receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "README_NESTED_LINK"):
+            verify(self.root)
+
+    def test_reviewer_nested_link_removal_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / "00_REVIEWER_START_HERE.md"
+        path.write_text(path.read_text().replace("docs/NESTED_BANDWIDTH_EVALUATION.md", "docs/BANDWIDTH_SUCCESSOR.md", 1))
+        self.rehash_surface("00_REVIEWER_START_HERE.md", receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "REVIEWER_NESTED_LINK"):
+            verify(self.root)
+
+    def test_writeup_nested_link_removal_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / "docs/KAGGLE_WRITEUP.md"
+        path.write_text(path.read_text().replace("docs/NESTED_BANDWIDTH_EVALUATION.md", "docs/BANDWIDTH_SUCCESSOR.md"))
+        self.rehash_surface("docs/KAGGLE_WRITEUP.md", receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "WRITEUP_NESTED_LINK"):
+            verify(self.root)
+
     def test_live_trace_receipt_tamper_fails(self):
         _, _, receipt = self.receipt()
         path = self.root / receipt["live_demo_trace"]["path"]

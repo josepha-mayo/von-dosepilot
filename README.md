@@ -47,6 +47,8 @@ The wider 1.4 bandwidth failed, and ten of 24 target means still regress versus 
 
 For each fixed bandwidth, the residual spectral option is selected inside the inner patient folds. Bandwidth 0.7 itself was then selected from the prefrozen `{1.0, 0.7, 1.4}` menu after comparing reused outer-fold development results. The displayed bandwidth-0.7 MSE is therefore a **post-selection development point estimate**, not an unbiased nested estimate of a bandwidth-selecting procedure.
 
+A later prefrozen replay made that three-bandwidth choice wholly inside every outer training set. All **5/5** outer training sets selected bandwidth **0.7**, and the resulting held-patient predictions were exactly identical to the fixed-0.7 incumbent across all 59 patient losses, five fold means, 24 target means and both orientations. This rules out a foldwise bandwidth splice within the opened menu; it remains repeated development on the same exposed folds, not independent validation or correction for the wider historical search. [Nested bandwidth-selection evaluation](docs/NESTED_BANDWIDTH_EVALUATION.md) · [Aggregate receipt](evidence/nested_bandwidth_selection_20261004.json).
+
 ## Reproduce and construct the current successor
 
 Follow [the hash-bound public-workbook workflow](docs/PUBLIC_REPRODUCTION.md) to create the exact Lib1 TRAIN CSV and install `study/requirements.txt`. Then:

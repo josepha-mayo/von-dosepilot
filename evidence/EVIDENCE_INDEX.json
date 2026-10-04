@@ -52,16 +52,16 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r9_20261004.json",
-      "sha256": "938718a5c4982419c97977308fcd3c8bf795166d13497eea9ec164b00b8bdbc7"
+      "path": "evidence/frozen_ooc_release_binding_r10_20261004.json",
+      "sha256": "80919f1172f40db176447dcc6954985f132188a3dbfe3978b27121c2da11d62f"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r7_20261004.json",
-      "sha256": "7a5113d630c4262fe4bb5b56bdbfb654520fc7e28c4d1aadbc9e7e781600e135"
+      "path": "evidence/reviewer_path_release_r8_20261004.json",
+      "sha256": "7701083343caf093b72874a14f75391e409df64ad10e1c02ceb03d6407fe9c11"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r2_20261004.json",
@@ -116,6 +116,9 @@
     "rubric_evidence_map_linked": true,
     "rubric_self_score_assigned": false,
     "verification_chronology_linked": true,
+    "nested_bandwidth_selection_linked": true,
+    "nested_bandwidth_all_outer_training_sets_selected_07": true,
+    "nested_bandwidth_independent_validation": false,
     "downloadable_trace_linked": true,
     "downloadable_trace_export_contains_raw_readings_or_outputs": false,
     "latest_release_test_count": 173,
@@ -165,8 +168,8 @@
     "official_competition_score": null
   },
   "verification_chronology": {
-    "path": "evidence/verification_chronology_r2_20261004.json",
-    "sha256": "9064b20c3f394d20fe96609a80eca93b051e874e818f7a448d30c3fce10ff7ef",
+    "path": "evidence/verification_chronology_r3_20261004.json",
+    "sha256": "7d1b6825c8cdbe9be15d9ea66a23a7c8a6926b1fd3d5cd69f10637e920b37cd7",
     "status": "PASS",
     "latest_orchestrated_response_free_tests": 173,
     "historical_receipts_preserved": true,
@@ -196,15 +199,16 @@
     "official_competition_score": null
   },
   "reviewer_route_integrity": {
-    "path": "evidence/reviewer_route_integrity_r2_20261004.json",
-    "sha256": "619b659de87e2a69c652b5f01c19d68c41d6e356add64094cc92e892e46d7938",
+    "path": "evidence/reviewer_route_integrity_r3_20261004.json",
+    "sha256": "91ba9d2a5804633d7fa48726012c954f3f0a9ea8b74b15afe8d14fa4df1a04cf",
     "status": "PASS",
     "audited_surfaces": 5,
-    "local_targets": 54,
-    "github_master_targets": 22,
+    "local_targets": 58,
+    "github_master_targets": 24,
     "anchors": 1,
     "required_urls": 5,
     "trace_links": 3,
+    "nested_links": 3,
     "network_requests": 0,
     "external_playback_verified": false,
     "downloadable_trace_linked": true,
@@ -517,6 +521,9 @@
     "manifest_table_exact": true,
     "transport_escape_literals": 0,
     "bandwidth_post_selection_disclosed": true,
+    "nested_bandwidth_selection_linked": true,
+    "nested_bandwidth_all_outer_training_sets_selected_07": true,
+    "nested_bandwidth_independent_validation": false,
     "overstated_search_label_absent": true,
     "cross_patient_negative_disclosed": true,
     "cross_patient_negative_linked": true,

@@ -41,6 +41,8 @@ It is not uniformly better: **10/24 target-average errors regress**.
 
 For each fixed bandwidth, the residual spectral option is selected inside inner patient folds. Bandwidth 0.7 itself was selected from the prefrozen `{1.0, 0.7, 1.4}` menu after comparing reused outer-fold development results. Its displayed MSE is therefore a **post-selection development point estimate**, not an unbiased nested estimate of a bandwidth-selecting procedure.
 
+A subsequent prefrozen nested replay selected bandwidth **0.7 inside all 5/5 outer training sets**. Its held-patient predictions exactly tied fixed 0.7 for all 59 patient losses, five folds, 24 targets and both orientations. That excludes a foldwise bandwidth splice within the opened menu, but it still reuses the same exposed development folds and is **not independent validation**. [Nested selection evidence](docs/NESTED_BANDWIDTH_EVALUATION.md).
+
 Compact audit with all 24 target deltas: [docs/FINALIST_AUDIT.md](docs/FINALIST_AUDIT.md).
 
 ### 3. Is the 64-well claim real?
@@ -147,6 +149,7 @@ Useful machine-readable anchors:
 
 - [evidence/EVIDENCE_INDEX.json](evidence/EVIDENCE_INDEX.json)
 - [evidence/bandwidth_successor_20261003.json](evidence/bandwidth_successor_20261003.json)
+- [evidence/nested_bandwidth_selection_20261004.json](evidence/nested_bandwidth_selection_20261004.json)
 - [evidence/cross_patient_bandwidth_20261004.json](evidence/cross_patient_bandwidth_20261004.json)
 - [evidence/finalist_audit_manifest_20261003.json](evidence/finalist_audit_manifest_20261003.json)
 - [evidence/target_definitions_release_20261003.json](evidence/target_definitions_release_20261003.json)

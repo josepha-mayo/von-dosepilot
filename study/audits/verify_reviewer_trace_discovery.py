@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify reviewer-route integrity and discovery of the downloadable trace.
+"""Verify reviewer-route integrity and discovery of trace and nested evidence.
 
 This response-free checker reads public aggregate JSON and Markdown only. It
 makes no network request and opens no workbook, model, prediction, or patient
@@ -58,14 +58,14 @@ def verify(root):
     receipt_path = root / record.get("path", "")
     require(sha(receipt_path) == record.get("sha256"), "INDEX_RECEIPT_HASH")
     receipt = load(receipt_path)
-    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v2", "SCHEMA")
+    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v3", "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
-    require(receipt.get("role") == "REVIEWER_NAVIGATION_AND_TRACE_DISCOVERY", "ROLE")
+    require(receipt.get("role") == "REVIEWER_NAVIGATION_TRACE_AND_NESTED_EVIDENCE", "ROLE")
 
     predecessor = receipt.get("predecessor", {})
     predecessor_path = root / predecessor.get("path", "")
     require(sha(predecessor_path) == predecessor.get("sha256"), "PREDECESSOR_HASH")
-    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v1", "PREDECESSOR_SCHEMA")
+    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v2", "PREDECESSOR_SCHEMA")
     require(predecessor.get("preserved_unchanged") is True, "PREDECESSOR_PRESERVED")
 
     for relative, expected in receipt.get("artifact_sha256", {}).items():
@@ -125,6 +125,19 @@ def verify(root):
     require(trace_url in writeup, "WRITEUP_TRACE_LINK")
     require("Downloadable state-bound evidence record:" in writeup, "WRITEUP_TRACE_LABEL")
     require("no raw readings or model outputs" in reviewer, "REVIEWER_TRACE_BOUNDARY")
+    nested_doc = "docs/NESTED_BANDWIDTH_EVALUATION.md"
+    nested_url = "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/NESTED_BANDWIDTH_EVALUATION.md"
+    require(nested_doc in readme, "README_NESTED_LINK")
+    require(nested_doc in reviewer, "REVIEWER_NESTED_LINK")
+    require(nested_url in writeup, "WRITEUP_NESTED_LINK")
+    plain_readme = readme.replace("**", "")
+    plain_reviewer = reviewer.replace("**", "")
+    plain_writeup = writeup.replace("**", "")
+    require("All 5/5 outer training sets" in plain_readme, "README_NESTED_SELECTION")
+    require("all 5/5 outer training sets" in plain_reviewer, "REVIEWER_NESTED_SELECTION")
+    require("all 5/5 outer training sets" in plain_writeup, "WRITEUP_NESTED_SELECTION")
+    for text, label in ((readme, "README"), (reviewer, "REVIEWER"), (writeup, "WRITEUP")):
+        require("not independent validation" in text, label + "_NESTED_BOUNDARY")
     nonportable = []
     for match in MARKDOWN_LINK.finditer(writeup):
         target = match.group(1).strip().split()[0].strip("<>")
@@ -143,14 +156,34 @@ def verify(root):
     require(contract.get("contains_model_outputs") is False, "LIVE_TRACE_NO_OUTPUTS")
     require(contract.get("contains_patient_or_protected_data") is False, "LIVE_TRACE_NO_PROTECTED")
 
+    nested_record = receipt.get("nested_bandwidth_evidence", {})
+    nested_path = root / nested_record.get("path", "")
+    require(sha(nested_path) == nested_record.get("sha256"), "NESTED_RECEIPT_HASH")
+    nested = load(nested_path)
+    require(nested.get("schema") == "dosepilot.nested_bandwidth_selection.public_evidence.v1", "NESTED_SCHEMA")
+    require(nested.get("status") == "PASS", "NESTED_STATUS")
+    require(nested.get("selection_counts") == {"0.7": 5, "1.0": 0, "1.4": 0}, "NESTED_SELECTIONS")
+    require(nested.get("nested_vs_fixed07", {}).get("prediction_max_absolute_difference") == 0.0, "NESTED_EXACT_EQUALITY")
+    require(nested.get("claim_boundary", {}).get("independent_validation") is False, "NESTED_NOT_INDEPENDENT")
+    require(nested.get("claim_boundary", {}).get("protected_response_access") is False, "NESTED_NO_PROTECTED")
+
     verification = receipt.get("verification", {})
     require(local_targets == verification.get("local_targets"), "LOCAL_TARGET_COUNT")
     require(github_targets == verification.get("github_master_targets"), "GITHUB_TARGET_COUNT")
     require(anchors == verification.get("anchors"), "ANCHOR_COUNT")
     require(verification.get("required_urls") == len(REQUIRED_URLS), "REQUIRED_URL_COUNT")
     require(verification.get("trace_links") == 3, "TRACE_LINK_COUNT")
-    require(verification.get("adversarial_tests_passed") == 10, "ADVERSARIAL_TEST_COUNT")
+    require(verification.get("nested_links") == 3, "NESTED_LINK_COUNT")
+    require(verification.get("adversarial_tests_passed") == 13, "ADVERSARIAL_TEST_COUNT")
     require(verification.get("network_requests") == 0, "NETWORK_REQUESTS")
+
+    failure = receipt.get("preserved_operational_failure", {})
+    require(failure.get("status") == "INITIAL_MARKDOWN_NORMALIZATION_DEFECT", "PRESERVED_FAILURE_STATUS")
+    require(failure.get("initial_passes") == 9, "PRESERVED_FAILURE_PASSES")
+    require(failure.get("initial_failures") == 3, "PRESERVED_FAILURE_FAILURES")
+    require(failure.get("initial_errors") == 1, "PRESERVED_FAILURE_ERRORS")
+    require(failure.get("scientific_or_product_failure") is False, "PRESERVED_FAILURE_SCOPE")
+    require(failure.get("corrected_tests_passed") == 13, "PRESERVED_FAILURE_CORRECTION")
 
     boundary = receipt.get("claim_boundary", {})
     for key in (
@@ -173,6 +206,7 @@ def verify(root):
         "anchors": anchors,
         "required_urls": len(REQUIRED_URLS),
         "trace_links": 3,
+        "nested_links": 3,
         "network_requests": 0,
         "downloadable_trace_linked": True,
         "export_contains_raw_readings_or_outputs": False,
