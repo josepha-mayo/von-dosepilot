@@ -12,7 +12,7 @@
   <header class="nav wrap">
     <a class="brand" href="#top"><span class="mark">v</span><span>von DosePilot</span></a>
     <nav>
-      <a href="#reviewer">Start here</a><a href="#demo">Demo</a><a href="#evidence">Evidence</a><a href="#frozen-schedule">Schedule</a><a href="#research-log">Research log</a><a href="#limits">Limits</a>
+      <a href="#reviewer">Start here</a><a href="#demo">Demo</a><a href="#evidence">Evidence</a><a href="#paired-deltas">Paired deltas</a><a href="#frozen-schedule">Schedule</a><a href="#research-log">Research log</a><a href="#limits">Limits</a>
       <a class="gh" href="https://github.com/josepha-mayo/von-dosepilot" target="_blank" rel="noreferrer">GitHub ↗</a>
     </nav>
   </header>
@@ -146,6 +146,28 @@
       </div>
     </section>
 
+    <section class="section wrap" id="paired-deltas">
+      <div class="section-head">
+        <div><div class="eyebrow">PAIRED EFFECTS • NO PATIENT IDS</div><h2>Who improves, and where does it regress?</h2></div>
+        <p>Bandwidth-0.7 minus the previous additive model. Negative means lower error. Patient identities are removed; target names remain visible.</p>
+      </div>
+      <div class="delta-grid">
+        <article class="panel delta-panel">
+          <div class="panel-title"><span>59</span> held-patient paired changes</div>
+          <div class="delta-summary"><b>38 improve</b><span>21 regress</span><span>median Δ = −1.07e−6</span></div>
+          <div id="patientDeltaChart" class="patient-delta-chart"></div>
+          <p class="delta-caption">Patients are sorted only by paired MSE change. This is a development comparison, not 59 independent replications of model selection.</p>
+        </article>
+        <article class="panel delta-panel">
+          <div class="panel-title"><span>24</span> target-average changes</div>
+          <div class="delta-summary"><b>14 nonworse</b><span>10 regress</span><span>worst: Regorafenib +1.13e−5</span></div>
+          <div id="targetDeltaChart" class="target-delta-chart"></div>
+          <p class="delta-caption">Largest improvement: Gemcitabine −1.34e−5. The public finalist audit contains the exact 24-row aggregate table.</p>
+        </article>
+      </div>
+      <div class="schedule-note">These values are aggregate derivatives of the frozen held-patient prediction archive. No patient identifiers or row-level predictions are published. <a href="https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FINALIST_AUDIT.md" target="_blank" rel="noreferrer">Audit the exact aggregate deltas ↗</a></div>
+    </section>
+
     <section class="section wrap" id="frozen-schedule">
       <div class="section-head">
         <div><div class="eyebrow">FROZEN PLAN • EXACT TREATMENTS</div><h2>One deployment. 64 treatments. 32 + 32.</h2></div>
@@ -242,6 +264,7 @@
     </div>
   </footer>
   <script src="frozen_schedule.js"></script>
+  <script src="paired_deltas.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
