@@ -12,7 +12,7 @@ Research software by **Joseph Ayanda** for AI4S Open Innovation. DosePilot choos
 
 **Offline file check:** validate the downloaded six-field JSON locally with [`demo/verify_downloaded_trace.py`](demo/verify_downloaded_trace.py); the [reviewer command and limits](docs/VERIFY_DOWNLOADED_TRACE.md) require no network or protected data.
 
-**One-command finalist-package check:** run [`study/audits/finalist_package_preflight.py`](study/audits/finalist_package_preflight.py) using the [documented response-free command and scope](docs/FINALIST_PACKAGE_PREFLIGHT.md).
+**One-command current finalist-package check:** run [`study/audits/finalist_package_preflight_current.py`](study/audits/finalist_package_preflight_current.py) using the [current response-free command and scope](docs/FINALIST_PACKAGE_PREFLIGHT_CURRENT.md). Its eighth check verifies the current rubric-map successor; the [earlier v1 package receipt and command](docs/FINALIST_PACKAGE_PREFLIGHT.md) remain immutable.
 
 **Clean isolated execution evidence:** the [published clean-source/new-venv receipt](docs/CLEAN_FINALIST_PACKAGE_EXECUTION.md) records all 8 package checks passing, including the nested canonical 14-stage/173-test preflight. It was produced from a `git archive` source reconstruction on one existing host—not a network clone, clean-new-machine certification, or independent biological validation.
 

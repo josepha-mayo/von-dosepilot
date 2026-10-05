@@ -8,7 +8,7 @@ DosePilot is a measurement-aware drug-response reconstruction method: commit a p
 **Downloadable browser-local evidence:** [state-bound digest-only JSON trace contract](docs/LIVE_DEMO_TRACE_EXPORT.md)
 **Offline downloaded-file verifier:** [`demo/verify_downloaded_trace.py`](demo/verify_downloaded_trace.py) · [command and scope](docs/VERIFY_DOWNLOADED_TRACE.md)
 
-**One-command finalist-package verification:** [`study/audits/finalist_package_preflight.py`](study/audits/finalist_package_preflight.py) · [command and scope](docs/FINALIST_PACKAGE_PREFLIGHT.md)
+**One-command current finalist-package verification:** [`study/audits/finalist_package_preflight_current.py`](study/audits/finalist_package_preflight_current.py) · [current command and scope](docs/FINALIST_PACKAGE_PREFLIGHT_CURRENT.md) · the eighth check verifies the current rubric-map successor; [v1 evidence](docs/FINALIST_PACKAGE_PREFLIGHT.md) remains immutable
 
 **Clean isolated execution evidence:** [fresh source directory + new Python environment](docs/CLEAN_FINALIST_PACKAGE_EXECUTION.md) · 8/8 package checks, nested canonical 14/14 stages and 173 tests · one existing host via `git archive`, not a network clone, clean-new-machine certification, or independent biological validation
 
@@ -131,9 +131,9 @@ These commands require no protected cohort responses.
 
 ### Complete current finalist package
 
-    python3 study/audits/finalist_package_preflight.py --output finalist_package_preflight.json
+    python3 study/audits/finalist_package_preflight_current.py --output finalist_package_preflight.json
 
-This additive check runs the immutable canonical 14-stage/173-test release preflight and seven newer response-free reviewer-package checks without rewriting the historical canonical receipt.
+This additive check runs the immutable canonical 14-stage/173-test release preflight and seven newer response-free reviewer-package checks, including the current rubric-map successor, without rewriting the historical canonical or v1 package receipts.
 
 ### Endpoint and 64-well contract
 

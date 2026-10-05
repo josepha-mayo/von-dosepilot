@@ -130,7 +130,7 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
     def test_writeup_finalist_preflight_link_removal_fails_even_when_rehashed(self):
         _, _, receipt = self.receipt()
         path = self.root / "docs/KAGGLE_WRITEUP.md"
-        path.write_text(path.read_text().replace("docs/FINALIST_PACKAGE_PREFLIGHT.md", "docs/FINALIST_AUDIT.md", 1))
+        path.write_text(path.read_text().replace("docs/FINALIST_PACKAGE_PREFLIGHT_CURRENT.md", "docs/FINALIST_AUDIT.md", 1))
         self.rehash_surface("docs/KAGGLE_WRITEUP.md", receipt)
         with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "WRITEUP_FINALIST_PREFLIGHT_LINK"):
             verify(self.root)
@@ -184,6 +184,16 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         data["rubric"]["combined_self_score"] = 100
         path.write_text(json.dumps(data, indent=2) + "\n")
         with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "ARTIFACT_HASH"):
+            verify(self.root)
+
+    def test_package_historical_rubric_fallback_fails(self):
+        _, _, receipt = self.receipt()
+        path = self.root / receipt["finalist_package_preflight"]["path"]
+        package = json.loads(path.read_text())
+        package["checks"][-1]["name"] = "finalist_rubric_evidence"
+        package["current_rubric_successor_checked"] = False
+        path.write_text(json.dumps(package, indent=2) + "\n")
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "ARTIFACT_HASH|FINALIST_PREFLIGHT_CURRENT_RUBRIC"):
             verify(self.root)
 
     def test_reviewer_nested_link_removal_fails_even_when_rehashed(self):

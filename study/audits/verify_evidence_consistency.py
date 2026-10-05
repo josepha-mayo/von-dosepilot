@@ -45,15 +45,15 @@ PINNED_RECEIPTS = {
     "isotonic_paid_features": "01934ca5139a219814572bd5b3e28923c98b8ad37ee3146a405f5ddd247476da",
     "cooptimized_calibrated_control": "1238e432ed0a9abffce855440b6f290c056373f988ced6b3d3b57ce85c1cd74e",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
-    "frozen_ooc_release_binding": "2ec2e99f92abe6c2ed56e960e3f50b2ce606a89b7e5284b13b4186ffc5f710c1",
+    "frozen_ooc_release_binding": "f92db38db390ee037f334af2da2d1c4a23dafafc5ec0c4bdf5608f6b16f0a3ea",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
-    "reviewer_path_release": "3127aa61a1e7957ea1678e6a02e0e5a50a2fff3947b86c0d24bc2d631a5d1d43",
+    "reviewer_path_release": "0ab1165c43910b199174e6a0cd849f1f0588cb11fb2e23dd9e493179cba6876d",
     "development_search_governance": "06bf56a3658c47a99e4f9e07c1e06e11ad348de4a840aba1dad495e2b8495d35",
 }
 
 PINNED_DOCUMENTS = {
     "docs/EVIDENCE_LEDGER.md": "012da3d9fb39b240e7161fc05e96d904c185e0df975002642ffa6044c2c50e1a",
-    "docs/KAGGLE_WRITEUP.md": "53be50fdd8e7750b1b7300c3d14cf6843fe2c8e7115670111f5c62b1f3e988a2",
+    "docs/KAGGLE_WRITEUP.md": "e3135931fb803c97b50f755bfd763aaf4dbab1a0f4ab81c198da0fd033c19e0b",
 }
 
 CURRENT_REPORT_RECEIPT_SHA256 = "8579dd80843cf8598067146a6f36dde4907522f9d9aefec27aa8cb91730f03e1"
@@ -274,7 +274,7 @@ def verify(root, enforce_pins=True):
         same(target_index[key], receipt_value, "INDEX_TARGET_DEFINITIONS_" + key.upper())
 
     reviewer_release = receipts["reviewer_path_release"]
-    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v17", "REVIEWER_PATH_SCHEMA")
+    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v18", "REVIEWER_PATH_SCHEMA")
     same(reviewer_release["status"], "PASS", "REVIEWER_PATH_STATUS")
     same(reviewer_release["role"], "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY", "REVIEWER_PATH_ROLE")
     reviewer_predecessor = reviewer_release["predecessor"]
@@ -297,8 +297,8 @@ def verify(root, enforce_pins=True):
         "LIVE_DEMO_TRACE_EXPORT.md",
         "VERIFY_DOWNLOADED_TRACE.md",
         "demo/verify_downloaded_trace.py",
-        "FINALIST_PACKAGE_PREFLIGHT.md",
-        "study/audits/finalist_package_preflight.py",
+        "FINALIST_PACKAGE_PREFLIGHT_CURRENT.md",
+        "study/audits/finalist_package_preflight_current.py",
         "CLEAN_FINALIST_PACKAGE_EXECUTION.md",
         "8/8 package checks",
         "not a network clone",
@@ -330,8 +330,8 @@ def verify(root, enforce_pins=True):
         "LIVE_DEMO_TRACE_EXPORT.md",
         "Offline downloaded-file verifier:",
         "VERIFY_DOWNLOADED_TRACE.md",
-        "One-command finalist-package preflight:",
-        "FINALIST_PACKAGE_PREFLIGHT.md",
+        "One-command current finalist-package preflight:",
+        "FINALIST_PACKAGE_PREFLIGHT_CURRENT.md",
         "Clean isolated finalist-package execution:",
         "CLEAN_FINALIST_PACKAGE_EXECUTION.md",
     ):
@@ -837,7 +837,7 @@ def verify(root, enforce_pins=True):
     same(current_lifecycle_index["accepted_kaggle_entry_changed"], False, "INDEX_BANDWIDTH_LIFECYCLE_NO_ENTRY_CHANGE")
     same(current_lifecycle_index["official_competition_score"], None, "INDEX_BANDWIDTH_LIFECYCLE_NO_SCORE")
 
-    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v16", "FROZEN_SCHEDULE_SCHEMA")
+    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v17", "FROZEN_SCHEDULE_SCHEMA")
     same(frozen_schedule["status"], "PASS", "FROZEN_SCHEDULE_STATUS")
     same(frozen_schedule["role"], "RESPONSE_FREE_ENGINEERING_AND_RELEASE_EVIDENCE", "FROZEN_SCHEDULE_ROLE")
     frozen_predecessor = frozen_schedule["predecessor"]

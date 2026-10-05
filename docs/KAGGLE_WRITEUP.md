@@ -14,7 +14,7 @@
 - **Live fictional-data demo:** https://von-dosepilot.netlify.app
 - **Downloadable state-bound evidence record:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/LIVE_DEMO_TRACE_EXPORT.md
 - **Offline downloaded-file verifier:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/VERIFY_DOWNLOADED_TRACE.md
-- **One-command finalist-package preflight:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FINALIST_PACKAGE_PREFLIGHT.md
+- **One-command current finalist-package preflight:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FINALIST_PACKAGE_PREFLIGHT_CURRENT.md — the eighth check verifies the current rubric-map successor while preserving the historical v1 package receipt and command.
 - **Clean isolated finalist-package execution:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/CLEAN_FINALIST_PACKAGE_EXECUTION.md — all 8 package checks passed, including the nested canonical 14-stage/173-test preflight, from a `git archive` source reconstruction and new environment on one existing host; not a network clone, clean-new-machine certification, or independent biological validation.
 - **Current finalist-rubric evidence map:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FINALIST_RUBRIC_EVIDENCE_CURRENT.md — reconciles verified evidence under the recorded 30/30/20/10/10 criteria without assigning a self-score, estimating finalist probability, or claiming this repository text changed the accepted Kaggle entry.
 - **Demo video:** https://youtu.be/QeOGJIgx378

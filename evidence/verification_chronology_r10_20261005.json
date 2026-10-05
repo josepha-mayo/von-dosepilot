@@ -1,0 +1,73 @@
+{
+  "schema": "dosepilot.verification_chronology.v1",
+  "status": "PASS",
+  "as_of_date": "2026-10-05",
+  "role": "RESPONSE_FREE_RELEASE_TEST_HISTORY",
+  "predecessor": {
+    "path": "evidence/verification_chronology_r9_20261005.json",
+    "sha256": "ebaa16482b76ed1f43623d65b67ae74dec0cee76d63439f59a2d44104bf4ff83",
+    "preserved_unchanged": true
+  },
+  "supersedes_reason": "Rebinds the unchanged response-free verification chronology after making the current v2 finalist-package command primary. Historical 157/168/173-test receipts and the v1 package receipt remain immutable; no canonical test count, model result, Kaggle entry, or biological evidence changed.",
+  "states": [
+    {
+      "label": "portable_reviewer_quickstart",
+      "path": "evidence/release_preflight_portable_quickstart_final2_20261004.json",
+      "sha256": "9c0913235ee5b81aafc234581d7beea6c0aa5352b6ca346e3fc69f0263177d3b",
+      "status": "PASS",
+      "check_count": 14,
+      "orchestrated_test_count": 157
+    },
+    {
+      "label": "report_site_and_gate_hardening",
+      "path": "evidence/release_preflight_site_cpm_sync_pass1_20261004.json",
+      "sha256": "3746dc0fb82e9aa9b8d563e45b935f5701f48b1cdc4ef8401ecf3c06bc46ba45",
+      "status": "PASS",
+      "check_count": 14,
+      "orchestrated_test_count": 168
+    },
+    {
+      "label": "finalist_rubric_evidence_map",
+      "path": "evidence/release_preflight_rubric_map_pass1_20261004.json",
+      "sha256": "92ca10dc68228ff438618d160859a5b5d86ae2d934a798041be45e515dc42d2b",
+      "status": "PASS",
+      "check_count": 14,
+      "orchestrated_test_count": 173
+    }
+  ],
+  "governance_milestone": {
+    "path": "evidence/development_search_governance_20261004.json",
+    "sha256": "a33226c581ae54440eab1484ddee2c9f2f33924baf17436147388acf8c794649",
+    "status": "PASS",
+    "reported_current_release_preflight_orchestrated_tests": 171
+  },
+  "artifact_sha256": {
+    "README.md": "8d94a31306d149f359d9013c92dd083e4889d3a541ab3ff80639eb7c5568544a",
+    "00_REVIEWER_START_HERE.md": "fc81cb4ebc0df14350ecb5f13669bd39b897828a5f0bd5c46ad16f14f9ac9c58",
+    "docs/VERIFICATION_CHRONOLOGY.md": "6f3d4ba093863c20b99bca3002bb742b08a3d9a76fc44b8571b282c855353887",
+    "study/audits/verify_verification_chronology.py": "56c96bbf5283bae60a2e5bf29d4f282743be44ca12d9a0302bd4a966e6b7c705",
+    "study/audits/test_verification_chronology.py": "c4875a0e06129a85adbe3c4d74dd1d4c27958efb84055c84daf59287c39cdf97"
+  },
+  "interpretation": {
+    "test_totals_are_additive": true,
+    "lower_historical_total_means_failed_tests": false,
+    "response_free_tests_are_biological_experiments": false,
+    "historical_receipts_rewritten": false,
+    "current_report_bound_test_count": 173,
+    "historical_168_originally_bound_earlier_report_revision": true
+  },
+  "preserved_operational_failure": {
+    "command": "python -m unittest study.audits.test_release_preflight_current -q",
+    "status": "IMPORT_PATH_FAILURE",
+    "scientific_or_product_failure": false,
+    "correct_documented_invocation": "python -m unittest discover -s study/audits -p test_release_preflight_current.py -q",
+    "correct_invocation_tests_passed": 3
+  },
+  "claim_boundary": {
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "independent_validation_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  }
+}
