@@ -6,6 +6,7 @@ DosePilot is a measurement-aware drug-response reconstruction method: commit a p
 
 **Live fictional-data demo:** https://von-dosepilot.netlify.app  
 **Downloadable browser-local evidence:** [state-bound digest-only JSON trace contract](docs/LIVE_DEMO_TRACE_EXPORT.md)
+**Offline downloaded-file verifier:** [`demo/verify_downloaded_trace.py`](demo/verify_downloaded_trace.py) · [command and scope](docs/VERIFY_DOWNLOADED_TRACE.md)
 
 **Prepared Kaggle writeup:** [docs/KAGGLE_WRITEUP.md](docs/KAGGLE_WRITEUP.md)  
 **Current technical report:** [CURRENT_TECHNICAL_REPORT.md](CURRENT_TECHNICAL_REPORT.md)
@@ -108,6 +109,7 @@ The full prefrozen co-optimized-control failure is preserved in [docs/COOPTIMIZE
 - missing-input withholding;
 - durable commit/recover/predict lifecycle;
 - inspectable and downloadable state-bound digest record with no raw readings or model outputs;
+- offline validation of the downloaded six-field record against exact state semantics and public-demo digests;
 - response-free organ-on-chip constraint compiler;
 - frozen A/B schedule.
 

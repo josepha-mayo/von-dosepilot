@@ -56,16 +56,16 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r11_20261005.json",
-      "sha256": "76905ec125d2f48a5b70ed325cd785bcc4ac4730c5a8190a7db4fc400862e2e8"
+      "path": "evidence/frozen_ooc_release_binding_r12_20261005.json",
+      "sha256": "5de10f86450cc608b1ba4bdc98af8af895aa56423456d5e4e120352546553abc"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r11_20261005.json",
-      "sha256": "39af102172e03f0e78e1854b39bffe85b899a3e0037c3971975e1ba6a03f4c44"
+      "path": "evidence/reviewer_path_release_r12_20261005.json",
+      "sha256": "637551a815e6874408b1341a92fa04241a95d5a97e3f6731ab0b4972f50e5092"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r3_20261005.json",
@@ -126,6 +126,9 @@
     "nested_bandwidth_all_outer_training_sets_selected_07": true,
     "nested_bandwidth_independent_validation": false,
     "downloadable_trace_linked": true,
+    "offline_downloaded_trace_verifier_linked": true,
+    "offline_downloaded_trace_valid_state_cases": 5,
+    "offline_downloaded_trace_invalid_cases_rejected": 12,
     "downloadable_trace_export_contains_raw_readings_or_outputs": false,
     "latest_release_test_count": 173,
     "report_bound_historical_test_count": 173,
@@ -178,8 +181,8 @@
     "official_competition_score": null
   },
   "verification_chronology": {
-    "path": "evidence/verification_chronology_r4_20261005.json",
-    "sha256": "19e2e18a8334c4bd34ddc736b938e340546b785702ced09729e84d5bd8862115",
+    "path": "evidence/verification_chronology_r5_20261005.json",
+    "sha256": "ed451b12e81b6884557bc1bf5ee5689314a3e7bb9ca5ec532414a5d5e597c245",
     "status": "PASS",
     "latest_orchestrated_response_free_tests": 173,
     "historical_receipts_preserved": true,
@@ -209,19 +212,21 @@
     "official_competition_score": null
   },
   "reviewer_route_integrity": {
-    "path": "evidence/reviewer_route_integrity_r6_20261005.json",
-    "sha256": "16aeb4779470b4ce75c848e28c28a8aa47bc04ea9e7167e5f1ad8600fd543a3f",
+    "path": "evidence/reviewer_route_integrity_r7_20261005.json",
+    "sha256": "de2257bffc37dd3a2922641b342cd826cbc2ba41a7633da3eed882711b683397",
     "status": "PASS",
     "audited_surfaces": 5,
-    "local_targets": 62,
+    "local_targets": 66,
     "github_master_targets": 27,
     "anchors": 1,
     "required_urls": 5,
     "trace_links": 3,
+    "offline_trace_verifier_links": 3,
     "nested_links": 3,
     "network_requests": 0,
     "external_playback_verified": false,
     "downloadable_trace_linked": true,
+    "offline_downloaded_trace_verifier_linked": true,
     "export_contains_raw_readings_or_outputs": false,
     "private_or_protected_inputs_read": false,
     "biological_accuracy_result_created": false,
@@ -590,6 +595,7 @@
     "additive_p90_crosschecked": true,
     "historical_fold_counts_pinned": true,
     "downloadable_trace_linked": true,
+    "offline_downloaded_trace_verifier_linked": true,
     "export_contains_raw_readings_or_outputs": false,
     "new_tamper_tests_passed": 7,
     "release_preflight_check_count": 14,

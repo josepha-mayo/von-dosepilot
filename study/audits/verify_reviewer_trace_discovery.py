@@ -58,14 +58,14 @@ def verify(root):
     receipt_path = root / record.get("path", "")
     require(sha(receipt_path) == record.get("sha256"), "INDEX_RECEIPT_HASH")
     receipt = load(receipt_path)
-    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v6", "SCHEMA")
+    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v7", "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
-    require(receipt.get("role") == "REVIEWER_NAVIGATION_TRACE_NESTED_AND_CURRENT_REPORT_NEGATIVE_CONTROL", "ROLE")
+    require(receipt.get("role") == "REVIEWER_NAVIGATION_TRACE_OFFLINE_VERIFIER_NESTED_AND_CURRENT_REPORT_NEGATIVE_CONTROL", "ROLE")
 
     predecessor = receipt.get("predecessor", {})
     predecessor_path = root / predecessor.get("path", "")
     require(sha(predecessor_path) == predecessor.get("sha256"), "PREDECESSOR_HASH")
-    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v5", "PREDECESSOR_SCHEMA")
+    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v6", "PREDECESSOR_SCHEMA")
     require(predecessor.get("preserved_unchanged") is True, "PREDECESSOR_PRESERVED")
 
     for relative, expected in receipt.get("artifact_sha256", {}).items():
@@ -125,6 +125,13 @@ def verify(root):
     require(trace_url in writeup, "WRITEUP_TRACE_LINK")
     require("Downloadable state-bound evidence record:" in writeup, "WRITEUP_TRACE_LABEL")
     require("no raw readings or model outputs" in reviewer, "REVIEWER_TRACE_BOUNDARY")
+    offline_doc = "docs/VERIFY_DOWNLOADED_TRACE.md"
+    offline_url = "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/VERIFY_DOWNLOADED_TRACE.md"
+    require(offline_doc in readme, "README_OFFLINE_TRACE_LINK")
+    require(offline_doc in reviewer, "REVIEWER_OFFLINE_TRACE_LINK")
+    require(offline_url in writeup, "WRITEUP_OFFLINE_TRACE_LINK")
+    require("demo/verify_downloaded_trace.py" in readme, "README_OFFLINE_TRACE_COMMAND")
+    require("demo/verify_downloaded_trace.py" in reviewer, "REVIEWER_OFFLINE_TRACE_COMMAND")
     nested_doc = "docs/NESTED_BANDWIDTH_EVALUATION.md"
     nested_url = "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/NESTED_BANDWIDTH_EVALUATION.md"
     require(nested_doc in readme, "README_NESTED_LINK")
@@ -163,6 +170,21 @@ def verify(root):
     require(contract.get("contains_raw_readings") is False, "LIVE_TRACE_NO_READINGS")
     require(contract.get("contains_model_outputs") is False, "LIVE_TRACE_NO_OUTPUTS")
     require(contract.get("contains_patient_or_protected_data") is False, "LIVE_TRACE_NO_PROTECTED")
+
+    offline_record = receipt.get("downloaded_trace_verifier", {})
+    offline_path = root / offline_record.get("path", "")
+    require(sha(offline_path) == offline_record.get("sha256"), "OFFLINE_TRACE_RECEIPT_HASH")
+    offline = load(offline_path)
+    require(offline.get("schema") == "dosepilot.downloaded_trace_verifier.v1", "OFFLINE_TRACE_SCHEMA")
+    require(offline.get("status") == "PASS", "OFFLINE_TRACE_STATUS")
+    offline_verification = offline.get("verification", {})
+    require(offline_verification.get("valid_state_cases") == 5, "OFFLINE_TRACE_VALID_CASES")
+    require(offline_verification.get("invalid_cases_rejected") == 12, "OFFLINE_TRACE_TAMPER_CASES")
+    require(offline_verification.get("exact_six_field_contract") is True, "OFFLINE_TRACE_FIELD_CONTRACT")
+    require(offline_verification.get("filename_state_binding") is True, "OFFLINE_TRACE_FILENAME_BINDING")
+    require(offline_verification.get("known_public_demo_digests_bound") == 4, "OFFLINE_TRACE_DIGESTS")
+    require(offline.get("claim_boundary", {}).get("private_or_protected_inputs_read") is False, "OFFLINE_TRACE_NO_PROTECTED")
+    require(offline.get("claim_boundary", {}).get("biological_accuracy_result_created") is False, "OFFLINE_TRACE_NO_BIOLOGY")
 
     nested_record = receipt.get("nested_bandwidth_evidence", {})
     nested_path = root / nested_record.get("path", "")
@@ -216,6 +238,7 @@ def verify(root):
     require(anchors == verification.get("anchors"), "ANCHOR_COUNT")
     require(verification.get("required_urls") == len(REQUIRED_URLS), "REQUIRED_URL_COUNT")
     require(verification.get("trace_links") == 3, "TRACE_LINK_COUNT")
+    require(verification.get("offline_trace_verifier_links") == 3, "OFFLINE_TRACE_LINK_COUNT")
     require(verification.get("nested_links") == 3, "NESTED_LINK_COUNT")
     require(verification.get("cooptimized_links") == 3, "COOPT_LINK_COUNT")
     require(verification.get("current_report_cooptimized_control_documented") is True, "CURRENT_REPORT_COOPT_DOCUMENTED")
@@ -251,10 +274,12 @@ def verify(root):
         "anchors": anchors,
         "required_urls": len(REQUIRED_URLS),
         "trace_links": 3,
+        "offline_trace_verifier_links": 3,
         "nested_links": 3,
         "cooptimized_links": 3,
         "network_requests": 0,
         "downloadable_trace_linked": True,
+        "offline_downloaded_trace_verifier_linked": True,
         "cooptimized_control_linked": True,
         "current_report_cooptimized_control_documented": True,
         "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",

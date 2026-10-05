@@ -111,6 +111,8 @@ def verify(root,repo):
     require('only 4/5 outer folds improved' in site_html,'SITE_CPM_FOLD_FAILURE')
     require('bandwidth-0.7 remains the incumbent' in site_html,'SITE_CPM_INCUMBENT')
     require(cpm_link in site_html,'SITE_CPM_LINK')
+    offline_trace_url='https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/VERIFY_DOWNLOADED_TRACE.md'
+    require(offline_trace_url in writeup,'WRITEUP_OFFLINE_TRACE_VERIFIER_LINK')
 
     grouped={}
     for ra,rb in zip(a,b):
@@ -132,6 +134,7 @@ def verify(root,repo):
         'overstated_search_label_absent':True,
         'cross_patient_negative_disclosed':True,
         'cross_patient_negative_linked':True,
+        'offline_downloaded_trace_verifier_linked':True,
         'public_surface_sha256':{
             'site/frozen_schedule.js':sha(repo/'site/frozen_schedule.js'),
             'site/index.html':sha(repo/'site/index.html'),
