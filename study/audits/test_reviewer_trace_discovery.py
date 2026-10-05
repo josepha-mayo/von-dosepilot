@@ -34,6 +34,7 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
             receipt["clean_current_finalist_package_execution"]["path"],
             receipt["cooptimized_control"]["path"],
             receipt["current_finalist_rubric_evidence"]["path"],
+            receipt["current_package_finalist_rubric_evidence"]["path"],
             *receipt["artifact_sha256"],
             *AUDITED_SURFACES,
         }
@@ -90,6 +91,9 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         self.assertTrue(result["current_finalist_rubric_evidence_linked"])
         self.assertFalse(result["current_finalist_rubric_self_score_assigned"])
         self.assertFalse(result["current_finalist_probability_estimated"])
+        self.assertTrue(result["current_package_finalist_rubric_evidence_linked"])
+        self.assertFalse(result["current_package_finalist_rubric_self_score_assigned"])
+        self.assertFalse(result["current_package_finalist_probability_estimated"])
         self.assertEqual(result["cooptimized_control_decision"], "REJECT_RETAIN_BANDWIDTH07")
 
     def test_receipt_tamper_fails(self):

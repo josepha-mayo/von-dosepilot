@@ -19,6 +19,8 @@ DosePilot is a measurement-aware drug-response reconstruction method: commit a p
 
 **Current criterion evidence map:** [docs/FINALIST_RUBRIC_EVIDENCE_CURRENT.md](docs/FINALIST_RUBRIC_EVIDENCE_CURRENT.md) · no self-score or finalist-probability estimate; the [4 October predecessor](docs/FINALIST_RUBRIC_EVIDENCE.md) remains immutable history
 
+**Current-package criterion successor:** [docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_PACKAGE.md](docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_PACKAGE.md) · binds the primary v2 package and clean isolated execution: 8/8 checks, current rubric successor enforced, nested canonical 14/14 stages and 173 tests; dependencies came from the local pip cache, not a network clone, clean-new-machine certification, independent biological validation, self-score, finalist-probability estimate, Kaggle edit, or official score
+
 This page is a navigation aid. It creates no new accuracy or biological-validation claim.
 
 ## 90-second review path

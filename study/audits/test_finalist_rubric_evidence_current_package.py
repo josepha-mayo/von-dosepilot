@@ -26,11 +26,14 @@ class CurrentPackageFinalistRubricEvidenceTests(unittest.TestCase):
         record = index["current_package_finalist_rubric_evidence"]
         receipt = json.loads((ROOT / record["path"]).read_text())
         predecessor = json.loads((ROOT / receipt["evidence_bindings"]["predecessor"]["path"]).read_text())
-        historical = json.loads((ROOT / predecessor["evidence_bindings"]["predecessor"]["path"]).read_text())
+        predecessor2 = json.loads((ROOT / predecessor["evidence_bindings"]["predecessor"]["path"]).read_text())
+        historical = json.loads((ROOT / predecessor2["evidence_bindings"]["predecessor"]["path"]).read_text())
         paths = {record["path"], *receipt["artifact_sha256"]}
         paths.update(binding["path"] for binding in receipt["evidence_bindings"].values())
         paths.update(predecessor["artifact_sha256"])
         paths.update(binding["path"] for binding in predecessor["evidence_bindings"].values())
+        paths.update(predecessor2["artifact_sha256"])
+        paths.update(binding["path"] for binding in predecessor2["evidence_bindings"].values())
         paths.update(historical["artifact_sha256"])
         paths.add(historical["current_release_preflight"]["path"])
         for relative in paths:

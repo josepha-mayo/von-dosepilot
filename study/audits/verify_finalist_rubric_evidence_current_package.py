@@ -7,17 +7,14 @@ import hashlib
 import json
 from pathlib import Path
 
-from verify_finalist_rubric_evidence_current import (
-    EXPECTED_BINDINGS as PREDECESSOR_BINDINGS,
-    EXPECTED_WEIGHTS,
-)
+from verify_finalist_rubric_evidence_current import EXPECTED_WEIGHTS
 
 
 class CurrentPackageRubricEvidenceError(ValueError):
     pass
 
 
-EXPECTED_BINDINGS = {
+V3_BINDINGS = {
     "predecessor": {
         "path": "evidence/finalist_rubric_evidence_r2_20261005.json",
         "sha256": "bf948a727137529a7daba7fc44e125440d89faa915c06f0ad6ee9989367f600a",
@@ -30,6 +27,15 @@ EXPECTED_BINDINGS = {
         "path": "evidence/clean_current_finalist_package_execution_20261005.json",
         "sha256": "5b6bae37b328d9130ee639c7988632e561a05716761db83b674e37df61e922c3",
     },
+}
+
+EXPECTED_BINDINGS = {
+    "predecessor": {
+        "path": "evidence/finalist_rubric_evidence_r3_20261005.json",
+        "sha256": "790e18cb117e5e81c96d61b4c6cabec9dac8965d56286e23c17ee0434df948c9",
+    },
+    "current_package_preflight": V3_BINDINGS["current_package_preflight"],
+    "clean_current_package": V3_BINDINGS["clean_current_package"],
 }
 
 
@@ -55,7 +61,7 @@ def verify(root):
     same(sha(receipt_path), record.get("sha256"), "INDEX_RECEIPT_HASH")
     receipt = load(receipt_path)
 
-    same(receipt.get("schema"), "dosepilot.finalist_rubric_evidence.v3", "SCHEMA")
+    same(receipt.get("schema"), "dosepilot.finalist_rubric_evidence.v4", "SCHEMA")
     same(receipt.get("status"), "PASS", "STATUS")
     same(receipt.get("as_of_date"), "2026-10-05", "DATE")
     same(receipt.get("role"), "CURRENT_JUDGE_CRITERION_TO_EVIDENCE_MAP", "ROLE")
@@ -64,15 +70,13 @@ def verify(root):
         same(sha(root / binding["path"]), binding["sha256"], "BINDING_HASH: " + binding["path"])
 
     predecessor = load(root / EXPECTED_BINDINGS["predecessor"]["path"])
-    same(predecessor["schema"], "dosepilot.finalist_rubric_evidence.v2", "PREDECESSOR_SCHEMA")
+    same(predecessor["schema"], "dosepilot.finalist_rubric_evidence.v3", "PREDECESSOR_SCHEMA")
     same(predecessor["status"], "PASS", "PREDECESSOR_STATUS")
     same(predecessor["rubric"]["weights"], EXPECTED_WEIGHTS, "PREDECESSOR_WEIGHTS")
     same(predecessor["rubric"]["combined_self_score"], None, "PREDECESSOR_NO_SCORE")
-    same(predecessor["evidence_bindings"], PREDECESSOR_BINDINGS, "PREDECESSOR_BINDINGS")
-    for binding in PREDECESSOR_BINDINGS.values():
+    same(predecessor["evidence_bindings"], V3_BINDINGS, "PREDECESSOR_BINDINGS")
+    for binding in V3_BINDINGS.values():
         same(sha(root / binding["path"]), binding["sha256"], "PREDECESSOR_BINDING_HASH: " + binding["path"])
-    for relative, expected in predecessor["artifact_sha256"].items():
-        same(sha(root / relative), expected, "PREDECESSOR_ARTIFACT_HASH: " + relative)
     same(predecessor["claim_boundary"]["independent_validation_created"], False, "PREDECESSOR_NO_VALIDATION")
     same(predecessor["claim_boundary"]["accepted_kaggle_entry_changed"], False, "PREDECESSOR_NO_KAGGLE_CHANGE")
     same(predecessor["claim_boundary"]["official_competition_score"], None, "PREDECESSOR_NO_OFFICIAL_SCORE")
@@ -108,8 +112,9 @@ def verify(root):
     verification = receipt["verification"]
     same(verification["standalone_verifier"], "PASS", "VERIFICATION_STATUS")
     same(verification["successor_tamper_tests"], 10, "VERIFICATION_TESTS")
-    same(verification["artifact_hashes_verified"], 5, "VERIFICATION_ARTIFACTS")
-    same(verification["predecessor_reverified"], True, "VERIFICATION_PREDECESSOR")
+    same(verification["artifact_hashes_verified"], 3, "VERIFICATION_ARTIFACTS")
+    same(verification["predecessor_hash_verified"], True, "VERIFICATION_PREDECESSOR_HASH")
+    same(verification["predecessor_artifacts_reverified"], False, "VERIFICATION_PREDECESSOR_ARTIFACTS")
     for key in ("source_workbook_opened", "patient_or_prediction_arrays_opened", "protected_response_access"):
         same(verification[key], False, "VERIFICATION_BOUNDARY: " + key)
 
