@@ -204,6 +204,17 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "CURRENT_REPORT_CLEAN_PACKAGE_CHECKS"):
             verify(self.root)
 
+    def test_stale_current_report_test_binding_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / "00_REVIEWER_START_HERE.md"
+        path.write_text(path.read_text().replace(
+            "current technical report is bound to this 173-test canonical state",
+            "current technical report remains bound to its earlier 168-test receipt",
+        ))
+        self.rehash_surface("00_REVIEWER_START_HERE.md", receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "REVIEWER_CURRENT_REPORT_BINDING"):
+            verify(self.root)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -60,6 +60,16 @@ class VerificationChronologyTests(unittest.TestCase):
         with self.assertRaisesRegex(ChronologyError, "SOFTWARE_BIOLOGY_BOUNDARY"):
             verify(self.root)
 
+    def test_stale_current_report_binding_fails_even_when_rehashed(self):
+        path = self.root / "00_REVIEWER_START_HERE.md"
+        path.write_text(path.read_text().replace(
+            "current technical report is bound to this 173-test canonical state",
+            "current technical report remains bound to its earlier 168-test receipt",
+        ))
+        self._rehash_artifact(path, "00_REVIEWER_START_HERE.md")
+        with self.assertRaisesRegex(ChronologyError, "REVIEWER_CURRENT_REPORT_BINDING"):
+            verify(self.root)
+
     def _rehash_artifact(self, path, relative):
         import hashlib
         index_path = self.root / "evidence/EVIDENCE_INDEX.json"

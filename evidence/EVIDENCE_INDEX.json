@@ -56,16 +56,16 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r14_20261005.json",
-      "sha256": "94139b2afa13c051cba067d718856b4376c8ccbf8283c5ce1b9eadcf60f87a6d"
+      "path": "evidence/frozen_ooc_release_binding_r15_20261005.json",
+      "sha256": "137754e88fcc2b499725d4686ad803e35a450902c3a94b01a7f5157aa6a2a966"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r15_20261005.json",
-      "sha256": "a4203c3fd44844b95c78f2ab01374dd05d707e6f1a51c3643763110da3fa8c69"
+      "path": "evidence/reviewer_path_release_r16_20261005.json",
+      "sha256": "8abf98ac4409e3d41b97cb478e0bfbc8553fd75f0108878c788d7fe013920ab2"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r3_20261005.json",
@@ -144,6 +144,7 @@
     "downloadable_trace_export_contains_raw_readings_or_outputs": false,
     "latest_release_test_count": 173,
     "report_bound_historical_test_count": 173,
+    "historical_168_originally_bound_earlier_report_revision": true,
     "cooptimized_control_linked": true,
     "current_report_cooptimized_control_documented": true,
     "current_report_clean_finalist_package_documented": true,
@@ -224,10 +225,12 @@
     "official_competition_score": null
   },
   "verification_chronology": {
-    "path": "evidence/verification_chronology_r7_20261005.json",
-    "sha256": "e74da6576a1e3861472535ee4dc07f8335c7e48bc7cc7b71144c49a96e9c86d5",
+    "path": "evidence/verification_chronology_r8_20261005.json",
+    "sha256": "887ace8a547cefc9afc82ba21331825aa394b0be7fe5ce5652beb6318fc91839",
     "status": "PASS",
     "latest_orchestrated_response_free_tests": 173,
+    "current_report_bound_test_count": 173,
+    "historical_168_originally_bound_earlier_report_revision": true,
     "historical_receipts_preserved": true,
     "private_or_protected_inputs_read": false,
     "biological_accuracy_result_created": false,
@@ -255,8 +258,8 @@
     "official_competition_score": null
   },
   "reviewer_route_integrity": {
-    "path": "evidence/reviewer_route_integrity_r10_20261005.json",
-    "sha256": "1dd80b1854034f2f81b7120dd0cf3777423240daff648c6a5df19197f2dd6a8a",
+    "path": "evidence/reviewer_route_integrity_r11_20261005.json",
+    "sha256": "3a67aaca4fdb85aa90144a7e08a552e475851237d79a4b858e984b368b73ad71",
     "status": "PASS",
     "audited_surfaces": 5,
     "local_targets": 72,
@@ -661,6 +664,8 @@
     "release_preflight_check_count": 14,
     "orchestrated_response_free_tests": 173,
     "verification_chronology_linked": true,
+    "current_report_bound_test_count": 173,
+    "historical_168_originally_bound_earlier_report_revision": true,
     "prospective_experiment_executed": false,
     "biological_validation_created": false,
     "protected_response_access": false,

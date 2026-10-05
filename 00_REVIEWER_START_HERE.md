@@ -148,7 +148,7 @@ This additive check runs the immutable canonical 14-stage/173-test release prefl
 
     python study/audits/release_preflight_current.py --output release_preflight.json
 
-The current additive runner preserves the historical frozen-schedule preflight and adds endpoint-definition, Kaggle-link-portability, development-governance and current-quickstart checks. The latest bound public receipt records **14/14 stages and 173 response-free tests passed**; three runner-contract tests passed separately. The current technical report remains bound to its earlier 168-test receipt, which is preserved rather than rewritten; see the [verification chronology](docs/VERIFICATION_CHRONOLOGY.md) for the additive test-count history.
+The current additive runner preserves the historical frozen-schedule preflight and adds endpoint-definition, Kaggle-link-portability, development-governance and current-quickstart checks. The latest bound public receipt records **14/14 stages and 173 response-free tests passed**; three runner-contract tests passed separately. The current technical report is bound to this 173-test canonical state. The historical 168-test receipt originally bound an earlier report revision and remains preserved rather than rewritten; see the [verification chronology](docs/VERIFICATION_CHRONOLOGY.md) for the additive test-count history.
 
 ### Public TRAIN reconstruction and current-model replay
 

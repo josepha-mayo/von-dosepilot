@@ -5,9 +5,9 @@ The public release checks are additive. Test totals increased as new claim surfa
 | Public verification state | Completed stages | Orchestrated response-free tests | What changed |
 |---|---:|---:|---|
 | Portable reviewer quickstart | 14/14 | 157 | Current-model quickstart and Kaggle-link portability were bound. |
-| Report/site and promotion-gate hardening | 14/14 | 168 | Schedule tamper cases and derived promotion-gate checks were added. The current ten-page report remains bound to this state. |
+| Report/site and promotion-gate hardening | 14/14 | 168 | Schedule tamper cases and derived promotion-gate checks were added. This historical state originally bound an earlier ten-page report revision. |
 | Development governance | 14/14 | 171 | The candidate registry and prefrozen-proposal checks were added. |
-| Finalist rubric evidence map | **14/14** | **173** | Criterion-to-evidence consistency checks were added. This is the latest canonical release-preflight state. |
+| Finalist rubric evidence map | **14/14** | **173** | Criterion-to-evidence consistency checks were added. This is the latest canonical release-preflight state, and the current ten-page report is bound to it. |
 
 The 173 tests are not 173 biological experiments. They are response-free software, evidence-consistency, acquisition, kernel, endpoint, schedule, organ-on-chip constraint, and fictional lifecycle checks. Numerical reproduction, software verification, retrospective development evidence, and independent biological validation remain distinct.
 
@@ -24,4 +24,4 @@ The checker verifies the exact historical receipt hashes and counts, the latest 
 - the accepted Kaggle entry is not changed;
 - no official competition score is assigned.
 
-The machine-readable chronology is `evidence/verification_chronology_20261004.json`.
+The current machine-readable chronology is `evidence/verification_chronology_r8_20261005.json`; every predecessor remains byte-unchanged.

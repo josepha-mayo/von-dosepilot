@@ -64,6 +64,8 @@ def verify(root):
     require(current.get("path") == latest["path"], "INDEX_CURRENT_PATH")
     require(current.get("sha256") == latest["sha256"], "INDEX_CURRENT_HASH")
     require(current.get("orchestrated_response_free_tests") == 173, "INDEX_CURRENT_TESTS")
+    require(record.get("current_report_bound_test_count") == 173, "INDEX_CURRENT_REPORT_TESTS")
+    require(record.get("historical_168_originally_bound_earlier_report_revision") is True, "INDEX_168_HISTORY")
 
     for path, expected_hash in receipt.get("artifact_sha256", {}).items():
         require(sha(root / path) == expected_hash, "ARTIFACT_HASH: " + path)
@@ -72,8 +74,20 @@ def verify(root):
     chronology = (root / "docs/VERIFICATION_CHRONOLOGY.md").read_text()
     require("173 orchestrated response-free tests" in readme, "README_CURRENT_COUNT")
     require("173 response-free tests passed" in reviewer, "REVIEWER_CURRENT_COUNT")
-    require("168-test receipt" in readme and "168-test receipt" in reviewer, "HISTORICAL_168_CONTEXT")
+    require("current technical report is bound to this 173-test" in readme, "README_CURRENT_REPORT_BINDING")
+    require("current technical report is bound to this 173-test" in reviewer, "REVIEWER_CURRENT_REPORT_BINDING")
+    require("historical 168-test receipt" in readme and "historical 168-test receipt" in reviewer, "HISTORICAL_168_CONTEXT")
+    require("historical state originally bound an earlier ten-page report revision" in chronology, "CHRONOLOGY_168_HISTORICAL")
+    require("current ten-page report is bound to it" in chronology, "CHRONOLOGY_173_CURRENT_REPORT")
+    current_report = index.get("current_technical_report", {})
+    require(current_report.get("preflight_path") == latest["path"], "CURRENT_REPORT_PREFLIGHT_PATH")
+    require(current_report.get("preflight_sha256") == latest["sha256"], "CURRENT_REPORT_PREFLIGHT_HASH")
+    require(current_report.get("preflight_response_free_tests") == 173, "CURRENT_REPORT_PREFLIGHT_TESTS")
     require("not 173 biological experiments" in chronology, "SOFTWARE_BIOLOGY_BOUNDARY")
+
+    interpretation = receipt.get("interpretation", {})
+    require(interpretation.get("current_report_bound_test_count") == 173, "RECEIPT_CURRENT_REPORT_TESTS")
+    require(interpretation.get("historical_168_originally_bound_earlier_report_revision") is True, "RECEIPT_168_HISTORY")
 
     boundary = receipt.get("claim_boundary", {})
     for key in ("private_or_protected_inputs_read", "biological_accuracy_result_created", "accepted_kaggle_entry_changed"):
@@ -88,6 +102,8 @@ def verify(root):
         "preflight_receipts": len(states),
         "governance_milestone_tests": 171,
         "latest_orchestrated_test_count": 173,
+        "current_report_bound_test_count": 173,
+        "historical_168_originally_bound_earlier_report_revision": True,
         "historical_receipts_preserved": True,
         "private_or_protected_inputs_read": False,
         "preserved_operational_failure": True,

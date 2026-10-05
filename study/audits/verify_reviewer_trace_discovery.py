@@ -58,14 +58,14 @@ def verify(root):
     receipt_path = root / record.get("path", "")
     require(sha(receipt_path) == record.get("sha256"), "INDEX_RECEIPT_HASH")
     receipt = load(receipt_path)
-    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v10", "SCHEMA")
+    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v11", "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
-    require(receipt.get("role") == "REVIEWER_NAVIGATION_CURRENT_REPORT_CLEAN_EXECUTION_FINALIST_PREFLIGHT_TRACE_OFFLINE_NESTED_REPORT_NEGATIVE_CONTROL", "ROLE")
+    require(receipt.get("role") == "REVIEWER_NAVIGATION_CURRENT_REPORT_CHRONOLOGY_CLEAN_EXECUTION_FINALIST_PREFLIGHT_TRACE_OFFLINE_NESTED_REPORT_NEGATIVE_CONTROL", "ROLE")
 
     predecessor = receipt.get("predecessor", {})
     predecessor_path = root / predecessor.get("path", "")
     require(sha(predecessor_path) == predecessor.get("sha256"), "PREDECESSOR_HASH")
-    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v9", "PREDECESSOR_SCHEMA")
+    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v10", "PREDECESSOR_SCHEMA")
     require(predecessor.get("preserved_unchanged") is True, "PREDECESSOR_PRESERVED")
 
     for relative, expected in receipt.get("artifact_sha256", {}).items():
@@ -139,6 +139,10 @@ def verify(root):
     require(package_url in writeup, "WRITEUP_FINALIST_PREFLIGHT_LINK")
     require("study/audits/finalist_package_preflight.py" in readme, "README_FINALIST_PREFLIGHT_COMMAND")
     require("study/audits/finalist_package_preflight.py" in reviewer, "REVIEWER_FINALIST_PREFLIGHT_COMMAND")
+    require("current technical report is bound to this 173-test" in readme, "README_CURRENT_REPORT_BINDING")
+    require("current technical report is bound to this 173-test" in reviewer, "REVIEWER_CURRENT_REPORT_BINDING")
+    require("historical 168-test receipt" in readme, "README_HISTORICAL_168_BINDING")
+    require("historical 168-test receipt" in reviewer, "REVIEWER_HISTORICAL_168_BINDING")
     clean_doc = "docs/CLEAN_FINALIST_PACKAGE_EXECUTION.md"
     clean_url = "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/CLEAN_FINALIST_PACKAGE_EXECUTION.md"
     require(clean_doc in readme, "README_CLEAN_PACKAGE_LINK")
@@ -303,7 +307,9 @@ def verify(root):
     require(verification.get("cooptimized_links") == 3, "COOPT_LINK_COUNT")
     require(verification.get("current_report_cooptimized_control_documented") is True, "CURRENT_REPORT_COOPT_DOCUMENTED")
     require(verification.get("current_report_clean_finalist_package_documented") is True, "CURRENT_REPORT_CLEAN_PACKAGE_RECEIPT")
-    require(verification.get("adversarial_tests_passed") == 16, "ADVERSARIAL_TEST_COUNT")
+    require(verification.get("current_report_bound_test_count") == 173, "CURRENT_REPORT_BOUND_TESTS")
+    require(verification.get("historical_168_originally_bound_earlier_report_revision") is True, "HISTORICAL_168_REPORT_BINDING")
+    require(verification.get("adversarial_tests_passed") == 17, "ADVERSARIAL_TEST_COUNT")
     require(verification.get("network_requests") == 0, "NETWORK_REQUESTS")
 
     failure = receipt.get("preserved_operational_failure", {})
