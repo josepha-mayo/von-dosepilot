@@ -44,7 +44,7 @@ The bandwidth-0.7 additive successor reaches patient-balanced MSE 0.001058275042
 
 For each fixed bandwidth, the residual spectral option is selected inside the inner patient folds. A later prefrozen replay selected the bandwidth from {0.7, 1.0, 1.4} wholly inside every outer training set; all 5/5 selected 0.7, so its held-patient predictions exactly equal fixed 0.7 across all 59 patient losses, five fold means, 24 target means, and both orientations. This rules out a foldwise bandwidth splice within that opened menu. It does not correct the wider adaptive campaign, so the displayed MSE remains a repeated-development point estimate rather than independent confirmation.
 
-Public-input replay rebuilds the result from the hash-bound public source route. A separate runtime checks model kind, bandwidth, plan, construction anchor, sample/run/drug/dose/plate/well identity, and missingness. The response-free current-release preflight passes 14 stages and 173 tests. The additive finalist-package preflight also passed all 8 checks, including that nested canonical preflight, from a fresh source directory reconstructed by git archive and a new Python environment on one existing host. This is not a network clone, clean-new-machine certification, or independent biological validation.
+Public-input replay rebuilds the result from the hash-bound public source route. A separate runtime checks model kind, bandwidth, plan, construction anchor, sample/run/drug/dose/plate/well identity, and missingness. The response-free current-release preflight passes 14 stages and 173 tests. The primary current-v2 finalist-package preflight passed all 8 checks with the current rubric successor enforced, including that nested canonical preflight, from a fresh source directory reconstructed by git archive and a new Python 3.12.14 environment on one existing host. Declared dependencies resolved from the local pip cache. This is not a network clone, live dependency-download claim, clean-new-machine certification, or independent biological validation.
 
 ## What is not demonstrated
 
@@ -225,7 +225,8 @@ The ledger records model, plan, construction, commitment, measurement, and sourc
 | Current-model adapter tests within that suite | 10 |
 | Acquisition tests | 9 |
 | Full response-free release preflight | 14 stages / 173 tests |
-| Clean isolated finalist-package execution | 8 / 8 package checks |
+| Clean current-v2 finalist-package execution | 8 / 8; current rubric successor enforced |
+| Dependency acquisition for that clean execution | Local pip cache; no live-download claim |
 
 The fictional lifecycle demonstration makes six CLI calls and verifies plan commitment, incomplete-primary rejection, explicit baseline recovery, changed-reading rejection, complete prediction, and exact export recovery. It uses seeded fictional parameters and measurements, not patient data.
 
@@ -323,7 +324,8 @@ The project does not claim calibrated uncertainty, clinical treatment benefit, p
 | Frozen treatment schedule | docs/FROZEN_OOC_EXECUTION_MANIFEST.md; evidence/frozen_ooc_execution_schedule_20261003.json |
 | Evidence reconciliation | docs/EVIDENCE_LEDGER.md; evidence/EVIDENCE_INDEX.json |
 | Current release preflight | canonical path in evidence/EVIDENCE_INDEX.json |
-| Clean isolated finalist-package execution | docs/CLEAN_FINALIST_PACKAGE_EXECUTION.md; evidence/clean_finalist_package_execution_20261005.json |
+| Clean current-v2 finalist-package execution | docs/CLEAN_CURRENT_FINALIST_PACKAGE_EXECUTION.md; evidence/clean_current_finalist_package_execution_20261005.json |
+| Current-package rubric successor | docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_PACKAGE.md; evidence/finalist_rubric_evidence_r4_20261005.json |
 
 Run the response-free public release check from the repository root:
 

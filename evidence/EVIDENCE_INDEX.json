@@ -64,8 +64,8 @@
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r21_20261005.json",
-      "sha256": "485edbe4b68e1b1b7df90d75d88478a1a062a4966801014623061a090be3196f"
+      "path": "evidence/reviewer_path_release_r22_20261005.json",
+      "sha256": "c718abe51dd47afa88329f5c81de2928857491ad514156daaa21322593983a7e"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r3_20261005.json",
@@ -73,8 +73,8 @@
     }
   },
   "current_technical_report": {
-    "path": "evidence/current_technical_report_r7_20261005.json",
-    "sha256": "8579dd80843cf8598067146a6f36dde4907522f9d9aefec27aa8cb91730f03e1",
+    "path": "evidence/current_technical_report_r8_20261005.json",
+    "sha256": "c870eed1a915c336ebf673cc15f9999aed0cbcdfff110ff82e72d69f62ba9eef",
     "role": "CURRENT_JUDGE_FACING_TECHNICAL_REPORT",
     "status": "PASS",
     "pages": 10,
@@ -88,7 +88,12 @@
     "cooptimized_control_documented": true,
     "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
     "clean_finalist_package_execution_linked": true,
-    "clean_finalist_package_checks": 8
+    "clean_finalist_package_checks": 8,
+    "clean_current_finalist_package_execution_linked": true,
+    "clean_current_finalist_package_checks": 8,
+    "clean_current_finalist_package_current_rubric_successor_checked": true,
+    "clean_current_finalist_package_local_pip_cache": true,
+    "current_package_finalist_rubric_evidence_linked": true
   },
   "target_definitions": {
     "role": "RESPONSE_FREE_ENDPOINT_AND_MEASUREMENT_CONTRACT",
@@ -160,6 +165,11 @@
     "current_report_cooptimized_control_documented": true,
     "current_report_clean_finalist_package_documented": true,
     "current_report_clean_finalist_package_checks": 8,
+    "current_report_clean_current_finalist_package_documented": true,
+    "current_report_clean_current_finalist_package_checks": 8,
+    "current_report_clean_current_finalist_package_current_rubric_successor_checked": true,
+    "current_report_clean_current_finalist_package_local_pip_cache": true,
+    "current_report_current_package_rubric_documented": true,
     "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
     "cooptimized_control_independent_validation": false,
     "current_package_finalist_rubric_evidence_linked": true,
@@ -330,8 +340,8 @@
     "official_competition_score": null
   },
   "reviewer_route_integrity": {
-    "path": "evidence/reviewer_route_integrity_r16_20261005.json",
-    "sha256": "4a067a8d997e70d57bbb7d811924f7137f5e795b30a006d85628424b5eed8cb7",
+    "path": "evidence/reviewer_route_integrity_r17_20261005.json",
+    "sha256": "83db5f1f6f4fc1a3befa90898bf6c18ba26aec076ed4717a4efc36303e21e0d9",
     "status": "PASS",
     "audited_surfaces": 5,
     "local_targets": 82,
@@ -372,6 +382,8 @@
     "current_finalist_probability_estimated": false,
     "current_report_cooptimized_control_documented": true,
     "current_report_clean_finalist_package_documented": true,
+    "current_report_clean_current_finalist_package_documented": true,
+    "current_report_current_package_rubric_documented": true,
     "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
     "cooptimized_control_independent_validation": false,
     "current_package_rubric_links": 3,

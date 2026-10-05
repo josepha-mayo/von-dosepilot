@@ -55,7 +55,7 @@ PINNED_RECEIPTS = {
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
     "frozen_ooc_release_binding": "c1968e44f4acae916e6fe1e6438ee05e85fc1f80525f19b4ffd639728cc68ff0",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
-    "reviewer_path_release": "485edbe4b68e1b1b7df90d75d88478a1a062a4966801014623061a090be3196f",
+    "reviewer_path_release": "c718abe51dd47afa88329f5c81de2928857491ad514156daaa21322593983a7e",
     "development_search_governance": "06bf56a3658c47a99e4f9e07c1e06e11ad348de4a840aba1dad495e2b8495d35",
 }
 
@@ -64,7 +64,7 @@ PINNED_DOCUMENTS = {
     "docs/KAGGLE_WRITEUP.md": "10e9642ad10957c579724ab64684c52b9bdf96a8d5bfd47fb670249788a94941",
 }
 
-CURRENT_REPORT_RECEIPT_SHA256 = "8579dd80843cf8598067146a6f36dde4907522f9d9aefec27aa8cb91730f03e1"
+CURRENT_REPORT_RECEIPT_SHA256 = "c870eed1a915c336ebf673cc15f9999aed0cbcdfff110ff82e72d69f62ba9eef"
 
 
 def load(path):
@@ -155,7 +155,7 @@ def verify(root, enforce_pins=True):
     report_receipt_path = root / report_index["path"]
     same(sha(report_receipt_path), report_index["sha256"], "CURRENT_REPORT_RECEIPT_HASH")
     current_report = load(report_receipt_path)
-    same(current_report["schema"], "dosepilot.current_technical_report_release.v7", "CURRENT_REPORT_SCHEMA")
+    same(current_report["schema"], "dosepilot.current_technical_report_release.v8", "CURRENT_REPORT_SCHEMA")
     same(current_report["status"], "PASS", "CURRENT_REPORT_STATUS")
     same(current_report["role"], "CURRENT_JUDGE_FACING_TECHNICAL_REPORT", "CURRENT_REPORT_ROLE")
     report_predecessor = current_report["predecessor"]
@@ -200,6 +200,20 @@ def verify(root, enforce_pins=True):
     same(claim_checks["clean_finalist_package_fresh_public_clone"], False, "CURRENT_REPORT_CLEAN_PACKAGE_NOT_CLONE")
     same(claim_checks["clean_finalist_package_clean_new_machine_certification"], False, "CURRENT_REPORT_CLEAN_PACKAGE_NOT_NEW_MACHINE")
     same(claim_checks["clean_finalist_package_independent_biological_validation"], False, "CURRENT_REPORT_CLEAN_PACKAGE_NOT_INDEPENDENT")
+    same(claim_checks["clean_current_finalist_package_execution_linked"], True, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_LINK")
+    same(claim_checks["clean_current_finalist_package_checks"], 8, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_CHECKS")
+    same(claim_checks["clean_current_finalist_package_current_rubric_successor_checked"], True, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_RUBRIC")
+    same(claim_checks["clean_current_finalist_package_canonical_stages"], 14, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_STAGES")
+    same(claim_checks["clean_current_finalist_package_canonical_tests"], 173, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_TESTS")
+    same(claim_checks["clean_current_finalist_package_fresh_source_directory"], True, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_FRESH_SOURCE")
+    same(claim_checks["clean_current_finalist_package_fresh_public_clone"], False, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_NOT_CLONE")
+    same(claim_checks["clean_current_finalist_package_local_pip_cache"], True, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_CACHE")
+    same(claim_checks["clean_current_finalist_package_live_dependency_download_claimed"], False, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_NO_LIVE_DOWNLOAD")
+    same(claim_checks["clean_current_finalist_package_clean_new_machine_certification"], False, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_NOT_NEW_MACHINE")
+    same(claim_checks["clean_current_finalist_package_independent_biological_validation"], False, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_NOT_INDEPENDENT")
+    same(claim_checks["current_package_finalist_rubric_evidence_linked"], True, "CURRENT_REPORT_CURRENT_PACKAGE_RUBRIC_LINK")
+    same(claim_checks["current_package_finalist_rubric_self_score_assigned"], False, "CURRENT_REPORT_CURRENT_PACKAGE_RUBRIC_NO_SCORE")
+    same(claim_checks["current_package_finalist_probability_estimated"], False, "CURRENT_REPORT_CURRENT_PACKAGE_RUBRIC_NO_PROBABILITY")
     same(claim_checks["bandwidth_point_estimate_post_selection"], True, "CURRENT_REPORT_SELECTION_DISCLOSURE")
     same(claim_checks["ab_expected_loss_uniform_assignment"], True, "CURRENT_REPORT_AB_ESTIMAND")
     same(claim_checks["nested_bandwidth_menu"], [0.7, 1.0, 1.4], "CURRENT_REPORT_NESTED_MENU")
@@ -224,7 +238,7 @@ def verify(root, enforce_pins=True):
     same(claim_checks["official_competition_score"], None, "CURRENT_REPORT_NO_SCORE")
     for key in ("private_or_protected_inputs_read", "biological_accuracy_result_created", "accepted_kaggle_entry_changed"):
         same(current_report[key], False, "CURRENT_REPORT_BOUNDARY: " + key)
-    for key in ("role", "status", "pages", "historical_submitted_pdf_replaced", "accepted_kaggle_entry_changed", "biological_accuracy_result_created", "cooptimized_control_documented", "cooptimized_control_decision", "clean_finalist_package_execution_linked", "clean_finalist_package_checks"):
+    for key in ("role", "status", "pages", "historical_submitted_pdf_replaced", "accepted_kaggle_entry_changed", "biological_accuracy_result_created", "cooptimized_control_documented", "cooptimized_control_decision", "clean_finalist_package_execution_linked", "clean_finalist_package_checks", "clean_current_finalist_package_execution_linked", "clean_current_finalist_package_checks", "clean_current_finalist_package_current_rubric_successor_checked", "clean_current_finalist_package_local_pip_cache", "current_package_finalist_rubric_evidence_linked"):
         receipt_value = {
             "role": current_report["role"],
             "status": current_report["status"],
@@ -236,6 +250,11 @@ def verify(root, enforce_pins=True):
             "cooptimized_control_decision": claim_checks["cooptimized_control_decision"],
             "clean_finalist_package_execution_linked": claim_checks["clean_finalist_package_execution_linked"],
             "clean_finalist_package_checks": claim_checks["clean_finalist_package_checks"],
+            "clean_current_finalist_package_execution_linked": claim_checks["clean_current_finalist_package_execution_linked"],
+            "clean_current_finalist_package_checks": claim_checks["clean_current_finalist_package_checks"],
+            "clean_current_finalist_package_current_rubric_successor_checked": claim_checks["clean_current_finalist_package_current_rubric_successor_checked"],
+            "clean_current_finalist_package_local_pip_cache": claim_checks["clean_current_finalist_package_local_pip_cache"],
+            "current_package_finalist_rubric_evidence_linked": claim_checks["current_package_finalist_rubric_evidence_linked"],
         }[key]
         same(report_index[key], receipt_value, "INDEX_CURRENT_REPORT_" + key.upper())
 
@@ -289,7 +308,7 @@ def verify(root, enforce_pins=True):
         same(target_index[key], receipt_value, "INDEX_TARGET_DEFINITIONS_" + key.upper())
 
     reviewer_release = receipts["reviewer_path_release"]
-    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v21", "REVIEWER_PATH_SCHEMA")
+    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v22", "REVIEWER_PATH_SCHEMA")
     same(reviewer_release["status"], "PASS", "REVIEWER_PATH_STATUS")
     same(reviewer_release["role"], "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY", "REVIEWER_PATH_ROLE")
     reviewer_predecessor = reviewer_release["predecessor"]
@@ -401,6 +420,8 @@ def verify(root, enforce_pins=True):
         "cooptimized_control_linked",
         "current_report_cooptimized_control_documented",
         "current_report_clean_finalist_package_documented",
+        "current_report_clean_current_finalist_package_documented",
+        "current_report_current_package_rubric_documented",
     ):
         same(reviewer_contract[key], True, "REVIEWER_PATH_LINK: " + key)
     same(reviewer_contract["finalist_package_preflight_checks"], 8, "REVIEWER_PATH_PACKAGE_CHECKS")
@@ -418,6 +439,9 @@ def verify(root, enforce_pins=True):
     same(reviewer_contract["clean_current_finalist_package_fresh_public_clone"], False, "REVIEWER_PATH_CURRENT_CLEAN_PACKAGE_NOT_PUBLIC_CLONE")
     same(reviewer_contract["clean_current_finalist_package_clean_new_machine_certification"], False, "REVIEWER_PATH_CURRENT_CLEAN_PACKAGE_NOT_NEW_MACHINE")
     same(reviewer_contract["current_report_clean_finalist_package_checks"], 8, "REVIEWER_PATH_CURRENT_REPORT_CLEAN_PACKAGE_CHECKS")
+    same(reviewer_contract["current_report_clean_current_finalist_package_checks"], 8, "REVIEWER_PATH_CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_CHECKS")
+    same(reviewer_contract["current_report_clean_current_finalist_package_current_rubric_successor_checked"], True, "REVIEWER_PATH_CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_RUBRIC")
+    same(reviewer_contract["current_report_clean_current_finalist_package_local_pip_cache"], True, "REVIEWER_PATH_CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_CACHE")
     same(reviewer_contract["rubric_self_score_assigned"], False, "REVIEWER_PATH_NO_SELF_SCORE")
     same(reviewer_contract["current_finalist_rubric_self_score_assigned"], False, "REVIEWER_PATH_CURRENT_RUBRIC_NO_SELF_SCORE")
     same(reviewer_contract["current_finalist_probability_estimated"], False, "REVIEWER_PATH_CURRENT_RUBRIC_NO_PROBABILITY")

@@ -58,14 +58,14 @@ def verify(root):
     receipt_path = root / record.get("path", "")
     require(sha(receipt_path) == record.get("sha256"), "INDEX_RECEIPT_HASH")
     receipt = load(receipt_path)
-    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v16", "SCHEMA")
+    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v17", "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
-    require(receipt.get("role") == "REVIEWER_NAVIGATION_CURRENT_PACKAGE_RUBRIC_SUCCESSOR_AND_CLEAN_PACKAGE_CHRONOLOGY_TRACE_OFFLINE_NESTED_REPORT_NEGATIVE_CONTROL", "ROLE")
+    require(receipt.get("role") == "REVIEWER_NAVIGATION_CURRENT_REPORT_CURRENT_PACKAGE_RUBRIC_SUCCESSOR_AND_CLEAN_PACKAGE_CHRONOLOGY_TRACE_OFFLINE_NESTED_NEGATIVE_CONTROL", "ROLE")
 
     predecessor = receipt.get("predecessor", {})
     predecessor_path = root / predecessor.get("path", "")
     require(sha(predecessor_path) == predecessor.get("sha256"), "PREDECESSOR_HASH")
-    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v15", "PREDECESSOR_SCHEMA")
+    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v16", "PREDECESSOR_SCHEMA")
     require(predecessor.get("preserved_unchanged") is True, "PREDECESSOR_PRESERVED")
 
     for relative, expected in receipt.get("artifact_sha256", {}).items():
@@ -338,7 +338,7 @@ def verify(root):
     report_path = root / report_record.get("path", "")
     require(sha(report_path) == report_record.get("sha256"), "CURRENT_REPORT_RECEIPT_HASH")
     report = load(report_path)
-    require(report.get("schema") == "dosepilot.current_technical_report_release.v7", "CURRENT_REPORT_SCHEMA")
+    require(report.get("schema") == "dosepilot.current_technical_report_release.v8", "CURRENT_REPORT_SCHEMA")
     require(report.get("status") == "PASS", "CURRENT_REPORT_STATUS")
     claims = report.get("claim_checks", {})
     require(claims.get("nested_bandwidth_selection_counts") == {"0.7": 5, "1.0": 0, "1.4": 0}, "CURRENT_REPORT_NESTED_SELECTIONS")
@@ -361,8 +361,21 @@ def verify(root):
     require(claims.get("clean_finalist_package_fresh_public_clone") is False, "CURRENT_REPORT_CLEAN_PACKAGE_NOT_CLONE")
     require(claims.get("clean_finalist_package_clean_new_machine_certification") is False, "CURRENT_REPORT_CLEAN_PACKAGE_NOT_NEW_MACHINE")
     require(claims.get("clean_finalist_package_independent_biological_validation") is False, "CURRENT_REPORT_CLEAN_PACKAGE_NOT_INDEPENDENT")
+    require(claims.get("clean_current_finalist_package_execution_linked") is True, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_LINK")
+    require(claims.get("clean_current_finalist_package_checks") == 8, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_CHECKS")
+    require(claims.get("clean_current_finalist_package_current_rubric_successor_checked") is True, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_RUBRIC")
+    require(claims.get("clean_current_finalist_package_canonical_stages") == 14, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_STAGES")
+    require(claims.get("clean_current_finalist_package_canonical_tests") == 173, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_TESTS")
+    require(claims.get("clean_current_finalist_package_local_pip_cache") is True, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_CACHE")
+    require(claims.get("clean_current_finalist_package_live_dependency_download_claimed") is False, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_NO_LIVE_DOWNLOAD")
+    require(claims.get("clean_current_finalist_package_clean_new_machine_certification") is False, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_NOT_NEW_MACHINE")
+    require(claims.get("clean_current_finalist_package_independent_biological_validation") is False, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_NOT_INDEPENDENT")
+    require(claims.get("current_package_finalist_rubric_evidence_linked") is True, "CURRENT_REPORT_CURRENT_PACKAGE_RUBRIC_LINK")
+    require(claims.get("current_package_finalist_rubric_self_score_assigned") is False, "CURRENT_REPORT_CURRENT_PACKAGE_RUBRIC_NO_SCORE")
+    require(claims.get("current_package_finalist_probability_estimated") is False, "CURRENT_REPORT_CURRENT_PACKAGE_RUBRIC_NO_PROBABILITY")
     report_entrypoint = (root / report.get("entrypoint", {}).get("path", "")).read_text()
-    require("clean isolated 8/8 finalist-package execution" in report_entrypoint, "CURRENT_REPORT_CLEAN_PACKAGE_DOCUMENTED")
+    require("clean current-v2 8/8 finalist-package execution" in report_entrypoint, "CURRENT_REPORT_CURRENT_PACKAGE_DOCUMENTED")
+    require("local pip cache" in report_entrypoint, "CURRENT_REPORT_CURRENT_PACKAGE_CACHE_DOCUMENTED")
 
     verification = receipt.get("verification", {})
     require(local_targets == verification.get("local_targets"), "LOCAL_TARGET_COUNT")
@@ -380,6 +393,8 @@ def verify(root):
     require(verification.get("current_package_rubric_links") == 3, "CURRENT_PACKAGE_RUBRIC_LINK_COUNT")
     require(verification.get("current_report_cooptimized_control_documented") is True, "CURRENT_REPORT_COOPT_DOCUMENTED")
     require(verification.get("current_report_clean_finalist_package_documented") is True, "CURRENT_REPORT_CLEAN_PACKAGE_RECEIPT")
+    require(verification.get("current_report_clean_current_finalist_package_documented") is True, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_RECEIPT")
+    require(verification.get("current_report_current_package_rubric_documented") is True, "CURRENT_REPORT_CURRENT_PACKAGE_RUBRIC_RECEIPT")
     require(verification.get("current_report_bound_test_count") == 173, "CURRENT_REPORT_BOUND_TESTS")
     require(verification.get("historical_168_originally_bound_earlier_report_revision") is True, "HISTORICAL_168_REPORT_BINDING")
     require(verification.get("adversarial_tests_passed") == 22, "ADVERSARIAL_TEST_COUNT")
@@ -441,6 +456,8 @@ def verify(root):
         "current_package_finalist_probability_estimated": False,
         "current_report_cooptimized_control_documented": True,
         "current_report_clean_finalist_package_documented": True,
+        "current_report_clean_current_finalist_package_documented": True,
+        "current_report_current_package_rubric_documented": True,
         "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
         "cooptimized_control_independent_validation": False,
         "export_contains_raw_readings_or_outputs": False,
