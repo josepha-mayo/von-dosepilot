@@ -1,0 +1,82 @@
+{
+  "schema": "dosepilot.clean_finalist_package_execution.v1",
+  "status": "PASS",
+  "role": "CLEAN_ISOLATED_FINALIST_PACKAGE_EXECUTION",
+  "utc": "2026-10-05T06:03:55.047236+00:00",
+  "source": {
+    "public_commit": "19d4ca004705581ab3b4ebd7f710a49f298caeeb",
+    "public_tree": "4601ff63fd1af15aa13a9daae10946502781cfbd",
+    "archive_tree": "4601ff63fd1af15aa13a9daae10946502781cfbd",
+    "archive_file_count": 453,
+    "fresh_source_directory": true,
+    "fresh_public_clone": false,
+    "reconstruction_method": "git archive of the local commit whose tree exactly matched verified public master"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "pip": "25.0.1",
+    "operating_system": "Ubuntu 24.04.3 LTS",
+    "kernel": "Linux 6.18.44",
+    "architecture": "x86_64",
+    "glibc": "2.39",
+    "fresh_virtual_environment": true,
+    "live_dependency_install": true,
+    "installed_packages": {
+      "joblib": "1.5.3",
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "pip": "25.0.1",
+      "python-dateutil": "2.9.0.post0",
+      "pytz": "2026.5",
+      "scikit-learn": "1.8.0",
+      "scipy": "1.17.0",
+      "six": "1.17.0",
+      "threadpoolctl": "3.6.0",
+      "tzdata": "2026.5"
+    },
+    "installed_package_manifest_sha256": "02e6c6917e82981079c348f34540e04a657660e242833a9b183ac9069a6c0ee7"
+  },
+  "requirements": {
+    "requirements.txt": "7bd6b8946940b79948c548c8048e545684b91c8edc9444d8dfc0c8f76a97c0a7",
+    "study/requirements.txt": "9acc457aff7a05718b8869947b3b11cf89e5b64dbab9dff9a8fc8ec7e75cddbb"
+  },
+  "execution": {
+    "command": [
+      "python3",
+      "study/audits/finalist_package_preflight.py",
+      "--output",
+      "finalist_package_preflight.json"
+    ],
+    "status": "PASS",
+    "package_checks": 8,
+    "canonical_release_stages": 14,
+    "canonical_orchestrated_tests": 173,
+    "package_runner_network_requests": 0,
+    "dependency_install_network_access": true,
+    "output_bytes": 8079,
+    "output_sha256": "0e752779265f2c2e40c10fca73534bb26c7ec781ea2a54f32cf0ebb4b7d924af",
+    "canonical_preflight_sha256": "4e2fd9d50c8045ccf6d687d474844a3d81cf4a000f0e3b232b39af5476d78931"
+  },
+  "artifact_sha256": {
+    "docs/CLEAN_FINALIST_PACKAGE_EXECUTION.md": "f56a773ad01a9169d7a42937fc2a18b19145eb63aac645b0979118113155796e",
+    "study/audits/verify_clean_finalist_package_execution.py": "406c87e574a4fdb324e240e10ffdb7d62d1142fda40c13f834e77d83ba919e74",
+    "study/audits/test_clean_finalist_package_execution.py": "30a15be4764bcfa64ff0629e05a503a5438a93cb37d9e0848a6567766fed88be",
+    "docs/FINALIST_PACKAGE_PREFLIGHT.md": "a4c2079e55bb9fc2081f6b550c0a5db02581e71f4bd3af2dd446b883f80956ac",
+    "study/audits/finalist_package_preflight.py": "4eb5cab5def791d58c5da0b7cbf52af84d2b4375951839a79c068836800fb221",
+    "study/audits/verify_finalist_package_preflight.py": "cf9e764f91d206f68d5cba9ae990e64cffeac53143093ae00f8dee4894cfaab2",
+    "study/audits/test_finalist_package_preflight.py": "793aeae6e6c3c5109b5c6d9df4a01562a10e87c4de256824f564bff89aada65d",
+    "evidence/finalist_package_preflight_20261005.json": "247de1be9f492f44555abb86ba7c0e5f7d85aab6bbd753cbb632cc98f5142660"
+  },
+  "claim_boundary": {
+    "clean_new_machine_certification": false,
+    "independent_biological_validation": false,
+    "prospective_ooc_evidence": false,
+    "private_or_protected_inputs_read": false,
+    "source_workbook_read": false,
+    "model_fit_created": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "netlify_deployment_changed": false,
+    "official_competition_score": null
+  }
+}

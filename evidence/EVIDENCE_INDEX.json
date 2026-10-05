@@ -198,6 +198,21 @@
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null
   },
+  "clean_finalist_package_execution": {
+    "path": "evidence/clean_finalist_package_execution_20261005.json",
+    "sha256": "7a2fa4415c6676fbe89ee94b396fa4e040c925783c38ab8eda241e504515de4c",
+    "status": "PASS",
+    "public_commit": "19d4ca004705581ab3b4ebd7f710a49f298caeeb",
+    "public_tree": "4601ff63fd1af15aa13a9daae10946502781cfbd",
+    "fresh_virtual_environment": true,
+    "package_checks": 8,
+    "canonical_release_stages": 14,
+    "canonical_orchestrated_tests": 173,
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
   "verification_chronology": {
     "path": "evidence/verification_chronology_r6_20261005.json",
     "sha256": "ae1eda4e5343eb365e015e2d885513998f6c4580fd42dd92c57fc1ff266d7286",

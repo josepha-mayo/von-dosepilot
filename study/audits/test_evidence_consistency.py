@@ -86,6 +86,17 @@ class EvidenceConsistencyTests(unittest.TestCase):
         shutil.copy2(self.source / current_preflight_path, self.root / current_preflight_path)
         predecessor_path = index["current_release_preflight"]["predecessor_path"]
         shutil.copy2(self.source / predecessor_path, self.root / predecessor_path)
+        clean_package_index = index["clean_finalist_package_execution"]
+        clean_package = json.loads((self.source / clean_package_index["path"]).read_text())
+        clean_package_paths = [
+            clean_package_index["path"],
+            *clean_package["requirements"],
+            *clean_package["artifact_sha256"],
+        ]
+        for relative in clean_package_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         lifecycle = json.loads(
             (self.source / "evidence/bandwidth_lifecycle_20261003.json").read_text()
         )
@@ -148,6 +159,7 @@ class EvidenceConsistencyTests(unittest.TestCase):
         self.assertEqual(result["rubric_evidence_weight_sum"], 100)
         self.assertEqual(result["current_preflight_tests"], 173)
         self.assertEqual(result["verification_chronology_latest_tests"], 173)
+        self.assertEqual(result["clean_finalist_package_checks"], 8)
         self.assertEqual(result["development_governance_families"], 23)
         self.assertEqual(result["development_governance_tests"], 33)
 

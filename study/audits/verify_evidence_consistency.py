@@ -21,6 +21,10 @@ from verify_verification_chronology import (
     ChronologyError,
     verify as verify_verification_chronology,
 )
+from verify_clean_finalist_package_execution import (
+    CleanFinalistPackageExecutionError,
+    verify as verify_clean_finalist_package_execution,
+)
 
 
 class EvidenceError(ValueError):
@@ -1129,6 +1133,16 @@ def verify(root, enforce_pins=True):
         raise EvidenceError("VERIFICATION_CHRONOLOGY: " + str(exc)) from exc
     same(chronology_result["latest_orchestrated_test_count"], 173, "VERIFICATION_CHRONOLOGY_LATEST")
     same(chronology_result["historical_receipts_preserved"], True, "VERIFICATION_CHRONOLOGY_HISTORY")
+    try:
+        clean_package_result = verify_clean_finalist_package_execution(root)
+    except CleanFinalistPackageExecutionError as exc:
+        raise EvidenceError("CLEAN_FINALIST_PACKAGE_EXECUTION: " + str(exc)) from exc
+    same(clean_package_result["public_commit"], "19d4ca004705581ab3b4ebd7f710a49f298caeeb", "CLEAN_PACKAGE_PUBLIC_COMMIT")
+    same(clean_package_result["public_tree"], "4601ff63fd1af15aa13a9daae10946502781cfbd", "CLEAN_PACKAGE_PUBLIC_TREE")
+    same(clean_package_result["fresh_virtual_environment"], True, "CLEAN_PACKAGE_FRESH_VENV")
+    same(clean_package_result["package_checks"], 8, "CLEAN_PACKAGE_CHECKS")
+    same(clean_package_result["canonical_release_stages"], 14, "CLEAN_PACKAGE_CANONICAL_STAGES")
+    same(clean_package_result["canonical_orchestrated_tests"], 173, "CLEAN_PACKAGE_CANONICAL_TESTS")
     return {
         "status": "PASS",
         "canonical_receipts": len(receipts),
@@ -1147,6 +1161,7 @@ def verify(root, enforce_pins=True):
         "rubric_evidence_weight_sum": rubric_result["weight_sum"],
         "current_preflight_tests": current_preflight["orchestrated_test_count"],
         "verification_chronology_latest_tests": chronology_result["latest_orchestrated_test_count"],
+        "clean_finalist_package_checks": clean_package_result["package_checks"],
         "raw_ak_decision": aligned["decision"],
         "cross_patient_bandwidth_decision": cross_patient["decision"],
         "simplex_stacking_decision": simplex["decision"],
