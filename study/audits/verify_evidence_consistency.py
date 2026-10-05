@@ -25,6 +25,10 @@ from verify_clean_finalist_package_execution import (
     CleanFinalistPackageExecutionError,
     verify as verify_clean_finalist_package_execution,
 )
+from verify_clean_current_finalist_package_execution import (
+    CleanCurrentFinalistPackageExecutionError,
+    verify as verify_clean_current_finalist_package_execution,
+)
 
 
 class EvidenceError(ValueError):
@@ -1194,6 +1198,47 @@ def verify(root, enforce_pins=True):
     same(clean_package_result["package_checks"], 8, "CLEAN_PACKAGE_CHECKS")
     same(clean_package_result["canonical_release_stages"], 14, "CLEAN_PACKAGE_CANONICAL_STAGES")
     same(clean_package_result["canonical_orchestrated_tests"], 173, "CLEAN_PACKAGE_CANONICAL_TESTS")
+    try:
+        clean_current_package_result = verify_clean_current_finalist_package_execution(root)
+    except CleanCurrentFinalistPackageExecutionError as exc:
+        raise EvidenceError(
+            "CLEAN_CURRENT_FINALIST_PACKAGE_EXECUTION: " + str(exc)
+        ) from exc
+    same(
+        clean_current_package_result["public_commit"],
+        "64424e9c0a8c158e47300398f892b2ec148ed7de",
+        "CLEAN_CURRENT_PACKAGE_PUBLIC_COMMIT",
+    )
+    same(
+        clean_current_package_result["public_tree"],
+        "7ffe0b761f8e02ad8b784a653fac489538c7198a",
+        "CLEAN_CURRENT_PACKAGE_PUBLIC_TREE",
+    )
+    same(
+        clean_current_package_result["fresh_virtual_environment"],
+        True,
+        "CLEAN_CURRENT_PACKAGE_FRESH_VENV",
+    )
+    same(
+        clean_current_package_result["package_checks"],
+        8,
+        "CLEAN_CURRENT_PACKAGE_CHECKS",
+    )
+    same(
+        clean_current_package_result["current_rubric_successor_checked"],
+        True,
+        "CLEAN_CURRENT_PACKAGE_RUBRIC_SUCCESSOR",
+    )
+    same(
+        clean_current_package_result["canonical_release_stages"],
+        14,
+        "CLEAN_CURRENT_PACKAGE_CANONICAL_STAGES",
+    )
+    same(
+        clean_current_package_result["canonical_orchestrated_tests"],
+        173,
+        "CLEAN_CURRENT_PACKAGE_CANONICAL_TESTS",
+    )
     return {
         "status": "PASS",
         "canonical_receipts": len(receipts),
@@ -1213,6 +1258,8 @@ def verify(root, enforce_pins=True):
         "current_preflight_tests": current_preflight["orchestrated_test_count"],
         "verification_chronology_latest_tests": chronology_result["latest_orchestrated_test_count"],
         "clean_finalist_package_checks": clean_package_result["package_checks"],
+        "clean_current_finalist_package_checks": clean_current_package_result["package_checks"],
+        "clean_current_finalist_package_rubric_successor_checked": clean_current_package_result["current_rubric_successor_checked"],
         "raw_ak_decision": aligned["decision"],
         "cross_patient_bandwidth_decision": cross_patient["decision"],
         "simplex_stacking_decision": simplex["decision"],

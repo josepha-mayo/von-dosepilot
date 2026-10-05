@@ -256,6 +256,22 @@
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null
   },
+  "clean_current_finalist_package_execution": {
+    "path": "evidence/clean_current_finalist_package_execution_20261005.json",
+    "sha256": "5b6bae37b328d9130ee639c7988632e561a05716761db83b674e37df61e922c3",
+    "status": "PASS",
+    "public_commit": "64424e9c0a8c158e47300398f892b2ec148ed7de",
+    "public_tree": "7ffe0b761f8e02ad8b784a653fac489538c7198a",
+    "fresh_virtual_environment": true,
+    "package_checks": 8,
+    "current_rubric_successor_checked": true,
+    "canonical_release_stages": 14,
+    "canonical_orchestrated_tests": 173,
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
   "verification_chronology": {
     "path": "evidence/verification_chronology_r10_20261005.json",
     "sha256": "ac15d41e8ec8436bacb2556cf5c7d801d74cf41656a6bdc0d6b99145e75be000",

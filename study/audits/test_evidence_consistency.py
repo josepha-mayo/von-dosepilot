@@ -97,6 +97,20 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
+        clean_current_package_index = index["clean_current_finalist_package_execution"]
+        clean_current_package = json.loads(
+            (self.source / clean_current_package_index["path"]).read_text()
+        )
+        clean_current_package_paths = [
+            clean_current_package_index["path"],
+            clean_current_package["predecessor"]["path"],
+            *clean_current_package["requirements"],
+            *clean_current_package["artifact_sha256"],
+        ]
+        for relative in clean_current_package_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         lifecycle = json.loads(
             (self.source / "evidence/bandwidth_lifecycle_20261003.json").read_text()
         )
