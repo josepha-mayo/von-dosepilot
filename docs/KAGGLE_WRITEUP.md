@@ -15,6 +15,7 @@
 - **Downloadable state-bound evidence record:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/LIVE_DEMO_TRACE_EXPORT.md
 - **Offline downloaded-file verifier:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/VERIFY_DOWNLOADED_TRACE.md
 - **One-command finalist-package preflight:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FINALIST_PACKAGE_PREFLIGHT.md
+- **Clean isolated finalist-package execution:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/CLEAN_FINALIST_PACKAGE_EXECUTION.md — all 8 package checks passed, including the nested canonical 14-stage/173-test preflight, from a `git archive` source reconstruction and new environment on one existing host; not a network clone, clean-new-machine certification, or independent biological validation.
 - **Demo video:** https://youtu.be/QeOGJIgx378
 - **Public code:** https://github.com/josepha-mayo/von-dosepilot
 - **90-second reviewer path:** https://github.com/josepha-mayo/von-dosepilot/blob/master/00_REVIEWER_START_HERE.md

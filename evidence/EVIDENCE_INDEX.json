@@ -56,16 +56,16 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r13_20261005.json",
-      "sha256": "e3df08434ba1b7035c3cf8bdd4f04be9a1528d42fe20b011aef0d820c13ae324"
+      "path": "evidence/frozen_ooc_release_binding_r14_20261005.json",
+      "sha256": "94139b2afa13c051cba067d718856b4376c8ccbf8283c5ce1b9eadcf60f87a6d"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r13_20261005.json",
-      "sha256": "8b724307d529fa193bca090092477a056e6cbfa23d547f974299f4b37ab1bee8"
+      "path": "evidence/reviewer_path_release_r14_20261005.json",
+      "sha256": "78d253be1122091e64df853c5bfab3aafb620561a5b3750df2fe89a711784003"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r3_20261005.json",
@@ -133,6 +133,12 @@
     "finalist_package_preflight_checks": 8,
     "finalist_package_canonical_stages": 14,
     "finalist_package_canonical_tests": 173,
+    "clean_finalist_package_execution_linked": true,
+    "clean_finalist_package_checks": 8,
+    "clean_finalist_package_canonical_stages": 14,
+    "clean_finalist_package_canonical_tests": 173,
+    "clean_finalist_package_fresh_public_clone": false,
+    "clean_finalist_package_clean_new_machine_certification": false,
     "downloadable_trace_export_contains_raw_readings_or_outputs": false,
     "latest_release_test_count": 173,
     "report_bound_historical_test_count": 173,
@@ -214,8 +220,8 @@
     "official_competition_score": null
   },
   "verification_chronology": {
-    "path": "evidence/verification_chronology_r6_20261005.json",
-    "sha256": "ae1eda4e5343eb365e015e2d885513998f6c4580fd42dd92c57fc1ff266d7286",
+    "path": "evidence/verification_chronology_r7_20261005.json",
+    "sha256": "e74da6576a1e3861472535ee4dc07f8335c7e48bc7cc7b71144c49a96e9c86d5",
     "status": "PASS",
     "latest_orchestrated_response_free_tests": 173,
     "historical_receipts_preserved": true,
@@ -245,23 +251,30 @@
     "official_competition_score": null
   },
   "reviewer_route_integrity": {
-    "path": "evidence/reviewer_route_integrity_r8_20261005.json",
-    "sha256": "41fdc551b7624ca15d8bdd7f96cbb03cf8aaaa3f046f392764641aa90a3cda05",
+    "path": "evidence/reviewer_route_integrity_r9_20261005.json",
+    "sha256": "6ce63e33c129b23ea8704c7e8731e8eb2256219cda305ddf6732165552d7f483",
     "status": "PASS",
     "audited_surfaces": 5,
-    "local_targets": 70,
+    "local_targets": 72,
     "github_master_targets": 27,
     "anchors": 1,
     "required_urls": 5,
     "trace_links": 3,
     "offline_trace_verifier_links": 3,
     "finalist_package_preflight_links": 3,
+    "clean_finalist_package_execution_links": 3,
     "nested_links": 3,
     "network_requests": 0,
     "external_playback_verified": false,
     "downloadable_trace_linked": true,
     "offline_downloaded_trace_verifier_linked": true,
     "finalist_package_preflight_linked": true,
+    "clean_finalist_package_execution_linked": true,
+    "clean_finalist_package_checks": 8,
+    "clean_finalist_package_canonical_stages": 14,
+    "clean_finalist_package_canonical_tests": 173,
+    "clean_finalist_package_fresh_public_clone": false,
+    "clean_finalist_package_clean_new_machine_certification": false,
     "export_contains_raw_readings_or_outputs": false,
     "private_or_protected_inputs_read": false,
     "biological_accuracy_result_created": false,
@@ -632,6 +645,12 @@
     "downloadable_trace_linked": true,
     "offline_downloaded_trace_verifier_linked": true,
     "finalist_package_preflight_linked": true,
+    "clean_finalist_package_execution_linked": true,
+    "clean_finalist_package_checks": 8,
+    "clean_finalist_package_canonical_stages": 14,
+    "clean_finalist_package_canonical_tests": 173,
+    "clean_finalist_package_fresh_public_clone": false,
+    "clean_finalist_package_clean_new_machine_certification": false,
     "export_contains_raw_readings_or_outputs": false,
     "new_tamper_tests_passed": 7,
     "release_preflight_check_count": 14,

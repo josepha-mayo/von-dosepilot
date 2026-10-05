@@ -10,6 +10,8 @@ DosePilot is a measurement-aware drug-response reconstruction method: commit a p
 
 **One-command finalist-package verification:** [`study/audits/finalist_package_preflight.py`](study/audits/finalist_package_preflight.py) · [command and scope](docs/FINALIST_PACKAGE_PREFLIGHT.md)
 
+**Clean isolated execution evidence:** [fresh source directory + new Python environment](docs/CLEAN_FINALIST_PACKAGE_EXECUTION.md) · 8/8 package checks, nested canonical 14/14 stages and 173 tests · one existing host via `git archive`, not a network clone, clean-new-machine certification, or independent biological validation
+
 **Prepared Kaggle writeup:** [docs/KAGGLE_WRITEUP.md](docs/KAGGLE_WRITEUP.md)  
 **Current technical report:** [CURRENT_TECHNICAL_REPORT.md](CURRENT_TECHNICAL_REPORT.md)
 

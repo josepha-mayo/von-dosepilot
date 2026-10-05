@@ -14,6 +14,8 @@ Research software by **Joseph Ayanda** for AI4S Open Innovation. DosePilot choos
 
 **One-command finalist-package check:** run [`study/audits/finalist_package_preflight.py`](study/audits/finalist_package_preflight.py) using the [documented response-free command and scope](docs/FINALIST_PACKAGE_PREFLIGHT.md).
 
+**Clean isolated execution evidence:** the [published clean-source/new-venv receipt](docs/CLEAN_FINALIST_PACKAGE_EXECUTION.md) records all 8 package checks passing, including the nested canonical 14-stage/173-test preflight. It was produced from a `git archive` source reconstruction on one existing host—not a network clone, clean-new-machine certification, or independent biological validation.
+
 **One-page finalist audit:** [64-well contract, current benchmark, all 24 target deltas, selection history](docs/FINALIST_AUDIT.md)  
 **Synthetic robustness audit:** [noise, plate-drift, and missing-reading stress tests](docs/SIMULATED_ASSAY_ROBUSTNESS.md)
 
