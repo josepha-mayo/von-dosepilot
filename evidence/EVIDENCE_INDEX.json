@@ -162,6 +162,19 @@
     "accepted_kaggle_entry_changed": false,
     "protected_response_access": false
   },
+  "current_finalist_rubric_evidence": {
+    "path": "evidence/finalist_rubric_evidence_r2_20261005.json",
+    "sha256": "bf948a727137529a7daba7fc44e125440d89faa915c06f0ad6ee9989367f600a",
+    "status": "PASS",
+    "criteria": 5,
+    "weight_sum": 100,
+    "nested_outer_training_sets_selecting_07": 5,
+    "clean_package_checks": 8,
+    "external_routes_resolved": 5,
+    "public_report_render_verified": true,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
   "development_search_governance": {
     "role": "ADAPTIVE_DEVELOPMENT_GOVERNANCE_UPDATE",
     "status": "PASS",

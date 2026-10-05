@@ -1,0 +1,141 @@
+{
+  "schema": "dosepilot.finalist_rubric_evidence.v2",
+  "status": "PASS",
+  "as_of_date": "2026-10-05",
+  "role": "CURRENT_JUDGE_CRITERION_TO_EVIDENCE_MAP",
+  "rubric": {
+    "source_url": "https://www.kaggle.com/competitions/ai-4-s-open-innovation-artificial-intelligence-for-life-scien/overview/evaluation",
+    "last_verified_on_platform": "2026-10-01",
+    "current_run_public_retrieval": "UNAVAILABLE_NO_REFRESH_CLAIM",
+    "weights": {
+      "problem_importance_impact": 30,
+      "technical_approach_innovation": 30,
+      "results_validation": 20,
+      "reproducibility_implementation": 10,
+      "presentation": 10
+    },
+    "combined_self_score": null
+  },
+  "criteria": {
+    "problem_importance_impact": {
+      "weight": 30,
+      "evidence": [
+        "24 fixed response summaries from 64 identified treatment measurements versus 416 eligible measurements in the retrospective two-plate source profile",
+        "Exact endpoint, quadrature, dose identity, and per-plate accounting are published"
+      ],
+      "limitations": [
+        "Measurement-count compression is not measured cost, time, material, clinical, or organ-on-chip benefit"
+      ]
+    },
+    "technical_approach_innovation": {
+      "weight": 30,
+      "evidence": [
+        "Frozen 64-well/32-per-plate acquisition contract and separate A/B expected-loss accounting",
+        "Bandwidth-0.7 additive residual estimator with identity-bound commit/recover/predict execution",
+        "Downloadable digest-only fictional evidence record with offline verification and missing-primary withholding"
+      ],
+      "limitations": [
+        "Repeated adaptive development and component-method prior art are disclosed; no patent-style novelty claim",
+        "Digest evidence is not signed, WORM, physical provenance, or biological validation"
+      ]
+    },
+    "results_validation": {
+      "weight": 20,
+      "evidence": [
+        "Same-task development MSE 0.0010582750420801538; p90 0.0378942853087202; 38/59 patient wins and 5/5 favorable folds versus additive-1.0",
+        "Nested replay selected bandwidth 0.7 inside all five outer fitting sets and exactly tied fixed 0.7",
+        "Co-optimized calibrated interpolation failed all promotion gates and is closed"
+      ],
+      "limitations": [
+        "Ten of 24 target means regress versus the immediate control",
+        "Nested replay and negative control remain repeated development, not selection correction for the wider campaign or independent validation",
+        "Protected22 primary is NOT_ESTIMABLE and the matched-CAF study does not validate incumbent fitted weights"
+      ]
+    },
+    "reproducibility_implementation": {
+      "weight": 10,
+      "evidence": [
+        "Public source-to-results reconstruction PASS",
+        "Clean isolated finalist-package execution passed 8/8 checks with nested canonical 14-stage/173-test preflight in a new environment"
+      ],
+      "limitations": [
+        "Clean execution used git archive on one existing host, not a network clone or clean-new-machine certification",
+        "Reproduction is not new predictive evidence; public code excludes patient arrays and fitted biological weights"
+      ]
+    },
+    "presentation": {
+      "weight": 10,
+      "evidence": [
+        "Five of five required external reviewer routes resolved to expected public identities in an isolated browser",
+        "The current ten-page report rendered through GitHub's commit-bound embedded viewer and all ten exact-tree pages rendered response-free"
+      ],
+      "limitations": [
+        "Point-in-time checks do not establish future uptime or uninterrupted video playback",
+        "Browser download event timed out; no downloaded-file byte comparison or raw-download-success claim"
+      ]
+    }
+  },
+  "evidence_bindings": {
+    "predecessor": {
+      "path": "evidence/finalist_rubric_evidence_20261004.json",
+      "sha256": "6f6db1375116a3cbde3ea7cccb448a2881ae51c8dea61488624ede312233ddb7"
+    },
+    "nested_bandwidth_selection": {
+      "path": "evidence/nested_bandwidth_selection_20261004.json",
+      "sha256": "328cd770b957c48b20e652494f1de28c7f710cc49a9242e0d66ba56190981bdb"
+    },
+    "cooptimized_control": {
+      "path": "evidence/cooptimized_calibrated_control_20261004.json",
+      "sha256": "1238e432ed0a9abffce855440b6f290c056373f988ced6b3d3b57ce85c1cd74e"
+    },
+    "clean_finalist_package": {
+      "path": "evidence/clean_finalist_package_execution_20261005.json",
+      "sha256": "7a2fa4415c6676fbe89ee94b396fa4e040c925783c38ab8eda241e504515de4c"
+    },
+    "external_routes": {
+      "path": "evidence/external_reviewer_route_availability_20261005.json",
+      "sha256": "832c42375d6b15b5397cdfd03254b9baeffe1c70214a55a2f47c00e470a9a2f6"
+    },
+    "public_report_render": {
+      "path": "evidence/public_report_render_verification_20261005.json",
+      "sha256": "360f939617d637d29dbe28edd492dbb603e5826c0c1fa495dafb104c7257b0c1"
+    },
+    "current_report": {
+      "path": "evidence/current_technical_report_r7_20261005.json",
+      "sha256": "8579dd80843cf8598067146a6f36dde4907522f9d9aefec27aa8cb91730f03e1"
+    },
+    "canonical_preflight": {
+      "path": "evidence/release_preflight_rubric_map_pass1_20261004.json",
+      "sha256": "92ca10dc68228ff438618d160859a5b5d86ae2d934a798041be45e515dc42d2b"
+    }
+  },
+  "artifact_sha256": {
+    "docs/FINALIST_RUBRIC_EVIDENCE_CURRENT.md": "2514688ffea6520c9c6a426e3c4e26bc894307b52e91f0e94c5cc1872dd4bd60",
+    "study/audits/verify_finalist_rubric_evidence_current.py": "75a66295775a7c7a2a0868a1547d6702becda7f5b1806490c72e008ee363eee2",
+    "study/audits/test_finalist_rubric_evidence_current.py": "0dc27222da60af3021e82396215d5c112c0317dcad53815d7a202730086c11b1"
+  },
+  "verification": {
+    "standalone_verifier": "PASS",
+    "successor_tamper_tests": 14,
+    "artifact_hashes_verified": 3,
+    "predecessor_verifier_passed": true,
+    "source_workbook_opened": false,
+    "patient_or_prediction_arrays_opened": false,
+    "protected_response_access": false
+  },
+  "claim_boundary": {
+    "new_model_fit": false,
+    "biological_accuracy_result_created": false,
+    "independent_validation_created": false,
+    "protected_response_access": false,
+    "private_patient_arrays_read": false,
+    "accepted_kaggle_entry_changed": false,
+    "finalist_status_claimed": false,
+    "prospective_ooc_performance_claimed": false,
+    "clinical_utility_claimed": false,
+    "realized_cost_or_time_saving_claimed": false,
+    "future_uptime_claimed": false,
+    "raw_pdf_download_verified": false,
+    "official_competition_score": null
+  }
+}
