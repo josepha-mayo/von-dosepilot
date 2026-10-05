@@ -58,14 +58,14 @@ def verify(root):
     receipt_path = root / record.get("path", "")
     require(sha(receipt_path) == record.get("sha256"), "INDEX_RECEIPT_HASH")
     receipt = load(receipt_path)
-    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v9", "SCHEMA")
+    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v10", "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
-    require(receipt.get("role") == "REVIEWER_NAVIGATION_CLEAN_EXECUTION_FINALIST_PREFLIGHT_TRACE_OFFLINE_NESTED_REPORT_NEGATIVE_CONTROL", "ROLE")
+    require(receipt.get("role") == "REVIEWER_NAVIGATION_CURRENT_REPORT_CLEAN_EXECUTION_FINALIST_PREFLIGHT_TRACE_OFFLINE_NESTED_REPORT_NEGATIVE_CONTROL", "ROLE")
 
     predecessor = receipt.get("predecessor", {})
     predecessor_path = root / predecessor.get("path", "")
     require(sha(predecessor_path) == predecessor.get("sha256"), "PREDECESSOR_HASH")
-    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v8", "PREDECESSOR_SCHEMA")
+    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v9", "PREDECESSOR_SCHEMA")
     require(predecessor.get("preserved_unchanged") is True, "PREDECESSOR_PRESERVED")
 
     for relative, expected in receipt.get("artifact_sha256", {}).items():
@@ -264,7 +264,7 @@ def verify(root):
     report_path = root / report_record.get("path", "")
     require(sha(report_path) == report_record.get("sha256"), "CURRENT_REPORT_RECEIPT_HASH")
     report = load(report_path)
-    require(report.get("schema") == "dosepilot.current_technical_report_release.v6", "CURRENT_REPORT_SCHEMA")
+    require(report.get("schema") == "dosepilot.current_technical_report_release.v7", "CURRENT_REPORT_SCHEMA")
     require(report.get("status") == "PASS", "CURRENT_REPORT_STATUS")
     claims = report.get("claim_checks", {})
     require(claims.get("nested_bandwidth_selection_counts") == {"0.7": 5, "1.0": 0, "1.4": 0}, "CURRENT_REPORT_NESTED_SELECTIONS")
@@ -279,6 +279,16 @@ def verify(root):
     require(claims.get("cooptimized_control_family_closed") is True, "CURRENT_REPORT_COOPT_CLOSED")
     require(claims.get("cooptimized_control_independent_validation") is False, "CURRENT_REPORT_COOPT_BOUNDARY")
     require(claims.get("release_preflight_tests") == 173, "CURRENT_REPORT_PREFLIGHT_TESTS")
+    require(claims.get("clean_finalist_package_execution_linked") is True, "CURRENT_REPORT_CLEAN_PACKAGE_LINK")
+    require(claims.get("clean_finalist_package_checks") == 8, "CURRENT_REPORT_CLEAN_PACKAGE_CHECKS")
+    require(claims.get("clean_finalist_package_canonical_stages") == 14, "CURRENT_REPORT_CLEAN_PACKAGE_STAGES")
+    require(claims.get("clean_finalist_package_canonical_tests") == 173, "CURRENT_REPORT_CLEAN_PACKAGE_TESTS")
+    require(claims.get("clean_finalist_package_fresh_source_directory") is True, "CURRENT_REPORT_CLEAN_PACKAGE_FRESH_SOURCE")
+    require(claims.get("clean_finalist_package_fresh_public_clone") is False, "CURRENT_REPORT_CLEAN_PACKAGE_NOT_CLONE")
+    require(claims.get("clean_finalist_package_clean_new_machine_certification") is False, "CURRENT_REPORT_CLEAN_PACKAGE_NOT_NEW_MACHINE")
+    require(claims.get("clean_finalist_package_independent_biological_validation") is False, "CURRENT_REPORT_CLEAN_PACKAGE_NOT_INDEPENDENT")
+    report_entrypoint = (root / report.get("entrypoint", {}).get("path", "")).read_text()
+    require("clean isolated 8/8 finalist-package execution" in report_entrypoint, "CURRENT_REPORT_CLEAN_PACKAGE_DOCUMENTED")
 
     verification = receipt.get("verification", {})
     require(local_targets == verification.get("local_targets"), "LOCAL_TARGET_COUNT")
@@ -292,7 +302,8 @@ def verify(root):
     require(verification.get("nested_links") == 3, "NESTED_LINK_COUNT")
     require(verification.get("cooptimized_links") == 3, "COOPT_LINK_COUNT")
     require(verification.get("current_report_cooptimized_control_documented") is True, "CURRENT_REPORT_COOPT_DOCUMENTED")
-    require(verification.get("adversarial_tests_passed") == 15, "ADVERSARIAL_TEST_COUNT")
+    require(verification.get("current_report_clean_finalist_package_documented") is True, "CURRENT_REPORT_CLEAN_PACKAGE_RECEIPT")
+    require(verification.get("adversarial_tests_passed") == 16, "ADVERSARIAL_TEST_COUNT")
     require(verification.get("network_requests") == 0, "NETWORK_REQUESTS")
 
     failure = receipt.get("preserved_operational_failure", {})
@@ -336,6 +347,7 @@ def verify(root):
         "clean_finalist_package_execution_linked": True,
         "cooptimized_control_linked": True,
         "current_report_cooptimized_control_documented": True,
+        "current_report_clean_finalist_package_documented": True,
         "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
         "cooptimized_control_independent_validation": False,
         "export_contains_raw_readings_or_outputs": False,

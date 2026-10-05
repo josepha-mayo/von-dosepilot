@@ -47,7 +47,7 @@ PINNED_RECEIPTS = {
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
     "frozen_ooc_release_binding": "94139b2afa13c051cba067d718856b4376c8ccbf8283c5ce1b9eadcf60f87a6d",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
-    "reviewer_path_release": "78d253be1122091e64df853c5bfab3aafb620561a5b3750df2fe89a711784003",
+    "reviewer_path_release": "a4203c3fd44844b95c78f2ab01374dd05d707e6f1a51c3643763110da3fa8c69",
     "development_search_governance": "06bf56a3658c47a99e4f9e07c1e06e11ad348de4a840aba1dad495e2b8495d35",
 }
 
@@ -56,7 +56,7 @@ PINNED_DOCUMENTS = {
     "docs/KAGGLE_WRITEUP.md": "ba1fc8af103c45dee4d08d861744f27c42c257f5c2a5948592235ca7ab963db2",
 }
 
-CURRENT_REPORT_RECEIPT_SHA256 = "302dc8eb90f371ec590522f9e43ae53deeed1eded853780e22ec5704839fc0fe"
+CURRENT_REPORT_RECEIPT_SHA256 = "8579dd80843cf8598067146a6f36dde4907522f9d9aefec27aa8cb91730f03e1"
 
 
 def load(path):
@@ -140,7 +140,7 @@ def verify(root, enforce_pins=True):
     report_receipt_path = root / report_index["path"]
     same(sha(report_receipt_path), report_index["sha256"], "CURRENT_REPORT_RECEIPT_HASH")
     current_report = load(report_receipt_path)
-    same(current_report["schema"], "dosepilot.current_technical_report_release.v6", "CURRENT_REPORT_SCHEMA")
+    same(current_report["schema"], "dosepilot.current_technical_report_release.v7", "CURRENT_REPORT_SCHEMA")
     same(current_report["status"], "PASS", "CURRENT_REPORT_STATUS")
     same(current_report["role"], "CURRENT_JUDGE_FACING_TECHNICAL_REPORT", "CURRENT_REPORT_ROLE")
     report_predecessor = current_report["predecessor"]
@@ -177,6 +177,14 @@ def verify(root, enforce_pins=True):
     same(claim_checks["cross_patient_bandwidth_target_regressions"], 9, "CURRENT_REPORT_CPM_TARGETS")
     same(claim_checks["release_preflight_tests"], 173, "CURRENT_REPORT_PREFLIGHT")
     same(claim_checks["release_preflight_stages"], 14, "CURRENT_REPORT_PREFLIGHT_STAGES")
+    same(claim_checks["clean_finalist_package_execution_linked"], True, "CURRENT_REPORT_CLEAN_PACKAGE_LINK")
+    same(claim_checks["clean_finalist_package_checks"], 8, "CURRENT_REPORT_CLEAN_PACKAGE_CHECKS")
+    same(claim_checks["clean_finalist_package_canonical_stages"], 14, "CURRENT_REPORT_CLEAN_PACKAGE_STAGES")
+    same(claim_checks["clean_finalist_package_canonical_tests"], 173, "CURRENT_REPORT_CLEAN_PACKAGE_TESTS")
+    same(claim_checks["clean_finalist_package_fresh_source_directory"], True, "CURRENT_REPORT_CLEAN_PACKAGE_FRESH_SOURCE")
+    same(claim_checks["clean_finalist_package_fresh_public_clone"], False, "CURRENT_REPORT_CLEAN_PACKAGE_NOT_CLONE")
+    same(claim_checks["clean_finalist_package_clean_new_machine_certification"], False, "CURRENT_REPORT_CLEAN_PACKAGE_NOT_NEW_MACHINE")
+    same(claim_checks["clean_finalist_package_independent_biological_validation"], False, "CURRENT_REPORT_CLEAN_PACKAGE_NOT_INDEPENDENT")
     same(claim_checks["bandwidth_point_estimate_post_selection"], True, "CURRENT_REPORT_SELECTION_DISCLOSURE")
     same(claim_checks["ab_expected_loss_uniform_assignment"], True, "CURRENT_REPORT_AB_ESTIMAND")
     same(claim_checks["nested_bandwidth_menu"], [0.7, 1.0, 1.4], "CURRENT_REPORT_NESTED_MENU")
@@ -201,7 +209,7 @@ def verify(root, enforce_pins=True):
     same(claim_checks["official_competition_score"], None, "CURRENT_REPORT_NO_SCORE")
     for key in ("private_or_protected_inputs_read", "biological_accuracy_result_created", "accepted_kaggle_entry_changed"):
         same(current_report[key], False, "CURRENT_REPORT_BOUNDARY: " + key)
-    for key in ("role", "status", "pages", "historical_submitted_pdf_replaced", "accepted_kaggle_entry_changed", "biological_accuracy_result_created", "cooptimized_control_documented", "cooptimized_control_decision"):
+    for key in ("role", "status", "pages", "historical_submitted_pdf_replaced", "accepted_kaggle_entry_changed", "biological_accuracy_result_created", "cooptimized_control_documented", "cooptimized_control_decision", "clean_finalist_package_execution_linked", "clean_finalist_package_checks"):
         receipt_value = {
             "role": current_report["role"],
             "status": current_report["status"],
@@ -211,6 +219,8 @@ def verify(root, enforce_pins=True):
             "biological_accuracy_result_created": current_report["biological_accuracy_result_created"],
             "cooptimized_control_documented": True,
             "cooptimized_control_decision": claim_checks["cooptimized_control_decision"],
+            "clean_finalist_package_execution_linked": claim_checks["clean_finalist_package_execution_linked"],
+            "clean_finalist_package_checks": claim_checks["clean_finalist_package_checks"],
         }[key]
         same(report_index[key], receipt_value, "INDEX_CURRENT_REPORT_" + key.upper())
 
@@ -264,7 +274,7 @@ def verify(root, enforce_pins=True):
         same(target_index[key], receipt_value, "INDEX_TARGET_DEFINITIONS_" + key.upper())
 
     reviewer_release = receipts["reviewer_path_release"]
-    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v14", "REVIEWER_PATH_SCHEMA")
+    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v15", "REVIEWER_PATH_SCHEMA")
     same(reviewer_release["status"], "PASS", "REVIEWER_PATH_STATUS")
     same(reviewer_release["role"], "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY", "REVIEWER_PATH_ROLE")
     reviewer_predecessor = reviewer_release["predecessor"]
@@ -369,6 +379,7 @@ def verify(root, enforce_pins=True):
         "nested_bandwidth_all_outer_training_sets_selected_07",
         "cooptimized_control_linked",
         "current_report_cooptimized_control_documented",
+        "current_report_clean_finalist_package_documented",
     ):
         same(reviewer_contract[key], True, "REVIEWER_PATH_LINK: " + key)
     same(reviewer_contract["finalist_package_preflight_checks"], 8, "REVIEWER_PATH_PACKAGE_CHECKS")
@@ -379,6 +390,7 @@ def verify(root, enforce_pins=True):
     same(reviewer_contract["clean_finalist_package_canonical_tests"], 173, "REVIEWER_PATH_CLEAN_PACKAGE_TESTS")
     same(reviewer_contract["clean_finalist_package_fresh_public_clone"], False, "REVIEWER_PATH_CLEAN_PACKAGE_NOT_PUBLIC_CLONE")
     same(reviewer_contract["clean_finalist_package_clean_new_machine_certification"], False, "REVIEWER_PATH_CLEAN_PACKAGE_NOT_NEW_MACHINE")
+    same(reviewer_contract["current_report_clean_finalist_package_checks"], 8, "REVIEWER_PATH_CURRENT_REPORT_CLEAN_PACKAGE_CHECKS")
     same(reviewer_contract["rubric_self_score_assigned"], False, "REVIEWER_PATH_NO_SELF_SCORE")
     same(reviewer_contract["downloadable_trace_export_contains_raw_readings_or_outputs"], False, "REVIEWER_PATH_TRACE_BOUNDARY")
     same(reviewer_contract["nested_bandwidth_independent_validation"], False, "REVIEWER_PATH_NESTED_BOUNDARY")

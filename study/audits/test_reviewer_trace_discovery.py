@@ -192,6 +192,18 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "BOUNDARY_ACCEPTED_KAGGLE_ENTRY_CHANGED"):
             verify(self.root)
 
+    def test_current_report_clean_package_claim_tamper_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        report_path = self.root / receipt["current_report"]["path"]
+        report = json.loads(report_path.read_text())
+        report["claim_checks"]["clean_finalist_package_checks"] = 7
+        report_path.write_text(json.dumps(report, indent=2) + "\n")
+        receipt["current_report"]["sha256"] = hashlib.sha256(report_path.read_bytes()).hexdigest()
+        receipt["artifact_sha256"][receipt["current_report"]["path"]] = receipt["current_report"]["sha256"]
+        self.rehash_receipt(receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "CURRENT_REPORT_CLEAN_PACKAGE_CHECKS"):
+            verify(self.root)
+
 
 if __name__ == "__main__":
     unittest.main()

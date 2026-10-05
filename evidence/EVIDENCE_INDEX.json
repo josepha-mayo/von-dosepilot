@@ -64,8 +64,8 @@
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r14_20261005.json",
-      "sha256": "78d253be1122091e64df853c5bfab3aafb620561a5b3750df2fe89a711784003"
+      "path": "evidence/reviewer_path_release_r15_20261005.json",
+      "sha256": "a4203c3fd44844b95c78f2ab01374dd05d707e6f1a51c3643763110da3fa8c69"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r3_20261005.json",
@@ -73,8 +73,8 @@
     }
   },
   "current_technical_report": {
-    "path": "evidence/current_technical_report_r6_20261005.json",
-    "sha256": "302dc8eb90f371ec590522f9e43ae53deeed1eded853780e22ec5704839fc0fe",
+    "path": "evidence/current_technical_report_r7_20261005.json",
+    "sha256": "8579dd80843cf8598067146a6f36dde4907522f9d9aefec27aa8cb91730f03e1",
     "role": "CURRENT_JUDGE_FACING_TECHNICAL_REPORT",
     "status": "PASS",
     "pages": 10,
@@ -86,7 +86,9 @@
     "accepted_kaggle_entry_changed": false,
     "biological_accuracy_result_created": false,
     "cooptimized_control_documented": true,
-    "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07"
+    "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
+    "clean_finalist_package_execution_linked": true,
+    "clean_finalist_package_checks": 8
   },
   "target_definitions": {
     "role": "RESPONSE_FREE_ENDPOINT_AND_MEASUREMENT_CONTRACT",
@@ -144,6 +146,8 @@
     "report_bound_historical_test_count": 173,
     "cooptimized_control_linked": true,
     "current_report_cooptimized_control_documented": true,
+    "current_report_clean_finalist_package_documented": true,
+    "current_report_clean_finalist_package_checks": 8,
     "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
     "cooptimized_control_independent_validation": false
   },
@@ -251,8 +255,8 @@
     "official_competition_score": null
   },
   "reviewer_route_integrity": {
-    "path": "evidence/reviewer_route_integrity_r9_20261005.json",
-    "sha256": "6ce63e33c129b23ea8704c7e8731e8eb2256219cda305ddf6732165552d7f483",
+    "path": "evidence/reviewer_route_integrity_r10_20261005.json",
+    "sha256": "1dd80b1854034f2f81b7120dd0cf3777423240daff648c6a5df19197f2dd6a8a",
     "status": "PASS",
     "audited_surfaces": 5,
     "local_targets": 72,
@@ -283,6 +287,7 @@
     "cooptimized_links": 3,
     "cooptimized_control_linked": true,
     "current_report_cooptimized_control_documented": true,
+    "current_report_clean_finalist_package_documented": true,
     "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
     "cooptimized_control_independent_validation": false
   },
