@@ -258,6 +258,25 @@
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null
   },
+  "downloaded_trace_verifier": {
+    "path": "evidence/downloaded_trace_verifier_20261005.json",
+    "sha256": "58eaa31a837e55ebae608c2e466a2b894c3b986d41c62a54159cb3cd55c07bbc",
+    "status": "PASS",
+    "role": "OFFLINE_REVIEWER_VERIFICATION_OF_DOWNLOADED_FICTIONAL_TRACE",
+    "documentation_path": "docs/VERIFY_DOWNLOADED_TRACE.md",
+    "verifier_path": "demo/verify_downloaded_trace.py",
+    "valid_state_cases": 5,
+    "invalid_cases_rejected": 12,
+    "exact_six_field_contract": true,
+    "filename_state_binding": true,
+    "known_public_demo_digests_bound": 4,
+    "canonical_release_preflight_changed": false,
+    "canonical_orchestrated_response_free_tests": 173,
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
   "protected22": {
     "population": {
       "pdos": 61,
