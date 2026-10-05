@@ -97,6 +97,16 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
+        external_route_index = index["external_reviewer_route_availability"]
+        external_route = json.loads((self.source / external_route_index["path"]).read_text())
+        external_route_paths = [
+            external_route_index["path"],
+            *external_route["artifact_sha256"],
+        ]
+        for relative in external_route_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         lifecycle = json.loads(
             (self.source / "evidence/bandwidth_lifecycle_20261003.json").read_text()
         )
@@ -160,6 +170,7 @@ class EvidenceConsistencyTests(unittest.TestCase):
         self.assertEqual(result["current_preflight_tests"], 173)
         self.assertEqual(result["verification_chronology_latest_tests"], 173)
         self.assertEqual(result["clean_finalist_package_checks"], 8)
+        self.assertEqual(result["external_reviewer_routes_resolved"], 5)
         self.assertEqual(result["development_governance_families"], 23)
         self.assertEqual(result["development_governance_tests"], 33)
 

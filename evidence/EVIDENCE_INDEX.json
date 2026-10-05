@@ -294,6 +294,22 @@
     "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
     "cooptimized_control_independent_validation": false
   },
+  "external_reviewer_route_availability": {
+    "path": "evidence/external_reviewer_route_availability_20261005.json",
+    "sha256": "832c42375d6b15b5397cdfd03254b9baeffe1c70214a55a2f47c00e470a9a2f6",
+    "status": "PASS",
+    "observed_utc": "2026-10-05T12:10:27Z",
+    "routes_requested": 5,
+    "routes_resolved": 5,
+    "expected_identity_markers_found": 5,
+    "point_in_time_external_availability_verified": true,
+    "future_uptime_verified": false,
+    "uninterrupted_video_playback_verified": false,
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
   "live_demo_withholding": {
     "path": "evidence/live_demo_withholding_r4_20261004.json",
     "sha256": "03a8f8b6aeef7c9df5a800312c8cce9c254e11615c8c65ebde8d0791a5c6319f",
