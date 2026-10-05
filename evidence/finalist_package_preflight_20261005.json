@@ -1,0 +1,129 @@
+{
+  "schema": "dosepilot.finalist_package_preflight.v1",
+  "status": "PASS",
+  "role": "RESPONSE_FREE_ONE_COMMAND_FINALIST_PACKAGE_VERIFICATION",
+  "utc": "2026-10-05T04:02:48.996365+00:00",
+  "failed_check": null,
+  "checks": [
+    {
+      "name": "current_release_preflight",
+      "command": [
+        "python3",
+        "study/audits/release_preflight_current.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 7.142511,
+      "output_sha256": "9a3a43b5abc10508448ec261c29360fa51984be31255d3ce2800832c7a0967bb",
+      "output_tail": "{\n  \"status\": \"PASS\",\n  \"checks\": [\n    \"evidence\",\n    \"audit_tests\",\n    \"durable_runtime\",\n    \"acquisition\",\n    \"structured_kernels\",\n    \"aligned_additive\",\n    \"bandwidth_successor\",\n    \"ooc_compiler\",\n    \"frozen_ooc_schedule_tests\",\n    \"frozen_ooc_schedule\",\n    \"target_definition_tests\",\n    \"target_definitions\",\n    \"fictional_lifecycle_demo\",\n    \"fictional_bandwidth_lifecycle_demo\"\n  ]\n}\n"
+    },
+    {
+      "name": "downloaded_trace_self_test",
+      "command": [
+        "python3",
+        "demo/verify_downloaded_trace.py",
+        "--self-test"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.024923,
+      "output_sha256": "ac18131250e96d3877037e671f9d6367ec3e3d2ff563365b67db6855569890c9",
+      "output_tail": "{\n  \"biological_accuracy_result_created\": false,\n  \"invalid_case_labels\": [\n    \"changed_result\",\n    \"uppercase_digest\",\n    \"invented_recovery_measurement\",\n    \"wrong_result_kind\",\n    \"extra_raw_readings\",\n    \"missing_field\",\n    \"wrong_schema\",\n    \"unknown_state\",\n    \"filename_mismatch\",\n    \"malformed_json\",\n    \"duplicate_field\",\n    \"oversize\"\n  ],\n  \"invalid_cases_rejected\": 12,\n  \"private_or_protected_inputs_read\": false,\n  \"status\": \"PASS\",\n  \"valid_state_cases\": 5\n}\n"
+    },
+    {
+      "name": "downloaded_trace_receipt",
+      "command": [
+        "python3",
+        "study/audits/verify_downloaded_trace_verifier.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.028006,
+      "output_sha256": "850c06a62a5dcc63f05fb64f6127b622c9ab029c57bc0c0da9cdf1674430be13",
+      "output_tail": "{\n  \"accepted_kaggle_entry_changed\": false,\n  \"biological_accuracy_result_created\": false,\n  \"invalid_cases_rejected\": 12,\n  \"official_competition_score\": null,\n  \"private_or_protected_inputs_read\": false,\n  \"status\": \"PASS\",\n  \"valid_state_cases\": 5\n}\n"
+    },
+    {
+      "name": "reviewer_routes",
+      "command": [
+        "python3",
+        "study/audits/verify_reviewer_routes.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.032757,
+      "output_sha256": "5a9dda59710c379fe9899a515753a038b03d62c3d84dc298b3ede8f512e15681",
+      "output_tail": "{\n  \"accepted_kaggle_entry_changed\": false,\n  \"anchors\": 1,\n  \"audited_surfaces\": 5,\n  \"biological_accuracy_result_created\": false,\n  \"external_playback_verified\": false,\n  \"github_master_targets\": 27,\n  \"local_targets\": 66,\n  \"network_requests\": 0,\n  \"official_competition_score\": null,\n  \"private_or_protected_inputs_read\": false,\n  \"required_urls\": 5,\n  \"status\": \"PASS\"\n}\n"
+    },
+    {
+      "name": "reviewer_trace_discovery",
+      "command": [
+        "python3",
+        "study/audits/verify_reviewer_trace_discovery.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.03557,
+      "output_sha256": "51c15d6e377143b619dfe33ddeca474ac533284e8ea746a4e28448cd1b123677",
+      "output_tail": "{\n  \"accepted_kaggle_entry_changed\": false,\n  \"anchors\": 1,\n  \"audited_surfaces\": 5,\n  \"biological_accuracy_result_created\": false,\n  \"cooptimized_control_decision\": \"REJECT_RETAIN_BANDWIDTH07\",\n  \"cooptimized_control_independent_validation\": false,\n  \"cooptimized_control_linked\": true,\n  \"cooptimized_links\": 3,\n  \"current_report_cooptimized_control_documented\": true,\n  \"downloadable_trace_linked\": true,\n  \"export_contains_raw_readings_or_outputs\": false,\n  \"github_master_targets\": 27,\n  \"local_targets\": 66,\n  \"nested_links\": 3,\n  \"network_requests\": 0,\n  \"official_competition_score\": null,\n  \"offline_downloaded_trace_verifier_linked\": true,\n  \"offline_trace_verifier_links\": 3,\n  \"private_or_protected_inputs_read\": false,\n  \"required_urls\": 5,\n  \"status\": \"PASS\",\n  \"trace_links\": 3\n}\n"
+    },
+    {
+      "name": "verification_chronology",
+      "command": [
+        "python3",
+        "study/audits/verify_verification_chronology.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.029317,
+      "output_sha256": "5088a34f3ff37819bf82b7cdfb064d7cba9e444eef77793fd92944dedb1a63a5",
+      "output_tail": "{\n  \"governance_milestone_tests\": 171,\n  \"historical_receipts_preserved\": true,\n  \"latest_orchestrated_test_count\": 173,\n  \"preflight_receipts\": 3,\n  \"preserved_operational_failure\": true,\n  \"private_or_protected_inputs_read\": false,\n  \"status\": \"PASS\"\n}\n"
+    },
+    {
+      "name": "clean_reviewer_quickstart",
+      "command": [
+        "python3",
+        "study/audits/verify_clean_reviewer_quickstart.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.026673,
+      "output_sha256": "b7502ae3ed31b5725ddf4e3fda153d7eeec4d601ff4c948f77a6503fd0705763",
+      "output_tail": "{\n  \"accepted_kaggle_entry_changed\": false,\n  \"biological_accuracy_result_created\": false,\n  \"clean_new_machine_certification\": false,\n  \"fresh_public_clone\": true,\n  \"fresh_virtual_environment\": true,\n  \"official_competition_score\": null,\n  \"orchestrated_response_free_tests\": 173,\n  \"private_or_protected_inputs_read\": false,\n  \"release_preflight_stages\": 14,\n  \"source_commit\": \"edcb892d77ed6fdbed5548646b80f7b9a8ebd1a5\",\n  \"source_tree\": \"56bb7cf055720ac007d0a968cd41df85eb1b0527\",\n  \"status\": \"PASS\"\n}\n"
+    },
+    {
+      "name": "finalist_rubric_evidence",
+      "command": [
+        "python3",
+        "study/audits/verify_finalist_rubric_evidence.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.027928,
+      "output_sha256": "0b02da5697856eb33fcf485bffe7511f513408268221f8175c1e06ac40f53d6f",
+      "output_tail": "{\n  \"artifact_hashes_verified\": 10,\n  \"criteria\": 5,\n  \"current_preflight_tests\": 173,\n  \"durable_runtime_tests\": 65,\n  \"incumbent_mse\": 0.0010582750420801538,\n  \"official_competition_score\": null,\n  \"outputs\": 24,\n  \"private_or_protected_inputs_read\": false,\n  \"protected22_primary\": \"NOT_ESTIMABLE\",\n  \"public_source_to_results\": \"PASS\",\n  \"status\": \"PASS\",\n  \"treatment_measurements\": 64,\n  \"weight_sum\": 100\n}\n"
+    }
+  ],
+  "package_check_count": 8,
+  "postcanonical_check_count": 7,
+  "canonical_release_check_count": 14,
+  "canonical_orchestrated_test_count": 173,
+  "canonical_preflight_sha256": "b8e134c91f306447955525f547b036eb893f0ef270419b0508537e68edc87de5",
+  "artifact_sha256": {
+    "study/audits/finalist_package_preflight.py": "4eb5cab5def791d58c5da0b7cbf52af84d2b4375951839a79c068836800fb221",
+    "study/audits/verify_finalist_package_preflight.py": "cf9e764f91d206f68d5cba9ae990e64cffeac53143093ae00f8dee4894cfaab2",
+    "study/audits/test_finalist_package_preflight.py": "793aeae6e6c3c5109b5c6d9df4a01562a10e87c4de256824f564bff89aada65d",
+    "docs/FINALIST_PACKAGE_PREFLIGHT.md": "a4c2079e55bb9fc2081f6b550c0a5db02581e71f4bd3af2dd446b883f80956ac"
+  },
+  "network_requests": 0,
+  "canonical_receipt_rewritten": false,
+  "private_or_protected_inputs_read": false,
+  "biological_accuracy_result_created": false,
+  "independent_validation_created": false,
+  "accepted_kaggle_entry_changed": false,
+  "netlify_deployment_changed": false,
+  "official_competition_score": null
+}
