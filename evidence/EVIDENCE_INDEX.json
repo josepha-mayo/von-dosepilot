@@ -56,16 +56,16 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r15_20261005.json",
-      "sha256": "137754e88fcc2b499725d4686ad803e35a450902c3a94b01a7f5157aa6a2a966"
+      "path": "evidence/frozen_ooc_release_binding_r16_20261005.json",
+      "sha256": "2ec2e99f92abe6c2ed56e960e3f50b2ce606a89b7e5284b13b4186ffc5f710c1"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r16_20261005.json",
-      "sha256": "8abf98ac4409e3d41b97cb478e0bfbc8553fd75f0108878c788d7fe013920ab2"
+      "path": "evidence/reviewer_path_release_r17_20261005.json",
+      "sha256": "3127aa61a1e7957ea1678e6a02e0e5a50a2fff3947b86c0d24bc2d631a5d1d43"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r3_20261005.json",
@@ -122,6 +122,9 @@
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null,
     "rubric_evidence_map_linked": true,
+    "current_finalist_rubric_evidence_linked": true,
+    "current_finalist_rubric_self_score_assigned": false,
+    "current_finalist_probability_estimated": false,
     "rubric_self_score_assigned": false,
     "verification_chronology_linked": true,
     "nested_bandwidth_selection_linked": true,
@@ -238,8 +241,8 @@
     "official_competition_score": null
   },
   "verification_chronology": {
-    "path": "evidence/verification_chronology_r8_20261005.json",
-    "sha256": "887ace8a547cefc9afc82ba21331825aa394b0be7fe5ce5652beb6318fc91839",
+    "path": "evidence/verification_chronology_r9_20261005.json",
+    "sha256": "ebaa16482b76ed1f43623d65b67ae74dec0cee76d63439f59a2d44104bf4ff83",
     "status": "PASS",
     "latest_orchestrated_response_free_tests": 173,
     "current_report_bound_test_count": 173,
@@ -271,11 +274,11 @@
     "official_competition_score": null
   },
   "reviewer_route_integrity": {
-    "path": "evidence/reviewer_route_integrity_r11_20261005.json",
-    "sha256": "3a67aaca4fdb85aa90144a7e08a552e475851237d79a4b858e984b368b73ad71",
+    "path": "evidence/reviewer_route_integrity_r12_20261005.json",
+    "sha256": "f159a538bc973163e1622e61704831b138a944999e858336729aaf5a34816a5f",
     "status": "PASS",
     "audited_surfaces": 5,
-    "local_targets": 72,
+    "local_targets": 76,
     "github_master_targets": 27,
     "anchors": 1,
     "required_urls": 5,
@@ -301,7 +304,11 @@
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null,
     "cooptimized_links": 3,
+    "current_rubric_links": 3,
     "cooptimized_control_linked": true,
+    "current_finalist_rubric_evidence_linked": true,
+    "current_finalist_rubric_self_score_assigned": false,
+    "current_finalist_probability_estimated": false,
     "current_report_cooptimized_control_documented": true,
     "current_report_clean_finalist_package_documented": true,
     "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
@@ -695,6 +702,9 @@
     "orientation_vector_validated": true,
     "additive_p90_crosschecked": true,
     "historical_fold_counts_pinned": true,
+    "current_finalist_rubric_evidence_linked": true,
+    "current_finalist_rubric_self_score_assigned": false,
+    "current_finalist_probability_estimated": false,
     "downloadable_trace_linked": true,
     "offline_downloaded_trace_verifier_linked": true,
     "finalist_package_preflight_linked": true,

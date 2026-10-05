@@ -32,6 +32,7 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
             receipt["finalist_package_preflight"]["path"],
             receipt["clean_finalist_package_execution"]["path"],
             receipt["cooptimized_control"]["path"],
+            receipt["current_finalist_rubric_evidence"]["path"],
             *receipt["artifact_sha256"],
             *AUDITED_SURFACES,
         }
@@ -84,6 +85,9 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         self.assertTrue(result["finalist_package_preflight_linked"])
         self.assertTrue(result["clean_finalist_package_execution_linked"])
         self.assertTrue(result["cooptimized_control_linked"])
+        self.assertTrue(result["current_finalist_rubric_evidence_linked"])
+        self.assertFalse(result["current_finalist_rubric_self_score_assigned"])
+        self.assertFalse(result["current_finalist_probability_estimated"])
         self.assertEqual(result["cooptimized_control_decision"], "REJECT_RETAIN_BANDWIDTH07")
 
     def test_receipt_tamper_fails(self):
@@ -153,6 +157,33 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         path.write_text(path.read_text().replace("docs/NESTED_BANDWIDTH_EVALUATION.md", "docs/BANDWIDTH_SUCCESSOR.md", 1))
         self.rehash_surface("README.md", receipt)
         with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "README_NESTED_LINK"):
+            verify(self.root)
+
+    def test_readme_current_rubric_link_removal_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / "README.md"
+        text = path.read_text().replace("docs/FINALIST_RUBRIC_EVIDENCE_CURRENT.md", "docs/FINALIST_RUBRIC_EVIDENCE.md", 1)
+        path.write_text(text)
+        self.rehash_surface("README.md", receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "README_CURRENT_RUBRIC_LINK"):
+            verify(self.root)
+
+    def test_writeup_current_rubric_link_removal_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / "docs/KAGGLE_WRITEUP.md"
+        text = path.read_text().replace("docs/FINALIST_RUBRIC_EVIDENCE_CURRENT.md", "docs/FINALIST_RUBRIC_EVIDENCE.md", 1)
+        path.write_text(text)
+        self.rehash_surface("docs/KAGGLE_WRITEUP.md", receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "WRITEUP_CURRENT_RUBRIC_LINK"):
+            verify(self.root)
+
+    def test_current_rubric_self_score_tamper_fails(self):
+        _, _, receipt = self.receipt()
+        path = self.root / receipt["current_finalist_rubric_evidence"]["path"]
+        data = json.loads(path.read_text())
+        data["rubric"]["combined_self_score"] = 100
+        path.write_text(json.dumps(data, indent=2) + "\n")
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "ARTIFACT_HASH"):
             verify(self.root)
 
     def test_reviewer_nested_link_removal_fails_even_when_rehashed(self):
