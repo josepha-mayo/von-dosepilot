@@ -394,7 +394,7 @@ class EvidenceConsistencyTests(unittest.TestCase):
     def test_receipt_cannot_promote_isotonic_features(self):
         for receipt, label in (
             ("isotonic_paid_features", "ISOTONIC_DECISION"),
-            ("cooptimized_calibrated_control", "GOVERNANCE_NEW_EVIDENCE_HASH|COOPTIMIZED_DECISION"),
+            ("cooptimized_calibrated_control", "REVIEWER_PATH_FILE_HASH|GOVERNANCE_NEW_EVIDENCE_HASH|COOPTIMIZED_DECISION"),
         ):
             with self.subTest(receipt=receipt):
                 self.tearDown()

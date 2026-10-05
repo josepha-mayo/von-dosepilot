@@ -80,6 +80,7 @@ See [docs/TARGET_DEFINITIONS.md](docs/TARGET_DEFINITIONS.md).
 The project deliberately preserves negative results and failure modes.
 
 - bandwidth 1.4: rejected;
+- co-optimized calibrated interpolation: rejected at MSE 0.001438906520 versus 0.001058275042 for bandwidth 0.7 (35.97% worse), with 3/59 patient wins, 0/5 favorable folds and 22/24 target regressions; its no-refit audit passed and the family is closed with no retry, grid, rescue or splice;
 - cross-patient median bandwidth: rejected despite a 0.0744% lower point estimate because only 4/5 folds improved;
 - residual-alignment reweighting: rejected;
 - multioutput acquisition sweep: rejected;
@@ -91,6 +92,8 @@ The project deliberately preserves negative results and failure modes.
 Synthetic measurement stress testing also found a real weakness: coherent **±5% single-plate scaling** increases MSE much more than small independent per-well noise. That is why the prospective validation contract requires a prespecified plate-calibration/QC rule.
 
 See [docs/SIMULATED_ASSAY_ROBUSTNESS.md](docs/SIMULATED_ASSAY_ROBUSTNESS.md).
+
+The full prefrozen co-optimized-control failure is preserved in [docs/COOPTIMIZED_CALIBRATED_CONTROL_NEGATIVE.md](docs/COOPTIMIZED_CALIBRATED_CONTROL_NEGATIVE.md) with its [aggregate receipt](evidence/cooptimized_calibrated_control_20261004.json). It is repeated development evidence, not independent validation.
 
 ### 6. What is demonstrated versus prospective?
 

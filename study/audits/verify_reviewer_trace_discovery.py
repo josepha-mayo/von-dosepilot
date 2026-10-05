@@ -58,14 +58,14 @@ def verify(root):
     receipt_path = root / record.get("path", "")
     require(sha(receipt_path) == record.get("sha256"), "INDEX_RECEIPT_HASH")
     receipt = load(receipt_path)
-    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v4", "SCHEMA")
+    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v5", "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
-    require(receipt.get("role") == "REVIEWER_NAVIGATION_TRACE_NESTED_AND_REPORT_EVIDENCE", "ROLE")
+    require(receipt.get("role") == "REVIEWER_NAVIGATION_TRACE_NESTED_REPORT_AND_NEGATIVE_CONTROL", "ROLE")
 
     predecessor = receipt.get("predecessor", {})
     predecessor_path = root / predecessor.get("path", "")
     require(sha(predecessor_path) == predecessor.get("sha256"), "PREDECESSOR_HASH")
-    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v3", "PREDECESSOR_SCHEMA")
+    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v4", "PREDECESSOR_SCHEMA")
     require(predecessor.get("preserved_unchanged") is True, "PREDECESSOR_PRESERVED")
 
     for relative, expected in receipt.get("artifact_sha256", {}).items():
@@ -138,6 +138,14 @@ def verify(root):
     require("all 5/5 outer training sets" in plain_writeup, "WRITEUP_NESTED_SELECTION")
     for text, label in ((readme, "README"), (reviewer, "REVIEWER"), (writeup, "WRITEUP")):
         require("not independent validation" in text, label + "_NESTED_BOUNDARY")
+    coopt_doc = "docs/COOPTIMIZED_CALIBRATED_CONTROL_NEGATIVE.md"
+    coopt_url = "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/COOPTIMIZED_CALIBRATED_CONTROL_NEGATIVE.md"
+    require(coopt_doc in readme, "README_COOPT_LINK")
+    require(coopt_doc in reviewer, "REVIEWER_COOPT_LINK")
+    require(coopt_url in writeup, "WRITEUP_COOPT_LINK")
+    for text, label in ((plain_readme, "README"), (plain_reviewer, "REVIEWER"), (plain_writeup, "WRITEUP")):
+        require("3/59" in text and "0/5" in text and "22/24" in text, label + "_COOPT_ADVERSE_SLICES")
+        require("no retry" in text and "not independent validation" in text, label + "_COOPT_BOUNDARY")
     nonportable = []
     for match in MARKDOWN_LINK.finditer(writeup):
         target = match.group(1).strip().split()[0].strip("<>")
@@ -167,6 +175,21 @@ def verify(root):
     require(nested.get("claim_boundary", {}).get("independent_validation") is False, "NESTED_NOT_INDEPENDENT")
     require(nested.get("claim_boundary", {}).get("protected_response_access") is False, "NESTED_NO_PROTECTED")
 
+    coopt_record = receipt.get("cooptimized_control", {})
+    coopt_path = root / coopt_record.get("path", "")
+    require(sha(coopt_path) == coopt_record.get("sha256"), "COOPT_RECEIPT_HASH")
+    coopt = load(coopt_path)
+    require(coopt.get("schema") == "dosepilot.cooptimized_calibrated_control.public_result.v1", "COOPT_SCHEMA")
+    require(coopt.get("decision") == "REJECT_RETAIN_BANDWIDTH07", "COOPT_DECISION")
+    require(coopt.get("metrics", {}).get("cooptimized_calibrated_interpolation", {}).get("mse") == 0.0014389065202742948, "COOPT_MSE")
+    comparison = coopt.get("candidate_vs_bandwidth07", {})
+    require(comparison.get("patient_wins") == 3, "COOPT_PATIENT_WINS")
+    require(comparison.get("fold_wins") == 0, "COOPT_FOLD_WINS")
+    require(comparison.get("target_regressions") == 22, "COOPT_TARGET_REGRESSIONS")
+    require(coopt.get("verification", {}).get("independent_no_refit_arithmetic_and_budget_audit") == "PASS", "COOPT_NO_REFIT_AUDIT")
+    require(coopt.get("family_closed") is True and coopt.get("automatic_retry") is False, "COOPT_CLOSED")
+    require(coopt.get("independent_validation") is False and coopt.get("protected_response_access") is False, "COOPT_BOUNDARY")
+
     report_record = receipt.get("current_report", {})
     report_path = root / report_record.get("path", "")
     require(sha(report_path) == report_record.get("sha256"), "CURRENT_REPORT_RECEIPT_HASH")
@@ -186,6 +209,7 @@ def verify(root):
     require(verification.get("required_urls") == len(REQUIRED_URLS), "REQUIRED_URL_COUNT")
     require(verification.get("trace_links") == 3, "TRACE_LINK_COUNT")
     require(verification.get("nested_links") == 3, "NESTED_LINK_COUNT")
+    require(verification.get("cooptimized_links") == 3, "COOPT_LINK_COUNT")
     require(verification.get("adversarial_tests_passed") == 13, "ADVERSARIAL_TEST_COUNT")
     require(verification.get("network_requests") == 0, "NETWORK_REQUESTS")
 
@@ -219,8 +243,12 @@ def verify(root):
         "required_urls": len(REQUIRED_URLS),
         "trace_links": 3,
         "nested_links": 3,
+        "cooptimized_links": 3,
         "network_requests": 0,
         "downloadable_trace_linked": True,
+        "cooptimized_control_linked": True,
+        "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
+        "cooptimized_control_independent_validation": False,
         "export_contains_raw_readings_or_outputs": False,
         "private_or_protected_inputs_read": False,
         "biological_accuracy_result_created": False,

@@ -1,0 +1,96 @@
+{
+  "schema": "dosepilot.frozen_ooc_release_binding.v11",
+  "status": "PASS",
+  "role": "RESPONSE_FREE_ENGINEERING_AND_RELEASE_EVIDENCE",
+  "predecessor": {
+    "path": "evidence/frozen_ooc_release_binding_r10_20261004.json",
+    "sha256": "80919f1172f40db176447dcc6954985f132188a3dbfe3978b27121c2da11d62f",
+    "preserved_unchanged": true
+  },
+  "supersedes_reason": "Rebinds the unchanged frozen schedule to judge-facing surfaces that now expose the closed co-optimized calibrated-interpolation negative control. The schedule, site implementation, incumbent, accepted entry and biological evidence are unchanged.",
+  "schedule_receipt": {
+    "path": "evidence/frozen_ooc_execution_schedule_20261003.json",
+    "sha256": "82e9e629a12342f0f4a47afaa243d5d6a841ed9dafd80199be3c871f6ec7a65f"
+  },
+  "source_files_sha256": {
+    "evidence/frozen_bandwidth_orientation_A_plan_20261003.json": "8eeb8a1c2fa945f034357e8f61f5d2f0a1feeff0332c5d87b5717db3ae558e8f",
+    "evidence/frozen_bandwidth_orientation_B_plan_20261003.json": "bedb4c6f1e785afc94d3e73ec0cb3b51643d80d5b86477e17537f72148d8722e",
+    "evidence/prospective_ooc_binding_template_A_20261003.csv": "863bb1c6e084619cbd45fe778be2bdbe3e562b69ecc004c7e245e326380e2d24",
+    "evidence/prospective_ooc_binding_template_B_20261003.csv": "d47cf214c1b1a6fa7888a71d0c12f715a48a86d03bdd35e61c90483d660fa549"
+  },
+  "audit_code_sha256": {
+    "study/audits/verify_frozen_ooc_schedule.py": "203033c905eea50cdf87d2a7955a6a9cecbc53f4f006bd35d38d34d9e5bf3de6",
+    "study/audits/test_frozen_ooc_schedule.py": "073171cb4758f7dd43f96b010240fb7e78189cfd4f0a559f664014912532308a",
+    "study/audits/release_preflight.py": "c871c5561ef3c3e5f507c6d894cadc47c4fff3fb45a81c15adff9024f920398c"
+  },
+  "public_surface_sha256": {
+    "site/frozen_schedule.js": "c094e00e37c418739835598290d12fa162887a1a60a43913357f80b107279503",
+    "site/index.html": "a64c29f2b3616193d37a62c49af5a203a985cf4e14a1a6334719bea81c78cae3",
+    "docs/FROZEN_OOC_EXECUTION_MANIFEST.md": "16848f1548fd9c589318806aac2ea30a45d58cc4502f6eeccddfa4f33b2137c6",
+    "docs/KAGGLE_WRITEUP.md": "b596dca0887f486fa18e7db3660b6e4901fdadfe0e04578a2318ac8c62031876",
+    "README.md": "5afff56723d69111da0e42fdab6083c8f4f9c7dee0a08235c684f0f095e2c88c",
+    "00_REVIEWER_START_HERE.md": "714555b075270d9f1575c89e9e2f2ae8b5bd4cbafe74b8a5d4b9b61c9155880a",
+    "docs/LIVE_DEMO_TRACE_EXPORT.md": "465a34a8065a465eb2a6e252a209325c722a5cb6438ba44f7e6761dcd3b41eb2",
+    "evidence/live_demo_withholding_r4_20261004.json": "03a8f8b6aeef7c9df5a800312c8cce9c254e11615c8c65ebde8d0791a5c6319f",
+    "docs/NESTED_BANDWIDTH_EVALUATION.md": "9b45a3bd6693786a55717cd018008b78ab5d0a4a55eafad01f8fa5a647775646",
+    "evidence/nested_bandwidth_selection_20261004.json": "328cd770b957c48b20e652494f1de28c7f710cc49a9242e0d66ba56190981bdb",
+    "docs/VERIFICATION_CHRONOLOGY.md": "2c6275086eb05b54088df8a60d0abf5883cdffe04a92069a669f9f0f1572c09a",
+    "docs/COOPTIMIZED_CALIBRATED_CONTROL_NEGATIVE.md": "f7f6af1b486a79e717c008d210087ef4c150eb99031836b891635421c869b02b",
+    "evidence/cooptimized_calibrated_control_20261004.json": "1238e432ed0a9abffce855440b6f290c056373f988ced6b3d3b57ce85c1cd74e",
+    "evidence/verification_chronology_r4_20261005.json": "19e2e18a8334c4bd34ddc736b938e340546b785702ced09729e84d5bd8862115"
+  },
+  "verification": {
+    "orientations": 2,
+    "treatment_wells_per_orientation": 64,
+    "plate_counts_per_orientation": {
+      "p1": 32,
+      "p2": 32
+    },
+    "targets": 24,
+    "two_dose_targets": 8,
+    "three_dose_targets": 16,
+    "ab_same_treatments": true,
+    "ab_complementary_plate_assignment": true,
+    "public_schedule_rows": 64,
+    "public_site_schedule_exact": true,
+    "manifest_table_exact": true,
+    "transport_escape_literals": 0,
+    "prepared_kaggle_relative_links": 0,
+    "bandwidth_post_selection_disclosed": true,
+    "nested_bandwidth_selection_linked": true,
+    "nested_bandwidth_all_outer_training_sets_selected_07": true,
+    "nested_bandwidth_independent_validation": false,
+    "overstated_search_label_absent": true,
+    "cross_patient_negative_disclosed": true,
+    "cross_patient_negative_linked": true,
+    "promotion_gate_predicates_derived": true,
+    "orientation_vector_validated": true,
+    "additive_p90_crosschecked": true,
+    "historical_fold_counts_pinned": true,
+    "verification_chronology_linked": true,
+    "downloadable_trace_linked": true,
+    "export_contains_raw_readings_or_outputs": false,
+    "new_tamper_tests": 7,
+    "new_tamper_tests_passed": 7,
+    "release_preflight_stage_added": true,
+    "release_preflight_check_count": 14,
+    "orchestrated_response_free_tests": 173,
+    "cooptimized_control_linked": true,
+    "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
+    "cooptimized_control_independent_validation": false
+  },
+  "preserved_failure": {
+    "command": "python -m unittest study.audits.test_release_preflight -v",
+    "status": "IMPORT_PATH_FAILURE",
+    "scientific_or_product_failure": false,
+    "correct_documented_invocation": "python -m unittest discover -s study/audits -p test_release_preflight.py -v",
+    "correct_invocation_tests_passed": 3
+  },
+  "prospective_experiment_executed": false,
+  "biological_validation_created": false,
+  "protected_response_access": false,
+  "private_patient_rows_read": false,
+  "fitted_biological_weights_published": false,
+  "accepted_kaggle_entry_changed": false,
+  "official_competition_score": null
+}

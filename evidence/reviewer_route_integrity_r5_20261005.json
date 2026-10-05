@@ -1,0 +1,92 @@
+{
+  "schema": "dosepilot.reviewer_route_integrity.v5",
+  "status": "PASS",
+  "role": "REVIEWER_NAVIGATION_TRACE_NESTED_REPORT_AND_NEGATIVE_CONTROL",
+  "predecessor": {
+    "path": "evidence/reviewer_route_integrity_r4_20261004.json",
+    "sha256": "e63edd36bba7d9e1a5a178e008b7a23704b6ffa674d6689e08a83771b3b02763",
+    "preserved_unchanged": true
+  },
+  "supersedes_reason": "Rebinds the zero-network reviewer-route audit after exposing the closed co-optimized calibrated-interpolation negative control on the README, reviewer start and prepared writeup. The accepted entry, incumbent and biological evidence are unchanged.",
+  "live_demo_trace": {
+    "path": "evidence/live_demo_withholding_r4_20261004.json",
+    "sha256": "03a8f8b6aeef7c9df5a800312c8cce9c254e11615c8c65ebde8d0791a5c6319f"
+  },
+  "nested_bandwidth_evidence": {
+    "path": "evidence/nested_bandwidth_selection_20261004.json",
+    "sha256": "328cd770b957c48b20e652494f1de28c7f710cc49a9242e0d66ba56190981bdb"
+  },
+  "current_report": {
+    "path": "evidence/current_technical_report_r5_20261004.json",
+    "sha256": "236865a7939df17caa4588714a564cc927f4278549446d9b8575bf6eeaaeb329"
+  },
+  "artifact_sha256": {
+    "docs/LIVE_DEMO_TRACE_EXPORT.md": "465a34a8065a465eb2a6e252a209325c722a5cb6438ba44f7e6761dcd3b41eb2",
+    "evidence/live_demo_withholding_r4_20261004.json": "03a8f8b6aeef7c9df5a800312c8cce9c254e11615c8c65ebde8d0791a5c6319f",
+    "docs/NESTED_BANDWIDTH_EVALUATION.md": "9b45a3bd6693786a55717cd018008b78ab5d0a4a55eafad01f8fa5a647775646",
+    "evidence/nested_bandwidth_selection_20261004.json": "328cd770b957c48b20e652494f1de28c7f710cc49a9242e0d66ba56190981bdb",
+    "docs/DosePilot_Technical_Report_Current.md": "c4a61771bfc43e704f69e3a722043133e1e680d71c5a68b8d6b672a89e334546",
+    "docs/DosePilot_Technical_Report_Current.pdf": "14c8c6d4acf4fd797b6541d0974dd90f643c9d3d60fde4a7fafc55173b2e2f6b",
+    "evidence/current_technical_report_r5_20261004.json": "236865a7939df17caa4588714a564cc927f4278549446d9b8575bf6eeaaeb329",
+    "study/audits/verify_reviewer_routes.py": "075852149feb1841407ac775e82bacd31412d6e3b20698eed02fce7246bb6086",
+    "study/audits/test_reviewer_routes.py": "010e515ebd48c29a5c7c3e6d43d1c1ed67b6229463e223d89d4b3a6f0cd0593c",
+    "study/audits/verify_reviewer_trace_discovery.py": "e8af1c1b27e664285d9e49f2449b448a3050917fbff7b3eba3240f4e377d67f1",
+    "study/audits/test_reviewer_trace_discovery.py": "446ac34eaff7fc8158f84847889aa09b34d6f41565624fa4535ddb8d60bb3351",
+    "docs/COOPTIMIZED_CALIBRATED_CONTROL_NEGATIVE.md": "f7f6af1b486a79e717c008d210087ef4c150eb99031836b891635421c869b02b",
+    "evidence/cooptimized_calibrated_control_20261004.json": "1238e432ed0a9abffce855440b6f290c056373f988ced6b3d3b57ce85c1cd74e",
+    "evidence/reviewer_path_release_r10_20261005.json": "c36232eb54843ce0b0667e877d961df1e21a18afe5966a809ee20eed3c2ed146",
+    "evidence/frozen_ooc_release_binding_r11_20261005.json": "76905ec125d2f48a5b70ed325cd785bcc4ac4730c5a8190a7db4fc400862e2e8"
+  },
+  "audited_surfaces": {
+    "README.md": "5afff56723d69111da0e42fdab6083c8f4f9c7dee0a08235c684f0f095e2c88c",
+    "00_REVIEWER_START_HERE.md": "714555b075270d9f1575c89e9e2f2ae8b5bd4cbafe74b8a5d4b9b61c9155880a",
+    "CURRENT_TECHNICAL_REPORT.md": "69c1fc4e576f841020a9a2cb2c44c2a557986e9e7f296d80a59bce737bc6df66",
+    "docs/KAGGLE_WRITEUP.md": "b596dca0887f486fa18e7db3660b6e4901fdadfe0e04578a2318ac8c62031876",
+    "docs/FINALIST_RUBRIC_EVIDENCE.md": "7272be4d67ebd79203aca4cf3e106e04cafb70701eaf77e70a611668f7537926"
+  },
+  "verification": {
+    "local_targets": 62,
+    "github_master_targets": 27,
+    "anchors": 1,
+    "required_urls": 5,
+    "trace_links": 3,
+    "nested_links": 3,
+    "network_requests": 0,
+    "adversarial_tests_passed": 13,
+    "canonical_release_preflight_unchanged": true,
+    "canonical_release_preflight_stages": 14,
+    "canonical_orchestrated_response_free_tests": 173,
+    "cooptimized_links": 3
+  },
+  "preserved_operational_failure": {
+    "status": "INITIAL_MARKDOWN_NORMALIZATION_DEFECT",
+    "initial_passes": 9,
+    "initial_failures": 3,
+    "initial_errors": 1,
+    "resolution": "The verifier normalizes Markdown bold markers before enforcing the exact 5/5 nested-selection wording; all 13 adversarial tests pass.",
+    "scientific_or_product_failure": false,
+    "corrected_tests_passed": 13
+  },
+  "preserved_current_report_rendering_failure": {
+    "status": "DISALLOWED_TEMP_CLEANUP_COMMAND",
+    "command_intent": "remove stale temporary PNG renders before visual inspection",
+    "resolution": "Rendered into a fresh mktemp directory and completed the ten-page visual inspection without deleting existing files.",
+    "scientific_or_product_failure": false,
+    "pdf_build_or_content_failure": false
+  },
+  "claim_boundary": {
+    "external_playback_verified": false,
+    "external_availability_verified": false,
+    "new_model_fit": false,
+    "biological_accuracy_result_created": false,
+    "private_or_protected_inputs_read": false,
+    "accepted_kaggle_entry_changed": false,
+    "netlify_deployment_changed": false,
+    "export_contains_raw_readings_or_outputs": false,
+    "official_competition_score": null
+  },
+  "cooptimized_control": {
+    "path": "evidence/cooptimized_calibrated_control_20261004.json",
+    "sha256": "1238e432ed0a9abffce855440b6f290c056373f988ced6b3d3b57ce85c1cd74e"
+  }
+}

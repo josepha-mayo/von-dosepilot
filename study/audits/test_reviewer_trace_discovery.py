@@ -28,6 +28,7 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
             receipt_relative,
             receipt["predecessor"]["path"],
             receipt["live_demo_trace"]["path"],
+            receipt["cooptimized_control"]["path"],
             *receipt["artifact_sha256"],
             *AUDITED_SURFACES,
         }
@@ -76,6 +77,8 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         result = verify(self.root)
         self.assertEqual(result["status"], "PASS")
         self.assertTrue(result["downloadable_trace_linked"])
+        self.assertTrue(result["cooptimized_control_linked"])
+        self.assertEqual(result["cooptimized_control_decision"], "REJECT_RETAIN_BANDWIDTH07")
 
     def test_receipt_tamper_fails(self):
         _, path, _ = self.receipt()

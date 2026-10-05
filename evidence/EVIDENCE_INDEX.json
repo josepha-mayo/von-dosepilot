@@ -1,6 +1,6 @@
 {
   "schema": "dosepilot.evidence_index.v1",
-  "as_of_date": "2026-10-04",
+  "as_of_date": "2026-10-05",
   "cross_study_raw_mse_comparison_allowed": false,
   "canonical_receipts": {
     "protected22_access": {
@@ -56,16 +56,16 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r10_20261004.json",
-      "sha256": "80919f1172f40db176447dcc6954985f132188a3dbfe3978b27121c2da11d62f"
+      "path": "evidence/frozen_ooc_release_binding_r11_20261005.json",
+      "sha256": "76905ec125d2f48a5b70ed325cd785bcc4ac4730c5a8190a7db4fc400862e2e8"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r9_20261004.json",
-      "sha256": "54103ece0e38e7701116f6fa0cbb271e0308f6acf1d03cd597ed0cba7c9ca59d"
+      "path": "evidence/reviewer_path_release_r10_20261005.json",
+      "sha256": "c36232eb54843ce0b0667e877d961df1e21a18afe5966a809ee20eed3c2ed146"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r3_20261005.json",
@@ -126,7 +126,10 @@
     "downloadable_trace_linked": true,
     "downloadable_trace_export_contains_raw_readings_or_outputs": false,
     "latest_release_test_count": 173,
-    "report_bound_historical_test_count": 173
+    "report_bound_historical_test_count": 173,
+    "cooptimized_control_linked": true,
+    "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
+    "cooptimized_control_independent_validation": false
   },
   "finalist_rubric_evidence": {
     "path": "evidence/finalist_rubric_evidence_20261004.json",
@@ -172,8 +175,8 @@
     "official_competition_score": null
   },
   "verification_chronology": {
-    "path": "evidence/verification_chronology_r3_20261004.json",
-    "sha256": "7d1b6825c8cdbe9be15d9ea66a23a7c8a6926b1fd3d5cd69f10637e920b37cd7",
+    "path": "evidence/verification_chronology_r4_20261005.json",
+    "sha256": "19e2e18a8334c4bd34ddc736b938e340546b785702ced09729e84d5bd8862115",
     "status": "PASS",
     "latest_orchestrated_response_free_tests": 173,
     "historical_receipts_preserved": true,
@@ -203,12 +206,12 @@
     "official_competition_score": null
   },
   "reviewer_route_integrity": {
-    "path": "evidence/reviewer_route_integrity_r4_20261004.json",
-    "sha256": "e63edd36bba7d9e1a5a178e008b7a23704b6ffa674d6689e08a83771b3b02763",
+    "path": "evidence/reviewer_route_integrity_r5_20261005.json",
+    "sha256": "de10e687411dc82f5df04c04e5f6f1a91158a9e9d68870fa039b0eb08f2faab2",
     "status": "PASS",
     "audited_surfaces": 5,
-    "local_targets": 58,
-    "github_master_targets": 24,
+    "local_targets": 62,
+    "github_master_targets": 27,
     "anchors": 1,
     "required_urls": 5,
     "trace_links": 3,
@@ -220,7 +223,11 @@
     "private_or_protected_inputs_read": false,
     "biological_accuracy_result_created": false,
     "accepted_kaggle_entry_changed": false,
-    "official_competition_score": null
+    "official_competition_score": null,
+    "cooptimized_links": 3,
+    "cooptimized_control_linked": true,
+    "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
+    "cooptimized_control_independent_validation": false
   },
   "live_demo_withholding": {
     "path": "evidence/live_demo_withholding_r4_20261004.json",
@@ -570,6 +577,9 @@
     "protected_response_access": false,
     "private_patient_rows_read": false,
     "accepted_kaggle_entry_changed": false,
-    "official_competition_score": null
+    "official_competition_score": null,
+    "cooptimized_control_linked": true,
+    "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
+    "cooptimized_control_independent_validation": false
   }
 }
