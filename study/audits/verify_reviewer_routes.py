@@ -94,6 +94,7 @@ def verify(root):
         "dosepilot.reviewer_route_integrity.v11",
         "dosepilot.reviewer_route_integrity.v12",
         "dosepilot.reviewer_route_integrity.v13",
+        "dosepilot.reviewer_route_integrity.v14",
     }, "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
     require(receipt.get("role") in {
@@ -110,6 +111,7 @@ def verify(root):
         "REVIEWER_NAVIGATION_CURRENT_REPORT_CHRONOLOGY_CLEAN_EXECUTION_FINALIST_PREFLIGHT_TRACE_OFFLINE_NESTED_REPORT_NEGATIVE_CONTROL",
         "REVIEWER_NAVIGATION_CURRENT_RUBRIC_MAP_CHRONOLOGY_CLEAN_EXECUTION_FINALIST_PREFLIGHT_TRACE_OFFLINE_NESTED_REPORT_NEGATIVE_CONTROL",
         "REVIEWER_NAVIGATION_CURRENT_PACKAGE_AND_RUBRIC_MAP_CHRONOLOGY_CLEAN_EXECUTION_TRACE_OFFLINE_NESTED_REPORT_NEGATIVE_CONTROL",
+        "REVIEWER_NAVIGATION_CURRENT_CLEAN_PACKAGE_AND_RUBRIC_MAP_CHRONOLOGY_TRACE_OFFLINE_NESTED_REPORT_NEGATIVE_CONTROL",
     }, "ROLE")
 
     if receipt.get("schema") == "dosepilot.reviewer_route_integrity.v1":

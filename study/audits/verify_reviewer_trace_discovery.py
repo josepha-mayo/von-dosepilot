@@ -58,14 +58,14 @@ def verify(root):
     receipt_path = root / record.get("path", "")
     require(sha(receipt_path) == record.get("sha256"), "INDEX_RECEIPT_HASH")
     receipt = load(receipt_path)
-    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v13", "SCHEMA")
+    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v14", "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
-    require(receipt.get("role") == "REVIEWER_NAVIGATION_CURRENT_PACKAGE_AND_RUBRIC_MAP_CHRONOLOGY_CLEAN_EXECUTION_TRACE_OFFLINE_NESTED_REPORT_NEGATIVE_CONTROL", "ROLE")
+    require(receipt.get("role") == "REVIEWER_NAVIGATION_CURRENT_CLEAN_PACKAGE_AND_RUBRIC_MAP_CHRONOLOGY_TRACE_OFFLINE_NESTED_REPORT_NEGATIVE_CONTROL", "ROLE")
 
     predecessor = receipt.get("predecessor", {})
     predecessor_path = root / predecessor.get("path", "")
     require(sha(predecessor_path) == predecessor.get("sha256"), "PREDECESSOR_HASH")
-    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v12", "PREDECESSOR_SCHEMA")
+    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v13", "PREDECESSOR_SCHEMA")
     require(predecessor.get("preserved_unchanged") is True, "PREDECESSOR_PRESERVED")
 
     for relative, expected in receipt.get("artifact_sha256", {}).items():
@@ -159,6 +159,16 @@ def verify(root):
         require("8" in text and "173" in text, label + "_CLEAN_PACKAGE_COUNTS")
         require("not a network clone" in text, label + "_CLEAN_PACKAGE_CLONE_BOUNDARY")
         require("clean-new-machine" in text and "independent biological validation" in text, label + "_CLEAN_PACKAGE_SCOPE")
+    current_clean_doc = "docs/CLEAN_CURRENT_FINALIST_PACKAGE_EXECUTION.md"
+    current_clean_url = "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/CLEAN_CURRENT_FINALIST_PACKAGE_EXECUTION.md"
+    require(current_clean_doc in readme, "README_CURRENT_CLEAN_PACKAGE_LINK")
+    require(current_clean_doc in reviewer, "REVIEWER_CURRENT_CLEAN_PACKAGE_LINK")
+    require(current_clean_url in writeup, "WRITEUP_CURRENT_CLEAN_PACKAGE_LINK")
+    for text, label in ((readme, "README"), (reviewer, "REVIEWER"), (writeup, "WRITEUP")):
+        require("current rubric successor" in text, label + "_CURRENT_CLEAN_RUBRIC_SUCCESSOR")
+        require("local pip cache" in text, label + "_CURRENT_CLEAN_CACHE_BOUNDARY")
+        require("not a network clone" in text, label + "_CURRENT_CLEAN_CLONE_BOUNDARY")
+        require("clean-new-machine" in text and "independent biological validation" in text, label + "_CURRENT_CLEAN_SCOPE")
     nested_doc = "docs/NESTED_BANDWIDTH_EVALUATION.md"
     nested_url = "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/NESTED_BANDWIDTH_EVALUATION.md"
     require(nested_doc in readme, "README_NESTED_LINK")
@@ -235,6 +245,17 @@ def verify(root):
     require(sha(clean_path) == clean_record.get("sha256"), "CLEAN_PACKAGE_RECEIPT_HASH")
     clean = load(clean_path)
     require(clean.get("schema") == "dosepilot.clean_finalist_package_execution.v1", "CLEAN_PACKAGE_SCHEMA")
+    current_clean_record = receipt.get("clean_current_finalist_package_execution", {})
+    current_clean_path = root / current_clean_record.get("path", "")
+    require(sha(current_clean_path) == current_clean_record.get("sha256"), "CURRENT_CLEAN_PACKAGE_RECEIPT_HASH")
+    current_clean = load(current_clean_path)
+    require(current_clean.get("schema") == "dosepilot.clean_current_finalist_package_execution.v1", "CURRENT_CLEAN_PACKAGE_SCHEMA")
+    require(current_clean.get("status") == "PASS", "CURRENT_CLEAN_PACKAGE_STATUS")
+    current_clean_execution = current_clean.get("execution", {})
+    require(current_clean_execution.get("package_checks") == 8, "CURRENT_CLEAN_PACKAGE_CHECKS")
+    require(current_clean_execution.get("current_rubric_successor_checked") is True, "CURRENT_CLEAN_PACKAGE_RUBRIC_SUCCESSOR")
+    require(current_clean_execution.get("canonical_release_stages") == 14, "CURRENT_CLEAN_PACKAGE_STAGES")
+    require(current_clean_execution.get("canonical_orchestrated_tests") == 173, "CURRENT_CLEAN_PACKAGE_TESTS")
     require(clean.get("status") == "PASS", "CLEAN_PACKAGE_STATUS")
     clean_execution = clean.get("execution", {})
     require(clean_execution.get("package_checks") == 8, "CLEAN_PACKAGE_CHECKS")
@@ -332,6 +353,7 @@ def verify(root):
     require(verification.get("offline_trace_verifier_links") == 3, "OFFLINE_TRACE_LINK_COUNT")
     require(verification.get("finalist_package_preflight_links") == 3, "FINALIST_PREFLIGHT_LINK_COUNT")
     require(verification.get("clean_finalist_package_execution_links") == 3, "CLEAN_PACKAGE_LINK_COUNT")
+    require(verification.get("clean_current_finalist_package_execution_links") == 3, "CURRENT_CLEAN_PACKAGE_LINK_COUNT")
     require(verification.get("nested_links") == 3, "NESTED_LINK_COUNT")
     require(verification.get("cooptimized_links") == 3, "COOPT_LINK_COUNT")
     require(verification.get("current_rubric_links") == 3, "CURRENT_RUBRIC_LINK_COUNT")
@@ -339,7 +361,7 @@ def verify(root):
     require(verification.get("current_report_clean_finalist_package_documented") is True, "CURRENT_REPORT_CLEAN_PACKAGE_RECEIPT")
     require(verification.get("current_report_bound_test_count") == 173, "CURRENT_REPORT_BOUND_TESTS")
     require(verification.get("historical_168_originally_bound_earlier_report_revision") is True, "HISTORICAL_168_REPORT_BINDING")
-    require(verification.get("adversarial_tests_passed") == 21, "ADVERSARIAL_TEST_COUNT")
+    require(verification.get("adversarial_tests_passed") == 22, "ADVERSARIAL_TEST_COUNT")
     require(verification.get("finalist_package_current_rubric_successor_checked") is True, "FINALIST_PREFLIGHT_CURRENT_RUBRIC_BOUND")
     require(verification.get("network_requests") == 0, "NETWORK_REQUESTS")
 
@@ -376,6 +398,7 @@ def verify(root):
         "finalist_package_preflight_links": 3,
         "finalist_package_current_rubric_successor_checked": True,
         "clean_finalist_package_execution_links": 3,
+        "clean_current_finalist_package_execution_links": 3,
         "nested_links": 3,
         "cooptimized_links": 3,
         "current_rubric_links": 3,
@@ -384,6 +407,9 @@ def verify(root):
         "offline_downloaded_trace_verifier_linked": True,
         "finalist_package_preflight_linked": True,
         "clean_finalist_package_execution_linked": True,
+        "clean_current_finalist_package_execution_linked": True,
+        "clean_current_finalist_package_checks": 8,
+        "clean_current_finalist_package_current_rubric_successor_checked": True,
         "cooptimized_control_linked": True,
         "current_finalist_rubric_evidence_linked": True,
         "current_finalist_rubric_self_score_assigned": False,

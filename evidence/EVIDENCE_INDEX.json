@@ -56,16 +56,16 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r17_20261005.json",
-      "sha256": "f92db38db390ee037f334af2da2d1c4a23dafafc5ec0c4bdf5608f6b16f0a3ea"
+      "path": "evidence/frozen_ooc_release_binding_r18_20261005.json",
+      "sha256": "08bb4670fce2c2ff9b58071880652a2585f615412b247a6acd12fe5193556255"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r18_20261005.json",
-      "sha256": "0ab1165c43910b199174e6a0cd849f1f0588cb11fb2e23dd9e493179cba6876d"
+      "path": "evidence/reviewer_path_release_r19_20261005.json",
+      "sha256": "8cb2f07d5499d37f427926421cb9a97c29938671377a1a8a336acb62fa94053a"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r3_20261005.json",
@@ -145,6 +145,13 @@
     "clean_finalist_package_canonical_tests": 173,
     "clean_finalist_package_fresh_public_clone": false,
     "clean_finalist_package_clean_new_machine_certification": false,
+    "clean_current_finalist_package_execution_linked": true,
+    "clean_current_finalist_package_checks": 8,
+    "clean_current_finalist_package_current_rubric_successor_checked": true,
+    "clean_current_finalist_package_canonical_stages": 14,
+    "clean_current_finalist_package_canonical_tests": 173,
+    "clean_current_finalist_package_fresh_public_clone": false,
+    "clean_current_finalist_package_clean_new_machine_certification": false,
     "downloadable_trace_export_contains_raw_readings_or_outputs": false,
     "latest_release_test_count": 173,
     "report_bound_historical_test_count": 173,
@@ -273,8 +280,8 @@
     "official_competition_score": null
   },
   "verification_chronology": {
-    "path": "evidence/verification_chronology_r10_20261005.json",
-    "sha256": "ac15d41e8ec8436bacb2556cf5c7d801d74cf41656a6bdc0d6b99145e75be000",
+    "path": "evidence/verification_chronology_r11_20261005.json",
+    "sha256": "271def9d64ba5d177c2d791f742f7c7a219c5e3671dbf3e260ad7b6aeb5745fb",
     "status": "PASS",
     "latest_orchestrated_response_free_tests": 173,
     "current_report_bound_test_count": 173,
@@ -306,11 +313,11 @@
     "official_competition_score": null
   },
   "reviewer_route_integrity": {
-    "path": "evidence/reviewer_route_integrity_r13_20261005.json",
-    "sha256": "7925304d3795d6e52c8ff42ce80f21a78eff14f3a17f3a907afc5a0f82c1b0a0",
+    "path": "evidence/reviewer_route_integrity_r14_20261005.json",
+    "sha256": "19ab840441773e411e70d2b2a76967f9fad0fea74075a84ea76f7017f438c72c",
     "status": "PASS",
     "audited_surfaces": 5,
-    "local_targets": 78,
+    "local_targets": 80,
     "github_master_targets": 27,
     "anchors": 1,
     "required_urls": 5,
@@ -318,6 +325,7 @@
     "offline_trace_verifier_links": 3,
     "finalist_package_preflight_links": 3,
     "clean_finalist_package_execution_links": 3,
+    "clean_current_finalist_package_execution_links": 3,
     "nested_links": 3,
     "network_requests": 0,
     "external_playback_verified": false,
@@ -331,6 +339,9 @@
     "clean_finalist_package_canonical_tests": 173,
     "clean_finalist_package_fresh_public_clone": false,
     "clean_finalist_package_clean_new_machine_certification": false,
+    "clean_current_finalist_package_execution_linked": true,
+    "clean_current_finalist_package_checks": 8,
+    "clean_current_finalist_package_current_rubric_successor_checked": true,
     "export_contains_raw_readings_or_outputs": false,
     "private_or_protected_inputs_read": false,
     "biological_accuracy_result_created": false,
@@ -747,6 +758,13 @@
     "clean_finalist_package_canonical_tests": 173,
     "clean_finalist_package_fresh_public_clone": false,
     "clean_finalist_package_clean_new_machine_certification": false,
+    "clean_current_finalist_package_execution_linked": true,
+    "clean_current_finalist_package_checks": 8,
+    "clean_current_finalist_package_current_rubric_successor_checked": true,
+    "clean_current_finalist_package_canonical_stages": 14,
+    "clean_current_finalist_package_canonical_tests": 173,
+    "clean_current_finalist_package_fresh_public_clone": false,
+    "clean_current_finalist_package_clean_new_machine_certification": false,
     "export_contains_raw_readings_or_outputs": false,
     "new_tamper_tests_passed": 7,
     "release_preflight_check_count": 14,

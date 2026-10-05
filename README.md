@@ -16,6 +16,8 @@ Research software by **Joseph Ayanda** for AI4S Open Innovation. DosePilot choos
 
 **Clean isolated execution evidence:** the [published clean-source/new-venv receipt](docs/CLEAN_FINALIST_PACKAGE_EXECUTION.md) records all 8 package checks passing, including the nested canonical 14-stage/173-test preflight. It was produced from a `git archive` source reconstruction on one existing host—not a network clone, clean-new-machine certification, or independent biological validation.
 
+**Clean execution of the current package:** the [current-v2 clean-source/new-venv receipt](docs/CLEAN_CURRENT_FINALIST_PACKAGE_EXECUTION.md) separately records 8/8 checks with the current rubric successor enforced and the nested canonical 14-stage/173-test preflight passing. Its fresh environment resolved declared dependencies from the local pip cache on the same existing host; this is not a network clone, clean-new-machine certification, or independent biological validation. The earlier v1 clean receipt remains immutable history.
+
 **Current finalist-rubric evidence map:** [verified evidence under the recorded 30/30/20/10/10 criteria](docs/FINALIST_RUBRIC_EVIDENCE_CURRENT.md), without a self-score, finalist-probability estimate, or claim that repository work changed the accepted Kaggle entry. The preserved [4 October predecessor](docs/FINALIST_RUBRIC_EVIDENCE.md) remains historical evidence.
 
 **One-page finalist audit:** [64-well contract, current benchmark, all 24 target deltas, selection history](docs/FINALIST_AUDIT.md)  
