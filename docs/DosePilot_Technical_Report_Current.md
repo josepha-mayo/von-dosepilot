@@ -2,7 +2,7 @@
 
 ## 24 response summaries from 64 traceable treatment wells
 
-Joseph Ayanda | Model & Algorithm | Current public report | 4 October 2026
+Joseph Ayanda | Model & Algorithm | Current public report | 5 October 2026
 
 > A measurement-aware reconstruction system that commits the physical assay layout before responses arrive, checks every purchased drug-dose-plate identity, and returns 24 fixed research summaries or an explicit abstention.
 
@@ -140,6 +140,7 @@ The internal promotion rule requires improvement against both R13 and archived R
 | S2 spectral residual | 0.001070143945 | superseded improvement |
 | Additive group kernel, bandwidth 1.0 | 0.001060552730 | direct predecessor |
 | Bandwidth-0.7 additive successor | 0.001058275042 | current incumbent |
+| Co-optimized calibrated interpolation | 0.001438906520 | rejected control |
 
 The current model is 7.56% below R13, 7.28% below R18, 0.215% below the immediate additive predecessor, and 56.21% below the separately optimized interpolation control. These comparisons use the same 119 samples, 59 patients, 24 targets, and 64-well treatment budget.
 
@@ -176,8 +177,11 @@ The descriptive paired-patient interval for current-minus-additive mean loss is 
 | A/B consistency regularization | 0.00108007+ | incumbent screen failed |
 | Additive linear plus Matern 3/2 | 0.001146185234 | 0.116% worse than control |
 | Cross-patient median bandwidth | 0.001057487541 | 4/5 folds; incumbent retained |
+| Co-optimized calibrated interpolation | 0.001438906520 | 3/59 patients; 0/5 folds |
 
 The cross-patient bandwidth candidate produced a 0.0744% lower point estimate and a slightly lower p90 than the incumbent, but failed the prefrozen all-five-fold clause, regressed nine target means, and had a descriptive paired-patient interval crossing zero. It was rejected without a retry, fold splice, target splice, or alternate multiplier.
+
+The one-shot co-optimized calibrated-interpolation control jointly selected native two/three-dose subsets, sixteen third-dose upgrades, and one shared training-only affine option. It was 35.97% worse than bandwidth 0.7, with 3/59 patient wins, 0/5 favorable folds, 22/24 target regressions, and worse p90 and orientation-wide errors. A separate no-refit audit passed. The family is closed with no retry, grid, rescue, or splice. This is retained development evidence, not independent validation.
 
 These failures matter: the project did not promote the literal lowest decimal from every exploratory branch, did not splice targets using outer-fold outcomes, and did not retune rejected families to erase adverse evidence.
 
@@ -309,6 +313,7 @@ The project does not claim calibrated uncertainty, clinical treatment benefit, p
 |---|---|
 | Current result and adverse slices | docs/BANDWIDTH_SUCCESSOR.md; evidence/bandwidth_successor_20261003.json |
 | Nested bandwidth selection | docs/NESTED_BANDWIDTH_EVALUATION.md; evidence/nested_bandwidth_selection_20261004.json |
+| Closed co-optimized interpolation control | docs/COOPTIMIZED_CALIBRATED_CONTROL_NEGATIVE.md; evidence/cooptimized_calibrated_control_20261004.json |
 | All 24 target deltas and selection history | docs/FINALIST_AUDIT.md |
 | Public source-to-results route | docs/PUBLIC_REPRODUCTION.md; evidence/r33_public_pipeline.json |
 | Protected22 failure and exposure | docs/PROTECTED22_RESULT.md; evidence/PROTECTED22_ACCESS_STATUS.json |

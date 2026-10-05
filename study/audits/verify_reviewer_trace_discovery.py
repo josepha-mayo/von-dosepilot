@@ -58,14 +58,14 @@ def verify(root):
     receipt_path = root / record.get("path", "")
     require(sha(receipt_path) == record.get("sha256"), "INDEX_RECEIPT_HASH")
     receipt = load(receipt_path)
-    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v5", "SCHEMA")
+    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v6", "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
-    require(receipt.get("role") == "REVIEWER_NAVIGATION_TRACE_NESTED_REPORT_AND_NEGATIVE_CONTROL", "ROLE")
+    require(receipt.get("role") == "REVIEWER_NAVIGATION_TRACE_NESTED_AND_CURRENT_REPORT_NEGATIVE_CONTROL", "ROLE")
 
     predecessor = receipt.get("predecessor", {})
     predecessor_path = root / predecessor.get("path", "")
     require(sha(predecessor_path) == predecessor.get("sha256"), "PREDECESSOR_HASH")
-    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v4", "PREDECESSOR_SCHEMA")
+    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v5", "PREDECESSOR_SCHEMA")
     require(predecessor.get("preserved_unchanged") is True, "PREDECESSOR_PRESERVED")
 
     for relative, expected in receipt.get("artifact_sha256", {}).items():
@@ -194,12 +194,20 @@ def verify(root):
     report_path = root / report_record.get("path", "")
     require(sha(report_path) == report_record.get("sha256"), "CURRENT_REPORT_RECEIPT_HASH")
     report = load(report_path)
-    require(report.get("schema") == "dosepilot.current_technical_report_release.v5", "CURRENT_REPORT_SCHEMA")
+    require(report.get("schema") == "dosepilot.current_technical_report_release.v6", "CURRENT_REPORT_SCHEMA")
     require(report.get("status") == "PASS", "CURRENT_REPORT_STATUS")
     claims = report.get("claim_checks", {})
     require(claims.get("nested_bandwidth_selection_counts") == {"0.7": 5, "1.0": 0, "1.4": 0}, "CURRENT_REPORT_NESTED_SELECTIONS")
     require(claims.get("nested_bandwidth_prediction_max_absolute_difference_vs_fixed07") == 0.0, "CURRENT_REPORT_NESTED_EQUALITY")
     require(claims.get("nested_bandwidth_independent_validation") is False, "CURRENT_REPORT_NESTED_BOUNDARY")
+    require(claims.get("cooptimized_control_decision") == "REJECT_RETAIN_BANDWIDTH07", "CURRENT_REPORT_COOPT_DECISION")
+    require(claims.get("cooptimized_control_mse") == 0.0014389065202742948, "CURRENT_REPORT_COOPT_MSE")
+    require(claims.get("cooptimized_control_patient_wins") == 3, "CURRENT_REPORT_COOPT_PATIENT_WINS")
+    require(claims.get("cooptimized_control_fold_wins") == 0, "CURRENT_REPORT_COOPT_FOLD_WINS")
+    require(claims.get("cooptimized_control_target_regressions") == 22, "CURRENT_REPORT_COOPT_TARGET_REGRESSIONS")
+    require(claims.get("cooptimized_control_no_refit_audit") == "PASS", "CURRENT_REPORT_COOPT_AUDIT")
+    require(claims.get("cooptimized_control_family_closed") is True, "CURRENT_REPORT_COOPT_CLOSED")
+    require(claims.get("cooptimized_control_independent_validation") is False, "CURRENT_REPORT_COOPT_BOUNDARY")
     require(claims.get("release_preflight_tests") == 173, "CURRENT_REPORT_PREFLIGHT_TESTS")
 
     verification = receipt.get("verification", {})
@@ -210,6 +218,7 @@ def verify(root):
     require(verification.get("trace_links") == 3, "TRACE_LINK_COUNT")
     require(verification.get("nested_links") == 3, "NESTED_LINK_COUNT")
     require(verification.get("cooptimized_links") == 3, "COOPT_LINK_COUNT")
+    require(verification.get("current_report_cooptimized_control_documented") is True, "CURRENT_REPORT_COOPT_DOCUMENTED")
     require(verification.get("adversarial_tests_passed") == 13, "ADVERSARIAL_TEST_COUNT")
     require(verification.get("network_requests") == 0, "NETWORK_REQUESTS")
 
@@ -247,6 +256,7 @@ def verify(root):
         "network_requests": 0,
         "downloadable_trace_linked": True,
         "cooptimized_control_linked": True,
+        "current_report_cooptimized_control_documented": True,
         "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
         "cooptimized_control_independent_validation": False,
         "export_contains_raw_readings_or_outputs": False,
