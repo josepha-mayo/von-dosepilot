@@ -1,0 +1,68 @@
+{
+  "schema": "dosepilot.public_report_render_verification.v1",
+  "status": "PASS",
+  "role": "POINT_IN_TIME_PUBLIC_REPORT_RENDER_VERIFICATION",
+  "observed_utc": "2026-10-05T13:43:44Z",
+  "source": {
+    "public_commit": "d2cb880668c7801dfa96ffdeb6fd50142d7bb645",
+    "public_tree": "09d7f10bb559d954078ec250ee8e77f7c6371243"
+  },
+  "public_page": {
+    "requested_url": "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/DosePilot_Technical_Report_Current.pdf",
+    "resolved_url": "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/DosePilot_Technical_Report_Current.pdf",
+    "title": "von-dosepilot/docs/DosePilot_Technical_Report_Current.pdf at master · josepha-mayo/von-dosepilot · GitHub",
+    "displayed_size": "89.9 KB"
+  },
+  "embedded_viewer": {
+    "host": "viewscreen.githubusercontent.com",
+    "iframe_title": "File display",
+    "commit_binding": "d2cb880668c7801dfa96ffdeb6fd50142d7bb645",
+    "path_binding": "docs/DosePilot_Technical_Report_Current.pdf",
+    "raw_target": "https://raw.githubusercontent.com/josepha-mayo/von-dosepilot/d2cb880668c7801dfa96ffdeb6fd50142d7bb645/docs/DosePilot_Technical_Report_Current.pdf",
+    "more_pages_control_used": true,
+    "visible_page_markers": [
+      "Page 5",
+      "Negative results and external evidence"
+    ]
+  },
+  "exact_pdf": {
+    "path": "docs/DosePilot_Technical_Report_Current.pdf",
+    "sha256": "1d5d7098d53838373ab57ad32ab01d61d3dcfe8d577f8b3bfb09f33f1b4a0ff2",
+    "bytes": 92034,
+    "pages": 10,
+    "page_size": "A4",
+    "pdf_version": "1.4",
+    "encrypted": false,
+    "javascript": false,
+    "pdfinfo_pass": true,
+    "pdftoppm_pages_rendered": 10
+  },
+  "artifact_sha256": {
+    "docs/PUBLIC_REPORT_RENDER_VERIFICATION.md": "f32594b6786d1fd2ba04b68b30298d61ee6320a8d7b8f1be75fd163ea3348332",
+    "study/audits/verify_public_report_render_verification.py": "4a5b89bb591c0d125030f4076444239140deede253fcc46a119e1eb417d4dd92",
+    "study/audits/test_public_report_render_verification.py": "0670f477813a369782c6a36247f043abbff426cc8638dc33a884daeff920fe42"
+  },
+  "preserved_operational_limitation": {
+    "status": "DOWNLOAD_EVENT_TIMEOUT_EMBEDDED_RENDER_SUCCEEDED",
+    "download_event_timeout_seconds": 30,
+    "downloaded_file_captured": false,
+    "downloaded_bytes_compared": false,
+    "scientific_model_or_product_failure": false
+  },
+  "claim_boundary": {
+    "public_embedded_pdf_render_verified": true,
+    "exact_tree_pdf_structural_render_verified": true,
+    "raw_download_success_verified": false,
+    "browser_downloaded_bytes_compared": false,
+    "future_availability_verified": false,
+    "content_completeness_verified": false,
+    "accessibility_conformance_verified": false,
+    "new_model_fit": false,
+    "biological_accuracy_result_created": false,
+    "independent_validation_created": false,
+    "private_or_protected_inputs_read": false,
+    "accepted_kaggle_entry_changed": false,
+    "netlify_deployment_changed": false,
+    "official_competition_score": null
+  }
+}

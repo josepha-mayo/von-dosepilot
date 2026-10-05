@@ -310,6 +310,22 @@
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null
   },
+  "public_report_render_verification": {
+    "path": "evidence/public_report_render_verification_20261005.json",
+    "sha256": "360f939617d637d29dbe28edd492dbb603e5826c0c1fa495dafb104c7257b0c1",
+    "status": "PASS",
+    "observed_utc": "2026-10-05T13:43:44Z",
+    "pdf_sha256": "1d5d7098d53838373ab57ad32ab01d61d3dcfe8d577f8b3bfb09f33f1b4a0ff2",
+    "pdf_pages": 10,
+    "public_embedded_pdf_render_verified": true,
+    "raw_download_success_verified": false,
+    "browser_downloaded_bytes_compared": false,
+    "future_availability_verified": false,
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
   "live_demo_withholding": {
     "path": "evidence/live_demo_withholding_r4_20261004.json",
     "sha256": "03a8f8b6aeef7c9df5a800312c8cce9c254e11615c8c65ebde8d0791a5c6319f",
