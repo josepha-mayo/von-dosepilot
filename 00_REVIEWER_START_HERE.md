@@ -8,6 +8,8 @@ DosePilot is a measurement-aware drug-response reconstruction method: commit a p
 **Downloadable browser-local evidence:** [state-bound digest-only JSON trace contract](docs/LIVE_DEMO_TRACE_EXPORT.md)
 **Offline downloaded-file verifier:** [`demo/verify_downloaded_trace.py`](demo/verify_downloaded_trace.py) · [command and scope](docs/VERIFY_DOWNLOADED_TRACE.md)
 
+**One-command finalist-package verification:** [`study/audits/finalist_package_preflight.py`](study/audits/finalist_package_preflight.py) · [command and scope](docs/FINALIST_PACKAGE_PREFLIGHT.md)
+
 **Prepared Kaggle writeup:** [docs/KAGGLE_WRITEUP.md](docs/KAGGLE_WRITEUP.md)  
 **Current technical report:** [CURRENT_TECHNICAL_REPORT.md](CURRENT_TECHNICAL_REPORT.md)
 
@@ -124,6 +126,12 @@ Prospective contract: [docs/PROSPECTIVE_OOC_VALIDATION_CONTRACT.md](docs/PROSPEC
 ## Fast reproducibility checks
 
 These commands require no protected cohort responses.
+
+### Complete current finalist package
+
+    python3 study/audits/finalist_package_preflight.py --output finalist_package_preflight.json
+
+This additive check runs the immutable canonical 14-stage/173-test release preflight and seven newer response-free reviewer-package checks without rewriting the historical canonical receipt.
 
 ### Endpoint and 64-well contract
 

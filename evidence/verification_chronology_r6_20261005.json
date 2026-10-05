@@ -1,0 +1,71 @@
+{
+  "schema": "dosepilot.verification_chronology.v1",
+  "status": "PASS",
+  "as_of_date": "2026-10-05",
+  "role": "RESPONSE_FREE_RELEASE_TEST_HISTORY",
+  "predecessor": {
+    "path": "evidence/verification_chronology_r5_20261005.json",
+    "sha256": "ed451b12e81b6884557bc1bf5ee5689314a3e7bb9ca5ec532414a5d5e597c245",
+    "preserved_unchanged": true
+  },
+  "supersedes_reason": "Rebinds the unchanged 157/168/173 response-free test history to reviewer surfaces that now expose the additive one-command finalist-package preflight; no canonical test count or biological evidence changed.",
+  "states": [
+    {
+      "label": "portable_reviewer_quickstart",
+      "path": "evidence/release_preflight_portable_quickstart_final2_20261004.json",
+      "sha256": "9c0913235ee5b81aafc234581d7beea6c0aa5352b6ca346e3fc69f0263177d3b",
+      "status": "PASS",
+      "check_count": 14,
+      "orchestrated_test_count": 157
+    },
+    {
+      "label": "report_site_and_gate_hardening",
+      "path": "evidence/release_preflight_site_cpm_sync_pass1_20261004.json",
+      "sha256": "3746dc0fb82e9aa9b8d563e45b935f5701f48b1cdc4ef8401ecf3c06bc46ba45",
+      "status": "PASS",
+      "check_count": 14,
+      "orchestrated_test_count": 168
+    },
+    {
+      "label": "finalist_rubric_evidence_map",
+      "path": "evidence/release_preflight_rubric_map_pass1_20261004.json",
+      "sha256": "92ca10dc68228ff438618d160859a5b5d86ae2d934a798041be45e515dc42d2b",
+      "status": "PASS",
+      "check_count": 14,
+      "orchestrated_test_count": 173
+    }
+  ],
+  "governance_milestone": {
+    "path": "evidence/development_search_governance_20261004.json",
+    "sha256": "a33226c581ae54440eab1484ddee2c9f2f33924baf17436147388acf8c794649",
+    "status": "PASS",
+    "reported_current_release_preflight_orchestrated_tests": 171
+  },
+  "artifact_sha256": {
+    "README.md": "c537ee0ec3c350911dc8b5cb2a6758518143be6a79997f5f18d488786ef7fb5e",
+    "00_REVIEWER_START_HERE.md": "7858fa8afd9d518eef58d3de3304d687ecdfd78cfe74b116dec6d759327bca01",
+    "docs/VERIFICATION_CHRONOLOGY.md": "2c6275086eb05b54088df8a60d0abf5883cdffe04a92069a669f9f0f1572c09a",
+    "study/audits/verify_verification_chronology.py": "b373ec4e183e98ec6edb6ac3809e4cf69488086508041f286c8cab0f3da5a4ac",
+    "study/audits/test_verification_chronology.py": "cef8b1c89b6162acea30e7f010a2f6340c9e5ab290b328bf552cde62b57c08e9"
+  },
+  "interpretation": {
+    "test_totals_are_additive": true,
+    "lower_historical_total_means_failed_tests": false,
+    "response_free_tests_are_biological_experiments": false,
+    "historical_receipts_rewritten": false
+  },
+  "preserved_operational_failure": {
+    "command": "python -m unittest study.audits.test_release_preflight_current -q",
+    "status": "IMPORT_PATH_FAILURE",
+    "scientific_or_product_failure": false,
+    "correct_documented_invocation": "python -m unittest discover -s study/audits -p test_release_preflight_current.py -q",
+    "correct_invocation_tests_passed": 3
+  },
+  "claim_boundary": {
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "independent_validation_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  }
+}

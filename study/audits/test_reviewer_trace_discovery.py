@@ -29,6 +29,7 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
             receipt["predecessor"]["path"],
             receipt["live_demo_trace"]["path"],
             receipt["downloaded_trace_verifier"]["path"],
+            receipt["finalist_package_preflight"]["path"],
             receipt["cooptimized_control"]["path"],
             *receipt["artifact_sha256"],
             *AUDITED_SURFACES,
@@ -79,6 +80,7 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         self.assertEqual(result["status"], "PASS")
         self.assertTrue(result["downloadable_trace_linked"])
         self.assertTrue(result["offline_downloaded_trace_verifier_linked"])
+        self.assertTrue(result["finalist_package_preflight_linked"])
         self.assertTrue(result["cooptimized_control_linked"])
         self.assertEqual(result["cooptimized_control_decision"], "REJECT_RETAIN_BANDWIDTH07")
 
@@ -117,6 +119,14 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         path.write_text(path.read_text().replace("docs/VERIFY_DOWNLOADED_TRACE.md", "docs/FINALIST_AUDIT.md", 1))
         self.rehash_surface("docs/KAGGLE_WRITEUP.md", receipt)
         with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "WRITEUP_OFFLINE_TRACE_LINK"):
+            verify(self.root)
+
+    def test_writeup_finalist_preflight_link_removal_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / "docs/KAGGLE_WRITEUP.md"
+        path.write_text(path.read_text().replace("docs/FINALIST_PACKAGE_PREFLIGHT.md", "docs/FINALIST_AUDIT.md", 1))
+        self.rehash_surface("docs/KAGGLE_WRITEUP.md", receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "WRITEUP_FINALIST_PREFLIGHT_LINK"):
             verify(self.root)
 
     def test_nonportable_writeup_link_fails_even_when_rehashed(self):

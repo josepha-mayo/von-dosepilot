@@ -14,6 +14,7 @@
 - **Live fictional-data demo:** https://von-dosepilot.netlify.app
 - **Downloadable state-bound evidence record:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/LIVE_DEMO_TRACE_EXPORT.md
 - **Offline downloaded-file verifier:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/VERIFY_DOWNLOADED_TRACE.md
+- **One-command finalist-package preflight:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FINALIST_PACKAGE_PREFLIGHT.md
 - **Demo video:** https://youtu.be/QeOGJIgx378
 - **Public code:** https://github.com/josepha-mayo/von-dosepilot
 - **90-second reviewer path:** https://github.com/josepha-mayo/von-dosepilot/blob/master/00_REVIEWER_START_HERE.md

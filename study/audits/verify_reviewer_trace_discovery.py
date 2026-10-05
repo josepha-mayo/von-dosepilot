@@ -58,14 +58,14 @@ def verify(root):
     receipt_path = root / record.get("path", "")
     require(sha(receipt_path) == record.get("sha256"), "INDEX_RECEIPT_HASH")
     receipt = load(receipt_path)
-    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v7", "SCHEMA")
+    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v8", "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
-    require(receipt.get("role") == "REVIEWER_NAVIGATION_TRACE_OFFLINE_VERIFIER_NESTED_AND_CURRENT_REPORT_NEGATIVE_CONTROL", "ROLE")
+    require(receipt.get("role") == "REVIEWER_NAVIGATION_FINALIST_PREFLIGHT_TRACE_OFFLINE_NESTED_REPORT_NEGATIVE_CONTROL", "ROLE")
 
     predecessor = receipt.get("predecessor", {})
     predecessor_path = root / predecessor.get("path", "")
     require(sha(predecessor_path) == predecessor.get("sha256"), "PREDECESSOR_HASH")
-    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v6", "PREDECESSOR_SCHEMA")
+    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v7", "PREDECESSOR_SCHEMA")
     require(predecessor.get("preserved_unchanged") is True, "PREDECESSOR_PRESERVED")
 
     for relative, expected in receipt.get("artifact_sha256", {}).items():
@@ -132,6 +132,13 @@ def verify(root):
     require(offline_url in writeup, "WRITEUP_OFFLINE_TRACE_LINK")
     require("demo/verify_downloaded_trace.py" in readme, "README_OFFLINE_TRACE_COMMAND")
     require("demo/verify_downloaded_trace.py" in reviewer, "REVIEWER_OFFLINE_TRACE_COMMAND")
+    package_doc = "docs/FINALIST_PACKAGE_PREFLIGHT.md"
+    package_url = "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FINALIST_PACKAGE_PREFLIGHT.md"
+    require(package_doc in readme, "README_FINALIST_PREFLIGHT_LINK")
+    require(package_doc in reviewer, "REVIEWER_FINALIST_PREFLIGHT_LINK")
+    require(package_url in writeup, "WRITEUP_FINALIST_PREFLIGHT_LINK")
+    require("study/audits/finalist_package_preflight.py" in readme, "README_FINALIST_PREFLIGHT_COMMAND")
+    require("study/audits/finalist_package_preflight.py" in reviewer, "REVIEWER_FINALIST_PREFLIGHT_COMMAND")
     nested_doc = "docs/NESTED_BANDWIDTH_EVALUATION.md"
     nested_url = "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/NESTED_BANDWIDTH_EVALUATION.md"
     require(nested_doc in readme, "README_NESTED_LINK")
@@ -186,6 +193,21 @@ def verify(root):
     require(offline.get("claim_boundary", {}).get("private_or_protected_inputs_read") is False, "OFFLINE_TRACE_NO_PROTECTED")
     require(offline.get("claim_boundary", {}).get("biological_accuracy_result_created") is False, "OFFLINE_TRACE_NO_BIOLOGY")
 
+    package_record = receipt.get("finalist_package_preflight", {})
+    package_path = root / package_record.get("path", "")
+    require(sha(package_path) == package_record.get("sha256"), "FINALIST_PREFLIGHT_RECEIPT_HASH")
+    package = load(package_path)
+    require(package.get("schema") == "dosepilot.finalist_package_preflight.v1", "FINALIST_PREFLIGHT_SCHEMA")
+    require(package.get("status") == "PASS", "FINALIST_PREFLIGHT_STATUS")
+    require(package.get("package_check_count") == 8, "FINALIST_PREFLIGHT_PACKAGE_CHECKS")
+    require(package.get("postcanonical_check_count") == 7, "FINALIST_PREFLIGHT_POSTCANONICAL_CHECKS")
+    require(package.get("canonical_release_check_count") == 14, "FINALIST_PREFLIGHT_CANONICAL_STAGES")
+    require(package.get("canonical_orchestrated_test_count") == 173, "FINALIST_PREFLIGHT_CANONICAL_TESTS")
+    require(package.get("network_requests") == 0, "FINALIST_PREFLIGHT_NETWORK")
+    require(package.get("canonical_receipt_rewritten") is False, "FINALIST_PREFLIGHT_CANONICAL_PRESERVED")
+    require(package.get("private_or_protected_inputs_read") is False, "FINALIST_PREFLIGHT_NO_PROTECTED")
+    require(package.get("biological_accuracy_result_created") is False, "FINALIST_PREFLIGHT_NO_BIOLOGY")
+
     nested_record = receipt.get("nested_bandwidth_evidence", {})
     nested_path = root / nested_record.get("path", "")
     require(sha(nested_path) == nested_record.get("sha256"), "NESTED_RECEIPT_HASH")
@@ -239,10 +261,11 @@ def verify(root):
     require(verification.get("required_urls") == len(REQUIRED_URLS), "REQUIRED_URL_COUNT")
     require(verification.get("trace_links") == 3, "TRACE_LINK_COUNT")
     require(verification.get("offline_trace_verifier_links") == 3, "OFFLINE_TRACE_LINK_COUNT")
+    require(verification.get("finalist_package_preflight_links") == 3, "FINALIST_PREFLIGHT_LINK_COUNT")
     require(verification.get("nested_links") == 3, "NESTED_LINK_COUNT")
     require(verification.get("cooptimized_links") == 3, "COOPT_LINK_COUNT")
     require(verification.get("current_report_cooptimized_control_documented") is True, "CURRENT_REPORT_COOPT_DOCUMENTED")
-    require(verification.get("adversarial_tests_passed") == 13, "ADVERSARIAL_TEST_COUNT")
+    require(verification.get("adversarial_tests_passed") == 14, "ADVERSARIAL_TEST_COUNT")
     require(verification.get("network_requests") == 0, "NETWORK_REQUESTS")
 
     failure = receipt.get("preserved_operational_failure", {})
@@ -275,11 +298,13 @@ def verify(root):
         "required_urls": len(REQUIRED_URLS),
         "trace_links": 3,
         "offline_trace_verifier_links": 3,
+        "finalist_package_preflight_links": 3,
         "nested_links": 3,
         "cooptimized_links": 3,
         "network_requests": 0,
         "downloadable_trace_linked": True,
         "offline_downloaded_trace_verifier_linked": True,
+        "finalist_package_preflight_linked": True,
         "cooptimized_control_linked": True,
         "current_report_cooptimized_control_documented": True,
         "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
