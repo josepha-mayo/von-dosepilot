@@ -73,6 +73,23 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
+        current_rubric_index = index["current_package_finalist_rubric_evidence"]
+        current_rubric = json.loads((self.source / current_rubric_index["path"]).read_text())
+        current_rubric_predecessor = json.loads(
+            (self.source / current_rubric["evidence_bindings"]["predecessor"]["path"]).read_text()
+        )
+        current_rubric_paths = {current_rubric_index["path"], *current_rubric["artifact_sha256"]}
+        current_rubric_paths.update(
+            binding["path"] for binding in current_rubric["evidence_bindings"].values()
+        )
+        current_rubric_paths.update(current_rubric_predecessor["artifact_sha256"])
+        current_rubric_paths.update(
+            binding["path"] for binding in current_rubric_predecessor["evidence_bindings"].values()
+        )
+        for relative in current_rubric_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         governance_path = index["canonical_receipts"]["development_search_governance"]["path"]
         governance = json.loads((self.source / governance_path).read_text())
         governance_paths = [governance["registry"]["path"], governance["predecessor"]["path"],
@@ -171,6 +188,9 @@ class EvidenceConsistencyTests(unittest.TestCase):
         self.assertEqual(result["reviewer_path_seconds"], 90)
         self.assertEqual(result["rubric_evidence_criteria"], 5)
         self.assertEqual(result["rubric_evidence_weight_sum"], 100)
+        self.assertEqual(result["current_rubric_evidence_criteria"], 5)
+        self.assertEqual(result["current_rubric_clean_package_checks"], 8)
+        self.assertTrue(result["current_rubric_successor_checked"])
         self.assertEqual(result["current_preflight_tests"], 173)
         self.assertEqual(result["verification_chronology_latest_tests"], 173)
         self.assertEqual(result["clean_finalist_package_checks"], 8)

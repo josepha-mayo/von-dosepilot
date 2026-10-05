@@ -17,6 +17,10 @@ from verify_finalist_rubric_evidence import (
     RubricEvidenceError,
     verify as verify_finalist_rubric_evidence,
 )
+from verify_finalist_rubric_evidence_current_package import (
+    CurrentPackageRubricEvidenceError,
+    verify as verify_current_finalist_rubric_evidence,
+)
 from verify_verification_chronology import (
     ChronologyError,
     verify as verify_verification_chronology,
@@ -1205,6 +1209,16 @@ def verify(root, enforce_pins=True):
     same(rubric_index["accepted_kaggle_entry_changed"], False, "INDEX_RUBRIC_EVIDENCE_NO_KAGGLE_CHANGE")
     same(rubric_index["protected_response_access"], False, "INDEX_RUBRIC_EVIDENCE_NO_PROTECTED")
     try:
+        current_rubric_result = verify_current_finalist_rubric_evidence(root)
+    except CurrentPackageRubricEvidenceError as exc:
+        raise EvidenceError("CURRENT_RUBRIC_EVIDENCE: " + str(exc)) from exc
+    same(current_rubric_result["criteria"], 5, "CURRENT_RUBRIC_EVIDENCE_CRITERIA")
+    same(current_rubric_result["weight_sum"], 100, "CURRENT_RUBRIC_EVIDENCE_WEIGHT_SUM")
+    same(current_rubric_result["clean_current_package_checks"], 8, "CURRENT_RUBRIC_EVIDENCE_PACKAGE_CHECKS")
+    same(current_rubric_result["current_rubric_successor_checked"], True, "CURRENT_RUBRIC_EVIDENCE_SUCCESSOR")
+    same(current_rubric_result["accepted_kaggle_entry_changed"], False, "CURRENT_RUBRIC_EVIDENCE_NO_KAGGLE_CHANGE")
+    same(current_rubric_result["official_competition_score"], None, "CURRENT_RUBRIC_EVIDENCE_NO_SCORE")
+    try:
         chronology_result = verify_verification_chronology(root)
     except ChronologyError as exc:
         raise EvidenceError("VERIFICATION_CHRONOLOGY: " + str(exc)) from exc
@@ -1279,6 +1293,9 @@ def verify(root, enforce_pins=True):
         "reviewer_path_seconds": reviewer_contract["estimated_seconds"],
         "rubric_evidence_criteria": rubric_result["criteria"],
         "rubric_evidence_weight_sum": rubric_result["weight_sum"],
+        "current_rubric_evidence_criteria": current_rubric_result["criteria"],
+        "current_rubric_clean_package_checks": current_rubric_result["clean_current_package_checks"],
+        "current_rubric_successor_checked": current_rubric_result["current_rubric_successor_checked"],
         "current_preflight_tests": current_preflight["orchestrated_test_count"],
         "verification_chronology_latest_tests": chronology_result["latest_orchestrated_test_count"],
         "clean_finalist_package_checks": clean_package_result["package_checks"],

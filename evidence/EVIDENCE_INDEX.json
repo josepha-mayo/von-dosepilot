@@ -186,6 +186,20 @@
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null
   },
+  "current_package_finalist_rubric_evidence": {
+    "path": "evidence/finalist_rubric_evidence_r3_20261005.json",
+    "sha256": "790e18cb117e5e81c96d61b4c6cabec9dac8965d56286e23c17ee0434df948c9",
+    "status": "PASS",
+    "criteria": 5,
+    "weight_sum": 100,
+    "nested_outer_training_sets_selecting_07": 5,
+    "clean_current_package_checks": 8,
+    "current_rubric_successor_checked": true,
+    "external_routes_resolved": 5,
+    "public_report_render_verified": true,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
   "development_search_governance": {
     "role": "ADAPTIVE_DEVELOPMENT_GOVERNANCE_UPDATE",
     "status": "PASS",

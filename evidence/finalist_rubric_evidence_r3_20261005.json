@@ -1,0 +1,127 @@
+{
+  "schema": "dosepilot.finalist_rubric_evidence.v3",
+  "status": "PASS",
+  "as_of_date": "2026-10-05",
+  "role": "CURRENT_JUDGE_CRITERION_TO_EVIDENCE_MAP",
+  "rubric": {
+    "source_url": "https://www.kaggle.com/competitions/ai-4-s-open-innovation-artificial-intelligence-for-life-scien/overview/evaluation",
+    "last_verified_on_platform": "2026-10-01",
+    "current_run_public_retrieval": "UNAVAILABLE_NO_REFRESH_CLAIM",
+    "weights": {
+      "problem_importance_impact": 30,
+      "technical_approach_innovation": 30,
+      "results_validation": 20,
+      "reproducibility_implementation": 10,
+      "presentation": 10
+    },
+    "combined_self_score": null
+  },
+  "criteria": {
+    "problem_importance_impact": {
+      "weight": 30,
+      "evidence": [
+        "24 fixed response summaries from 64 identified treatment measurements versus 416 eligible measurements in the retrospective two-plate source profile",
+        "Exact endpoint, quadrature, dose identity, and per-plate accounting are published"
+      ],
+      "limitations": [
+        "Measurement-count compression is not measured cost, time, material, clinical, or organ-on-chip benefit"
+      ]
+    },
+    "technical_approach_innovation": {
+      "weight": 30,
+      "evidence": [
+        "Frozen 64-well/32-per-plate acquisition contract and separate A/B expected-loss accounting",
+        "Bandwidth-0.7 additive residual estimator with identity-bound commit/recover/predict execution",
+        "Downloadable digest-only fictional evidence record with offline verification and missing-primary withholding"
+      ],
+      "limitations": [
+        "Repeated adaptive development and component-method prior art are disclosed; no patent-style novelty claim",
+        "Digest evidence is not signed, WORM, physical provenance, or biological validation"
+      ]
+    },
+    "results_validation": {
+      "weight": 20,
+      "evidence": [
+        "Same-task development MSE 0.0010582750420801538; p90 0.0378942853087202; 38/59 patient wins and 5/5 favorable folds versus additive-1.0",
+        "Nested replay selected bandwidth 0.7 inside all five outer fitting sets and exactly tied fixed 0.7",
+        "Co-optimized calibrated interpolation failed all promotion gates and is closed"
+      ],
+      "limitations": [
+        "Ten of 24 target means regress versus the immediate control",
+        "Nested replay and negative control remain repeated development, not selection correction for the wider campaign or independent validation",
+        "Protected22 primary is NOT_ESTIMABLE and the matched-CAF study does not validate incumbent fitted weights"
+      ]
+    },
+    "reproducibility_implementation": {
+      "weight": 10,
+      "evidence": [
+        "Public source-to-results reconstruction PASS",
+        "Primary v2 finalist-package command passed 8/8 checks with the current rubric successor enforced and nested canonical 14-stage/173-test preflight from a fresh source directory and new Python 3.12.14 environment"
+      ],
+      "limitations": [
+        "Clean execution used git archive on one existing host, not a network clone or clean-new-machine certification",
+        "Dependencies resolved from the local pip cache; no live dependency-download claim is made",
+        "Reproduction is not new predictive evidence; public code excludes patient arrays and fitted biological weights"
+      ]
+    },
+    "presentation": {
+      "weight": 10,
+      "evidence": [
+        "Five of five required external reviewer routes resolved to expected public identities in an isolated browser",
+        "The current ten-page report rendered through GitHub's commit-bound embedded viewer and all ten exact-tree pages rendered response-free"
+      ],
+      "limitations": [
+        "Point-in-time checks do not establish future uptime or uninterrupted video playback",
+        "Browser download event timed out; no downloaded-file byte comparison or raw-download-success claim"
+      ]
+    }
+  },
+  "evidence_bindings": {
+    "predecessor": {
+      "path": "evidence/finalist_rubric_evidence_r2_20261005.json",
+      "sha256": "bf948a727137529a7daba7fc44e125440d89faa915c06f0ad6ee9989367f600a"
+    },
+    "current_package_preflight": {
+      "path": "evidence/finalist_package_preflight_r2_20261005.json",
+      "sha256": "232e601a3e3b326e16e2d27ba767164ccec58ce5f5fe2ee2fc8a8d13700f2496"
+    },
+    "clean_current_package": {
+      "path": "evidence/clean_current_finalist_package_execution_20261005.json",
+      "sha256": "5b6bae37b328d9130ee639c7988632e561a05716761db83b674e37df61e922c3"
+    }
+  },
+  "artifact_sha256": {
+    "docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_PACKAGE.md": "5e30749af6636d533eb1e5d897ddeb3a56b30c24f4fe7fafffcae94882151f99",
+    "study/audits/verify_finalist_rubric_evidence_current_package.py": "c4bffd33c037fcffadeb26c3f686d1460ed67ba1cffcd03f54580ae8a33eddf3",
+    "study/audits/test_finalist_rubric_evidence_current_package.py": "bf69fb29f731e5d2cd420117125242486cae9f1754251485df97a713646e152b",
+    "study/audits/verify_evidence_consistency.py": "01ec5dbb81948283c65456e0b8e8256241e686e2e841721683bb8a9cfbc5f8f3",
+    "study/audits/test_evidence_consistency.py": "e11095c3211a6665dc477a728d2b719724d18133d156a6d4ccb56ff07b7a9207"
+  },
+  "verification": {
+    "standalone_verifier": "PASS",
+    "successor_tamper_tests": 10,
+    "artifact_hashes_verified": 5,
+    "predecessor_reverified": true,
+    "source_workbook_opened": false,
+    "patient_or_prediction_arrays_opened": false,
+    "protected_response_access": false
+  },
+  "claim_boundary": {
+    "new_model_fit": false,
+    "biological_accuracy_result_created": false,
+    "independent_validation_created": false,
+    "protected_response_access": false,
+    "private_patient_arrays_read": false,
+    "accepted_kaggle_entry_changed": false,
+    "finalist_status_claimed": false,
+    "prospective_ooc_performance_claimed": false,
+    "clinical_utility_claimed": false,
+    "realized_cost_or_time_saving_claimed": false,
+    "future_uptime_claimed": false,
+    "raw_pdf_download_verified": false,
+    "clean_new_machine_certification": false,
+    "fresh_public_clone_claimed": false,
+    "live_dependency_download_claimed": false,
+    "official_competition_score": null
+  }
+}
