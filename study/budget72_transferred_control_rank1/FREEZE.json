@@ -20,10 +20,10 @@
   "dependency_sha256": {
     "study/orientation_specific_control_quality_rank1/run_study.py": "73ec21082284952b41255f2e98f8d2ee63c65e6202a27ef28e7c2f87580e54a8",
     "study/standard_control_meanquad_plate_interaction_v2/run_study.py": "d75c1b434915415e8a810160cc811900bcab7214e3d95c8c31b5f2bf864ed623",
-    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
-    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
-    "study/engine/sparse_methods.py": "511ea1665a7f245cd3a2923fd8a6be6f5c2e45ba901da1620f7298a4125ec64c"
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e"
   },
+  "base72_mse": 0.0010055928901387746,
+  "current64_successor_mse": 0.001042745722096212,
   "orientation_A_strength": 0.1111111111111111,
   "orientation_B_strength": 0.3333333333333333,
   "ridge_prior": 0.125,
@@ -31,10 +31,10 @@
   "bootstrap_seed": 20261006,
   "bootstrap_replicates": 100000,
   "hyperparameter_search": false,
-  "synthetic_tests_passed": 3,
   "report_regardless_of_direction": true,
+  "synthetic_tests_passed": 3,
+  "automatic_retry": false,
   "candidate_promotion_allowed": false,
   "protected22_access": false,
-  "independent_validation": false,
-  "automatic_retry": false
+  "independent_validation": false
 }
