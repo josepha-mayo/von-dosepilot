@@ -1,0 +1,77 @@
+{
+  "schema": "dosepilot.current_successor_descriptive_patient_bootstrap.v1",
+  "as_of_utc": "2026-10-06T11:45:00Z",
+  "role": "POST_HOC_DESCRIPTIVE_NOT_CONFIRMATORY",
+  "population": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32
+  },
+  "candidate": {
+    "family_id": "orientation_specific_control_quality_rank1",
+    "mse": 0.001042745722096212,
+    "prediction_sha256": "ab7bd69e97fc0295a9f4066be0396d82d628bba5b69302bb9670f31561e6df12"
+  },
+  "method": {
+    "unit": "whole-patient mean loss",
+    "resampling": "sample 59 whole-patient loss differences with replacement",
+    "bootstrap_resamples": 100000,
+    "seed": 20261006,
+    "interval": "percentile 95%",
+    "model_reselection_inside_bootstrap": false,
+    "selection_adjusted": false
+  },
+  "comparisons": {
+    "bandwidth07": {
+      "reference_mse": 0.0010582750420801538,
+      "mean_loss_difference": -0.000015529319983941907,
+      "relative_mse_gain": 0.01467418144286703,
+      "patient_wins": 40,
+      "patient_losses": 19,
+      "bootstrap_percentile_95_ci": [
+        -0.00002604030872209315,
+        -0.000006544231776756709
+      ],
+      "bootstrap_fraction_below_zero": 0.99989,
+      "paired_median_difference": -0.000006716101059420741
+    },
+    "immediate_predecessor": {
+      "family_id": "orientation_A_auxiliary_rank1_calibration",
+      "reference_mse": 0.001043179589139139,
+      "mean_loss_difference": -4.338670429270726e-7,
+      "relative_mse_gain": 0.00041590829368609583,
+      "patient_wins": 32,
+      "patient_losses": 27,
+      "bootstrap_percentile_95_ci": [
+        -0.000001131565859153343,
+        2.576579938175374e-7
+      ],
+      "bootstrap_fraction_below_zero": 0.89085,
+      "paired_median_difference": -3.0709774388357983e-7
+    },
+    "r13": {
+      "reference_mse": 0.0011448586813828537,
+      "mean_loss_difference": -0.00010211295928664186,
+      "relative_mse_gain": 0.08919263219745288,
+      "patient_wins": 49,
+      "patient_losses": 10,
+      "bootstrap_percentile_95_ci": [
+        -0.00014369684763499717,
+        -0.00006619755708010727
+      ],
+      "bootstrap_fraction_below_zero": 1,
+      "paired_median_difference": -0.00007118713139215823
+    }
+  },
+  "interpretation": {
+    "bandwidth07": "The descriptive whole-patient bootstrap interval is entirely below zero.",
+    "immediate_predecessor": "The descriptive interval crosses zero; the tiny mean improvement is not presented as uniform incremental superiority.",
+    "selection_warning": "All intervals are post-hoc and selection-naive because the same Lib1 development population has been repeatedly inspected. They are not independent validation or selection-corrected confidence intervals."
+  },
+  "protected22_access": false,
+  "patient_level_rows_published": false,
+  "independent_validation": false,
+  "official_competition_score": null
+}
