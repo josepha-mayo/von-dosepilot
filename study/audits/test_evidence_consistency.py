@@ -132,6 +132,20 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
+        scientific_successor_index = index["current_scientific_successor_evidence"]
+        scientific_successor = json.loads(
+            (self.source / scientific_successor_index["path"]).read_text()
+        )
+        scientific_successor_paths = {
+            scientific_successor_index["path"],
+            *[binding["path"] for binding in scientific_successor["evidence_bindings"].values()],
+            *[artifact["path"] for artifact in scientific_successor["presentation_artifacts"].values()],
+            *scientific_successor["artifact_sha256"],
+        }
+        for relative in scientific_successor_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         report_bound_package_index = index["current_report_finalist_package_preflight"]
         report_bound_package = json.loads(
             (self.source / report_bound_package_index["path"]).read_text()

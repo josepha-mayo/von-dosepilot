@@ -29,6 +29,10 @@ from verify_finalist_rubric_evidence_current_retrieval import (
     CurrentRetrievalRubricEvidenceError,
     verify as verify_current_retrieval_finalist_rubric_evidence,
 )
+from verify_current_scientific_successor_evidence import (
+    CurrentScientificSuccessorEvidenceError,
+    verify as verify_current_scientific_successor_evidence,
+)
 from verify_verification_chronology import (
     ChronologyError,
     verify as verify_verification_chronology,
@@ -1378,6 +1382,19 @@ def verify(root, enforce_pins=True):
     same(current_retrieval_rubric_result["accepted_kaggle_entry_changed"], False, "CURRENT_RETRIEVAL_RUBRIC_EVIDENCE_NO_KAGGLE_CHANGE")
     same(current_retrieval_rubric_result["official_competition_score"], None, "CURRENT_RETRIEVAL_RUBRIC_EVIDENCE_NO_SCORE")
     try:
+        scientific_successor_result = verify_current_scientific_successor_evidence(root)
+    except CurrentScientificSuccessorEvidenceError as exc:
+        raise EvidenceError("CURRENT_SCIENTIFIC_SUCCESSOR_EVIDENCE: " + str(exc)) from exc
+    same(scientific_successor_result["candidate_mse"], 0.001042745722096212, "SCIENTIFIC_SUCCESSOR_MSE")
+    same(scientific_successor_result["bandwidth07_patient_wins"], 40, "SCIENTIFIC_SUCCESSOR_PATIENTS")
+    same(scientific_successor_result["favorable_folds"], 5, "SCIENTIFIC_SUCCESSOR_FOLDS")
+    same(scientific_successor_result["target_wins"], 19, "SCIENTIFIC_SUCCESSOR_TARGET_WINS")
+    same(scientific_successor_result["target_losses"], 5, "SCIENTIFIC_SUCCESSOR_TARGET_LOSSES")
+    same(scientific_successor_result["repeated_development"], True, "SCIENTIFIC_SUCCESSOR_DEVELOPMENT")
+    same(scientific_successor_result["independent_validation"], False, "SCIENTIFIC_SUCCESSOR_NO_VALIDATION")
+    same(scientific_successor_result["protected22_access"], False, "SCIENTIFIC_SUCCESSOR_NO_PROTECTED22")
+    same(scientific_successor_result["official_competition_score"], None, "SCIENTIFIC_SUCCESSOR_NO_SCORE")
+    try:
         report_bound_package_result = verify_report_bound_finalist_package_preflight(root)
     except ReportBoundFinalistPackagePreflightError as exc:
         raise EvidenceError("REPORT_BOUND_FINALIST_PACKAGE_PREFLIGHT: " + str(exc)) from exc
@@ -1603,6 +1620,12 @@ def verify(root, enforce_pins=True):
         "current_report_rubric_evidence_criteria": current_report_rubric_result["criteria"],
         "current_report_rubric_evidence_bytes": current_report_rubric_result["current_report_bytes"],
         "current_report_rubric_raw_download_verified": current_report_rubric_result["raw_download_verified"],
+        "scientific_successor_mse": scientific_successor_result["candidate_mse"],
+        "scientific_successor_patient_wins": scientific_successor_result["bandwidth07_patient_wins"],
+        "scientific_successor_favorable_folds": scientific_successor_result["favorable_folds"],
+        "scientific_successor_target_wins": scientific_successor_result["target_wins"],
+        "scientific_successor_target_losses": scientific_successor_result["target_losses"],
+        "scientific_successor_independent_validation": scientific_successor_result["independent_validation"],
         "report_bound_finalist_package_checks": report_bound_package_result["package_checks"],
         "report_bound_finalist_package_rubric_successor_checked": report_bound_package_result["current_report_rubric_successor_checked"],
         "report_bound_finalist_package_raw_download_verified": report_bound_package_result["raw_download_verified"],

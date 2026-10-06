@@ -266,6 +266,22 @@
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null
   },
+  "current_scientific_successor_evidence": {
+    "path": "evidence/current_scientific_successor_evidence_20261006.json",
+    "sha256": "ba3b1546bee6267b6ea31e973bb572112427499a659ff9e8dc98202b5725c90c",
+    "status": "PASS",
+    "candidate_family": "orientation_specific_control_quality_rank1",
+    "candidate_mse": 0.001042745722096212,
+    "candidate_p90": 0.037419695944064885,
+    "bandwidth07_patient_wins": 40,
+    "favorable_folds": 5,
+    "target_wins": 19,
+    "target_losses": 5,
+    "repeated_development": true,
+    "independent_validation": false,
+    "protected22_access": false,
+    "official_competition_score": null
+  },
   "development_search_governance": {
     "role": "ADAPTIVE_DEVELOPMENT_GOVERNANCE_UPDATE",
     "status": "PASS",

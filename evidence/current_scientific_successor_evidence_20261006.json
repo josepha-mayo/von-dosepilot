@@ -1,0 +1,138 @@
+{
+  "schema": "dosepilot.current_scientific_successor_evidence.v1",
+  "status": "PASS",
+  "as_of_date": "2026-10-06",
+  "role": "REPEATED_ADAPTIVE_DEVELOPMENT_EVIDENCE_MAP_NOT_INDEPENDENT_VALIDATION",
+  "source_public_state": {
+    "commit": "ff49a43be15ae3025b999257e0c0b22ac12719c8",
+    "tree": "a2f5bfd0ab953f98a8987e33eed0732bf1f06897"
+  },
+  "evidence_bindings": {
+    "candidate": {
+      "path": "evidence/orientation_specific_control_quality_rank1_20261006.json",
+      "sha256": "c3548e944a380432e17feaf8f1146fbf860895bb71b793d278e7e354adc3d768"
+    },
+    "descriptive_bootstrap": {
+      "path": "evidence/current_successor_descriptive_bootstrap_20261006.json",
+      "sha256": "e36542bf9224a1e2f250ad681302c1cec9eb3a17e660d4383404f6eb6ab0d1ba"
+    },
+    "target_deltas_json": {
+      "path": "evidence/current_successor_target_deltas_20261006.json",
+      "sha256": "e0abd231cd7410311e9ae156ba529299e3f9b95c106a785f3bcbb5e188bd817e"
+    },
+    "target_deltas_csv": {
+      "path": "evidence/current_successor_target_deltas_20261006.csv",
+      "sha256": "491585a5c1131cafa5e9d186777bf62da09c3c3bc9d2ebe803e33e76a96924e5"
+    }
+  },
+  "candidate_summary": {
+    "family_id": "orientation_specific_control_quality_rank1",
+    "mse": 0.001042745722096212,
+    "p90_patient_rmse": 0.037419695944064885,
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "wells_per_source_plate": 32,
+    "bandwidth07_relative_mse_gain": 0.01467418144286703,
+    "bandwidth07_patient_wins": 40,
+    "bandwidth07_favorable_folds": 5,
+    "target_average_wins": 19,
+    "target_average_losses": 5,
+    "r18_gate": "PASS",
+    "immediate_predecessor_relative_mse_gain": 0.00041590829368609583,
+    "immediate_predecessor_patient_wins": 32,
+    "immediate_predecessor_favorable_folds": 3
+  },
+  "descriptive_evidence": {
+    "bootstrap_resamples": 100000,
+    "bootstrap_seed": 20261006,
+    "bandwidth07_interval_entirely_below_zero": true,
+    "immediate_predecessor_interval_crosses_zero": true,
+    "post_hoc": true,
+    "selection_adjusted": false,
+    "patient_level_rows_published": false,
+    "independently_recomputed_from_public_artifacts": false,
+    "confirmatory": false
+  },
+  "target_diagnostic": {
+    "rows": 24,
+    "unique_target_indices": 24,
+    "unique_drugs": 24,
+    "improved": 19,
+    "regressed": 5,
+    "regressing_targets": [
+      "Afatinib",
+      "Regorafenib",
+      "AZD7762",
+      "LCL161",
+      "Trametinib"
+    ],
+    "aggregate_only": true,
+    "favorable_target_filtering": false,
+    "target_splicing": false
+  },
+  "presentation_artifacts": {
+    "visual": {
+      "path": "docs/figures/current_successor_summary_20261006.png",
+      "sha256": "234335506fc424f03af1460440b8d5e4eda6c84a70cc7c61f32da9260f05dfa5"
+    },
+    "report_source": {
+      "path": "docs/DosePilot_Technical_Report_20261006.md",
+      "sha256": "b9f0b31313e3a1700be62c9e0d2b535e7c1596ceb43915b41330e3e42a4873fb"
+    },
+    "report_pdf": {
+      "path": "docs/DosePilot_Technical_Report_20261006.pdf",
+      "sha256": "f8fb82f477e85a36daf2e528ef895fc35f6e3a42ff8a770f9aa697a11cdc825d"
+    },
+    "writeup": {
+      "path": "docs/KAGGLE_WRITEUP_20261006.md",
+      "sha256": "277fe2427feb6932b468ddeafeb6ec62d6ed5bf8321d1f85cd17622743cb06e8"
+    },
+    "reviewer_path": {
+      "path": "SUBMISSION_UPDATE_20261006.md",
+      "sha256": "27c42f55ea191fe8b97ccca0bfa62f7061f0a12ade8baa4ad24e8fb82d1f82d7"
+    }
+  },
+  "replay_boundary": {
+    "candidate_receipt_max_prediction_difference": 0.0,
+    "prediction_tolerance": 5e-16,
+    "documents_describe_fresh_windows_max_prediction_difference": 2.22e-16,
+    "separate_windows_machine_receipt_public": false,
+    "fresh_windows_replay_independently_reproducible_from_public_artifacts": false
+  },
+  "artifact_sha256": {
+    "docs/CURRENT_SCIENTIFIC_SUCCESSOR_EVIDENCE.md": "3ab43f89343ea2983bcf13633c492b342f90d5a5569f276dde1e1d670724def2",
+    "study/audits/verify_current_scientific_successor_evidence.py": "5adbd3c9ec6ea46aaf2418957042622c5061d8fc2f350a9addb296e59e0cf5e3",
+    "study/audits/test_current_scientific_successor_evidence.py": "973123b6f13a97bbff9b4a17ea0cb33267c06740cb24b77ca237012a583e8a05"
+  },
+  "verification": {
+    "standalone_verifier": "PASS",
+    "focused_adversarial_tests": 13,
+    "candidate_public_bytes_hash_verified": true,
+    "candidate_metrics_and_gates_verified": true,
+    "bootstrap_boundaries_verified": true,
+    "target_json_csv_consistency_verified": true,
+    "presentation_hashes_verified": true,
+    "source_workbook_opened": false,
+    "patient_or_prediction_arrays_opened": false,
+    "protected_response_access": false
+  },
+  "claim_boundary": {
+    "new_model_fit": false,
+    "protected22_access": false,
+    "private_patient_arrays_read": false,
+    "patient_level_rows_published": false,
+    "bootstrap_independently_recomputed": false,
+    "bootstrap_confirmatory": false,
+    "windows_replay_machine_receipt_public": false,
+    "windows_replay_independently_reproduced": false,
+    "independent_validation_created": false,
+    "biological_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "netlify_changed": false,
+    "finalist_status_claimed": false,
+    "clinical_utility_claimed": false,
+    "official_competition_score": null
+  }
+}
