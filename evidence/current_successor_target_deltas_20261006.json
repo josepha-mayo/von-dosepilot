@@ -1,0 +1,246 @@
+{
+  "schema": "dosepilot.current_successor_target_deltas.v1",
+  "as_of_date": "2026-10-06",
+  "role": "POST_HOC_AGGREGATE_TARGET_DIAGNOSTIC_NOT_CONFIRMATORY",
+  "population": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32
+  },
+  "candidate_mse": 0.001042745722096212,
+  "reference_family": "bandwidth07_additive",
+  "reference_mse": 0.0010582750420801538,
+  "target_wins": 19,
+  "target_losses": 5,
+  "regressing_targets": [
+    "Afatinib",
+    "Regorafenib",
+    "AZD7762",
+    "LCL161",
+    "Trametinib"
+  ],
+  "rows": [
+    {
+      "target_index": 15,
+      "drug": "Napabucasin",
+      "current_mse": 0.0011085820950404012,
+      "bandwidth07_mse": 0.0011706234162799293,
+      "delta_mse_current_minus_bandwidth07": -6.204132123952813e-05,
+      "relative_change_percent": -5.299853084836315,
+      "improved": true
+    },
+    {
+      "target_index": 0,
+      "drug": "5-FU",
+      "current_mse": 0.001170981459752254,
+      "bandwidth07_mse": 0.0012108915801875915,
+      "delta_mse_current_minus_bandwidth07": -3.991012043533747e-05,
+      "relative_change_percent": -3.2959284785145315,
+      "improved": true
+    },
+    {
+      "target_index": 21,
+      "drug": "TAS-102",
+      "current_mse": 0.0014128964092900284,
+      "bandwidth07_mse": 0.0014476200563955652,
+      "delta_mse_current_minus_bandwidth07": -3.4723647105536866e-05,
+      "relative_change_percent": -2.3986713193236198,
+      "improved": true
+    },
+    {
+      "target_index": 18,
+      "drug": "Pevonedistat",
+      "current_mse": 0.0009344841278893918,
+      "bandwidth07_mse": 0.0009652257971401316,
+      "delta_mse_current_minus_bandwidth07": -3.0741669250739824e-05,
+      "relative_change_percent": -3.184919978498746,
+      "improved": true
+    },
+    {
+      "target_index": 7,
+      "drug": "Gedatolisib",
+      "current_mse": 0.0010809224746799399,
+      "bandwidth07_mse": 0.001110136442501674,
+      "delta_mse_current_minus_bandwidth07": -2.921396782173415e-05,
+      "relative_change_percent": -2.6315655178295927,
+      "improved": true
+    },
+    {
+      "target_index": 17,
+      "drug": "Panobinostat",
+      "current_mse": 0.000758724806471356,
+      "bandwidth07_mse": 0.0007854335068702312,
+      "delta_mse_current_minus_bandwidth07": -2.6708700398875252e-05,
+      "relative_change_percent": -3.400504328533571,
+      "improved": true
+    },
+    {
+      "target_index": 9,
+      "drug": "Idasanutlin",
+      "current_mse": 0.0011155549983325442,
+      "bandwidth07_mse": 0.0011421553835742626,
+      "delta_mse_current_minus_bandwidth07": -2.6600385241718405e-05,
+      "relative_change_percent": -2.3289637841109823,
+      "improved": true
+    },
+    {
+      "target_index": 11,
+      "drug": "LGK974",
+      "current_mse": 0.0010257886417523064,
+      "bandwidth07_mse": 0.0010470001889497553,
+      "delta_mse_current_minus_bandwidth07": -2.1211547197448957e-05,
+      "relative_change_percent": -2.0259353743504294,
+      "improved": true
+    },
+    {
+      "target_index": 3,
+      "drug": "Alisertib",
+      "current_mse": 0.0007579324417192561,
+      "bandwidth07_mse": 0.0007790581738268316,
+      "delta_mse_current_minus_bandwidth07": -2.1125732107575503e-05,
+      "relative_change_percent": -2.7117014899931347,
+      "improved": true
+    },
+    {
+      "target_index": 5,
+      "drug": "Bemcentinib",
+      "current_mse": 0.0011308647898766895,
+      "bandwidth07_mse": 0.0011494559522303677,
+      "delta_mse_current_minus_bandwidth07": -1.859116235367812e-05,
+      "relative_change_percent": -1.617387975381257,
+      "improved": true
+    },
+    {
+      "target_index": 13,
+      "drug": "Luminespib",
+      "current_mse": 0.0006683327449023639,
+      "bandwidth07_mse": 0.0006861981783436254,
+      "delta_mse_current_minus_bandwidth07": -1.7865433441261553e-05,
+      "relative_change_percent": -2.603538453626608,
+      "improved": true
+    },
+    {
+      "target_index": 6,
+      "drug": "Encorafenib",
+      "current_mse": 0.0019938592738140692,
+      "bandwidth07_mse": 0.002008803845321599,
+      "delta_mse_current_minus_bandwidth07": -1.494457150752991e-05,
+      "relative_change_percent": -0.7439537485123271,
+      "improved": true
+    },
+    {
+      "target_index": 4,
+      "drug": "Atorvastatin",
+      "current_mse": 0.0007296100063270956,
+      "bandwidth07_mse": 0.0007435071005774642,
+      "delta_mse_current_minus_bandwidth07": -1.3897094250368597e-05,
+      "relative_change_percent": -1.869127307536811,
+      "improved": true
+    },
+    {
+      "target_index": 14,
+      "drug": "Methotrexate",
+      "current_mse": 0.0008953840672779616,
+      "bandwidth07_mse": 0.0009081801461460348,
+      "delta_mse_current_minus_bandwidth07": -1.2796078868073236e-05,
+      "relative_change_percent": -1.4089802471871749,
+      "improved": true
+    },
+    {
+      "target_index": 23,
+      "drug": "Volasertib",
+      "current_mse": 0.0007768157815656421,
+      "bandwidth07_mse": 0.0007894182618673472,
+      "delta_mse_current_minus_bandwidth07": -1.2602480301705105e-05,
+      "relative_change_percent": -1.596426243281257,
+      "improved": true
+    },
+    {
+      "target_index": 16,
+      "drug": "Palbociclib",
+      "current_mse": 0.0016195919384122336,
+      "bandwidth07_mse": 0.0016282264101015072,
+      "delta_mse_current_minus_bandwidth07": -8.634471689273563e-06,
+      "relative_change_percent": -0.5302992038272669,
+      "improved": true
+    },
+    {
+      "target_index": 12,
+      "drug": "Lapatinib",
+      "current_mse": 0.0008430899769032471,
+      "bandwidth07_mse": 0.0008506139524040387,
+      "delta_mse_current_minus_bandwidth07": -7.523975500791638e-06,
+      "relative_change_percent": -0.8845346916221075,
+      "improved": true
+    },
+    {
+      "target_index": 20,
+      "drug": "SN-38",
+      "current_mse": 0.0005601462688490818,
+      "bandwidth07_mse": 0.0005674313654643131,
+      "delta_mse_current_minus_bandwidth07": -7.285096615231327e-06,
+      "relative_change_percent": -1.283872739264269,
+      "improved": true
+    },
+    {
+      "target_index": 8,
+      "drug": "Gemcitabine",
+      "current_mse": 0.0010235463055789597,
+      "bandwidth07_mse": 0.001025872593938739,
+      "delta_mse_current_minus_bandwidth07": -2.3262883597793913e-06,
+      "relative_change_percent": -0.22676191697916792,
+      "improved": true
+    },
+    {
+      "target_index": 2,
+      "drug": "Afatinib",
+      "current_mse": 0.0012663535060878518,
+      "bandwidth07_mse": 0.0012635622362233332,
+      "delta_mse_current_minus_bandwidth07": 2.7912698645185703e-06,
+      "relative_change_percent": 0.22090481849643684,
+      "improved": false
+    },
+    {
+      "target_index": 19,
+      "drug": "Regorafenib",
+      "current_mse": 0.0010943191263007087,
+      "bandwidth07_mse": 0.0010899556662439746,
+      "delta_mse_current_minus_bandwidth07": 4.363460056734094e-06,
+      "relative_change_percent": 0.4003337192393097,
+      "improved": false
+    },
+    {
+      "target_index": 1,
+      "drug": "AZD7762",
+      "current_mse": 0.0011309775885498157,
+      "bandwidth07_mse": 0.0011228722723053057,
+      "delta_mse_current_minus_bandwidth07": 8.105316244509967e-06,
+      "relative_change_percent": 0.721837776603862,
+      "improved": false
+    },
+    {
+      "target_index": 10,
+      "drug": "LCL161",
+      "current_mse": 0.0010108719976433098,
+      "bandwidth07_mse": 0.0010025451960770225,
+      "delta_mse_current_minus_bandwidth07": 8.32680156628721e-06,
+      "relative_change_percent": 0.8305662027876748,
+      "improved": false
+    },
+    {
+      "target_index": 22,
+      "drug": "Trametinib",
+      "current_mse": 0.0009162665032925765,
+      "bandwidth07_mse": 0.0009038132869530456,
+      "delta_mse_current_minus_bandwidth07": 1.2453216339530868e-05,
+      "relative_change_percent": 1.3778527622130277,
+      "improved": false
+    }
+  ],
+  "patient_level_rows_published": false,
+  "selection_adjusted": false,
+  "independent_validation": false,
+  "protected22_access": false
+}
