@@ -61,15 +61,15 @@ PINNED_RECEIPTS = {
     "isotonic_paid_features": "01934ca5139a219814572bd5b3e28923c98b8ad37ee3146a405f5ddd247476da",
     "cooptimized_calibrated_control": "1238e432ed0a9abffce855440b6f290c056373f988ced6b3d3b57ce85c1cd74e",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
-    "frozen_ooc_release_binding": "7c7b60dd0dd1a056f62add0c5bb35250ced4700d9a574ce5f36390d619fef89a",
+    "frozen_ooc_release_binding": "7573ab0029199823e8a5c1ab7b8281b18c5093d8068f2d91ef9e4867957acd61",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
-    "reviewer_path_release": "610bd47a997ff98415caf92d87f57b31e78b9215003d21b06cd1a5a0f916bdaa",
+    "reviewer_path_release": "9752d685e4a2555ca9b184be67ba75c2888174ac687684bbe77af612a751173c",
     "development_search_governance": "06bf56a3658c47a99e4f9e07c1e06e11ad348de4a840aba1dad495e2b8495d35",
 }
 
 PINNED_DOCUMENTS = {
     "docs/EVIDENCE_LEDGER.md": "012da3d9fb39b240e7161fc05e96d904c185e0df975002642ffa6044c2c50e1a",
-    "docs/KAGGLE_WRITEUP.md": "3418f9064fca2b8bd3396f6dde869bc91878651ea53ab458ed1f572450474466",
+    "docs/KAGGLE_WRITEUP.md": "2e1ebdd0d625d1a2c7ed82b8c218be33688f679548309daf25cb932014ffbf88",
 }
 
 CURRENT_REPORT_RECEIPT_SHA256 = "c870eed1a915c336ebf673cc15f9999aed0cbcdfff110ff82e72d69f62ba9eef"
@@ -316,7 +316,7 @@ def verify(root, enforce_pins=True):
         same(target_index[key], receipt_value, "INDEX_TARGET_DEFINITIONS_" + key.upper())
 
     reviewer_release = receipts["reviewer_path_release"]
-    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v23", "REVIEWER_PATH_SCHEMA")
+    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v24", "REVIEWER_PATH_SCHEMA")
     same(reviewer_release["status"], "PASS", "REVIEWER_PATH_STATUS")
     same(reviewer_release["role"], "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY", "REVIEWER_PATH_ROLE")
     reviewer_predecessor = reviewer_release["predecessor"]
@@ -339,8 +339,8 @@ def verify(root, enforce_pins=True):
         "LIVE_DEMO_TRACE_EXPORT.md",
         "VERIFY_DOWNLOADED_TRACE.md",
         "demo/verify_downloaded_trace.py",
-        "FINALIST_PACKAGE_PREFLIGHT_CURRENT.md",
-        "study/audits/finalist_package_preflight_current.py",
+        "FINALIST_PACKAGE_PREFLIGHT_REPORT_BOUND.md",
+        "study/audits/finalist_package_preflight_report_bound.py",
         "CLEAN_FINALIST_PACKAGE_EXECUTION.md",
         "CLEAN_CURRENT_FINALIST_PACKAGE_EXECUTION.md",
         "8/8 package checks",
@@ -375,8 +375,8 @@ def verify(root, enforce_pins=True):
         "LIVE_DEMO_TRACE_EXPORT.md",
         "Offline downloaded-file verifier:",
         "VERIFY_DOWNLOADED_TRACE.md",
-        "One-command current finalist-package preflight:",
-        "FINALIST_PACKAGE_PREFLIGHT_CURRENT.md",
+        "One-command current-report-bound finalist-package preflight:",
+        "FINALIST_PACKAGE_PREFLIGHT_REPORT_BOUND.md",
         "Clean isolated finalist-package execution:",
         "CLEAN_FINALIST_PACKAGE_EXECUTION.md",
         "Clean execution of the current finalist package:",
@@ -439,6 +439,8 @@ def verify(root, enforce_pins=True):
     same(reviewer_contract["finalist_package_preflight_checks"], 8, "REVIEWER_PATH_PACKAGE_CHECKS")
     same(reviewer_contract["finalist_package_canonical_stages"], 14, "REVIEWER_PATH_PACKAGE_CANONICAL_STAGES")
     same(reviewer_contract["finalist_package_canonical_tests"], 173, "REVIEWER_PATH_PACKAGE_CANONICAL_TESTS")
+    same(reviewer_contract["finalist_package_current_report_rubric_successor_checked"], True, "REVIEWER_PATH_PACKAGE_CURRENT_REPORT_RUBRIC")
+    same(reviewer_contract["finalist_package_current_report_raw_download_verified"], False, "REVIEWER_PATH_PACKAGE_NO_RAW_DOWNLOAD")
     same(reviewer_contract["clean_finalist_package_checks"], 8, "REVIEWER_PATH_CLEAN_PACKAGE_CHECKS")
     same(reviewer_contract["clean_finalist_package_canonical_stages"], 14, "REVIEWER_PATH_CLEAN_PACKAGE_STAGES")
     same(reviewer_contract["clean_finalist_package_canonical_tests"], 173, "REVIEWER_PATH_CLEAN_PACKAGE_TESTS")
@@ -508,6 +510,8 @@ def verify(root, enforce_pins=True):
         ("finalist_package_preflight_checks", reviewer_contract["finalist_package_preflight_checks"]),
         ("finalist_package_canonical_stages", reviewer_contract["finalist_package_canonical_stages"]),
         ("finalist_package_canonical_tests", reviewer_contract["finalist_package_canonical_tests"]),
+        ("finalist_package_current_report_rubric_successor_checked", reviewer_contract["finalist_package_current_report_rubric_successor_checked"]),
+        ("finalist_package_current_report_raw_download_verified", reviewer_contract["finalist_package_current_report_raw_download_verified"]),
         ("clean_finalist_package_execution_linked", reviewer_contract["clean_finalist_package_execution_linked"]),
         ("clean_finalist_package_checks", reviewer_contract["clean_finalist_package_checks"]),
         ("clean_finalist_package_canonical_stages", reviewer_contract["clean_finalist_package_canonical_stages"]),
@@ -919,7 +923,7 @@ def verify(root, enforce_pins=True):
     same(current_lifecycle_index["accepted_kaggle_entry_changed"], False, "INDEX_BANDWIDTH_LIFECYCLE_NO_ENTRY_CHANGE")
     same(current_lifecycle_index["official_competition_score"], None, "INDEX_BANDWIDTH_LIFECYCLE_NO_SCORE")
 
-    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v21", "FROZEN_SCHEDULE_SCHEMA")
+    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v22", "FROZEN_SCHEDULE_SCHEMA")
     same(frozen_schedule["status"], "PASS", "FROZEN_SCHEDULE_STATUS")
     same(frozen_schedule["role"], "RESPONSE_FREE_ENGINEERING_AND_RELEASE_EVIDENCE", "FROZEN_SCHEDULE_ROLE")
     frozen_predecessor = frozen_schedule["predecessor"]
@@ -968,6 +972,8 @@ def verify(root, enforce_pins=True):
     same(schedule_verification["downloadable_trace_linked"], True, "FROZEN_SCHEDULE_TRACE_LINK")
     same(schedule_verification["offline_downloaded_trace_verifier_linked"], True, "FROZEN_SCHEDULE_OFFLINE_TRACE_LINK")
     same(schedule_verification["finalist_package_preflight_linked"], True, "FROZEN_SCHEDULE_PACKAGE_PREFLIGHT_LINK")
+    same(schedule_verification["finalist_package_current_report_rubric_successor_checked"], True, "FROZEN_SCHEDULE_PACKAGE_CURRENT_REPORT_RUBRIC")
+    same(schedule_verification["finalist_package_current_report_raw_download_verified"], False, "FROZEN_SCHEDULE_PACKAGE_NO_RAW_DOWNLOAD")
     same(schedule_verification["clean_finalist_package_execution_linked"], True, "FROZEN_SCHEDULE_CLEAN_PACKAGE_LINK")
     same(schedule_verification["clean_finalist_package_checks"], 8, "FROZEN_SCHEDULE_CLEAN_PACKAGE_CHECKS")
     same(schedule_verification["clean_finalist_package_canonical_stages"], 14, "FROZEN_SCHEDULE_CLEAN_PACKAGE_STAGES")
@@ -995,7 +1001,7 @@ def verify(root, enforce_pins=True):
     schedule_index = index["frozen_ooc_release_binding"]
     for key in ("role", "status"):
         same(schedule_index[key], frozen_schedule[key], "INDEX_FROZEN_SCHEDULE_" + key.upper())
-    for key in ("treatment_wells_per_orientation", "plate_counts_per_orientation", "targets", "two_dose_targets", "three_dose_targets", "ab_same_treatments", "ab_complementary_plate_assignment", "public_schedule_rows", "public_site_schedule_exact", "manifest_table_exact", "transport_escape_literals", "bandwidth_post_selection_disclosed", "nested_bandwidth_selection_linked", "nested_bandwidth_all_outer_training_sets_selected_07", "nested_bandwidth_independent_validation", "cooptimized_control_linked", "cooptimized_control_decision", "cooptimized_control_independent_validation", "overstated_search_label_absent", "cross_patient_negative_disclosed", "cross_patient_negative_linked", "promotion_gate_predicates_derived", "orientation_vector_validated", "additive_p90_crosschecked", "historical_fold_counts_pinned", "verification_chronology_linked", "current_report_bound_test_count", "historical_168_originally_bound_earlier_report_revision", "current_finalist_rubric_evidence_linked", "current_finalist_rubric_self_score_assigned", "current_finalist_probability_estimated", "current_package_finalist_rubric_evidence_linked", "current_package_finalist_rubric_self_score_assigned", "current_package_finalist_probability_estimated", "current_report_finalist_rubric_evidence_linked", "current_report_finalist_rubric_self_score_assigned", "current_report_finalist_probability_estimated", "current_report_public_render_verified", "current_report_raw_download_verified", "downloadable_trace_linked", "offline_downloaded_trace_verifier_linked", "finalist_package_preflight_linked", "clean_finalist_package_execution_linked", "clean_finalist_package_checks", "clean_finalist_package_canonical_stages", "clean_finalist_package_canonical_tests", "clean_finalist_package_fresh_public_clone", "clean_finalist_package_clean_new_machine_certification", "clean_current_finalist_package_execution_linked", "clean_current_finalist_package_checks", "clean_current_finalist_package_current_rubric_successor_checked", "clean_current_finalist_package_canonical_stages", "clean_current_finalist_package_canonical_tests", "clean_current_finalist_package_fresh_public_clone", "clean_current_finalist_package_clean_new_machine_certification", "export_contains_raw_readings_or_outputs", "new_tamper_tests_passed", "release_preflight_check_count", "orchestrated_response_free_tests"):
+    for key in ("treatment_wells_per_orientation", "plate_counts_per_orientation", "targets", "two_dose_targets", "three_dose_targets", "ab_same_treatments", "ab_complementary_plate_assignment", "public_schedule_rows", "public_site_schedule_exact", "manifest_table_exact", "transport_escape_literals", "bandwidth_post_selection_disclosed", "nested_bandwidth_selection_linked", "nested_bandwidth_all_outer_training_sets_selected_07", "nested_bandwidth_independent_validation", "cooptimized_control_linked", "cooptimized_control_decision", "cooptimized_control_independent_validation", "overstated_search_label_absent", "cross_patient_negative_disclosed", "cross_patient_negative_linked", "promotion_gate_predicates_derived", "orientation_vector_validated", "additive_p90_crosschecked", "historical_fold_counts_pinned", "verification_chronology_linked", "current_report_bound_test_count", "historical_168_originally_bound_earlier_report_revision", "current_finalist_rubric_evidence_linked", "current_finalist_rubric_self_score_assigned", "current_finalist_probability_estimated", "current_package_finalist_rubric_evidence_linked", "current_package_finalist_rubric_self_score_assigned", "current_package_finalist_probability_estimated", "current_report_finalist_rubric_evidence_linked", "current_report_finalist_rubric_self_score_assigned", "current_report_finalist_probability_estimated", "current_report_public_render_verified", "current_report_raw_download_verified", "downloadable_trace_linked", "offline_downloaded_trace_verifier_linked", "finalist_package_preflight_linked", "finalist_package_current_report_rubric_successor_checked", "finalist_package_current_report_raw_download_verified", "clean_finalist_package_execution_linked", "clean_finalist_package_checks", "clean_finalist_package_canonical_stages", "clean_finalist_package_canonical_tests", "clean_finalist_package_fresh_public_clone", "clean_finalist_package_clean_new_machine_certification", "clean_current_finalist_package_execution_linked", "clean_current_finalist_package_checks", "clean_current_finalist_package_current_rubric_successor_checked", "clean_current_finalist_package_canonical_stages", "clean_current_finalist_package_canonical_tests", "clean_current_finalist_package_fresh_public_clone", "clean_current_finalist_package_clean_new_machine_certification", "export_contains_raw_readings_or_outputs", "new_tamper_tests_passed", "release_preflight_check_count", "orchestrated_response_free_tests"):
         same(schedule_index[key], schedule_verification[key], "INDEX_FROZEN_SCHEDULE_" + key.upper())
     for key in ("prospective_experiment_executed", "biological_validation_created", "protected_response_access", "private_patient_rows_read", "accepted_kaggle_entry_changed", "official_competition_score"):
         same(schedule_index[key], frozen_schedule[key], "INDEX_FROZEN_SCHEDULE_BOUNDARY_" + key.upper())

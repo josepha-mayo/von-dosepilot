@@ -56,16 +56,16 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r21_20261006.json",
-      "sha256": "7c7b60dd0dd1a056f62add0c5bb35250ced4700d9a574ce5f36390d619fef89a"
+      "path": "evidence/frozen_ooc_release_binding_r22_20261006.json",
+      "sha256": "7573ab0029199823e8a5c1ab7b8281b18c5093d8068f2d91ef9e4867957acd61"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r23_20261006.json",
-      "sha256": "610bd47a997ff98415caf92d87f57b31e78b9215003d21b06cd1a5a0f916bdaa"
+      "path": "evidence/reviewer_path_release_r24_20261006.json",
+      "sha256": "9752d685e4a2555ca9b184be67ba75c2888174ac687684bbe77af612a751173c"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r3_20261005.json",
@@ -142,6 +142,8 @@
     "finalist_package_preflight_linked": true,
     "finalist_package_preflight_checks": 8,
     "finalist_package_current_rubric_successor_checked": true,
+    "finalist_package_current_report_rubric_successor_checked": true,
+    "finalist_package_current_report_raw_download_verified": false,
     "finalist_package_canonical_stages": 14,
     "finalist_package_canonical_tests": 173,
     "clean_finalist_package_execution_linked": true,
@@ -344,8 +346,8 @@
     "official_competition_score": null
   },
   "verification_chronology": {
-    "path": "evidence/verification_chronology_r13_20261006.json",
-    "sha256": "55e89e5e8f193f277873a0100e89f26fac3f8a6b1636e6cc92af8b9c5d752fc0",
+    "path": "evidence/verification_chronology_r14_20261006.json",
+    "sha256": "eaa5a3fe2f31394901f4c55a8407749b173329a878e152a9372dcf1f9f2aa9f9",
     "status": "PASS",
     "latest_orchestrated_response_free_tests": 173,
     "current_report_bound_test_count": 173,
@@ -377,11 +379,11 @@
     "official_competition_score": null
   },
   "reviewer_route_integrity": {
-    "path": "evidence/reviewer_route_integrity_r18_20261006.json",
-    "sha256": "378b5f917bee0a04f790575f02668ac5acafe67bc1f8f453b821cad59db6a316",
+    "path": "evidence/reviewer_route_integrity_r19_20261006.json",
+    "sha256": "230a3da40c3dbe74987d44e0c05032ec689d92cceff87df1765dbca1d537919a",
     "status": "PASS",
     "audited_surfaces": 5,
-    "local_targets": 86,
+    "local_targets": 84,
     "github_master_targets": 27,
     "anchors": 1,
     "required_urls": 5,
@@ -397,6 +399,8 @@
     "offline_downloaded_trace_verifier_linked": true,
     "finalist_package_preflight_linked": true,
     "finalist_package_current_rubric_successor_checked": true,
+    "finalist_package_current_report_rubric_successor_checked": true,
+    "finalist_package_current_report_raw_download_verified": false,
     "clean_finalist_package_execution_linked": true,
     "clean_finalist_package_checks": 8,
     "clean_finalist_package_canonical_stages": 14,
@@ -845,6 +849,8 @@
     "downloadable_trace_linked": true,
     "offline_downloaded_trace_verifier_linked": true,
     "finalist_package_preflight_linked": true,
+    "finalist_package_current_report_rubric_successor_checked": true,
+    "finalist_package_current_report_raw_download_verified": false,
     "clean_finalist_package_execution_linked": true,
     "clean_finalist_package_checks": 8,
     "clean_finalist_package_canonical_stages": 14,

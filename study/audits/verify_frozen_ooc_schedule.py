@@ -113,7 +113,7 @@ def verify(root,repo):
     require(cpm_link in site_html,'SITE_CPM_LINK')
     offline_trace_url='https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/VERIFY_DOWNLOADED_TRACE.md'
     require(offline_trace_url in writeup,'WRITEUP_OFFLINE_TRACE_VERIFIER_LINK')
-    finalist_preflight_url='https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FINALIST_PACKAGE_PREFLIGHT_CURRENT.md'
+    finalist_preflight_url='https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FINALIST_PACKAGE_PREFLIGHT_REPORT_BOUND.md'
     require(finalist_preflight_url in writeup,'WRITEUP_FINALIST_PACKAGE_PREFLIGHT_LINK')
 
     grouped={}

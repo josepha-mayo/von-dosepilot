@@ -1,0 +1,91 @@
+{
+  "schema": "dosepilot.verification_chronology.v1",
+  "status": "PASS",
+  "as_of_date": "2026-10-06",
+  "role": "RESPONSE_FREE_RELEASE_TEST_HISTORY",
+  "predecessor": {
+    "path": "evidence/verification_chronology_r13_20261006.json",
+    "sha256": "55e89e5e8f193f277873a0100e89f26fac3f8a6b1636e6cc92af8b9c5d752fc0",
+    "preserved_unchanged": true
+  },
+  "supersedes_reason": "Rebinds the unchanged 157/168/173-test chronology after promoting the additive report-bound v3 finalist-package preflight to the primary reviewer command. No canonical test count, model result, Kaggle entry or biological evidence changed.",
+  "states": [
+    {
+      "label": "portable_reviewer_quickstart",
+      "path": "evidence/release_preflight_portable_quickstart_final2_20261004.json",
+      "sha256": "9c0913235ee5b81aafc234581d7beea6c0aa5352b6ca346e3fc69f0263177d3b",
+      "status": "PASS",
+      "check_count": 14,
+      "orchestrated_test_count": 157
+    },
+    {
+      "label": "report_site_and_gate_hardening",
+      "path": "evidence/release_preflight_site_cpm_sync_pass1_20261004.json",
+      "sha256": "3746dc0fb82e9aa9b8d563e45b935f5701f48b1cdc4ef8401ecf3c06bc46ba45",
+      "status": "PASS",
+      "check_count": 14,
+      "orchestrated_test_count": 168
+    },
+    {
+      "label": "finalist_rubric_evidence_map",
+      "path": "evidence/release_preflight_rubric_map_pass1_20261004.json",
+      "sha256": "92ca10dc68228ff438618d160859a5b5d86ae2d934a798041be45e515dc42d2b",
+      "status": "PASS",
+      "check_count": 14,
+      "orchestrated_test_count": 173
+    }
+  ],
+  "governance_milestone": {
+    "path": "evidence/development_search_governance_20261004.json",
+    "sha256": "a33226c581ae54440eab1484ddee2c9f2f33924baf17436147388acf8c794649",
+    "status": "PASS",
+    "reported_current_release_preflight_orchestrated_tests": 171
+  },
+  "artifact_sha256": {
+    "README.md": "8e84b738b94b9c6d56f78599d0d3dd1b346b6ea98908908b99938f20b95b6b88",
+    "00_REVIEWER_START_HERE.md": "f6fa673487bbe26f2f867cc7235493bc5fb5789f18d5bfa504a4394ff9d1ea4b",
+    "docs/VERIFICATION_CHRONOLOGY.md": "6f3d4ba093863c20b99bca3002bb742b08a3d9a76fc44b8571b282c855353887",
+    "study/audits/verify_verification_chronology.py": "56c96bbf5283bae60a2e5bf29d4f282743be44ca12d9a0302bd4a966e6b7c705",
+    "study/audits/test_verification_chronology.py": "c4875a0e06129a85adbe3c4d74dd1d4c27958efb84055c84daf59287c39cdf97",
+    "docs/CLEAN_CURRENT_FINALIST_PACKAGE_EXECUTION.md": "7286f9e90b0506ce5347e5c525fd04bccd0b369e3befc0f84212571ba6d5e847",
+    "evidence/clean_current_finalist_package_execution_20261005.json": "5b6bae37b328d9130ee639c7988632e561a05716761db83b674e37df61e922c3",
+    "docs/KAGGLE_WRITEUP.md": "2e1ebdd0d625d1a2c7ed82b8c218be33688f679548309daf25cb932014ffbf88",
+    "docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_PACKAGE.md": "5e30749af6636d533eb1e5d897ddeb3a56b30c24f4fe7fafffcae94882151f99",
+    "evidence/finalist_rubric_evidence_r3_20261005.json": "790e18cb117e5e81c96d61b4c6cabec9dac8965d56286e23c17ee0434df948c9",
+    "docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_REPORT.md": "8006e2ac5a59fdc7b7ed889afabe3889bdaa6ebc9b530f5fc6066a6299978272",
+    "evidence/finalist_rubric_evidence_r5_20261006.json": "b8917193d24f486bf194bf7f3ad2ba6b63e25c716efc58b573ccb0760208107c",
+    "evidence/reviewer_route_integrity_r18_20261006.json": "378b5f917bee0a04f790575f02668ac5acafe67bc1f8f453b821cad59db6a316",
+    "evidence/reviewer_path_release_r23_20261006.json": "610bd47a997ff98415caf92d87f57b31e78b9215003d21b06cd1a5a0f916bdaa",
+    "evidence/frozen_ooc_release_binding_r21_20261006.json": "7c7b60dd0dd1a056f62add0c5bb35250ced4700d9a574ce5f36390d619fef89a",
+    "docs/FINALIST_PACKAGE_PREFLIGHT_REPORT_BOUND.md": "1ddcfefbc15ff9ad86acda949b9521d7300f86f15bf020e99e26477485887190",
+    "study/audits/finalist_package_preflight_report_bound.py": "70b20c7746ce091b3238e0f85475d2d3b21582955ab966c4fc0065e3d114c7ac",
+    "study/audits/verify_finalist_package_preflight_report_bound.py": "27c2947b0ce3eb1b66b04608029df78da975b34240165067acb8fe77cfd89065",
+    "study/audits/test_finalist_package_preflight_report_bound.py": "ffcdddcaf621863e519a01769a366259549180ab719a07e90250f65e0a0d930a",
+    "evidence/finalist_package_preflight_r3_20261006.json": "b17d5f01941d430c44fe0cb9fac1069e5fa95818e5f1966843c34001025a53d7",
+    "evidence/reviewer_route_integrity_r19_20261006.json": "230a3da40c3dbe74987d44e0c05032ec689d92cceff87df1765dbca1d537919a",
+    "evidence/reviewer_path_release_r24_20261006.json": "9752d685e4a2555ca9b184be67ba75c2888174ac687684bbe77af612a751173c",
+    "evidence/frozen_ooc_release_binding_r22_20261006.json": "7573ab0029199823e8a5c1ab7b8281b18c5093d8068f2d91ef9e4867957acd61"
+  },
+  "interpretation": {
+    "test_totals_are_additive": true,
+    "lower_historical_total_means_failed_tests": false,
+    "response_free_tests_are_biological_experiments": false,
+    "historical_receipts_rewritten": false,
+    "current_report_bound_test_count": 173,
+    "historical_168_originally_bound_earlier_report_revision": true
+  },
+  "preserved_operational_failure": {
+    "command": "python -m unittest study.audits.test_release_preflight_current -q",
+    "status": "IMPORT_PATH_FAILURE",
+    "scientific_or_product_failure": false,
+    "correct_documented_invocation": "python -m unittest discover -s study/audits -p test_release_preflight_current.py -q",
+    "correct_invocation_tests_passed": 3
+  },
+  "claim_boundary": {
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "independent_validation_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  }
+}
