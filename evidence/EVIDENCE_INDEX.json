@@ -56,16 +56,16 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r22_20261006.json",
-      "sha256": "7573ab0029199823e8a5c1ab7b8281b18c5093d8068f2d91ef9e4867957acd61"
+      "path": "evidence/frozen_ooc_release_binding_r23_20261006.json",
+      "sha256": "5f0aecdd06f1447c57fad7a16c82b4abcebf6c1635e7642c86ee61403effe5d8"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r24_20261006.json",
-      "sha256": "9752d685e4a2555ca9b184be67ba75c2888174ac687684bbe77af612a751173c"
+      "path": "evidence/reviewer_path_release_r25_20261006.json",
+      "sha256": "ac652443b854413916ab05974f760a0ce6c06fbb7274c81182997bc3afd4a01d"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r3_20261005.json",
@@ -159,6 +159,14 @@
     "clean_current_finalist_package_canonical_tests": 173,
     "clean_current_finalist_package_fresh_public_clone": false,
     "clean_current_finalist_package_clean_new_machine_certification": false,
+    "clean_report_bound_finalist_package_execution_linked": true,
+    "clean_report_bound_finalist_package_checks": 8,
+    "clean_report_bound_finalist_package_live_dependency_download_observed": true,
+    "clean_report_bound_finalist_package_current_report_rubric_successor_checked": true,
+    "clean_report_bound_finalist_package_canonical_stages": 14,
+    "clean_report_bound_finalist_package_canonical_tests": 173,
+    "clean_report_bound_finalist_package_raw_download_verified": false,
+    "clean_report_bound_finalist_package_clean_new_machine_certification": false,
     "downloadable_trace_export_contains_raw_readings_or_outputs": false,
     "latest_release_test_count": 173,
     "report_bound_historical_test_count": 173,
@@ -365,8 +373,8 @@
     "official_competition_score": null
   },
   "verification_chronology": {
-    "path": "evidence/verification_chronology_r14_20261006.json",
-    "sha256": "eaa5a3fe2f31394901f4c55a8407749b173329a878e152a9372dcf1f9f2aa9f9",
+    "path": "evidence/verification_chronology_r15_20261006.json",
+    "sha256": "9e95ec3c2e71675dbccb0ed30866c847f5a75421ca2910a51c5077c1c7225e80",
     "status": "PASS",
     "latest_orchestrated_response_free_tests": 173,
     "current_report_bound_test_count": 173,
@@ -398,11 +406,11 @@
     "official_competition_score": null
   },
   "reviewer_route_integrity": {
-    "path": "evidence/reviewer_route_integrity_r19_20261006.json",
-    "sha256": "230a3da40c3dbe74987d44e0c05032ec689d92cceff87df1765dbca1d537919a",
+    "path": "evidence/reviewer_route_integrity_r20_20261006.json",
+    "sha256": "32f6fdfd9d78c9b5bb4f1d33e740ef1ab1e9a49348b6055826fd933885b39bc1",
     "status": "PASS",
     "audited_surfaces": 5,
-    "local_targets": 84,
+    "local_targets": 86,
     "github_master_targets": 27,
     "anchors": 1,
     "required_urls": 5,
@@ -411,6 +419,7 @@
     "finalist_package_preflight_links": 3,
     "clean_finalist_package_execution_links": 3,
     "clean_current_finalist_package_execution_links": 3,
+    "clean_report_bound_finalist_package_execution_links": 3,
     "nested_links": 3,
     "network_requests": 0,
     "external_playback_verified": false,
@@ -429,6 +438,11 @@
     "clean_current_finalist_package_execution_linked": true,
     "clean_current_finalist_package_checks": 8,
     "clean_current_finalist_package_current_rubric_successor_checked": true,
+    "clean_report_bound_finalist_package_execution_linked": true,
+    "clean_report_bound_finalist_package_checks": 8,
+    "clean_report_bound_finalist_package_live_dependency_download_observed": true,
+    "clean_report_bound_finalist_package_current_report_rubric_successor_checked": true,
+    "clean_report_bound_finalist_package_raw_download_verified": false,
     "export_contains_raw_readings_or_outputs": false,
     "private_or_protected_inputs_read": false,
     "biological_accuracy_result_created": false,
@@ -883,6 +897,14 @@
     "clean_current_finalist_package_canonical_tests": 173,
     "clean_current_finalist_package_fresh_public_clone": false,
     "clean_current_finalist_package_clean_new_machine_certification": false,
+    "clean_report_bound_finalist_package_execution_linked": true,
+    "clean_report_bound_finalist_package_checks": 8,
+    "clean_report_bound_finalist_package_live_dependency_download_observed": true,
+    "clean_report_bound_finalist_package_current_report_rubric_successor_checked": true,
+    "clean_report_bound_finalist_package_canonical_stages": 14,
+    "clean_report_bound_finalist_package_canonical_tests": 173,
+    "clean_report_bound_finalist_package_raw_download_verified": false,
+    "clean_report_bound_finalist_package_clean_new_machine_certification": false,
     "export_contains_raw_readings_or_outputs": false,
     "new_tamper_tests_passed": 7,
     "release_preflight_check_count": 14,

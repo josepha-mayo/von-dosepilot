@@ -32,6 +32,7 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
             receipt["finalist_package_preflight"]["path"],
             receipt["clean_finalist_package_execution"]["path"],
             receipt["clean_current_finalist_package_execution"]["path"],
+            receipt["clean_report_bound_finalist_package_execution"]["path"],
             receipt["cooptimized_control"]["path"],
             receipt["current_finalist_rubric_evidence"]["path"],
             receipt["current_package_finalist_rubric_evidence"]["path"],
@@ -91,6 +92,7 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         self.assertTrue(result["finalist_package_preflight_linked"])
         self.assertTrue(result["clean_finalist_package_execution_linked"])
         self.assertTrue(result["clean_current_finalist_package_execution_linked"])
+        self.assertTrue(result["clean_report_bound_finalist_package_execution_linked"])
         self.assertTrue(result["cooptimized_control_linked"])
         self.assertTrue(result["current_finalist_rubric_evidence_linked"])
         self.assertFalse(result["current_finalist_rubric_self_score_assigned"])
@@ -163,6 +165,14 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         path.write_text(path.read_text().replace("docs/CLEAN_CURRENT_FINALIST_PACKAGE_EXECUTION.md", "docs/FINALIST_AUDIT.md", 1))
         self.rehash_surface("docs/KAGGLE_WRITEUP.md", receipt)
         with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "WRITEUP_CURRENT_CLEAN_PACKAGE_LINK"):
+            verify(self.root)
+
+    def test_writeup_report_bound_clean_package_link_removal_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / "docs/KAGGLE_WRITEUP.md"
+        path.write_text(path.read_text().replace("docs/CLEAN_REPORT_BOUND_FINALIST_PACKAGE_EXECUTION.md", "docs/FINALIST_AUDIT.md", 1))
+        self.rehash_surface("docs/KAGGLE_WRITEUP.md", receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "WRITEUP_REPORT_BOUND_CLEAN_PACKAGE_LINK"):
             verify(self.root)
 
     def test_nonportable_writeup_link_fails_even_when_rehashed(self):
