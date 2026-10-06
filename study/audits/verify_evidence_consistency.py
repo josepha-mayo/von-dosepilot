@@ -37,6 +37,10 @@ from verify_clean_current_finalist_package_execution import (
     CleanCurrentFinalistPackageExecutionError,
     verify as verify_clean_current_finalist_package_execution,
 )
+from verify_finalist_package_preflight_report_bound import (
+    ReportBoundFinalistPackagePreflightError,
+    verify as verify_report_bound_finalist_package_preflight,
+)
 
 
 class EvidenceError(ValueError):
@@ -1291,6 +1295,18 @@ def verify(root, enforce_pins=True):
     same(current_report_rubric_result["accepted_kaggle_entry_changed"], False, "CURRENT_REPORT_RUBRIC_EVIDENCE_NO_KAGGLE_CHANGE")
     same(current_report_rubric_result["official_competition_score"], None, "CURRENT_REPORT_RUBRIC_EVIDENCE_NO_SCORE")
     try:
+        report_bound_package_result = verify_report_bound_finalist_package_preflight(root)
+    except ReportBoundFinalistPackagePreflightError as exc:
+        raise EvidenceError("REPORT_BOUND_FINALIST_PACKAGE_PREFLIGHT: " + str(exc)) from exc
+    same(report_bound_package_result["package_checks"], 8, "REPORT_BOUND_PACKAGE_CHECKS")
+    same(report_bound_package_result["current_report_rubric_successor_checked"], True, "REPORT_BOUND_PACKAGE_RUBRIC_SUCCESSOR")
+    same(report_bound_package_result["current_report_bytes"], 92307, "REPORT_BOUND_PACKAGE_REPORT_BYTES")
+    same(report_bound_package_result["raw_download_verified"], False, "REPORT_BOUND_PACKAGE_NO_RAW_DOWNLOAD")
+    same(report_bound_package_result["canonical_release_stages"], 14, "REPORT_BOUND_PACKAGE_CANONICAL_STAGES")
+    same(report_bound_package_result["canonical_orchestrated_tests"], 173, "REPORT_BOUND_PACKAGE_CANONICAL_TESTS")
+    same(report_bound_package_result["accepted_kaggle_entry_changed"], False, "REPORT_BOUND_PACKAGE_NO_KAGGLE_CHANGE")
+    same(report_bound_package_result["official_competition_score"], None, "REPORT_BOUND_PACKAGE_NO_SCORE")
+    try:
         chronology_result = verify_verification_chronology(root)
     except ChronologyError as exc:
         raise EvidenceError("VERIFICATION_CHRONOLOGY: " + str(exc)) from exc
@@ -1371,6 +1387,9 @@ def verify(root, enforce_pins=True):
         "current_report_rubric_evidence_criteria": current_report_rubric_result["criteria"],
         "current_report_rubric_evidence_bytes": current_report_rubric_result["current_report_bytes"],
         "current_report_rubric_raw_download_verified": current_report_rubric_result["raw_download_verified"],
+        "report_bound_finalist_package_checks": report_bound_package_result["package_checks"],
+        "report_bound_finalist_package_rubric_successor_checked": report_bound_package_result["current_report_rubric_successor_checked"],
+        "report_bound_finalist_package_raw_download_verified": report_bound_package_result["raw_download_verified"],
         "current_preflight_tests": current_preflight["orchestrated_test_count"],
         "verification_chronology_latest_tests": chronology_result["latest_orchestrated_test_count"],
         "clean_finalist_package_checks": clean_package_result["package_checks"],
