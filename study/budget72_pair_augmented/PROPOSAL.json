@@ -1,0 +1,20 @@
+{
+  "schema": "dosepilot.budget72_pair_augmented.proposal.v1",
+  "state": "PROPOSED_BEFORE_CANDIDATE_OUTCOME",
+  "family_id": "budget72_pair_augmented",
+  "role": "FROZEN_INNER_ONLY_PAIR_INTERACTION_AUGMENTATION",
+  "question": "Do PSD pairwise products of centered drug-group kernels improve the 72-well bandwidth-0.7 residual frontier?",
+  "pair_strength_grid": [0.0, 0.1, 0.25, 0.5],
+  "residual_option_count": 10,
+  "joint_option_count": 40,
+  "pair_scale": "fitting-only weighted diagonal energy normalization",
+  "incumbent_contained_at_pair_strength_zero": true,
+  "target_specific_selection": false,
+  "orientation_specific_selection": false,
+  "treatment_wells": 72,
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}

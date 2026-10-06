@@ -1,0 +1,49 @@
+{
+  "schema": "dosepilot.budget72_pair_augmented.freeze.v1",
+  "state": "FROZEN_BEFORE_CANDIDATE_OUTCOME",
+  "frozen_date": "2026-10-06",
+  "family_id": "budget72_pair_augmented",
+  "role": "FROZEN_INNER_ONLY_PAIR_INTERACTION_AUGMENTATION",
+  "input_sha256": {
+    "train_curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "frontier72": "72f803893e252a88777dbf2e5ef918d452da697da986d72adcbcb61f9e749a65"
+  },
+  "source_sha256": {
+    "study/budget72_pair_augmented/PROPOSAL.json": "497ed24604c1973345181957003b5b1c942a81da5e5885c033c58951ab6d702f",
+    "study/budget72_pair_augmented/PROTOCOL.md": "c0669683d6e7a450a1a83802cdde650e20f127582804a3e51d1f4f7475336b90",
+    "study/budget72_pair_augmented/pair_augmented72.py": "a2782a03a7bb441d1b42db72f00279ec997773ef74fc158c70197196fe30d534",
+    "study/budget72_pair_augmented/run_study.py": "f8f92b013538cd0c05bf8c4dbd181df60837ee0ca8b5901cdfab652d0d7a87b0",
+    "study/budget72_pair_augmented/test_study.py": "242b152c3e74393d7983c09b180415093f53a2a4ebe609aa0d948e91caff1b30"
+  },
+  "dependency_sha256": {
+    "study/budget72_bandwidth07_residual/run_study.py": "ca6666c24e9f3e6030499ff52c4970b25ea6a6dd2df4bb01c1e98737c6e0518e",
+    "study/budget72_bandwidth07_residual/bandwidth_additive72.py": "a67dc57e1cc8848af9ceef712df5af0f23cccd081688a609632f202549bedf06",
+    "study/budget_upgrade_curve/run_study.py": "ffa862567139127a236947048be16c65aba6bd8a17374b636e486424f99c95d9",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/engine/sparse_methods.py": "511ea1665a7f245cd3a2923fd8a6be6f5c2e45ba901da1620f7298a4125ec64c",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/evaluate.py": "24593a7d8608fd3ce98c367e1760af596b3b33554c1ef7a3f8ac645b046b700b"
+  },
+  "pair_strength_grid": [0.0, 0.1, 0.25, 0.5],
+  "residual_option_count": 10,
+  "joint_option_count": 40,
+  "bandwidth_multiplier": 0.7,
+  "expected_frontier_mse": 0.0009326007417880046,
+  "treatment_wells": 72,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "bootstrap_seed": 20261006,
+  "bootstrap_replicates": 100000,
+  "synthetic_tests_passed": 3,
+  "incumbent_contained_at_pair_strength_zero": true,
+  "target_specific_selection": false,
+  "orientation_specific_selection": false,
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "automatic_retry": false,
+  "protected22_access": false,
+  "independent_validation": false
+}
