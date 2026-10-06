@@ -1,0 +1,19 @@
+{
+  "schema": "dosepilot.budget72_separate_kernels.proposal.v1",
+  "state": "PROPOSED_BEFORE_CANDIDATE_OUTCOME",
+  "family_id": "budget72_separate_kernels",
+  "role": "FROZEN_ORIENTATION_SPECIFIC_RESIDUAL_KERNELS",
+  "question": "Does fitting separate bandwidth-0.7 residual kernels for A and B improve the shared-kernel 72-well frontier?",
+  "shared_own_drug_base": true,
+  "residual_kernel_training": "separate by orientation",
+  "bandwidth_multiplier": 0.7,
+  "residual_option_count_per_orientation": 10,
+  "selection": "inner whole-patient OOF orientation MSE independently for A and B",
+  "target_specific_selection": false,
+  "treatment_wells": 72,
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}
