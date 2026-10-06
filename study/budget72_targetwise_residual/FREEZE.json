@@ -1,0 +1,40 @@
+{
+  "schema": "dosepilot.budget72_targetwise_residual.freeze.v1",
+  "state": "FROZEN_BEFORE_CANDIDATE_OUTCOME",
+  "frozen_date": "2026-10-06",
+  "family_id": "budget72_targetwise_residual",
+  "role": "FROZEN_INNER_ONLY_TARGETWISE_OPTION_SELECTION",
+  "input_sha256": {
+    "train_curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "budget_curve_predictions": "3c3ba9d3dc1e1aaf7b7e3849ee13157ddbe298f81b60aa02d0d8e41096a7dcc0",
+    "global_frontier_predictions": "72f803893e252a88777dbf2e5ef918d452da697da986d72adcbcb61f9e749a65"
+  },
+  "source_sha256": {
+    "study/budget72_targetwise_residual/PROPOSAL.json": "f7849c7a335ab85c20f91d71d17392ce3c5ddb4ba5e25afd38704fc813c3ee5c",
+    "study/budget72_targetwise_residual/PROTOCOL.md": "12c558fa40b365cd7a8e8c12b4945e98ba74e455a9202bd207064ac182525f65",
+    "study/budget72_targetwise_residual/run_study.py": "4947f9733e31804f5de630b20e9c9274fb931c1ad64af0cfe2520e821686ee84",
+    "study/budget72_targetwise_residual/test_study.py": "1e73bc5db74bc8cf900b1fed9b08291e6b2bbf33ef6a43cfaa89672b25cf3e08"
+  },
+  "dependency_sha256": {
+    "study/budget72_bandwidth07_residual/run_study.py": "ca6666c24e9f3e6030499ff52c4970b25ea6a6dd2df4bb01c1e98737c6e0518e",
+    "study/budget72_bandwidth07_residual/bandwidth_additive72.py": "a67dc57e1cc8848af9ceef712df5af0f23cccd081688a609632f202549bedf06",
+    "study/budget72_bandwidth07_residual/FREEZE.json": "e9ea1d1531835a13af038e70bf1de8fe3ce928a8cffa4878df224622afe25879",
+    "study/budget_upgrade_curve/run_study.py": "ffa862567139127a236947048be16c65aba6bd8a17374b636e486424f99c95d9"
+  },
+  "global_frontier_mse": 0.0009326007417880046,
+  "bandwidth_multiplier": 0.7,
+  "option_count": 10,
+  "target_count": 24,
+  "outer_target_splicing": false,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "bootstrap_seed": 20261006,
+  "bootstrap_replicates": 100000,
+  "synthetic_tests_passed": 3,
+  "report_regardless_of_direction": true,
+  "automatic_retry": false,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false
+}

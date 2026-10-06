@@ -1,0 +1,17 @@
+{
+  "schema": "dosepilot.budget72_targetwise_residual.proposal.v1",
+  "state": "PROPOSED_BEFORE_CANDIDATE_OUTCOME",
+  "family_id": "budget72_targetwise_residual",
+  "role": "FROZEN_INNER_ONLY_TARGETWISE_OPTION_SELECTION",
+  "question": "Can inner-fold target-wise selection among the same ten bandwidth-0.7 residual options improve the 72-well global residual frontier without outer target splicing?",
+  "bandwidth_multiplier": 0.7,
+  "option_count": 10,
+  "target_count": 24,
+  "outer_target_splicing": false,
+  "hyperparameter_source": "whole-patient inner OOF target MSE only",
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}
