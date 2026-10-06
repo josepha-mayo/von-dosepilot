@@ -1,0 +1,17 @@
+{
+  "schema": "dosepilot.budget72_global_quadratic.proposal.v1",
+  "state": "PROPOSED_BEFORE_CANDIDATE_OUTCOME",
+  "family_id": "budget72_global_quadratic",
+  "role": "FROZEN_INNER_ONLY_GLOBAL_QUADRATIC_AUGMENTATION",
+  "question": "Does a smooth full-vector degree-2 polynomial interaction kernel add useful cross-drug signal beyond the 72-well bandwidth-0.7 additive frontier?",
+  "quadratic_strengths": [0.0, 0.0625, 0.125, 0.25, 0.5, 1.0],
+  "quadratic_kernel": "72 * (x dot z / 72)^2 in standardized paid-feature space",
+  "local_bandwidth_multiplier": 0.7,
+  "target_specific_selection": false,
+  "orientation_specific_selection": false,
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}
