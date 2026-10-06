@@ -1,0 +1,18 @@
+{
+  "schema": "dosepilot.budget72_global_rbf.proposal.v1",
+  "state": "PROPOSED_BEFORE_CANDIDATE_OUTCOME",
+  "family_id": "budget72_global_rbf",
+  "role": "FROZEN_INNER_ONLY_GLOBAL_RBF_AUGMENTATION",
+  "question": "Does one full 72-dimensional Gaussian residual interaction kernel add useful cross-drug nonlinear signal beyond the frozen bandwidth-0.7 additive frontier?",
+  "global_rbf_strengths": [0.0, 0.0625, 0.125, 0.25, 0.5],
+  "global_rbf_lengthscale": "sqrt(72) in standardized purchased-feature space",
+  "local_bandwidth_multiplier": 0.7,
+  "residual_options": 10,
+  "target_specific_selection": false,
+  "orientation_specific_selection": false,
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}
