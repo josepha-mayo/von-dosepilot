@@ -146,6 +146,22 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
+        retrieval_bound_package_index = index[
+            "current_report_retrieval_finalist_package_preflight"
+        ]
+        retrieval_bound_package = json.loads(
+            (self.source / retrieval_bound_package_index["path"]).read_text()
+        )
+        retrieval_bound_package_paths = {
+            retrieval_bound_package_index["path"],
+            retrieval_bound_package["predecessor"]["path"],
+            retrieval_bound_package["current_report_retrieval_rubric"]["path"],
+            *retrieval_bound_package["artifact_sha256"],
+        }
+        for relative in retrieval_bound_package_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         chronology_index = index["verification_chronology"]
         chronology = json.loads((self.source / chronology_index["path"]).read_text())
         chronology_paths = {

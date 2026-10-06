@@ -49,6 +49,10 @@ from verify_finalist_package_preflight_report_bound import (
     ReportBoundFinalistPackagePreflightError,
     verify as verify_report_bound_finalist_package_preflight,
 )
+from verify_finalist_package_preflight_retrieval_bound import (
+    RetrievalBoundFinalistPackagePreflightError,
+    verify as verify_retrieval_bound_finalist_package_preflight,
+)
 from verify_public_report_byte_retrieval import (
     PublicReportByteRetrievalError,
     verify as verify_public_report_byte_retrieval,
@@ -1364,6 +1368,22 @@ def verify(root, enforce_pins=True):
     same(report_bound_package_result["accepted_kaggle_entry_changed"], False, "REPORT_BOUND_PACKAGE_NO_KAGGLE_CHANGE")
     same(report_bound_package_result["official_competition_score"], None, "REPORT_BOUND_PACKAGE_NO_SCORE")
     try:
+        retrieval_bound_package_result = verify_retrieval_bound_finalist_package_preflight(root)
+    except RetrievalBoundFinalistPackagePreflightError as exc:
+        raise EvidenceError("RETRIEVAL_BOUND_FINALIST_PACKAGE_PREFLIGHT: " + str(exc)) from exc
+    same(retrieval_bound_package_result["package_checks"], 8, "RETRIEVAL_BOUND_PACKAGE_CHECKS")
+    same(retrieval_bound_package_result["current_report_retrieval_rubric_successor_checked"], True, "RETRIEVAL_BOUND_PACKAGE_RUBRIC_SUCCESSOR")
+    same(retrieval_bound_package_result["current_report_bytes"], 92307, "RETRIEVAL_BOUND_PACKAGE_REPORT_BYTES")
+    same(retrieval_bound_package_result["public_repository_file_bytes_retrieved"], True, "RETRIEVAL_BOUND_PACKAGE_BYTES_RETRIEVED")
+    same(retrieval_bound_package_result["retrieved_bytes_match_exact_tree_pdf"], True, "RETRIEVAL_BOUND_PACKAGE_BYTES_MATCH")
+    same(retrieval_bound_package_result["anonymous_raw_http_verified"], False, "RETRIEVAL_BOUND_PACKAGE_NO_RAW_HTTP")
+    same(retrieval_bound_package_result["browser_download_button_verified"], False, "RETRIEVAL_BOUND_PACKAGE_NO_BROWSER_BUTTON")
+    same(retrieval_bound_package_result["raw_download_verified"], False, "RETRIEVAL_BOUND_PACKAGE_NO_GENERIC_DOWNLOAD")
+    same(retrieval_bound_package_result["canonical_release_stages"], 14, "RETRIEVAL_BOUND_PACKAGE_CANONICAL_STAGES")
+    same(retrieval_bound_package_result["canonical_orchestrated_tests"], 173, "RETRIEVAL_BOUND_PACKAGE_CANONICAL_TESTS")
+    same(retrieval_bound_package_result["accepted_kaggle_entry_changed"], False, "RETRIEVAL_BOUND_PACKAGE_NO_KAGGLE_CHANGE")
+    same(retrieval_bound_package_result["official_competition_score"], None, "RETRIEVAL_BOUND_PACKAGE_NO_SCORE")
+    try:
         chronology_result = verify_verification_chronology(root)
     except ChronologyError as exc:
         raise EvidenceError("VERIFICATION_CHRONOLOGY: " + str(exc)) from exc
@@ -1534,6 +1554,10 @@ def verify(root, enforce_pins=True):
         "report_bound_finalist_package_checks": report_bound_package_result["package_checks"],
         "report_bound_finalist_package_rubric_successor_checked": report_bound_package_result["current_report_rubric_successor_checked"],
         "report_bound_finalist_package_raw_download_verified": report_bound_package_result["raw_download_verified"],
+        "retrieval_bound_finalist_package_checks": retrieval_bound_package_result["package_checks"],
+        "retrieval_bound_finalist_package_rubric_successor_checked": retrieval_bound_package_result["current_report_retrieval_rubric_successor_checked"],
+        "retrieval_bound_finalist_package_repository_bytes_retrieved": retrieval_bound_package_result["public_repository_file_bytes_retrieved"],
+        "retrieval_bound_finalist_package_raw_download_verified": retrieval_bound_package_result["raw_download_verified"],
         "current_preflight_tests": current_preflight["orchestrated_test_count"],
         "verification_chronology_latest_tests": chronology_result["latest_orchestrated_test_count"],
         "clean_finalist_package_checks": clean_package_result["package_checks"],
