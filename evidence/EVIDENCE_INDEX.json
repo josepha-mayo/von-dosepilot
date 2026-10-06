@@ -56,16 +56,16 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r23_20261006.json",
-      "sha256": "5f0aecdd06f1447c57fad7a16c82b4abcebf6c1635e7642c86ee61403effe5d8"
+      "path": "evidence/frozen_ooc_release_binding_r24_20261006.json",
+      "sha256": "ddff6769e510ecd45d54ebe0e68d72edc0a6552ca10ddfe2ca8ee9989416fa38"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r25_20261006.json",
-      "sha256": "ac652443b854413916ab05974f760a0ce6c06fbb7274c81182997bc3afd4a01d"
+      "path": "evidence/reviewer_path_release_r26_20261006.json",
+      "sha256": "6845fcae3344b51dba1bd6eb1b6e2f932d2dc7b99d7daa6d227ee17ef3d43158"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r3_20261005.json",
@@ -144,6 +144,12 @@
     "finalist_package_current_rubric_successor_checked": true,
     "finalist_package_current_report_rubric_successor_checked": true,
     "finalist_package_current_report_raw_download_verified": false,
+    "finalist_package_current_report_retrieval_rubric_successor_checked": true,
+    "finalist_package_public_repository_file_bytes_retrieved": true,
+    "finalist_package_retrieved_bytes_match_exact_tree_pdf": true,
+    "finalist_package_anonymous_raw_http_verified": false,
+    "finalist_package_browser_download_button_verified": false,
+    "finalist_package_raw_download_verified": false,
     "finalist_package_canonical_stages": 14,
     "finalist_package_canonical_tests": 173,
     "clean_finalist_package_execution_linked": true,
@@ -414,8 +420,8 @@
     "official_competition_score": null
   },
   "verification_chronology": {
-    "path": "evidence/verification_chronology_r15_20261006.json",
-    "sha256": "9e95ec3c2e71675dbccb0ed30866c847f5a75421ca2910a51c5077c1c7225e80",
+    "path": "evidence/verification_chronology_r16_20261006.json",
+    "sha256": "a62b1561493bd87ff3ec323360d40f585ffa3e169a28fea1f43d87373e796233",
     "status": "PASS",
     "latest_orchestrated_response_free_tests": 173,
     "current_report_bound_test_count": 173,
@@ -447,8 +453,8 @@
     "official_competition_score": null
   },
   "reviewer_route_integrity": {
-    "path": "evidence/reviewer_route_integrity_r20_20261006.json",
-    "sha256": "32f6fdfd9d78c9b5bb4f1d33e740ef1ab1e9a49348b6055826fd933885b39bc1",
+    "path": "evidence/reviewer_route_integrity_r21_20261006.json",
+    "sha256": "1c4edcda1fa24ceb8d9eba38d4875de7fa195914bc6e84db06e018716dd58f40",
     "status": "PASS",
     "audited_surfaces": 5,
     "local_targets": 86,
@@ -470,6 +476,12 @@
     "finalist_package_current_rubric_successor_checked": true,
     "finalist_package_current_report_rubric_successor_checked": true,
     "finalist_package_current_report_raw_download_verified": false,
+    "finalist_package_current_report_retrieval_rubric_successor_checked": true,
+    "finalist_package_public_repository_file_bytes_retrieved": true,
+    "finalist_package_retrieved_bytes_match_exact_tree_pdf": true,
+    "finalist_package_anonymous_raw_http_verified": false,
+    "finalist_package_browser_download_button_verified": false,
+    "finalist_package_raw_download_verified": false,
     "clean_finalist_package_execution_linked": true,
     "clean_finalist_package_checks": 8,
     "clean_finalist_package_canonical_stages": 14,
@@ -945,6 +957,12 @@
     "finalist_package_preflight_linked": true,
     "finalist_package_current_report_rubric_successor_checked": true,
     "finalist_package_current_report_raw_download_verified": false,
+    "finalist_package_current_report_retrieval_rubric_successor_checked": true,
+    "finalist_package_public_repository_file_bytes_retrieved": true,
+    "finalist_package_retrieved_bytes_match_exact_tree_pdf": true,
+    "finalist_package_anonymous_raw_http_verified": false,
+    "finalist_package_browser_download_button_verified": false,
+    "finalist_package_raw_download_verified": false,
     "clean_finalist_package_execution_linked": true,
     "clean_finalist_package_checks": 8,
     "clean_finalist_package_canonical_stages": 14,

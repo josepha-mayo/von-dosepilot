@@ -8,7 +8,7 @@ DosePilot is a measurement-aware drug-response reconstruction method: commit a p
 **Downloadable browser-local evidence:** [state-bound digest-only JSON trace contract](docs/LIVE_DEMO_TRACE_EXPORT.md)
 **Offline downloaded-file verifier:** [`demo/verify_downloaded_trace.py`](demo/verify_downloaded_trace.py) · [command and scope](docs/VERIFY_DOWNLOADED_TRACE.md)
 
-**One-command current-report-bound finalist-package verification:** [`study/audits/finalist_package_preflight_report_bound.py`](study/audits/finalist_package_preflight_report_bound.py) · [report-bound command and scope](docs/FINALIST_PACKAGE_PREFLIGHT_REPORT_BOUND.md) · the eighth check verifies the immutable current-report rubric successor and exact 92,307-byte report binding; the v1 and v2 package evidence remains immutable
+**One-command retrieval-bound finalist-package verification:** [`study/audits/finalist_package_preflight_retrieval_bound.py`](study/audits/finalist_package_preflight_retrieval_bound.py) · [retrieval-bound command and scope](docs/FINALIST_PACKAGE_PREFLIGHT_RETRIEVAL_BOUND.md) · the eighth check verifies the immutable retrieval-bound rubric successor and exact public repository-file bytes for the 92,307-byte report; anonymous raw HTTP, the browser Download button and generic raw-PDF download remain unverified; the v1, v2 and v3 package evidence remains immutable
 
 **Clean isolated execution evidence:** [fresh source directory + new Python environment](docs/CLEAN_FINALIST_PACKAGE_EXECUTION.md) · 8/8 package checks, nested canonical 14/14 stages and 173 tests · one existing host via `git archive`, not a network clone, clean-new-machine certification, or independent biological validation
 
@@ -139,9 +139,9 @@ These commands require no protected cohort responses.
 
 ### Complete current finalist package
 
-    python3 study/audits/finalist_package_preflight_report_bound.py --output finalist_package_preflight.json
+    python3 study/audits/finalist_package_preflight_retrieval_bound.py --output finalist_package_preflight.json
 
-This additive check runs the immutable canonical 14-stage/173-test release preflight and seven newer response-free reviewer-package checks, including the current-report rubric successor, without rewriting the historical canonical, v1, or v2 package receipts. Embedded and exact-tree report rendering are verified; raw download and browser-downloaded-byte equality are not.
+This additive check runs the immutable canonical 14-stage/173-test release preflight and seven newer response-free reviewer-package checks, including the retrieval-bound rubric successor, without rewriting the historical canonical, v1, v2, or v3 package receipts. Embedded and exact-tree rendering plus point-in-time public repository-file byte retrieval are verified; anonymous raw HTTP, the browser Download button and generic raw-PDF download are not.
 
 ### Endpoint and 64-well contract
 
