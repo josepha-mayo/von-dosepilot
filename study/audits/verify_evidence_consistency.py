@@ -41,6 +41,10 @@ from verify_finalist_rubric_evidence_current_scientific_successor import (
     CurrentScientificSuccessorRubricEvidenceError,
     verify as verify_current_scientific_successor_finalist_rubric_evidence,
 )
+from verify_finalist_rubric_evidence_current_scientific_reliability import (
+    CurrentScientificReliabilityRubricEvidenceError,
+    verify as verify_current_scientific_reliability_finalist_rubric_evidence,
+)
 from verify_verification_chronology import (
     ChronologyError,
     verify as verify_verification_chronology,
@@ -76,6 +80,10 @@ from verify_finalist_package_preflight_retrieval_bound import (
 from verify_finalist_package_preflight_scientific_successor import (
     ScientificSuccessorFinalistPackagePreflightError,
     verify as verify_scientific_successor_finalist_package_preflight,
+)
+from verify_finalist_package_preflight_scientific_reliability import (
+    ScientificReliabilityFinalistPackagePreflightError,
+    verify as verify_scientific_reliability_finalist_package_preflight,
 )
 from verify_public_report_byte_retrieval import (
     PublicReportByteRetrievalError,
@@ -1439,6 +1447,22 @@ def verify(root, enforce_pins=True):
     same(scientific_successor_rubric_result["independent_validation"], False, "SCIENTIFIC_SUCCESSOR_RUBRIC_NO_VALIDATION")
     same(scientific_successor_rubric_result["official_competition_score"], None, "SCIENTIFIC_SUCCESSOR_RUBRIC_NO_SCORE")
     try:
+        scientific_reliability_rubric_result = (
+            verify_current_scientific_reliability_finalist_rubric_evidence(root)
+        )
+    except CurrentScientificReliabilityRubricEvidenceError as exc:
+        raise EvidenceError(
+            "CURRENT_SCIENTIFIC_RELIABILITY_RUBRIC_EVIDENCE: " + str(exc)
+        ) from exc
+    same(scientific_reliability_rubric_result["criteria"], 5, "SCIENTIFIC_RELIABILITY_RUBRIC_CRITERIA")
+    same(scientific_reliability_rubric_result["weight_sum"], 100, "SCIENTIFIC_RELIABILITY_RUBRIC_WEIGHT_SUM")
+    same(scientific_reliability_rubric_result["candidate_mse"], 0.001042745722096212, "SCIENTIFIC_RELIABILITY_RUBRIC_MSE")
+    same(scientific_reliability_rubric_result["coverage_90"], 0.9194915254237288, "SCIENTIFIC_RELIABILITY_RUBRIC_COVERAGE_90")
+    same(scientific_reliability_rubric_result["targets_at_or_above_90"], 24, "SCIENTIFIC_RELIABILITY_RUBRIC_TARGETS")
+    same(scientific_reliability_rubric_result["clean_package_checks"], 8, "SCIENTIFIC_RELIABILITY_RUBRIC_CLEAN_CHECKS")
+    same(scientific_reliability_rubric_result["operational_demo_baseline_replaced"], False, "SCIENTIFIC_RELIABILITY_RUBRIC_NO_OPERATIONAL_REPLACEMENT")
+    same(scientific_reliability_rubric_result["independent_validation"], False, "SCIENTIFIC_RELIABILITY_RUBRIC_NO_VALIDATION")
+    try:
         report_bound_package_result = verify_report_bound_finalist_package_preflight(root)
     except ReportBoundFinalistPackagePreflightError as exc:
         raise EvidenceError("REPORT_BOUND_FINALIST_PACKAGE_PREFLIGHT: " + str(exc)) from exc
@@ -1486,6 +1510,24 @@ def verify(root, enforce_pins=True):
     same(scientific_successor_package_result["canonical_orchestrated_tests"], 173, "SCIENTIFIC_SUCCESSOR_PACKAGE_CANONICAL_TESTS")
     same(scientific_successor_package_result["accepted_kaggle_entry_changed"], False, "SCIENTIFIC_SUCCESSOR_PACKAGE_NO_KAGGLE_CHANGE")
     same(scientific_successor_package_result["official_competition_score"], None, "SCIENTIFIC_SUCCESSOR_PACKAGE_NO_SCORE")
+    try:
+        scientific_reliability_package_result = (
+            verify_scientific_reliability_finalist_package_preflight(root)
+        )
+    except ScientificReliabilityFinalistPackagePreflightError as exc:
+        raise EvidenceError(
+            "SCIENTIFIC_RELIABILITY_FINALIST_PACKAGE_PREFLIGHT: " + str(exc)
+        ) from exc
+    same(scientific_reliability_package_result["package_checks"], 8, "SCIENTIFIC_RELIABILITY_PACKAGE_CHECKS")
+    same(scientific_reliability_package_result["current_scientific_reliability_rubric_checked"], True, "SCIENTIFIC_RELIABILITY_PACKAGE_RUBRIC")
+    same(scientific_reliability_package_result["candidate_mse"], 0.001042745722096212, "SCIENTIFIC_RELIABILITY_PACKAGE_MSE")
+    same(scientific_reliability_package_result["coverage_90"], 0.9194915254237288, "SCIENTIFIC_RELIABILITY_PACKAGE_COVERAGE_90")
+    same(scientific_reliability_package_result["targets_at_or_above_90"], 24, "SCIENTIFIC_RELIABILITY_PACKAGE_TARGETS")
+    same(scientific_reliability_package_result["clean_package_checks"], 8, "SCIENTIFIC_RELIABILITY_PACKAGE_CLEAN_CHECKS")
+    same(scientific_reliability_package_result["operational_demo_baseline_replaced"], False, "SCIENTIFIC_RELIABILITY_PACKAGE_NO_OPERATIONAL_REPLACEMENT")
+    same(scientific_reliability_package_result["independent_validation"], False, "SCIENTIFIC_RELIABILITY_PACKAGE_NO_VALIDATION")
+    same(scientific_reliability_package_result["canonical_release_stages"], 14, "SCIENTIFIC_RELIABILITY_PACKAGE_CANONICAL_STAGES")
+    same(scientific_reliability_package_result["canonical_orchestrated_tests"], 173, "SCIENTIFIC_RELIABILITY_PACKAGE_CANONICAL_TESTS")
     try:
         chronology_result = verify_verification_chronology(root)
     except ChronologyError as exc:
@@ -1721,6 +1763,9 @@ def verify(root, enforce_pins=True):
         "scientific_successor_rubric_criteria": scientific_successor_rubric_result["criteria"],
         "scientific_successor_rubric_weight_sum": scientific_successor_rubric_result["weight_sum"],
         "scientific_successor_rubric_operational_baseline_replaced": scientific_successor_rubric_result["operational_demo_baseline_replaced"],
+        "scientific_reliability_rubric_criteria": scientific_reliability_rubric_result["criteria"],
+        "scientific_reliability_rubric_coverage_90": scientific_reliability_rubric_result["coverage_90"],
+        "scientific_reliability_rubric_clean_package_checks": scientific_reliability_rubric_result["clean_package_checks"],
         "report_bound_finalist_package_checks": report_bound_package_result["package_checks"],
         "report_bound_finalist_package_rubric_successor_checked": report_bound_package_result["current_report_rubric_successor_checked"],
         "report_bound_finalist_package_raw_download_verified": report_bound_package_result["raw_download_verified"],
@@ -1731,6 +1776,9 @@ def verify(root, enforce_pins=True):
         "scientific_successor_finalist_package_checks": scientific_successor_package_result["package_checks"],
         "scientific_successor_finalist_package_rubric_checked": scientific_successor_package_result["current_scientific_successor_rubric_checked"],
         "scientific_successor_finalist_package_operational_baseline_replaced": scientific_successor_package_result["operational_demo_baseline_replaced"],
+        "scientific_reliability_finalist_package_checks": scientific_reliability_package_result["package_checks"],
+        "scientific_reliability_finalist_package_rubric_checked": scientific_reliability_package_result["current_scientific_reliability_rubric_checked"],
+        "scientific_reliability_finalist_package_operational_baseline_replaced": scientific_reliability_package_result["operational_demo_baseline_replaced"],
         "current_preflight_tests": current_preflight["orchestrated_test_count"],
         "verification_chronology_latest_tests": chronology_result["latest_orchestrated_test_count"],
         "clean_finalist_package_checks": clean_package_result["package_checks"],
