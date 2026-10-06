@@ -1,0 +1,15 @@
+{
+  "schema": "dosepilot.budget_upgrade_curve.proposal.v1",
+  "state": "PROPOSED_BEFORE_REAL_DATA_RUN",
+  "family_id": "budget_upgrade_curve",
+  "role": "POST_HOC_MEASUREMENT_BUDGET_CURVE_NOT_CANDIDATE_PROMOTION",
+  "budgets": [48, 52, 56, 60, 64, 68, 72],
+  "upgrade_counts": [0, 4, 8, 12, 16, 20, 24],
+  "question": "How does held-patient error change as fitting-only third-dose upgrades are added in fixed groups of four from the 48-well all-two-dose plan through the 72-well all-three-dose plan?",
+  "falsifiable_expectation": "Held-patient MSE should generally decrease as more fitting-only third-dose upgrades are purchased, but the marginal gain per four additional wells may diminish.",
+  "report_all_budgets_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}
