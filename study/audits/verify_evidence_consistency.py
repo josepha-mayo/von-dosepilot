@@ -25,6 +25,10 @@ from verify_finalist_rubric_evidence_current_report import (
     CurrentReportRubricEvidenceError,
     verify as verify_current_report_finalist_rubric_evidence,
 )
+from verify_finalist_rubric_evidence_current_retrieval import (
+    CurrentRetrievalRubricEvidenceError,
+    verify as verify_current_retrieval_finalist_rubric_evidence,
+)
 from verify_verification_chronology import (
     ChronologyError,
     verify as verify_verification_chronology,
@@ -1332,6 +1336,21 @@ def verify(root, enforce_pins=True):
     same(current_report_rubric_result["raw_download_verified"], False, "CURRENT_REPORT_RUBRIC_EVIDENCE_NO_DOWNLOAD")
     same(current_report_rubric_result["accepted_kaggle_entry_changed"], False, "CURRENT_REPORT_RUBRIC_EVIDENCE_NO_KAGGLE_CHANGE")
     same(current_report_rubric_result["official_competition_score"], None, "CURRENT_REPORT_RUBRIC_EVIDENCE_NO_SCORE")
+    try:
+        current_retrieval_rubric_result = verify_current_retrieval_finalist_rubric_evidence(root)
+    except CurrentRetrievalRubricEvidenceError as exc:
+        raise EvidenceError("CURRENT_RETRIEVAL_RUBRIC_EVIDENCE: " + str(exc)) from exc
+    same(current_retrieval_rubric_result["criteria"], 5, "CURRENT_RETRIEVAL_RUBRIC_EVIDENCE_CRITERIA")
+    same(current_retrieval_rubric_result["weight_sum"], 100, "CURRENT_RETRIEVAL_RUBRIC_EVIDENCE_WEIGHT_SUM")
+    same(current_retrieval_rubric_result["current_report_bytes"], 92307, "CURRENT_RETRIEVAL_RUBRIC_EVIDENCE_BYTES")
+    same(current_retrieval_rubric_result["public_report_render_verified"], True, "CURRENT_RETRIEVAL_RUBRIC_EVIDENCE_RENDER")
+    same(current_retrieval_rubric_result["public_repository_file_bytes_retrieved"], True, "CURRENT_RETRIEVAL_RUBRIC_EVIDENCE_BYTES_RETRIEVED")
+    same(current_retrieval_rubric_result["retrieved_bytes_match_exact_tree_pdf"], True, "CURRENT_RETRIEVAL_RUBRIC_EVIDENCE_BYTES_MATCH")
+    same(current_retrieval_rubric_result["anonymous_raw_http_verified"], False, "CURRENT_RETRIEVAL_RUBRIC_EVIDENCE_NO_RAW_HTTP")
+    same(current_retrieval_rubric_result["browser_download_button_verified"], False, "CURRENT_RETRIEVAL_RUBRIC_EVIDENCE_NO_BROWSER_BUTTON")
+    same(current_retrieval_rubric_result["raw_download_verified"], False, "CURRENT_RETRIEVAL_RUBRIC_EVIDENCE_NO_GENERIC_DOWNLOAD")
+    same(current_retrieval_rubric_result["accepted_kaggle_entry_changed"], False, "CURRENT_RETRIEVAL_RUBRIC_EVIDENCE_NO_KAGGLE_CHANGE")
+    same(current_retrieval_rubric_result["official_competition_score"], None, "CURRENT_RETRIEVAL_RUBRIC_EVIDENCE_NO_SCORE")
     try:
         report_bound_package_result = verify_report_bound_finalist_package_preflight(root)
     except ReportBoundFinalistPackagePreflightError as exc:

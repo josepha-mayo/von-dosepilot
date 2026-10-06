@@ -1,0 +1,91 @@
+{
+  "schema": "dosepilot.finalist_rubric_evidence.v6",
+  "status": "PASS",
+  "as_of_date": "2026-10-06",
+  "role": "CURRENT_REPORT_RETRIEVAL_BOUND_JUDGE_CRITERION_EVIDENCE_SUCCESSOR",
+  "rubric": {
+    "source_url": "https://www.kaggle.com/competitions/ai-4-s-open-innovation-artificial-intelligence-for-life-scien/overview/evaluation",
+    "last_verified_on_platform": "2026-10-01",
+    "current_run_public_retrieval": "NOT_ATTEMPTED_NO_REFRESH_CLAIM",
+    "weights": {
+      "problem_importance_impact": 30,
+      "technical_approach_innovation": 30,
+      "results_validation": 20,
+      "reproducibility_implementation": 10,
+      "presentation": 10
+    },
+    "combined_self_score": null
+  },
+  "evidence_bindings": {
+    "predecessor": {
+      "path": "evidence/finalist_rubric_evidence_r5_20261006.json",
+      "sha256": "b8917193d24f486bf194bf7f3ad2ba6b63e25c716efc58b573ccb0760208107c"
+    },
+    "public_report_byte_retrieval": {
+      "path": "evidence/public_report_byte_retrieval_verification_20261006.json",
+      "sha256": "efa5356a6adbb4bbff483f9ab2036993ca87f9021d2cff65f076a8c6d741b489"
+    }
+  },
+  "inherited_verified_state": {
+    "criteria": 5,
+    "incumbent_mse": 0.0010582750420801538,
+    "incumbent_p90": 0.0378942853087202,
+    "patient_wins": 38,
+    "patients": 59,
+    "favorable_folds": 5,
+    "nested_outer_training_sets_selecting_07": 5,
+    "treatment_wells_per_orientation": 64,
+    "report_bound_package_checks": 8,
+    "canonical_release_stages": 14,
+    "canonical_response_free_tests": 173,
+    "protected22_primary": "NOT_ESTIMABLE"
+  },
+  "presentation_retrieval_successor": {
+    "adds_only_public_repository_file_retrieval_evidence": true,
+    "current_report_sha256": "23bd050d13b9724b3ae6dfb3ae63406609d2573edfcd957369556be99f4585f1",
+    "current_report_bytes": 92307,
+    "current_report_git_blob_sha": "6899cb6b2c53c1c1d67a9fadb5d073923daaf21e",
+    "public_repository_file_bytes_retrieved": true,
+    "retrieved_bytes_match_exact_tree_pdf": true,
+    "embedded_render_verified_in_predecessor": true,
+    "exact_tree_pages_rendered_in_predecessor": 10,
+    "anonymous_raw_http_verified": false,
+    "browser_download_button_verified": false,
+    "raw_pdf_download_verified": false
+  },
+  "artifact_sha256": {
+    "docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_RETRIEVAL.md": "a0e9918896ac95f0687accce722f7ab22e18ecd711a6f13055c17dab7aaabac6",
+    "study/audits/verify_finalist_rubric_evidence_current_retrieval.py": "31a5885866899ce35226aa9d54cdd917106a8982c0f55db431376585ddff683d",
+    "study/audits/test_finalist_rubric_evidence_current_retrieval.py": "425bee1ef6914e18ecc22ab6dd55a25abe7ab344b718d663bbddc3f764c9a08e"
+  },
+  "verification": {
+    "standalone_verifier": "PASS",
+    "successor_tamper_tests": 12,
+    "predecessor_hash_verified": true,
+    "byte_retrieval_receipt_hash_verified": true,
+    "predecessor_artifacts_reverified": false,
+    "source_workbook_opened": false,
+    "patient_or_prediction_arrays_opened": false,
+    "protected_response_access": false
+  },
+  "claim_boundary": {
+    "public_repository_file_bytes_retrieved": true,
+    "retrieved_bytes_match_exact_tree_pdf": true,
+    "anonymous_raw_http_verified": false,
+    "browser_download_button_verified": false,
+    "raw_pdf_download_verified": false,
+    "new_model_fit": false,
+    "biological_accuracy_result_created": false,
+    "independent_validation_created": false,
+    "protected_response_access": false,
+    "private_patient_arrays_read": false,
+    "accepted_kaggle_entry_changed": false,
+    "finalist_status_claimed": false,
+    "prospective_ooc_performance_claimed": false,
+    "clinical_utility_claimed": false,
+    "future_availability_verified": false,
+    "content_completeness_verified": false,
+    "accessibility_conformance_verified": false,
+    "official_competition_score": null
+  }
+}

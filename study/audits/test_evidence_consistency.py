@@ -113,6 +113,25 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
+        current_retrieval_rubric_index = index[
+            "current_report_retrieval_finalist_rubric_evidence"
+        ]
+        current_retrieval_rubric = json.loads(
+            (self.source / current_retrieval_rubric_index["path"]).read_text()
+        )
+        current_retrieval_rubric_paths = {
+            current_retrieval_rubric_index["path"],
+            "docs/DosePilot_Technical_Report_Current.pdf",
+            *current_retrieval_rubric["artifact_sha256"],
+        }
+        current_retrieval_rubric_paths.update(
+            binding["path"]
+            for binding in current_retrieval_rubric["evidence_bindings"].values()
+        )
+        for relative in current_retrieval_rubric_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         report_bound_package_index = index["current_report_finalist_package_preflight"]
         report_bound_package = json.loads(
             (self.source / report_bound_package_index["path"]).read_text()

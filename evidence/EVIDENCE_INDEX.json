@@ -242,6 +242,24 @@
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null
   },
+  "current_report_retrieval_finalist_rubric_evidence": {
+    "path": "evidence/finalist_rubric_evidence_r6_20261006.json",
+    "sha256": "62031d0fcd4897447b8bc2123113227ca97d5dfd89e6415e58ec167a76399e36",
+    "status": "PASS",
+    "criteria": 5,
+    "weight_sum": 100,
+    "current_report_sha256": "23bd050d13b9724b3ae6dfb3ae63406609d2573edfcd957369556be99f4585f1",
+    "current_report_bytes": 92307,
+    "current_report_git_blob_sha": "6899cb6b2c53c1c1d67a9fadb5d073923daaf21e",
+    "public_report_render_verified": true,
+    "public_repository_file_bytes_retrieved": true,
+    "retrieved_bytes_match_exact_tree_pdf": true,
+    "anonymous_raw_http_verified": false,
+    "browser_download_button_verified": false,
+    "raw_download_verified": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
   "development_search_governance": {
     "role": "ADAPTIVE_DEVELOPMENT_GOVERNANCE_UPDATE",
     "status": "PASS",
