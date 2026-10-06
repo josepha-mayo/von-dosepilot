@@ -2,6 +2,8 @@
 
 **Category:** Model & Algorithm
 **Author:** Joseph Ayanda
+**Team:** von DosePilot (solo)
+**Team composition:** Joseph Ayanda — AI/ML, software engineering, reproducibility, and experimental-design workflow
 **Repository:** https://github.com/josepha-mayo/von-dosepilot
 **Live fictional-data demo:** https://von-dosepilot.netlify.app
 **Demo video (75 seconds):** https://youtu.be/QeOGJIgx378
@@ -36,6 +38,10 @@ The Lib1 development frame contains **119 organoid samples from 59 whole patient
 - A and B predictions are scored separately and their **losses**, not prediction vectors, are averaged.
 - Planning, fitting, scaling, and inner model selection remain inside fitting splits.
 - Missing purchased values are not silently imputed.
+
+### Data, licenses, and compliance
+
+The primary development source is the public colorectal-cancer patient-derived organoid study of **Kryeziu et al. (Cell Reports Medicine, 2026)**. DosePilot pins the public **Mendeley Data v3 `Data S4.xlsx`** workbook by SHA-256 (`3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c`); the deposit is listed under **CC BY 4.0**. The public reproduction route reconstructs the selected Lib1 TRAIN measurements from that source and does not treat Lib2 or raw-signal bytes as authorized development responses. Original DosePilot code and fictional fixtures are **MIT-licensed**. External validation/stress-test sources retain their own licenses and are documented individually. The public repository excludes patient-level prediction arrays, fitted biological weights, and protected responses.
 
 ## 3. Model stack
 
@@ -87,7 +93,7 @@ Full method note: https://github.com/josepha-mayo/von-dosepilot/blob/master/docs
 - p90 patient RMSE: **0.037419696 vs 0.037894285**
 - target-average wins/losses: **19 / 5**
 
-The five regressing targets are **Afatinib, AZD7762, LCL161, Regorafenib, and Trametinib**.
+The five regressing targets are **Afatinib, AZD7762, LCL161, Regorafenib, and Trametinib**. A post-hoc **100,000-resample whole-patient bootstrap** (seed 20261006) gives a descriptive 95% interval of **[-2.60e-5, -6.54e-6]** for current-minus-bandwidth-0.7 mean loss. This interval is **not selection-adjusted** and is not presented as confirmatory inference.
 
 ### Current versus R13
 
@@ -100,7 +106,7 @@ The two target-average regressions are **Methotrexate** and **Panobinostat**.
 
 ### Current versus the immediate 0.001043179589 predecessor
 
-The mean gain is only **0.0416%**, with **32/59 patient wins and 3/5 favorable folds**. p90 remains nonworse.
+The mean gain is only **0.0416%**, with **32/59 patient wins and 3/5 favorable folds**. p90 remains nonworse. The same descriptive patient bootstrap gives **[-1.13e-6, 2.58e-7]**, which crosses zero.
 
 That is why the claim is “lowest verified adaptive-development point estimate with broad gains versus bandwidth-0.7,” not “uniformly better than every nearby adaptive variant.”
 
@@ -135,14 +141,20 @@ The public repository includes:
 - exact endpoint definitions and the 64-well A/B schedules;
 - the public-workbook reconstruction route;
 - the current candidate proposal, protocol, freeze, runner, and no-refit verifier;
-- machine-readable aggregate evidence;
+- machine-readable aggregate evidence, including the selection-naive patient bootstrap;
 - an identity-bound fictional lifecycle demonstrating commit, missing-input withholding, recovery, and prediction.
 
 Current candidate evidence: https://github.com/josepha-mayo/von-dosepilot/blob/master/evidence/orientation_specific_control_quality_rank1_20261006.json
 
+Descriptive patient-bootstrap evidence: https://github.com/josepha-mayo/von-dosepilot/blob/master/evidence/current_successor_descriptive_bootstrap_20261006.json
+
 Current candidate implementation: https://github.com/josepha-mayo/von-dosepilot/tree/master/study/orientation_specific_control_quality_rank1
 
 The current fictional lifecycle still demonstrates the bandwidth-0.7 operational model. The newer control-quality calibration is verified research code and aggregate evidence, but it has **not** been silently substituted into that older lifecycle demo. This separation is deliberate.
+
+### AI assistance
+
+ChatGPT assisted with research synthesis, implementation, numerical checking, adversarial review, and documentation. The DosePilot reconstruction runtime itself uses **no language-model API or paid model service**. AI assistance does not replace the frozen numerical verifiers, patient-grouped evaluation, source hashes, or preserved negative results.
 
 ## 7. Validation boundary
 
