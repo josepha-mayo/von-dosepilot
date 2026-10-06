@@ -21,6 +21,8 @@ DosePilot is a measurement-aware drug-response reconstruction method: commit a p
 
 **Current-package criterion successor:** [docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_PACKAGE.md](docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_PACKAGE.md) · binds the primary v2 package and clean isolated execution: 8/8 checks, current rubric successor enforced, nested canonical 14/14 stages and 173 tests; dependencies came from the local pip cache, not a network clone, clean-new-machine certification, independent biological validation, self-score, finalist-probability estimate, Kaggle edit, or official score
 
+**Current-report-bound criterion successor:** [docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_REPORT.md](docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_REPORT.md) · binds presentation evidence to the exact current 92,307-byte report and its own public-render receipt; embedded and exact-tree structural rendering are verified, while raw download and browser-downloaded-byte equality are not; no self-score, finalist-probability estimate, independent validation, Kaggle edit, or official score
+
 This page is a navigation aid. It creates no new accuracy or biological-validation claim.
 
 ## 90-second review path
@@ -174,7 +176,9 @@ Useful machine-readable anchors:
 - [evidence/target_definitions_release_20261003.json](evidence/target_definitions_release_20261003.json)
 - [evidence/frozen_ooc_execution_schedule_20261003.json](evidence/frozen_ooc_execution_schedule_20261003.json)
 - [evidence/bandwidth_robustness_20261003.json](evidence/bandwidth_robustness_20261003.json)
-- [evidence/finalist_rubric_evidence_r2_20261005.json](evidence/finalist_rubric_evidence_r2_20261005.json) (current)
+- [evidence/finalist_rubric_evidence_r5_20261006.json](evidence/finalist_rubric_evidence_r5_20261006.json) (current report-bound successor)
+- [evidence/finalist_rubric_evidence_r4_20261005.json](evidence/finalist_rubric_evidence_r4_20261005.json) (current-package predecessor)
+- [evidence/finalist_rubric_evidence_r2_20261005.json](evidence/finalist_rubric_evidence_r2_20261005.json) (preserved earlier current map)
 - [evidence/finalist_rubric_evidence_20261004.json](evidence/finalist_rubric_evidence_20261004.json) (preserved predecessor)
 
 ## Important limitations

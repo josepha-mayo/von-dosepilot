@@ -21,6 +21,10 @@ from verify_finalist_rubric_evidence_current_package import (
     CurrentPackageRubricEvidenceError,
     verify as verify_current_finalist_rubric_evidence,
 )
+from verify_finalist_rubric_evidence_current_report import (
+    CurrentReportRubricEvidenceError,
+    verify as verify_current_report_finalist_rubric_evidence,
+)
 from verify_verification_chronology import (
     ChronologyError,
     verify as verify_verification_chronology,
@@ -53,15 +57,15 @@ PINNED_RECEIPTS = {
     "isotonic_paid_features": "01934ca5139a219814572bd5b3e28923c98b8ad37ee3146a405f5ddd247476da",
     "cooptimized_calibrated_control": "1238e432ed0a9abffce855440b6f290c056373f988ced6b3d3b57ce85c1cd74e",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
-    "frozen_ooc_release_binding": "c1968e44f4acae916e6fe1e6438ee05e85fc1f80525f19b4ffd639728cc68ff0",
+    "frozen_ooc_release_binding": "7c7b60dd0dd1a056f62add0c5bb35250ced4700d9a574ce5f36390d619fef89a",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
-    "reviewer_path_release": "c718abe51dd47afa88329f5c81de2928857491ad514156daaa21322593983a7e",
+    "reviewer_path_release": "610bd47a997ff98415caf92d87f57b31e78b9215003d21b06cd1a5a0f916bdaa",
     "development_search_governance": "06bf56a3658c47a99e4f9e07c1e06e11ad348de4a840aba1dad495e2b8495d35",
 }
 
 PINNED_DOCUMENTS = {
     "docs/EVIDENCE_LEDGER.md": "012da3d9fb39b240e7161fc05e96d904c185e0df975002642ffa6044c2c50e1a",
-    "docs/KAGGLE_WRITEUP.md": "10e9642ad10957c579724ab64684c52b9bdf96a8d5bfd47fb670249788a94941",
+    "docs/KAGGLE_WRITEUP.md": "3418f9064fca2b8bd3396f6dde869bc91878651ea53ab458ed1f572450474466",
 }
 
 CURRENT_REPORT_RECEIPT_SHA256 = "c870eed1a915c336ebf673cc15f9999aed0cbcdfff110ff82e72d69f62ba9eef"
@@ -135,7 +139,7 @@ def verify(root, enforce_pins=True):
     index = load(root / "evidence/EVIDENCE_INDEX.json")
     if index.get("schema") != "dosepilot.evidence_index.v1":
         raise EvidenceError("INDEX_SCHEMA")
-    if index.get("as_of_date") != "2026-10-05":
+    if index.get("as_of_date") != "2026-10-06":
         raise EvidenceError("INDEX_DATE")
     if index.get("cross_study_raw_mse_comparison_allowed") is not False:
         raise EvidenceError("CROSS_STUDY_MSE_RULE")
@@ -308,7 +312,7 @@ def verify(root, enforce_pins=True):
         same(target_index[key], receipt_value, "INDEX_TARGET_DEFINITIONS_" + key.upper())
 
     reviewer_release = receipts["reviewer_path_release"]
-    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v22", "REVIEWER_PATH_SCHEMA")
+    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v23", "REVIEWER_PATH_SCHEMA")
     same(reviewer_release["status"], "PASS", "REVIEWER_PATH_STATUS")
     same(reviewer_release["role"], "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY", "REVIEWER_PATH_ROLE")
     reviewer_predecessor = reviewer_release["predecessor"]
@@ -338,6 +342,8 @@ def verify(root, enforce_pins=True):
         "8/8 package checks",
         "not a network clone",
         "clean-new-machine certification",
+        "FINALIST_RUBRIC_EVIDENCE_CURRENT_REPORT.md",
+        "raw download",
         "no raw readings or model outputs",
         "all 5/5 outer training sets",
         "not independent validation",
@@ -422,6 +428,8 @@ def verify(root, enforce_pins=True):
         "current_report_clean_finalist_package_documented",
         "current_report_clean_current_finalist_package_documented",
         "current_report_current_package_rubric_documented",
+        "current_report_finalist_rubric_evidence_linked",
+        "current_report_public_render_verified",
     ):
         same(reviewer_contract[key], True, "REVIEWER_PATH_LINK: " + key)
     same(reviewer_contract["finalist_package_preflight_checks"], 8, "REVIEWER_PATH_PACKAGE_CHECKS")
@@ -447,6 +455,9 @@ def verify(root, enforce_pins=True):
     same(reviewer_contract["current_finalist_probability_estimated"], False, "REVIEWER_PATH_CURRENT_RUBRIC_NO_PROBABILITY")
     same(reviewer_contract["current_package_finalist_rubric_self_score_assigned"], False, "REVIEWER_PATH_CURRENT_PACKAGE_RUBRIC_NO_SELF_SCORE")
     same(reviewer_contract["current_package_finalist_probability_estimated"], False, "REVIEWER_PATH_CURRENT_PACKAGE_RUBRIC_NO_PROBABILITY")
+    same(reviewer_contract["current_report_finalist_rubric_self_score_assigned"], False, "REVIEWER_PATH_CURRENT_REPORT_RUBRIC_NO_SELF_SCORE")
+    same(reviewer_contract["current_report_finalist_probability_estimated"], False, "REVIEWER_PATH_CURRENT_REPORT_RUBRIC_NO_PROBABILITY")
+    same(reviewer_contract["current_report_raw_download_verified"], False, "REVIEWER_PATH_CURRENT_REPORT_NO_RAW_DOWNLOAD")
     same(reviewer_contract["downloadable_trace_export_contains_raw_readings_or_outputs"], False, "REVIEWER_PATH_TRACE_BOUNDARY")
     same(reviewer_contract["nested_bandwidth_independent_validation"], False, "REVIEWER_PATH_NESTED_BOUNDARY")
     same(reviewer_contract["cooptimized_control_decision"], "REJECT_RETAIN_BANDWIDTH07", "REVIEWER_PATH_COOPT_DECISION")
@@ -480,6 +491,11 @@ def verify(root, enforce_pins=True):
         ("current_package_finalist_rubric_evidence_linked", reviewer_contract["current_package_finalist_rubric_evidence_linked"]),
         ("current_package_finalist_rubric_self_score_assigned", reviewer_contract["current_package_finalist_rubric_self_score_assigned"]),
         ("current_package_finalist_probability_estimated", reviewer_contract["current_package_finalist_probability_estimated"]),
+        ("current_report_finalist_rubric_evidence_linked", reviewer_contract["current_report_finalist_rubric_evidence_linked"]),
+        ("current_report_finalist_rubric_self_score_assigned", reviewer_contract["current_report_finalist_rubric_self_score_assigned"]),
+        ("current_report_finalist_probability_estimated", reviewer_contract["current_report_finalist_probability_estimated"]),
+        ("current_report_public_render_verified", reviewer_contract["current_report_public_render_verified"]),
+        ("current_report_raw_download_verified", reviewer_contract["current_report_raw_download_verified"]),
         ("rubric_self_score_assigned", reviewer_contract["rubric_self_score_assigned"]),
         ("verification_chronology_linked", reviewer_contract["verification_chronology_linked"]),
         ("downloadable_trace_linked", reviewer_contract["downloadable_trace_linked"]),
@@ -899,7 +915,7 @@ def verify(root, enforce_pins=True):
     same(current_lifecycle_index["accepted_kaggle_entry_changed"], False, "INDEX_BANDWIDTH_LIFECYCLE_NO_ENTRY_CHANGE")
     same(current_lifecycle_index["official_competition_score"], None, "INDEX_BANDWIDTH_LIFECYCLE_NO_SCORE")
 
-    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v20", "FROZEN_SCHEDULE_SCHEMA")
+    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v21", "FROZEN_SCHEDULE_SCHEMA")
     same(frozen_schedule["status"], "PASS", "FROZEN_SCHEDULE_STATUS")
     same(frozen_schedule["role"], "RESPONSE_FREE_ENGINEERING_AND_RELEASE_EVIDENCE", "FROZEN_SCHEDULE_ROLE")
     frozen_predecessor = frozen_schedule["predecessor"]
@@ -927,6 +943,11 @@ def verify(root, enforce_pins=True):
     same(schedule_verification["current_package_finalist_rubric_evidence_linked"], True, "FROZEN_SCHEDULE_CURRENT_PACKAGE_RUBRIC_LINK")
     same(schedule_verification["current_package_finalist_rubric_self_score_assigned"], False, "FROZEN_SCHEDULE_CURRENT_PACKAGE_RUBRIC_NO_SELF_SCORE")
     same(schedule_verification["current_package_finalist_probability_estimated"], False, "FROZEN_SCHEDULE_CURRENT_PACKAGE_RUBRIC_NO_PROBABILITY")
+    same(schedule_verification["current_report_finalist_rubric_evidence_linked"], True, "FROZEN_SCHEDULE_CURRENT_REPORT_RUBRIC_LINK")
+    same(schedule_verification["current_report_finalist_rubric_self_score_assigned"], False, "FROZEN_SCHEDULE_CURRENT_REPORT_RUBRIC_NO_SELF_SCORE")
+    same(schedule_verification["current_report_finalist_probability_estimated"], False, "FROZEN_SCHEDULE_CURRENT_REPORT_RUBRIC_NO_PROBABILITY")
+    same(schedule_verification["current_report_public_render_verified"], True, "FROZEN_SCHEDULE_CURRENT_REPORT_RENDER")
+    same(schedule_verification["current_report_raw_download_verified"], False, "FROZEN_SCHEDULE_CURRENT_REPORT_NO_RAW_DOWNLOAD")
     same(schedule_verification["public_schedule_rows"], 64, "FROZEN_SCHEDULE_PUBLIC_ROWS")
     same(schedule_verification["transport_escape_literals"], 0, "FROZEN_SCHEDULE_ESCAPES")
     same(schedule_verification["prepared_kaggle_relative_links"], 0, "FROZEN_SCHEDULE_KAGGLE_LINKS")
@@ -970,7 +991,7 @@ def verify(root, enforce_pins=True):
     schedule_index = index["frozen_ooc_release_binding"]
     for key in ("role", "status"):
         same(schedule_index[key], frozen_schedule[key], "INDEX_FROZEN_SCHEDULE_" + key.upper())
-    for key in ("treatment_wells_per_orientation", "plate_counts_per_orientation", "targets", "two_dose_targets", "three_dose_targets", "ab_same_treatments", "ab_complementary_plate_assignment", "public_schedule_rows", "public_site_schedule_exact", "manifest_table_exact", "transport_escape_literals", "bandwidth_post_selection_disclosed", "nested_bandwidth_selection_linked", "nested_bandwidth_all_outer_training_sets_selected_07", "nested_bandwidth_independent_validation", "cooptimized_control_linked", "cooptimized_control_decision", "cooptimized_control_independent_validation", "overstated_search_label_absent", "cross_patient_negative_disclosed", "cross_patient_negative_linked", "promotion_gate_predicates_derived", "orientation_vector_validated", "additive_p90_crosschecked", "historical_fold_counts_pinned", "verification_chronology_linked", "current_report_bound_test_count", "historical_168_originally_bound_earlier_report_revision", "current_finalist_rubric_evidence_linked", "current_finalist_rubric_self_score_assigned", "current_finalist_probability_estimated", "current_package_finalist_rubric_evidence_linked", "current_package_finalist_rubric_self_score_assigned", "current_package_finalist_probability_estimated", "downloadable_trace_linked", "offline_downloaded_trace_verifier_linked", "finalist_package_preflight_linked", "clean_finalist_package_execution_linked", "clean_finalist_package_checks", "clean_finalist_package_canonical_stages", "clean_finalist_package_canonical_tests", "clean_finalist_package_fresh_public_clone", "clean_finalist_package_clean_new_machine_certification", "clean_current_finalist_package_execution_linked", "clean_current_finalist_package_checks", "clean_current_finalist_package_current_rubric_successor_checked", "clean_current_finalist_package_canonical_stages", "clean_current_finalist_package_canonical_tests", "clean_current_finalist_package_fresh_public_clone", "clean_current_finalist_package_clean_new_machine_certification", "export_contains_raw_readings_or_outputs", "new_tamper_tests_passed", "release_preflight_check_count", "orchestrated_response_free_tests"):
+    for key in ("treatment_wells_per_orientation", "plate_counts_per_orientation", "targets", "two_dose_targets", "three_dose_targets", "ab_same_treatments", "ab_complementary_plate_assignment", "public_schedule_rows", "public_site_schedule_exact", "manifest_table_exact", "transport_escape_literals", "bandwidth_post_selection_disclosed", "nested_bandwidth_selection_linked", "nested_bandwidth_all_outer_training_sets_selected_07", "nested_bandwidth_independent_validation", "cooptimized_control_linked", "cooptimized_control_decision", "cooptimized_control_independent_validation", "overstated_search_label_absent", "cross_patient_negative_disclosed", "cross_patient_negative_linked", "promotion_gate_predicates_derived", "orientation_vector_validated", "additive_p90_crosschecked", "historical_fold_counts_pinned", "verification_chronology_linked", "current_report_bound_test_count", "historical_168_originally_bound_earlier_report_revision", "current_finalist_rubric_evidence_linked", "current_finalist_rubric_self_score_assigned", "current_finalist_probability_estimated", "current_package_finalist_rubric_evidence_linked", "current_package_finalist_rubric_self_score_assigned", "current_package_finalist_probability_estimated", "current_report_finalist_rubric_evidence_linked", "current_report_finalist_rubric_self_score_assigned", "current_report_finalist_probability_estimated", "current_report_public_render_verified", "current_report_raw_download_verified", "downloadable_trace_linked", "offline_downloaded_trace_verifier_linked", "finalist_package_preflight_linked", "clean_finalist_package_execution_linked", "clean_finalist_package_checks", "clean_finalist_package_canonical_stages", "clean_finalist_package_canonical_tests", "clean_finalist_package_fresh_public_clone", "clean_finalist_package_clean_new_machine_certification", "clean_current_finalist_package_execution_linked", "clean_current_finalist_package_checks", "clean_current_finalist_package_current_rubric_successor_checked", "clean_current_finalist_package_canonical_stages", "clean_current_finalist_package_canonical_tests", "clean_current_finalist_package_fresh_public_clone", "clean_current_finalist_package_clean_new_machine_certification", "export_contains_raw_readings_or_outputs", "new_tamper_tests_passed", "release_preflight_check_count", "orchestrated_response_free_tests"):
         same(schedule_index[key], schedule_verification[key], "INDEX_FROZEN_SCHEDULE_" + key.upper())
     for key in ("prospective_experiment_executed", "biological_validation_created", "protected_response_access", "private_patient_rows_read", "accepted_kaggle_entry_changed", "official_competition_score"):
         same(schedule_index[key], frozen_schedule[key], "INDEX_FROZEN_SCHEDULE_BOUNDARY_" + key.upper())
@@ -1259,6 +1280,17 @@ def verify(root, enforce_pins=True):
     same(current_rubric_result["accepted_kaggle_entry_changed"], False, "CURRENT_RUBRIC_EVIDENCE_NO_KAGGLE_CHANGE")
     same(current_rubric_result["official_competition_score"], None, "CURRENT_RUBRIC_EVIDENCE_NO_SCORE")
     try:
+        current_report_rubric_result = verify_current_report_finalist_rubric_evidence(root)
+    except CurrentReportRubricEvidenceError as exc:
+        raise EvidenceError("CURRENT_REPORT_RUBRIC_EVIDENCE: " + str(exc)) from exc
+    same(current_report_rubric_result["criteria"], 5, "CURRENT_REPORT_RUBRIC_EVIDENCE_CRITERIA")
+    same(current_report_rubric_result["weight_sum"], 100, "CURRENT_REPORT_RUBRIC_EVIDENCE_WEIGHT_SUM")
+    same(current_report_rubric_result["current_report_bytes"], 92307, "CURRENT_REPORT_RUBRIC_EVIDENCE_BYTES")
+    same(current_report_rubric_result["public_report_render_verified"], True, "CURRENT_REPORT_RUBRIC_EVIDENCE_RENDER")
+    same(current_report_rubric_result["raw_download_verified"], False, "CURRENT_REPORT_RUBRIC_EVIDENCE_NO_DOWNLOAD")
+    same(current_report_rubric_result["accepted_kaggle_entry_changed"], False, "CURRENT_REPORT_RUBRIC_EVIDENCE_NO_KAGGLE_CHANGE")
+    same(current_report_rubric_result["official_competition_score"], None, "CURRENT_REPORT_RUBRIC_EVIDENCE_NO_SCORE")
+    try:
         chronology_result = verify_verification_chronology(root)
     except ChronologyError as exc:
         raise EvidenceError("VERIFICATION_CHRONOLOGY: " + str(exc)) from exc
@@ -1336,6 +1368,9 @@ def verify(root, enforce_pins=True):
         "current_rubric_evidence_criteria": current_rubric_result["criteria"],
         "current_rubric_clean_package_checks": current_rubric_result["clean_current_package_checks"],
         "current_rubric_successor_checked": current_rubric_result["current_rubric_successor_checked"],
+        "current_report_rubric_evidence_criteria": current_report_rubric_result["criteria"],
+        "current_report_rubric_evidence_bytes": current_report_rubric_result["current_report_bytes"],
+        "current_report_rubric_raw_download_verified": current_report_rubric_result["raw_download_verified"],
         "current_preflight_tests": current_preflight["orchestrated_test_count"],
         "verification_chronology_latest_tests": chronology_result["latest_orchestrated_test_count"],
         "clean_finalist_package_checks": clean_package_result["package_checks"],

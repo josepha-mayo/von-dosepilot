@@ -90,6 +90,42 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
+        current_report_rubric_index = index["current_report_finalist_rubric_evidence"]
+        current_report_rubric = json.loads(
+            (self.source / current_report_rubric_index["path"]).read_text()
+        )
+        current_report_render_path = current_report_rubric["evidence_bindings"][
+            "current_report_render"
+        ]["path"]
+        current_report_render = json.loads(
+            (self.source / current_report_render_path).read_text()
+        )
+        current_report_rubric_paths = {
+            current_report_rubric_index["path"],
+            current_report_render["exact_pdf"]["path"],
+            *current_report_rubric["artifact_sha256"],
+        }
+        current_report_rubric_paths.update(
+            binding["path"]
+            for binding in current_report_rubric["evidence_bindings"].values()
+        )
+        for relative in current_report_rubric_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
+        chronology_index = index["verification_chronology"]
+        chronology = json.loads((self.source / chronology_index["path"]).read_text())
+        chronology_paths = {
+            chronology_index["path"],
+            chronology["predecessor"]["path"],
+            chronology["governance_milestone"]["path"],
+            *chronology["artifact_sha256"],
+        }
+        chronology_paths.update(state["path"] for state in chronology["states"])
+        for relative in chronology_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         governance_path = index["canonical_receipts"]["development_search_governance"]["path"]
         governance = json.loads((self.source / governance_path).read_text())
         governance_paths = [governance["registry"]["path"], governance["predecessor"]["path"],

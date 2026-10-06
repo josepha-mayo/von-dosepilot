@@ -35,6 +35,7 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
             receipt["cooptimized_control"]["path"],
             receipt["current_finalist_rubric_evidence"]["path"],
             receipt["current_package_finalist_rubric_evidence"]["path"],
+            receipt["current_report_finalist_rubric_evidence"]["path"],
             *receipt["artifact_sha256"],
             *AUDITED_SURFACES,
         }
@@ -76,7 +77,10 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         (self.root / "evidence/EVIDENCE_INDEX.json").write_text(json.dumps(index, indent=2) + "\n")
 
     def rehash_surface(self, relative, receipt):
-        receipt["audited_surfaces"][relative] = hashlib.sha256((self.root / relative).read_bytes()).hexdigest()
+        digest = hashlib.sha256((self.root / relative).read_bytes()).hexdigest()
+        receipt["audited_surfaces"][relative] = digest
+        if relative in receipt.get("artifact_sha256", {}):
+            receipt["artifact_sha256"][relative] = digest
         self.rehash_receipt(receipt)
 
     def test_current_state_passes(self):
@@ -94,6 +98,10 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         self.assertTrue(result["current_package_finalist_rubric_evidence_linked"])
         self.assertFalse(result["current_package_finalist_rubric_self_score_assigned"])
         self.assertFalse(result["current_package_finalist_probability_estimated"])
+        self.assertTrue(result["current_report_finalist_rubric_evidence_linked"])
+        self.assertFalse(result["current_report_finalist_rubric_self_score_assigned"])
+        self.assertFalse(result["current_report_finalist_probability_estimated"])
+        self.assertFalse(result["current_report_raw_download_verified"])
         self.assertEqual(result["cooptimized_control_decision"], "REJECT_RETAIN_BANDWIDTH07")
 
     def test_receipt_tamper_fails(self):
@@ -268,6 +276,38 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         ))
         self.rehash_surface("00_REVIEWER_START_HERE.md", receipt)
         with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "REVIEWER_CURRENT_REPORT_BINDING"):
+            verify(self.root)
+
+    def test_writeup_current_report_rubric_link_removal_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / "docs/KAGGLE_WRITEUP.md"
+        path.write_text(path.read_text().replace(
+            "docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_REPORT.md",
+            "docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_PACKAGE.md",
+            1,
+        ))
+        self.rehash_surface("docs/KAGGLE_WRITEUP.md", receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "WRITEUP_CURRENT_REPORT_RUBRIC_LINK"):
+            verify(self.root)
+
+    def test_current_report_rubric_receipt_tamper_fails(self):
+        _, _, receipt = self.receipt()
+        path = self.root / receipt["current_report_finalist_rubric_evidence"]["path"]
+        path.write_bytes(path.read_bytes() + b" ")
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "ARTIFACT_HASH|CURRENT_REPORT_RUBRIC_RECEIPT_HASH"):
+            verify(self.root)
+
+    def test_false_current_report_raw_download_claim_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / receipt["current_report_finalist_rubric_evidence"]["path"]
+        data = json.loads(path.read_text())
+        data["presentation_successor"]["raw_download_verified"] = True
+        path.write_text(json.dumps(data, indent=2) + "\n")
+        digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        receipt["current_report_finalist_rubric_evidence"]["sha256"] = digest
+        receipt["artifact_sha256"][receipt["current_report_finalist_rubric_evidence"]["path"]] = digest
+        self.rehash_receipt(receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "CURRENT_REPORT_RUBRIC_NO_RAW_DOWNLOAD"):
             verify(self.root)
 
 

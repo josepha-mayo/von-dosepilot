@@ -71,7 +71,10 @@ class ReviewerRouteTests(unittest.TestCase):
         index = json.loads(index_path.read_text())
         receipt_path = self.root / index["reviewer_route_integrity"]["path"]
         receipt = json.loads(receipt_path.read_text())
-        receipt["audited_surfaces"][relative] = hashlib.sha256((self.root / relative).read_bytes()).hexdigest()
+        digest = hashlib.sha256((self.root / relative).read_bytes()).hexdigest()
+        receipt["audited_surfaces"][relative] = digest
+        if relative in receipt.get("artifact_sha256", {}):
+            receipt["artifact_sha256"][relative] = digest
         receipt_path.write_text(json.dumps(receipt, indent=2) + "\n")
         index["reviewer_route_integrity"]["sha256"] = hashlib.sha256(receipt_path.read_bytes()).hexdigest()
         index_path.write_text(json.dumps(index, indent=2) + "\n")

@@ -58,14 +58,14 @@ def verify(root):
     receipt_path = root / record.get("path", "")
     require(sha(receipt_path) == record.get("sha256"), "INDEX_RECEIPT_HASH")
     receipt = load(receipt_path)
-    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v17", "SCHEMA")
+    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v18", "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
-    require(receipt.get("role") == "REVIEWER_NAVIGATION_CURRENT_REPORT_CURRENT_PACKAGE_RUBRIC_SUCCESSOR_AND_CLEAN_PACKAGE_CHRONOLOGY_TRACE_OFFLINE_NESTED_NEGATIVE_CONTROL", "ROLE")
+    require(receipt.get("role") == "REVIEWER_NAVIGATION_CURRENT_REPORT_BOUND_RUBRIC_SUCCESSOR_CURRENT_PACKAGE_CLEAN_PACKAGE_CHRONOLOGY_TRACE_OFFLINE_NESTED_NEGATIVE_CONTROL", "ROLE")
 
     predecessor = receipt.get("predecessor", {})
     predecessor_path = root / predecessor.get("path", "")
     require(sha(predecessor_path) == predecessor.get("sha256"), "PREDECESSOR_HASH")
-    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v16", "PREDECESSOR_SCHEMA")
+    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v17", "PREDECESSOR_SCHEMA")
     require(predecessor.get("preserved_unchanged") is True, "PREDECESSOR_PRESERVED")
 
     for relative, expected in receipt.get("artifact_sha256", {}).items():
@@ -149,6 +149,11 @@ def verify(root):
     require(package_rubric_doc in readme, "README_CURRENT_PACKAGE_RUBRIC_LINK")
     require(package_rubric_doc in reviewer, "REVIEWER_CURRENT_PACKAGE_RUBRIC_LINK")
     require(package_rubric_url in writeup, "WRITEUP_CURRENT_PACKAGE_RUBRIC_LINK")
+    report_rubric_doc = "docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_REPORT.md"
+    report_rubric_url = "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_REPORT.md"
+    require(report_rubric_doc in readme, "README_CURRENT_REPORT_RUBRIC_LINK")
+    require(report_rubric_doc in reviewer, "REVIEWER_CURRENT_REPORT_RUBRIC_LINK")
+    require(report_rubric_url in writeup, "WRITEUP_CURRENT_REPORT_RUBRIC_LINK")
     for text, label in ((readme, "README"), (reviewer, "REVIEWER"), (writeup, "WRITEUP")):
         require("self-score" in text and ("finalist-probability" in text or "finalist probability" in text), label + "_CURRENT_RUBRIC_BOUNDARY")
     require("current technical report is bound to this 173-test" in readme, "README_CURRENT_REPORT_BINDING")
@@ -308,6 +313,26 @@ def verify(root):
     require(package_rubric_boundary.get("clean_new_machine_certification") is False, "CURRENT_PACKAGE_RUBRIC_NOT_NEW_MACHINE")
     require(package_rubric_boundary.get("live_dependency_download_claimed") is False, "CURRENT_PACKAGE_RUBRIC_NO_LIVE_DOWNLOAD_CLAIM")
 
+    report_rubric_record = receipt.get("current_report_finalist_rubric_evidence", {})
+    report_rubric_path = root / report_rubric_record.get("path", "")
+    require(sha(report_rubric_path) == report_rubric_record.get("sha256"), "CURRENT_REPORT_RUBRIC_RECEIPT_HASH")
+    report_rubric = load(report_rubric_path)
+    require(report_rubric.get("schema") == "dosepilot.finalist_rubric_evidence.v5", "CURRENT_REPORT_RUBRIC_SCHEMA")
+    require(report_rubric.get("status") == "PASS", "CURRENT_REPORT_RUBRIC_STATUS")
+    require(report_rubric.get("role") == "CURRENT_REPORT_BOUND_JUDGE_CRITERION_EVIDENCE_SUCCESSOR", "CURRENT_REPORT_RUBRIC_ROLE")
+    require(report_rubric.get("rubric", {}).get("combined_self_score") is None, "CURRENT_REPORT_RUBRIC_NO_SELF_SCORE")
+    presentation = report_rubric.get("presentation_successor", {})
+    require(presentation.get("current_report_sha256") == "23bd050d13b9724b3ae6dfb3ae63406609d2573edfcd957369556be99f4585f1", "CURRENT_REPORT_RUBRIC_PDF_HASH")
+    require(presentation.get("current_report_bytes") == 92307, "CURRENT_REPORT_RUBRIC_PDF_BYTES")
+    require(presentation.get("embedded_render_verified") is True, "CURRENT_REPORT_RUBRIC_RENDER")
+    require(presentation.get("raw_download_verified") is False, "CURRENT_REPORT_RUBRIC_NO_RAW_DOWNLOAD")
+    require(presentation.get("downloaded_bytes_compared") is False, "CURRENT_REPORT_RUBRIC_NO_BYTE_COMPARE")
+    report_rubric_boundary = report_rubric.get("claim_boundary", {})
+    require(report_rubric_boundary.get("finalist_status_claimed") is False, "CURRENT_REPORT_RUBRIC_NO_FINALIST_STATUS")
+    require(report_rubric_boundary.get("accepted_kaggle_entry_changed") is False, "CURRENT_REPORT_RUBRIC_NO_KAGGLE_CHANGE")
+    require(report_rubric_boundary.get("independent_validation_created") is False, "CURRENT_REPORT_RUBRIC_NO_INDEPENDENT_VALIDATION")
+    require(report_rubric_boundary.get("raw_pdf_download_verified") is False, "CURRENT_REPORT_RUBRIC_RAW_DOWNLOAD_BOUNDARY")
+
     nested_record = receipt.get("nested_bandwidth_evidence", {})
     nested_path = root / nested_record.get("path", "")
     require(sha(nested_path) == nested_record.get("sha256"), "NESTED_RECEIPT_HASH")
@@ -391,13 +416,14 @@ def verify(root):
     require(verification.get("cooptimized_links") == 3, "COOPT_LINK_COUNT")
     require(verification.get("current_rubric_links") == 3, "CURRENT_RUBRIC_LINK_COUNT")
     require(verification.get("current_package_rubric_links") == 3, "CURRENT_PACKAGE_RUBRIC_LINK_COUNT")
+    require(verification.get("current_report_rubric_links") == 3, "CURRENT_REPORT_RUBRIC_LINK_COUNT")
     require(verification.get("current_report_cooptimized_control_documented") is True, "CURRENT_REPORT_COOPT_DOCUMENTED")
     require(verification.get("current_report_clean_finalist_package_documented") is True, "CURRENT_REPORT_CLEAN_PACKAGE_RECEIPT")
     require(verification.get("current_report_clean_current_finalist_package_documented") is True, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_RECEIPT")
     require(verification.get("current_report_current_package_rubric_documented") is True, "CURRENT_REPORT_CURRENT_PACKAGE_RUBRIC_RECEIPT")
     require(verification.get("current_report_bound_test_count") == 173, "CURRENT_REPORT_BOUND_TESTS")
     require(verification.get("historical_168_originally_bound_earlier_report_revision") is True, "HISTORICAL_168_REPORT_BINDING")
-    require(verification.get("adversarial_tests_passed") == 22, "ADVERSARIAL_TEST_COUNT")
+    require(verification.get("adversarial_tests_passed") == 25, "ADVERSARIAL_TEST_COUNT")
     require(verification.get("finalist_package_current_rubric_successor_checked") is True, "FINALIST_PREFLIGHT_CURRENT_RUBRIC_BOUND")
     require(verification.get("network_requests") == 0, "NETWORK_REQUESTS")
 
@@ -439,6 +465,7 @@ def verify(root):
         "cooptimized_links": 3,
         "current_rubric_links": 3,
         "current_package_rubric_links": 3,
+        "current_report_rubric_links": 3,
         "network_requests": 0,
         "downloadable_trace_linked": True,
         "offline_downloaded_trace_verifier_linked": True,
@@ -454,6 +481,10 @@ def verify(root):
         "current_package_finalist_rubric_evidence_linked": True,
         "current_package_finalist_rubric_self_score_assigned": False,
         "current_package_finalist_probability_estimated": False,
+        "current_report_finalist_rubric_evidence_linked": True,
+        "current_report_finalist_rubric_self_score_assigned": False,
+        "current_report_finalist_probability_estimated": False,
+        "current_report_raw_download_verified": False,
         "current_report_cooptimized_control_documented": True,
         "current_report_clean_finalist_package_documented": True,
         "current_report_clean_current_finalist_package_documented": True,

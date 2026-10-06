@@ -1,6 +1,6 @@
 {
   "schema": "dosepilot.evidence_index.v1",
-  "as_of_date": "2026-10-05",
+  "as_of_date": "2026-10-06",
   "cross_study_raw_mse_comparison_allowed": false,
   "canonical_receipts": {
     "protected22_access": {
@@ -56,16 +56,16 @@
       "sha256": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027"
     },
     "frozen_ooc_release_binding": {
-      "path": "evidence/frozen_ooc_release_binding_r20_20261005.json",
-      "sha256": "c1968e44f4acae916e6fe1e6438ee05e85fc1f80525f19b4ffd639728cc68ff0"
+      "path": "evidence/frozen_ooc_release_binding_r21_20261006.json",
+      "sha256": "7c7b60dd0dd1a056f62add0c5bb35250ced4700d9a574ce5f36390d619fef89a"
     },
     "target_definitions_release": {
       "path": "evidence/target_definitions_release_20261003.json",
       "sha256": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc"
     },
     "reviewer_path_release": {
-      "path": "evidence/reviewer_path_release_r22_20261005.json",
-      "sha256": "c718abe51dd47afa88329f5c81de2928857491ad514156daaa21322593983a7e"
+      "path": "evidence/reviewer_path_release_r23_20261006.json",
+      "sha256": "610bd47a997ff98415caf92d87f57b31e78b9215003d21b06cd1a5a0f916bdaa"
     },
     "development_search_governance": {
       "path": "evidence/development_search_governance_r3_20261005.json",
@@ -174,7 +174,12 @@
     "cooptimized_control_independent_validation": false,
     "current_package_finalist_rubric_evidence_linked": true,
     "current_package_finalist_rubric_self_score_assigned": false,
-    "current_package_finalist_probability_estimated": false
+    "current_package_finalist_probability_estimated": false,
+    "current_report_finalist_rubric_evidence_linked": true,
+    "current_report_finalist_rubric_self_score_assigned": false,
+    "current_report_finalist_probability_estimated": false,
+    "current_report_public_render_verified": true,
+    "current_report_raw_download_verified": false
   },
   "finalist_rubric_evidence": {
     "path": "evidence/finalist_rubric_evidence_20261004.json",
@@ -321,8 +326,8 @@
     "official_competition_score": null
   },
   "verification_chronology": {
-    "path": "evidence/verification_chronology_r12_20261005.json",
-    "sha256": "b1e3d6a87874308a623a67f6a85e492e784d778f3d444f5ebdc5998c133c7aab",
+    "path": "evidence/verification_chronology_r13_20261006.json",
+    "sha256": "55e89e5e8f193f277873a0100e89f26fac3f8a6b1636e6cc92af8b9c5d752fc0",
     "status": "PASS",
     "latest_orchestrated_response_free_tests": 173,
     "current_report_bound_test_count": 173,
@@ -354,11 +359,11 @@
     "official_competition_score": null
   },
   "reviewer_route_integrity": {
-    "path": "evidence/reviewer_route_integrity_r17_20261005.json",
-    "sha256": "83db5f1f6f4fc1a3befa90898bf6c18ba26aec076ed4717a4efc36303e21e0d9",
+    "path": "evidence/reviewer_route_integrity_r18_20261006.json",
+    "sha256": "378b5f917bee0a04f790575f02668ac5acafe67bc1f8f453b821cad59db6a316",
     "status": "PASS",
     "audited_surfaces": 5,
-    "local_targets": 82,
+    "local_targets": 86,
     "github_master_targets": 27,
     "anchors": 1,
     "required_urls": 5,
@@ -401,9 +406,14 @@
     "cooptimized_control_decision": "REJECT_RETAIN_BANDWIDTH07",
     "cooptimized_control_independent_validation": false,
     "current_package_rubric_links": 3,
+    "current_report_rubric_links": 3,
     "current_package_finalist_rubric_evidence_linked": true,
     "current_package_finalist_rubric_self_score_assigned": false,
-    "current_package_finalist_probability_estimated": false
+    "current_package_finalist_probability_estimated": false,
+    "current_report_finalist_rubric_evidence_linked": true,
+    "current_report_finalist_rubric_self_score_assigned": false,
+    "current_report_finalist_probability_estimated": false,
+    "current_report_raw_download_verified": false
   },
   "external_reviewer_route_availability": {
     "path": "evidence/external_reviewer_route_availability_20261005.json",
@@ -848,6 +858,11 @@
     "cooptimized_control_independent_validation": false,
     "current_package_finalist_rubric_evidence_linked": true,
     "current_package_finalist_rubric_self_score_assigned": false,
-    "current_package_finalist_probability_estimated": false
+    "current_package_finalist_probability_estimated": false,
+    "current_report_finalist_rubric_evidence_linked": true,
+    "current_report_finalist_rubric_self_score_assigned": false,
+    "current_report_finalist_probability_estimated": false,
+    "current_report_public_render_verified": true,
+    "current_report_raw_download_verified": false
   }
 }
