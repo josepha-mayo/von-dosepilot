@@ -1,0 +1,16 @@
+{
+  "schema": "dosepilot.budget72_bandwidth07_residual.proposal.v1",
+  "state": "PROPOSED_BEFORE_CANDIDATE_OUTCOME",
+  "family_id": "budget72_bandwidth07_residual",
+  "role": "FROZEN_TRANSFER_OF_EXISTING_BANDWIDTH07_RESIDUAL_FAMILY",
+  "question": "Does the already-verified 0.7x additive cross-drug residual kernel improve the frozen 72-well all-three-dose own-drug base?",
+  "bandwidth_multiplier": 0.7,
+  "residual_options": ["identity", "fraction={0.1,0.3,0.6} x ridge={0.1,1,10}"],
+  "base_ridge": 0.01,
+  "hyperparameter_search": "inner-fold selection among the exact existing 10 residual options only",
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}
