@@ -2,7 +2,11 @@
 
 ## 24 response summaries from 64 traceable treatment wells
 
-Joseph Ayanda | Model & Algorithm | Current submission report | 6 October 2026
+Joseph Ayanda | von DosePilot (solo) | Model & Algorithm | Current submission report | 6 October 2026
+
+Team composition: **Joseph Ayanda — AI/ML, software engineering, reproducibility, and experimental-design workflow.**
+
+Public demo video: https://youtu.be/QeOGJIgx378 (75 seconds)
 
 > DosePilot freezes a physical assay layout before responses arrive, validates every purchased drug-dose-plate identity, and reconstructs 24 fixed research summaries with an explicit missing-data and evidence contract.
 
@@ -88,6 +92,14 @@ The 64/416 ratio is a **treatment-measurement count** comparison. It is not a de
 
 A and B are complete alternative 64-well layouts. Their prediction vectors are never combined.
 
+## Data sources, licenses, and compliance
+
+The primary development source is the public colorectal-cancer patient-derived organoid study of **Kryeziu et al., Cell Reports Medicine (2026)**. DosePilot pins the public **Mendeley Data v3 `Data S4.xlsx`** workbook at 15,886,254 bytes with SHA-256 `3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c`. The deposit is listed under **CC BY 4.0**. The public reconstruction route selects the historical Lib1 TRAIN measurements and records zero Lib2 numerical-response conversions and zero raw-signal conversions.
+
+Original DosePilot code, documentation, and fictional fixtures are released under **MIT**. External adaptation and stress-test datasets retain their own source licenses and are documented separately. The public repository excludes biological workbooks, patient-level prediction arrays, fitted biological weights, and protected responses. Software dependencies are declared in `requirements.txt` / `study/requirements.txt` and retain their upstream licenses.
+
+No current accuracy experiment uses a paid model API, proprietary hardware requirement, or private clinical dataset. The historical fitted arrays used for exact replay remain private; the public source-to-results route reconstructs the supported development pipeline from the cited public source.
+
 <!-- pagebreak -->
 
 # Model
@@ -156,6 +168,12 @@ The current model wins **40/59 patient means**, all **5/5 outer folds**, and **1
 
 The five regressing target averages are Afatinib, AZD7762, LCL161, Regorafenib, and Trametinib.
 
+## Descriptive patient uncertainty
+
+A post-hoc **100,000-resample whole-patient bootstrap** (seed 20261006) resamples the 59 patient-level loss differences without rerunning model selection. For current-minus-bandwidth-0.7 mean loss, the descriptive percentile 95% interval is **[-2.60e-5, -6.54e-6]**, entirely below zero. This interval is **selection-naive** because Lib1 has been repeatedly inspected; it is not a confirmatory or selection-corrected confidence interval.
+
+The aggregate-only receipt is `evidence/current_successor_descriptive_bootstrap_20261006.json`; no patient-level rows are published.
+
 ## Historical screens
 
 Versus R13: **8.9193% lower MSE, 49/59 patient wins, 5/5 folds, 22/24 target-average wins**.
@@ -164,7 +182,7 @@ Versus authenticated R18: **8.6437% lower MSE, 50/59 patient wins, 5/5 folds, p9
 
 ## Immediate-predecessor honesty check
 
-Versus the 0.001043179589 immediate predecessor, the current point estimate is only **0.0416% lower**, with **32/59 patient wins, 27 losses, and 3/5 favorable folds**. p90 remains nonworse.
+Versus the 0.001043179589 immediate predecessor, the current point estimate is only **0.0416% lower**, with **32/59 patient wins, 27 losses, and 3/5 favorable folds**. p90 remains nonworse. The same descriptive patient bootstrap gives **[-1.13e-6, 2.58e-7]**, which crosses zero. This is why the current model is described as the lowest verified adaptive-development point estimate, not as uniformly superior to every nearby candidate.
 
 # Falsification and verification
 
@@ -233,6 +251,7 @@ Current candidate artifacts:
 
 ```text
 evidence/orientation_specific_control_quality_rank1_20261006.json
+evidence/current_successor_descriptive_bootstrap_20261006.json
 study/orientation_specific_control_quality_rank1/PROPOSAL.json
 study/orientation_specific_control_quality_rank1/PROTOCOL.json
 study/orientation_specific_control_quality_rank1/FREEZE.json
@@ -243,6 +262,10 @@ study/orientation_specific_control_quality_rank1/verify_study.py
 The existing durable fictional lifecycle still represents the bandwidth-0.7 operational baseline. The newer calibration layer has not been silently substituted into that older demo. The separation is explicit so a reviewer can distinguish an accuracy experiment from a completed product-runtime migration.
 
 The public repository excludes patient arrays, fitted biological weights, and protected responses.
+
+## AI assistance and runtime independence
+
+ChatGPT assisted with research synthesis, implementation, numerical checking, adversarial review, and documentation. The DosePilot reconstruction runtime itself uses **no language-model API or paid model service**. AI assistance does not replace the frozen numerical verifiers, patient-grouped evaluation, source hashes, or preserved negative results.
 
 # Claim boundary
 
@@ -257,3 +280,10 @@ DosePilot currently supports:
 - a clear prospective handoff.
 
 It does **not** establish clinical utility, realized laboratory savings, prospective organ-on-chip performance, independent validation of the current fitted weights, an official competition score, or a guaranteed outcome.
+
+# References
+
+1. Kryeziu et al., *Cell Reports Medicine* (2026), DOI: 10.1016/j.xcrm.2026.102840.
+2. Tan et al., *Cell Reports Medicine* (2023), DOI: 10.1016/j.xcrm.2023.101335.
+3. Farin et al., *Cancer Discovery* (2023), DOI: 10.1158/2159-8290.CD-23-0050; Mendeley Data DOI: 10.17632/fypp6xhkjy.1.
+4. Verissimo et al., *eLife* (2016), DOI: 10.7554/eLife.18489.
