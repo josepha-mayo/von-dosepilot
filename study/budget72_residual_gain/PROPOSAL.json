@@ -1,0 +1,17 @@
+{
+  "schema": "dosepilot.budget72_residual_gain.proposal.v1",
+  "state": "PROPOSED_BEFORE_CANDIDATE_OUTCOME",
+  "family_id": "budget72_residual_gain",
+  "role": "FROZEN_INNER_ONLY_GLOBAL_RESIDUAL_GAIN_SELECTION",
+  "question": "Can one globally selected residual-correction gain improve the frozen 72-well bandwidth-0.7 frontier?",
+  "bandwidth_multiplier": 0.7,
+  "residual_option_count": 10,
+  "gain_grid": [0.5, 0.75, 1.0, 1.25, 1.5],
+  "selection_unit": "one option-plus-gain pair per outer fold",
+  "outer_target_splicing": false,
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}
