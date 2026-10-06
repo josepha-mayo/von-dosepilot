@@ -1,0 +1,83 @@
+{
+  "schema": "dosepilot.budget72_bandwidth07.public_audit.v1",
+  "as_of_date": "2026-10-06",
+  "scope": "PUBLIC_AGGREGATE_AND_FROZEN_LINEAGE_AUDIT_NOT_PRIVATE_NUMERICAL_REPLAY",
+  "lineage": {
+    "freeze_commit": "b772b3e94a4747019ac06a8b5e7319523b11300d",
+    "result_commit": "e3413b71958566abee4725892ebfe7dde42b4c31",
+    "result_is_direct_child_of_freeze": true,
+    "frozen_sources_unchanged_between_commits": true,
+    "private_input_open_time_independently_attested": false
+  },
+  "candidate": {
+    "treatment_wells": 72,
+    "plate_wells": [36, 36],
+    "mse": 0.0009326007417880046,
+    "p90_patient_rmse": 0.03770730634910972
+  },
+  "versus_base72": {
+    "reference_mse": 0.0010055928901387746,
+    "relative_mse_gain": 0.07258618181031173,
+    "patient_wins": 47,
+    "favorable_outer_folds": 5,
+    "target_average_wins": 22,
+    "p90_nonworse": true,
+    "bootstrap_percentile_95_ci": [-0.00009582489974395234, -0.00005112779142763906]
+  },
+  "versus_current_64_well_scientific_successor": {
+    "reference_mse": 0.001042745722096212,
+    "reference_p90_patient_rmse": 0.037419695944064885,
+    "relative_mse_gain": 0.10562975994452883,
+    "patient_wins": 48,
+    "favorable_outer_folds": 5,
+    "mean_gate_pass": true,
+    "patient_breadth_gate_pass": true,
+    "all_five_fold_gate_pass": true,
+    "tail_gate_pass": false,
+    "r13_r18_gates_retained": true
+  },
+  "decision": {
+    "status": "REJECT_FOR_PROMOTION_PRESERVE_AS_FRONTIER_EVIDENCE",
+    "reason": "The 72-well candidate has worse p90 patient RMSE than the current 64-well scientific successor.",
+    "scientific_successor_replaced": false,
+    "operational_baseline_replaced": false,
+    "candidate_promotion_allowed": false
+  },
+  "public_reproducibility": {
+    "aggregate_receipt_and_arithmetic_checkable": true,
+    "freeze_source_and_dependency_hashes_checkable": true,
+    "patient_level_rows_published": false,
+    "prediction_arrays_published": false,
+    "private_result_json_published": false,
+    "full_prediction_replay_publicly_runnable": false,
+    "independent_numerical_reproduction_claimed": false
+  },
+  "artifacts": {
+    "aggregate_receipt": {
+      "path": "evidence/budget72_bandwidth07_residual_20261006.json",
+      "sha256": "a1f6adb972357181e49d69454804e77aef00c3cb937342bcb375999790d47190"
+    },
+    "result_document": {
+      "path": "docs/BUDGET72_BANDWIDTH07_FRONTIER_20261006.md",
+      "sha256": "0fc422a593ac2d24a4158f95e436c043fd0d45fe9097dff22a15873e749af7df"
+    },
+    "result_figure": {
+      "path": "docs/figures/budget72_bandwidth_frontier_20261006.png",
+      "sha256": "a8e53612bfc81cb5f392bef819397937f9acf8fa4ba803e2d854f847b2b78599"
+    },
+    "freeze_receipt": {
+      "path": "study/budget72_bandwidth07_residual/FREEZE.json",
+      "sha256": "e9ea1d1531835a13af038e70bf1de8fe3ce928a8cffa4878df224622afe25879"
+    },
+    "public_audit_document": {
+      "path": "docs/BUDGET72_BANDWIDTH07_PUBLIC_AUDIT_20261006.md",
+      "sha256": "2b17d7d6d7ce33f2beac03b78a933864240c6f0d44015ef3e57586b98d9efa2f"
+    }
+  },
+  "selection_adjusted": false,
+  "independent_validation": false,
+  "clinical_evidence": false,
+  "official_score": null,
+  "protected22_access": false,
+  "warning": "Repeated adaptive Lib1 development. Public aggregate and lineage audit only; private prediction replay is unavailable."
+}

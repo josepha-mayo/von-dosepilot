@@ -1,0 +1,41 @@
+{
+  "schema": "dosepilot.budget_upgrade_curve.evidence.v1",
+  "as_of_date": "2026-10-06",
+  "role": "POST_HOC_MEASUREMENT_BUDGET_CURVE_NOT_CANDIDATE_PROMOTION",
+  "frozen_before_outcome_commit": "b205cf6",
+  "budgets": {
+    "48": {"mse": 0.0015432725382030184, "p90_patient_rmse": 0.04673804116213533},
+    "52": {"mse": 0.0014019868255279698, "p90_patient_rmse": 0.04512440017101007},
+    "56": {"mse": 0.0013359466877716313, "p90_patient_rmse": 0.043509473421367253},
+    "60": {"mse": 0.0012450200703377984, "p90_patient_rmse": 0.0427103425549257},
+    "64": {"mse": 0.0011448586813828535, "p90_patient_rmse": 0.04110782499169958},
+    "68": {"mse": 0.001053102723517891, "p90_patient_rmse": 0.03945175660713816},
+    "72": {"mse": 0.0010055928901387746, "p90_patient_rmse": 0.038422472650411515}
+  },
+  "curve": {
+    "mse_strictly_decreases_over_sampled_budgets": true,
+    "all_adjacent_steps_favor_higher_budget_on_5_of_5_outer_folds": true,
+    "relative_mse_reduction_48_to_72": 0.348394941931267,
+    "relative_mse_reduction_64_to_72": 0.12164769475127122
+  },
+  "current_64_well_successor": {
+    "mse": 0.001042745722096212,
+    "beats_uncalibrated_68_well_mse": true,
+    "relative_gain_vs_uncalibrated_68": 0.009834749441233748,
+    "uncalibrated_72_beats_successor": true,
+    "relative_gain_72_vs_successor": 0.03562981000080223,
+    "interpretation": "The calibrated 64-well successor lies on the sampled measurement/accuracy Pareto frontier: it has lower MSE than the uncalibrated 68-well point, while the 72-well base trades eight additional treatment wells for lower MSE."
+  },
+  "hashes": {
+    "result_sha256": "c3a379f841b2efc51ee5c7b93379950f2255018f7b51fb3b445cb12540a2c162",
+    "private_prediction_sha256": "3c3ba9d3dc1e1aaf7b7e3849ee13157ddbe298f81b60aa02d0d8e41096a7dcc0",
+    "freeze_sha256": "0024894cc7cd4aedfc21477b49defd4dd7728b0edc0ff88f62482482fba5950f"
+  },
+  "patient_level_rows_published": false,
+  "prediction_arrays_published": false,
+  "selection_adjusted": false,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "warning": "Repeated adaptive Lib1 development; this is a frozen post-hoc budget curve, not independent validation."
+}
