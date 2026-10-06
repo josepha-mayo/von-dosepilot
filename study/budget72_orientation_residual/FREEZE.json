@@ -1,0 +1,45 @@
+{
+  "schema": "dosepilot.budget72_orientation_residual.freeze.v1",
+  "state": "FROZEN_BEFORE_CANDIDATE_OUTCOME",
+  "frozen_date": "2026-10-06",
+  "family_id": "budget72_orientation_residual",
+  "role": "FROZEN_INNER_ONLY_ORIENTATION_SPECIFIC_RESIDUAL_SELECTION",
+  "input_sha256": {
+    "train_curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "budget_curve_predictions": "3c3ba9d3dc1e1aaf7b7e3849ee13157ddbe298f81b60aa02d0d8e41096a7dcc0",
+    "global_frontier_predictions": "72f803893e252a88777dbf2e5ef918d452da697da986d72adcbcb61f9e749a65"
+  },
+  "source_sha256": {
+    "study/budget72_orientation_residual/PROPOSAL.json": "c2d71fe238631b0fd051e996094492c12f82987e31e370488deeff7ff71dd320",
+    "study/budget72_orientation_residual/PROTOCOL.md": "62cc9d4dab2ac2a5825c702c5b32d026c409558affeca6f38642e79d14488a3b",
+    "study/budget72_orientation_residual/run_study.py": "dcb37d3804060d7af51ada552f5da0866f0556fdf785a6e92141ac8a5538754f",
+    "study/budget72_orientation_residual/test_study.py": "6294963b793018ba46364882319646b64da7566ad0f2510e09a1d1abe3341a07"
+  },
+  "dependency_sha256": {
+    "study/budget72_bandwidth07_residual/run_study.py": "ca6666c24e9f3e6030499ff52c4970b25ea6a6dd2df4bb01c1e98737c6e0518e",
+    "study/budget72_bandwidth07_residual/bandwidth_additive72.py": "a67dc57e1cc8848af9ceef712df5af0f23cccd081688a609632f202549bedf06",
+    "study/budget_upgrade_curve/run_study.py": "ffa862567139127a236947048be16c65aba6bd8a17374b636e486424f99c95d9",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/engine/sparse_methods.py": "511ea1665a7f245cd3a2923fd8a6be6f5c2e45ba901da1620f7298a4125ec64c",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/evaluate.py": "24593a7d8608fd3ce98c367e1760af596b3b33554c1ef7a3f8ac645b046b700b"
+  },
+  "expected_global_frontier_mse": 0.0009326007417880046,
+  "option_count": 10,
+  "orientation_count": 2,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "bootstrap_seed": 20261006,
+  "bootstrap_replicates": 100000,
+  "synthetic_tests_passed": 3,
+  "targetwise_selection": false,
+  "outer_target_splicing": false,
+  "report_regardless_of_direction": true,
+  "automatic_retry": false,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false
+}

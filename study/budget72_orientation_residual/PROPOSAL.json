@@ -1,0 +1,17 @@
+{
+  "schema": "dosepilot.budget72_orientation_residual.proposal.v1",
+  "state": "PROPOSED_BEFORE_CANDIDATE_OUTCOME",
+  "family_id": "budget72_orientation_residual",
+  "role": "FROZEN_INNER_ONLY_ORIENTATION_SPECIFIC_RESIDUAL_SELECTION",
+  "question": "Can orientation-specific inner-CV selection among the same ten bandwidth-0.7 residual options improve the 72-well global residual frontier?",
+  "bandwidth_multiplier": 0.7,
+  "option_count": 10,
+  "orientation_count": 2,
+  "targetwise_selection": false,
+  "outer_target_splicing": false,
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}
