@@ -58,14 +58,14 @@ def verify(root):
     receipt_path = root / record.get("path", "")
     require(sha(receipt_path) == record.get("sha256"), "INDEX_RECEIPT_HASH")
     receipt = load(receipt_path)
-    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v21", "SCHEMA")
+    require(receipt.get("schema") == "dosepilot.reviewer_route_integrity.v22", "SCHEMA")
     require(receipt.get("status") == "PASS", "STATUS")
-    require(receipt.get("role") == "REVIEWER_NAVIGATION_RETRIEVAL_BOUND_PACKAGE_CURRENT_REPORT_RETRIEVAL_RUBRIC_SUCCESSOR_CHRONOLOGY_TRACE_OFFLINE_NESTED_NEGATIVE_CONTROL", "ROLE")
+    require(receipt.get("role") == "REVIEWER_NAVIGATION_SCIENTIFIC_RELIABILITY_PACKAGE_BUDGET_EVIDENCE_CHRONOLOGY_TRACE_OFFLINE_NESTED_NEGATIVE_CONTROL", "ROLE")
 
     predecessor = receipt.get("predecessor", {})
     predecessor_path = root / predecessor.get("path", "")
     require(sha(predecessor_path) == predecessor.get("sha256"), "PREDECESSOR_HASH")
-    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v20", "PREDECESSOR_SCHEMA")
+    require(load(predecessor_path).get("schema") == "dosepilot.reviewer_route_integrity.v21", "PREDECESSOR_SCHEMA")
     require(predecessor.get("preserved_unchanged") is True, "PREDECESSOR_PRESERVED")
 
     for relative, expected in receipt.get("artifact_sha256", {}).items():
@@ -132,13 +132,13 @@ def verify(root):
     require(offline_url in writeup, "WRITEUP_OFFLINE_TRACE_LINK")
     require("demo/verify_downloaded_trace.py" in readme, "README_OFFLINE_TRACE_COMMAND")
     require("demo/verify_downloaded_trace.py" in reviewer, "REVIEWER_OFFLINE_TRACE_COMMAND")
-    package_doc = "docs/FINALIST_PACKAGE_PREFLIGHT_RETRIEVAL_BOUND.md"
-    package_url = "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FINALIST_PACKAGE_PREFLIGHT_RETRIEVAL_BOUND.md"
+    package_doc = "docs/FINALIST_PACKAGE_PREFLIGHT_SCIENTIFIC_RELIABILITY.md"
+    package_url = "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FINALIST_PACKAGE_PREFLIGHT_SCIENTIFIC_RELIABILITY.md"
     require(package_doc in readme, "README_FINALIST_PREFLIGHT_LINK")
     require(package_doc in reviewer, "REVIEWER_FINALIST_PREFLIGHT_LINK")
     require(package_url in writeup, "WRITEUP_FINALIST_PREFLIGHT_LINK")
-    require("study/audits/finalist_package_preflight_retrieval_bound.py" in readme, "README_FINALIST_PREFLIGHT_COMMAND")
-    require("study/audits/finalist_package_preflight_retrieval_bound.py" in reviewer, "REVIEWER_FINALIST_PREFLIGHT_COMMAND")
+    require("study/audits/finalist_package_preflight_scientific_reliability.py" in readme, "README_FINALIST_PREFLIGHT_COMMAND")
+    require("study/audits/finalist_package_preflight_scientific_reliability.py" in reviewer, "REVIEWER_FINALIST_PREFLIGHT_COMMAND")
     rubric_doc = "docs/FINALIST_RUBRIC_EVIDENCE_CURRENT.md"
     rubric_url = "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FINALIST_RUBRIC_EVIDENCE_CURRENT.md"
     require(rubric_doc in readme, "README_CURRENT_RUBRIC_LINK")
@@ -154,6 +154,16 @@ def verify(root):
     require(report_rubric_doc in readme, "README_CURRENT_REPORT_RUBRIC_LINK")
     require(report_rubric_doc in reviewer, "REVIEWER_CURRENT_REPORT_RUBRIC_LINK")
     require(report_rubric_url in writeup, "WRITEUP_CURRENT_REPORT_RUBRIC_LINK")
+    reliability_rubric_doc = "docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_SCIENTIFIC_RELIABILITY.md"
+    reliability_rubric_url = "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_SCIENTIFIC_RELIABILITY.md"
+    require(reliability_rubric_doc in readme, "README_SCIENTIFIC_RELIABILITY_RUBRIC_LINK")
+    require(reliability_rubric_doc in reviewer, "REVIEWER_SCIENTIFIC_RELIABILITY_RUBRIC_LINK")
+    require(reliability_rubric_url in writeup, "WRITEUP_SCIENTIFIC_RELIABILITY_RUBRIC_LINK")
+    budget_doc = "docs/BUDGET48_TWO_DOSE_ABLATION_20261006.md"
+    budget_url = "https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/BUDGET48_TWO_DOSE_ABLATION_20261006.md"
+    require(budget_doc in readme, "README_BUDGET_ABLATION_LINK")
+    require(budget_doc in reviewer, "REVIEWER_BUDGET_ABLATION_LINK")
+    require(budget_url in writeup, "WRITEUP_BUDGET_ABLATION_LINK")
     for text, label in ((readme, "README"), (reviewer, "REVIEWER"), (writeup, "WRITEUP")):
         require("self-score" in text and ("finalist-probability" in text or "finalist probability" in text), label + "_CURRENT_RUBRIC_BOUNDARY")
     require("current technical report is bound to this 173-test" in readme, "README_CURRENT_REPORT_BINDING")
@@ -248,19 +258,21 @@ def verify(root):
     package_path = root / package_record.get("path", "")
     require(sha(package_path) == package_record.get("sha256"), "FINALIST_PREFLIGHT_RECEIPT_HASH")
     package = load(package_path)
-    require(package.get("schema") == "dosepilot.finalist_package_preflight.v4", "FINALIST_PREFLIGHT_SCHEMA")
+    require(package.get("schema") == "dosepilot.finalist_package_preflight.v6", "FINALIST_PREFLIGHT_SCHEMA")
     require(package.get("status") == "PASS", "FINALIST_PREFLIGHT_STATUS")
     require(package.get("package_check_count") == 8, "FINALIST_PREFLIGHT_PACKAGE_CHECKS")
     require(package.get("postcanonical_check_count") == 7, "FINALIST_PREFLIGHT_POSTCANONICAL_CHECKS")
-    require(package.get("current_report_retrieval_rubric_successor_checked") is True, "FINALIST_PREFLIGHT_CURRENT_REPORT_RETRIEVAL_RUBRIC")
-    require(package.get("checks", [])[-1].get("name") == "current_report_retrieval_finalist_rubric_evidence", "FINALIST_PREFLIGHT_CURRENT_REPORT_RETRIEVAL_RUBRIC_CHECK")
-    retrieval_rubric = package.get("current_report_retrieval_rubric", {})
-    require(retrieval_rubric.get("current_report_bytes") == 92307, "FINALIST_PREFLIGHT_CURRENT_REPORT_BYTES")
-    require(retrieval_rubric.get("public_repository_file_bytes_retrieved") is True, "FINALIST_PREFLIGHT_REPOSITORY_BYTES_RETRIEVED")
-    require(retrieval_rubric.get("retrieved_bytes_match_exact_tree_pdf") is True, "FINALIST_PREFLIGHT_REPOSITORY_BYTES_MATCH")
-    require(retrieval_rubric.get("anonymous_raw_http_verified") is False, "FINALIST_PREFLIGHT_NO_ANONYMOUS_RAW_HTTP")
-    require(retrieval_rubric.get("browser_download_button_verified") is False, "FINALIST_PREFLIGHT_NO_BROWSER_DOWNLOAD_BUTTON")
-    require(retrieval_rubric.get("raw_download_verified") is False, "FINALIST_PREFLIGHT_CURRENT_REPORT_NO_RAW_DOWNLOAD")
+    require(package.get("current_scientific_reliability_rubric_checked") is True, "FINALIST_PREFLIGHT_SCIENTIFIC_RELIABILITY_RUBRIC")
+    require(package.get("checks", [])[-1].get("name") == "current_scientific_reliability_finalist_rubric_evidence", "FINALIST_PREFLIGHT_SCIENTIFIC_RELIABILITY_RUBRIC_CHECK")
+    reliability_rubric = package.get("current_scientific_reliability_rubric", {})
+    require(reliability_rubric.get("candidate_family") == "orientation_specific_control_quality_rank1", "FINALIST_PREFLIGHT_CANDIDATE")
+    require(reliability_rubric.get("candidate_mse") == 0.001042745722096212, "FINALIST_PREFLIGHT_CANDIDATE_MSE")
+    require(reliability_rubric.get("coverage_90") == 0.9194915254237288, "FINALIST_PREFLIGHT_COVERAGE90")
+    require(reliability_rubric.get("targets_at_or_above_90") == 24, "FINALIST_PREFLIGHT_COVERAGE_TARGETS")
+    require(reliability_rubric.get("clean_package_checks") == 8, "FINALIST_PREFLIGHT_CLEAN_CHECKS")
+    require(reliability_rubric.get("repeated_development") is True, "FINALIST_PREFLIGHT_REPEATED_DEVELOPMENT")
+    require(reliability_rubric.get("independent_validation") is False, "FINALIST_PREFLIGHT_NO_INDEPENDENT_VALIDATION")
+    require(reliability_rubric.get("operational_demo_baseline_replaced") is False, "FINALIST_PREFLIGHT_BASELINE_PRESERVED")
     require(package.get("canonical_release_check_count") == 14, "FINALIST_PREFLIGHT_CANONICAL_STAGES")
     require(package.get("canonical_orchestrated_test_count") == 173, "FINALIST_PREFLIGHT_CANONICAL_TESTS")
     require(package.get("network_requests") == 0, "FINALIST_PREFLIGHT_NETWORK")
@@ -368,6 +380,29 @@ def verify(root):
     require(report_rubric_boundary.get("independent_validation_created") is False, "CURRENT_REPORT_RUBRIC_NO_INDEPENDENT_VALIDATION")
     require(report_rubric_boundary.get("raw_pdf_download_verified") is False, "CURRENT_REPORT_RUBRIC_RAW_DOWNLOAD_BOUNDARY")
 
+    reliability_record = receipt.get("current_scientific_reliability_finalist_rubric_evidence", {})
+    reliability_path = root / reliability_record.get("path", "")
+    require(sha(reliability_path) == reliability_record.get("sha256"), "SCIENTIFIC_RELIABILITY_RUBRIC_RECEIPT_HASH")
+    reliability = load(reliability_path)
+    require(reliability.get("schema") == "dosepilot.finalist_rubric_evidence.v8", "SCIENTIFIC_RELIABILITY_RUBRIC_SCHEMA")
+    require(reliability.get("status") == "PASS", "SCIENTIFIC_RELIABILITY_RUBRIC_STATUS")
+    reliability_values = reliability.get("scientific_reliability", {})
+    require(reliability_values.get("candidate_mse") == 0.001042745722096212, "SCIENTIFIC_RELIABILITY_CANDIDATE_MSE")
+    require(reliability_values.get("coverage_90") == 0.9194915254237288, "SCIENTIFIC_RELIABILITY_COVERAGE90")
+    require(reliability_values.get("operational_demo_baseline_replaced") is False, "SCIENTIFIC_RELIABILITY_BASELINE_PRESERVED")
+
+    budget_record = receipt.get("budget48_two_dose_ablation", {})
+    budget_path = root / budget_record.get("path", "")
+    require(sha(budget_path) == budget_record.get("sha256"), "BUDGET_ABLATION_RECEIPT_HASH")
+    budget = load(budget_path)
+    require(budget.get("schema") == "dosepilot.budget48_two_dose_ablation.evidence.v1", "BUDGET_ABLATION_SCHEMA")
+    require(budget.get("candidate_promotion_allowed") is False, "BUDGET_ABLATION_NO_PROMOTION")
+    require(budget.get("protected22_access") is False, "BUDGET_ABLATION_NO_PROTECTED22")
+    comparison48 = budget.get("comparison", {})
+    require(comparison48.get("patient_wins_64") == 58, "BUDGET_ABLATION_PATIENT_WINS")
+    require(comparison48.get("favorable_outer_folds_64") == 5, "BUDGET_ABLATION_FOLD_WINS")
+    require(comparison48.get("material_target_regressions_64") == 0, "BUDGET_ABLATION_NO_TARGET_REGRESSIONS")
+
     nested_record = receipt.get("nested_bandwidth_evidence", {})
     nested_path = root / nested_record.get("path", "")
     require(sha(nested_path) == nested_record.get("sha256"), "NESTED_RECEIPT_HASH")
@@ -453,16 +488,17 @@ def verify(root):
     require(verification.get("current_rubric_links") == 3, "CURRENT_RUBRIC_LINK_COUNT")
     require(verification.get("current_package_rubric_links") == 3, "CURRENT_PACKAGE_RUBRIC_LINK_COUNT")
     require(verification.get("current_report_rubric_links") == 3, "CURRENT_REPORT_RUBRIC_LINK_COUNT")
+    require(verification.get("scientific_reliability_rubric_links") == 3, "SCIENTIFIC_RELIABILITY_RUBRIC_LINK_COUNT")
+    require(verification.get("budget_ablation_links") == 3, "BUDGET_ABLATION_LINK_COUNT")
     require(verification.get("current_report_cooptimized_control_documented") is True, "CURRENT_REPORT_COOPT_DOCUMENTED")
     require(verification.get("current_report_clean_finalist_package_documented") is True, "CURRENT_REPORT_CLEAN_PACKAGE_RECEIPT")
     require(verification.get("current_report_clean_current_finalist_package_documented") is True, "CURRENT_REPORT_CURRENT_CLEAN_PACKAGE_RECEIPT")
     require(verification.get("current_report_current_package_rubric_documented") is True, "CURRENT_REPORT_CURRENT_PACKAGE_RUBRIC_RECEIPT")
     require(verification.get("current_report_bound_test_count") == 173, "CURRENT_REPORT_BOUND_TESTS")
     require(verification.get("historical_168_originally_bound_earlier_report_revision") is True, "HISTORICAL_168_REPORT_BINDING")
-    require(verification.get("adversarial_tests_passed") == 26, "ADVERSARIAL_TEST_COUNT")
-    require(verification.get("finalist_package_current_report_retrieval_rubric_successor_checked") is True, "FINALIST_PREFLIGHT_CURRENT_REPORT_RETRIEVAL_RUBRIC_BOUND")
-    require(verification.get("finalist_package_public_repository_file_bytes_retrieved") is True, "FINALIST_PREFLIGHT_REPOSITORY_BYTES_BOUND")
-    require(verification.get("finalist_package_raw_download_verified") is False, "FINALIST_PREFLIGHT_NO_GENERIC_RAW_DOWNLOAD")
+    require(verification.get("adversarial_tests_passed") == 29, "ADVERSARIAL_TEST_COUNT")
+    require(verification.get("finalist_package_scientific_reliability_rubric_checked") is True, "FINALIST_PREFLIGHT_SCIENTIFIC_RELIABILITY_RUBRIC_BOUND")
+    require(verification.get("budget_ablation_candidate_promotion_allowed") is False, "BUDGET_ABLATION_PROMOTION_BOUNDARY")
     require(verification.get("network_requests") == 0, "NETWORK_REQUESTS")
 
     failure = receipt.get("preserved_operational_failure", {})
@@ -496,9 +532,10 @@ def verify(root):
         "trace_links": 3,
         "offline_trace_verifier_links": 3,
         "finalist_package_preflight_links": 3,
-        "finalist_package_current_report_retrieval_rubric_successor_checked": True,
-        "finalist_package_public_repository_file_bytes_retrieved": True,
-        "finalist_package_raw_download_verified": False,
+        "finalist_package_scientific_reliability_rubric_checked": True,
+        "scientific_reliability_rubric_links": 3,
+        "budget_ablation_links": 3,
+        "budget_ablation_candidate_promotion_allowed": False,
         "clean_finalist_package_execution_links": 3,
         "clean_current_finalist_package_execution_links": 3,
         "clean_report_bound_finalist_package_execution_links": 3,

@@ -113,15 +113,15 @@ PINNED_RECEIPTS = {
     "isotonic_paid_features": "01934ca5139a219814572bd5b3e28923c98b8ad37ee3146a405f5ddd247476da",
     "cooptimized_calibrated_control": "1238e432ed0a9abffce855440b6f290c056373f988ced6b3d3b57ce85c1cd74e",
     "bandwidth_lifecycle": "e09203bc03e787a9285ba3b06cde968fe7ded71d8370e29aced722370af7a027",
-    "frozen_ooc_release_binding": "ddff6769e510ecd45d54ebe0e68d72edc0a6552ca10ddfe2ca8ee9989416fa38",
+    "frozen_ooc_release_binding": "4573d3f9de93fb933e0ab3747ab25614403ffc4ac93c660f70c8af4b8c4e2036",
     "target_definitions_release": "57c6a5d2e443f6669981bd321e5b3ecf9ba1efcec74df86511bf0507760796dc",
-    "reviewer_path_release": "6845fcae3344b51dba1bd6eb1b6e2f932d2dc7b99d7daa6d227ee17ef3d43158",
+    "reviewer_path_release": "76c417ece3e668bc2c5eb5fe815355cd329fea39a404abc471579ca6aaf3ed8e",
     "development_search_governance": "06bf56a3658c47a99e4f9e07c1e06e11ad348de4a840aba1dad495e2b8495d35",
 }
 
 PINNED_DOCUMENTS = {
     "docs/EVIDENCE_LEDGER.md": "012da3d9fb39b240e7161fc05e96d904c185e0df975002642ffa6044c2c50e1a",
-    "docs/KAGGLE_WRITEUP.md": "4f6db80204da60cdc5ecb92b328bd5ae48d5e2de93632aad161b2d0cd5ac09c1",
+    "docs/KAGGLE_WRITEUP.md": "b6ac1a177b4c886c6abdd9ab353328a6e7225e7c5d68091f371d2834fdaecbbd",
 }
 
 CURRENT_REPORT_RECEIPT_SHA256 = "c870eed1a915c336ebf673cc15f9999aed0cbcdfff110ff82e72d69f62ba9eef"
@@ -368,7 +368,7 @@ def verify(root, enforce_pins=True):
         same(target_index[key], receipt_value, "INDEX_TARGET_DEFINITIONS_" + key.upper())
 
     reviewer_release = receipts["reviewer_path_release"]
-    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v26", "REVIEWER_PATH_SCHEMA")
+    same(reviewer_release["schema"], "dosepilot.reviewer_path_release.v27", "REVIEWER_PATH_SCHEMA")
     same(reviewer_release["status"], "PASS", "REVIEWER_PATH_STATUS")
     same(reviewer_release["role"], "JUDGE_NAVIGATION_AND_CLAIM_BOUNDARY", "REVIEWER_PATH_ROLE")
     reviewer_predecessor = reviewer_release["predecessor"]
@@ -391,8 +391,8 @@ def verify(root, enforce_pins=True):
         "LIVE_DEMO_TRACE_EXPORT.md",
         "VERIFY_DOWNLOADED_TRACE.md",
         "demo/verify_downloaded_trace.py",
-        "FINALIST_PACKAGE_PREFLIGHT_RETRIEVAL_BOUND.md",
-        "study/audits/finalist_package_preflight_retrieval_bound.py",
+        "FINALIST_PACKAGE_PREFLIGHT_SCIENTIFIC_RELIABILITY.md",
+        "study/audits/finalist_package_preflight_scientific_reliability.py",
         "CLEAN_FINALIST_PACKAGE_EXECUTION.md",
         "CLEAN_CURRENT_FINALIST_PACKAGE_EXECUTION.md",
         "8/8 package checks",
@@ -407,6 +407,8 @@ def verify(root, enforce_pins=True):
         "3/59 patient wins",
         "0/5 favorable folds",
         "22/24 target regressions",
+        "FINALIST_RUBRIC_EVIDENCE_CURRENT_SCIENTIFIC_RELIABILITY.md",
+        "BUDGET48_TWO_DOSE_ABLATION_20261006.md",
     ):
         if phrase not in reviewer_text:
             raise EvidenceError("REVIEWER_PATH_REQUIRED_TEXT: " + phrase)
@@ -427,8 +429,10 @@ def verify(root, enforce_pins=True):
         "LIVE_DEMO_TRACE_EXPORT.md",
         "Offline downloaded-file verifier:",
         "VERIFY_DOWNLOADED_TRACE.md",
-        "One-command retrieval-bound finalist-package preflight:",
-        "FINALIST_PACKAGE_PREFLIGHT_RETRIEVAL_BOUND.md",
+        "One-command scientific-reliability finalist-package preflight:",
+        "FINALIST_PACKAGE_PREFLIGHT_SCIENTIFIC_RELIABILITY.md",
+        "FINALIST_RUBRIC_EVIDENCE_CURRENT_SCIENTIFIC_RELIABILITY.md",
+        "BUDGET48_TWO_DOSE_ABLATION_20261006.md",
         "Clean isolated finalist-package execution:",
         "CLEAN_FINALIST_PACKAGE_EXECUTION.md",
         "Clean execution of the current finalist package:",
@@ -487,8 +491,17 @@ def verify(root, enforce_pins=True):
         "current_report_current_package_rubric_documented",
         "current_report_finalist_rubric_evidence_linked",
         "current_report_public_render_verified",
+        "current_scientific_reliability_rubric_linked",
+        "scientific_reliability_finalist_package_linked",
+        "budget48_ablation_linked",
     ):
         same(reviewer_contract[key], True, "REVIEWER_PATH_LINK: " + key)
+    same(reviewer_contract["current_scientific_candidate_mse"], 0.001042745722096212, "REVIEWER_PATH_SCIENTIFIC_MSE", 1e-15)
+    same(reviewer_contract["scientific_reliability_finalist_package_checks"], 8, "REVIEWER_PATH_SCIENTIFIC_PACKAGE_CHECKS")
+    same(reviewer_contract["scientific_reliability_finalist_package_canonical_stages"], 14, "REVIEWER_PATH_SCIENTIFIC_PACKAGE_STAGES")
+    same(reviewer_contract["scientific_reliability_finalist_package_canonical_tests"], 173, "REVIEWER_PATH_SCIENTIFIC_PACKAGE_TESTS")
+    same(reviewer_contract["budget48_candidate_promotion_allowed"], False, "REVIEWER_PATH_BUDGET_NO_PROMOTION")
+    same(reviewer_contract["operational_demo_baseline_replaced"], False, "REVIEWER_PATH_BASELINE_PRESERVED")
     same(reviewer_contract["finalist_package_preflight_checks"], 8, "REVIEWER_PATH_PACKAGE_CHECKS")
     same(reviewer_contract["finalist_package_canonical_stages"], 14, "REVIEWER_PATH_PACKAGE_CANONICAL_STAGES")
     same(reviewer_contract["finalist_package_canonical_tests"], 173, "REVIEWER_PATH_PACKAGE_CANONICAL_TESTS")
@@ -1003,7 +1016,7 @@ def verify(root, enforce_pins=True):
     same(current_lifecycle_index["accepted_kaggle_entry_changed"], False, "INDEX_BANDWIDTH_LIFECYCLE_NO_ENTRY_CHANGE")
     same(current_lifecycle_index["official_competition_score"], None, "INDEX_BANDWIDTH_LIFECYCLE_NO_SCORE")
 
-    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v24", "FROZEN_SCHEDULE_SCHEMA")
+    same(frozen_schedule["schema"], "dosepilot.frozen_ooc_release_binding.v25", "FROZEN_SCHEDULE_SCHEMA")
     same(frozen_schedule["status"], "PASS", "FROZEN_SCHEDULE_STATUS")
     same(frozen_schedule["role"], "RESPONSE_FREE_ENGINEERING_AND_RELEASE_EVIDENCE", "FROZEN_SCHEDULE_ROLE")
     frozen_predecessor = frozen_schedule["predecessor"]

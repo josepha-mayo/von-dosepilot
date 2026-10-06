@@ -8,7 +8,7 @@ DosePilot is a measurement-aware drug-response reconstruction method: commit a p
 **Downloadable browser-local evidence:** [state-bound digest-only JSON trace contract](docs/LIVE_DEMO_TRACE_EXPORT.md)
 **Offline downloaded-file verifier:** [`demo/verify_downloaded_trace.py`](demo/verify_downloaded_trace.py) · [command and scope](docs/VERIFY_DOWNLOADED_TRACE.md)
 
-**One-command retrieval-bound finalist-package verification:** [`study/audits/finalist_package_preflight_retrieval_bound.py`](study/audits/finalist_package_preflight_retrieval_bound.py) · [retrieval-bound command and scope](docs/FINALIST_PACKAGE_PREFLIGHT_RETRIEVAL_BOUND.md) · the eighth check verifies the immutable retrieval-bound rubric successor and exact public repository-file bytes for the 92,307-byte report; anonymous raw HTTP, the browser Download button and generic raw-PDF download remain unverified; the v1, v2 and v3 package evidence remains immutable
+**One-command scientific-reliability finalist-package verification:** [`study/audits/finalist_package_preflight_scientific_reliability.py`](study/audits/finalist_package_preflight_scientific_reliability.py) · [scientific-reliability command and scope](docs/FINALIST_PACKAGE_PREFLIGHT_SCIENTIFIC_RELIABILITY.md) · 8/8 checks with the immutable r8 scientific-reliability rubric enforced and nested canonical 14/14 stages and 173 tests; repeated adaptive-development evidence, not independent validation, finalist confirmation, or an official score; all v1-v5 package evidence remains immutable
 
 **Clean isolated execution evidence:** [fresh source directory + new Python environment](docs/CLEAN_FINALIST_PACKAGE_EXECUTION.md) · 8/8 package checks, nested canonical 14/14 stages and 173 tests · one existing host via `git archive`, not a network clone, clean-new-machine certification, or independent biological validation
 
@@ -24,6 +24,10 @@ DosePilot is a measurement-aware drug-response reconstruction method: commit a p
 **Current-package criterion successor:** [docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_PACKAGE.md](docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_PACKAGE.md) · binds the primary v2 package and clean isolated execution: 8/8 checks, current rubric successor enforced, nested canonical 14/14 stages and 173 tests; dependencies came from the local pip cache, not a network clone, clean-new-machine certification, independent biological validation, self-score, finalist-probability estimate, Kaggle edit, or official score
 
 **Current-report-bound criterion successor:** [docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_REPORT.md](docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_REPORT.md) · binds presentation evidence to the exact current 92,307-byte report and its own public-render receipt; embedded and exact-tree structural rendering are verified, while raw download and browser-downloaded-byte equality are not; no self-score, finalist-probability estimate, independent validation, Kaggle edit, or official score
+
+**Current scientific-reliability criterion successor:** [docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_SCIENTIFIC_RELIABILITY.md](docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_SCIENTIFIC_RELIABILITY.md) · orientation-specific control-quality rank-1 at MSE `0.001042745722096212`, p90 `0.037419695944064885`, 40/59 patient wins, 5/5 folds and 19/24 target wins versus bandwidth-0.7, with grouped post-hoc reliability and clean package execution bound; no self-score, finalist-probability estimate, independent validation, Kaggle edit, or official score; bandwidth-0.7 remains the operational/demo baseline
+
+**Measured 48-vs-64 budget justification:** [docs/BUDGET48_TWO_DOSE_ABLATION_20261006.md](docs/BUDGET48_TWO_DOSE_ABLATION_20261006.md) · within the frozen R13 acquisition family, 64 wells reduce MSE by 25.8162% and p90 by 12.0463% versus 48 wells, with 58/59 patient wins, 5/5 folds, 21/24 material target improvements and zero material regressions; retrospective selection-unadjusted development evidence, not global optimality, candidate promotion, or an independently reproduced private replay
 
 This page is a navigation aid. It creates no new accuracy or biological-validation claim.
 
@@ -139,9 +143,9 @@ These commands require no protected cohort responses.
 
 ### Complete current finalist package
 
-    python3 study/audits/finalist_package_preflight_retrieval_bound.py --output finalist_package_preflight.json
+    python3 study/audits/finalist_package_preflight_scientific_reliability.py --output finalist_package_preflight.json
 
-This additive check runs the immutable canonical 14-stage/173-test release preflight and seven newer response-free reviewer-package checks, including the retrieval-bound rubric successor, without rewriting the historical canonical, v1, v2, or v3 package receipts. Embedded and exact-tree rendering plus point-in-time public repository-file byte retrieval are verified; anonymous raw HTTP, the browser Download button and generic raw-PDF download are not.
+This additive check runs the immutable canonical 14-stage/173-test release preflight and seven newer response-free reviewer-package checks, including the r8 scientific-reliability rubric successor, without rewriting the historical canonical or v1-v5 package receipts. It binds the strongest repeated-development candidate, grouped reliability diagnostic and clean scientific-successor package execution; it does not create independent validation or replace the bandwidth-0.7 operational/demo baseline.
 
 ### Endpoint and 64-well contract
 

@@ -146,7 +146,7 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
     def test_writeup_finalist_preflight_link_removal_fails_even_when_rehashed(self):
         _, _, receipt = self.receipt()
         path = self.root / "docs/KAGGLE_WRITEUP.md"
-        path.write_text(path.read_text().replace("docs/FINALIST_PACKAGE_PREFLIGHT_RETRIEVAL_BOUND.md", "docs/FINALIST_AUDIT.md", 1))
+        path.write_text(path.read_text().replace("docs/FINALIST_PACKAGE_PREFLIGHT_SCIENTIFIC_RELIABILITY.md", "docs/FINALIST_AUDIT.md", 1))
         self.rehash_surface("docs/KAGGLE_WRITEUP.md", receipt)
         with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "WRITEUP_FINALIST_PREFLIGHT_LINK"):
             verify(self.root)
@@ -318,6 +318,38 @@ class ReviewerTraceDiscoveryTests(unittest.TestCase):
         receipt["artifact_sha256"][receipt["current_report_finalist_rubric_evidence"]["path"]] = digest
         self.rehash_receipt(receipt)
         with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "CURRENT_REPORT_RUBRIC_NO_RAW_DOWNLOAD"):
+            verify(self.root)
+
+    def test_scientific_reliability_link_removal_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / "README.md"
+        path.write_text(path.read_text().replace(
+            "docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_SCIENTIFIC_RELIABILITY.md",
+            "docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_REPORT.md",
+            1,
+        ))
+        self.rehash_surface("README.md", receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "README_SCIENTIFIC_RELIABILITY_RUBRIC_LINK"):
+            verify(self.root)
+
+    def test_budget_ablation_link_removal_fails_even_when_rehashed(self):
+        _, _, receipt = self.receipt()
+        path = self.root / "00_REVIEWER_START_HERE.md"
+        path.write_text(path.read_text().replace(
+            "docs/BUDGET48_TWO_DOSE_ABLATION_20261006.md",
+            "docs/FINALIST_AUDIT.md",
+        ))
+        self.rehash_surface("00_REVIEWER_START_HERE.md", receipt)
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "REVIEWER_BUDGET_ABLATION_LINK"):
+            verify(self.root)
+
+    def test_scientific_reliability_package_fallback_fails(self):
+        _, _, receipt = self.receipt()
+        path = self.root / receipt["finalist_package_preflight"]["path"]
+        package = json.loads(path.read_text())
+        package["current_scientific_reliability_rubric_checked"] = False
+        path.write_text(json.dumps(package, indent=2) + "\n")
+        with self.assertRaisesRegex(ReviewerTraceDiscoveryError, "ARTIFACT_HASH|FINALIST_PREFLIGHT_SCIENTIFIC_RELIABILITY_RUBRIC"):
             verify(self.root)
 
 
