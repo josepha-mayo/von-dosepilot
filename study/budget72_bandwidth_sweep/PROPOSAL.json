@@ -1,0 +1,17 @@
+{
+  "schema": "dosepilot.budget72_bandwidth_sweep.proposal.v1",
+  "state": "PROPOSED_BEFORE_CANDIDATE_OUTCOME",
+  "family_id": "budget72_bandwidth_sweep",
+  "role": "FROZEN_INNER_ONLY_BANDWIDTH_SELECTION",
+  "bandwidth_multipliers": [0.4, 0.55, 0.7, 0.9, 1.2],
+  "spectral_fractions": [0.1, 0.3, 0.6],
+  "ridge_penalties": [0.1, 1.0, 10.0],
+  "option_count": 46,
+  "question": "Does the 72-well geometry favor a different additive-kernel bandwidth than the transferred 0.7 multiplier?",
+  "outer_selection": false,
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}
