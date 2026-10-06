@@ -146,6 +146,10 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
+        reliability_path = "evidence/current_successor_grouped_conformal_20261006.json"
+        reliability_destination = self.root / reliability_path
+        reliability_destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(self.source / reliability_path, reliability_destination)
         scientific_rubric_index = index[
             "current_scientific_successor_finalist_rubric_evidence"
         ]

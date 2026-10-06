@@ -33,6 +33,10 @@ from verify_current_scientific_successor_evidence import (
     CurrentScientificSuccessorEvidenceError,
     verify as verify_current_scientific_successor_evidence,
 )
+from verify_current_successor_grouped_conformal import (
+    ReliabilityError as CurrentSuccessorReliabilityError,
+    verify as verify_current_successor_grouped_conformal,
+)
 from verify_finalist_rubric_evidence_current_scientific_successor import (
     CurrentScientificSuccessorRubricEvidenceError,
     verify as verify_current_scientific_successor_finalist_rubric_evidence,
@@ -1403,6 +1407,17 @@ def verify(root, enforce_pins=True):
     same(scientific_successor_result["protected22_access"], False, "SCIENTIFIC_SUCCESSOR_NO_PROTECTED22")
     same(scientific_successor_result["official_competition_score"], None, "SCIENTIFIC_SUCCESSOR_NO_SCORE")
     try:
+        reliability_result = verify_current_successor_grouped_conformal(root)
+    except CurrentSuccessorReliabilityError as exc:
+        raise EvidenceError("CURRENT_SUCCESSOR_GROUPED_RELIABILITY: " + str(exc)) from exc
+    same(reliability_result["coverage_80"], 0.8100282485875706, "GROUPED_RELIABILITY_80")
+    same(reliability_result["coverage_90"], 0.9194915254237288, "GROUPED_RELIABILITY_90")
+    same(reliability_result["coverage_95"], 0.9593926553672316, "GROUPED_RELIABILITY_95")
+    same(reliability_result["targets_at_or_above_90"], 24, "GROUPED_RELIABILITY_TARGETS")
+    same(reliability_result["whole_patients"], 59, "GROUPED_RELIABILITY_PATIENTS")
+    same(reliability_result["independent_validation"], False, "GROUPED_RELIABILITY_NO_VALIDATION")
+    same(reliability_result["protected22_access"], False, "GROUPED_RELIABILITY_NO_PROTECTED22")
+    try:
         scientific_successor_rubric_result = (
             verify_current_scientific_successor_finalist_rubric_evidence(root)
         )
@@ -1671,6 +1686,11 @@ def verify(root, enforce_pins=True):
         "scientific_successor_target_wins": scientific_successor_result["target_wins"],
         "scientific_successor_target_losses": scientific_successor_result["target_losses"],
         "scientific_successor_independent_validation": scientific_successor_result["independent_validation"],
+        "grouped_reliability_coverage_80": reliability_result["coverage_80"],
+        "grouped_reliability_coverage_90": reliability_result["coverage_90"],
+        "grouped_reliability_coverage_95": reliability_result["coverage_95"],
+        "grouped_reliability_targets_at_or_above_90": reliability_result["targets_at_or_above_90"],
+        "grouped_reliability_independent_validation": reliability_result["independent_validation"],
         "scientific_successor_rubric_criteria": scientific_successor_rubric_result["criteria"],
         "scientific_successor_rubric_weight_sum": scientific_successor_rubric_result["weight_sum"],
         "scientific_successor_rubric_operational_baseline_replaced": scientific_successor_rubric_result["operational_demo_baseline_replaced"],

@@ -1,0 +1,638 @@
+{
+  "schema": "dosepilot.current_successor_grouped_conformal.v1",
+  "status": "PASS",
+  "as_of_date": "2026-10-06",
+  "role": "POST_HOC_GROUPED_OOF_RELIABILITY_DIAGNOSTIC_NOT_CONFIRMATORY",
+  "population": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "orientations": 2,
+    "outer_patient_folds": 5
+  },
+  "score_definition": "maximum absolute residual across all samples from one patient, separately per target and A/B orientation",
+  "cross_fold_calibration_rule": "for each held-out outer patient fold, calculate finite-sample conformal quantiles from patient scores in the other four OOF folds",
+  "levels": {
+    "0.80": {
+      "nominal": 0.8,
+      "coverage": 0.8100282485875706,
+      "orientation_coverage": [
+        0.8100282485875706,
+        0.8100282485875706
+      ],
+      "target_coverage_min": 0.7966101694915254,
+      "target_coverage_median": 0.8093220338983051,
+      "target_coverage_max": 0.8305084745762712,
+      "targets_at_or_above_nominal": 19,
+      "lowest_target": {
+        "drug": "AZD7762",
+        "coverage": 0.7966101694915254
+      },
+      "highest_target": {
+        "drug": "Napabucasin",
+        "coverage": 0.8305084745762712
+      },
+      "folds": [
+        {
+          "fold": 0,
+          "calibration_patients": 47,
+          "test_patients": 12,
+          "coverage": 0.7847222222222222,
+          "orientation_coverage": [
+            0.7604166666666666,
+            0.8090277777777778
+          ],
+          "mean_interval_width": 0.10233934685877315
+        },
+        {
+          "fold": 1,
+          "calibration_patients": 47,
+          "test_patients": 12,
+          "coverage": 0.8628472222222222,
+          "orientation_coverage": [
+            0.8506944444444444,
+            0.875
+          ],
+          "mean_interval_width": 0.10565251946970196
+        },
+        {
+          "fold": 2,
+          "calibration_patients": 47,
+          "test_patients": 12,
+          "coverage": 0.7430555555555556,
+          "orientation_coverage": [
+            0.7673611111111112,
+            0.71875
+          ],
+          "mean_interval_width": 0.09882793621745167
+        },
+        {
+          "fold": 3,
+          "calibration_patients": 47,
+          "test_patients": 12,
+          "coverage": 0.8680555555555556,
+          "orientation_coverage": [
+            0.8715277777777778,
+            0.8645833333333334
+          ],
+          "mean_interval_width": 0.10544069987583808
+        },
+        {
+          "fold": 4,
+          "calibration_patients": 48,
+          "test_patients": 11,
+          "coverage": 0.7897727272727273,
+          "orientation_coverage": [
+            0.7992424242424242,
+            0.7803030303030303
+          ],
+          "mean_interval_width": 0.10256208673757268
+        }
+      ]
+    },
+    "0.90": {
+      "nominal": 0.9,
+      "coverage": 0.9194915254237288,
+      "orientation_coverage": [
+        0.9173728813559322,
+        0.9216101694915254
+      ],
+      "target_coverage_min": 0.9067796610169492,
+      "target_coverage_median": 0.9152542372881356,
+      "target_coverage_max": 0.9322033898305084,
+      "targets_at_or_above_nominal": 24,
+      "lowest_target": {
+        "drug": "Gemcitabine",
+        "coverage": 0.9067796610169492
+      },
+      "highest_target": {
+        "drug": "Atorvastatin",
+        "coverage": 0.9322033898305084
+      },
+      "folds": [
+        {
+          "fold": 0,
+          "calibration_patients": 47,
+          "test_patients": 12,
+          "coverage": 0.9079861111111112,
+          "orientation_coverage": [
+            0.9027777777777778,
+            0.9131944444444444
+          ],
+          "mean_interval_width": 0.13429979333359301
+        },
+        {
+          "fold": 1,
+          "calibration_patients": 47,
+          "test_patients": 12,
+          "coverage": 0.9392361111111112,
+          "orientation_coverage": [
+            0.9166666666666666,
+            0.9618055555555556
+          ],
+          "mean_interval_width": 0.13743712489398352
+        },
+        {
+          "fold": 2,
+          "calibration_patients": 47,
+          "test_patients": 12,
+          "coverage": 0.8802083333333334,
+          "orientation_coverage": [
+            0.8854166666666666,
+            0.875
+          ],
+          "mean_interval_width": 0.13133943280574376
+        },
+        {
+          "fold": 3,
+          "calibration_patients": 47,
+          "test_patients": 12,
+          "coverage": 0.9479166666666666,
+          "orientation_coverage": [
+            0.9548611111111112,
+            0.9409722222222222
+          ],
+          "mean_interval_width": 0.13855656256200868
+        },
+        {
+          "fold": 4,
+          "calibration_patients": 48,
+          "test_patients": 11,
+          "coverage": 0.9223484848484849,
+          "orientation_coverage": [
+            0.928030303030303,
+            0.9166666666666666
+          ],
+          "mean_interval_width": 0.1359651625803704
+        }
+      ]
+    },
+    "0.95": {
+      "nominal": 0.95,
+      "coverage": 0.9593926553672316,
+      "orientation_coverage": [
+        0.9611581920903954,
+        0.9576271186440678
+      ],
+      "target_coverage_min": 0.9491525423728814,
+      "target_coverage_median": 0.9576271186440678,
+      "target_coverage_max": 0.9661016949152542,
+      "targets_at_or_above_nominal": 19,
+      "lowest_target": {
+        "drug": "Afatinib",
+        "coverage": 0.9491525423728814
+      },
+      "highest_target": {
+        "drug": "5-FU",
+        "coverage": 0.9661016949152542
+      },
+      "folds": [
+        {
+          "fold": 0,
+          "calibration_patients": 47,
+          "test_patients": 12,
+          "coverage": 0.9392361111111112,
+          "orientation_coverage": [
+            0.9409722222222222,
+            0.9375
+          ],
+          "mean_interval_width": 0.16427992998215968
+        },
+        {
+          "fold": 1,
+          "calibration_patients": 47,
+          "test_patients": 12,
+          "coverage": 0.9739583333333334,
+          "orientation_coverage": [
+            0.9618055555555556,
+            0.9861111111111112
+          ],
+          "mean_interval_width": 0.17064180936379292
+        },
+        {
+          "fold": 2,
+          "calibration_patients": 47,
+          "test_patients": 12,
+          "coverage": 0.9375,
+          "orientation_coverage": [
+            0.9513888888888888,
+            0.9236111111111112
+          ],
+          "mean_interval_width": 0.16275412718393958
+        },
+        {
+          "fold": 3,
+          "calibration_patients": 47,
+          "test_patients": 12,
+          "coverage": 0.9774305555555556,
+          "orientation_coverage": [
+            0.9791666666666666,
+            0.9756944444444444
+          ],
+          "mean_interval_width": 0.1728148918556743
+        },
+        {
+          "fold": 4,
+          "calibration_patients": 48,
+          "test_patients": 11,
+          "coverage": 0.9696969696969697,
+          "orientation_coverage": [
+            0.9734848484848485,
+            0.9659090909090909
+          ],
+          "mean_interval_width": 0.17100410108258327
+        }
+      ]
+    }
+  },
+  "deployment_preparation": {
+    "role": "ALL_OOF_PATIENT_CALIBRATION_RADII_NOT_PROSPECTIVELY_VALIDATED",
+    "radii": {
+      "0.80": {
+        "nominal": 0.8,
+        "mean_interval_width": 0.10001130568814513,
+        "rows": [
+          {
+            "drug": "5-FU",
+            "orientation_A_radius": 0.05654125584141079,
+            "orientation_B_radius": 0.0553334633785425
+          },
+          {
+            "drug": "AZD7762",
+            "orientation_A_radius": 0.051641077869173935,
+            "orientation_B_radius": 0.059301796541880836
+          },
+          {
+            "drug": "Afatinib",
+            "orientation_A_radius": 0.049950240215066,
+            "orientation_B_radius": 0.04834012324711656
+          },
+          {
+            "drug": "Alisertib",
+            "orientation_A_radius": 0.047676509562445846,
+            "orientation_B_radius": 0.04130664276629181
+          },
+          {
+            "drug": "Atorvastatin",
+            "orientation_A_radius": 0.043786320085423935,
+            "orientation_B_radius": 0.04664568286119819
+          },
+          {
+            "drug": "Bemcentinib",
+            "orientation_A_radius": 0.055542586209578526,
+            "orientation_B_radius": 0.05306473132406575
+          },
+          {
+            "drug": "Encorafenib",
+            "orientation_A_radius": 0.05477593517712087,
+            "orientation_B_radius": 0.061931703464725096
+          },
+          {
+            "drug": "Gedatolisib",
+            "orientation_A_radius": 0.0554320905123199,
+            "orientation_B_radius": 0.05335319956906537
+          },
+          {
+            "drug": "Gemcitabine",
+            "orientation_A_radius": 0.04901182735626897,
+            "orientation_B_radius": 0.05480707389998318
+          },
+          {
+            "drug": "Idasanutlin",
+            "orientation_A_radius": 0.050701651342705656,
+            "orientation_B_radius": 0.04739679037014777
+          },
+          {
+            "drug": "LCL161",
+            "orientation_A_radius": 0.05025083918930706,
+            "orientation_B_radius": 0.052162304054115594
+          },
+          {
+            "drug": "LGK974",
+            "orientation_A_radius": 0.055835213069518996,
+            "orientation_B_radius": 0.05011845957666361
+          },
+          {
+            "drug": "Lapatinib",
+            "orientation_A_radius": 0.04534003520204655,
+            "orientation_B_radius": 0.04380926828784326
+          },
+          {
+            "drug": "Luminespib",
+            "orientation_A_radius": 0.04041860590346513,
+            "orientation_B_radius": 0.03974855420492451
+          },
+          {
+            "drug": "Methotrexate",
+            "orientation_A_radius": 0.05392535329652637,
+            "orientation_B_radius": 0.05407244343121054
+          },
+          {
+            "drug": "Napabucasin",
+            "orientation_A_radius": 0.042988479801902235,
+            "orientation_B_radius": 0.04908522347576638
+          },
+          {
+            "drug": "Palbociclib",
+            "orientation_A_radius": 0.06522580533274291,
+            "orientation_B_radius": 0.06505200634259667
+          },
+          {
+            "drug": "Panobinostat",
+            "orientation_A_radius": 0.04571816480989788,
+            "orientation_B_radius": 0.04592086895848302
+          },
+          {
+            "drug": "Pevonedistat",
+            "orientation_A_radius": 0.04790058057209856,
+            "orientation_B_radius": 0.04507440106589311
+          },
+          {
+            "drug": "Regorafenib",
+            "orientation_A_radius": 0.05191647031678259,
+            "orientation_B_radius": 0.04627284609305926
+          },
+          {
+            "drug": "SN-38",
+            "orientation_A_radius": 0.035930254795578986,
+            "orientation_B_radius": 0.035576931173315396
+          },
+          {
+            "drug": "TAS-102",
+            "orientation_A_radius": 0.0608371124100886,
+            "orientation_B_radius": 0.05700714476879276
+          },
+          {
+            "drug": "Trametinib",
+            "orientation_A_radius": 0.04829647878553378,
+            "orientation_B_radius": 0.04683932200308788
+          },
+          {
+            "drug": "Volasertib",
+            "orientation_A_radius": 0.04606688723541641,
+            "orientation_B_radius": 0.04234058076429359
+          }
+        ]
+      },
+      "0.90": {
+        "nominal": 0.9,
+        "mean_interval_width": 0.12678363697665615,
+        "rows": [
+          {
+            "drug": "5-FU",
+            "orientation_A_radius": 0.07115785447793299,
+            "orientation_B_radius": 0.07157132725080784
+          },
+          {
+            "drug": "AZD7762",
+            "orientation_A_radius": 0.06670268695867254,
+            "orientation_B_radius": 0.06645127431978992
+          },
+          {
+            "drug": "Afatinib",
+            "orientation_A_radius": 0.07459475282202133,
+            "orientation_B_radius": 0.0798793682794594
+          },
+          {
+            "drug": "Alisertib",
+            "orientation_A_radius": 0.05526338931336361,
+            "orientation_B_radius": 0.05080331568758911
+          },
+          {
+            "drug": "Atorvastatin",
+            "orientation_A_radius": 0.0562656153631832,
+            "orientation_B_radius": 0.05880546705822198
+          },
+          {
+            "drug": "Bemcentinib",
+            "orientation_A_radius": 0.0630054734885509,
+            "orientation_B_radius": 0.06021307147187038
+          },
+          {
+            "drug": "Encorafenib",
+            "orientation_A_radius": 0.09331387738002805,
+            "orientation_B_radius": 0.07761810137521319
+          },
+          {
+            "drug": "Gedatolisib",
+            "orientation_A_radius": 0.06968911539878575,
+            "orientation_B_radius": 0.0699392071943421
+          },
+          {
+            "drug": "Gemcitabine",
+            "orientation_A_radius": 0.06564222646529344,
+            "orientation_B_radius": 0.06152103713002133
+          },
+          {
+            "drug": "Idasanutlin",
+            "orientation_A_radius": 0.06780962609453522,
+            "orientation_B_radius": 0.06491320956451774
+          },
+          {
+            "drug": "LCL161",
+            "orientation_A_radius": 0.06660416069417796,
+            "orientation_B_radius": 0.07672930549163037
+          },
+          {
+            "drug": "LGK974",
+            "orientation_A_radius": 0.06490137172594712,
+            "orientation_B_radius": 0.055939596178258943
+          },
+          {
+            "drug": "Lapatinib",
+            "orientation_A_radius": 0.06230159112255751,
+            "orientation_B_radius": 0.05154413713758599
+          },
+          {
+            "drug": "Luminespib",
+            "orientation_A_radius": 0.051509668944567544,
+            "orientation_B_radius": 0.04988121109542243
+          },
+          {
+            "drug": "Methotrexate",
+            "orientation_A_radius": 0.06862974491560692,
+            "orientation_B_radius": 0.059379869188819545
+          },
+          {
+            "drug": "Napabucasin",
+            "orientation_A_radius": 0.06493611967575152,
+            "orientation_B_radius": 0.05714668520803201
+          },
+          {
+            "drug": "Palbociclib",
+            "orientation_A_radius": 0.07548617586553519,
+            "orientation_B_radius": 0.07438052007811113
+          },
+          {
+            "drug": "Panobinostat",
+            "orientation_A_radius": 0.05330237465190857,
+            "orientation_B_radius": 0.05203836087840186
+          },
+          {
+            "drug": "Pevonedistat",
+            "orientation_A_radius": 0.05964679280644147,
+            "orientation_B_radius": 0.06225900730686518
+          },
+          {
+            "drug": "Regorafenib",
+            "orientation_A_radius": 0.05789741153213612,
+            "orientation_B_radius": 0.06776070375059295
+          },
+          {
+            "drug": "SN-38",
+            "orientation_A_radius": 0.042837360159977855,
+            "orientation_B_radius": 0.04881380616357006
+          },
+          {
+            "drug": "TAS-102",
+            "orientation_A_radius": 0.07829646360012144,
+            "orientation_B_radius": 0.0680638985420029
+          },
+          {
+            "drug": "Trametinib",
+            "orientation_A_radius": 0.06419095459324681,
+            "orientation_B_radius": 0.05884193968815277
+          },
+          {
+            "drug": "Volasertib",
+            "orientation_A_radius": 0.05374374557749795,
+            "orientation_B_radius": 0.05058431377262751
+          }
+        ]
+      },
+      "0.95": {
+        "nominal": 0.95,
+        "mean_interval_width": 0.1570758306070165,
+        "rows": [
+          {
+            "drug": "5-FU",
+            "orientation_A_radius": 0.08865172347831085,
+            "orientation_B_radius": 0.08455600146836184
+          },
+          {
+            "drug": "AZD7762",
+            "orientation_A_radius": 0.07492567929432248,
+            "orientation_B_radius": 0.07565982831795182
+          },
+          {
+            "drug": "Afatinib",
+            "orientation_A_radius": 0.08864461218718955,
+            "orientation_B_radius": 0.10477369080402976
+          },
+          {
+            "drug": "Alisertib",
+            "orientation_A_radius": 0.06991435246158106,
+            "orientation_B_radius": 0.06631237963838355
+          },
+          {
+            "drug": "Atorvastatin",
+            "orientation_A_radius": 0.07364503611417639,
+            "orientation_B_radius": 0.07660409523296896
+          },
+          {
+            "drug": "Bemcentinib",
+            "orientation_A_radius": 0.07809319975194517,
+            "orientation_B_radius": 0.07181632584634812
+          },
+          {
+            "drug": "Encorafenib",
+            "orientation_A_radius": 0.1087881297983404,
+            "orientation_B_radius": 0.10799276095508148
+          },
+          {
+            "drug": "Gedatolisib",
+            "orientation_A_radius": 0.09050642159802491,
+            "orientation_B_radius": 0.07882820604006069
+          },
+          {
+            "drug": "Gemcitabine",
+            "orientation_A_radius": 0.0713801331443682,
+            "orientation_B_radius": 0.06392616586866984
+          },
+          {
+            "drug": "Idasanutlin",
+            "orientation_A_radius": 0.08078318397061568,
+            "orientation_B_radius": 0.08660441837789135
+          },
+          {
+            "drug": "LCL161",
+            "orientation_A_radius": 0.09304263675767632,
+            "orientation_B_radius": 0.09495547279274086
+          },
+          {
+            "drug": "LGK974",
+            "orientation_A_radius": 0.0817877308738848,
+            "orientation_B_radius": 0.07805384979498897
+          },
+          {
+            "drug": "Lapatinib",
+            "orientation_A_radius": 0.08553545059511736,
+            "orientation_B_radius": 0.08018222346660386
+          },
+          {
+            "drug": "Luminespib",
+            "orientation_A_radius": 0.07434219529218178,
+            "orientation_B_radius": 0.05477819997359934
+          },
+          {
+            "drug": "Methotrexate",
+            "orientation_A_radius": 0.08147515533979344,
+            "orientation_B_radius": 0.06934985445313169
+          },
+          {
+            "drug": "Napabucasin",
+            "orientation_A_radius": 0.07072389048174244,
+            "orientation_B_radius": 0.06532945547908209
+          },
+          {
+            "drug": "Palbociclib",
+            "orientation_A_radius": 0.08956263027987998,
+            "orientation_B_radius": 0.08348881086144744
+          },
+          {
+            "drug": "Panobinostat",
+            "orientation_A_radius": 0.06696380240285693,
+            "orientation_B_radius": 0.05999874311827125
+          },
+          {
+            "drug": "Pevonedistat",
+            "orientation_A_radius": 0.07663741428895532,
+            "orientation_B_radius": 0.08224845298555572
+          },
+          {
+            "drug": "Regorafenib",
+            "orientation_A_radius": 0.07413587503186203,
+            "orientation_B_radius": 0.07782799623450432
+          },
+          {
+            "drug": "SN-38",
+            "orientation_A_radius": 0.04585823633933295,
+            "orientation_B_radius": 0.057210472101793086
+          },
+          {
+            "drug": "TAS-102",
+            "orientation_A_radius": 0.11048825245991123,
+            "orientation_B_radius": 0.09107167705336461
+          },
+          {
+            "drug": "Trametinib",
+            "orientation_A_radius": 0.08485811314909963,
+            "orientation_B_radius": 0.06787118369205342
+          },
+          {
+            "drug": "Volasertib",
+            "orientation_A_radius": 0.0666610711641622,
+            "orientation_B_radius": 0.0629747437561804
+          }
+        ]
+      }
+    }
+  },
+  "selection_adjusted": false,
+  "finite_sample_guarantee_claimed": false,
+  "independent_validation": false,
+  "protected22_access": false,
+  "patient_level_rows_published": false,
+  "prediction_arrays_published": false,
+  "warning": "Repeated adaptive Lib1 development. Cross-fold patient separation avoids calibrating on the evaluated patient's own residuals, but this is not independent confirmation, selection-corrected inference, or a prospective clinical uncertainty guarantee."
+}

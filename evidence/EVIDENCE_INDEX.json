@@ -1084,5 +1084,20 @@
     "current_report_finalist_probability_estimated": false,
     "current_report_public_render_verified": true,
     "current_report_raw_download_verified": false
+  },
+  "current_successor_grouped_reliability": {
+    "path": "evidence/current_successor_grouped_conformal_20261006.json",
+    "sha256": "691e5a305e4c3f2f31ce60f35a695fd401b29b104d3fb53ebb00f9ae624a5e4b",
+    "status": "PASS",
+    "role": "POST_HOC_GROUPED_OOF_RELIABILITY_DIAGNOSTIC_NOT_CONFIRMATORY",
+    "coverage_80": 0.8100282485875706,
+    "coverage_90": 0.9194915254237288,
+    "coverage_95": 0.9593926553672316,
+    "targets_at_or_above_90": 24,
+    "whole_patients": 59,
+    "selection_adjusted": false,
+    "independent_validation": false,
+    "protected22_access": false,
+    "official_competition_score": null
   }
 }
