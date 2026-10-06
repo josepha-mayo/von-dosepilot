@@ -1,0 +1,151 @@
+{
+  "schema": "dosepilot.finalist_package_preflight.v5",
+  "status": "PASS",
+  "role": "RESPONSE_FREE_CURRENT_SCIENTIFIC_SUCCESSOR_FINALIST_PACKAGE_VERIFICATION",
+  "utc": "2026-10-06T15:10:14.753507+00:00",
+  "predecessor": {
+    "path": "evidence/finalist_package_preflight_r4_20261006.json",
+    "sha256": "7791efab5ce5a19c91a63dc6c7ad8bc465a5bc7579f2ae2f31d2e71cecf6836a",
+    "preserved_unchanged": true
+  },
+  "supersedes_reason": "Replaces only the predecessor's r6 retrieval-bound rubric check with the immutable r7 scientific-successor rubric verifier.",
+  "current_scientific_successor_rubric": {
+    "path": "evidence/finalist_rubric_evidence_r7_20261006.json",
+    "sha256": "8d00ee4b6f2a92ea408c81423ae731a42568e3a32ed1e1790c10c088c2277323",
+    "candidate_family": "orientation_specific_control_quality_rank1",
+    "candidate_mse": 0.001042745722096212,
+    "candidate_p90": 0.037419695944064885,
+    "bandwidth07_patient_wins": 40,
+    "favorable_folds": 5,
+    "target_wins": 19,
+    "repeated_development": true,
+    "independent_validation": false,
+    "operational_demo_baseline_replaced": false
+  },
+  "failed_check": null,
+  "checks": [
+    {
+      "name": "current_release_preflight",
+      "command": [
+        "python3",
+        "study/audits/release_preflight_current.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 9.818497,
+      "output_sha256": "9a3a43b5abc10508448ec261c29360fa51984be31255d3ce2800832c7a0967bb",
+      "output_tail": "{\n  \"status\": \"PASS\",\n  \"checks\": [\n    \"evidence\",\n    \"audit_tests\",\n    \"durable_runtime\",\n    \"acquisition\",\n    \"structured_kernels\",\n    \"aligned_additive\",\n    \"bandwidth_successor\",\n    \"ooc_compiler\",\n    \"frozen_ooc_schedule_tests\",\n    \"frozen_ooc_schedule\",\n    \"target_definition_tests\",\n    \"target_definitions\",\n    \"fictional_lifecycle_demo\",\n    \"fictional_bandwidth_lifecycle_demo\"\n  ]\n}\n"
+    },
+    {
+      "name": "downloaded_trace_self_test",
+      "command": [
+        "python3",
+        "demo/verify_downloaded_trace.py",
+        "--self-test"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.029162,
+      "output_sha256": "ac18131250e96d3877037e671f9d6367ec3e3d2ff563365b67db6855569890c9",
+      "output_tail": "{\n  \"biological_accuracy_result_created\": false,\n  \"invalid_case_labels\": [\n    \"changed_result\",\n    \"uppercase_digest\",\n    \"invented_recovery_measurement\",\n    \"wrong_result_kind\",\n    \"extra_raw_readings\",\n    \"missing_field\",\n    \"wrong_schema\",\n    \"unknown_state\",\n    \"filename_mismatch\",\n    \"malformed_json\",\n    \"duplicate_field\",\n    \"oversize\"\n  ],\n  \"invalid_cases_rejected\": 12,\n  \"private_or_protected_inputs_read\": false,\n  \"status\": \"PASS\",\n  \"valid_state_cases\": 5\n}\n"
+    },
+    {
+      "name": "downloaded_trace_receipt",
+      "command": [
+        "python3",
+        "study/audits/verify_downloaded_trace_verifier.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.028452,
+      "output_sha256": "850c06a62a5dcc63f05fb64f6127b622c9ab029c57bc0c0da9cdf1674430be13",
+      "output_tail": "{\n  \"accepted_kaggle_entry_changed\": false,\n  \"biological_accuracy_result_created\": false,\n  \"invalid_cases_rejected\": 12,\n  \"official_competition_score\": null,\n  \"private_or_protected_inputs_read\": false,\n  \"status\": \"PASS\",\n  \"valid_state_cases\": 5\n}\n"
+    },
+    {
+      "name": "reviewer_routes",
+      "command": [
+        "python3",
+        "study/audits/verify_reviewer_routes.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.038789,
+      "output_sha256": "bc5ec804bde81fc14ce5de53722c16b64fc7fc93d06cd9f3dafb1354afb839e0",
+      "output_tail": "{\n  \"accepted_kaggle_entry_changed\": false,\n  \"anchors\": 1,\n  \"audited_surfaces\": 5,\n  \"biological_accuracy_result_created\": false,\n  \"external_playback_verified\": false,\n  \"github_master_targets\": 27,\n  \"local_targets\": 86,\n  \"network_requests\": 0,\n  \"official_competition_score\": null,\n  \"private_or_protected_inputs_read\": false,\n  \"required_urls\": 5,\n  \"status\": \"PASS\"\n}\n"
+    },
+    {
+      "name": "reviewer_trace_discovery",
+      "command": [
+        "python3",
+        "study/audits/verify_reviewer_trace_discovery.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.042827,
+      "output_sha256": "510853046bde97ccabe65584ae1c61f3eb2ac8bf61b86e9e0305f848ae366212",
+      "output_tail": "t_bound_finalist_package_execution_links\": 3,\n  \"clean_report_bound_finalist_package_live_dependency_download_observed\": true,\n  \"clean_report_bound_finalist_package_raw_download_verified\": false,\n  \"cooptimized_control_decision\": \"REJECT_RETAIN_BANDWIDTH07\",\n  \"cooptimized_control_independent_validation\": false,\n  \"cooptimized_control_linked\": true,\n  \"cooptimized_links\": 3,\n  \"current_finalist_probability_estimated\": false,\n  \"current_finalist_rubric_evidence_linked\": true,\n  \"current_finalist_rubric_self_score_assigned\": false,\n  \"current_package_finalist_probability_estimated\": false,\n  \"current_package_finalist_rubric_evidence_linked\": true,\n  \"current_package_finalist_rubric_self_score_assigned\": false,\n  \"current_package_rubric_links\": 3,\n  \"current_report_clean_current_finalist_package_documented\": true,\n  \"current_report_clean_finalist_package_documented\": true,\n  \"current_report_cooptimized_control_documented\": true,\n  \"current_report_current_package_rubric_documented\": true,\n  \"current_report_finalist_probability_estimated\": false,\n  \"current_report_finalist_rubric_evidence_linked\": true,\n  \"current_report_finalist_rubric_self_score_assigned\": false,\n  \"current_report_raw_download_verified\": false,\n  \"current_report_rubric_links\": 3,\n  \"current_rubric_links\": 3,\n  \"downloadable_trace_linked\": true,\n  \"export_contains_raw_readings_or_outputs\": false,\n  \"finalist_package_current_report_retrieval_rubric_successor_checked\": true,\n  \"finalist_package_preflight_linked\": true,\n  \"finalist_package_preflight_links\": 3,\n  \"finalist_package_public_repository_file_bytes_retrieved\": true,\n  \"finalist_package_raw_download_verified\": false,\n  \"github_master_targets\": 27,\n  \"local_targets\": 86,\n  \"nested_links\": 3,\n  \"network_requests\": 0,\n  \"official_competition_score\": null,\n  \"offline_downloaded_trace_verifier_linked\": true,\n  \"offline_trace_verifier_links\": 3,\n  \"private_or_protected_inputs_read\": false,\n  \"required_urls\": 5,\n  \"status\": \"PASS\",\n  \"trace_links\": 3\n}\n"
+    },
+    {
+      "name": "verification_chronology",
+      "command": [
+        "python3",
+        "study/audits/verify_verification_chronology.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.048944,
+      "output_sha256": "d5dd55f29e2043dcb2e64c221d82ebcbc99f780c60a0e781ee25a986fbd5cfb2",
+      "output_tail": "{\n  \"current_report_bound_test_count\": 173,\n  \"governance_milestone_tests\": 171,\n  \"historical_168_originally_bound_earlier_report_revision\": true,\n  \"historical_receipts_preserved\": true,\n  \"latest_orchestrated_test_count\": 173,\n  \"preflight_receipts\": 3,\n  \"preserved_operational_failure\": true,\n  \"private_or_protected_inputs_read\": false,\n  \"status\": \"PASS\"\n}\n"
+    },
+    {
+      "name": "clean_reviewer_quickstart",
+      "command": [
+        "python3",
+        "study/audits/verify_clean_reviewer_quickstart.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.031009,
+      "output_sha256": "b7502ae3ed31b5725ddf4e3fda153d7eeec4d601ff4c948f77a6503fd0705763",
+      "output_tail": "{\n  \"accepted_kaggle_entry_changed\": false,\n  \"biological_accuracy_result_created\": false,\n  \"clean_new_machine_certification\": false,\n  \"fresh_public_clone\": true,\n  \"fresh_virtual_environment\": true,\n  \"official_competition_score\": null,\n  \"orchestrated_response_free_tests\": 173,\n  \"private_or_protected_inputs_read\": false,\n  \"release_preflight_stages\": 14,\n  \"source_commit\": \"edcb892d77ed6fdbed5548646b80f7b9a8ebd1a5\",\n  \"source_tree\": \"56bb7cf055720ac007d0a968cd41df85eb1b0527\",\n  \"status\": \"PASS\"\n}\n"
+    },
+    {
+      "name": "current_scientific_successor_finalist_rubric_evidence",
+      "command": [
+        "python3",
+        "study/audits/verify_finalist_rubric_evidence_current_scientific_successor.py",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.030308,
+      "output_sha256": "56e3fab0f6c8261755f974b22b6d2a5959d6ad5daa245803855925cd8a6d510a",
+      "output_tail": "{\n  \"accepted_kaggle_entry_changed\": false,\n  \"bandwidth07_patient_wins\": 40,\n  \"candidate_family\": \"orientation_specific_control_quality_rank1\",\n  \"candidate_mse\": 0.001042745722096212,\n  \"criteria\": 5,\n  \"favorable_folds\": 5,\n  \"independent_validation\": false,\n  \"official_competition_score\": null,\n  \"operational_demo_baseline_replaced\": false,\n  \"repeated_development\": true,\n  \"status\": \"PASS\",\n  \"target_wins\": 19,\n  \"weight_sum\": 100\n}\n"
+    }
+  ],
+  "package_check_count": 8,
+  "postcanonical_check_count": 7,
+  "current_scientific_successor_rubric_checked": true,
+  "canonical_release_check_count": 14,
+  "canonical_orchestrated_test_count": 173,
+  "canonical_preflight_sha256": "9d01b668bd9c72b63a0ca0d61fc67c3b76abd99ad782803819938278aebb14b0",
+  "artifact_sha256": {
+    "study/audits/finalist_package_preflight_scientific_successor.py": "fff73e49280f8f8e7b46523c88fc17579e1b84c9b53735e4206b7afa16a90af6",
+    "study/audits/verify_finalist_package_preflight_scientific_successor.py": "6e7aee04ec4993fe843c65ee75970f26e2b400a0b740774e02639c5ccd1a95e9",
+    "study/audits/test_finalist_package_preflight_scientific_successor.py": "6c32fe4feeef64648e166e0a5367c78b4f95cab1c46e6035cf64cab6446b3603",
+    "docs/FINALIST_PACKAGE_PREFLIGHT_SCIENTIFIC_SUCCESSOR.md": "753d7701bfe9d3dd05303936752c850481fc895275c792b343f8b81257af3fe6"
+  },
+  "network_requests": 0,
+  "canonical_receipt_rewritten": false,
+  "historical_v4_predecessor_preserved": true,
+  "operational_demo_baseline_replaced": false,
+  "private_or_protected_inputs_read": false,
+  "biological_accuracy_result_created": false,
+  "independent_validation_created": false,
+  "accepted_kaggle_entry_changed": false,
+  "netlify_deployment_changed": false,
+  "official_competition_score": null
+}

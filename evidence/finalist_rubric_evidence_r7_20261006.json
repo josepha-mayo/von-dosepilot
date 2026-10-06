@@ -1,0 +1,80 @@
+{
+  "schema": "dosepilot.finalist_rubric_evidence.v7",
+  "status": "PASS",
+  "as_of_date": "2026-10-06",
+  "role": "CURRENT_SCIENTIFIC_SUCCESSOR_JUDGE_CRITERION_EVIDENCE",
+  "rubric": {
+    "source_url": "https://www.kaggle.com/competitions/ai-4-s-open-innovation-artificial-intelligence-for-life-scien/overview/evaluation",
+    "last_verified_on_platform": "2026-10-01",
+    "current_run_public_retrieval": "NOT_ATTEMPTED_NO_REFRESH_CLAIM",
+    "weights": {
+      "problem_importance_impact": 30,
+      "technical_approach_innovation": 30,
+      "results_validation": 20,
+      "reproducibility_implementation": 10,
+      "presentation": 10
+    },
+    "combined_self_score": null,
+    "finalist_probability_estimate": null
+  },
+  "evidence_bindings": {
+    "predecessor": {
+      "path": "evidence/finalist_rubric_evidence_r6_20261006.json",
+      "sha256": "62031d0fcd4897447b8bc2123113227ca97d5dfd89e6415e58ec167a76399e36"
+    },
+    "current_scientific_successor": {
+      "path": "evidence/current_scientific_successor_evidence_20261006.json",
+      "sha256": "ba3b1546bee6267b6ea31e973bb572112427499a659ff9e8dc98202b5725c90c"
+    }
+  },
+  "scientific_successor": {
+    "family_id": "orientation_specific_control_quality_rank1",
+    "mse": 0.001042745722096212,
+    "p90_patient_rmse": 0.037419695944064885,
+    "patient_wins_vs_bandwidth07": 40,
+    "favorable_folds_vs_bandwidth07": 5,
+    "target_average_wins_vs_bandwidth07": 19,
+    "immediate_predecessor_relative_mse_gain": 0.00041590829368609583,
+    "immediate_predecessor_patient_wins": 32,
+    "immediate_predecessor_favorable_folds": 3,
+    "r13_gate_retained": true,
+    "r18_gate_retained": true,
+    "physical_treatment_wells": 64,
+    "repeated_adaptive_development": true,
+    "operational_demo_baseline_replaced": false
+  },
+  "criterion_evidence": {
+    "problem_importance_impact": "Inherits the exact-64-well measurement contract and current application framing without prospective or clinical claims.",
+    "technical_approach_innovation": "Binds orientation-specific rank-1 control-quality calibration with no added treatment wells and no new base-model fit.",
+    "results_validation": "Binds the mean, patient, five-fold, tail, target-breadth and R13/R18 results while preserving immediate-predecessor and selection-naive limitations.",
+    "reproducibility_implementation": "Binds the public machine receipt, aggregate bootstrap and target diagnostics; separately discloses the absent immutable Windows replay receipt.",
+    "presentation": "Binds the complete 24-target visual, nine-page report, write-up and 90-second reviewer path without hiding five adverse targets."
+  },
+  "artifact_sha256": {
+    "docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_SCIENTIFIC_SUCCESSOR.md": "1dd9f88665e562f8d6096957972835faf663cc9b5da0250e1157da00eb6f254a",
+    "study/audits/verify_finalist_rubric_evidence_current_scientific_successor.py": "635ba73bd7a7af5f6605d13877cf470c738e586d1e4abd0b804ab61d31eb9cc6",
+    "study/audits/test_finalist_rubric_evidence_current_scientific_successor.py": "6f5ed116a3e4fe3205634268d3309f425b0a6ccca8e7be931118f7255d300ad0"
+  },
+  "verification": {
+    "standalone_verifier": "PASS",
+    "focused_adversarial_tests": 10,
+    "predecessor_hash_verified": true,
+    "scientific_successor_hash_verified": true,
+    "scientific_successor_artifacts_verified": true,
+    "source_workbook_opened": false,
+    "patient_or_prediction_arrays_opened": false,
+    "protected_response_access": false
+  },
+  "limitations": {
+    "bootstrap_independently_recomputed": false,
+    "bootstrap_confirmatory": false,
+    "windows_replay_machine_receipt_public": false,
+    "windows_replay_independently_reproduced": false,
+    "independent_validation": false,
+    "protected22_access": false,
+    "accepted_kaggle_entry_changed": false,
+    "netlify_changed": false,
+    "finalist_status_claimed": false,
+    "official_competition_score": null
+  }
+}

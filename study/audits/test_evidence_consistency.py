@@ -146,6 +146,24 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
+        scientific_rubric_index = index[
+            "current_scientific_successor_finalist_rubric_evidence"
+        ]
+        scientific_rubric = json.loads(
+            (self.source / scientific_rubric_index["path"]).read_text()
+        )
+        scientific_rubric_paths = {
+            scientific_rubric_index["path"],
+            *scientific_rubric["artifact_sha256"],
+        }
+        scientific_rubric_paths.update(
+            binding["path"]
+            for binding in scientific_rubric["evidence_bindings"].values()
+        )
+        for relative in scientific_rubric_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         report_bound_package_index = index["current_report_finalist_package_preflight"]
         report_bound_package = json.loads(
             (self.source / report_bound_package_index["path"]).read_text()
@@ -173,6 +191,22 @@ class EvidenceConsistencyTests(unittest.TestCase):
             *retrieval_bound_package["artifact_sha256"],
         }
         for relative in retrieval_bound_package_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
+        scientific_package_index = index[
+            "current_scientific_successor_finalist_package_preflight"
+        ]
+        scientific_package = json.loads(
+            (self.source / scientific_package_index["path"]).read_text()
+        )
+        scientific_package_paths = {
+            scientific_package_index["path"],
+            scientific_package["predecessor"]["path"],
+            scientific_package["current_scientific_successor_rubric"]["path"],
+            *scientific_package["artifact_sha256"],
+        }
+        for relative in scientific_package_paths:
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)

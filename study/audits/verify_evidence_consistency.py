@@ -33,6 +33,10 @@ from verify_current_scientific_successor_evidence import (
     CurrentScientificSuccessorEvidenceError,
     verify as verify_current_scientific_successor_evidence,
 )
+from verify_finalist_rubric_evidence_current_scientific_successor import (
+    CurrentScientificSuccessorRubricEvidenceError,
+    verify as verify_current_scientific_successor_finalist_rubric_evidence,
+)
 from verify_verification_chronology import (
     ChronologyError,
     verify as verify_verification_chronology,
@@ -60,6 +64,10 @@ from verify_finalist_package_preflight_report_bound import (
 from verify_finalist_package_preflight_retrieval_bound import (
     RetrievalBoundFinalistPackagePreflightError,
     verify as verify_retrieval_bound_finalist_package_preflight,
+)
+from verify_finalist_package_preflight_scientific_successor import (
+    ScientificSuccessorFinalistPackagePreflightError,
+    verify as verify_scientific_successor_finalist_package_preflight,
 )
 from verify_public_report_byte_retrieval import (
     PublicReportByteRetrievalError,
@@ -1395,6 +1403,23 @@ def verify(root, enforce_pins=True):
     same(scientific_successor_result["protected22_access"], False, "SCIENTIFIC_SUCCESSOR_NO_PROTECTED22")
     same(scientific_successor_result["official_competition_score"], None, "SCIENTIFIC_SUCCESSOR_NO_SCORE")
     try:
+        scientific_successor_rubric_result = (
+            verify_current_scientific_successor_finalist_rubric_evidence(root)
+        )
+    except CurrentScientificSuccessorRubricEvidenceError as exc:
+        raise EvidenceError(
+            "CURRENT_SCIENTIFIC_SUCCESSOR_RUBRIC_EVIDENCE: " + str(exc)
+        ) from exc
+    same(scientific_successor_rubric_result["criteria"], 5, "SCIENTIFIC_SUCCESSOR_RUBRIC_CRITERIA")
+    same(scientific_successor_rubric_result["weight_sum"], 100, "SCIENTIFIC_SUCCESSOR_RUBRIC_WEIGHT_SUM")
+    same(scientific_successor_rubric_result["candidate_mse"], 0.001042745722096212, "SCIENTIFIC_SUCCESSOR_RUBRIC_MSE")
+    same(scientific_successor_rubric_result["bandwidth07_patient_wins"], 40, "SCIENTIFIC_SUCCESSOR_RUBRIC_PATIENTS")
+    same(scientific_successor_rubric_result["favorable_folds"], 5, "SCIENTIFIC_SUCCESSOR_RUBRIC_FOLDS")
+    same(scientific_successor_rubric_result["target_wins"], 19, "SCIENTIFIC_SUCCESSOR_RUBRIC_TARGETS")
+    same(scientific_successor_rubric_result["operational_demo_baseline_replaced"], False, "SCIENTIFIC_SUCCESSOR_RUBRIC_NO_OPERATIONAL_REPLACEMENT")
+    same(scientific_successor_rubric_result["independent_validation"], False, "SCIENTIFIC_SUCCESSOR_RUBRIC_NO_VALIDATION")
+    same(scientific_successor_rubric_result["official_competition_score"], None, "SCIENTIFIC_SUCCESSOR_RUBRIC_NO_SCORE")
+    try:
         report_bound_package_result = verify_report_bound_finalist_package_preflight(root)
     except ReportBoundFinalistPackagePreflightError as exc:
         raise EvidenceError("REPORT_BOUND_FINALIST_PACKAGE_PREFLIGHT: " + str(exc)) from exc
@@ -1422,6 +1447,26 @@ def verify(root, enforce_pins=True):
     same(retrieval_bound_package_result["canonical_orchestrated_tests"], 173, "RETRIEVAL_BOUND_PACKAGE_CANONICAL_TESTS")
     same(retrieval_bound_package_result["accepted_kaggle_entry_changed"], False, "RETRIEVAL_BOUND_PACKAGE_NO_KAGGLE_CHANGE")
     same(retrieval_bound_package_result["official_competition_score"], None, "RETRIEVAL_BOUND_PACKAGE_NO_SCORE")
+    try:
+        scientific_successor_package_result = (
+            verify_scientific_successor_finalist_package_preflight(root)
+        )
+    except ScientificSuccessorFinalistPackagePreflightError as exc:
+        raise EvidenceError(
+            "SCIENTIFIC_SUCCESSOR_FINALIST_PACKAGE_PREFLIGHT: " + str(exc)
+        ) from exc
+    same(scientific_successor_package_result["package_checks"], 8, "SCIENTIFIC_SUCCESSOR_PACKAGE_CHECKS")
+    same(scientific_successor_package_result["current_scientific_successor_rubric_checked"], True, "SCIENTIFIC_SUCCESSOR_PACKAGE_RUBRIC")
+    same(scientific_successor_package_result["candidate_mse"], 0.001042745722096212, "SCIENTIFIC_SUCCESSOR_PACKAGE_MSE")
+    same(scientific_successor_package_result["bandwidth07_patient_wins"], 40, "SCIENTIFIC_SUCCESSOR_PACKAGE_PATIENTS")
+    same(scientific_successor_package_result["favorable_folds"], 5, "SCIENTIFIC_SUCCESSOR_PACKAGE_FOLDS")
+    same(scientific_successor_package_result["target_wins"], 19, "SCIENTIFIC_SUCCESSOR_PACKAGE_TARGETS")
+    same(scientific_successor_package_result["operational_demo_baseline_replaced"], False, "SCIENTIFIC_SUCCESSOR_PACKAGE_NO_OPERATIONAL_REPLACEMENT")
+    same(scientific_successor_package_result["independent_validation"], False, "SCIENTIFIC_SUCCESSOR_PACKAGE_NO_VALIDATION")
+    same(scientific_successor_package_result["canonical_release_stages"], 14, "SCIENTIFIC_SUCCESSOR_PACKAGE_CANONICAL_STAGES")
+    same(scientific_successor_package_result["canonical_orchestrated_tests"], 173, "SCIENTIFIC_SUCCESSOR_PACKAGE_CANONICAL_TESTS")
+    same(scientific_successor_package_result["accepted_kaggle_entry_changed"], False, "SCIENTIFIC_SUCCESSOR_PACKAGE_NO_KAGGLE_CHANGE")
+    same(scientific_successor_package_result["official_competition_score"], None, "SCIENTIFIC_SUCCESSOR_PACKAGE_NO_SCORE")
     try:
         chronology_result = verify_verification_chronology(root)
     except ChronologyError as exc:
@@ -1626,6 +1671,9 @@ def verify(root, enforce_pins=True):
         "scientific_successor_target_wins": scientific_successor_result["target_wins"],
         "scientific_successor_target_losses": scientific_successor_result["target_losses"],
         "scientific_successor_independent_validation": scientific_successor_result["independent_validation"],
+        "scientific_successor_rubric_criteria": scientific_successor_rubric_result["criteria"],
+        "scientific_successor_rubric_weight_sum": scientific_successor_rubric_result["weight_sum"],
+        "scientific_successor_rubric_operational_baseline_replaced": scientific_successor_rubric_result["operational_demo_baseline_replaced"],
         "report_bound_finalist_package_checks": report_bound_package_result["package_checks"],
         "report_bound_finalist_package_rubric_successor_checked": report_bound_package_result["current_report_rubric_successor_checked"],
         "report_bound_finalist_package_raw_download_verified": report_bound_package_result["raw_download_verified"],
@@ -1633,6 +1681,9 @@ def verify(root, enforce_pins=True):
         "retrieval_bound_finalist_package_rubric_successor_checked": retrieval_bound_package_result["current_report_retrieval_rubric_successor_checked"],
         "retrieval_bound_finalist_package_repository_bytes_retrieved": retrieval_bound_package_result["public_repository_file_bytes_retrieved"],
         "retrieval_bound_finalist_package_raw_download_verified": retrieval_bound_package_result["raw_download_verified"],
+        "scientific_successor_finalist_package_checks": scientific_successor_package_result["package_checks"],
+        "scientific_successor_finalist_package_rubric_checked": scientific_successor_package_result["current_scientific_successor_rubric_checked"],
+        "scientific_successor_finalist_package_operational_baseline_replaced": scientific_successor_package_result["operational_demo_baseline_replaced"],
         "current_preflight_tests": current_preflight["orchestrated_test_count"],
         "verification_chronology_latest_tests": chronology_result["latest_orchestrated_test_count"],
         "clean_finalist_package_checks": clean_package_result["package_checks"],
