@@ -178,7 +178,7 @@ The frozen verifier reports:
 | Base model refit | false |
 | Calibration recomputed | true |
 | Held-target predictions reconstructed | 5,712 |
-| Maximum prediction difference | 0.0 |
+| Maximum prediction difference | 2.22e-16 (fresh Windows replay) |
 | Prediction tolerance | 5e-16 |
 | Calibration folds checked | 5 |
 | Protected22 access | false |

@@ -21,7 +21,7 @@ Versus original R13 (0.001144858681):
 - **5/5 favorable outer folds**
 - **22/24 target-average wins**
 
-The frozen verifier reconstructs **5,712 held-target predictions exactly** with maximum difference **0.0** and no Protected22 access.
+The frozen verifier reconstructs **5,712 held-target predictions**; a fresh Windows replay had maximum difference **2.22e-16**, below the frozen **5e-16** tolerance, with no Protected22 access.
 
 This remains repeated adaptive development on the same 59-patient Lib1 population. The immediate 0.001043179589 predecessor is only 0.0416% worse and wins two of five folds against the current candidate, so no claim of uniform incremental superiority is made.
 

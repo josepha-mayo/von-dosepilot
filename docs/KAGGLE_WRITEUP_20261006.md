@@ -107,7 +107,7 @@ That is why the claim is “lowest verified adaptive-development point estimate 
 
 ## 5. Verification and falsification
 
-The current candidate's frozen replay reconstructs **5,712 held-target predictions** with maximum numerical difference **0.0** at tolerance **5e-16**. It recomputes the calibration without refitting the base model.
+The current candidate's frozen replay reconstructs **5,712 held-target predictions**. A fresh Windows replay had maximum numerical difference **2.22e-16**, below the frozen **5e-16** tolerance. It recomputes the calibration without refitting the base model.
 
 The authenticated historical R18 screen passes:
 

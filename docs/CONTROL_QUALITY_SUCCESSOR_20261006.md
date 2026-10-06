@@ -65,7 +65,7 @@ The frozen replay verifier reports:
 - base model refit: **false**
 - calibration recomputed: **true**
 - held-target predictions reconstructed: **5,712**
-- maximum prediction difference: **0.0**
+- maximum prediction difference: **2.22e-16 on fresh Windows replay**
 - prediction tolerance: **5e-16**
 - calibration folds checked: **5**
 - Protected22 access: **false**
