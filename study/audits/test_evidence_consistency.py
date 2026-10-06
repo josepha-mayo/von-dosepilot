@@ -178,6 +178,22 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
+        clean_report_bound_package_index = index[
+            "clean_report_bound_finalist_package_execution"
+        ]
+        clean_report_bound_package = json.loads(
+            (self.source / clean_report_bound_package_index["path"]).read_text()
+        )
+        clean_report_bound_package_paths = [
+            clean_report_bound_package_index["path"],
+            clean_report_bound_package["predecessor"]["path"],
+            *clean_report_bound_package["requirements"],
+            *clean_report_bound_package["artifact_sha256"],
+        ]
+        for relative in clean_report_bound_package_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         lifecycle = json.loads(
             (self.source / "evidence/bandwidth_lifecycle_20261003.json").read_text()
         )
@@ -244,6 +260,13 @@ class EvidenceConsistencyTests(unittest.TestCase):
         self.assertEqual(result["current_preflight_tests"], 173)
         self.assertEqual(result["verification_chronology_latest_tests"], 173)
         self.assertEqual(result["clean_finalist_package_checks"], 8)
+        self.assertEqual(result["clean_report_bound_finalist_package_checks"], 8)
+        self.assertTrue(
+            result["clean_report_bound_finalist_package_live_download_observed"]
+        )
+        self.assertTrue(
+            result["clean_report_bound_finalist_package_rubric_successor_checked"]
+        )
         self.assertEqual(result["development_governance_families"], 23)
         self.assertEqual(result["development_governance_tests"], 33)
 

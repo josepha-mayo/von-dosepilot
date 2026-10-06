@@ -37,6 +37,10 @@ from verify_clean_current_finalist_package_execution import (
     CleanCurrentFinalistPackageExecutionError,
     verify as verify_clean_current_finalist_package_execution,
 )
+from verify_clean_report_bound_finalist_package_execution import (
+    CleanReportBoundFinalistPackageExecutionError,
+    verify as verify_clean_report_bound_finalist_package_execution,
+)
 from verify_finalist_package_preflight_report_bound import (
     ReportBoundFinalistPackagePreflightError,
     verify as verify_report_bound_finalist_package_preflight,
@@ -1371,6 +1375,64 @@ def verify(root, enforce_pins=True):
         173,
         "CLEAN_CURRENT_PACKAGE_CANONICAL_TESTS",
     )
+    try:
+        clean_report_bound_package_result = (
+            verify_clean_report_bound_finalist_package_execution(root)
+        )
+    except CleanReportBoundFinalistPackageExecutionError as exc:
+        raise EvidenceError(
+            "CLEAN_REPORT_BOUND_FINALIST_PACKAGE_EXECUTION: " + str(exc)
+        ) from exc
+    same(
+        clean_report_bound_package_result["public_commit"],
+        "ae04f83d2171df24f28a01d1fa530c57961b94d0",
+        "CLEAN_REPORT_BOUND_PACKAGE_PUBLIC_COMMIT",
+    )
+    same(
+        clean_report_bound_package_result["public_tree"],
+        "c8936f98815f79e187e6b8ecc6c52e7aebf9f1cb",
+        "CLEAN_REPORT_BOUND_PACKAGE_PUBLIC_TREE",
+    )
+    same(
+        clean_report_bound_package_result["fresh_virtual_environment"],
+        True,
+        "CLEAN_REPORT_BOUND_PACKAGE_FRESH_VENV",
+    )
+    same(
+        clean_report_bound_package_result["live_dependency_download_observed"],
+        True,
+        "CLEAN_REPORT_BOUND_PACKAGE_LIVE_DEPENDENCY_DOWNLOAD",
+    )
+    same(
+        clean_report_bound_package_result["package_checks"],
+        8,
+        "CLEAN_REPORT_BOUND_PACKAGE_CHECKS",
+    )
+    same(
+        clean_report_bound_package_result["current_report_rubric_successor_checked"],
+        True,
+        "CLEAN_REPORT_BOUND_PACKAGE_RUBRIC_SUCCESSOR",
+    )
+    same(
+        clean_report_bound_package_result["current_report_bytes"],
+        92307,
+        "CLEAN_REPORT_BOUND_PACKAGE_REPORT_BYTES",
+    )
+    same(
+        clean_report_bound_package_result["raw_download_verified"],
+        False,
+        "CLEAN_REPORT_BOUND_PACKAGE_NO_RAW_DOWNLOAD",
+    )
+    same(
+        clean_report_bound_package_result["canonical_release_stages"],
+        14,
+        "CLEAN_REPORT_BOUND_PACKAGE_CANONICAL_STAGES",
+    )
+    same(
+        clean_report_bound_package_result["canonical_orchestrated_tests"],
+        173,
+        "CLEAN_REPORT_BOUND_PACKAGE_CANONICAL_TESTS",
+    )
     return {
         "status": "PASS",
         "canonical_receipts": len(receipts),
@@ -1401,6 +1463,9 @@ def verify(root, enforce_pins=True):
         "clean_finalist_package_checks": clean_package_result["package_checks"],
         "clean_current_finalist_package_checks": clean_current_package_result["package_checks"],
         "clean_current_finalist_package_rubric_successor_checked": clean_current_package_result["current_rubric_successor_checked"],
+        "clean_report_bound_finalist_package_checks": clean_report_bound_package_result["package_checks"],
+        "clean_report_bound_finalist_package_live_download_observed": clean_report_bound_package_result["live_dependency_download_observed"],
+        "clean_report_bound_finalist_package_rubric_successor_checked": clean_report_bound_package_result["current_report_rubric_successor_checked"],
         "raw_ak_decision": aligned["decision"],
         "cross_patient_bandwidth_decision": cross_patient["decision"],
         "simplex_stacking_decision": simplex["decision"],
