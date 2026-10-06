@@ -1,0 +1,40 @@
+{
+  "schema": "dosepilot.budget72_transferred_control_rank1.freeze.v1",
+  "state": "FROZEN_BEFORE_CANDIDATE_OUTCOME",
+  "frozen_date": "2026-10-06",
+  "family_id": "budget72_transferred_control_rank1",
+  "role": "FROZEN_NO_RETUNING_TRANSFER_ON_REPEATED_LIB1_DEVELOPMENT",
+  "input_sha256": {
+    "budget_curve_predictions": "3c3ba9d3dc1e1aaf7b7e3849ee13157ddbe298f81b60aa02d0d8e41096a7dcc0",
+    "control_quality_features": "f09448aad3d62de360d07be799a43a3fa7f3442b6b1f7c829c12533f43d8b0ba",
+    "current_64_successor": "ab7bd69e97fc0295a9f4066be0396d82d628bba5b69302bb9670f31561e6df12",
+    "train_curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e"
+  },
+  "source_sha256": {
+    "study/budget72_transferred_control_rank1/PROPOSAL.json": "e8bc00534bc9b500d65a3e74e7e6e0200bdbf3451c9e6b50f923c092a25e1f19",
+    "study/budget72_transferred_control_rank1/PROTOCOL.md": "955e6631269ac86c3f8796a4662460a408e6ef93723dd76217c2726706ce1463",
+    "study/budget72_transferred_control_rank1/run_study.py": "e512dc2c2a4ba73f2301484e0f3c22c6d6768315e81d40cf99b2c36ee96c24ef",
+    "study/budget72_transferred_control_rank1/test_study.py": "415b253cf74d5bcc10e6d90a48b4f95f42d44aa41b22798bf4e558b6cf00fa35"
+  },
+  "dependency_sha256": {
+    "study/orientation_specific_control_quality_rank1/run_study.py": "73ec21082284952b41255f2e98f8d2ee63c65e6202a27ef28e7c2f87580e54a8",
+    "study/standard_control_meanquad_plate_interaction_v2/run_study.py": "d75c1b434915415e8a810160cc811900bcab7214e3d95c8c31b5f2bf864ed623",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/engine/sparse_methods.py": "511ea1665a7f245cd3a2923fd8a6be6f5c2e45ba901da1620f7298a4125ec64c"
+  },
+  "orientation_A_strength": 0.1111111111111111,
+  "orientation_B_strength": 0.3333333333333333,
+  "ridge_prior": 0.125,
+  "rank": 1,
+  "bootstrap_seed": 20261006,
+  "bootstrap_replicates": 100000,
+  "hyperparameter_search": false,
+  "synthetic_tests_passed": 3,
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}

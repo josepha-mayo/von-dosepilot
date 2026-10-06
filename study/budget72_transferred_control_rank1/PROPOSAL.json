@@ -1,0 +1,20 @@
+{
+  "schema": "dosepilot.budget72_transferred_control_rank1.proposal.v1",
+  "state": "PROPOSED_BEFORE_CANDIDATE_OUTCOME",
+  "family_id": "budget72_transferred_control_rank1",
+  "role": "FROZEN_NO_RETUNING_TRANSFER_ON_REPEATED_LIB1_DEVELOPMENT",
+  "question": "Does the exact orientation-specific rank-1 standard-control recipe already frozen for the 64-well successor transfer to the 72-well all-three-dose OOF base without retuning?",
+  "hypothesis": "The transferred control-quality correction will reduce patient-balanced MSE versus the frozen 72-well base.",
+  "orientation_A_basis": "existing 7-feature level basis",
+  "orientation_B_basis": "existing 11-feature full-quality basis",
+  "orientation_A_strength": 0.1111111111111111,
+  "orientation_B_strength": 0.3333333333333333,
+  "ridge_prior": 0.125,
+  "rank": 1,
+  "hyperparameter_search": false,
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}
