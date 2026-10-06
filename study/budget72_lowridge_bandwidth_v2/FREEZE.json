@@ -1,0 +1,52 @@
+{
+  "schema": "dosepilot.budget72_lowridge_bandwidth_v2.freeze.v1",
+  "state": "FROZEN_BEFORE_CANDIDATE_OUTCOME",
+  "frozen_date": "2026-10-06",
+  "family_id": "budget72_lowridge_bandwidth_v2",
+  "role": "FROZEN_INNER_ONLY_JOINT_BASE_RIDGE_AND_RESIDUAL_SELECTION",
+  "predecessor_v1": {
+    "freeze_commit": "7fd0d00",
+    "scientific_outcome_observed": false,
+    "failure": "numpy advanced-indexing shape mismatch before first candidate MSE or outer score"
+  },
+  "input_sha256": {
+    "train_curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "frontier72": "72f803893e252a88777dbf2e5ef918d452da697da986d72adcbcb61f9e749a65"
+  },
+  "source_sha256": {
+    "study/budget72_lowridge_bandwidth_v2/PROPOSAL.json": "5edc385fffd36f1bf42079454c5d2252e2fcfcaad581b499a7b9e174c97dc62a",
+    "study/budget72_lowridge_bandwidth_v2/PROTOCOL.md": "0fcf6d4c14738bbf67c825db00ebfc3ec525d0ab3a96dfe55772aa3e1881183e",
+    "study/budget72_lowridge_bandwidth_v2/run_study.py": "3193c4eed2076068e7d12ca48f90d5809fe092d38e4cd8b46c647ece3c4e150c",
+    "study/budget72_lowridge_bandwidth_v2/test_study.py": "769877b24709b8551f2d4f5a208b9563a09a7577808da6a80d5b8dc4cd2fb61b"
+  },
+  "dependency_sha256": {
+    "study/budget72_bandwidth07_residual/run_study.py": "ca6666c24e9f3e6030499ff52c4970b25ea6a6dd2df4bb01c1e98737c6e0518e",
+    "study/budget72_bandwidth07_residual/bandwidth_additive72.py": "a67dc57e1cc8848af9ceef712df5af0f23cccd081688a609632f202549bedf06",
+    "study/budget_upgrade_curve/run_study.py": "ffa862567139127a236947048be16c65aba6bd8a17374b636e486424f99c95d9",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/engine/sparse_methods.py": "511ea1665a7f245cd3a2923fd8a6be6f5c2e45ba901da1620f7298a4125ec64c",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/evaluate.py": "24593a7d8608fd3ce98c367e1760af596b3b33554c1ef7a3f8ac645b046b700b"
+  },
+  "base_ridge_grid": [0.0001, 0.0003, 0.001, 0.003, 0.01],
+  "residual_option_count": 10,
+  "joint_option_count": 50,
+  "bandwidth_multiplier": 0.7,
+  "expected_frontier_mse": 0.0009326007417880046,
+  "treatment_wells": 72,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "bootstrap_seed": 20261006,
+  "bootstrap_replicates": 100000,
+  "synthetic_tests_passed": 4,
+  "target_specific_selection": false,
+  "orientation_specific_selection": false,
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "automatic_retry": false,
+  "protected22_access": false,
+  "independent_validation": false
+}

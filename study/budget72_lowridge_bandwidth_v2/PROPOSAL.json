@@ -1,0 +1,27 @@
+{
+  "schema": "dosepilot.budget72_lowridge_bandwidth_v2.proposal.v1",
+  "state": "PROPOSED_BEFORE_CANDIDATE_OUTCOME",
+  "family_id": "budget72_lowridge_bandwidth_v2",
+  "role": "FROZEN_INNER_ONLY_JOINT_BASE_RIDGE_AND_RESIDUAL_SELECTION",
+  "question": "Does extending the own-drug ridge grid below the historical lower boundary improve the 72-well bandwidth-0.7 frontier?",
+  "base_ridge_grid": [0.0001, 0.0003, 0.001, 0.003, 0.01],
+  "residual_option_count": 10,
+  "joint_option_count": 50,
+  "bandwidth_multiplier": 0.7,
+  "selection": "one global (base ridge, residual option) pair from whole-patient inner OOF MSE per outer fold",
+  "predecessor_v1": {
+    "branch_commit": "7fd0d00",
+    "failure_stage": "first inner OOF assignment before any candidate MSE or outer-fold score was emitted",
+    "failure_type": "numpy advanced-indexing shape mismatch",
+    "scientific_outcome_observed": false,
+    "v2_change": "replace only the OOF assignment primitive; grids, folds, metrics, gate, and model family unchanged"
+  },
+  "target_specific_selection": false,
+  "orientation_specific_selection": false,
+  "treatment_wells": 72,
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}
