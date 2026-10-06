@@ -85,6 +85,10 @@ Full method note: https://github.com/josepha-mayo/von-dosepilot/blob/master/docs
 | Orientation-A auxiliary rank-1 calibration | 0.001043179589 | immediate predecessor |
 | **Orientation-specific control-quality rank-1** | **0.001042745722** | **lowest verified development MSE** |
 
+![DosePilot current successor: development progression and all 24 target-average error changes](https://raw.githubusercontent.com/josepha-mayo/von-dosepilot/master/docs/figures/current_successor_summary_20261006.png)
+
+*Figure 1. Development progression and all 24 post-hoc target-level error changes versus bandwidth-0.7. Negative bars improve; the five hatched positive bars regress. All points remain repeated adaptive development, not independent validation.*
+
 ### Current versus bandwidth-0.7
 
 - relative MSE gain: **1.4674%**
@@ -147,6 +151,10 @@ The public repository includes:
 Current candidate evidence: https://github.com/josepha-mayo/von-dosepilot/blob/master/evidence/orientation_specific_control_quality_rank1_20261006.json
 
 Descriptive patient-bootstrap evidence: https://github.com/josepha-mayo/von-dosepilot/blob/master/evidence/current_successor_descriptive_bootstrap_20261006.json
+
+Target-level aggregate diagnostic: https://github.com/josepha-mayo/von-dosepilot/blob/master/evidence/current_successor_target_deltas_20261006.json
+
+Target-level CSV: https://github.com/josepha-mayo/von-dosepilot/blob/master/evidence/current_successor_target_deltas_20261006.csv
 
 Current candidate implementation: https://github.com/josepha-mayo/von-dosepilot/tree/master/study/orientation_specific_control_quality_rank1
 
