@@ -70,6 +70,9 @@ The operating fictional lifecycle remains the bandwidth-0.7 operational baseline
 - [Current model note](docs/CONTROL_QUALITY_SUCCESSOR_20261006.md)
 - [Machine-readable current result](evidence/orientation_specific_control_quality_rank1_20261006.json)
 - [Descriptive patient bootstrap](evidence/current_successor_descriptive_bootstrap_20261006.json)
+- [Current successor visual](docs/figures/current_successor_summary_20261006.png)
+- [Target-level aggregate diagnostic](evidence/current_successor_target_deltas_20261006.json)
+- [Target-level CSV](evidence/current_successor_target_deltas_20261006.csv)
 - [Implementation and frozen protocol](study/orientation_specific_control_quality_rank1/)
 
 ## Claim boundary
