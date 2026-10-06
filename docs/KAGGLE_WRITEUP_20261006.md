@@ -4,18 +4,17 @@
 **Author:** Joseph Ayanda
 **Repository:** https://github.com/josepha-mayo/von-dosepilot
 **Live fictional-data demo:** https://von-dosepilot.netlify.app
-**Demo video:** https://youtu.be/QeOGJIgx378
-**Current technical report:** `docs/DosePilot_Technical_Report_20261006.pdf`
+**Demo video (75 seconds):** https://youtu.be/QeOGJIgx378
+**Current technical report:** https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/DosePilot_Technical_Report_20261006.pdf
+**6 October reviewer update:** https://github.com/josepha-mayo/von-dosepilot/blob/master/SUBMISSION_UPDATE_20261006.md
 
-## TL;DR
+## Project Summary
 
-DosePilot is a measurement-aware drug-response reconstruction system. It freezes a physical assay plan **before responses arrive**, consumes **64 identified treatment measurements per deployment, 32 per source plate**, and reconstructs **24 fixed normalized log-dose AUC summaries**.
+Drug-response screening is constrained by physical assay capacity: every extra drug-dose measurement consumes a well, plate space, material, and experimental attention. DosePilot treats sparse screening as a coupled **measurement-design, reconstruction, and provenance** problem rather than ordinary regression. Before responses arrive, it freezes a traceable 64-treatment layout from a 416-measurement retrospective source profile, with **32 treatment wells per source plate**, then reconstructs **24 fixed normalized log-dose AUC summaries**. The 64/416 comparison is a measurement-count compression claim, not a claimed 84.62% reduction in real laboratory cost or time.
 
-The newest verified Lib1 development result keeps the same 64-treatment budget and adds an orientation-specific rank-1 calibration from standard plate-control quality summaries. It reaches **0.001042745722 patient-balanced full-24 MSE**, versus **0.001058275042** for the public bandwidth-0.7 baseline and **0.001144858681** for original R13.
+The newest verified Lib1 development candidate keeps the same 64-treatment plan and adds a conservative orientation-specific rank-1 calibration from standard plate-control quality summaries. On **119 organoid samples grouped into 59 whole patients**, it reaches **0.001042745722 patient-balanced full-24 MSE**, versus **0.001058275042** for the public bandwidth-0.7 baseline and **0.001144858681** for original R13. Against bandwidth-0.7 it lowers MSE by **1.4674%**, improves **40/59 patient means**, all **5/5 outer folds**, p90 patient RMSE, and **19/24 target-average errors**.
 
-Against bandwidth-0.7 it lowers MSE by **1.4674%**, improves **40/59 patient means**, all **5/5 outer folds**, p90 patient RMSE, and **19/24 target-average errors**. Against R13 it lowers MSE by **8.9193%**, with **49/59 patient wins** and **5/5 favorable folds**.
-
-This is **repeated adaptive development**, not independent confirmation, an official competition score, or clinical evidence.
+DosePilot is built to make those numbers inspectable: patient identity is preserved through model selection, A/B 64-well alternatives are never fused into a hidden 128-well predictor, incomplete primary inputs are withheld rather than imputed, failed model families remain published, and the frozen replay reconstructs **5,712 held-target predictions** within a **5e-16** numerical tolerance. The current result remains **repeated adaptive development**, not independent confirmation, an official competition score, or clinical evidence.
 
 ## 1. Problem
 
@@ -65,7 +64,7 @@ The current lowest-MSE candidate preserves the 64 treatment wells and uses **sta
 
 No extra treatment well is purchased. The calibration is intentionally rank 1: recorded rank-2, rank-3, and rank-4 alternatives all regress.
 
-Full method note: `docs/CONTROL_QUALITY_SUCCESSOR_20261006.md`.
+Full method note: https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/CONTROL_QUALITY_SUCCESSOR_20261006.md
 
 ## 4. Same-task development results
 
@@ -139,13 +138,9 @@ The public repository includes:
 - machine-readable aggregate evidence;
 - an identity-bound fictional lifecycle demonstrating commit, missing-input withholding, recovery, and prediction.
 
-Current candidate evidence:
+Current candidate evidence: https://github.com/josepha-mayo/von-dosepilot/blob/master/evidence/orientation_specific_control_quality_rank1_20261006.json
 
-`evidence/orientation_specific_control_quality_rank1_20261006.json`
-
-Current candidate implementation:
-
-`study/orientation_specific_control_quality_rank1/`
+Current candidate implementation: https://github.com/josepha-mayo/von-dosepilot/tree/master/study/orientation_specific_control_quality_rank1
 
 The current fictional lifecycle still demonstrates the bandwidth-0.7 operational model. The newer control-quality calibration is verified research code and aggregate evidence, but it has **not** been silently substituted into that older lifecycle demo. This separation is deliberate.
 
