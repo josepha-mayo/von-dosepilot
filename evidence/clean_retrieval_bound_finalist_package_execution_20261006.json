@@ -1,0 +1,100 @@
+{
+  "schema": "dosepilot.clean_retrieval_bound_finalist_package_execution.v1",
+  "status": "PASS",
+  "role": "CLEAN_ISOLATED_RETRIEVAL_BOUND_FINALIST_PACKAGE_EXECUTION",
+  "utc": "2026-10-06T10:07:50.454789+00:00",
+  "predecessor": {
+    "path": "evidence/clean_report_bound_finalist_package_execution_20261006.json",
+    "sha256": "1a02c8ba91e132677802b8a5f950b4d2308d40dc505d86b214fab657ec520b06",
+    "preserved_unchanged": true
+  },
+  "supersedes_reason": "Adds a fresh-source and fresh-virtual-environment execution of the primary retrieval-bound v4 package command while preserving the v1, v2, and v3 clean-execution receipts.",
+  "source": {
+    "public_commit": "e46ee71de5d7c2f3694878ffbfb4547e1d32d126",
+    "public_tree": "faa2cc0429e989420a945a494cc7ca625951a0c6",
+    "archive_tree": "faa2cc0429e989420a945a494cc7ca625951a0c6",
+    "archive_file_count": 535,
+    "archive_bytes": 4608000,
+    "archive_sha256": "3cb9ca0281020fbcbcdf8421b2bd64869cca27c85f1532a9156c025b6cfe50a3",
+    "fresh_source_directory": true,
+    "fresh_public_clone": false,
+    "reconstruction_method": "git archive of the local commit whose tree exactly matched verified public master"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "pip": "25.0.1",
+    "operating_system": "Ubuntu 24.04",
+    "kernel": "Linux 6.18.44",
+    "architecture": "x86_64",
+    "glibc": "2.39",
+    "fresh_virtual_environment": true,
+    "dependency_install_source_access_permitted": true,
+    "pip_artifacts_resolved_from_cache": true,
+    "live_dependency_download_claimed": false,
+    "installed_packages": {
+      "joblib": "1.5.3",
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "python-dateutil": "2.9.0.post0",
+      "pytz": "2026.5",
+      "scikit-learn": "1.8.0",
+      "scipy": "1.17.0",
+      "six": "1.17.0",
+      "threadpoolctl": "3.6.0",
+      "tzdata": "2026.5"
+    },
+    "installed_package_manifest_sha256": "e2eadc914d499096dcc649c03200ee9e4e644c9d9d39cc4b0e6b1be30fa45724"
+  },
+  "requirements": {
+    "requirements.txt": "7bd6b8946940b79948c548c8048e545684b91c8edc9444d8dfc0c8f76a97c0a7",
+    "study/requirements.txt": "9acc457aff7a05718b8869947b3b11cf89e5b64dbab9dff9a8fc8ec7e75cddbb"
+  },
+  "execution": {
+    "command": [
+      ".venv/bin/python",
+      "study/audits/finalist_package_preflight_retrieval_bound.py",
+      "--output",
+      "finalist_package_preflight_retrieval_bound.json"
+    ],
+    "status": "PASS",
+    "package_checks": 8,
+    "current_report_retrieval_rubric_successor_checked": true,
+    "public_repository_file_bytes_retrieved": true,
+    "retrieved_bytes_match_exact_tree_pdf": true,
+    "anonymous_raw_http_verified": false,
+    "browser_download_button_verified": false,
+    "raw_download_verified": false,
+    "current_report_bytes": 92307,
+    "canonical_release_stages": 14,
+    "canonical_orchestrated_tests": 173,
+    "package_runner_network_requests": 0,
+    "output_bytes": 11103,
+    "output_sha256": "c049a78226f8c35454d8a20459a0ce598f2c2b32fa204a42e39dfb103f2c9e8a",
+    "canonical_preflight_sha256": "dbff855230342fcd8a2b183f8fab78f7deb7900f022f779fdf6f3a0ebcf8e7d8"
+  },
+  "artifact_sha256": {
+    "docs/CLEAN_RETRIEVAL_BOUND_FINALIST_PACKAGE_EXECUTION.md": "59149aa503596dd1012e5f32b59e7c0ae957daf40302e1341a8435e55bc518ec",
+    "study/audits/verify_clean_retrieval_bound_finalist_package_execution.py": "cb89d3c34b51fe7d015ff46b90ea5da9e8b7e4d2882cb97390e5d48e73f18a33",
+    "study/audits/test_clean_retrieval_bound_finalist_package_execution.py": "342db62d51355fd05bac1773b435e6083f4e2f971aa584d6dfb14f336c0c00db",
+    "docs/FINALIST_PACKAGE_PREFLIGHT_RETRIEVAL_BOUND.md": "b9339ffc78e6f9bc18070eeb5c4f56413c1b4c1ebdb57f1698547f396fa6047e",
+    "study/audits/finalist_package_preflight_retrieval_bound.py": "da0eef79288f1c74ee1a9af7295a0b7d90ebf1bb96b680070813a26cf80a1885",
+    "study/audits/verify_finalist_package_preflight_retrieval_bound.py": "79942443070cdec24d7303e917bc3cf21eac9d1ee6201e8f16a175a077747371",
+    "study/audits/test_finalist_package_preflight_retrieval_bound.py": "74e0cfdaa5738d4fe518cdcfeae314be1f1907e8ebf74d3594b7afad9994913d",
+    "evidence/finalist_package_preflight_r4_20261006.json": "7791efab5ce5a19c91a63dc6c7ad8bc465a5bc7579f2ae2f31d2e71cecf6836a"
+  },
+  "claim_boundary": {
+    "clean_new_machine_certification": false,
+    "independent_biological_validation": false,
+    "prospective_ooc_evidence": false,
+    "anonymous_raw_http_verified": false,
+    "browser_download_button_verified": false,
+    "generic_raw_pdf_download_verified": false,
+    "private_or_protected_inputs_read": false,
+    "source_workbook_read": false,
+    "model_fit_created": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "netlify_deployment_changed": false,
+    "official_competition_score": null
+  }
+}

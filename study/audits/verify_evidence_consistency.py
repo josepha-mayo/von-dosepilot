@@ -45,6 +45,10 @@ from verify_clean_report_bound_finalist_package_execution import (
     CleanReportBoundFinalistPackageExecutionError,
     verify as verify_clean_report_bound_finalist_package_execution,
 )
+from verify_clean_retrieval_bound_finalist_package_execution import (
+    CleanRetrievalBoundFinalistPackageExecutionError,
+    verify as verify_clean_retrieval_bound_finalist_package_execution,
+)
 from verify_finalist_package_preflight_report_bound import (
     ReportBoundFinalistPackagePreflightError,
     verify as verify_report_bound_finalist_package_preflight,
@@ -1519,6 +1523,36 @@ def verify(root, enforce_pins=True):
         "CLEAN_REPORT_BOUND_PACKAGE_CANONICAL_TESTS",
     )
     try:
+        clean_retrieval_bound_package_result = (
+            verify_clean_retrieval_bound_finalist_package_execution(root)
+        )
+    except CleanRetrievalBoundFinalistPackageExecutionError as exc:
+        raise EvidenceError(
+            "CLEAN_RETRIEVAL_BOUND_FINALIST_PACKAGE_EXECUTION: " + str(exc)
+        ) from exc
+    same(
+        clean_retrieval_bound_package_result["public_commit"],
+        "e46ee71de5d7c2f3694878ffbfb4547e1d32d126",
+        "CLEAN_RETRIEVAL_BOUND_PACKAGE_PUBLIC_COMMIT",
+    )
+    same(
+        clean_retrieval_bound_package_result["public_tree"],
+        "faa2cc0429e989420a945a494cc7ca625951a0c6",
+        "CLEAN_RETRIEVAL_BOUND_PACKAGE_PUBLIC_TREE",
+    )
+    same(clean_retrieval_bound_package_result["fresh_virtual_environment"], True, "CLEAN_RETRIEVAL_BOUND_PACKAGE_FRESH_VENV")
+    same(clean_retrieval_bound_package_result["pip_artifacts_resolved_from_cache"], True, "CLEAN_RETRIEVAL_BOUND_PACKAGE_CACHE")
+    same(clean_retrieval_bound_package_result["live_dependency_download_claimed"], False, "CLEAN_RETRIEVAL_BOUND_PACKAGE_NO_LIVE_DOWNLOAD_CLAIM")
+    same(clean_retrieval_bound_package_result["package_checks"], 8, "CLEAN_RETRIEVAL_BOUND_PACKAGE_CHECKS")
+    same(clean_retrieval_bound_package_result["current_report_retrieval_rubric_successor_checked"], True, "CLEAN_RETRIEVAL_BOUND_PACKAGE_RUBRIC_SUCCESSOR")
+    same(clean_retrieval_bound_package_result["public_repository_file_bytes_retrieved"], True, "CLEAN_RETRIEVAL_BOUND_PACKAGE_REPOSITORY_BYTES")
+    same(clean_retrieval_bound_package_result["retrieved_bytes_match_exact_tree_pdf"], True, "CLEAN_RETRIEVAL_BOUND_PACKAGE_REPOSITORY_BYTES_MATCH")
+    same(clean_retrieval_bound_package_result["anonymous_raw_http_verified"], False, "CLEAN_RETRIEVAL_BOUND_PACKAGE_NO_RAW_HTTP")
+    same(clean_retrieval_bound_package_result["browser_download_button_verified"], False, "CLEAN_RETRIEVAL_BOUND_PACKAGE_NO_BROWSER_BUTTON")
+    same(clean_retrieval_bound_package_result["raw_download_verified"], False, "CLEAN_RETRIEVAL_BOUND_PACKAGE_NO_GENERIC_DOWNLOAD")
+    same(clean_retrieval_bound_package_result["canonical_release_stages"], 14, "CLEAN_RETRIEVAL_BOUND_PACKAGE_CANONICAL_STAGES")
+    same(clean_retrieval_bound_package_result["canonical_orchestrated_tests"], 173, "CLEAN_RETRIEVAL_BOUND_PACKAGE_CANONICAL_TESTS")
+    try:
         public_report_byte_result = verify_public_report_byte_retrieval(root)
     except PublicReportByteRetrievalError as exc:
         raise EvidenceError("PUBLIC_REPORT_BYTE_RETRIEVAL: " + str(exc)) from exc
@@ -1584,6 +1618,11 @@ def verify(root, enforce_pins=True):
         "clean_report_bound_finalist_package_checks": clean_report_bound_package_result["package_checks"],
         "clean_report_bound_finalist_package_live_download_observed": clean_report_bound_package_result["live_dependency_download_observed"],
         "clean_report_bound_finalist_package_rubric_successor_checked": clean_report_bound_package_result["current_report_rubric_successor_checked"],
+        "clean_retrieval_bound_finalist_package_checks": clean_retrieval_bound_package_result["package_checks"],
+        "clean_retrieval_bound_finalist_package_cache_backed": clean_retrieval_bound_package_result["pip_artifacts_resolved_from_cache"],
+        "clean_retrieval_bound_finalist_package_rubric_successor_checked": clean_retrieval_bound_package_result["current_report_retrieval_rubric_successor_checked"],
+        "clean_retrieval_bound_finalist_package_repository_bytes_retrieved": clean_retrieval_bound_package_result["public_repository_file_bytes_retrieved"],
+        "clean_retrieval_bound_finalist_package_raw_download_verified": clean_retrieval_bound_package_result["raw_download_verified"],
         "public_report_repository_bytes_retrieved": public_report_byte_result["public_repository_file_bytes_retrieved"],
         "public_report_retrieved_bytes_match_exact_tree": public_report_byte_result["retrieved_bytes_match_exact_tree_pdf"],
         "public_report_anonymous_raw_http_verified": public_report_byte_result["anonymous_raw_http_verified"],
