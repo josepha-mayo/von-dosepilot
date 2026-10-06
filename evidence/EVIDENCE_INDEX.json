@@ -213,6 +213,20 @@
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null
   },
+  "current_report_finalist_rubric_evidence": {
+    "path": "evidence/finalist_rubric_evidence_r5_20261006.json",
+    "sha256": "b8917193d24f486bf194bf7f3ad2ba6b63e25c716efc58b573ccb0760208107c",
+    "status": "PASS",
+    "criteria": 5,
+    "weight_sum": 100,
+    "current_report_sha256": "23bd050d13b9724b3ae6dfb3ae63406609d2573edfcd957369556be99f4585f1",
+    "current_report_bytes": 92307,
+    "public_viewer_commit_binding": "a7483aa3a275d50aa32bdb043c52a203d8b8d41e",
+    "public_report_render_verified": true,
+    "raw_download_verified": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
   "development_search_governance": {
     "role": "ADAPTIVE_DEVELOPMENT_GOVERNANCE_UPDATE",
     "status": "PASS",
