@@ -1,0 +1,42 @@
+{
+  "schema": "dosepilot.adaptive_protocol.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "standard_control_meanquad_plate_interaction_v2",
+  "family_fingerprint": "paid-cardinality-local-plus-control-meanquad-and-prior-damped-plate-interaction-v2",
+  "role": "REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected": true,
+  "falsifiable_hypothesis": "The verified two-range control calibrator assumes an affine relation between plate dynamic range and the remaining common B residual. Assay response can bend with overall dynamic range, while the effect of a p1-vs-p2 control imbalance should change target predictions in proportion to the fixed fraction of that target's 64-well acquisition lying on each plate. A quadratic mean-range term plus one plate-imbalance interaction tests those two physical effects without target-specific parameter fitting.",
+  "comparator_family_id": "standard_control_range_calibration",
+  "must_beat_verified_development_best_mse": 0.0010457053521987507,
+  "base_prediction_rule": "Reproduce paid_cardinality_separate_local_pooling from the same two_dose_full_negative_A_extension base. Do not stack the comparator prediction itself.",
+  "standard_control_feature_rule": "Use the same authenticated public-workbook DMSO/BzCl p1/p2 dynamic-range features as standard_control_range_calibration. Let a=p1_logrange, b=p2_logrange, m=(a+b)/2 and d=(a-b)/2. The common control basis is exactly [m,d,m^2]. Fit patient-balanced affine ridge with lambda=PRIOR times the mean fitting-feature energy, PRIOR=0.125.",
+  "plate_interaction_rule": "For every fitting-only acquisition plan and target j, define imbalance_j=(number of its selected B-orientation wells on p1 minus number on p2)/its selected-well count. Cross-fit the common [m,d,m^2] control model over the K=3 inner patient folds and subtract it from the twice-cross-fitted leftover B residual matrix. Define X_ij=imbalance_j*(p1_logrange_i-p2_logrange_i). Fit one shared scalar beta across all samples and 24 targets with equal-patient/equal-target weights and ridge denominator factor (1+PRIOR). At deployment add PRIOR*beta*X_ij. The extra PRIOR factor is the frozen conservative deployment strength.",
+  "upstream_residual_rule": "Reproduce the verified global mean/std/min/max common model, min/max cardinality contrast model, and shared/two-dose/three-dose local models exactly, including two-stage cross-fitting and LOCAL_STRENGTH=2*PRIOR=0.25.",
+  "budget_statement": "Adds zero treatment wells and keeps the 64-treatment-well 32/32 plan unchanged. It requires the same standard DMSO/BzCl controls already declared by the comparator.",
+  "regularization_rationale": "No feature menu, lambda search, target routing, fold rescue, protected data, or outer-held fitting enters canonical replay. The family was selected after development diagnostics and therefore remains repeated adaptive development rather than independent validation.",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "standard_plate_controls_required": true,
+    "inner_patient_folds": 3,
+    "outer_patient_folds": 5,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across separately costed A/B orientations; never average predictions"
+  },
+  "promotion_screen": {
+    "strictly_lower_mse_than_bandwidth07": true,
+    "minimum_patient_wins_vs_bandwidth07": 30,
+    "required_favorable_outer_folds_vs_bandwidth07": 5,
+    "p90_nonworse_vs_bandwidth07": true,
+    "strictly_lower_mse_than_verified_development_best": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "protected22_access": false,
+  "outer_target_or_fold_splicing": false,
+  "automatic_retry": false,
+  "independent_validation": false,
+  "binding_note": "This v2 supersedes an invalidated pre-run freeze whose base_predictions hash was bound to the comparator layer instead of the protocol-required two_dose_full_negative_A_extension base. No v1 candidate output was created."
+}

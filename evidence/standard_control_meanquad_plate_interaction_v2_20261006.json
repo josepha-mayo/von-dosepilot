@@ -1,0 +1,123 @@
+{
+  "schema": "dosepilot.standard_control_meanquad_plate_interaction_v2.public_evidence.v1",
+  "as_of_utc": "2026-10-05T23:26:33.061653+00:00",
+  "status": "VERIFIED_NEW_BEST_REPEATED_DEVELOPMENT_CANDIDATE",
+  "family_id": "standard_control_meanquad_plate_interaction_v2",
+  "family_fingerprint": "paid-cardinality-local-plus-control-meanquad-and-prior-damped-plate-interaction-v2",
+  "role": "REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "selection_history": {
+    "outer_component_outcomes_inspected_before_this_family": true,
+    "claim_of_unbiased_generalization": false,
+    "supersedes_invalidated_pre_run_binding": "standard_control_meanquad_plate_interaction"
+  },
+  "population": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32
+  },
+  "method": {
+    "new_base_model_fit": false,
+    "standard_controls_required": true,
+    "control_basis": [
+      "mean_range",
+      "half_plate_difference",
+      "mean_range_squared"
+    ],
+    "plate_interaction": "PRIOR * shared_beta * target_B_plate_imbalance * (p1_logrange-p2_logrange)",
+    "plate_interaction_deploy_strength": 0.125,
+    "added_treatment_wells": 0,
+    "physical_plan_changed": false
+  },
+  "metrics": {
+    "candidate": {
+      "mse": 0.0010455850783052452,
+      "p90_rmse": 0.03765431466991567,
+      "fold_mse": [
+        0.0013737912261546498,
+        0.0008830279188559359,
+        0.001048523221815615,
+        0.0008023728746542106,
+        0.0011269942474767764
+      ],
+      "orientation_mse": [
+        0.001103253003149973,
+        0.0009879171534605178
+      ]
+    },
+    "previous_best_mse": 0.0010457053521987507,
+    "bandwidth07_mse": 0.0010582750420801538,
+    "r13_mse": 0.0011448586813828537,
+    "r18_mse": 0.0011414048112341991
+  },
+  "comparisons": {
+    "bandwidth07": {
+      "candidate_mse": 0.0010455850783052452,
+      "reference_mse": 0.0010582750420801538,
+      "relative_gain": 0.011991177406929232,
+      "patient_wins": 41,
+      "patient_losses": 18,
+      "patient_ties": 0,
+      "fold_wins": 5,
+      "p90_nonworse": true,
+      "gate": {
+        "mse": true,
+        "patients": true,
+        "folds": true,
+        "p90": true,
+        "beats_verified_best": true
+      }
+    },
+    "previous_best": {
+      "candidate_mse": 0.0010455850783052452,
+      "reference_mse": 0.0010457053521987507,
+      "relative_gain": 0.00011501700096738787,
+      "patient_wins": 28,
+      "patient_losses": 31,
+      "patient_ties": 0,
+      "fold_wins": 5,
+      "p90_nonworse": true
+    },
+    "r13": {
+      "candidate_mse": 0.0010455850783052452,
+      "reference_mse": 0.0011448586813828537,
+      "relative_gain": 0.0867125390163419,
+      "patient_wins": 48,
+      "patient_losses": 11,
+      "patient_ties": 0,
+      "fold_wins": 5,
+      "p90_nonworse": true
+    },
+    "r18": {
+      "relative_gain": 0.08394894781050044,
+      "patient_wins": 50,
+      "patient_losses": 9,
+      "fold_wins": 5,
+      "p90_nonworse": true,
+      "passes_all": true
+    }
+  },
+  "verification": {
+    "floating_no_base_refit_replay": "PASS_FLOATING_REPLAY",
+    "base_model_refit": false,
+    "calibration_recomputed": true,
+    "candidate_predictions_reconstructed": 5712,
+    "max_prediction_difference": 2.220446049250313e-16,
+    "prediction_tolerance": 5e-16,
+    "r18_gate": "PASS",
+    "protected22_access": false
+  },
+  "hashes": {
+    "freeze_sha256": "2fd459a81f9b55a924c06f8250c93ef80a2e4d1b9f19226e1ed39e303f154452",
+    "result_sha256": "7dc670a4567b5312575cc18532508991ce139783621b72875ea3a766cd17c589",
+    "prediction_sha256": "df1fc9812dc6e04180d35f1e02fe772086419ad52408fa732fba2cb624aa7d16",
+    "verification_sha256": "7677d6bf2c55ad6ec0eb5787c11fca1e9014726383778840f96f0d163038c557",
+    "r18_gate_sha256": "fbad3b33cc5d0bb835622e9cb8d5da113ce75099fea98dd4bbe923c2094f8708"
+  },
+  "accepted_kaggle_entry_changed": false,
+  "official_competition_score": null,
+  "public_release_changed": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}

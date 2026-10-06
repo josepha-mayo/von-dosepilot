@@ -1,0 +1,118 @@
+{
+  "schema": "dosepilot.control_rank1_target_deviation.public_evidence.v1",
+  "as_of_utc": "2026-10-06T00:16:54.848660+00:00",
+  "status": "VERIFIED_NEW_BEST_REPEATED_DEVELOPMENT_CANDIDATE",
+  "family_id": "control_rank1_target_deviation",
+  "family_fingerprint": "meanquad-plate-control-plus-rank1-target-deviation-one-over-K-v1",
+  "role": "REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "selection_history": {
+    "outer_component_outcomes_inspected_before_this_family": true,
+    "claim_of_unbiased_generalization": false
+  },
+  "population": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32
+  },
+  "method": {
+    "new_base_model_fit": false,
+    "standard_controls_required": true,
+    "rank": 1,
+    "rank1_ridge_strength": "PRIOR*mean_feature_energy",
+    "rank1_deploy_strength": 0.3333333333333333,
+    "added_treatment_wells": 0,
+    "physical_plan_changed": false
+  },
+  "metrics": {
+    "candidate": {
+      "mse": 0.0010444482807046083,
+      "p90_rmse": 0.03753270707063731,
+      "fold_mse": [
+        0.001373611212287314,
+        0.0008825665412208636,
+        0.0010456341218003215,
+        0.0008008749164378984,
+        0.0011263824600559202
+      ],
+      "orientation_mse": [
+        0.001103253003149973,
+        0.0009856435582592438
+      ]
+    },
+    "previous_best_mse": 0.0010455850783052452,
+    "bandwidth07_mse": 0.0010582750420801538,
+    "r13_mse": 0.0011448586813828537,
+    "r18_mse": 0.0011414048112341991
+  },
+  "comparisons": {
+    "bandwidth07": {
+      "candidate_mse": 0.0010444482807046083,
+      "reference_mse": 0.0010582750420801538,
+      "relative_gain": 0.013065376037185494,
+      "patient_wins": 43,
+      "patient_losses": 16,
+      "patient_ties": 0,
+      "fold_wins": 5,
+      "p90_nonworse": true,
+      "gate": {
+        "mse": true,
+        "patients": true,
+        "folds": true,
+        "p90": true,
+        "beats_verified_best": true
+      }
+    },
+    "previous_best": {
+      "candidate_mse": 0.0010444482807046083,
+      "reference_mse": 0.0010455850783052452,
+      "relative_gain": 0.0010872358684378414,
+      "patient_wins": 30,
+      "patient_losses": 29,
+      "patient_ties": 0,
+      "fold_wins": 5,
+      "p90_nonworse": true
+    },
+    "r13": {
+      "candidate_mse": 0.0010444482807046083,
+      "reference_mse": 0.0011448586813828537,
+      "relative_gain": 0.0877054979021179,
+      "patient_wins": 50,
+      "patient_losses": 9,
+      "patient_ties": 0,
+      "fold_wins": 5,
+      "p90_nonworse": true
+    },
+    "r18": {
+      "relative_gain": 0.08494491137176108,
+      "patient_wins": 49,
+      "patient_losses": 10,
+      "fold_wins": 5,
+      "p90_nonworse": true,
+      "passes_all": true
+    }
+  },
+  "verification": {
+    "floating_replay": "PASS_FLOATING_REPLAY",
+    "base_model_refit": false,
+    "calibration_recomputed": true,
+    "candidate_predictions_reconstructed": 5712,
+    "max_prediction_difference": 4.440892098500626e-16,
+    "prediction_tolerance": 5e-16,
+    "r18_gate": "PASS",
+    "protected22_access": false
+  },
+  "hashes": {
+    "freeze_sha256": "6f822c3ba9dd71715dc8faf5164a72e85d20c94eb1119db33388afdfe861daf4",
+    "result_sha256": "5ff5146184d343b88d9f285ab085e518f4740e527d9ba5ff67442cec66cbbaa2",
+    "prediction_sha256": "df52f015062fd6b0718f1c2d8c1312feaeadf09623e4d45cec5ac9240535b970",
+    "verification_sha256": "6e5528f21e15a56e301372868f4151438999024318bee42ec0eed27919351a4d",
+    "r18_gate_sha256": "57772c814306b85147d234a63cba6dbe4cff8b9bd5710a6814785d9a4c4b8027"
+  },
+  "accepted_kaggle_entry_changed": false,
+  "official_competition_score": null,
+  "public_release_changed": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "control_rank1_target_deviation",
+  "family_fingerprint": "meanquad-plate-control-plus-rank1-target-deviation-one-over-K-v1",
+  "falsifiable_hypothesis": "After leakage-resistant paid, common-control and plate-interaction calibration, a rank-1 target-deviation response to the same standard-control basis can capture one stable cross-target assay-quality mode and reduce full24 error beyond the verified meanquad plate-interaction method.",
+  "protocol_path": "study/control_rank1_target_deviation/PROTOCOL.json",
+  "comparator_family_id": "standard_control_meanquad_plate_interaction_v2",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "standard_plate_controls_required": true,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average separately costed A/B losses; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "5628ad581ee46553e3b3673839c0eb4d055df3becd314e3479cdf066cf857d21"
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "dosepilot.orientation_specific_control_quality_rank1.freeze.v1",
+  "state": "FROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "frozen_utc": "2026-10-06T01:14:19.656017+00:00",
+  "family_id": "orientation_specific_control_quality_rank1",
+  "inner_folds": 3,
+  "B_rank": 1,
+  "B_rank1_deploy_strength": 0.3333333333333333,
+  "A_rank": 1,
+  "A_rank1_deploy_strength": 0.1111111111111111,
+  "local_strength": 0.25,
+  "source_sha256": {
+    "study/orientation_specific_control_quality_rank1/PROPOSAL.json": "5cfac9e03fb823966a5f32ae06eb3bbf0912586a83399ce93f3d67b3353b873d",
+    "study/orientation_specific_control_quality_rank1/PROTOCOL.json": "cb481070beda5664cbc12999bf5f177a1277c89882a4af407550129a75ad9dd6",
+    "study/orientation_specific_control_quality_rank1/run_study.py": "73ec21082284952b41255f2e98f8d2ee63c65e6202a27ef28e7c2f87580e54a8",
+    "study/orientation_specific_control_quality_rank1/test_study.py": "1816d9601be9c19741778ef00ff2a9a8ef72a0c4c52fa76f75e99877eb9e6b52",
+    "study/orientation_specific_control_quality_rank1/verify_study.py": "01ac3a9e5c8fe661a14e00b67b80b9ccff204fbb52b16bfa0f2089dcb4707848",
+    "study/orientation_specific_control_quality_rank1/build_control_quality_features.py": "24eaa67a79e5ec7a6befaf6c7570e58a6eb6d9d0f3f2cc2d3b00f6a7f8a115f7"
+  },
+  "dependency_sha256": {
+    "study/standard_control_meanquad_plate_interaction_v2/run_study.py": "d75c1b434915415e8a810160cc811900bcab7214e3d95c8c31b5f2bf864ed623",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e"
+  },
+  "input_sha256": {
+    "reference_predictions": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "reference_result": "dc7ef6a096b02372df023edb35828ea5c0e70dfb9e6cc676be3fba003c0eba3e",
+    "curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "quality_features": "f09448aad3d62de360d07be799a43a3fa7f3442b6b1f7c829c12533f43d8b0ba",
+    "best_predictions": "7377edc82840c8e57a517c79c7b666d9c7b4b47851c26f8ffbf9fa17c83912f3",
+    "reference_inner_0": "a51fb11079e5bcddc1cd83dddfea83d4b7e4d801dc3559574af9edfa61100b1a",
+    "reference_plan_0": "49a2ecf19fbf9d388f3ecafd5d465c357227cb0fd8214a85966900face979a4a",
+    "reference_inner_1": "1638eb3d5e86f2d09c97aa4eb524100f3ddd5af3a06eebd8a5e649be504cf589",
+    "reference_plan_1": "27e261e7445f47a11dc24b7bd7038753c7f937be9dc44dd8cdf3d0c6b6530c1a",
+    "reference_inner_2": "181f0dfa290d4448906ac9716b77dd4ac8c1291f23477c9f21c78d65443f43f0",
+    "reference_plan_2": "46af3d43a338d7099f4317cc30308f889214f9e7b4a87b98381050ce54152993",
+    "reference_inner_3": "62842554431721c46d140147481f9a0d035fdc9674d2e45a9b3d7786d35e3698",
+    "reference_plan_3": "8ffae6e9e1a16fd36b19abade40ec7a65d76b2cf906ad325cfbee057c420de3b",
+    "reference_inner_4": "651a07bbb7796baceb482825c1e3a9366918adac7e5ef960241d31da3343f5db",
+    "reference_plan_4": "7023b25925012a3c350c6b13d6520ed2639cb4a9af121a571219fa888761f28d"
+  },
+  "provenance_sha256": {
+    "public_workbook_Data_S4_xlsx": "3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c"
+  },
+  "must_beat_verified_development_best_mse": 0.001043179589139139,
+  "diagnostic_outer_outcomes_previously_inspected": true,
+  "synthetic_tests_passed": 4,
+  "verification_prediction_tolerance": 5e-16,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

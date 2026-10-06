@@ -1,0 +1,35 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "standard_control_meanquad_plate_interaction_v2",
+  "family_fingerprint": "paid-cardinality-local-plus-control-meanquad-and-prior-damped-plate-interaction-v2",
+  "falsifiable_hypothesis": "A nonlinear common assay-QC correction from the two standard-control dynamic ranges, plus one globally fitted target plate-imbalance interaction damped by the frozen PRIOR, can lower full24 repeated-development MSE beyond the current standard-control-range best without adding treatment wells or relaxing any gate.",
+  "protocol_path": "study/standard_control_meanquad_plate_interaction_v2/PROTOCOL.json",
+  "comparator_family_id": "standard_control_range_calibration",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "standard_plate_controls_required": true,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average separately costed A/B losses; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "ee990790ba8d9448b944f9cffb1e2a442b74cdd1f538e01063c2c9e98e962aaa",
+  "binding_note": "Supersedes invalidated v1 input binding; v1 produced no candidate output."
+}

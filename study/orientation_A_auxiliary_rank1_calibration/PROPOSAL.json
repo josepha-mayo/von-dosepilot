@@ -1,0 +1,34 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "orientation_A_auxiliary_rank1_calibration",
+  "family_fingerprint": "A-paid-local-meanquad-rank1-auxiliary-one-over-K-v1",
+  "falsifiable_hypothesis": "A separately cross-fitted orientation-A paid/control residual calibrator, deployed only as a one-over-K auxiliary correction on top of the current verified A prediction, can reduce the persistent A-orientation error without disturbing the improved B branch.",
+  "protocol_path": "study/orientation_A_auxiliary_rank1_calibration/PROTOCOL.json",
+  "comparator_family_id": "control_rank1_target_deviation",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "standard_plate_controls_required": true,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average separately costed A/B losses; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "b2ff26c5aa8f61b5b006748cac08dd26185c1225a0c286464ee0c436ec7e2ac9"
+}

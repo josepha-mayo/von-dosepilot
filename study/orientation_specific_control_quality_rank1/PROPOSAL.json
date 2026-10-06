@@ -1,0 +1,34 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "orientation_specific_control_quality_rank1",
+  "family_fingerprint": "B-full-control-quality-rank1-A-level-control-rank1-v1",
+  "falsifiable_hypothesis": "Replacing the range-only rank-1 calibration factors with orientation-appropriate standard-control quality bases can reduce both-orientation expected loss beyond the verified A-auxiliary/range-rank1 candidate while preserving all patient, fold and tail gates.",
+  "protocol_path": "study/orientation_specific_control_quality_rank1/PROTOCOL.json",
+  "comparator_family_id": "orientation_A_auxiliary_rank1_calibration",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "standard_plate_controls_required": true,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average separately costed A/B losses; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "cb481070beda5664cbc12999bf5f177a1277c89882a4af407550129a75ad9dd6"
+}

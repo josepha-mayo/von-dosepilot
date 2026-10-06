@@ -1,0 +1,22 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"orientation_specific_control_quality_rank1",
+  "family_fingerprint":"B-full-control-quality-rank1-A-level-control-rank1-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"Standard plate controls expose distinct assay-quality channels: dynamic range, negative/positive control level, and within-control variation. The B branch is the primary low-rank calibration channel and can use all of these quality measurements, while the A branch is already a doubly damped auxiliary layer and uses only range plus negative/positive control levels to avoid amplifying control-variance noise. Both remain rank-1 to represent one shared assay-quality mode across targets.",
+  "comparator_family_id":"orientation_A_auxiliary_rank1_calibration",
+  "must_beat_verified_development_best_mse":0.001043179589139139,
+  "common_control_rule":"All upstream paid-value, local-pooling, meanquad common-control and B plate-interaction steps remain exactly as in the verified comparator lineage. The new bases are used only for the rank-1 target-deviation layers, not for the common scalar control calibration.",
+  "B_rank1_rule":"After the twice-cross-fitted B upstream residual and plate-interaction removal, fit the same patient-weighted ridge and exact rank-1 SVD as control_rank1_target_deviation but use the 11-column unstandardized quality basis [range_mean,range_halfdiff,range_mean^2,negative_logmedian_mean,negative_logmedian_halfdiff,positive_logmedian_mean,positive_logmedian_halfdiff,negative_CV_mean,negative_CV_halfdiff,positive_CV_mean,positive_CV_halfdiff]. Ridge lambda remains PRIOR times mean feature energy. Deploy one-over-K of this rank-1 prediction, K=3.",
+  "A_rank1_rule":"After the A paid/global/local and meanquad common-control cross-fitted residual construction from orientation_A_auxiliary_rank1_calibration, fit the same ridge/rank-1 map using the 7-column unstandardized level basis [range_mean,range_halfdiff,range_mean^2,negative_logmedian_mean,negative_logmedian_halfdiff,positive_logmedian_mean,positive_logmedian_halfdiff]. Replace only the nested A rank-1 sublayer. Since the A auxiliary is deployed at one-over-K and its rank-1 sublayer is internally one-over-K, the net A rank-1 replacement strength remains one-over-K-squared.",
+  "control_feature_provenance":"All range, log-median and CV features are deterministic summaries of declared DMSO negative and BzCl positive plate controls from the public Data_S4 workbook. No treatment response outside the 64-well plan and no protected response is added.",
+  "budget_statement":"Adds zero treatment wells, preserves exactly 64 treatment wells and the 32/32 complementary plate layouts, and requires only the same declared standard plate controls as the comparator.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"standard_plate_controls_required":true,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

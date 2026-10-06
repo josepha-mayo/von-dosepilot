@@ -1,0 +1,20 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"orientation_A_auxiliary_rank1_calibration",
+  "family_fingerprint":"A-paid-local-meanquad-rank1-auxiliary-one-over-K-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The current verified B branch benefits strongly from paid-value and standard-control calibration, while the A branch remains the dominant error source. Full replacement by an A-specific calibrator regressed, suggesting that its signal is useful only as a conservative auxiliary residual correction. The fixed K=3 inner-fold structure supplies a natural 1/K deployment strength.",
+  "comparator_family_id":"control_rank1_target_deviation",
+  "must_beat_verified_development_best_mse":0.0010444482807046083,
+  "A_auxiliary_training_rule":"Within each outer-training partition use the authenticated bandwidth-0.7 inner OOF orientation-A predictions as the residual target. Rebuild orientation-A paid features from fitting-only plans. Cross-fit the verified global mean/std/min/max correction and min/max cardinality contrast, then cross-fit shared/two-dose/three-dose local models with LOCAL_STRENGTH=2*PRIOR=0.25. On the remaining matrix cross-fit the [mean_range,half_plate_difference,mean_range_squared] standard-control common ridge. Fit one rank-1 multioutput ridge to the post-common residual matrix using the same control basis, ridge lambda=PRIOR times mean patient-weighted feature energy, and no target-specific intercept.",
+  "A_auxiliary_deployment_rule":"The full auxiliary correction is C_global + LOCAL_STRENGTH*C_local + C_control_common + (1/K)*C_rank1. Add exactly (1/K) times that full auxiliary correction to the already verified orientation-A prediction, with K=3. Thus the nested rank-1 sublayer contributes 1/K^2 overall. Orientation B is copied unchanged from control_rank1_target_deviation.",
+  "budget_statement":"Adds zero treatment wells, keeps the same 64-treatment-well 32/32 plan, and uses only the same declared DMSO/BzCl standard controls. No feature menu, rank menu, strength menu, target routing, fold rescue, clipping, or protected data enters canonical replay.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"standard_plate_controls_required":true,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}
