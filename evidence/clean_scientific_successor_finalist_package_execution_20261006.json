@@ -1,0 +1,101 @@
+{
+  "schema": "dosepilot.clean_scientific_successor_finalist_package_execution.v1",
+  "status": "PASS",
+  "role": "CLEAN_ISOLATED_SCIENTIFIC_SUCCESSOR_FINALIST_PACKAGE_EXECUTION",
+  "utc": "2026-10-06T15:57:22.907360+00:00",
+  "predecessor": {
+    "path": "evidence/clean_retrieval_bound_finalist_package_execution_20261006.json",
+    "sha256": "8bd2b356badc648d94b492e8f30406f9a6b8f6282600dc5961512d6e49596860",
+    "preserved_unchanged": true
+  },
+  "supersedes_reason": "Adds a fresh-source and fresh-virtual-environment execution of the additive scientific-successor v5 package command while preserving every earlier clean-execution receipt.",
+  "source": {
+    "public_commit": "f9090a2b75ffbc3639006ecc9298b7f217b6f78b",
+    "public_tree": "de6a12b3d3f6cbaa008b983756a28a03572ecbc5",
+    "archive_tree": "de6a12b3d3f6cbaa008b983756a28a03572ecbc5",
+    "archive_file_count": 597,
+    "archive_bytes": 5386240,
+    "archive_sha256": "dfb62c36d449fd8118746fdb9028b0b99aec2b60e56140b8b70d8f51e68afef9",
+    "fresh_source_directory": true,
+    "fresh_public_clone": false,
+    "reconstruction_method": "git archive of the exact verified public commit"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "pip": "25.0.1",
+    "operating_system": "Ubuntu 24.04",
+    "kernel": "Linux 6.18.44",
+    "architecture": "x86_64",
+    "glibc": "2.39",
+    "fresh_virtual_environment": true,
+    "dependency_install_source_access_permitted": true,
+    "pip_artifacts_resolved_from_cache": true,
+    "live_dependency_download_claimed": false,
+    "installed_packages": {
+      "joblib": "1.5.3",
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "python-dateutil": "2.9.0.post0",
+      "pytz": "2026.5",
+      "scikit-learn": "1.8.0",
+      "scipy": "1.17.0",
+      "six": "1.17.0",
+      "threadpoolctl": "3.6.0",
+      "tzdata": "2026.5"
+    },
+    "installed_package_manifest_sha256": "02e6c6917e82981079c348f34540e04a657660e242833a9b183ac9069a6c0ee7"
+  },
+  "requirements": {
+    "requirements.txt": "7bd6b8946940b79948c548c8048e545684b91c8edc9444d8dfc0c8f76a97c0a7",
+    "study/requirements.txt": "9acc457aff7a05718b8869947b3b11cf89e5b64dbab9dff9a8fc8ec7e75cddbb"
+  },
+  "execution": {
+    "command": [
+      ".venv/bin/python",
+      "study/audits/finalist_package_preflight_scientific_successor.py",
+      "--output",
+      "finalist_package_preflight_scientific_successor.json"
+    ],
+    "status": "PASS",
+    "package_checks": 8,
+    "current_scientific_successor_rubric_checked": true,
+    "candidate_family": "orientation_specific_control_quality_rank1",
+    "candidate_mse": 0.001042745722096212,
+    "bandwidth07_patient_wins": 40,
+    "favorable_folds": 5,
+    "target_wins": 19,
+    "repeated_development": true,
+    "operational_demo_baseline_replaced": false,
+    "independent_validation": false,
+    "canonical_release_stages": 14,
+    "canonical_orchestrated_tests": 173,
+    "package_runner_network_requests": 0,
+    "output_bytes": 10611,
+    "output_sha256": "23ca36516634e8896619be78d77f92e1a497e13290dcd87967a86fe4723e02ee",
+    "canonical_preflight_sha256": "5298f5132b95289a7cbab061f6d6352f9af6059d0e0437f8347d36227b84b101"
+  },
+  "artifact_sha256": {
+    "docs/CLEAN_SCIENTIFIC_SUCCESSOR_FINALIST_PACKAGE_EXECUTION.md": "e665edfd21f5272e9b9bb348b68a88d7a34a09b4d0b13d5cb980769f7e6480fc",
+    "study/audits/verify_clean_scientific_successor_finalist_package_execution.py": "0c476645bc32b4459cbfc35f6a44f9e1a5ecd918db6b5dbdec83906d12c138ff",
+    "study/audits/test_clean_scientific_successor_finalist_package_execution.py": "d19066a68da5b6cdcfbb41efe0afee1f293635e331f0b5fb178baba18ad5161e",
+    "docs/FINALIST_PACKAGE_PREFLIGHT_SCIENTIFIC_SUCCESSOR.md": "753d7701bfe9d3dd05303936752c850481fc895275c792b343f8b81257af3fe6",
+    "study/audits/finalist_package_preflight_scientific_successor.py": "fff73e49280f8f8e7b46523c88fc17579e1b84c9b53735e4206b7afa16a90af6",
+    "study/audits/verify_finalist_package_preflight_scientific_successor.py": "6e7aee04ec4993fe843c65ee75970f26e2b400a0b740774e02639c5ccd1a95e9",
+    "study/audits/test_finalist_package_preflight_scientific_successor.py": "6c32fe4feeef64648e166e0a5367c78b4f95cab1c46e6035cf64cab6446b3603",
+    "evidence/finalist_package_preflight_r5_20261006.json": "3efb7f2a8d2e4ba15f976b02876b8c96920a43b83d797dc93ec05ba19615155d"
+  },
+  "claim_boundary": {
+    "clean_new_machine_certification": false,
+    "independent_biological_validation": false,
+    "independent_reproduction": false,
+    "bootstrap_independently_recomputed": false,
+    "prospective_ooc_evidence": false,
+    "private_or_protected_inputs_read": false,
+    "source_workbook_read": false,
+    "model_fit_created": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "netlify_deployment_changed": false,
+    "official_competition_score": null
+  }
+}

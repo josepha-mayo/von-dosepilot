@@ -61,6 +61,10 @@ from verify_clean_retrieval_bound_finalist_package_execution import (
     CleanRetrievalBoundFinalistPackageExecutionError,
     verify as verify_clean_retrieval_bound_finalist_package_execution,
 )
+from verify_clean_scientific_successor_finalist_package_execution import (
+    CleanScientificSuccessorFinalistPackageExecutionError,
+    verify as verify_clean_scientific_successor_finalist_package_execution,
+)
 from verify_finalist_package_preflight_report_bound import (
     ReportBoundFinalistPackagePreflightError,
     verify as verify_report_bound_finalist_package_preflight,
@@ -1630,6 +1634,29 @@ def verify(root, enforce_pins=True):
     same(clean_retrieval_bound_package_result["canonical_release_stages"], 14, "CLEAN_RETRIEVAL_BOUND_PACKAGE_CANONICAL_STAGES")
     same(clean_retrieval_bound_package_result["canonical_orchestrated_tests"], 173, "CLEAN_RETRIEVAL_BOUND_PACKAGE_CANONICAL_TESTS")
     try:
+        clean_scientific_successor_package_result = (
+            verify_clean_scientific_successor_finalist_package_execution(root)
+        )
+    except CleanScientificSuccessorFinalistPackageExecutionError as exc:
+        raise EvidenceError(
+            "CLEAN_SCIENTIFIC_SUCCESSOR_FINALIST_PACKAGE_EXECUTION: " + str(exc)
+        ) from exc
+    same(clean_scientific_successor_package_result["public_commit"], "f9090a2b75ffbc3639006ecc9298b7f217b6f78b", "CLEAN_SCIENTIFIC_PACKAGE_PUBLIC_COMMIT")
+    same(clean_scientific_successor_package_result["public_tree"], "de6a12b3d3f6cbaa008b983756a28a03572ecbc5", "CLEAN_SCIENTIFIC_PACKAGE_PUBLIC_TREE")
+    same(clean_scientific_successor_package_result["fresh_virtual_environment"], True, "CLEAN_SCIENTIFIC_PACKAGE_FRESH_VENV")
+    same(clean_scientific_successor_package_result["pip_artifacts_resolved_from_cache"], True, "CLEAN_SCIENTIFIC_PACKAGE_CACHE")
+    same(clean_scientific_successor_package_result["live_dependency_download_claimed"], False, "CLEAN_SCIENTIFIC_PACKAGE_NO_LIVE_DOWNLOAD_CLAIM")
+    same(clean_scientific_successor_package_result["package_checks"], 8, "CLEAN_SCIENTIFIC_PACKAGE_CHECKS")
+    same(clean_scientific_successor_package_result["current_scientific_successor_rubric_checked"], True, "CLEAN_SCIENTIFIC_PACKAGE_RUBRIC")
+    same(clean_scientific_successor_package_result["candidate_mse"], 0.001042745722096212, "CLEAN_SCIENTIFIC_PACKAGE_MSE")
+    same(clean_scientific_successor_package_result["bandwidth07_patient_wins"], 40, "CLEAN_SCIENTIFIC_PACKAGE_PATIENTS")
+    same(clean_scientific_successor_package_result["favorable_folds"], 5, "CLEAN_SCIENTIFIC_PACKAGE_FOLDS")
+    same(clean_scientific_successor_package_result["target_wins"], 19, "CLEAN_SCIENTIFIC_PACKAGE_TARGETS")
+    same(clean_scientific_successor_package_result["operational_demo_baseline_replaced"], False, "CLEAN_SCIENTIFIC_PACKAGE_NO_OPERATIONAL_REPLACEMENT")
+    same(clean_scientific_successor_package_result["independent_validation"], False, "CLEAN_SCIENTIFIC_PACKAGE_NO_VALIDATION")
+    same(clean_scientific_successor_package_result["canonical_release_stages"], 14, "CLEAN_SCIENTIFIC_PACKAGE_CANONICAL_STAGES")
+    same(clean_scientific_successor_package_result["canonical_orchestrated_tests"], 173, "CLEAN_SCIENTIFIC_PACKAGE_CANONICAL_TESTS")
+    try:
         public_report_byte_result = verify_public_report_byte_retrieval(root)
     except PublicReportByteRetrievalError as exc:
         raise EvidenceError("PUBLIC_REPORT_BYTE_RETRIEVAL: " + str(exc)) from exc
@@ -1717,6 +1744,10 @@ def verify(root, enforce_pins=True):
         "clean_retrieval_bound_finalist_package_rubric_successor_checked": clean_retrieval_bound_package_result["current_report_retrieval_rubric_successor_checked"],
         "clean_retrieval_bound_finalist_package_repository_bytes_retrieved": clean_retrieval_bound_package_result["public_repository_file_bytes_retrieved"],
         "clean_retrieval_bound_finalist_package_raw_download_verified": clean_retrieval_bound_package_result["raw_download_verified"],
+        "clean_scientific_successor_finalist_package_checks": clean_scientific_successor_package_result["package_checks"],
+        "clean_scientific_successor_finalist_package_cache_backed": clean_scientific_successor_package_result["pip_artifacts_resolved_from_cache"],
+        "clean_scientific_successor_finalist_package_rubric_checked": clean_scientific_successor_package_result["current_scientific_successor_rubric_checked"],
+        "clean_scientific_successor_finalist_package_operational_baseline_replaced": clean_scientific_successor_package_result["operational_demo_baseline_replaced"],
         "public_report_repository_bytes_retrieved": public_report_byte_result["public_repository_file_bytes_retrieved"],
         "public_report_retrieved_bytes_match_exact_tree": public_report_byte_result["retrieved_bytes_match_exact_tree_pdf"],
         "public_report_anonymous_raw_http_verified": public_report_byte_result["anonymous_raw_http_verified"],

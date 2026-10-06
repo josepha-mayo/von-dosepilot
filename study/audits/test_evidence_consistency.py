@@ -297,6 +297,22 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
+        clean_scientific_package_index = index[
+            "clean_scientific_successor_finalist_package_execution"
+        ]
+        clean_scientific_package = json.loads(
+            (self.source / clean_scientific_package_index["path"]).read_text()
+        )
+        clean_scientific_package_paths = [
+            clean_scientific_package_index["path"],
+            clean_scientific_package["predecessor"]["path"],
+            *clean_scientific_package["requirements"],
+            *clean_scientific_package["artifact_sha256"],
+        ]
+        for relative in clean_scientific_package_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         byte_retrieval_index = index["public_report_byte_retrieval_verification"]
         byte_retrieval = json.loads(
             (self.source / byte_retrieval_index["path"]).read_text()
