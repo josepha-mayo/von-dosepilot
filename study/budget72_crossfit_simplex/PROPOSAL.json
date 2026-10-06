@@ -1,0 +1,18 @@
+{
+  "schema": "dosepilot.budget72_crossfit_simplex.proposal.v1",
+  "state": "PROPOSED_BEFORE_CANDIDATE_OUTCOME",
+  "family_id": "budget72_crossfit_simplex",
+  "role": "FROZEN_CROSSFIT_GLOBAL_SIMPLEX_STACK",
+  "question": "Can a cross-fitted global simplex combine the raw 72-well, bandwidth-0.7 residual, and control-quality 72-well predictors into a lower-error same-budget frontier?",
+  "predictors": ["raw72", "bandwidth72", "control72"],
+  "weight_rule": "exact patient-balanced least-squares optimum on the 3-simplex, fitted only on OOF predictions from the other four outer folds",
+  "weight_grid": null,
+  "target_specific_weights": false,
+  "orientation_specific_weights": false,
+  "treatment_wells": 72,
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}

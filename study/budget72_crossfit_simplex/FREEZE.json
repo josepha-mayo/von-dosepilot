@@ -1,0 +1,36 @@
+{
+  "schema": "dosepilot.budget72_crossfit_simplex.freeze.v1",
+  "state": "FROZEN_BEFORE_CANDIDATE_OUTCOME",
+  "frozen_date": "2026-10-06",
+  "family_id": "budget72_crossfit_simplex",
+  "role": "FROZEN_CROSSFIT_GLOBAL_SIMPLEX_STACK",
+  "input_sha256": {
+    "raw72": "3c3ba9d3dc1e1aaf7b7e3849ee13157ddbe298f81b60aa02d0d8e41096a7dcc0",
+    "bandwidth72": "72f803893e252a88777dbf2e5ef918d452da697da986d72adcbcb61f9e749a65",
+    "control72": "bd79d5247cb5be3b3a68db99836f7af718fdb5dc41b477f0ff7952a00490ac7f"
+  },
+  "source_sha256": {
+    "study/budget72_crossfit_simplex/PROPOSAL.json": "15831c95b13fe3af36c428869e9f0d84b4b572b75f04703dc1715c8ce41b0604",
+    "study/budget72_crossfit_simplex/PROTOCOL.md": "b223eb11bf4762abc52d18fff40931c86f3682989f3b06422c5240e8ca77fed4",
+    "study/budget72_crossfit_simplex/run_study.py": "1c04f7615c5f86009c7443c96a83e28b1cbdb13b9f020301f4974c8ab045111c",
+    "study/budget72_crossfit_simplex/test_study.py": "12019913e446b112e054dbc5026bb14ffd5da04877fe30cdb121e340e025ae66"
+  },
+  "expected_raw72_mse": 0.0010055928901387746,
+  "expected_bandwidth72_mse": 0.0009326007417880046,
+  "expected_control72_mse": 0.00100352567955771,
+  "treatment_wells": 72,
+  "simplex_predictors": ["raw72", "bandwidth72", "control72"],
+  "weight_solver": "exact active-set 3-simplex least squares",
+  "weight_grid": null,
+  "outer_folds": 5,
+  "bootstrap_seed": 20261006,
+  "bootstrap_replicates": 100000,
+  "synthetic_tests_passed": 3,
+  "target_specific_weights": false,
+  "orientation_specific_weights": false,
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "automatic_retry": false,
+  "protected22_access": false,
+  "independent_validation": false
+}
