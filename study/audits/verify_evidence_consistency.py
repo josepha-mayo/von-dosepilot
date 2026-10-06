@@ -37,6 +37,10 @@ from verify_current_successor_grouped_conformal import (
     ReliabilityError as CurrentSuccessorReliabilityError,
     verify as verify_current_successor_grouped_conformal,
 )
+from verify_budget48_two_dose_ablation import (
+    BudgetEvidenceError,
+    verify as verify_budget48_two_dose_ablation,
+)
 from verify_finalist_rubric_evidence_current_scientific_successor import (
     CurrentScientificSuccessorRubricEvidenceError,
     verify as verify_current_scientific_successor_finalist_rubric_evidence,
@@ -1422,6 +1426,18 @@ def verify(root, enforce_pins=True):
     same(reliability_result["independent_validation"], False, "GROUPED_RELIABILITY_NO_VALIDATION")
     same(reliability_result["protected22_access"], False, "GROUPED_RELIABILITY_NO_PROTECTED22")
     try:
+        budget_result = verify_budget48_two_dose_ablation(root)
+    except BudgetEvidenceError as exc:
+        raise EvidenceError("BUDGET48_TWO_DOSE_ABLATION: " + str(exc)) from exc
+    same(budget_result["mse48"], 0.0015432725382030184, "BUDGET48_MSE")
+    same(budget_result["mse64"], 0.0011448586813828535, "BUDGET64_MSE")
+    same(budget_result["relative_mse_reduction"], 0.2581616966268815, "BUDGET_MSE_REDUCTION")
+    same(budget_result["patient_wins_64"], 58, "BUDGET_PATIENT_WINS")
+    same(budget_result["favorable_folds_64"], 5, "BUDGET_FOLDS")
+    same(budget_result["material_target_regressions_64"], 0, "BUDGET_NO_TARGET_REGRESSIONS")
+    same(budget_result["independent_validation"], False, "BUDGET_NO_VALIDATION")
+    same(budget_result["protected22_access"], False, "BUDGET_NO_PROTECTED22")
+    try:
         scientific_successor_rubric_result = (
             verify_current_scientific_successor_finalist_rubric_evidence(root)
         )
@@ -1718,6 +1734,12 @@ def verify(root, enforce_pins=True):
         "grouped_reliability_coverage_95": reliability_result["coverage_95"],
         "grouped_reliability_targets_at_or_above_90": reliability_result["targets_at_or_above_90"],
         "grouped_reliability_independent_validation": reliability_result["independent_validation"],
+        "budget48_mse": budget_result["mse48"],
+        "budget64_mse": budget_result["mse64"],
+        "budget64_relative_mse_reduction": budget_result["relative_mse_reduction"],
+        "budget64_patient_wins": budget_result["patient_wins_64"],
+        "budget64_favorable_folds": budget_result["favorable_folds_64"],
+        "budget64_material_target_regressions": budget_result["material_target_regressions_64"],
         "scientific_successor_rubric_criteria": scientific_successor_rubric_result["criteria"],
         "scientific_successor_rubric_weight_sum": scientific_successor_rubric_result["weight_sum"],
         "scientific_successor_rubric_operational_baseline_replaced": scientific_successor_rubric_result["operational_demo_baseline_replaced"],

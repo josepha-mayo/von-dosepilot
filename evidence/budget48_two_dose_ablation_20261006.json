@@ -1,0 +1,62 @@
+{
+  "schema": "dosepilot.budget48_two_dose_ablation.evidence.v1",
+  "as_of_date": "2026-10-06",
+  "role": "POST_HOC_BUDGET_ABLATION_NOT_CANDIDATE_PROMOTION",
+  "frozen_before_outcome_commit": "fd4564a",
+  "question": "What is the held-patient accuracy cost of removing all sixteen third-dose upgrades from the frozen 64-treatment own-drug procedure?",
+  "population": {"samples": 119, "whole_patients": 59, "targets": 24},
+  "arm48": {
+    "treatment_wells": 48,
+    "plate_wells": [24, 24],
+    "mse": 0.0015432725382030184,
+    "p90_patient_rmse": 0.04673804116213533,
+    "fold_mse": [0.0020142147142112204, 0.00125725760362739, 0.0015069401760314952, 0.0012769520641178632, 0.0016717004598293143]
+  },
+  "arm64": {
+    "treatment_wells": 64,
+    "plate_wells": [32, 32],
+    "mse": 0.0011448586813828535,
+    "p90_patient_rmse": 0.04110782499169958,
+    "fold_mse": [0.0015111022938200725, 0.0009309062918224682, 0.0011331173107758513, 0.0009198402687310411, 0.0012370062017995605]
+  },
+  "comparison": {
+    "additional_wells_64_vs_48": 16,
+    "relative_well_increase_64_vs_48": 0.3333333333333333,
+    "relative_mse_reduction_64_vs_48": 0.2581616966268815,
+    "relative_p90_rmse_reduction_64_vs_48": 0.1204632464356904,
+    "patient_wins_64": 58,
+    "patient_losses_64": 1,
+    "favorable_outer_folds_64": 5,
+    "material_target_wins_64": 21,
+    "material_target_regressions_64": 0,
+    "material_target_ties": ["5-FU", "Bemcentinib", "Napabucasin"],
+    "bootstrap_percentile_95_ci_64_minus_48": [-0.0004570502366641809, -0.0003439200579461427],
+    "bootstrap_fraction_64_better": 1.0
+  },
+  "selection": {
+    "lambda48_by_outer_fold": [0.01, 0.01, 0.01, 0.01, 0.01],
+    "lambda64_by_outer_fold": [0.01, 0.01, 0.01, 0.01, 0.01]
+  },
+  "hashes": {
+    "result_sha256": "acbf67f89dcfe51ffb376bd7dd680fa2db26cca1b2552bde8046b101986e8f05",
+    "private_prediction_sha256": "6ead54699d6f7bcbe028237224cb1d37c216db45f93e283b3d504bd544ecc3e1",
+    "freeze_sha256": "e43ebc4f26925b412c1d9bb19ffa8da56d2424080d5f983a4de2623ba80bc1b4"
+  },
+  "integrity": {
+    "r13_reproduced": true,
+    "max_r13_difference": 4.336808689942018e-19,
+    "synthetic_tests_passed": 3,
+    "floating_replay_status": "PASS_FLOATING_REPLAY"
+  },
+  "input_sha256": {
+    "train_curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e"
+  },
+  "patient_level_rows_published": false,
+  "prediction_arrays_published": false,
+  "selection_adjusted": false,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "warning": "Repeated adaptive Lib1 development; this is a retrospective budget ablation and not independent validation."
+}

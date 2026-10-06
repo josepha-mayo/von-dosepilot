@@ -1124,5 +1124,21 @@
     "independent_validation": false,
     "protected22_access": false,
     "official_competition_score": null
+  },
+  "budget48_two_dose_ablation": {
+    "path": "evidence/budget48_two_dose_ablation_20261006.json",
+    "sha256": "2df94899470c63fb9d873b7bc102bc17be76a656d90c1a834d5d34dfff38ecd9",
+    "status": "PASS",
+    "role": "POST_HOC_BUDGET_ABLATION_NOT_CANDIDATE_PROMOTION",
+    "mse48": 0.0015432725382030184,
+    "mse64": 0.0011448586813828535,
+    "relative_mse_reduction_64_vs_48": 0.2581616966268815,
+    "patient_wins_64": 58,
+    "favorable_outer_folds_64": 5,
+    "material_target_regressions_64": 0,
+    "frozen_before_outcome_commit": "fd4564a",
+    "protected22_access": false,
+    "independent_validation": false,
+    "official_competition_score": null
   }
 }
