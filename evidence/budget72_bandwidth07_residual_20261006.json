@@ -1,0 +1,56 @@
+{
+  "schema": "dosepilot.budget72_bandwidth07_residual.evidence.v1",
+  "as_of_date": "2026-10-06",
+  "role": "FROZEN_TRANSFER_OF_EXISTING_BANDWIDTH07_RESIDUAL_FAMILY",
+  "frozen_before_outcome_commit": "b772b3e",
+  "candidate": {
+    "treatment_wells": 72,
+    "plate_wells": [36, 36],
+    "mse": 0.0009326007417880046,
+    "p90_patient_rmse": 0.03770730634910972,
+    "fold_mse": [0.0012400530892393048, 0.0007720708820037255, 0.0009584133484135121, 0.000764740777803025, 0.0009272824178161329],
+    "orientation_mse": [0.0009073514713933787, 0.0009578500121826304]
+  },
+  "vs_base72": {
+    "base_mse": 0.0010055928901387746,
+    "relative_mse_gain": 0.07258618181031173,
+    "patient_wins": 47,
+    "patient_losses": 12,
+    "favorable_outer_folds": 5,
+    "target_wins": 22,
+    "target_regressions": ["Methotrexate", "Panobinostat"],
+    "p90_nonworse": true,
+    "bootstrap_percentile_95_ci": [-9.582489974395234e-05, -5.112779142763906e-05],
+    "bootstrap_fraction_below_zero": 1.0
+  },
+  "vs_current_64_well_successor": {
+    "reference_mse": 0.001042745722096212,
+    "relative_mse_gain": 0.10562975994452883,
+    "patient_wins": 48,
+    "patient_losses": 11,
+    "favorable_outer_folds": 5,
+    "p90_nonworse": false,
+    "reference_p90_patient_rmse": 0.037419695944064885
+  },
+  "residual_selection": {
+    "bandwidth_multiplier": 0.7,
+    "outer_selected_options": [[0.3, 1.0], [0.1, 1.0], [0.3, 1.0], [0.1, 1.0], [0.1, 1.0]]
+  },
+  "integrity": {
+    "floating_replay_status": "PASS_FLOATING_REPLAY",
+    "max_prediction_difference": 0.0,
+    "base72_replay_maxdiff": 0.0
+  },
+  "hashes": {
+    "freeze_sha256": "e9ea1d1531835a13af038e70bf1de8fe3ce928a8cffa4878df224622afe25879",
+    "result_sha256": "e3fb536604b5d147168df35cf75c421206e3499575c8795fd45d1eaf009745f9",
+    "private_prediction_sha256": "72f803893e252a88777dbf2e5ef918d452da697da986d72adcbcb61f9e749a65"
+  },
+  "patient_level_rows_published": false,
+  "prediction_arrays_published": false,
+  "selection_adjusted": false,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "warning": "Repeated adaptive Lib1 development. The transfer was frozen before this outcome, but this is not independent validation or a clinical result."
+}
