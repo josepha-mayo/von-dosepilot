@@ -1,0 +1,40 @@
+{
+  "schema": "dosepilot.budget48_two_dose_ablation.freeze.v1",
+  "state": "FROZEN_BEFORE_FIRST_REAL_DATA_EVALUATION",
+  "frozen_date": "2026-10-06",
+  "family_id": "budget48_two_dose_ablation",
+  "role": "POST_HOC_BUDGET_ABLATION_NOT_CANDIDATE_PROMOTION",
+  "input_sha256": {
+    "train_curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e"
+  },
+  "source_sha256": {
+    "study/budget48_two_dose_ablation/PROPOSAL.json": "5dc7b69dba1fe5d1614cf28defcc303480022603108964c8c9a2731e4e662004",
+    "study/budget48_two_dose_ablation/PROTOCOL.md": "c7bc7be21ffbc6c97b5961776875574846d2b95d8ba6832ca7973da9b5cbc7b8",
+    "study/budget48_two_dose_ablation/run_study.py": "2face6f78ef6bd5dd21c90c8f5ed6981aea24b12832b261855fced670e24a9a2",
+    "study/budget48_two_dose_ablation/test_study.py": "6ad37166d66126c6b83ffa579d68c210c8d1490f81c858989e98fa552ecce8fe",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/engine/sparse_methods.py": "511ea1665a7f245cd3a2923fd8a6be6f5c2e45ba901da1620f7298a4125ec64c",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/evaluate.py": "24593a7d8608fd3ce98c367e1760af596b3b33554c1ef7a3f8ac645b046b700b"
+  },
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "fold_salt": "von-organoid-sentinel-v1",
+  "lambdas": [0.01, 0.1, 1.0, 10.0],
+  "arm48_wells": 48,
+  "arm48_plate_wells": [24, 24],
+  "arm64_wells": 64,
+  "arm64_plate_wells": [32, 32],
+  "expected_arm64_r13_mse": 0.001144858681382854,
+  "r13_absolute_tolerance": 1e-12,
+  "bootstrap_seed": 20261006,
+  "bootstrap_replicates": 100000,
+  "report_regardless_of_direction": true,
+  "synthetic_tests_passed": 3,
+  "automatic_retry": false,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "dosepilot.budget48_two_dose_ablation.proposal.v1",
+  "state": "PROPOSED_BEFORE_REAL_DATA_RUN",
+  "family_id": "budget48_two_dose_ablation",
+  "role": "POST_HOC_BUDGET_ABLATION_NOT_CANDIDATE_PROMOTION",
+  "question": "What is the held-patient accuracy cost of removing all sixteen third-dose upgrades from the frozen 64-treatment own-drug procedure?",
+  "falsifiable_hypothesis": "The frozen 64-well own-drug procedure will have lower patient-balanced full-24 expected-loss MSE than the same family restricted to the best two native doses for each of 24 targets.",
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}
