@@ -1,0 +1,87 @@
+{
+  "schema": "dosepilot.finalist_rubric_evidence.v8",
+  "status": "PASS",
+  "as_of_date": "2026-10-06",
+  "role": "CURRENT_SCIENTIFIC_RELIABILITY_JUDGE_CRITERION_EVIDENCE",
+  "rubric": {
+    "source_url": "https://www.kaggle.com/competitions/ai-4-s-open-innovation-artificial-intelligence-for-life-scien/overview/evaluation",
+    "last_verified_on_platform": "2026-10-01",
+    "current_run_public_retrieval": "NOT_ATTEMPTED_NO_REFRESH_CLAIM",
+    "weights": {
+      "problem_importance_impact": 30,
+      "technical_approach_innovation": 30,
+      "results_validation": 20,
+      "reproducibility_implementation": 10,
+      "presentation": 10
+    },
+    "combined_self_score": null,
+    "finalist_probability_estimate": null
+  },
+  "evidence_bindings": {
+    "predecessor": {
+      "path": "evidence/finalist_rubric_evidence_r7_20261006.json",
+      "sha256": "8d00ee4b6f2a92ea408c81423ae731a42568e3a32ed1e1790c10c088c2277323"
+    },
+    "grouped_reliability": {
+      "path": "evidence/current_successor_grouped_conformal_20261006.json",
+      "sha256": "691e5a305e4c3f2f31ce60f35a695fd401b29b104d3fb53ebb00f9ae624a5e4b"
+    },
+    "clean_scientific_package_execution": {
+      "path": "evidence/clean_scientific_successor_finalist_package_execution_20261006.json",
+      "sha256": "3fddd240bd33759a205836ae94aef0e5ea66d95c30dc37728dee3fbf4a90cfaa"
+    }
+  },
+  "scientific_reliability": {
+    "candidate_family": "orientation_specific_control_quality_rank1",
+    "candidate_mse": 0.001042745722096212,
+    "candidate_p90_patient_rmse": 0.037419695944064885,
+    "patient_wins_vs_bandwidth07": 40,
+    "favorable_folds_vs_bandwidth07": 5,
+    "target_average_wins_vs_bandwidth07": 19,
+    "immediate_predecessor_relative_mse_gain": 0.00041590829368609583,
+    "immediate_predecessor_patient_wins": 32,
+    "immediate_predecessor_favorable_folds": 3,
+    "coverage_80": 0.8100282485875706,
+    "coverage_90": 0.9194915254237288,
+    "coverage_95": 0.9593926553672316,
+    "targets_at_or_above_90": 24,
+    "clean_package_checks": 8,
+    "clean_nested_canonical_stages": 14,
+    "clean_nested_canonical_tests": 173,
+    "fresh_virtual_environment": true,
+    "dependencies_resolved_from_local_cache": true,
+    "package_runner_network_requests": 0,
+    "repeated_adaptive_development": true,
+    "operational_demo_baseline_replaced": false
+  },
+  "artifact_sha256": {
+    "docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_SCIENTIFIC_RELIABILITY.md": "a47c22b427e654beed2fe6b9bf74ba9fdbaa9bd911c9ccdc97986e3f57e26aa5",
+    "study/audits/verify_finalist_rubric_evidence_current_scientific_reliability.py": "da084b757859f51432fbc782540743de94491c743499fca7cbdf993c696a3923",
+    "study/audits/test_finalist_rubric_evidence_current_scientific_reliability.py": "1ae7aad5857b7981feebedeeedf6fa88ce8879bf95b4d467acebfa5259508848"
+  },
+  "verification": {
+    "standalone_verifier": "PASS",
+    "focused_adversarial_tests": 11,
+    "predecessor_hash_verified": true,
+    "grouped_reliability_hash_verified": true,
+    "clean_execution_hash_verified": true,
+    "source_workbook_opened": false,
+    "patient_or_prediction_arrays_opened": false,
+    "protected_response_access": false
+  },
+  "limitations": {
+    "grouped_reliability_confirmatory": false,
+    "grouped_reliability_selection_adjusted": false,
+    "grouped_reliability_independently_recomputed": false,
+    "bootstrap_confirmatory": false,
+    "bootstrap_independently_recomputed": false,
+    "clean_new_machine_certification": false,
+    "windows_replay_machine_receipt_public": false,
+    "independent_validation": false,
+    "protected22_access": false,
+    "accepted_kaggle_entry_changed": false,
+    "netlify_changed": false,
+    "finalist_status_claimed": false,
+    "official_competition_score": null
+  }
+}
