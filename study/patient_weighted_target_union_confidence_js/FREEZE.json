@@ -1,0 +1,32 @@
+{
+  "schema": "dosepilot.patient_weighted_target_union_confidence_js.freeze.v1",
+  "state": "FROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "frozen_utc": "2026-10-04T23:38:23.200357+00:00",
+  "family_id": "patient_weighted_target_union_confidence_js",
+  "prior_scale": 0.125,
+  "source_sha256": {
+    "study/patient_weighted_target_union_confidence_js/PROPOSAL.json": "616ee7f7dcfb32164af97bc24f997286730c78816b06fc69f55fcd27656c9f07",
+    "study/patient_weighted_target_union_confidence_js/PROTOCOL.json": "773f7329c1bc3273ce18d3674460718046fc62b4a8ae1a7bbe22f8d4eed75336",
+    "study/patient_weighted_target_union_confidence_js/run_study.py": "d7c8c823a59d33a2382812d4fa44ba95e96d6958e115c9434bbfb520e9e967a1",
+    "study/patient_weighted_target_union_confidence_js/test_study.py": "e22aba926abf951f2c19fb5c7a0fcc26eb639ecbae61184202effc91944753df",
+    "study/patient_weighted_target_union_confidence_js/verify_study.py": "19a8dfc1d99f073b03ce58edc80220911e14849a847e2a28e38b4b7fc66f7c9f"
+  },
+  "input_sha256": {
+    "reference_predictions": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "reference_result": "dc7ef6a096b02372df023edb35828ea5c0e70dfb9e6cc676be3fba003c0eba3e",
+    "bagged_predictions": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd",
+    "ijbc_predictions": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716",
+    "best_predictions": "9acb841920498d1527485334b7f524884083a767add18b88bd2fc7e42b8d4992",
+    "reference_inner_0": "a51fb11079e5bcddc1cd83dddfea83d4b7e4d801dc3559574af9edfa61100b1a",
+    "reference_inner_1": "1638eb3d5e86f2d09c97aa4eb524100f3ddd5af3a06eebd8a5e649be504cf589",
+    "reference_inner_2": "181f0dfa290d4448906ac9716b77dd4ac8c1291f23477c9f21c78d65443f43f0",
+    "reference_inner_3": "62842554431721c46d140147481f9a0d035fdc9674d2e45a9b3d7786d35e3698",
+    "reference_inner_4": "651a07bbb7796baceb482825c1e3a9366918adac7e5ef960241d31da3343f5db"
+  },
+  "must_beat_verified_development_best_mse": 0.0010564831037184492,
+  "diagnostic_outer_outcomes_previously_inspected": true,
+  "synthetic_tests_passed": 5,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

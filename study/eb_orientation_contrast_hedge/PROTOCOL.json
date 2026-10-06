@@ -1,0 +1,19 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"eb_orientation_contrast_hedge",
+  "family_fingerprint":"innerfold-eb-shrunk-targetwise-b-orientation-contrast-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The strong full orientation-contrast correction overshot because many targetwise contrasts are noisy. Across the three whole-patient inner folds, an empirical-Bayes signal/noise decomposition can shrink uncertain target contrasts toward zero while preserving reproducible orientation nuisance.",
+  "comparator_family_id":"orientation_eighth_contrast_hedge",
+  "must_beat_verified_development_best_mse":0.0010571351789507668,
+  "component_rule":"Orientation A is the leave-one-whole-patient bagged geometry prediction. Orientation B starts from the interpolated-jackknife geometry prediction. No A/B prediction averaging is performed.",
+  "calibration_rule":"Within each outer-training partition, use only that partition's authenticated three-fold whole-patient OOF bandwidth-0.7 predictions at its already-selected spectral option. For each inner fold k and target t compute c[k,t]=patient_balanced_mean(y-q_A)-patient_balanced_mean(y-q_B). Let cbar[t]=mean_k c[k,t] and v[t]=sample_variance_k(c[k,t])/3. Estimate tau2=max(sample_variance_t(cbar[t])-mean_t(v[t]),0). If tau2=0 set alpha[t]=0; otherwise alpha[t]=tau2/(tau2+v[t]). Apply q_B=q_B,interpolated_jackknife-0.5*alpha[t]*cbar[t]. The 0.5 factor is the exact two-orientation contrast split, not a tuned strength. Orientation A remains unchanged. No outer-held outcomes, fold/target outcome splicing, scalar grid, or protected data enter calibration.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average separately costed A/B losses; never average A/B predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

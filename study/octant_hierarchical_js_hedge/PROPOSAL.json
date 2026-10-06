@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "octant_hierarchical_js_hedge",
+  "family_fingerprint": "seven-eighth-global-js-one-eighth-hierarchical-js-contrast-v1",
+  "falsifiable_hypothesis": "A conservative one-eighth hedge toward a hierarchical common-plus-target-deviation James-Stein contrast estimator can improve the verified global James-Stein orientation correction while retaining five-fold stability.",
+  "protocol_path": "study/octant_hierarchical_js_hedge/PROTOCOL.json",
+  "comparator_family_id": "james_stein_orientation_contrast",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across separately costed A/B orientations; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "bdc777575e950c9c29d96b33adeaee0a8de85461a7d7842f3550029a69f00d10"
+}

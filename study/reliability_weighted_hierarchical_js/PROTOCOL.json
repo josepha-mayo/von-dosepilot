@@ -1,0 +1,16 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"reliability_weighted_hierarchical_js",
+  "family_fingerprint":"global-js-reliability-weighted-hierarchical-orientation-contrast-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"Hierarchical common/deviation refinement helps most when the underlying orientation-contrast signal is itself reliable. The positive-part global James-Stein factor is already a parameter-free estimate of that reliability, so it can gate the hierarchical innovation without a new weight menu.",
+  "comparator_family_id":"octant_hierarchical_js_hedge",
+  "must_beat_verified_development_best_mse":0.0010568442387035987,
+  "component_rule":"Orientation A is leave-one-whole-patient bagged geometry. Orientation B starts from interpolated-jackknife geometry. No A/B prediction averaging occurs.",
+  "shrinkage_rule":"From the three authenticated inner whole-patient bandwidth-0.7 OOF contrast vectors compute theta_global and theta_hier exactly as in octant_hierarchical_js_hedge. Let a_global=max(0,1-22*sigma2/sum(cbar^2)) be the positive-part global James-Stein reliability. Set theta=(1-a_global)*theta_global+a_global*theta_hier. Apply q_B=q_B,interpolated_jackknife-0.5*theta. Thus hierarchical refinement is exactly zero when the global orientation signal is judged unreliable and grows continuously with the same reliability estimate. No free hedge parameter, target/fold outer routing, or protected data is used.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average separately costed A/B losses; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,"outer_target_or_fold_splicing":false,"automatic_retry":false,"independent_validation":false
+}

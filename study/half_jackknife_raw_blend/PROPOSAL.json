@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_BEFORE_HALF_JACKKNIFE_RAW_REPLAY",
+  "family_id": "half_jackknife_raw_blend",
+  "family_fingerprint": "fixed-half-jackknife-bias-corrected-half-raw-cross-patient-v1",
+  "falsifiable_hypothesis": "An untuned 50/50 hedge between the raw cross-patient geometry and its jackknife bias-corrected geometry can retain the raw estimator's lower mean error while preserving the jackknife estimator's five-fold stability.",
+  "protocol_path": "study/half_jackknife_raw_blend/PROTOCOL.json",
+  "comparator_family_id": "jackknife_bias_corrected_geometry",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across separately costed A/B orientations; never average A/B predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "64adebf614e76b73362b55a5791b1f9d527957250eaa01d420218a435b86be39"
+}

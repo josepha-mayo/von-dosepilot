@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "unanimous_sign_boosted_gain",
+  "family_fingerprint": "half-plus-amplitude-jackknife-reliability-with-unanimous-local-gain-boost-v1",
+  "falsifiable_hypothesis": "A gain hedge that uses amplitude-transformed jackknife reliability, and only fully trusts the bounded raw target gain when all three fitting-only inner folds independently agree the local optimum exceeds one, can beat the current verified best while preserving five-fold and tail gates.",
+  "protocol_path": "study/unanimous_sign_boosted_gain/PROTOCOL.json",
+  "comparator_family_id": "half_raw_jackknife_gain_hedge",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across separately costed A/B orientations; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "a02d6427fab0f45fea1a7ec91fe19248a33e646cf0beec581ffee807729bc67a"
+}

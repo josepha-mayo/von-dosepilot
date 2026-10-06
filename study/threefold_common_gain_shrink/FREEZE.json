@@ -1,0 +1,34 @@
+{
+  "schema": "dosepilot.threefold_common_gain_shrink.freeze.v1",
+  "state": "FROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "frozen_utc": "2026-10-05T12:22:49.279294+00:00",
+  "family_id": "threefold_common_gain_shrink",
+  "inner_folds": 3,
+  "gain_shrink_strength": 0.3333333333333333,
+  "theta_common_location": "gB^2*r weighted median",
+  "source_sha256": {
+    "study/threefold_common_gain_shrink/PROPOSAL.json": "4afa1f8d608078578b7f6b0e8bbe2e8f5afb6f58faa0f16b141f68895832b0dd",
+    "study/threefold_common_gain_shrink/PROTOCOL.json": "df1e43b4b199d37636459284555c462a9b37d2ef65b03d1e00c37e6fc2e15b4e",
+    "study/threefold_common_gain_shrink/run_study.py": "84528723be126458f394272ae615bced8ee860fdf42c9fbf781bb9dad3552217",
+    "study/threefold_common_gain_shrink/test_study.py": "3739d198fa32a59caf2cc9310a56736fd8cb9c5408fc86b79e013f14851dd329",
+    "study/threefold_common_gain_shrink/verify_study.py": "c63bdcd83ed18ba6f73c8efe184580fb51797f06c2bbf9cf4de20b5c0fc078cd"
+  },
+  "input_sha256": {
+    "reference_predictions": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "reference_result": "dc7ef6a096b02372df023edb35828ea5c0e70dfb9e6cc676be3fba003c0eba3e",
+    "bagged_predictions": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd",
+    "ijbc_predictions": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716",
+    "best_predictions": "98ce6ea220555c1a30de87f6ef03e5be6099a29c676ed2669ff9ec5cf2f24d50",
+    "reference_inner_0": "a51fb11079e5bcddc1cd83dddfea83d4b7e4d801dc3559574af9edfa61100b1a",
+    "reference_inner_1": "1638eb3d5e86f2d09c97aa4eb524100f3ddd5af3a06eebd8a5e649be504cf589",
+    "reference_inner_2": "181f0dfa290d4448906ac9716b77dd4ac8c1291f23477c9f21c78d65443f43f0",
+    "reference_inner_3": "62842554431721c46d140147481f9a0d035fdc9674d2e45a9b3d7786d35e3698",
+    "reference_inner_4": "651a07bbb7796baceb482825c1e3a9366918adac7e5ef960241d31da3343f5db"
+  },
+  "must_beat_verified_development_best_mse": 0.0010548691881133363,
+  "diagnostic_outer_outcomes_previously_inspected": true,
+  "synthetic_tests_passed": 5,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

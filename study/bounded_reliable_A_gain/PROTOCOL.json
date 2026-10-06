@@ -1,0 +1,20 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"bounded_reliable_A_gain",
+  "family_fingerprint":"global-js-B-gain-plus-bounded-jackknife-reliable-A-gain-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The global-JS B-gain switch leaves orientation A at the response-free loo-bagged geometry. Because the same inner OOF contrast theta estimates the A/B residual difference, orientation A can receive a separately fitted correction along +theta. To prevent this secondary channel from overwhelming the already-strong A component, its gain is bounded to [-0.5,0.5], so the actual A prediction displacement 0.5*g_A*theta is at most one quarter of theta. Targetwise bounded-jackknife reliability shrinks uncertain A gains toward zero.",
+  "comparator_family_id":"global_js_raw_gain_switch",
+  "must_beat_verified_development_best_mse":0.0010561327075092855,
+  "B_rule":"Reproduce global_js_raw_gain_switch exactly for orientation B.",
+  "A_rule":"For each outer partition use the same authenticated three inner whole-patient bandwidth-0.7 OOF tensors and the same held-fold theta_-k values. Let rA_k,j be the equal-patient A-orientation OOF residual mean. Fit gA_raw,j=2*sum_k n_k*theta_-k,j*rA_k,j / sum_k n_k*theta_-k,j^2, defaulting to 0 for a numerically zero denominator, then clip to [-0.5,0.5]. Recompute the same bounded A-gain estimator three times leaving out each held-fold pair and form standard K=3 jackknife variance vA_j. Define target reliability aA_j=gA_raw,j^2/(gA_raw,j^2+vA_j), zero when numerator and denominator are both zero. Define global A-signal reliability R_A=max(0,1-(24-2)*mean_j(vA_j)/sum_j(gA_raw,j^2)), zero for a numerically zero denominator. If R_A>0, use gA_j=aA_j*gA_raw,j; otherwise use gA_j=0. Apply qA=qA_loo_bagged+0.5*gA_j*theta_j.",
+  "bound_rationale":"The A-side auxiliary gain magnitude is capped at one half, so its actual displacement is capped at one quarter of theta, while B retains the primary one-sided half-contrast correction. No bound menu is opened in canonical replay.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

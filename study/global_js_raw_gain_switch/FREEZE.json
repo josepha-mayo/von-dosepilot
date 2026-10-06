@@ -1,0 +1,37 @@
+{
+  "schema": "dosepilot.global_js_raw_gain_switch.freeze.v1",
+  "state": "FROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "frozen_utc": "2026-10-05T00:41:03.246524+00:00",
+  "family_id": "global_js_raw_gain_switch",
+  "gain_bounds": [
+    1.0,
+    3.0
+  ],
+  "global_reliability_formula": "max(0,1-(24-2)*mean(jackknife_variance)/sum((raw_gain-prior_gain)^2))",
+  "switch": "use_raw_if_global_reliability_gt_0_else_unanimous_sign_fallback",
+  "source_sha256": {
+    "study/global_js_raw_gain_switch/PROPOSAL.json": "940c2ffe0e070bd5f3d81d3e592af931ecbad91dc5a6b8552d97a0238a813f69",
+    "study/global_js_raw_gain_switch/PROTOCOL.json": "79d5b4ffb81b98a4715d6f9985bf14a7a28e9a19af0c65e3054dee4a905e911b",
+    "study/global_js_raw_gain_switch/run_study.py": "ea60a85cc0977ae1369a2c4a5e148af19b211bb2acfe49a4f4d3afd896d7becf",
+    "study/global_js_raw_gain_switch/test_study.py": "8448bf21402aecadb8c09318e12413ab1998d5a6c157d1e77b216f3acba76ef4",
+    "study/global_js_raw_gain_switch/verify_study.py": "a78162b0727ce28b88745568a1cbee1dbe91e77874175df0dcd67093fc7f0df6"
+  },
+  "input_sha256": {
+    "reference_predictions": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "reference_result": "dc7ef6a096b02372df023edb35828ea5c0e70dfb9e6cc676be3fba003c0eba3e",
+    "bagged_predictions": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd",
+    "ijbc_predictions": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716",
+    "best_predictions": "81f1565ec8aefd353f58be3fe4827c6b7c3b3b9fc793c284df5e71265ce11b79",
+    "reference_inner_0": "a51fb11079e5bcddc1cd83dddfea83d4b7e4d801dc3559574af9edfa61100b1a",
+    "reference_inner_1": "1638eb3d5e86f2d09c97aa4eb524100f3ddd5af3a06eebd8a5e649be504cf589",
+    "reference_inner_2": "181f0dfa290d4448906ac9716b77dd4ac8c1291f23477c9f21c78d65443f43f0",
+    "reference_inner_3": "62842554431721c46d140147481f9a0d035fdc9674d2e45a9b3d7786d35e3698",
+    "reference_inner_4": "651a07bbb7796baceb482825c1e3a9366918adac7e5ef960241d31da3343f5db"
+  },
+  "must_beat_verified_development_best_mse": 0.0010561547901789719,
+  "diagnostic_outer_outcomes_previously_inspected": true,
+  "synthetic_tests_passed": 5,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

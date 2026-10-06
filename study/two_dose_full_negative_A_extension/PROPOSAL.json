@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "two_dose_full_negative_A_extension",
+  "family_fingerprint": "two-dose-second-pooling-plus-two-dose-only-full-negative-A-bound-v1",
+  "falsifiable_hypothesis": "Extending the auxiliary A raw-gain lower guard from -0.9375 to -1.0 only for structurally lower-information two-dose heads can beat the current verified development best while preserving the five-fold and p90 gates.",
+  "protocol_path": "study/two_dose_full_negative_A_extension/PROTOCOL.json",
+  "comparator_family_id": "two_dose_second_pooling_gain",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average separately costed A/B losses; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "ea05429f9f5507532f71982017d42f500ff98e88831b5f2d418a307865b1d5e3"
+}

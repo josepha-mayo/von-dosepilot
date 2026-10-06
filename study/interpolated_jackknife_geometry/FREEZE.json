@@ -1,0 +1,25 @@
+{
+  "schema": "dosepilot.interpolated_jackknife_geometry.freeze.v1",
+  "state": "FROZEN_BEFORE_FIRST_INTERPOLATED_JACKKNIFE_FIT",
+  "frozen_utc": "2026-10-04T19:16:48.301347+00:00",
+  "family_id": "interpolated_jackknife_geometry",
+  "source_sha256": {
+    "study/interpolated_jackknife_geometry/PROPOSAL.json": "31038f2eead0a6c51250d90a52d66b371edfdaa7f02aaed8cff59a97f4927c89",
+    "study/interpolated_jackknife_geometry/PROTOCOL.json": "b33aa13266aa42891b3aa13600f37660c6ee6f1da7ba18ae990b4b2739a0dba0",
+    "study/interpolated_jackknife_geometry/interpolated_jackknife.py": "e3f96ccd501a8e27764cf5d9212a92778c9a5eb6a1b3ec023686ba7f544cc77b",
+    "study/interpolated_jackknife_geometry/run_study.py": "950a9c30e40902310711e8247f89250e5aad7df82506a3042dded43defbc78e3",
+    "study/interpolated_jackknife_geometry/test_study.py": "5a210e5775f0ff3397544e5fc4fe26ac6f9cd9930346803427384824e69954f5",
+    "study/interpolated_jackknife_geometry/verify_study.py": "a07d683a600db5e8cf4a4b15aef3b312468c60038b6d3bdf9de58a0d66142141"
+  },
+  "expected_curves_sha256": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+  "reference_predictions_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+  "verified_best_predictions_sha256": "41415b39178831458311cd83e283c4b379587ba0ab653564597d13638b51bac8",
+  "must_beat_verified_development_best_mse": 0.0010574921945978527,
+  "study_lock_sha256": "8118b562b78b3f55866d6239a38280c942df2c7d81f0b7c4ce71ba0e39ce9ffc",
+  "catalog_sha256": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+  "synthetic_tests_passed": 2,
+  "outer_component_outcomes_previously_inspected": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

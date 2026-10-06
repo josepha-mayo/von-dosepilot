@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "patient_weighted_union_confidence_js",
+  "family_fingerprint": "patient-count-weighted-amplitude-js-plus-union-confidence-amplification-v1",
+  "falsifiable_hypothesis": "Combining objective-aligned whole-patient fold weighting with a parameter-free union of global and common-mode confidence can amplify only the reliable orientation-contrast estimate and beat the current verified development best.",
+  "protocol_path": "study/patient_weighted_union_confidence_js/PROTOCOL.json",
+  "comparator_family_id": "confidence_amplified_hierarchical_js",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across separately costed A/B orientations; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "129aa6be8bb75652dd0d76b83a882b1e52a730ba48ed9cca210f1d5fcfebf070"
+}

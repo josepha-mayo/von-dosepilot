@@ -1,0 +1,20 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"two_prior_common_gain_shrink",
+  "family_fingerprint":"hierarchical-theta-plus-two-prior-step-common-B-gain-shrink-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The global positive-signal switch promotes the bounded raw B gain vector whenever aggregate signal is present, but targetwise raw gains still contain jackknife noise. The already-frozen PRIOR=0.125 supplies a conservative unit of shrinkage. Moving exactly 2*PRIOR=0.25 of the way from the active raw gain vector toward a reliability-weighted common gain is a single fixed protocol step that can reduce variance without collapsing the target structure or changing the fallback branch.",
+  "comparator_family_id":"hierarchical_impact_common_bias_theta",
+  "must_beat_verified_development_best_mse":0.0010550168524430328,
+  "gain_rule":"Reproduce shared_prior_margin_dual_gain gain fitting exactly through the current final B gain g_raw/fallback, prior_gain g0, target gain reliability r_g, and the global use_raw switch. If use_raw is false, preserve the existing fallback gain unchanged. If use_raw is true, define delta_j=g_raw,j-g0,j and mu_g=sum_j r_g,j*delta_j/sum_j r_g,j, with mu_g=0 only when all r_g are zero. Define common gain g_common,j=clip(g0,j+mu_g,[0.875,3]). Deploy gB_j=(1-2*PRIOR)*g_raw,j+(2*PRIOR)*g_common,j, with PRIOR=0.125, so the shrink strength is exactly 0.25. No per-target strength or outer-held routing is used.",
+  "theta_rule":"After constructing deployed gB, reproduce hierarchical_impact_common_bias_theta exactly using the deployed gain: compute theta bias reliability r_theta, orientation A thetaA=theta_full+(1+r_theta)*bias, B common weights w_j=gB_j^2*r_theta,j, common theta bias mu_B=sum w*bias/sum w, and thetaB=theta_full+bias+mu_B+r_theta*(bias-mu_B). Use qA=qA_loo_bagged+0.5*gA*thetaA and qB=qB_interpolated_jackknife-0.5*gB*thetaB.",
+  "strength_rationale":"The shrink strength is exactly two copies of the already-frozen PRIOR constant, 2*0.125=0.25. This family was selected after repeated development diagnostics and is not independent validation.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

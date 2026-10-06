@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "two_dose_second_pooling_gain",
+  "family_fingerprint": "reliability-counted-global-pooling-plus-same-strength-second-pooling-for-two-dose-heads-v1",
+  "falsifiable_hypothesis": "Applying the already-determined fitting-only global gain-pooling strength a second time only to structurally lower-information two-dose heads can reduce development MSE beyond the current verified best while preserving five-fold and tail gates.",
+  "protocol_path": "study/two_dose_second_pooling_gain/PROTOCOL.json",
+  "comparator_family_id": "reliability_counted_common_gain_shrink",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average separately costed A/B losses; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "eac4f6245444018573b1d46ed8bad93eb30ce2e3aaf762987d50e5f3750d57ba"
+}

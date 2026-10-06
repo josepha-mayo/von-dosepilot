@@ -1,0 +1,25 @@
+{
+  "schema": "dosepilot.half_jackknife_raw_blend.freeze.v1",
+  "state": "FROZEN_BEFORE_HALF_JACKKNIFE_RAW_REPLAY",
+  "frozen_utc": "2026-10-04T18:46:01.842707+00:00",
+  "family_id": "half_jackknife_raw_blend",
+  "fixed_weight_jackknife": 0.5,
+  "fixed_weight_raw": 0.5,
+  "source_sha256": {
+    "study/half_jackknife_raw_blend/PROPOSAL.json": "5444f8d61c996574812493efca7c9c41fbfd3af391a062127b064e53409d173b",
+    "study/half_jackknife_raw_blend/PROTOCOL.json": "64adebf614e76b73362b55a5791b1f9d527957250eaa01d420218a435b86be39",
+    "study/half_jackknife_raw_blend/run_study.py": "63a0f152b33d9aa6ea78e8f573bcbe40269bbb4a01cd035f07a1b49880ea8ca1",
+    "study/half_jackknife_raw_blend/test_study.py": "67b74190d59be9dc9cb904ef2bb7dde96f01cac7d093a2a807286c4d96d39a29",
+    "study/half_jackknife_raw_blend/verify_study.py": "6ffab545414c84a80083004297363a5eb0f5be179ef5a4ebb350447cb1354046"
+  },
+  "input_sha256": {
+    "reference": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "jbc": "2220e026354b6d4981003ab36d710105e76c998ccb8c4aa3bcac475deb374631",
+    "raw": "96918e3ac64f1101120a77952b1ef6f2b505382c022d6e0b427e96457767802f"
+  },
+  "must_beat_verified_development_best_mse": 0.0010574998492009094,
+  "outer_component_outcomes_previously_inspected": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

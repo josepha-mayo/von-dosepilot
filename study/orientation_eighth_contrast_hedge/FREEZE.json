@@ -1,0 +1,27 @@
+{
+  "schema": "dosepilot.orientation_eighth_contrast_hedge.freeze.v1",
+  "state": "FROZEN_BEFORE_ORIENTATION_EIGHTH_CONTRAST_REPLAY",
+  "frozen_utc": "2026-10-04T19:55:42.216914+00:00",
+  "family_id": "orientation_eighth_contrast_hedge",
+  "contrast_scale": 0.125,
+  "source_sha256": {
+    "study/orientation_eighth_contrast_hedge/PROPOSAL.json": "4b834d371515b78e1cf3135366ccf04b46862d010c19b87ca442883ac74d6c30",
+    "study/orientation_eighth_contrast_hedge/PROTOCOL.json": "2e1cdb1ffa3a3dd625c56e73765bbeb66e9c4f36cade9ff8bd01a83f1f235db2",
+    "study/orientation_eighth_contrast_hedge/run_study.py": "d78d1e0811cb87e51a4036e9190be90947afc97b1cc7d0cb7d79956fd0bd7f0e",
+    "study/orientation_eighth_contrast_hedge/test_study.py": "5b8a4a918365cb61c1634641e13344699935ca51bd3117e2363a6eef33470905",
+    "study/orientation_eighth_contrast_hedge/verify_study.py": "de9a785ece6613608dfb43016c70dce57fdfed3be5c01506c65f3701901a083f"
+  },
+  "input_sha256": {
+    "reference": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "loo": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd",
+    "ijbc": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716",
+    "jbc": "2220e026354b6d4981003ab36d710105e76c998ccb8c4aa3bcac475deb374631",
+    "ocontrast": "83993e99f59a659a55a48d07f5d52e57f5f52cb4b8e6b9aea05ba32a498ba323",
+    "best": "5f671bc6028d3f1fab187602863cb6a9c278f03daa6bea258b07177bdfa15afd"
+  },
+  "must_beat_verified_development_best_mse": 0.0010574493498268901,
+  "outer_component_outcomes_previously_inspected": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

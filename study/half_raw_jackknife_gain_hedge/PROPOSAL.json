@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "half_raw_jackknife_gain_hedge",
+  "family_fingerprint": "half-bounded-raw-target-gain-half-jackknife-snr-stabilized-gain-v1",
+  "falsifiable_hypothesis": "A fixed 50/50 hedge between the bounded inner-crossfit target gain and its targetwise jackknife-SNR stabilized version can reduce gain-estimation bias while retaining five-fold stability and beat the current verified development best.",
+  "protocol_path": "study/half_raw_jackknife_gain_hedge/PROTOCOL.json",
+  "comparator_family_id": "half_safe_target_cv_gain_hedge",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across separately costed A/B orientations; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "aaec34fde2b5cbfcf9d8ef3772dcbb85f47b0f8cde68d624770687361fe4a6c3"
+}

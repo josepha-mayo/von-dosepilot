@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "global_js_raw_gain_switch",
+  "family_fingerprint": "global-james-stein-positive-signal-raw-gain-else-unanimous-sign-fallback-v1",
+  "falsifiable_hypothesis": "When the full 24-target raw-minus-prior gain vector has positive fitting-only James-Stein reliability, using the bounded raw target gains directly can harvest calibration signal; when that global signal collapses to zero, falling back to the verified unanimous-sign reliability rule can preserve fold and tail safety.",
+  "protocol_path": "study/global_js_raw_gain_switch/PROTOCOL.json",
+  "comparator_family_id": "unanimous_sign_boosted_gain",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across separately costed A/B orientations; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "79d5b4ffb81b98a4715d6f9985bf14a7a28e9a19af0c65e3054dee4a905e911b"
+}

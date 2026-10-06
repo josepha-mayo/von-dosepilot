@@ -1,0 +1,20 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"threefold_common_gain_shrink",
+  "family_fingerprint":"weighted-median-theta-plus-one-over-K-common-B-gain-shrink-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The active raw B gain vector is inferred from exactly K=3 authenticated inner whole-patient folds. A natural one-fold-equivalent hierarchical regularization step is to replace exactly 1/K of each active raw target gain by its fitting-only reliability-weighted common-gain counterpart, while leaving the fallback branch untouched. This ties regularization strength to the fixed resampling structure instead of an arbitrary continuous hyperparameter.",
+  "comparator_family_id":"weighted_median_common_bias_theta",
+  "must_beat_verified_development_best_mse":0.0010548691881133363,
+  "gain_rule":"Reproduce weighted_median_common_bias_theta through raw/fallback B gain g_raw, prior gain g0, gain reliability r_g, and use_raw. If use_raw is false, preserve the frozen fallback gain. If use_raw is true, let delta_j=g_raw,j-g0,j and mu_g=sum_j r_g,j*delta_j/sum_j r_g,j, with mu_g=0 only when all gain reliabilities are zero. Define g_common,j=clip(g0,j+mu_g,[0.875,3]). With fixed K=3 inner folds deploy gB_j=(1-1/K)*g_raw,j+(1/K)*g_common,j = (2/3)g_raw,j+(1/3)g_common,j.",
+  "theta_rule":"Reproduce weighted_median_common_bias_theta exactly after constructing deployed gB: compute theta bias reliability r_theta; orientation A uses thetaA=theta_full+(1+r_theta)*bias; for B use weights w_j=gB_j^2*r_theta,j and the tuning-free weighted median of bias_j as mu_B, then thetaB=theta_full+bias+mu_B+r_theta*(bias-mu_B).",
+  "strength_rationale":"The gain shrink strength is exactly 1/K where K=3 is the protocol's fixed number of inner whole-patient folds. No continuous strength search, per-target strength, fold rescue, or outer-held routing exists in canonical replay. This family remains repeated adaptive development because prior outer outcomes were inspected.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

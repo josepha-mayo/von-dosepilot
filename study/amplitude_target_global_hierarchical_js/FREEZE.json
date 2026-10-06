@@ -1,0 +1,32 @@
+{
+  "schema": "dosepilot.amplitude_target_global_hierarchical_js.freeze.v1",
+  "state": "FROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "frozen_utc": "2026-10-04T23:18:34.759575+00:00",
+  "family_id": "amplitude_target_global_hierarchical_js",
+  "prior_scale": 0.125,
+  "source_sha256": {
+    "study/amplitude_target_global_hierarchical_js/PROPOSAL.json": "7656ff5c4748f86f3c3ca7f90bc6e13079ba43e7f2232279be4548d7b9ad98fc",
+    "study/amplitude_target_global_hierarchical_js/PROTOCOL.json": "6cce5215ad88fdf66a9fb2ca2934267350ffa7d64fa3c64d2189407297e85092",
+    "study/amplitude_target_global_hierarchical_js/run_study.py": "2c061e2650781067342a6b629643e78ab9c1e9e250f6f5955c28f5184668a040",
+    "study/amplitude_target_global_hierarchical_js/test_study.py": "756ecdac6576575abcf835227391e6892e7a4803b5bccfc7d9cfd9ea07c0c9e9",
+    "study/amplitude_target_global_hierarchical_js/verify_study.py": "35cb8a9be4b60dde598edd617dfd1d8d4e4872da214b2a769cc42dc2e2f8bdfc"
+  },
+  "input_sha256": {
+    "reference_predictions": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "reference_result": "dc7ef6a096b02372df023edb35828ea5c0e70dfb9e6cc676be3fba003c0eba3e",
+    "bagged_predictions": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd",
+    "ijbc_predictions": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716",
+    "best_predictions": "3e95764ef2446b4a9a492f72bf481e777b40fa70e0e46176a982cd5e58939792",
+    "reference_inner_0": "a51fb11079e5bcddc1cd83dddfea83d4b7e4d801dc3559574af9edfa61100b1a",
+    "reference_inner_1": "1638eb3d5e86f2d09c97aa4eb524100f3ddd5af3a06eebd8a5e649be504cf589",
+    "reference_inner_2": "181f0dfa290d4448906ac9716b77dd4ac8c1291f23477c9f21c78d65443f43f0",
+    "reference_inner_3": "62842554431721c46d140147481f9a0d035fdc9674d2e45a9b3d7786d35e3698",
+    "reference_inner_4": "651a07bbb7796baceb482825c1e3a9366918adac7e5ef960241d31da3343f5db"
+  },
+  "must_beat_verified_development_best_mse": 0.0010567211104946675,
+  "diagnostic_outer_outcomes_previously_inspected": true,
+  "synthetic_tests_passed": 4,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

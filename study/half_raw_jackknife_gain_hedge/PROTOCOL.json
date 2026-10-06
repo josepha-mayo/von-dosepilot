@@ -1,0 +1,16 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"half_raw_jackknife_gain_hedge",
+  "family_fingerprint":"half-bounded-raw-target-gain-half-jackknife-snr-stabilized-gain-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"Targetwise cross-fitted gain contains useful calibration signal but is unstable because only three inner patient folds are available. Jackknife-SNR shrinkage toward the existing patient-weighted target-union gain controls variance, while equal hedging with the bounded raw gain restores half of the signal discarded by shrinkage without opening a tunable hedge menu.",
+  "comparator_family_id":"half_safe_target_cv_gain_hedge",
+  "must_beat_verified_development_best_mse":0.0010562461582277344,
+  "gain_rule":"For each outer partition use the authenticated three inner whole-patient bandwidth-0.7 OOF tensors at the already-selected spectral option. Compute patient-count-weighted amplitude theta and stable prior gain g0_j=1+c_union*s_j exactly as in patient_weighted_target_union_confidence_js. Rebuild theta_-k on the other two folds, compute bounded raw gain graw_j=clip(-2 sum n_k theta_-k,j rB_k,j / sum n_k theta_-k,j^2,1,3). Recompute the same bounded estimator leaving out each held pair to obtain standard K=3 jackknife variance v_j. With delta_j=graw_j-g0_j define reliability a_j=delta_j^2/(delta_j^2+v_j), stabilized gain gst_j=g0_j+a_j delta_j, then final gain g_j=0.5*gst_j+0.5*graw_j. Apply qA=qA_loo_bagged and qB=qB_interpolated_jackknife-0.5*g_j*theta_j.",
+  "hedge_rule":"The raw/stabilized gain weights are exactly 0.5/0.5 by symmetry before canonical replay. There is no per-fold or per-target hedge weight, no outer-held outcome routing, and no A/B prediction averaging.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,"outer_target_or_fold_splicing":false,"automatic_retry":false,"independent_validation":false
+}

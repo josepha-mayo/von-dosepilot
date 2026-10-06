@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "paid_location_scale_common_mode_calibration",
+  "family_fingerprint": "orientation-B-paid-mean-std-max-affine-common-residual-calibration-v1",
+  "falsifiable_hypothesis": "A patient-balanced common residual calibration using the mean, standard deviation, and maximum of the 64 already-purchased orientation-B viability readings can capture sample-level location, dispersion, and upper-envelope effects left unresolved by the current predictor, lowering full24 MSE without changing the assay.",
+  "protocol_path": "study/paid_location_scale_common_mode_calibration/PROTOCOL.json",
+  "comparator_family_id": "paid_max_common_mode_calibration",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average separately costed A/B losses; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "016bb7f5793b63da5607ce10e8171b40026f629f536f054685a00f4b3691e5aa"
+}

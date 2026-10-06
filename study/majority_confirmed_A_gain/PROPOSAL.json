@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "majority_confirmed_A_gain",
+  "family_fingerprint": "threefold-cubed-reliability-A-gain-plus-majority-sign-snr-boost-v1",
+  "falsifiable_hypothesis": "The threefold-confirmed A gain is conservative on targets where two or more held inner folds agree on correction direction and target reliability exceeds the signal-noise boundary. Promoting only those majority-confirmed reliable targets to full bounded A gain can lower error while preserving all gates.",
+  "protocol_path": "study/majority_confirmed_A_gain/PROTOCOL.json",
+  "comparator_family_id": "threefold_confirmed_A_gain",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across separately costed A/B orientations; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "3251a7f4ed6f3bbaa7dbe2fa74fcae4fcf4c2dacf14322d38d13e87b7816cce0"
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "dosepilot.paid_cardinality_separate_local_pooling.freeze.v1",
+  "state": "FROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "frozen_utc": "2026-10-05T19:01:42.306689+00:00",
+  "family_id": "paid_cardinality_separate_local_pooling",
+  "global_feature_basis": [
+    "mean",
+    "population_std",
+    "min",
+    "max"
+  ],
+  "contrast_feature_basis": [
+    "min",
+    "max"
+  ],
+  "shared_local_feature_basis": [
+    "local_mean",
+    "local_population_std",
+    "local_min",
+    "local_max",
+    "three_dose_indicator"
+  ],
+  "cardinality_local_feature_basis": [
+    "local_mean",
+    "local_population_std",
+    "local_min",
+    "local_max"
+  ],
+  "local_pooling": {
+    "separate_weight": 0.6666666666666666,
+    "common_weight": 0.3333333333333333,
+    "source": "K=3 inner folds"
+  },
+  "local_strength": 0.25,
+  "verification_prediction_tolerance": 5e-16,
+  "source_sha256": {
+    "study/paid_cardinality_separate_local_pooling/PROPOSAL.json": "95d8e4b524351caaa0711a14a1dd996cb77244ad25e69934c74af06141f59e97",
+    "study/paid_cardinality_separate_local_pooling/PROTOCOL.json": "20e1ae7869c4c109d2f86f581ecabf1130c638b8b00348cc71a34827e9713ad2",
+    "study/paid_cardinality_separate_local_pooling/run_study.py": "c6e6240123ad637c8cb19321521bf4f299aa2f02937a791af10b0f4d26c2e9a4",
+    "study/paid_cardinality_separate_local_pooling/test_study.py": "358359baba3df61b52319ee6ae5e46f4cbcc022cbda6543324e2f6ee505cd7e6",
+    "study/paid_cardinality_separate_local_pooling/verify_study.py": "f1d9d8d7e1076e79389aba526d0588c1b7c356cefae4635da8a441dec5211ac0"
+  },
+  "dependency_sha256": {
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e"
+  },
+  "input_sha256": {
+    "reference_predictions": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "reference_result": "dc7ef6a096b02372df023edb35828ea5c0e70dfb9e6cc676be3fba003c0eba3e",
+    "curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "base_predictions": "ee1c49d97e8628a70f684ccca6c63667d2a598c47e5a10834df85ed6ed6699d9",
+    "best_predictions": "8eb223b828db047fbfd9c6515a139abd13bc97e8b8b0a169802eab9bf54170fb",
+    "reference_inner_0": "a51fb11079e5bcddc1cd83dddfea83d4b7e4d801dc3559574af9edfa61100b1a",
+    "reference_plan_0": "49a2ecf19fbf9d388f3ecafd5d465c357227cb0fd8214a85966900face979a4a",
+    "reference_inner_1": "1638eb3d5e86f2d09c97aa4eb524100f3ddd5af3a06eebd8a5e649be504cf589",
+    "reference_plan_1": "27e261e7445f47a11dc24b7bd7038753c7f937be9dc44dd8cdf3d0c6b6530c1a",
+    "reference_inner_2": "181f0dfa290d4448906ac9716b77dd4ac8c1291f23477c9f21c78d65443f43f0",
+    "reference_plan_2": "46af3d43a338d7099f4317cc30308f889214f9e7b4a87b98381050ce54152993",
+    "reference_inner_3": "62842554431721c46d140147481f9a0d035fdc9674d2e45a9b3d7786d35e3698",
+    "reference_plan_3": "8ffae6e9e1a16fd36b19abade40ec7a65d76b2cf906ad325cfbee057c420de3b",
+    "reference_inner_4": "651a07bbb7796baceb482825c1e3a9366918adac7e5ef960241d31da3343f5db",
+    "reference_plan_4": "7023b25925012a3c350c6b13d6520ed2639cb4a9af121a571219fa888761f28d"
+  },
+  "must_beat_verified_development_best_mse": 0.001046968672525304,
+  "diagnostic_outer_outcomes_previously_inspected": true,
+  "synthetic_tests_passed": 6,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

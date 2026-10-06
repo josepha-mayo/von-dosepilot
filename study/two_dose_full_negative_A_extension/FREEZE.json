@@ -1,0 +1,46 @@
+{
+  "schema": "dosepilot.two_dose_full_negative_A_extension.freeze.v1",
+  "state": "FROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "frozen_utc": "2026-10-05T15:37:53.360886+00:00",
+  "family_id": "two_dose_full_negative_A_extension",
+  "cardinality_contract": {
+    "two_dose_heads": 8,
+    "three_dose_heads": 16,
+    "total_coordinates": 64
+  },
+  "A_lower_bounds": {
+    "two_dose": -1.0,
+    "three_dose": -0.9375,
+    "upper": 0.5
+  },
+  "source_sha256": {
+    "study/two_dose_full_negative_A_extension/PROPOSAL.json": "350048d46a58a65d0ea64e6d8f01ee7e0dfcb6fb4084ff7a37a982d1fb58aba3",
+    "study/two_dose_full_negative_A_extension/PROTOCOL.json": "ea05429f9f5507532f71982017d42f500ff98e88831b5f2d418a307865b1d5e3",
+    "study/two_dose_full_negative_A_extension/run_study.py": "f7742951204d4a9aea5c2ec5a081fa8992b984467ce7224ca07a3db14183cab3",
+    "study/two_dose_full_negative_A_extension/test_study.py": "1c39f370000aa39f029ed37abb80c50789c1eee909f550fe926b1236316ef5f2",
+    "study/two_dose_full_negative_A_extension/verify_study.py": "df79be4951c636fc3caf18d5366002ff141ecac1b9a1dd441584ce480c481362"
+  },
+  "input_sha256": {
+    "reference_predictions": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "reference_result": "dc7ef6a096b02372df023edb35828ea5c0e70dfb9e6cc676be3fba003c0eba3e",
+    "bagged_predictions": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd",
+    "ijbc_predictions": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716",
+    "best_predictions": "7018c91f3b8037d87860c9aec5fe04311197dd1673ec6d657d841a776d82e2a0",
+    "reference_inner_0": "a51fb11079e5bcddc1cd83dddfea83d4b7e4d801dc3559574af9edfa61100b1a",
+    "reference_plan_0": "49a2ecf19fbf9d388f3ecafd5d465c357227cb0fd8214a85966900face979a4a",
+    "reference_inner_1": "1638eb3d5e86f2d09c97aa4eb524100f3ddd5af3a06eebd8a5e649be504cf589",
+    "reference_plan_1": "27e261e7445f47a11dc24b7bd7038753c7f937be9dc44dd8cdf3d0c6b6530c1a",
+    "reference_inner_2": "181f0dfa290d4448906ac9716b77dd4ac8c1291f23477c9f21c78d65443f43f0",
+    "reference_plan_2": "46af3d43a338d7099f4317cc30308f889214f9e7b4a87b98381050ce54152993",
+    "reference_inner_3": "62842554431721c46d140147481f9a0d035fdc9674d2e45a9b3d7786d35e3698",
+    "reference_plan_3": "8ffae6e9e1a16fd36b19abade40ec7a65d76b2cf906ad325cfbee057c420de3b",
+    "reference_inner_4": "651a07bbb7796baceb482825c1e3a9366918adac7e5ef960241d31da3343f5db",
+    "reference_plan_4": "7023b25925012a3c350c6b13d6520ed2639cb4a9af121a571219fa888761f28d"
+  },
+  "must_beat_verified_development_best_mse": 0.0010545504435367403,
+  "diagnostic_outer_outcomes_previously_inspected": true,
+  "synthetic_tests_passed": 5,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

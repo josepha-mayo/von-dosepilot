@@ -1,0 +1,19 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"james_stein_orientation_contrast",
+  "family_fingerprint":"positive-part-james-stein-global-orientation-contrast-shrinkage-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"Targetwise EB reliabilities are noisy with only three inner folds. Treating the 24 cross-fitted target contrasts as one multivariate mean-estimation problem permits a lower-variance positive-part James-Stein shrinkage toward zero.",
+  "comparator_family_id":"eighth_prior_eb_contrast",
+  "must_beat_verified_development_best_mse":0.001056883368839387,
+  "component_rule":"Orientation A is the leave-one-whole-patient bagged geometry prediction. Orientation B starts from interpolated-jackknife geometry. No A/B prediction averaging is performed.",
+  "calibration_rule":"Within each outer-training partition use the authenticated three inner whole-patient bandwidth-0.7 OOF predictions at the already-selected spectral option. Compute the three targetwise contrast vectors c[k,:], their mean cbar and per-target variance-of-mean v. Let sigma2=mean(v), p=24, and a_JS=max(0,1-(p-2)*sigma2/sum_t cbar[t]^2). Define s=1/8+(7/8)*a_JS and apply q_B=q_B,interpolated_jackknife-0.5*s*cbar. The positive-part James-Stein factor is one scalar shared across all 24 targets in that outer partition. There is no strength grid, target/fold outer-outcome routing, or protected data.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average separately costed A/B losses; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

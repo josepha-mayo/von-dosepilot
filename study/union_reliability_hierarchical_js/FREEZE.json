@@ -1,0 +1,32 @@
+{
+  "schema": "dosepilot.union_reliability_hierarchical_js.freeze.v1",
+  "state": "FROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "frozen_utc": "2026-10-04T22:25:13.095188+00:00",
+  "family_id": "union_reliability_hierarchical_js",
+  "prior_scale": 0.125,
+  "source_sha256": {
+    "study/union_reliability_hierarchical_js/PROPOSAL.json": "0e922f9f8cb02f38a5b062fb35b66ad73fb8058fcdaea18414f7bc0d403dbcce",
+    "study/union_reliability_hierarchical_js/PROTOCOL.json": "85e19d72607a480eca5095c377238e9b7fa8adc7145ad7400c4a0db60c076041",
+    "study/union_reliability_hierarchical_js/run_study.py": "ce9cd0aa487418697f10f9702c12e39ee80272c487dbaec6f87b81d68f29825d",
+    "study/union_reliability_hierarchical_js/test_study.py": "a3e8cc249013793557bafb2d781a5f9fedaf6daba3a8a7779e65cef71fea968a",
+    "study/union_reliability_hierarchical_js/verify_study.py": "35cb8a9be4b60dde598edd617dfd1d8d4e4872da214b2a769cc42dc2e2f8bdfc"
+  },
+  "input_sha256": {
+    "reference_predictions": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "reference_result": "dc7ef6a096b02372df023edb35828ea5c0e70dfb9e6cc676be3fba003c0eba3e",
+    "bagged_predictions": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd",
+    "ijbc_predictions": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716",
+    "best_predictions": "21716b8c79ea6d9695d2ab0e77d3362618460d24c31dd3d4baa2c83aa888e172",
+    "reference_inner_0": "a51fb11079e5bcddc1cd83dddfea83d4b7e4d801dc3559574af9edfa61100b1a",
+    "reference_inner_1": "1638eb3d5e86f2d09c97aa4eb524100f3ddd5af3a06eebd8a5e649be504cf589",
+    "reference_inner_2": "181f0dfa290d4448906ac9716b77dd4ac8c1291f23477c9f21c78d65443f43f0",
+    "reference_inner_3": "62842554431721c46d140147481f9a0d035fdc9674d2e45a9b3d7786d35e3698",
+    "reference_inner_4": "651a07bbb7796baceb482825c1e3a9366918adac7e5ef960241d31da3343f5db"
+  },
+  "must_beat_verified_development_best_mse": 0.0010568218175959344,
+  "diagnostic_outer_outcomes_previously_inspected": true,
+  "synthetic_tests_passed": 4,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

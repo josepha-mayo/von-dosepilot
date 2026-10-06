@@ -1,0 +1,34 @@
+{
+  "schema": "dosepilot.half_jackknife_bias_corrected_theta.freeze.v1",
+  "state": "FROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "frozen_utc": "2026-10-05T08:46:06.785677+00:00",
+  "family_id": "half_jackknife_bias_corrected_theta",
+  "inner_folds": 3,
+  "jackknife_strength": 0.5,
+  "theta_formula": "2*theta_full-mean(theta_leave_one_inner_fold_out)",
+  "source_sha256": {
+    "study/half_jackknife_bias_corrected_theta/PROPOSAL.json": "56ba4389c4bb83712a4b68778218d0747f52a3d5251c2c463f043df7e93273e6",
+    "study/half_jackknife_bias_corrected_theta/PROTOCOL.json": "c6684a5a77628f43e5e570be6ba6d2eeca03f781b044f130f148c5bb06665aa1",
+    "study/half_jackknife_bias_corrected_theta/run_study.py": "897f10ed0d23029227945bf028e4f098b6042ce48f8cc1e7a0061d8513e85894",
+    "study/half_jackknife_bias_corrected_theta/test_study.py": "52e653e64f69ab79a5590f0a3b8ba514ef3f2c46d4d6149694ab060a64a9319a",
+    "study/half_jackknife_bias_corrected_theta/verify_study.py": "f3112661604dd44fb41768c4102591d98e4201d9f0e31c87fc3b655aa3f6e675"
+  },
+  "input_sha256": {
+    "reference_predictions": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "reference_result": "dc7ef6a096b02372df023edb35828ea5c0e70dfb9e6cc676be3fba003c0eba3e",
+    "bagged_predictions": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd",
+    "ijbc_predictions": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716",
+    "best_predictions": "1e86ca9ba0ce82392bae2c5b0602b4b10b8739b9d23493329f6dc3d3e91e3e45",
+    "reference_inner_0": "a51fb11079e5bcddc1cd83dddfea83d4b7e4d801dc3559574af9edfa61100b1a",
+    "reference_inner_1": "1638eb3d5e86f2d09c97aa4eb524100f3ddd5af3a06eebd8a5e649be504cf589",
+    "reference_inner_2": "181f0dfa290d4448906ac9716b77dd4ac8c1291f23477c9f21c78d65443f43f0",
+    "reference_inner_3": "62842554431721c46d140147481f9a0d035fdc9674d2e45a9b3d7786d35e3698",
+    "reference_inner_4": "651a07bbb7796baceb482825c1e3a9366918adac7e5ef960241d31da3343f5db"
+  },
+  "must_beat_verified_development_best_mse": 0.0010558971463282291,
+  "diagnostic_outer_outcomes_previously_inspected": true,
+  "synthetic_tests_passed": 4,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

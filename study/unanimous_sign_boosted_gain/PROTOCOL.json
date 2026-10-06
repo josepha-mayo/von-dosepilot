@@ -1,0 +1,19 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"unanimous_sign_boosted_gain",
+  "family_fingerprint":"half-plus-amplitude-jackknife-reliability-with-unanimous-local-gain-boost-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The bounded raw target gain and the jackknife-SNR stabilized gain are complementary. Reliability is variance-like, so sqrt(reliability) is an amplitude confidence. Separately, if every one of the three held inner folds independently has a local B-residual optimum above the no-extra-gain point g=1, the direction of extra correction is unanimous and can be fully trusted without consulting any outer-held outcome.",
+  "comparator_family_id":"half_raw_jackknife_gain_hedge",
+  "must_beat_verified_development_best_mse":0.001056168561198617,
+  "gain_rule":"For each outer partition compute patient-count-weighted amplitude theta, stable prior gain g0_j, bounded raw gain graw_j in [1,3], and K=3 bounded jackknife variance v_j exactly as in half_raw_jackknife_gain_hedge. Let delta_j=graw_j-g0_j and reliability r_j=delta_j^2/(delta_j^2+v_j), zero when numerator and denominator are both zero. Base raw weight alpha_j=0.5+0.5*sqrt(r_j). Also compute each held-fold local optimum glocal_k,j=-2*rB_k,j/theta_-k,j, defaulting to 1 when theta_-k,j is numerically zero. If glocal_k,j>1 for all three inner folds, set alpha_j=1; otherwise keep the base alpha_j. Final gain g_j=g0_j+alpha_j*(graw_j-g0_j). Apply qA=qA_loo_bagged and qB=qB_interpolated_jackknife-0.5*g_j*theta_j.",
+  "consensus_rule":"Only all-three-inner-fold positive local gain consensus can trigger full raw gain. Two-of-three is insufficient. This rule is fixed before canonical replay.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

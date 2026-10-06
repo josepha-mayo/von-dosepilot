@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "two_prior_common_gain_shrink",
+  "family_fingerprint": "hierarchical-theta-plus-two-prior-step-common-B-gain-shrink-v1",
+  "falsifiable_hypothesis": "A fixed two-PRIOR step shrink of the active raw B gain vector toward a fitting-only reliability-weighted common gain can reduce mean error while preserving the current five-fold and tail gates.",
+  "protocol_path": "study/two_prior_common_gain_shrink/PROTOCOL.json",
+  "comparator_family_id": "hierarchical_impact_common_bias_theta",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average separately costed A/B losses; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "3d94bce034b3a279f03af5ced41c4c2ebf4c5924f1319f1f114c97c528515e7b"
+}

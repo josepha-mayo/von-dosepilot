@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "shared_prior_margin_dual_gain",
+  "family_fingerprint": "shared-one-minus-prior-B-floor-and-negative-A-bound-v1",
+  "falsifiable_hypothesis": "Using the same frozen one-minus-PRIOR margin, 1-PRIOR=0.875, as the B-side deployed gain floor and the magnitude of the negative A-side auxiliary gain bound can improve the verified development best while preserving all five-fold and tail gates.",
+  "protocol_path": "study/shared_prior_margin_dual_gain/PROTOCOL.json",
+  "comparator_family_id": "asymmetric_prior_extended_A_gain",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across separately costed A/B orientations; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "1e8a883b0009c0969cc27e891c3c36cfb0d8a1816f262755a9853e3481e57e18"
+}

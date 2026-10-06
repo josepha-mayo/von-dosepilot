@@ -1,0 +1,20 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"reliability_counted_common_gain_shrink",
+  "family_fingerprint":"signal-energy-theta-plus-two-anchor-mean-reliability-common-gain-shrink-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The active raw B gain vector is estimated targetwise but already has a fitting-only jackknife reliability r_g in [0,1]. The common-gain shrink can therefore be interpreted as pooling against two fixed anchors plus one fractional unit of target-specific evidence. Using s=1/(2+mean_j r_g,j) yields stronger common shrink when target gains are collectively uncertain and weaker shrink when they are reliable, with no tunable scale.",
+  "comparator_family_id":"signal_energy_weighted_median_theta",
+  "must_beat_verified_development_best_mse":0.0010546344069741333,
+  "gain_rule":"Reproduce signal_energy_weighted_median_theta through raw/fallback B gain g_raw, prior gain g0, target gain reliability r_g and use_raw. If use_raw is false, preserve the existing fallback gain exactly. If use_raw is true, define delta_j=g_raw,j-g0,j and mu_g=sum_j r_g,j*delta_j/sum_j r_g,j, with mu_g=0 only if all target reliabilities are zero. Set g_common,j=clip(g0,j+mu_g,[0.875,3]). Let rbar=(1/24)sum_j r_g,j and s=1/(2+rbar). Deploy gB=(1-s)g_raw+s*g_common. Thus s is automatically bounded in [1/3,1/2] and is determined only from fitting data.",
+  "theta_rule":"Reproduce signal_energy_weighted_median_theta exactly after constructing deployed gB. Compute theta bias reliability r_theta; A uses the frozen [-0.9375,+0.5] gain policy and thetaA=theta_full+(1+r_theta)*bias. For B form correction-energy weights w_j=gB_j^2*theta_full,j^2*r_theta,j, take their tuning-free weighted median of theta bias as mu_B, and deploy thetaB=theta_full+bias+mu_B+r_theta*(bias-mu_B).",
+  "strength_rationale":"The denominator contains two fixed pooling anchors plus the mean fitting-only reliability as an effective fractional unit of target-specific evidence. No strength menu, outer-held routing, target routing, rescue rule or post-result clipping exists in canonical replay.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

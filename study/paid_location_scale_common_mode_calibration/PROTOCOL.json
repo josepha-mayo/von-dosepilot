@@ -1,0 +1,22 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"paid_location_scale_common_mode_calibration",
+  "family_fingerprint":"orientation-B-paid-mean-std-max-affine-common-residual-calibration-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The paid-max calibrator established that a sample-level statistic of the 64 already-purchased B readings can recover a substantial common residual. A single three-dimensional location-scale summary of those same readings should be more informative without becoming target-specific: mean captures overall level, standard deviation captures response spread, and maximum captures the upper viability envelope.",
+  "comparator_family_id":"paid_max_common_mode_calibration",
+  "must_beat_verified_development_best_mse":0.00104997801532859,
+  "base_prediction_rule":"Candidate construction starts from the verified two_dose_full_negative_A_extension predictions, exactly as the paid-max family does. paid_max_common_mode_calibration is used only as the comparator. This avoids stacking the new calibration on top of the previous max calibration.",
+  "feature_rule":"Within each outer-training partition use the authenticated three inner whole-patient folds from the bandwidth-0.7 replay. For each inner fold recompute the deterministic 64-well plan using only the other two inner folds, acquire orientation-B values for held inner rows, and form exactly three features over those 64 paid normalized viability readings: arithmetic mean, population standard deviation, and maximum. For outer test rows use the authenticated saved outer plan and the same three features. No A values, unpurchased values, protected data, or additional wells enter the feature vector.",
+  "calibration_rule":"Let r_i be the scalar common residual mean over 24 targets of y_i minus the selected bandwidth-0.7 inner OOF B prediction. Give each whole patient equal total weight. Let F_i be the three-feature vector. Fit one weighted affine model r_i=a+(F_i-mu)^T beta, where mu and a are patient-balanced weighted means and beta is the Moore-Penrose solution of the 3x3 weighted feature covariance system with rcond=1e-12. No penalty, hyperparameter, clipping, target-specific coefficient, or post-result rescaling is used.",
+  "prediction_rule":"Orientation A is copied exactly from two_dose_full_negative_A_extension. Orientation B equals that same verified pre-calibration B predictor plus the fitted scalar correction broadcast identically to all 24 targets. The physical 64/32 assay, target-specific gain/theta rules, and every existing measurement identity remain unchanged.",
+  "regularization_rationale":"Only four common-mode coefficients are fit per outer training partition: one intercept and three slopes. The feature basis is fixed semantically as location, dispersion, and upper envelope before canonical replay. This family remains repeated adaptive development because prior outer outcomes were inspected.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

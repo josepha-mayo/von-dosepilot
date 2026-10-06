@@ -1,0 +1,43 @@
+{
+  "schema": "dosepilot.paid_max_common_mode_calibration.freeze.v1",
+  "state": "FROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "frozen_utc": "2026-10-05T16:30:45.072037+00:00",
+  "family_id": "paid_max_common_mode_calibration",
+  "feature": "orientation-B maximum across the 64 already-purchased normalized viability readings",
+  "calibration": "patient-balanced affine common residual",
+  "source_sha256": {
+    "study/paid_max_common_mode_calibration/PROPOSAL.json": "bb12e0d7e57afb639c2650f0a2704ba1ee5b221fd6a228dbd25a5c5aca5a3e98",
+    "study/paid_max_common_mode_calibration/PROTOCOL.json": "03dac20de52b2835683bdb1d8626e1afb18f7a686365b1ddd272b2b45a798557",
+    "study/paid_max_common_mode_calibration/run_study.py": "48319e419b020cf2307700fb9a16ba0521568980da90b476a16eaffdeef1671e",
+    "study/paid_max_common_mode_calibration/test_study.py": "be9682ef0e3f8b3b9bbcda2cda87be235664399abd418af636ec5b1b8b525553",
+    "study/paid_max_common_mode_calibration/verify_study.py": "adb632ccb406cde3b23f9ef9544017e5cf8c8ebeaaf6459217d7ef73a6d3a3df"
+  },
+  "dependency_sha256": {
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e"
+  },
+  "input_sha256": {
+    "reference_predictions": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "reference_result": "dc7ef6a096b02372df023edb35828ea5c0e70dfb9e6cc676be3fba003c0eba3e",
+    "curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "best_predictions": "ee1c49d97e8628a70f684ccca6c63667d2a598c47e5a10834df85ed6ed6699d9",
+    "reference_inner_0": "a51fb11079e5bcddc1cd83dddfea83d4b7e4d801dc3559574af9edfa61100b1a",
+    "reference_plan_0": "49a2ecf19fbf9d388f3ecafd5d465c357227cb0fd8214a85966900face979a4a",
+    "reference_inner_1": "1638eb3d5e86f2d09c97aa4eb524100f3ddd5af3a06eebd8a5e649be504cf589",
+    "reference_plan_1": "27e261e7445f47a11dc24b7bd7038753c7f937be9dc44dd8cdf3d0c6b6530c1a",
+    "reference_inner_2": "181f0dfa290d4448906ac9716b77dd4ac8c1291f23477c9f21c78d65443f43f0",
+    "reference_plan_2": "46af3d43a338d7099f4317cc30308f889214f9e7b4a87b98381050ce54152993",
+    "reference_inner_3": "62842554431721c46d140147481f9a0d035fdc9674d2e45a9b3d7786d35e3698",
+    "reference_plan_3": "8ffae6e9e1a16fd36b19abade40ec7a65d76b2cf906ad325cfbee057c420de3b",
+    "reference_inner_4": "651a07bbb7796baceb482825c1e3a9366918adac7e5ef960241d31da3343f5db",
+    "reference_plan_4": "7023b25925012a3c350c6b13d6520ed2639cb4a9af121a571219fa888761f28d"
+  },
+  "must_beat_verified_development_best_mse": 0.0010545312547735701,
+  "diagnostic_outer_outcomes_previously_inspected": true,
+  "synthetic_tests_passed": 5,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

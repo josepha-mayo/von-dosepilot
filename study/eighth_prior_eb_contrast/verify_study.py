@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+import argparse,json,hashlib,sys
+from pathlib import Path
+import numpy as np
+HERE=Path(__file__).resolve().parent;sys.path.insert(0,str(HERE));import run_study as rs
+def sha(p):
+ with Path(p).open("rb") as f:return hashlib.file_digest(f,"sha256").hexdigest()
+def main():
+ ap=argparse.ArgumentParser();ap.add_argument("--run",type=Path,required=True);ap.add_argument("--reference-dir",type=Path,required=True);a=ap.parse_args()
+ r=json.loads((a.run/"RESULT.json").read_text(encoding="utf-8"));oz=np.load(a.run/"predictions_private.npz",allow_pickle=False)
+ rr=json.loads((a.reference_dir/"RESULT.json").read_text(encoding="utf-8"));folds=oz["folds"];cand=np.empty_like(oz["candidate"]);checks=0
+ for f in range(5):
+  z=np.load(a.reference_dir/f"outer_{f:02}"/"inner_predictions_private.npz",allow_pickle=False)
+  oi=rs.option_index(rr["selections"][f]["selected"]["bandwidth07"]);pred=z["bandwidth07"][oi]
+  _,cbar,v,tau2,alpha,scale=rs.calibrator(pred,z["y"],z["patients"].astype(str),z["folds"])
+  rec=r["fold_records"][f]
+  if abs(tau2-rec["tau2"])>1e-18 or np.max(np.abs(scale-np.asarray(rec["scale"])))>1e-15:raise ValueError("CALIBRATOR")
+  te=np.flatnonzero(folds==f);cand[0,te]=oz["bagged"][0,te];cand[1,te]=oz["interpolated_jackknife"][1,te]-0.5*scale[None,:]*cbar[None,:];checks+=1
+ if not np.array_equal(cand,oz["candidate"]):raise ValueError("RECONSTRUCTION")
+ m=rs.metrics(cand,oz["y"],oz["patients"].astype(str),folds)
+ if abs(m["mse"]-r["candidate"]["mse"])>1e-15:raise ValueError("MSE")
+ if sha(a.run/"predictions_private.npz")!=r["prediction_sha256"]:raise ValueError("HASH")
+ out={"status":"PASS","fit_routine_called":False,"candidate_predictions_reconstructed":int(cand.size),"max_prediction_difference":0.0,"candidate_mse":m["mse"],"calibration_folds_checked":checks,"prediction_sha256":r["prediction_sha256"],"protected22_access":False}
+ (a.run/"VERIFICATION.json").write_text(json.dumps(out,indent=2)+"\n",encoding="utf-8");print(json.dumps(out,indent=2))
+if __name__=="__main__":main()

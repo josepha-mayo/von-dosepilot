@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "paid_max_common_mode_calibration",
+  "family_fingerprint": "orientation-B-paid-max-affine-common-residual-calibration-v1",
+  "falsifiable_hypothesis": "A single patient-balanced affine calibration from the maximum already-purchased orientation-B viability to the common 24-target OOF residual can capture sample-level response scale left unresolved by the current predictor, lowering full24 development MSE without changing the 64-well assay.",
+  "protocol_path": "study/paid_max_common_mode_calibration/PROTOCOL.json",
+  "comparator_family_id": "two_dose_full_negative_A_extension",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average separately costed A/B losses; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "03dac20de52b2835683bdb1d8626e1afb18f7a686365b1ddd272b2b45a798557"
+}

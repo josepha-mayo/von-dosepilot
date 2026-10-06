@@ -1,0 +1,1526 @@
+{
+  "schema": "dosepilot.current_successor_source_closure.v1",
+  "as_of_utc": "2026-10-06T10:50:00Z",
+  "role": "RESPONSE_FREE_SOURCE_PROVENANCE_CLOSURE_NOT_NUMERICAL_REPLAY",
+  "current_stage": "orientation_specific_control_quality_rank1",
+  "current_development_mse": 0.001042745722096212,
+  "current_prediction_sha256": "ab7bd69e97fc0295a9f4066be0396d82d628bba5b69302bb9670f31561e6df12",
+  "public_bandwidth_reference_prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+  "stage_count": 49,
+  "prediction_edge_count": 172,
+  "source_files_checked": 251,
+  "missing_source_stages": [],
+  "unmapped_prediction_hashes": [],
+  "all_source_hashes_match": true,
+  "stages": [
+    {
+      "stage": "amplitude_target_global_hierarchical_js",
+      "freeze_schema": "dosepilot.amplitude_target_global_hierarchical_js.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "asymmetric_prior_extended_A_gain",
+      "freeze_schema": "dosepilot.asymmetric_prior_extended_A_gain.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "bounded_reliable_A_gain",
+      "freeze_schema": "dosepilot.bounded_reliable_A_gain.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "confidence_amplified_hierarchical_js",
+      "freeze_schema": "dosepilot.confidence_amplified_hierarchical_js.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "control_rank1_target_deviation",
+      "freeze_schema": "dosepilot.control_rank1_target_deviation.freeze.v1",
+      "source_files": 6,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "eb_orientation_contrast_hedge",
+      "freeze_schema": "dosepilot.eb_orientation_contrast_hedge.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "eighth_prior_eb_contrast",
+      "freeze_schema": "dosepilot.eighth_prior_eb_contrast.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "global_js_raw_gain_switch",
+      "freeze_schema": "dosepilot.global_js_raw_gain_switch.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "half_jackknife_bias_corrected_theta",
+      "freeze_schema": "dosepilot.half_jackknife_bias_corrected_theta.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "half_jackknife_raw_blend",
+      "freeze_schema": "dosepilot.half_jackknife_raw_blend.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "half_prior_negative_A_extension",
+      "freeze_schema": "dosepilot.half_prior_negative_A_extension.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "half_raw_jackknife_gain_hedge",
+      "freeze_schema": "dosepilot.half_raw_jackknife_gain_hedge.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "half_safe_target_cv_gain_hedge",
+      "freeze_schema": "dosepilot.half_safe_target_cv_gain_hedge.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "hierarchical_impact_common_bias_theta",
+      "freeze_schema": "dosepilot.hierarchical_impact_common_bias_theta.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "impact_reliable_common_bias_theta",
+      "freeze_schema": "dosepilot.impact_reliable_common_bias_theta.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "interpolated_jackknife_geometry",
+      "freeze_schema": "dosepilot.interpolated_jackknife_geometry.freeze.v1",
+      "source_files": 6,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "james_stein_orientation_contrast",
+      "freeze_schema": "dosepilot.james_stein_orientation_contrast.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "loo_bagged_geometry",
+      "freeze_schema": "dosepilot.loo_bagged_geometry.freeze.v1",
+      "source_files": 6,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "majority_confirmed_A_gain",
+      "freeze_schema": "dosepilot.majority_confirmed_A_gain.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "octant_hierarchical_js_hedge",
+      "freeze_schema": "dosepilot.octant_hierarchical_js_hedge.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "orientation_A_auxiliary_rank1_calibration",
+      "freeze_schema": "dosepilot.orientation_A_auxiliary_rank1_calibration.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "orientation_eighth_contrast_hedge",
+      "freeze_schema": "dosepilot.orientation_eighth_contrast_hedge.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "orientation_ordered_jackknife_theta",
+      "freeze_schema": "dosepilot.orientation_ordered_jackknife_theta.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "orientation_specific_control_quality_rank1",
+      "freeze_schema": "dosepilot.orientation_specific_control_quality_rank1.freeze.v1",
+      "source_files": 6,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "paid_cardinality_separate_local_pooling",
+      "freeze_schema": "dosepilot.paid_cardinality_separate_local_pooling.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "paid_extrema_cardinality_equalblend_calibration",
+      "freeze_schema": "dosepilot.paid_extrema_cardinality_equalblend_calibration.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "paid_location_scale_common_mode_calibration",
+      "freeze_schema": "dosepilot.paid_location_scale_common_mode_calibration.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "paid_max_common_mode_calibration",
+      "freeze_schema": "dosepilot.paid_max_common_mode_calibration.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "patient_weighted_target_union_confidence_js",
+      "freeze_schema": "dosepilot.patient_weighted_target_union_confidence_js.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "patient_weighted_union_confidence_js",
+      "freeze_schema": "dosepilot.patient_weighted_union_confidence_js.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "primary_common_mode_jackknife_theta",
+      "freeze_schema": "dosepilot.primary_common_mode_jackknife_theta.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "prior_floor_halfvote_dual_gain",
+      "freeze_schema": "dosepilot.prior_floor_halfvote_dual_gain.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "reliability_counted_common_gain_shrink",
+      "freeze_schema": "dosepilot.reliability_counted_common_gain_shrink.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "reliability_weighted_hierarchical_js",
+      "freeze_schema": "dosepilot.reliability_weighted_hierarchical_js.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "saturating_additive_reliability_js",
+      "freeze_schema": "dosepilot.saturating_additive_reliability_js.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "shared_prior_margin_dual_gain",
+      "freeze_schema": "dosepilot.shared_prior_margin_dual_gain.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "signal_energy_weighted_median_theta",
+      "freeze_schema": "dosepilot.signal_energy_weighted_median_theta.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "standard_control_meanquad_plate_interaction_v2",
+      "freeze_schema": "dosepilot.standard_control_meanquad_plate_interaction_v2.freeze.v1",
+      "source_files": 6,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "standard_control_range_calibration",
+      "freeze_schema": "dosepilot.standard_control_range_calibration.freeze.v1",
+      "source_files": 6,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "target_reliable_jackknife_theta",
+      "freeze_schema": "dosepilot.target_reliable_jackknife_theta.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "targetwise_union_hierarchical_js",
+      "freeze_schema": "dosepilot.targetwise_union_hierarchical_js.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "threefold_common_gain_shrink",
+      "freeze_schema": "dosepilot.threefold_common_gain_shrink.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "threefold_confirmed_A_gain",
+      "freeze_schema": "dosepilot.threefold_confirmed_A_gain.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "two_dose_full_negative_A_extension",
+      "freeze_schema": "dosepilot.two_dose_full_negative_A_extension.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "two_dose_second_pooling_gain",
+      "freeze_schema": "dosepilot.two_dose_second_pooling_gain.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "two_prior_common_gain_shrink",
+      "freeze_schema": "dosepilot.two_prior_common_gain_shrink.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "unanimous_sign_boosted_gain",
+      "freeze_schema": "dosepilot.unanimous_sign_boosted_gain.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "union_reliability_hierarchical_js",
+      "freeze_schema": "dosepilot.union_reliability_hierarchical_js.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    },
+    {
+      "stage": "weighted_median_common_bias_theta",
+      "freeze_schema": "dosepilot.weighted_median_common_bias_theta.freeze.v1",
+      "source_files": 5,
+      "source_hashes_match": true
+    }
+  ],
+  "prediction_edges": [
+    {
+      "consumer": "amplitude_target_global_hierarchical_js",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "amplitude_target_global_hierarchical_js",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "targetwise_union_hierarchical_js",
+      "prediction_sha256": "3e95764ef2446b4a9a492f72bf481e777b40fa70e0e46176a982cd5e58939792"
+    },
+    {
+      "consumer": "amplitude_target_global_hierarchical_js",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "amplitude_target_global_hierarchical_js",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "asymmetric_prior_extended_A_gain",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "asymmetric_prior_extended_A_gain",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "prior_floor_halfvote_dual_gain",
+      "prediction_sha256": "6412fb16186b0e799511f42c9eaae0cce0b44a739f920a2dc9a26b54e5760c49"
+    },
+    {
+      "consumer": "asymmetric_prior_extended_A_gain",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "asymmetric_prior_extended_A_gain",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "bounded_reliable_A_gain",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "bounded_reliable_A_gain",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "global_js_raw_gain_switch",
+      "prediction_sha256": "3ae38a183a0a5e653e761d73a4ad717d715f17938002dfee6bfb6c64465c7ff1"
+    },
+    {
+      "consumer": "bounded_reliable_A_gain",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "bounded_reliable_A_gain",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "confidence_amplified_hierarchical_js",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "confidence_amplified_hierarchical_js",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "amplitude_target_global_hierarchical_js",
+      "prediction_sha256": "31603101f7bbd55e720a4698e126df7698ec1e87d6f32760f305ca292953fb60"
+    },
+    {
+      "consumer": "confidence_amplified_hierarchical_js",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "confidence_amplified_hierarchical_js",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "control_rank1_target_deviation",
+      "input_key": "base_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "two_dose_full_negative_A_extension",
+      "prediction_sha256": "ee1c49d97e8628a70f684ccca6c63667d2a598c47e5a10834df85ed6ed6699d9"
+    },
+    {
+      "consumer": "control_rank1_target_deviation",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "standard_control_meanquad_plate_interaction_v2",
+      "prediction_sha256": "df1fc9812dc6e04180d35f1e02fe772086419ad52408fa732fba2cb624aa7d16"
+    },
+    {
+      "consumer": "control_rank1_target_deviation",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "eb_orientation_contrast_hedge",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "eb_orientation_contrast_hedge",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "orientation_eighth_contrast_hedge",
+      "prediction_sha256": "781fa6e10fa3f7bae9148b5727cbaf77b3e53d43abf593e871fa7abfa984cd9b"
+    },
+    {
+      "consumer": "eb_orientation_contrast_hedge",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "eb_orientation_contrast_hedge",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "eighth_prior_eb_contrast",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "eighth_prior_eb_contrast",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "eb_orientation_contrast_hedge",
+      "prediction_sha256": "78b7161721de24f81e81cfe2a9f6a04d083c467cf67e75560b3e8c660f32ba6c"
+    },
+    {
+      "consumer": "eighth_prior_eb_contrast",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "eighth_prior_eb_contrast",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "global_js_raw_gain_switch",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "global_js_raw_gain_switch",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "unanimous_sign_boosted_gain",
+      "prediction_sha256": "81f1565ec8aefd353f58be3fe4827c6b7c3b3b9fc793c284df5e71265ce11b79"
+    },
+    {
+      "consumer": "global_js_raw_gain_switch",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "global_js_raw_gain_switch",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "half_jackknife_bias_corrected_theta",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "half_jackknife_bias_corrected_theta",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "shared_prior_margin_dual_gain",
+      "prediction_sha256": "1e86ca9ba0ce82392bae2c5b0602b4b10b8739b9d23493329f6dc3d3e91e3e45"
+    },
+    {
+      "consumer": "half_jackknife_bias_corrected_theta",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "half_jackknife_bias_corrected_theta",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "half_prior_negative_A_extension",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "half_prior_negative_A_extension",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "threefold_common_gain_shrink",
+      "prediction_sha256": "9e4d08f2c72a235cb2fa907ce8026704eb1cc80e10b37df45fe33655a3bd3337"
+    },
+    {
+      "consumer": "half_prior_negative_A_extension",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "half_prior_negative_A_extension",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "half_raw_jackknife_gain_hedge",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "half_raw_jackknife_gain_hedge",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "half_safe_target_cv_gain_hedge",
+      "prediction_sha256": "14f02ed3be7c3655a409433919c6bd0d45064c6c17b3253943c546aa28453838"
+    },
+    {
+      "consumer": "half_raw_jackknife_gain_hedge",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "half_raw_jackknife_gain_hedge",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "half_safe_target_cv_gain_hedge",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "half_safe_target_cv_gain_hedge",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "half_safe_target_cv_gain_hedge",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "half_safe_target_cv_gain_hedge",
+      "input_key": "safe_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "patient_weighted_target_union_confidence_js",
+      "prediction_sha256": "18bb05f835bb64c59fc62c98217438e895f1cbcc84ca63b6ea5112c2485b7395"
+    },
+    {
+      "consumer": "hierarchical_impact_common_bias_theta",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "hierarchical_impact_common_bias_theta",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "impact_reliable_common_bias_theta",
+      "prediction_sha256": "4df4497725a70c84632919c14bcafae96c02020f0d1791e926b6892041072bd8"
+    },
+    {
+      "consumer": "hierarchical_impact_common_bias_theta",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "hierarchical_impact_common_bias_theta",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "impact_reliable_common_bias_theta",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "impact_reliable_common_bias_theta",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "primary_common_mode_jackknife_theta",
+      "prediction_sha256": "3da1e6537a078d2eb0cc0559eac62819afae0005d585ece161503b5df4ce79da"
+    },
+    {
+      "consumer": "impact_reliable_common_bias_theta",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "impact_reliable_common_bias_theta",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "interpolated_jackknife_geometry",
+      "input_key": "reference_predictions_sha256",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "interpolated_jackknife_geometry",
+      "input_key": "verified_best_predictions_sha256",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "half_jackknife_raw_blend",
+      "prediction_sha256": "41415b39178831458311cd83e283c4b379587ba0ab653564597d13638b51bac8"
+    },
+    {
+      "consumer": "james_stein_orientation_contrast",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "james_stein_orientation_contrast",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "eighth_prior_eb_contrast",
+      "prediction_sha256": "3874f3d1a0a2b56a01ce929c81e6da1d32b71d4ae10d6a60ded945965f451d08"
+    },
+    {
+      "consumer": "james_stein_orientation_contrast",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "james_stein_orientation_contrast",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "loo_bagged_geometry",
+      "input_key": "reference_predictions_sha256",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "loo_bagged_geometry",
+      "input_key": "verified_best_predictions_sha256",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "half_jackknife_raw_blend",
+      "prediction_sha256": "41415b39178831458311cd83e283c4b379587ba0ab653564597d13638b51bac8"
+    },
+    {
+      "consumer": "majority_confirmed_A_gain",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "majority_confirmed_A_gain",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "threefold_confirmed_A_gain",
+      "prediction_sha256": "e35708214c9b5d59fb10bf23a0bf506fbcf09b9c8ffe353771537f2ec3dcebf8"
+    },
+    {
+      "consumer": "majority_confirmed_A_gain",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "majority_confirmed_A_gain",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "octant_hierarchical_js_hedge",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "octant_hierarchical_js_hedge",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "james_stein_orientation_contrast",
+      "prediction_sha256": "ed30c505d355531e7fd5e4ff7b58f9a668c6c0b76ce29adbf17b3e5b2407fd5e"
+    },
+    {
+      "consumer": "octant_hierarchical_js_hedge",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "octant_hierarchical_js_hedge",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "orientation_A_auxiliary_rank1_calibration",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "control_rank1_target_deviation",
+      "prediction_sha256": "df52f015062fd6b0718f1c2d8c1312feaeadf09623e4d45cec5ac9240535b970"
+    },
+    {
+      "consumer": "orientation_A_auxiliary_rank1_calibration",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "orientation_ordered_jackknife_theta",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "orientation_ordered_jackknife_theta",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "target_reliable_jackknife_theta",
+      "prediction_sha256": "4f572eebc3ca23ce01137a714b28b3d452390a37429dab2dd6dd4c24c0b012ae"
+    },
+    {
+      "consumer": "orientation_ordered_jackknife_theta",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "orientation_ordered_jackknife_theta",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "orientation_specific_control_quality_rank1",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "orientation_A_auxiliary_rank1_calibration",
+      "prediction_sha256": "7377edc82840c8e57a517c79c7b666d9c7b4b47851c26f8ffbf9fa17c83912f3"
+    },
+    {
+      "consumer": "orientation_specific_control_quality_rank1",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "paid_cardinality_separate_local_pooling",
+      "input_key": "base_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "two_dose_full_negative_A_extension",
+      "prediction_sha256": "ee1c49d97e8628a70f684ccca6c63667d2a598c47e5a10834df85ed6ed6699d9"
+    },
+    {
+      "consumer": "paid_cardinality_separate_local_pooling",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "paid_extrema_cardinality_equalblend_calibration",
+      "prediction_sha256": "8eb223b828db047fbfd9c6515a139abd13bc97e8b8b0a169802eab9bf54170fb"
+    },
+    {
+      "consumer": "paid_cardinality_separate_local_pooling",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "paid_extrema_cardinality_equalblend_calibration",
+      "input_key": "base_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "two_dose_full_negative_A_extension",
+      "prediction_sha256": "ee1c49d97e8628a70f684ccca6c63667d2a598c47e5a10834df85ed6ed6699d9"
+    },
+    {
+      "consumer": "paid_extrema_cardinality_equalblend_calibration",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "paid_location_scale_common_mode_calibration",
+      "prediction_sha256": "77d99254e84e83611fcdcf94768c283bf082b501e0258e0389b81a43234633b9"
+    },
+    {
+      "consumer": "paid_extrema_cardinality_equalblend_calibration",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "paid_location_scale_common_mode_calibration",
+      "input_key": "base_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "two_dose_full_negative_A_extension",
+      "prediction_sha256": "ee1c49d97e8628a70f684ccca6c63667d2a598c47e5a10834df85ed6ed6699d9"
+    },
+    {
+      "consumer": "paid_location_scale_common_mode_calibration",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "paid_max_common_mode_calibration",
+      "prediction_sha256": "44fc55e75582d2c41fba0c054314021bf0eff219f86c9b95c469f179646d437b"
+    },
+    {
+      "consumer": "paid_location_scale_common_mode_calibration",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "paid_max_common_mode_calibration",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "two_dose_full_negative_A_extension",
+      "prediction_sha256": "ee1c49d97e8628a70f684ccca6c63667d2a598c47e5a10834df85ed6ed6699d9"
+    },
+    {
+      "consumer": "paid_max_common_mode_calibration",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "patient_weighted_target_union_confidence_js",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "patient_weighted_target_union_confidence_js",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "patient_weighted_union_confidence_js",
+      "prediction_sha256": "9acb841920498d1527485334b7f524884083a767add18b88bd2fc7e42b8d4992"
+    },
+    {
+      "consumer": "patient_weighted_target_union_confidence_js",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "patient_weighted_target_union_confidence_js",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "patient_weighted_union_confidence_js",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "patient_weighted_union_confidence_js",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "confidence_amplified_hierarchical_js",
+      "prediction_sha256": "3a2dd177149587ae1ee33e141831d969a2025c2f47ca721331c4ed03397a9dec"
+    },
+    {
+      "consumer": "patient_weighted_union_confidence_js",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "patient_weighted_union_confidence_js",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "primary_common_mode_jackknife_theta",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "primary_common_mode_jackknife_theta",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "orientation_ordered_jackknife_theta",
+      "prediction_sha256": "e21a0892e8a5f4d9c45596c0e7accb05f41bc80be4276bf6ef5fab6f165255ed"
+    },
+    {
+      "consumer": "primary_common_mode_jackknife_theta",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "primary_common_mode_jackknife_theta",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "prior_floor_halfvote_dual_gain",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "prior_floor_halfvote_dual_gain",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "majority_confirmed_A_gain",
+      "prediction_sha256": "c451981f37ef86b02af596e5afbfd1c2b0a8b8890362eee80eed93d4ec25b4e0"
+    },
+    {
+      "consumer": "prior_floor_halfvote_dual_gain",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "prior_floor_halfvote_dual_gain",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "reliability_counted_common_gain_shrink",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "reliability_counted_common_gain_shrink",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "signal_energy_weighted_median_theta",
+      "prediction_sha256": "87a0ec5de4d09b55d655062a7f9203422c5c19e0a91d19cd7902184d0ef669a3"
+    },
+    {
+      "consumer": "reliability_counted_common_gain_shrink",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "reliability_counted_common_gain_shrink",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "reliability_weighted_hierarchical_js",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "reliability_weighted_hierarchical_js",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "octant_hierarchical_js_hedge",
+      "prediction_sha256": "0574e02df44668436b600d1f97265cb1d7ba1d22a21474d6de5545f99e0a7c41"
+    },
+    {
+      "consumer": "reliability_weighted_hierarchical_js",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "reliability_weighted_hierarchical_js",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "saturating_additive_reliability_js",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "saturating_additive_reliability_js",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "union_reliability_hierarchical_js",
+      "prediction_sha256": "26d829893b0065278150ba0cbfb3ea7212d1312735d970fc777a6efd1572fba1"
+    },
+    {
+      "consumer": "saturating_additive_reliability_js",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "saturating_additive_reliability_js",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "shared_prior_margin_dual_gain",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "shared_prior_margin_dual_gain",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "asymmetric_prior_extended_A_gain",
+      "prediction_sha256": "621acab0b689b6689d4eb43a3b7ca17943766918f548a47f81a8b0f0b655885d"
+    },
+    {
+      "consumer": "shared_prior_margin_dual_gain",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "shared_prior_margin_dual_gain",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "signal_energy_weighted_median_theta",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "signal_energy_weighted_median_theta",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "half_prior_negative_A_extension",
+      "prediction_sha256": "c1262ede44045827835f725146fefaec6efa0364812c621efb6c329b3cef7f0e"
+    },
+    {
+      "consumer": "signal_energy_weighted_median_theta",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "signal_energy_weighted_median_theta",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "standard_control_meanquad_plate_interaction_v2",
+      "input_key": "base_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "two_dose_full_negative_A_extension",
+      "prediction_sha256": "ee1c49d97e8628a70f684ccca6c63667d2a598c47e5a10834df85ed6ed6699d9"
+    },
+    {
+      "consumer": "standard_control_meanquad_plate_interaction_v2",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "standard_control_range_calibration",
+      "prediction_sha256": "c80505291a588e803030dc6646676748a7bafb288dd90e08ccbe4802970e9dcb"
+    },
+    {
+      "consumer": "standard_control_meanquad_plate_interaction_v2",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "standard_control_range_calibration",
+      "input_key": "base_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "two_dose_full_negative_A_extension",
+      "prediction_sha256": "ee1c49d97e8628a70f684ccca6c63667d2a598c47e5a10834df85ed6ed6699d9"
+    },
+    {
+      "consumer": "standard_control_range_calibration",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "paid_cardinality_separate_local_pooling",
+      "prediction_sha256": "1c8afd82f472732ccce8800ca290a57c8dfd4367f0dfd97f5e9b3c1c1661210c"
+    },
+    {
+      "consumer": "standard_control_range_calibration",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "target_reliable_jackknife_theta",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "target_reliable_jackknife_theta",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "half_jackknife_bias_corrected_theta",
+      "prediction_sha256": "0db1878f0019ab9e6545adcd527046aa03f2a1a2e00e60e3d5332eb6a0b524c0"
+    },
+    {
+      "consumer": "target_reliable_jackknife_theta",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "target_reliable_jackknife_theta",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "targetwise_union_hierarchical_js",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "targetwise_union_hierarchical_js",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "saturating_additive_reliability_js",
+      "prediction_sha256": "527680f603a29c4112fa94a633348d8e4a9a0c6e0a96374ad2d8b137b338ba52"
+    },
+    {
+      "consumer": "targetwise_union_hierarchical_js",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "targetwise_union_hierarchical_js",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "threefold_common_gain_shrink",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "threefold_common_gain_shrink",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "weighted_median_common_bias_theta",
+      "prediction_sha256": "98ce6ea220555c1a30de87f6ef03e5be6099a29c676ed2669ff9ec5cf2f24d50"
+    },
+    {
+      "consumer": "threefold_common_gain_shrink",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "threefold_common_gain_shrink",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "threefold_confirmed_A_gain",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "threefold_confirmed_A_gain",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "bounded_reliable_A_gain",
+      "prediction_sha256": "429b8f78a8272ea4dc6e90855773389a1011cfb7bb5e63e46fce8527ce087dcf"
+    },
+    {
+      "consumer": "threefold_confirmed_A_gain",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "threefold_confirmed_A_gain",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "two_dose_full_negative_A_extension",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "two_dose_full_negative_A_extension",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "two_dose_second_pooling_gain",
+      "prediction_sha256": "7018c91f3b8037d87860c9aec5fe04311197dd1673ec6d657d841a776d82e2a0"
+    },
+    {
+      "consumer": "two_dose_full_negative_A_extension",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "two_dose_full_negative_A_extension",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "two_dose_second_pooling_gain",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "two_dose_second_pooling_gain",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "reliability_counted_common_gain_shrink",
+      "prediction_sha256": "7578351f300558e97ce4018dbcbe1f51467aa8dfd02c07eb92290c6da1cba91b"
+    },
+    {
+      "consumer": "two_dose_second_pooling_gain",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "two_dose_second_pooling_gain",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "two_prior_common_gain_shrink",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "two_prior_common_gain_shrink",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "hierarchical_impact_common_bias_theta",
+      "prediction_sha256": "7aab632dab30d88bc5e2dbc046a9a2b60121359d4467019d9addab7a25fc7ec1"
+    },
+    {
+      "consumer": "two_prior_common_gain_shrink",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "two_prior_common_gain_shrink",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "unanimous_sign_boosted_gain",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "unanimous_sign_boosted_gain",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "half_raw_jackknife_gain_hedge",
+      "prediction_sha256": "6b136b237c6f92ba9da518e9a7e91f088063b4176db6e09d4fb1de46b0e03477"
+    },
+    {
+      "consumer": "unanimous_sign_boosted_gain",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "unanimous_sign_boosted_gain",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "union_reliability_hierarchical_js",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "union_reliability_hierarchical_js",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "reliability_weighted_hierarchical_js",
+      "prediction_sha256": "21716b8c79ea6d9695d2ab0e77d3362618460d24c31dd3d4baa2c83aa888e172"
+    },
+    {
+      "consumer": "union_reliability_hierarchical_js",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "union_reliability_hierarchical_js",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    },
+    {
+      "consumer": "weighted_median_common_bias_theta",
+      "input_key": "bagged_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "loo_bagged_geometry",
+      "prediction_sha256": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd"
+    },
+    {
+      "consumer": "weighted_median_common_bias_theta",
+      "input_key": "best_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "two_prior_common_gain_shrink",
+      "prediction_sha256": "b6a70ead7884e666c9dcfa8313bfe02e493d83d5adec0918eca25cd1eab147d3"
+    },
+    {
+      "consumer": "weighted_median_common_bias_theta",
+      "input_key": "ijbc_predictions",
+      "producer_role": "frozen_adaptive_stage",
+      "producer_stage": "interpolated_jackknife_geometry",
+      "prediction_sha256": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716"
+    },
+    {
+      "consumer": "weighted_median_common_bias_theta",
+      "input_key": "reference_predictions",
+      "producer_role": "public_bandwidth_replay",
+      "producer_stage": null,
+      "prediction_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2"
+    }
+  ],
+  "audit_boundary": {
+    "prediction_bytes_hashed_for_producer_mapping": true,
+    "prediction_arrays_decoded_for_this_source_closure_audit": false,
+    "protected22_access": false,
+    "independent_validation": false,
+    "full_clean_room_numerical_replay_claimed": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"octant_hierarchical_js_hedge",
+  "family_fingerprint":"seven-eighth-global-js-one-eighth-hierarchical-js-contrast-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The global 24-dimensional James-Stein estimator is stable but shrinks common-mode and target-deviation orientation nuisance identically. A hierarchical decomposition can harvest additional signal but is slightly less fold-stable. A fixed one-eighth innovation hedge should retain the stable estimator as the dominant component.",
+  "comparator_family_id":"james_stein_orientation_contrast",
+  "must_beat_verified_development_best_mse":0.0010568608861418476,
+  "component_rule":"Orientation A is leave-one-whole-patient bagged geometry. Orientation B starts from interpolated-jackknife geometry. No A/B prediction averaging occurs.",
+  "global_js_rule":"From the three authenticated inner whole-patient bandwidth-0.7 OOF contrast vectors compute cbar, v, sigma2=mean(v), and a_global=max(0,1-22*sigma2/sum(cbar^2)). Define theta_global=(1/8+(7/8)*a_global)*cbar.",
+  "hierarchical_js_rule":"For each inner-fold contrast vector c[k], let m[k]=mean_t c[k,t], mu=mean_k m[k], and d[k,t]=c[k,t]-m[k]. Estimate a_common=max(0,1-var(m)/3/mu^2), using zero when mu^2 is negligible. Let dbar=mean_k d[k], sigma2_d=mean_t(var_k(d[:,t])/3), and a_dev=max(0,1-21*sigma2_d/sum(dbar^2)), using zero when the norm is negligible. Define theta_hier=(1/8)*cbar+(7/8)*(a_common*mu+a_dev*dbar).",
+  "hedge_rule":"Use theta=(7/8)*theta_global+(1/8)*theta_hier and q_B=q_B,interpolated_jackknife-0.5*theta. The hedge weight is fixed at one eighth before canonical replay. There is no target/fold outer-outcome routing, scalar grid, or protected data.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average separately costed A/B losses; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

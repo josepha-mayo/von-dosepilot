@@ -1,0 +1,37 @@
+{
+  "schema": "dosepilot.half_raw_jackknife_gain_hedge.freeze.v1",
+  "state": "FROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "frozen_utc": "2026-10-04T23:55:28.084816+00:00",
+  "family_id": "half_raw_jackknife_gain_hedge",
+  "gain_bounds": [
+    1.0,
+    3.0
+  ],
+  "gain_hedge_weight_stabilized": 0.5,
+  "gain_hedge_weight_raw": 0.5,
+  "source_sha256": {
+    "study/half_raw_jackknife_gain_hedge/PROPOSAL.json": "edf7ee5b961657e355f0610b24247b32af044d28ac8f970c722fbac87a0421e0",
+    "study/half_raw_jackknife_gain_hedge/PROTOCOL.json": "aaec34fde2b5cbfcf9d8ef3772dcbb85f47b0f8cde68d624770687361fe4a6c3",
+    "study/half_raw_jackknife_gain_hedge/run_study.py": "79b0c4a38afe419d235360451941aec1bb0b9b9faaacc253d5d4129c0cbdd93a",
+    "study/half_raw_jackknife_gain_hedge/test_study.py": "befcfc34628b6a769131917bdcaba95933dd3bf81e0c1a7f52ce4a4e8a6d5540",
+    "study/half_raw_jackknife_gain_hedge/verify_study.py": "008fcdc784e3c03ee5272e5a2bf58dab285a6552d71a5191eb68fb75481cf491"
+  },
+  "input_sha256": {
+    "reference_predictions": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "reference_result": "dc7ef6a096b02372df023edb35828ea5c0e70dfb9e6cc676be3fba003c0eba3e",
+    "bagged_predictions": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd",
+    "ijbc_predictions": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716",
+    "best_predictions": "14f02ed3be7c3655a409433919c6bd0d45064c6c17b3253943c546aa28453838",
+    "reference_inner_0": "a51fb11079e5bcddc1cd83dddfea83d4b7e4d801dc3559574af9edfa61100b1a",
+    "reference_inner_1": "1638eb3d5e86f2d09c97aa4eb524100f3ddd5af3a06eebd8a5e649be504cf589",
+    "reference_inner_2": "181f0dfa290d4448906ac9716b77dd4ac8c1291f23477c9f21c78d65443f43f0",
+    "reference_inner_3": "62842554431721c46d140147481f9a0d035fdc9674d2e45a9b3d7786d35e3698",
+    "reference_inner_4": "651a07bbb7796baceb482825c1e3a9366918adac7e5ef960241d31da3343f5db"
+  },
+  "must_beat_verified_development_best_mse": 0.0010562461582277344,
+  "diagnostic_outer_outcomes_previously_inspected": true,
+  "synthetic_tests_passed": 5,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

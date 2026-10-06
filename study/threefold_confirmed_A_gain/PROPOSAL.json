@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "threefold_confirmed_A_gain",
+  "family_fingerprint": "global-js-B-gain-plus-threefold-cubed-reliability-A-gain-v1",
+  "falsifiable_hypothesis": "The bounded A-side calibration contains useful signal but still overreacts to uncertain target gains. Raising its bounded-jackknife reliability to the number of inner whole-patient folds (three) can require stronger repeated confirmation and improve mean error while preserving all gates.",
+  "protocol_path": "study/threefold_confirmed_A_gain/PROTOCOL.json",
+  "comparator_family_id": "bounded_reliable_A_gain",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across separately costed A/B orientations; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "ef4a851b181249e3c8dd6ab7c6c8822159ef15ae652cef9d6982f9b3ad4ed4d7"
+}

@@ -1,0 +1,20 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"hierarchical_impact_common_bias_theta",
+  "family_fingerprint":"gain2r-common-mode-plus-r-centered-deviation-B-theta-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The B jackknife bias contains a shared calibration component plus target-specific deviations. The verified impact_reliable_common_bias_theta estimates the shared component with w_j=gB_j^2*r_j, where r_j is fitting-only theta-bias reliability. A coherent two-level estimator uses the same r_j to shrink each centered target deviation back toward that common mode, rather than either discarding all deviations or taking them fully.",
+  "comparator_family_id":"impact_reliable_common_bias_theta",
+  "must_beat_verified_development_best_mse":0.0010550478781210762,
+  "gain_rule":"Reproduce shared_prior_margin_dual_gain gains exactly. No gain fitting rule, bound, global switch, or A vote rule changes.",
+  "theta_rule":"Compute theta_full, theta_loo, bias_j, jackknife variance v_j, and r_j=bias_j^2/(bias_j^2+v_j) exactly as in impact_reliable_common_bias_theta. Orientation A remains thetaA_j=theta_full,j+(1+r_j)*bias_j. For B compute w_j=gB_j^2*r_j and mu_B=sum_j w_j*bias_j/sum_j w_j, with mu_B=0 only when all weights are zero. Let dev_j=bias_j-mu_B. Deploy thetaB_j=theta_full,j+bias_j+mu_B+r_j*dev_j. Thus r_j=0 uses only the common mode, while r_j=1 restores the target's full centered deviation on top of the common mode.",
+  "hierarchy_rationale":"The same already-defined fitting-only reliability controls both common-mode evidence and target-specific deviation retention. No new threshold, exponent, clip, fold routing, or outer-held rescue is introduced.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

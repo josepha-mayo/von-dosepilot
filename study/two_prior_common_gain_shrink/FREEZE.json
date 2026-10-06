@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.two_prior_common_gain_shrink.freeze.v1",
+  "state": "FROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "frozen_utc": "2026-10-05T12:11:02.733756+00:00",
+  "family_id": "two_prior_common_gain_shrink",
+  "prior_scale": 0.125,
+  "gain_shrink_strength": 0.25,
+  "source_sha256": {
+    "study/two_prior_common_gain_shrink/PROPOSAL.json": "7f4fd39a8d39415e6933f1fbb86d70cdcc56f850c760951a9b446817ea52d302",
+    "study/two_prior_common_gain_shrink/PROTOCOL.json": "3d94bce034b3a279f03af5ced41c4c2ebf4c5924f1319f1f114c97c528515e7b",
+    "study/two_prior_common_gain_shrink/run_study.py": "038dded61c49fdfefd7619abebc3984ea9e8ef2ac856d491bde0bdefd36c52fa",
+    "study/two_prior_common_gain_shrink/test_study.py": "8a75dd8ebc329815937f909ff888fb8dd758ebe2f33367c85187ea876d0c890f",
+    "study/two_prior_common_gain_shrink/verify_study.py": "4fcf697febe2e52c75f7050475835f960e569ba517bf3693ce718185cd85d7a0"
+  },
+  "input_sha256": {
+    "reference_predictions": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "reference_result": "dc7ef6a096b02372df023edb35828ea5c0e70dfb9e6cc676be3fba003c0eba3e",
+    "bagged_predictions": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd",
+    "ijbc_predictions": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716",
+    "best_predictions": "7aab632dab30d88bc5e2dbc046a9a2b60121359d4467019d9addab7a25fc7ec1",
+    "reference_inner_0": "a51fb11079e5bcddc1cd83dddfea83d4b7e4d801dc3559574af9edfa61100b1a",
+    "reference_inner_1": "1638eb3d5e86f2d09c97aa4eb524100f3ddd5af3a06eebd8a5e649be504cf589",
+    "reference_inner_2": "181f0dfa290d4448906ac9716b77dd4ac8c1291f23477c9f21c78d65443f43f0",
+    "reference_inner_3": "62842554431721c46d140147481f9a0d035fdc9674d2e45a9b3d7786d35e3698",
+    "reference_inner_4": "651a07bbb7796baceb482825c1e3a9366918adac7e5ef960241d31da3343f5db"
+  },
+  "must_beat_verified_development_best_mse": 0.0010550168524430328,
+  "diagnostic_outer_outcomes_previously_inspected": true,
+  "synthetic_tests_passed": 5,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

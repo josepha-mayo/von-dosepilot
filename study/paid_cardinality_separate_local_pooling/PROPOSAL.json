@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "paid_cardinality_separate_local_pooling",
+  "family_fingerprint": "B-paid-common4-minmax-cardinality-plus-K-pooled-cardinality-specific-local-v1",
+  "falsifiable_hypothesis": "After the verified pooled paid calibration, cardinality-specific local residual models for the 8 two-dose and 16 three-dose heads can capture different local response geometry, while one-over-K pooling toward a shared local model prevents overfit and lowers full24 development MSE.",
+  "protocol_path": "study/paid_cardinality_separate_local_pooling/PROTOCOL.json",
+  "comparator_family_id": "paid_extrema_cardinality_equalblend_calibration",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average separately costed A/B losses; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "20e1ae7869c4c109d2f86f581ecabf1130c638b8b00348cc71a34827e9713ad2"
+}

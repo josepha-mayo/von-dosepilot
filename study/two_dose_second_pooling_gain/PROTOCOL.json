@@ -1,0 +1,20 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"two_dose_second_pooling_gain",
+  "family_fingerprint":"reliability-counted-global-pooling-plus-same-strength-second-pooling-for-two-dose-heads-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"Each frozen outer plan contains eight two-dose heads and sixteen three-dose heads. Two-dose heads carry one fewer paid coordinate and therefore have structurally less within-head information. The current fitting-only global gain shrink already computes a scalar s=1/(2+mean target gain reliability). Reusing that same scalar once more for two-dose heads gives them one additional pooling step without introducing another tuned strength or target identity rule.",
+  "comparator_family_id":"reliability_counted_common_gain_shrink",
+  "must_beat_verified_development_best_mse":0.0010545921454241265,
+  "gain_rule":"Reproduce reliability_counted_common_gain_shrink through g_raw/fallback, prior gain g0, target gain reliability r_g, common gain g_common, and global strength s=1/(2+mean_j r_g,j). If use_raw is false, preserve the existing fallback gain exactly. If use_raw is true, first compute g_global=(1-s)g_raw+s*g_common for all targets. Read the frozen reference plan's coordinate_target_indices and count paid coordinates per target. For heads with count=2 only, apply the same s a second time: gB_j=(1-s)g_global,j+s*g_common,j. For count=3 heads, gB_j=g_global,j. No target name, target outcome, or outer-held loss is used.",
+  "theta_rule":"Reproduce reliability_counted_common_gain_shrink theta logic exactly using deployed gB: theta bias reliability r_theta, A theta=theta_full+(1+r_theta)*bias, B common weights gB^2*theta_full^2*r_theta, tuning-free weighted median common bias, and thetaB=theta_full+bias+mu_B+r_theta*(bias-mu_B).",
+  "cardinality_rationale":"The only routing variable is the already-frozen physical head cardinality from the authenticated 64-well plan. Every outer plan must contain exactly eight two-dose and sixteen three-dose heads. The extra pooling coefficient is not new: it is exactly the same fitting-only s already computed for the global step. This remains repeated adaptive development because preceding outer outcomes were inspected.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

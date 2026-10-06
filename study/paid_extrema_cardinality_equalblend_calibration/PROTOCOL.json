@@ -1,0 +1,23 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"paid_extrema_cardinality_equalblend_calibration",
+  "family_fingerprint":"B-paid-mean-std-min-max-cardinality-half-pooled-common-residual-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The current paid location-scale calibration uses mean, population standard deviation, and maximum of the 64 already-purchased B readings to estimate one common residual. The lower response envelope contains additional scale/asymmetry information, while the fixed 64-well design naturally partitions the 24 target heads into eight two-dose and sixteen three-dose heads. A single hierarchical correction can exploit both without target-specific fitting.",
+  "comparator_family_id":"paid_location_scale_common_mode_calibration",
+  "must_beat_verified_development_best_mse":0.0010483580694444282,
+  "base_prediction_rule":"Start from the verified two_dose_full_negative_A_extension predictions, exactly as the current paid calibration does. The comparator is used only for the promotion comparison, so the new correction is not stacked on a previously fitted paid calibration.",
+  "feature_rule":"For each authenticated inner held fold, recompute the deterministic 64-well plan using only the other two inner whole-patient folds and acquire orientation-B paid values for the held rows. Form exactly four sample-level features over the 64 paid normalized viability readings: arithmetic mean, population standard deviation, minimum, and maximum. For outer test rows use the authenticated saved outer plan and the same four features. No A values, unpurchased values, protected data, or additional wells are used.",
+  "group_rule":"For every fitting plan, count selected coordinates per target. The contract has exactly eight targets with two selected doses and sixteen with three. Compute three scalar residual outcomes from the selected bandwidth-0.7 inner OOF B prediction: the mean residual over all 24 targets, the mean over the two-dose targets, and the mean over the three-dose targets. Fit one patient-balanced affine four-feature model for each scalar outcome.",
+  "pooling_rule":"For an outer test sample let c_all, c_2, and c_3 be the three fitted scalar corrections. Targets whose outer plan has two paid doses receive 0.5*c_all+0.5*c_2. Targets with three paid doses receive 0.5*c_all+0.5*c_3. The one-half pooling coefficient is globally fixed for both groups; there is no target-specific coefficient, group-specific tuning, outer-fold rescue, or prediction averaging across A/B.",
+  "prediction_rule":"Orientation A is copied exactly from two_dose_full_negative_A_extension. Orientation B equals that verified base B predictor plus the corresponding pooled scalar correction for each target group. Physical wells and the 32/32 plate split are unchanged.",
+  "regularization_rationale":"This is a two-level partial-pooling model with only three affine four-feature calibrators and one fixed symmetric pooling constant. It remains repeated adaptive development because preceding outer outcomes and diagnostic families were inspected.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

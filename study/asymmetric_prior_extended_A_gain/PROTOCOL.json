@@ -1,0 +1,20 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"asymmetric_prior_extended_A_gain",
+  "family_fingerprint":"prior-floor-halfvote-B-plus-negative-prior-extended-A-bound-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The verified A-side auxiliary correction is intentionally smaller than the primary B-side correction. Fitting-only inner estimates frequently saturate the negative A bound while the positive bound is already an effective guardrail. A single globally fixed negative extension of exactly 2*PRIOR=0.25 preserves the positive cap, avoids any fold or target routing, and tests whether the former symmetric bound was clipping stable negative correction signal.",
+  "comparator_family_id":"prior_floor_halfvote_dual_gain",
+  "must_beat_verified_development_best_mse":0.0010559775654090508,
+  "B_rule":"Reproduce prior_floor_halfvote_dual_gain exactly for orientation B: detect global gain signal using [1,3], deploy raw gain clipped to [0.75,3] when the positive-part global gain reliability is positive, otherwise use its frozen fallback.",
+  "A_rule":"Reproduce prior_floor_halfvote_dual_gain A-side fitting, bounded-jackknife reliability, global positive-part reliability, r_A^3 base confirmation, and two-of-three halfway / three-of-three full vote-strength confirmation. Change only the globally fixed raw A gain bound from [-0.5,0.5] to [-0.75,0.5], where -0.75=-0.5-2*PRIOR and PRIOR=0.125. Apply qA=qA_loo_bagged+0.5*gA_final*theta. The same bounds apply to every target and every outer fold.",
+  "bound_rationale":"The extension is one prefrozen algebraic step of two existing PRIOR units on only the previously clipped negative side; the positive +0.5 guardrail remains untouched. This family was proposed after development diagnostics and is not independent validation.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

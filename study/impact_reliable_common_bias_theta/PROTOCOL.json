@@ -1,0 +1,20 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"impact_reliable_common_bias_theta",
+  "family_fingerprint":"A-target-r-B-gain-squared-times-bias-reliability-common-mode-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"In the B prediction qB=qB0-0.5*gB*thetaB, a common theta offset changes target j in proportion to gB_j, so its squared contribution to the equal-target MSE scales as gB_j^2. The theta jackknife variance reliability r_j=bias_j^2/(bias_j^2+v_j) independently measures whether target j contains stable evidence about the common finite-sample bias. Weighting the common bias by gB_j^2*r_j therefore combines loss sensitivity and fitting-only reliability without opening a threshold or tuning menu.",
+  "comparator_family_id":"primary_common_mode_jackknife_theta",
+  "must_beat_verified_development_best_mse":0.001055276279070899,
+  "gain_rule":"Reproduce shared_prior_margin_dual_gain gains exactly. No gain fitting rule, bound, global switch, or A vote rule changes.",
+  "theta_rule":"Compute theta_full, theta_loo, bias_j=theta_full,j-theta_loo,j, jackknife variance v_j, and r_j=bias_j^2/(bias_j^2+v_j) exactly as in primary_common_mode_jackknife_theta. Orientation A remains thetaA_j=theta_full,j+(1+r_j)*bias_j. For B let w_j=gB_j^2*r_j. If sum_j w_j is positive, define mu_B=sum_j w_j*bias_j/sum_j w_j; if all weights are zero, define mu_B=0. Deploy thetaB_j=theta_full,j+bias_j+mu_B. The same scalar mu_B is applied to all 24 B targets within an outer partition.",
+  "weight_rationale":"gB^2 is the fixed squared sensitivity of B prediction error to a common theta displacement, while r is the already-frozen fitting-only bias reliability. No additional exponent, clip, threshold, fold routing, or outer-held rescue is used.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

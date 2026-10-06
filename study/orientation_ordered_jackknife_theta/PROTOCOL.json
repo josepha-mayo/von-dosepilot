@@ -1,0 +1,20 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"orientation_ordered_jackknife_theta",
+  "family_fingerprint":"A-variance-B-geometric-amplitude-jackknife-bias-reliability-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The current target-reliable jackknife correction uses one amplitude reliability for both orientation branches. Orientation A is an auxiliary correction layered on the bagged geometry and should require variance-level confidence; orientation B is the primary calibrated branch and can use a one-step geometric confidence lift toward full jackknife correction while remaining bounded by the classical correction.",
+  "comparator_family_id":"target_reliable_jackknife_theta",
+  "must_beat_verified_development_best_mse":0.0010554624875088578,
+  "gain_rule":"Reproduce shared_prior_margin_dual_gain gains exactly as in target_reliable_jackknife_theta. No gain fitting rule changes.",
+  "theta_reliability_rule":"For each target compute bias_j=theta_full,j-theta_loo,j, jackknife variance v_j, and variance reliability r_j=bias_j^2/(bias_j^2+v_j), zero when numerator and denominator are both zero. Orientation A uses extra-bias confidence cA_j=r_j. Orientation B first converts r_j to amplitude reliability sqrt(r_j), then takes its geometric mean with full confidence 1, cB_j=sqrt(sqrt(r_j)). Deploy thetaA_j=theta_full,j+(1+cA_j)*bias_j and thetaB_j=theta_full,j+(1+cB_j)*bias_j. Both coefficients remain within the verified half-jackknife and full classical jackknife endpoints.",
+  "orientation_rationale":"A is auxiliary and therefore retains variance-level evidence; B is the primary calibrated correction and receives exactly one geometric confidence lift. There is no exponent menu, fold/target outer routing, or outer-held rescue.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

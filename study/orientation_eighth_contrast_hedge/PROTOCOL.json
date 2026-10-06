@@ -1,0 +1,18 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_BEFORE_ORIENTATION_EIGHTH_CONTRAST_REPLAY",
+  "family_id":"orientation_eighth_contrast_hedge",
+  "family_fingerprint":"loo-bagged-A-plus-interpolated-jackknife-B-eighth-pure-contrast-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"Orientation A benefits from the low-bias leave-one-patient bagged geometry, while B retains a systematic calibration direction captured by the earlier cross-fitted orientation contrast experiment. Strong contrast correction overshot; a fixed one-eighth damping can harvest the stable part without sacrificing the weak outer fold.",
+  "comparator_family_id":"orientation_asymmetric_interpolated_hedge",
+  "must_beat_verified_development_best_mse":0.0010574493498268901,
+  "orientation_rule":"For every sample and target use q_A=q_A,loo_bagged. Define the pure previously cross-fitted B contrast delta as delta_B=q_B,orientation_contrast_calibration-q_B,jackknife_bias_corrected_geometry; then use q_B=q_B,interpolated_jackknife+(1/8)*delta_B. The one-eighth damping and orientation mapping are fixed before canonical replay. There is no target-specific or held-outcome routing and no A/B prediction averaging.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average separately costed A/B losses; never average A/B predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

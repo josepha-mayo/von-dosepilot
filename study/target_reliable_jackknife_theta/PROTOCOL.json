@@ -1,0 +1,20 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"target_reliable_jackknife_theta",
+  "family_fingerprint":"half-jackknife-theta-plus-target-amplitude-reliable-extra-bias-correction-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The classical K=3 jackknife correction improves mean development error but is too aggressive in the tail, while the verified half-jackknife correction is gate-safe. The delete-one-inner-fold theta dispersion provides a fitting-only targetwise uncertainty estimate for the jackknife bias vector. Using amplitude reliability sqrt(signal/(signal+noise)) can interpolate from the verified half correction toward the full classical correction only where the bias direction is stable.",
+  "comparator_family_id":"half_jackknife_bias_corrected_theta",
+  "must_beat_verified_development_best_mse":0.0010556001506933108,
+  "gain_rule":"Reproduce shared_prior_margin_dual_gain gains exactly as in half_jackknife_bias_corrected_theta, including B aggregate-signal detection and deployed [0.875,3] bounds, A raw [-0.875,+0.5] bounds, bounded-jackknife reliability, global gates, and vote-strength confirmation. Gains remain fit using theta_full and theta_-k exactly as before.",
+  "theta_rule":"For each outer-training partition compute theta_full from all K=3 authenticated inner whole-patient folds and theta_-k from the other K-1 folds. Let theta_loo=mean_k(theta_-k), bias_j=theta_full,j-theta_loo,j, and jackknife variance v_j=(K-1)/K*sum_k(theta_-k,j-theta_loo,j)^2. Define variance reliability r_j=bias_j^2/(bias_j^2+v_j), with r_j=0 when numerator and denominator are both zero, and amplitude reliability s_j=sqrt(r_j). The verified half-jackknife estimator is theta_full+bias. Deploy theta_j=theta_full,j+(1+s_j)*bias_j. Thus s=0 exactly recovers the verified half-jackknife correction and s=1 exactly reaches the full classical K=3 correction theta_full+2*bias.",
+  "reliability_rationale":"The square root converts a variance-explained reliability into amplitude reliability. No scale menu, outer-held target routing, or rescue is used.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

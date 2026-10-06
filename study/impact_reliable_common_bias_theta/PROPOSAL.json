@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "impact_reliable_common_bias_theta",
+  "family_fingerprint": "A-target-r-B-gain-squared-times-bias-reliability-common-mode-v1",
+  "falsifiable_hypothesis": "The B common jackknife-bias correction should be estimated from targets in proportion to both their squared B gain impact and the fitting-only reliability of their theta bias. This metric-aligned common mode can beat the unweighted common-bias estimator while preserving all gates.",
+  "protocol_path": "study/impact_reliable_common_bias_theta/PROTOCOL.json",
+  "comparator_family_id": "primary_common_mode_jackknife_theta",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average separately costed A/B losses; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "b411ccf8e9909a42de6f83602b8d9b2cf060651508afe47af3e08e63f4d7a538"
+}

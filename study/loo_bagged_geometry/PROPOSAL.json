@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_BEFORE_FIRST_LOO_BAGGED_GEOMETRY_FIT",
+  "family_id": "loo_bagged_geometry",
+  "family_fingerprint": "leave-one-whole-patient-empirical-rbf-kernel-bagging-v1",
+  "falsifiable_hypothesis": "A response-free bagged RBF geometry that averages kernels over the empirical delete-one-patient bandwidth distribution can reduce bandwidth-estimation variance without committing to a biased point correction, beating the current verified development best.",
+  "protocol_path": "study/loo_bagged_geometry/PROTOCOL.json",
+  "comparator_family_id": "half_jackknife_raw_blend",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across separately costed A/B orientations; never average A/B predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "fb35b6f05f4c44dab764ad32338effe183c009b35adaba606bb0a5eeb1afc11c"
+}

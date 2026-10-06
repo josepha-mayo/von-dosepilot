@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "reliability_weighted_hierarchical_js",
+  "family_fingerprint": "global-js-reliability-weighted-hierarchical-orientation-contrast-v1",
+  "falsifiable_hypothesis": "Using the global James-Stein reliability itself as the weight on hierarchical common/deviation refinement can improve the current octant hedge while automatically suppressing the refinement in low-signal outer partitions.",
+  "protocol_path": "study/reliability_weighted_hierarchical_js/PROTOCOL.json",
+  "comparator_family_id": "octant_hierarchical_js_hedge",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across separately costed A/B orientations; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "77dffeb70bf6e22484d41ee7f0dc40bcd30a723d60701a3e5b5fbaacd049e98c"
+}

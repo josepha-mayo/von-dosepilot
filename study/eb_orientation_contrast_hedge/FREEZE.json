@@ -1,0 +1,31 @@
+{
+  "schema": "dosepilot.eb_orientation_contrast_hedge.freeze.v1",
+  "state": "FROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "frozen_utc": "2026-10-04T20:26:04.585118+00:00",
+  "family_id": "eb_orientation_contrast_hedge",
+  "source_sha256": {
+    "study/eb_orientation_contrast_hedge/PROPOSAL.json": "9e52cf95849b7aa6b55035ae33a2cfea086ed25b96f736785cff8c0c428bf693",
+    "study/eb_orientation_contrast_hedge/PROTOCOL.json": "e720ed4549ba653fbf50a34610674f1127bedcac94092f1cb35dbeb66cc447ae",
+    "study/eb_orientation_contrast_hedge/run_study.py": "1544ad0e6e4e04e32eb5e6a5c1e3731fc286b97905b916bbead0d753bf467a4b",
+    "study/eb_orientation_contrast_hedge/test_study.py": "7bf995bcf6e2fd4a244c2266caebc8e26f802833a7a1d1e054073a04aa90aa45",
+    "study/eb_orientation_contrast_hedge/verify_study.py": "b21de16e0a8c06d35951680846d4506b2a99ebe7503ae79782cdd76694a26c15"
+  },
+  "input_sha256": {
+    "reference_predictions": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "reference_result": "dc7ef6a096b02372df023edb35828ea5c0e70dfb9e6cc676be3fba003c0eba3e",
+    "bagged_predictions": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd",
+    "ijbc_predictions": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716",
+    "best_predictions": "781fa6e10fa3f7bae9148b5727cbaf77b3e53d43abf593e871fa7abfa984cd9b",
+    "reference_inner_0": "a51fb11079e5bcddc1cd83dddfea83d4b7e4d801dc3559574af9edfa61100b1a",
+    "reference_inner_1": "1638eb3d5e86f2d09c97aa4eb524100f3ddd5af3a06eebd8a5e649be504cf589",
+    "reference_inner_2": "181f0dfa290d4448906ac9716b77dd4ac8c1291f23477c9f21c78d65443f43f0",
+    "reference_inner_3": "62842554431721c46d140147481f9a0d035fdc9674d2e45a9b3d7786d35e3698",
+    "reference_inner_4": "651a07bbb7796baceb482825c1e3a9366918adac7e5ef960241d31da3343f5db"
+  },
+  "must_beat_verified_development_best_mse": 0.0010571351789507668,
+  "diagnostic_outer_outcomes_previously_inspected": true,
+  "synthetic_tests_passed": 2,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

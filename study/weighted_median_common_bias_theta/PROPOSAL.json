@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "weighted_median_common_bias_theta",
+  "family_fingerprint": "two-prior-gain-shrink-plus-g2r-weighted-median-theta-common-mode-v1",
+  "falsifiable_hypothesis": "Replacing the gB^2*r weighted mean common B theta-bias location with the corresponding weighted median can reduce sensitivity to cross-target outliers while preserving all current gain and target-deviation rules.",
+  "protocol_path": "study/weighted_median_common_bias_theta/PROTOCOL.json",
+  "comparator_family_id": "two_prior_common_gain_shrink",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average separately costed A/B losses; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "632019df1df22fb36a7dd9e6783d31d99cc6b0636e9ff8e69719d6aa3dbea5e4"
+}

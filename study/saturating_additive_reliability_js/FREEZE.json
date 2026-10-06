@@ -1,0 +1,32 @@
+{
+  "schema": "dosepilot.saturating_additive_reliability_js.freeze.v1",
+  "state": "FROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "frozen_utc": "2026-10-04T22:28:32.357717+00:00",
+  "family_id": "saturating_additive_reliability_js",
+  "prior_scale": 0.125,
+  "source_sha256": {
+    "study/saturating_additive_reliability_js/PROPOSAL.json": "fc3618379ddc226da8f77dedf839d7ac7c1ebab80c38a60e4f3a0242ef9dd84b",
+    "study/saturating_additive_reliability_js/PROTOCOL.json": "3bf6b9fccc217de3ffbef19472c4622ee3131e21faeada95e1072db652ea1470",
+    "study/saturating_additive_reliability_js/run_study.py": "1813d86a05ec7a9ce55d70e5d624ba993138fd1ba241ab4bc33082f14c806fba",
+    "study/saturating_additive_reliability_js/test_study.py": "3f474a383026138b8bce7caeaae199b6d776c5f04e88dc147da5e833ea6490d8",
+    "study/saturating_additive_reliability_js/verify_study.py": "35cb8a9be4b60dde598edd617dfd1d8d4e4872da214b2a769cc42dc2e2f8bdfc"
+  },
+  "input_sha256": {
+    "reference_predictions": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "reference_result": "dc7ef6a096b02372df023edb35828ea5c0e70dfb9e6cc676be3fba003c0eba3e",
+    "bagged_predictions": "9259b7b653c55b7552c41ac7964c13487d7989db3f0571d93a60d26b3e4d57bd",
+    "ijbc_predictions": "ccb0688a562c817573802c443b285f6edb8a079e8a4d4633a3383956bb82e716",
+    "best_predictions": "26d829893b0065278150ba0cbfb3ea7212d1312735d970fc777a6efd1572fba1",
+    "reference_inner_0": "a51fb11079e5bcddc1cd83dddfea83d4b7e4d801dc3559574af9edfa61100b1a",
+    "reference_inner_1": "1638eb3d5e86f2d09c97aa4eb524100f3ddd5af3a06eebd8a5e649be504cf589",
+    "reference_inner_2": "181f0dfa290d4448906ac9716b77dd4ac8c1291f23477c9f21c78d65443f43f0",
+    "reference_inner_3": "62842554431721c46d140147481f9a0d035fdc9674d2e45a9b3d7786d35e3698",
+    "reference_inner_4": "651a07bbb7796baceb482825c1e3a9366918adac7e5ef960241d31da3343f5db"
+  },
+  "must_beat_verified_development_best_mse": 0.0010567705488970438,
+  "diagnostic_outer_outcomes_previously_inspected": true,
+  "synthetic_tests_passed": 3,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

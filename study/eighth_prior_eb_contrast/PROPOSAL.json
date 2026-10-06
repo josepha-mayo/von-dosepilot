@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "eighth_prior_eb_contrast",
+  "family_fingerprint": "verified-eighth-prior-plus-innerfold-eb-reliability-contrast-v1",
+  "falsifiable_hypothesis": "Using the verified one-eighth contrast correction as a conservative prior floor, then moving toward the full cross-fitted targetwise contrast in proportion to inner-fold empirical-Bayes reliability, can beat the current verified EB orientation-contrast best while preserving all gates.",
+  "protocol_path": "study/eighth_prior_eb_contrast/PROTOCOL.json",
+  "comparator_family_id": "eb_orientation_contrast_hedge",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average losses across separately costed A/B orientations; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "d525b4c173d90cfbc9f43fea2d48b7becbd20bc1bc4abaef4a35ee5ee30fc6c0"
+}

@@ -1,0 +1,20 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"half_safe_target_cv_gain_hedge",
+  "family_fingerprint":"half-patient-weighted-target-union-half-inner-crossfit-target-gain-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The verified patient-weighted target-union predictor is conservative and stable, while an inner-crossfit targetwise calibration estimates useful additional one-sided correction gain but is too aggressive in one development fold. A fixed symmetry hedge can reduce calibration variance without fold-specific rescue.",
+  "comparator_family_id":"patient_weighted_target_union_confidence_js",
+  "must_beat_verified_development_best_mse":0.0010564511048124603,
+  "safe_component":"Exactly reuse the frozen held predictions of patient_weighted_target_union_confidence_js.",
+  "aggressive_component":"For each outer partition, use only its authenticated three inner whole-patient bandwidth-0.7 OOF prediction tensors at the already-selected spectral option. Build patient-count-weighted contrast shrinkage theta on all three inner folds exactly as in patient_count_weighted_amplitude_js. For each held inner fold k, rebuild theta_-k from the other two inner folds. Let rB_k,j be the equal-patient mean B-orientation OOF residual in held fold k and n_k its patient count. For each target set raw gain g_j=-2*sum_k n_k*theta_-k,j*rB_k,j / sum_k n_k*theta_-k,j^2, defaulting to 1 when the denominator is numerically zero, then clip g_j to [1,3]. Apply qB_aggressive=qB_interpolated_jackknife-0.5*g_j*theta_j; qA_aggressive=qA_loo_bagged.",
+  "hedge_rule":"For every held sample, target and orientation, q_final=0.5*q_safe+0.5*q_aggressive. The 0.5 hedge is fixed by symmetry before canonical replay. There is no per-fold or per-target hedge weight, no outer-held outcome routing, and no A/B prediction averaging.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

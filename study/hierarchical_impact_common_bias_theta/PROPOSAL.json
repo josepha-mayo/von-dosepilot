@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "hierarchical_impact_common_bias_theta",
+  "family_fingerprint": "gain2r-common-mode-plus-r-centered-deviation-B-theta-v1",
+  "falsifiable_hypothesis": "After estimating the primary B common jackknife-bias mode with gain-squared times reliability weights, retaining each target's centered deviation only in proportion to its fitting-only theta bias reliability can improve the verified impact-weighted common-mode candidate while preserving all gates.",
+  "protocol_path": "study/hierarchical_impact_common_bias_theta/PROTOCOL.json",
+  "comparator_family_id": "impact_reliable_common_bias_theta",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average separately costed A/B losses; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "760a42374522edbd8db507b1c9b2d13b3da6fc532bc28e20c86afd08eec804d3"
+}

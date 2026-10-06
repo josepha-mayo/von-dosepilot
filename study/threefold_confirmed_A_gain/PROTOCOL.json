@@ -1,0 +1,20 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"threefold_confirmed_A_gain",
+  "family_fingerprint":"global-js-B-gain-plus-threefold-cubed-reliability-A-gain-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The A-side gain is estimated from exactly three whole-patient inner folds. Its bounded-jackknife reliability r_A already measures targetwise signal versus estimator variance. Using r_A^K with K=3 requires the A correction to survive all three layers of inner-fold confirmation more conservatively than a single reliability factor, while keeping the same raw bounded gain direction and global positive-part James-Stein signal gate.",
+  "comparator_family_id":"bounded_reliable_A_gain",
+  "must_beat_verified_development_best_mse":0.0010560112972980344,
+  "B_rule":"Reproduce global_js_raw_gain_switch exactly for orientation B.",
+  "A_rule":"Reproduce bounded_reliable_A_gain exactly through the clipped A raw gain gA_raw in [-0.5,0.5], K=3 jackknife variance vA, target reliability rA=gA_raw^2/(gA_raw^2+vA), and positive-part global A reliability R_A. If R_A>0 set final A gain gA=rA^3*gA_raw, where exponent 3 equals the fixed number of inner whole-patient folds; otherwise set gA=0. Apply qA=qA_loo_bagged+0.5*gA*theta.",
+  "bound_rationale":"A raw gain remains bounded to [-0.5,0.5], so its maximum actual displacement is one quarter of theta. No exponent, bound, or threshold menu is opened in canonical replay; exponent is exactly the protocol's three inner folds.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average separately costed A/B losses; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

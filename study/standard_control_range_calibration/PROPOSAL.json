@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "standard_control_range_calibration",
+  "family_fingerprint": "paid-cardinality-local-plus-standard-control-two-plate-range-ridge-v1",
+  "falsifiable_hypothesis": "Two fitting-only raw-signal dynamic-range summaries from the standard DMSO/BzCl plate controls can explain a shared residual calibration component that remains after the verified 64-treatment-well B pipeline, lowering full24 patient-balanced MSE without adding treatment wells.",
+  "protocol_path": "study/standard_control_range_calibration/PROTOCOL.json",
+  "comparator_family_id": "paid_cardinality_separate_local_pooling",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average separately costed A/B losses; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "77269510dc2c7d6d0b9021950ae7e9f2e563bc2f132f5976fb841f4b567d3614"
+}

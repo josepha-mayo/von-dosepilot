@@ -1,0 +1,20 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"majority_confirmed_A_gain",
+  "family_fingerprint":"threefold-cubed-reliability-A-gain-plus-majority-sign-snr-boost-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The A-side target reliability r_A is a signal-versus-jackknife-noise fraction. The base threefold rule uses r_A^3. If at least two of the three held inner folds independently agree with the sign of the full bounded A gain and r_A>=0.5, signal exceeds noise and directional agreement is a strict whole-patient majority; that target can use full bounded gain without an outer-held outcome.",
+  "comparator_family_id":"threefold_confirmed_A_gain",
+  "must_beat_verified_development_best_mse":0.0010559923278940066,
+  "B_rule":"Reproduce global_js_raw_gain_switch exactly for orientation B.",
+  "A_rule":"Reproduce threefold_confirmed_A_gain through bounded raw A gain gA_raw in [-0.5,0.5], target reliability r_A, global positive-part A reliability, and held-fold local gains gA_local,k=2*rA_k/theta_-k. Base confirmation weight is r_A^3. If gA_raw is nonzero, r_A>=0.5, and at least two of the three local gains have the same sign as gA_raw, set confirmation weight to 1. Otherwise keep r_A^3. If global A reliability is zero, set final A gain to zero. Apply qA=qA_loo_bagged+0.5*weight*gA_raw*theta.",
+  "threshold_rationale":"r_A>=0.5 is the exact signal-equals-noise boundary of r=s/(s+n); two of three is the minimum strict majority of the fixed three inner whole-patient folds. No threshold or vote-count menu is opened in canonical replay.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average separately costed A/B losses; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

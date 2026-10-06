@@ -1,0 +1,20 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"half_jackknife_bias_corrected_theta",
+  "family_fingerprint":"shared-prior-gains-plus-half-delete-one-inner-fold-jackknife-bias-corrected-theta-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"The current orientation-contrast theta is fit from exactly K=3 whole-patient inner folds and can retain finite-sample shrinkage bias. The same protocol already constructs the three delete-one-inner-fold theta estimates for cross-fitted gain estimation. Their mean therefore provides a zero-cost jackknife bias estimate. A half-strength correction can reduce bias without taking the full variance of the classical jackknife correction.",
+  "comparator_family_id":"shared_prior_margin_dual_gain",
+  "must_beat_verified_development_best_mse":0.0010558971463282291,
+  "gain_rule":"Reproduce shared_prior_margin_dual_gain exactly for both orientation-specific gains, including B aggregate-signal detection with [1,3], B deployed [0.875,3] bounds when active, A raw [-0.875,+0.5] bounds, target reliability, and vote-strength confirmation. Gains are still estimated from theta_full and the three held-fold theta_-k values exactly as before.",
+  "theta_rule":"Let K=3. Compute theta_full from all three authenticated inner whole-patient folds and theta_-k from the other K-1 folds for k=1..K. Let theta_loo=mean_k(theta_-k). The classical delete-one-group jackknife bias-corrected estimator is theta_bc=K*theta_full-(K-1)*theta_loo=3*theta_full-2*theta_loo. Deploy the fixed half correction theta_deploy=0.5*theta_full+0.5*theta_bc=2*theta_full-theta_loo. Use theta_deploy in qA=qA_loo_bagged+0.5*gA*theta_deploy and qB=qB_interpolated_jackknife-0.5*gB*theta_deploy.",
+  "strength_rationale":"The 0.5 weight is fixed by the literal half-jackknife construction before canonical replay; no correction-strength menu, per-target routing, or outer-held rescue is used.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

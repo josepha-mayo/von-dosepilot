@@ -1,0 +1,25 @@
+{
+  "schema": "dosepilot.loo_bagged_geometry.freeze.v1",
+  "state": "FROZEN_BEFORE_FIRST_LOO_BAGGED_GEOMETRY_FIT",
+  "frozen_utc": "2026-10-04T19:08:22.941710+00:00",
+  "family_id": "loo_bagged_geometry",
+  "source_sha256": {
+    "study/loo_bagged_geometry/PROPOSAL.json": "f35c28a58535a93beb94f4a9d20f40e85374bebc6fae6cfaefc20c2b31515fb1",
+    "study/loo_bagged_geometry/PROTOCOL.json": "fb35b6f05f4c44dab764ad32338effe183c009b35adaba606bb0a5eeb1afc11c",
+    "study/loo_bagged_geometry/bagged_geometry.py": "2b971da0b523dc8894cbc25151500316400640dcc5867ff0cc032057ec09dfc0",
+    "study/loo_bagged_geometry/run_study.py": "da9e5d36ff17b42f2a8900d2056284eb7e9a36063c206be55f501a2625d5cc04",
+    "study/loo_bagged_geometry/test_study.py": "7b62d7ae6525a7e8446ac89ae95f0916c747c83747a972d6c4483699b88bdaa0",
+    "study/loo_bagged_geometry/verify_study.py": "a07d683a600db5e8cf4a4b15aef3b312468c60038b6d3bdf9de58a0d66142141"
+  },
+  "expected_curves_sha256": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+  "reference_predictions_sha256": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+  "verified_best_predictions_sha256": "41415b39178831458311cd83e283c4b379587ba0ab653564597d13638b51bac8",
+  "must_beat_verified_development_best_mse": 0.0010574921945978527,
+  "study_lock_sha256": "8118b562b78b3f55866d6239a38280c942df2c7d81f0b7c4ce71ba0e39ce9ffc",
+  "catalog_sha256": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+  "synthetic_tests_passed": 3,
+  "outer_component_outcomes_previously_inspected": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

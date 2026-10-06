@@ -1,0 +1,19 @@
+{
+  "schema":"dosepilot.adaptive_protocol.v1",
+  "state":"PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id":"targetwise_union_hierarchical_js",
+  "family_fingerprint":"targetwise-deviation-plus-common-union-reliability-hierarchical-contrast-v1",
+  "role":"REPEATED_ADAPTIVE_DEVELOPMENT_NOT_INDEPENDENT_VALIDATION",
+  "outer_component_outcomes_previously_inspected":true,
+  "falsifiable_hypothesis":"Scalar hierarchical gating treats all 24 targets as equally reliable even though inner-fold deviation estimates have different noise. A targetwise positive-part signal-to-noise reliability, combined with independent common-mode reliability by probabilistic union, can preserve strong target innovations while suppressing noisy ones without a tunable threshold.",
+  "comparator_family_id":"saturating_additive_reliability_js",
+  "must_beat_verified_development_best_mse":0.001056752409653042,
+  "component_rule":"Orientation A is leave-one-whole-patient bagged geometry. Orientation B starts from interpolated-jackknife geometry. No A/B prediction averaging occurs.",
+  "shrinkage_rule":"From the same three authenticated inner whole-patient bandwidth-0.7 OOF contrast vectors compute theta_global, theta_hier, common reliability a_common, deviation mean d_j and variance-of-mean v_j. Define target reliability r_j=max(0,1-v_j/d_j^2), with zero when d_j^2 is numerically zero. Define w_j=1-(1-r_j)*(1-a_common). Set theta_j=theta_global,j+w_j*(theta_hier,j-theta_global,j), then q_B=q_B,interpolated_jackknife-0.5*theta. All quantities are fitting-only and parameter-free.",
+  "task_contract":{"samples":119,"whole_patients":59,"targets":24,"physical_treatment_wells":64,"per_plate":32,"outer_patient_folds":5,"inner_patient_folds":3,"primary_metric":"equal-patient/equal-target full24 expected-loss MSE","ab_rule":"average losses across separately costed A/B orientations; never average predictions"},
+  "promotion_screen":{"strictly_lower_mse_than_bandwidth07":true,"minimum_patient_wins_vs_bandwidth07":30,"required_favorable_outer_folds_vs_bandwidth07":5,"p90_nonworse_vs_bandwidth07":true,"strictly_lower_mse_than_verified_development_best":true,"historical_r13_r18_gate_required":true},
+  "protected22_access":false,
+  "outer_target_or_fold_splicing":false,
+  "automatic_retry":false,
+  "independent_validation":false
+}

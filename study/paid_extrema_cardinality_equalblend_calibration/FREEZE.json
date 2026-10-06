@@ -1,0 +1,54 @@
+{
+  "schema": "dosepilot.paid_extrema_cardinality_equalblend_calibration.freeze.v1",
+  "state": "FROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "frozen_utc": "2026-10-05T18:21:12.487798+00:00",
+  "family_id": "paid_extrema_cardinality_equalblend_calibration",
+  "feature_basis": [
+    "mean",
+    "population_std",
+    "min",
+    "max"
+  ],
+  "cardinality_groups": {
+    "two_dose": 8,
+    "three_dose": 16
+  },
+  "pooling_weight": 0.5,
+  "calibration": "patient-balanced affine scalar residual with pinv rcond=1e-12",
+  "source_sha256": {
+    "study/paid_extrema_cardinality_equalblend_calibration/PROPOSAL.json": "2f703d05d3341d5d333d228783a7fd5b32ba9b61d28db54b7e5ec1976a7e5de8",
+    "study/paid_extrema_cardinality_equalblend_calibration/PROTOCOL.json": "8c783f51bceecfdc2ffa91923e11971a401c74a8926a40cf492a6ada79b29840",
+    "study/paid_extrema_cardinality_equalblend_calibration/run_study.py": "f311bc226059799774c1c543628b1dc16b994e2f263885e979592debecbe428b",
+    "study/paid_extrema_cardinality_equalblend_calibration/test_study.py": "393c1db72aa5ecaeee7919aa450145d60f85dc9d479c802fffb978d64b4e184e",
+    "study/paid_extrema_cardinality_equalblend_calibration/verify_study.py": "948ab2933627b5f17f11c47cc6c7269217b0bf792bafc8fec67be7233b2f1e84"
+  },
+  "dependency_sha256": {
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e"
+  },
+  "input_sha256": {
+    "reference_predictions": "f2fea2c796f3c043f32fddff3d7a2a9e5e27a9750d30f8695891a604c2f87ec2",
+    "reference_result": "dc7ef6a096b02372df023edb35828ea5c0e70dfb9e6cc676be3fba003c0eba3e",
+    "curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "base_predictions": "ee1c49d97e8628a70f684ccca6c63667d2a598c47e5a10834df85ed6ed6699d9",
+    "best_predictions": "77d99254e84e83611fcdcf94768c283bf082b501e0258e0389b81a43234633b9",
+    "reference_inner_0": "a51fb11079e5bcddc1cd83dddfea83d4b7e4d801dc3559574af9edfa61100b1a",
+    "reference_plan_0": "49a2ecf19fbf9d388f3ecafd5d465c357227cb0fd8214a85966900face979a4a",
+    "reference_inner_1": "1638eb3d5e86f2d09c97aa4eb524100f3ddd5af3a06eebd8a5e649be504cf589",
+    "reference_plan_1": "27e261e7445f47a11dc24b7bd7038753c7f937be9dc44dd8cdf3d0c6b6530c1a",
+    "reference_inner_2": "181f0dfa290d4448906ac9716b77dd4ac8c1291f23477c9f21c78d65443f43f0",
+    "reference_plan_2": "46af3d43a338d7099f4317cc30308f889214f9e7b4a87b98381050ce54152993",
+    "reference_inner_3": "62842554431721c46d140147481f9a0d035fdc9674d2e45a9b3d7786d35e3698",
+    "reference_plan_3": "8ffae6e9e1a16fd36b19abade40ec7a65d76b2cf906ad325cfbee057c420de3b",
+    "reference_inner_4": "651a07bbb7796baceb482825c1e3a9366918adac7e5ef960241d31da3343f5db",
+    "reference_plan_4": "7023b25925012a3c350c6b13d6520ed2639cb4a9af121a571219fa888761f28d"
+  },
+  "must_beat_verified_development_best_mse": 0.0010483580694444282,
+  "diagnostic_outer_outcomes_previously_inspected": true,
+  "synthetic_tests_passed": 5,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "independent_validation": false
+}

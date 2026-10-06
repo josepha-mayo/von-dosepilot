@@ -1,0 +1,33 @@
+{
+  "schema": "dosepilot.candidate_proposal.v1",
+  "state": "PREFROZEN_AFTER_DIAGNOSTIC_BEFORE_CANONICAL_REPLAY",
+  "family_id": "half_prior_negative_A_extension",
+  "family_fingerprint": "threefold-gain-median-theta-plus-half-prior-negative-A-extension-v1",
+  "falsifiable_hypothesis": "Extending only the negative auxiliary A gain guard from -(1-PRIOR) to -(1-PRIOR/2) can recover stable negative correction signal while preserving the verified positive A cap, B policy, five-fold gate, and tail gate.",
+  "protocol_path": "study/half_prior_negative_A_extension/PROTOCOL.json",
+  "comparator_family_id": "threefold_common_gain_shrink",
+  "task_contract": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "physical_treatment_wells": 64,
+    "per_plate": 32,
+    "outer_patient_folds": 5,
+    "inner_patient_folds": 3,
+    "primary_metric": "equal-patient/equal-target full24 expected-loss MSE",
+    "ab_rule": "average separately costed A/B losses; never average predictions"
+  },
+  "promotion_gate": {
+    "strictly_lower_mse": true,
+    "minimum_patient_wins": 30,
+    "required_favorable_outer_folds": 5,
+    "p90_nonworse": true,
+    "historical_r13_r18_gate_required": true
+  },
+  "outer_outcomes_opened": true,
+  "protected22_access": false,
+  "automatic_retry": false,
+  "outer_outcome_target_or_fold_splicing": false,
+  "ab_prediction_averaging": false,
+  "protocol_sha256": "8ec2a8b91ba682a728fa2257c12109240ac39a4a1297a2bc79cb23a5256d0994"
+}
