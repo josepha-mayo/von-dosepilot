@@ -45,6 +45,10 @@ from verify_finalist_package_preflight_report_bound import (
     ReportBoundFinalistPackagePreflightError,
     verify as verify_report_bound_finalist_package_preflight,
 )
+from verify_public_report_byte_retrieval import (
+    PublicReportByteRetrievalError,
+    verify as verify_public_report_byte_retrieval,
+)
 
 
 class EvidenceError(ValueError):
@@ -1457,6 +1461,35 @@ def verify(root, enforce_pins=True):
         173,
         "CLEAN_REPORT_BOUND_PACKAGE_CANONICAL_TESTS",
     )
+    try:
+        public_report_byte_result = verify_public_report_byte_retrieval(root)
+    except PublicReportByteRetrievalError as exc:
+        raise EvidenceError("PUBLIC_REPORT_BYTE_RETRIEVAL: " + str(exc)) from exc
+    same(
+        public_report_byte_result["public_commit"],
+        "43a5205d1ff04c4ebe2c93f2b463609f80629c05",
+        "PUBLIC_REPORT_BYTE_RETRIEVAL_COMMIT",
+    )
+    same(
+        public_report_byte_result["public_tree"],
+        "1a823d4b8bfab4cccd6947437a85dee90aea8ce5",
+        "PUBLIC_REPORT_BYTE_RETRIEVAL_TREE",
+    )
+    same(public_report_byte_result["pdf_bytes"], 92307, "PUBLIC_REPORT_BYTE_RETRIEVAL_BYTES")
+    same(
+        public_report_byte_result["pdf_sha256"],
+        "23bd050d13b9724b3ae6dfb3ae63406609d2573edfcd957369556be99f4585f1",
+        "PUBLIC_REPORT_BYTE_RETRIEVAL_SHA256",
+    )
+    same(
+        public_report_byte_result["github_blob_sha"],
+        "6899cb6b2c53c1c1d67a9fadb5d073923daaf21e",
+        "PUBLIC_REPORT_BYTE_RETRIEVAL_BLOB",
+    )
+    same(public_report_byte_result["public_repository_file_bytes_retrieved"], True, "PUBLIC_REPORT_BYTES_RETRIEVED")
+    same(public_report_byte_result["retrieved_bytes_match_exact_tree_pdf"], True, "PUBLIC_REPORT_BYTES_MATCH")
+    same(public_report_byte_result["anonymous_raw_http_verified"], False, "PUBLIC_REPORT_NO_ANONYMOUS_RAW_HTTP")
+    same(public_report_byte_result["browser_download_button_verified"], False, "PUBLIC_REPORT_NO_BROWSER_DOWNLOAD_BUTTON")
     return {
         "status": "PASS",
         "canonical_receipts": len(receipts),
@@ -1490,6 +1523,10 @@ def verify(root, enforce_pins=True):
         "clean_report_bound_finalist_package_checks": clean_report_bound_package_result["package_checks"],
         "clean_report_bound_finalist_package_live_download_observed": clean_report_bound_package_result["live_dependency_download_observed"],
         "clean_report_bound_finalist_package_rubric_successor_checked": clean_report_bound_package_result["current_report_rubric_successor_checked"],
+        "public_report_repository_bytes_retrieved": public_report_byte_result["public_repository_file_bytes_retrieved"],
+        "public_report_retrieved_bytes_match_exact_tree": public_report_byte_result["retrieved_bytes_match_exact_tree_pdf"],
+        "public_report_anonymous_raw_http_verified": public_report_byte_result["anonymous_raw_http_verified"],
+        "public_report_browser_download_button_verified": public_report_byte_result["browser_download_button_verified"],
         "raw_ak_decision": aligned["decision"],
         "cross_patient_bandwidth_decision": cross_patient["decision"],
         "simplex_stacking_decision": simplex["decision"],

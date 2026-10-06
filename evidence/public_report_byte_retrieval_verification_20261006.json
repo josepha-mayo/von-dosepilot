@@ -1,0 +1,49 @@
+{
+  "schema": "dosepilot.public_report_byte_retrieval.v1",
+  "status": "PASS",
+  "role": "POINT_IN_TIME_PUBLIC_REPOSITORY_BYTE_RETRIEVAL",
+  "observed_utc": "2026-10-06T06:04:11Z",
+  "source": {
+    "repository": "josepha-mayo/von-dosepilot",
+    "public_commit": "43a5205d1ff04c4ebe2c93f2b463609f80629c05",
+    "public_tree": "1a823d4b8bfab4cccd6947437a85dee90aea8ce5",
+    "path": "docs/DosePilot_Technical_Report_Current.pdf",
+    "requested_url": "https://github.com/josepha-mayo/von-dosepilot/blob/43a5205d1ff04c4ebe2c93f2b463609f80629c05/docs/DosePilot_Technical_Report_Current.pdf"
+  },
+  "retrieval": {
+    "interface": "github_repository_file_fetch",
+    "transfer_encoding": "base64",
+    "response_content_decoded": true,
+    "retrieved_bytes": 92307,
+    "retrieved_sha256": "23bd050d13b9724b3ae6dfb3ae63406609d2573edfcd957369556be99f4585f1",
+    "github_blob_sha": "6899cb6b2c53c1c1d67a9fadb5d073923daaf21e"
+  },
+  "exact_tree_comparison": {
+    "path": "docs/DosePilot_Technical_Report_Current.pdf",
+    "bytes": 92307,
+    "sha256": "23bd050d13b9724b3ae6dfb3ae63406609d2573edfcd957369556be99f4585f1",
+    "git_blob_sha": "6899cb6b2c53c1c1d67a9fadb5d073923daaf21e",
+    "retrieved_bytes_match_exact_tree_pdf": true
+  },
+  "artifact_sha256": {
+    "docs/PUBLIC_REPORT_BYTE_RETRIEVAL_VERIFICATION.md": "e1dfd1341565e3cfd5e0b3b8f4e36eb9ae65d15a0f07a05320443c8c299bbabf",
+    "study/audits/verify_public_report_byte_retrieval.py": "4a92fad988d42a8e4ef2cce569cd3dc80ba7c9068b5ff97e49b62c2bc28144ef",
+    "study/audits/test_public_report_byte_retrieval.py": "e8e37a8e0343af134dba3f87c53bb6d3c4ba11aeaecafa016d0ee8edad59d50f"
+  },
+  "claim_boundary": {
+    "public_repository_file_bytes_retrieved": true,
+    "retrieved_bytes_match_exact_tree_pdf": true,
+    "anonymous_raw_http_verified": false,
+    "browser_download_button_verified": false,
+    "future_availability_verified": false,
+    "accessibility_conformance_verified": false,
+    "content_completeness_verified": false,
+    "independent_validation_created": false,
+    "new_model_fit": false,
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "netlify_deployment_changed": false,
+    "official_competition_score": null
+  }
+}

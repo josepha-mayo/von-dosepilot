@@ -194,6 +194,19 @@ class EvidenceConsistencyTests(unittest.TestCase):
             destination = self.root / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.source / relative, destination)
+        byte_retrieval_index = index["public_report_byte_retrieval_verification"]
+        byte_retrieval = json.loads(
+            (self.source / byte_retrieval_index["path"]).read_text()
+        )
+        byte_retrieval_paths = [
+            byte_retrieval_index["path"],
+            byte_retrieval["exact_tree_comparison"]["path"],
+            *byte_retrieval["artifact_sha256"],
+        ]
+        for relative in byte_retrieval_paths:
+            destination = self.root / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.source / relative, destination)
         lifecycle = json.loads(
             (self.source / "evidence/bandwidth_lifecycle_20261003.json").read_text()
         )

@@ -520,6 +520,26 @@
     "accepted_kaggle_entry_changed": false,
     "official_competition_score": null
   },
+  "public_report_byte_retrieval_verification": {
+    "path": "evidence/public_report_byte_retrieval_verification_20261006.json",
+    "sha256": "efa5356a6adbb4bbff483f9ab2036993ca87f9021d2cff65f076a8c6d741b489",
+    "status": "PASS",
+    "observed_utc": "2026-10-06T06:04:11Z",
+    "public_commit": "43a5205d1ff04c4ebe2c93f2b463609f80629c05",
+    "public_tree": "1a823d4b8bfab4cccd6947437a85dee90aea8ce5",
+    "pdf_sha256": "23bd050d13b9724b3ae6dfb3ae63406609d2573edfcd957369556be99f4585f1",
+    "pdf_bytes": 92307,
+    "github_blob_sha": "6899cb6b2c53c1c1d67a9fadb5d073923daaf21e",
+    "public_repository_file_bytes_retrieved": true,
+    "retrieved_bytes_match_exact_tree_pdf": true,
+    "anonymous_raw_http_verified": false,
+    "browser_download_button_verified": false,
+    "future_availability_verified": false,
+    "private_or_protected_inputs_read": false,
+    "biological_accuracy_result_created": false,
+    "accepted_kaggle_entry_changed": false,
+    "official_competition_score": null
+  },
   "live_demo_withholding": {
     "path": "evidence/live_demo_withholding_r4_20261004.json",
     "sha256": "03a8f8b6aeef7c9df5a800312c8cce9c254e11615c8c65ebde8d0791a5c6319f",
