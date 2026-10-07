@@ -1,0 +1,115 @@
+{
+  "schema": "dosepilot.control_transport64.freeze.v1",
+  "state": "FROZEN_BEFORE_FIRST_CANDIDATE_OUTCOME",
+  "utc": "2026-10-07T22:40:57.261154+00:00",
+  "inputs": {
+    "curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "controls": "0c6db1b9c4dc922176dd4b9afb1c3b9c9f1eb2239decd96bda97f5abcf367047",
+    "reference": "ab7bd69e97fc0295a9f4066be0396d82d628bba5b69302bb9670f31561e6df12"
+  },
+  "source_sha256": {
+    "study/control_transport64/core.py": "22b79c1ed0c662e982bd540c5cce3c4c195200cd6d76908a8278e0ebd3aede46",
+    "study/control_transport64/data.py": "df9dfa7cb63c2c7304ca2ab9130be50f2c5ff3f52d75ddb2cda506f89b7ad030",
+    "study/control_transport64/extract_controls.py": "15b5505c96d94c25285e581989588f62bba9b3944e21b4d40f8395ff94805d12",
+    "study/control_transport64/PROTOCOL.md": "898b8a35dd70931349f98bfd433f1beab926c3d6afcbcf5b416b97ee721495a0",
+    "study/control_transport64/run_study.py": "734a24609ef7e54e7e59c2a67f6c47bf2d4fe1e674c1d8abec003497df9be5b6",
+    "study/control_transport64/SCHEMA_PREFLIGHT.json": "28c187953e6b5d9e11ff0011e99bfd53fd1af10b6009f5da5def1f04324427b6",
+    "study/control_transport64/test_extraction.py": "fb4d23b0e296c7d41442541d99a6205b09c1090b47660934b5ba8954f996a5e9",
+    "study/control_transport64/test_study.py": "4c67a100ce76a05ff8831ad0739e03cde4e2aba05abc5722fe9566a9b46deaa0",
+    "study/prepare_from_source_v3.py": "64ca8b327f7de8f585e98bc37a23a70ea8c676b4c593c82d0190e03447f35b81",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/TRAIN_CATALOG.json": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/engine/sparse_methods.py": "511ea1665a7f245cd3a2923fd8a6be6f5c2e45ba901da1620f7298a4125ec64c",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/evaluate.py": "24593a7d8608fd3ce98c367e1760af596b3b33554c1ef7a3f8ac645b046b700b",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e",
+    "study/hybrid_residual/bandwidth_additive.py": "30723fbc8f6843c200891e14e5fb254e707298fa5514b668c4f005a4562edb30",
+    "study/hybrid_residual/additive_kernel.py": "683004e39904c6648c0283395697c914903e78db60a7e98f90362dc8b2c49b1a",
+    "study/hybrid_residual/kernel_spectral.py": "869bfc27cb72afe644f2e85ee5d255004e2afcf8b765b4cc56d8cd7d8927131e",
+    "study/global_conditional_curve64/run_study.py": "80e326c6c43d9db8a1a1d9f5a0250589662d7322922654d5fe545c52309fc9ca",
+    "study/global_conditional_curve64/full_curves.py": "31d64f4313c97930bf238de71d56dfcf5ecf725d2eed971eb526f7f54b7c5480",
+    "study/global_conditional_curve64/conditional.py": "0a036fcb6e9c59ac003c90cc3beb028ec51a65767bd17b2e3cbf4b882457353a"
+  },
+  "inventory_sha256": "5c03f2181458aa38ab477a76bc20b96abedf85d5351ac4b75c809c6081f286d2",
+  "primary_arm": "spatial",
+  "control_arms": [
+    "identity",
+    "flat"
+  ],
+  "field_ridge": 0.1,
+  "gain_bounds": [
+    0.25,
+    4.0
+  ],
+  "base_ridge": 0.01,
+  "spectral_options": [
+    [
+      "identity",
+      0.0
+    ],
+    [
+      0.1,
+      0.1
+    ],
+    [
+      0.1,
+      1.0
+    ],
+    [
+      0.1,
+      10.0
+    ],
+    [
+      0.3,
+      0.1
+    ],
+    [
+      0.3,
+      1.0
+    ],
+    [
+      0.3,
+      10.0
+    ],
+    [
+      0.6,
+      0.1
+    ],
+    [
+      0.6,
+      1.0
+    ],
+    [
+      0.6,
+      10.0
+    ]
+  ],
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "synthetic_tests_passed": 19,
+  "treatment_wells": 64,
+  "per_plate": [
+    32,
+    32
+  ],
+  "routine_controls_per_plate": 22,
+  "control_signal_inventory": 5236,
+  "new_treatment_wells": 0,
+  "new_control_wells": 0,
+  "half_error_target": 0.000521372861048106,
+  "bootstrap_replicates": 100000,
+  "bootstrap_seed": 202610072227,
+  "runtime_versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.18.1",
+    "threadpoolctl": "3.6.0"
+  },
+  "protected22_access": false,
+  "independent_validation": false,
+  "endpoint_redefined": false,
+  "automatic_retry": false,
+  "automatic_promotion": false,
+  "kaggle_entry_changed": false
+}

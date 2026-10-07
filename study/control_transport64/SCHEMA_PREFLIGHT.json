@@ -1,0 +1,21 @@
+{
+  "scope": "CONTROL_GEOMETRY_AND_ENDPOINT_PREFLIGHT_NO_CANDIDATE_FIT",
+  "samples": 119,
+  "targets": 24,
+  "quadrature_maxdiff": 4.440892098500626e-16,
+  "control_signals": 5236,
+  "routine_controls_per_plate": 22,
+  "new_treatment_wells": 0,
+  "candidate_predictions_computed": false,
+  "field_clipping": {
+    "identity": 0,
+    "flat": 0,
+    "spatial": 0
+  },
+  "spatial_negative_geometry_ranks": [
+    2
+  ],
+  "spatial_positive_geometry_ranks": [
+    2
+  ]
+}
