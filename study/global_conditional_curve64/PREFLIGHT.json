@@ -1,0 +1,9 @@
+{
+  "scope": "DETERMINISTIC_ENDPOINT_MAPPING_NO_CANDIDATE_FIT",
+  "samples": 119,
+  "patients": 59,
+  "targets": 24,
+  "full_native_wells": 416,
+  "quadrature_maxdiff": 4.440892098500626e-16,
+  "protected22_access": false
+}
