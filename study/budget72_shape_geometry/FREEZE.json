@@ -1,0 +1,71 @@
+{
+  "schema": "dosepilot.budget72_shape_geometry.freeze.v1",
+  "state": "FROZEN_BEFORE_CANDIDATE_OUTCOME",
+  "frozen_at_utc": "2026-10-07T07:20:42.829987+00:00",
+  "family_id": "budget72_shape_geometry",
+  "input_sha256": {
+    "train_curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "frontier72": "72f803893e252a88777dbf2e5ef918d452da697da986d72adcbcb61f9e749a65"
+  },
+  "source_sha256": {
+    "study/budget72_shape_geometry/PROPOSAL.json": "86db2f9909a50bf80fa7bcfc0a84e240074149fe7ba9223a124f917336edbef8",
+    "study/budget72_shape_geometry/PROTOCOL.md": "007a28531b5dd3de5bba44fab351dddfbe96e5b3497462f38cf6568e45015c20",
+    "study/budget72_shape_geometry/run_study.py": "3d751bc9b0d211c8199a017a3252f4cf5ff431413c5439962bca68273d95f916",
+    "study/budget72_shape_geometry/shape_bandwidth72.py": "20451965a812555d620ce65ff40fe52d178ea7edb0e24923fa48f465e1dc9bab",
+    "study/budget72_shape_geometry/test_study.py": "840b62ff2acb4a67a2cd766aa9122b7b80830010cf2292838f4c7ba99654740b"
+  },
+  "dependency_sha256": {
+    "study/budget_upgrade_curve/run_study.py": "ffa862567139127a236947048be16c65aba6bd8a17374b636e486424f99c95d9",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/engine/sparse_methods.py": "511ea1665a7f245cd3a2923fd8a6be6f5c2e45ba901da1620f7298a4125ec64c",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/evaluate.py": "24593a7d8608fd3ce98c367e1760af596b3b33554c1ef7a3f8ac645b046b700b",
+    "study/budget72_bandwidth07_residual/run_study.py": "ca6666c24e9f3e6030499ff52c4970b25ea6a6dd2df4bb01c1e98737c6e0518e",
+    "study/budget72_bandwidth07_residual/bandwidth_additive72.py": "a67dc57e1cc8848af9ceef712df5af0f23cccd081688a609632f202549bedf06"
+  },
+  "shape_weight_sets": [
+    [
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      0.5
+    ],
+    [
+      1,
+      1,
+      0.25
+    ],
+    [
+      1,
+      0.5,
+      0.25
+    ],
+    [
+      2,
+      1,
+      0.5
+    ],
+    [
+      1,
+      2,
+      0.5
+    ]
+  ],
+  "residual_options": 10,
+  "joint_options": 60,
+  "synthetic_tests_passed": 3,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "automatic_retry": false,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "note": "Ordered standardized-dose contrasts, not physical dose derivatives. The 64-well p90 promotion requirement remains separate and unchanged."
+}

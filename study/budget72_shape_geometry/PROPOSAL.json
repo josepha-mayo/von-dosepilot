@@ -1,0 +1,24 @@
+{
+  "schema": "dosepilot.budget72_shape_geometry.proposal.v1",
+  "state": "PROPOSED_BEFORE_CANDIDATE_OUTCOME",
+  "family_id": "budget72_shape_geometry",
+  "role": "FROZEN_INNER_ONLY_THREE_DOSE_SHAPE_GEOMETRY",
+  "question": "Can explicit level/slope/curvature geometry within each all-three-dose target group improve the 72-well bandwidth-0.7 residual frontier?",
+  "shape_weight_sets": [
+    [1.0,1.0,1.0],
+    [1.0,1.0,0.5],
+    [1.0,1.0,0.25],
+    [1.0,0.5,0.25],
+    [2.0,1.0,0.5],
+    [1.0,2.0,0.5]
+  ],
+  "normalization": "each three-component weight vector is rescaled to mean 1 before distance calculation",
+  "local_bandwidth_multiplier": 0.7,
+  "target_specific_selection": false,
+  "orientation_specific_selection": false,
+  "report_regardless_of_direction": true,
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false
+}
