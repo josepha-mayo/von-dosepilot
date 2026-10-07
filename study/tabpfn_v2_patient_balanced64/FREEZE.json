@@ -1,0 +1,86 @@
+{
+  "schema": "dosepilot.tabpfn_v2_patient_balanced64.freeze.v1",
+  "state": "FROZEN_BEFORE_FIRST_BIOLOGICAL_OUTCOME",
+  "utc": "2026-10-07T16:21:25.824202+00:00",
+  "inputs": {
+    "curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "reference": "ab7bd69e97fc0295a9f4066be0396d82d628bba5b69302bb9670f31561e6df12",
+    "checkpoint": "2ab5a07d5c41dfe6db9aa7ae106fc6de898326c2765be66505a07e2868c10736"
+  },
+  "source_sha256": {
+    "study/tabpfn_v2_patient_balanced64/core.py": "a1c31ddc58cdd3bb6330262b076190aa06fdb1152431b50f1a1e6c0153e97c9b",
+    "study/tabpfn_v2_patient_balanced64/PREFLIGHT.json": "b67a7a7dab0308d52225d874c178467e03fef5d780fcec0aa1666fc8a840f05b",
+    "study/tabpfn_v2_patient_balanced64/preflight.py": "a1635fe6d1d59ae19ed1cbaaa09a7bdeb62090fb0f3ba98edb1c05ee1169b5a7",
+    "study/tabpfn_v2_patient_balanced64/PROTOCOL.md": "ea49301f52120feebe7266dd1cd9859e5ba31f2bc849cf2de9a7f632ab212dcd",
+    "study/tabpfn_v2_patient_balanced64/run_study.py": "a58f3f74ac8b4765c0bb37c08bd504e26d98148cf372a09bf8cdefe00d440531",
+    "study/tabpfn_v2_patient_balanced64/test_study.py": "3ab1d6aa6433b8ab84a450005b802ac60c3b39d420aecf477c3c72c9b513cfe2",
+    "study/tabpfn_v2_patient_balanced64/THIRD_PARTY_LICENSE.txt": "08b1851b4b6136b5fb0cb124d3258e0d91e3e1623f1be5904b77e4d270d112d8",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/TRAIN_CATALOG.json": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/engine/sparse_methods.py": "511ea1665a7f245cd3a2923fd8a6be6f5c2e45ba901da1620f7298a4125ec64c",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/evaluate.py": "24593a7d8608fd3ce98c367e1760af596b3b33554c1ef7a3f8ac645b046b700b",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e"
+  },
+  "runtime_versions": {
+    "tabpfn": "8.2.0",
+    "torch": "2.14.1",
+    "numpy": "2.4.6",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.0",
+    "joblib": "1.5.3",
+    "einops": "0.8.2",
+    "pydantic": "2.13.4"
+  },
+  "primary_arm": "full_context",
+  "prespecified_secondary_arm": "balanced_contexts",
+  "n_estimators": 2,
+  "model_version": "V2",
+  "context_panels_balanced": 2,
+  "random_seed": 202610071519,
+  "outer_patient_folds": 5,
+  "inner_hyperparameter_search": false,
+  "synthetic_contract_tests_passed": 12,
+  "offline_synthetic_preflight": {
+    "status": "PASS_SYNTHETIC_CPU_OFFLINE_PREFLIGHT",
+    "biological_inputs_read": false,
+    "prediction_shape": [
+      2,
+      8
+    ],
+    "outer_label_mutation_maxdiff": 0.0,
+    "other_query_mutation_first_query_maxdiff": 0.0,
+    "network_attempts": 0,
+    "checkpoint_sha256": "2ab5a07d5c41dfe6db9aa7ae106fc6de898326c2765be66505a07e2868c10736",
+    "runtime_versions": {
+      "tabpfn": "8.2.0",
+      "torch": "2.14.1",
+      "numpy": "2.4.6",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.0",
+      "joblib": "1.5.3",
+      "einops": "0.8.2",
+      "pydantic": "2.13.4"
+    },
+    "seconds_for_three_two_estimator_predictions": 34.171646599999804,
+    "utc": "2026-10-07T16:19:21.474819+00:00"
+  },
+  "treatment_wells": 64,
+  "per_plate": [
+    32,
+    32
+  ],
+  "retained_mse": 0.001042745722096212,
+  "half_error_target": 0.000521372861048106,
+  "checkpoint_license": "Prior Labs 1.1",
+  "attribution": "Built with PriorLabs-TabPFN",
+  "protected22_access": false,
+  "patient_data_upload": false,
+  "network_connections_denied": true,
+  "automatic_retry": false,
+  "automatic_promotion": false,
+  "independent_validation": false,
+  "kaggle_entry_changed": false
+}

@@ -1,0 +1,24 @@
+{
+  "status": "PASS_SYNTHETIC_CPU_OFFLINE_PREFLIGHT",
+  "biological_inputs_read": false,
+  "prediction_shape": [
+    2,
+    8
+  ],
+  "outer_label_mutation_maxdiff": 0.0,
+  "other_query_mutation_first_query_maxdiff": 0.0,
+  "network_attempts": 0,
+  "checkpoint_sha256": "2ab5a07d5c41dfe6db9aa7ae106fc6de898326c2765be66505a07e2868c10736",
+  "runtime_versions": {
+    "tabpfn": "8.2.0",
+    "torch": "2.14.1",
+    "numpy": "2.4.6",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.0",
+    "joblib": "1.5.3",
+    "einops": "0.8.2",
+    "pydantic": "2.13.4"
+  },
+  "seconds_for_three_two_estimator_predictions": 34.171646599999804,
+  "utc": "2026-10-07T16:19:21.474819+00:00"
+}
