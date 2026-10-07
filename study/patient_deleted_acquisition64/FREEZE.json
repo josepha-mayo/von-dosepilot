@@ -1,0 +1,56 @@
+{
+  "schema": "dosepilot.patient_deleted_acquisition64.freeze.v1",
+  "state": "FROZEN_BEFORE_FIRST_CANDIDATE_OUTCOME",
+  "utc": "2026-10-07T13:04:29.822194+00:00",
+  "family_id": "patient_deleted_acquisition64",
+  "inputs": {
+    "curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "scientific64": "ab7bd69e97fc0295a9f4066be0396d82d628bba5b69302bb9670f31561e6df12"
+  },
+  "files": {
+    "study/global_conditional_curve64/conditional.py": "0a036fcb6e9c59ac003c90cc3beb028ec51a65767bd17b2e3cbf4b882457353a",
+    "study/global_conditional_curve64/full_curves.py": "31d64f4313c97930bf238de71d56dfcf5ecf725d2eed971eb526f7f54b7c5480",
+    "study/global_conditional_curve64/PREFLIGHT.json": "fe873d8f558d0d77bf760ab1ffd772106c1086e965301b1ca6c98f4bf061d6d8",
+    "study/global_conditional_curve64/PROTOCOL.md": "49b5ddcd384b74d19ebd69d8aeddac169d5b101b89ab189268902bf54aad0ce1",
+    "study/global_conditional_curve64/run_study.py": "80e326c6c43d9db8a1a1d9f5a0250589662d7322922654d5fe545c52309fc9ca",
+    "study/global_conditional_curve64/test_study.py": "af8ba9798a6bb711335ecc419c4ffa6f909bf4ab9e004b56af395d1a04ea1780",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/engine/sparse_methods.py": "511ea1665a7f245cd3a2923fd8a6be6f5c2e45ba901da1620f7298a4125ec64c",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/evaluate.py": "24593a7d8608fd3ce98c367e1760af596b3b33554c1ef7a3f8ac645b046b700b",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e",
+    "study/hybrid_residual/bandwidth_additive.py": "30723fbc8f6843c200891e14e5fb254e707298fa5514b668c4f005a4562edb30",
+    "study/hybrid_residual/additive_kernel.py": "683004e39904c6648c0283395697c914903e78db60a7e98f90362dc8b2c49b1a",
+    "study/hybrid_residual/kernel_spectral.py": "869bfc27cb72afe644f2e85ee5d255004e2afcf8b765b4cc56d8cd7d8927131e",
+    "study/patient_deleted_acquisition64/planner.py": "2ca7f7335d084d7505f6a8e2e1e2bc5954461b7325e242cbf9a94036eb00eb00",
+    "study/patient_deleted_acquisition64/PROTOCOL.md": "36e97c47c570d5fe2cb305a917536666e929867fcd683e54342b043075e58075",
+    "study/patient_deleted_acquisition64/run_study.py": "60d16c0a34fdf30d22a3de4a8daaca51de42b2e9157a00529afaebee97b8b15b",
+    "study/patient_deleted_acquisition64/test_study.py": "9d73382eead02332cf953fb447a8d9422e211e5bad09a05a1a5601e305b20d82"
+  },
+  "policy_menu": [
+    "original",
+    "patient_deleted"
+  ],
+  "residual_option_count": 10,
+  "menu_count": 20,
+  "planning_ridge": 0.01,
+  "recompute_scaling_after_patient_deletion": true,
+  "treatment_wells": 64,
+  "per_plate": [
+    32,
+    32
+  ],
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "synthetic_tests_passed": 8,
+  "bootstrap_replicates": 100000,
+  "bootstrap_seed": 202610071300,
+  "half_error_target": 0.000521372861048106,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false,
+  "automatic_promotion": false,
+  "kaggle_entry_changed": false
+}
