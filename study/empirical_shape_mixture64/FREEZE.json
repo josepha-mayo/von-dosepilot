@@ -1,0 +1,61 @@
+{
+  "schema": "dosepilot.empirical_shape_mixture64.freeze.v1",
+  "state": "FROZEN_BEFORE_FIRST_CANDIDATE_OUTCOME",
+  "utc": "2026-10-07T21:18:42.427209+00:00",
+  "inputs": {
+    "curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "reference": "ab7bd69e97fc0295a9f4066be0396d82d628bba5b69302bb9670f31561e6df12"
+  },
+  "source_sha256": {
+    "study/empirical_shape_mixture64/model.py": "c3f31c1314f89e188d656baf594a5d994b1523bceabe97bb95f51c9d8a6c3981",
+    "study/empirical_shape_mixture64/PROTOCOL.md": "137ca2642cad9599856855e7ff5ea8db061c40117b9f72951c5811fdb8bb4e0d",
+    "study/empirical_shape_mixture64/run_study.py": "e3e2cadc320100132b515b11bb06cdaa92e703c555621dadb1ab98314ea76e1d",
+    "study/empirical_shape_mixture64/test_study.py": "fc96e9c2bda2dcc23657cd3e89525d7c93078e884165014a779933fad5b44c7f",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/TRAIN_CATALOG.json": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "study/global_conditional_curve64/full_curves.py": "31d64f4313c97930bf238de71d56dfcf5ecf725d2eed971eb526f7f54b7c5480",
+    "study/global_conditional_curve64/conditional.py": "0a036fcb6e9c59ac003c90cc3beb028ec51a65767bd17b2e3cbf4b882457353a",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/engine/sparse_methods.py": "511ea1665a7f245cd3a2923fd8a6be6f5c2e45ba901da1620f7298a4125ec64c",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/evaluate.py": "24593a7d8608fd3ce98c367e1760af596b3b33554c1ef7a3f8ac645b046b700b",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e"
+  },
+  "runtime_versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.18.1",
+    "threadpoolctl": "3.6.0"
+  },
+  "primary_arm": "mixture",
+  "control_arm": "gaussian_control",
+  "shape_center_range": [
+    -0.25,
+    1.25
+  ],
+  "shape_centers": 25,
+  "shape_slopes": [
+    2,
+    4,
+    8,
+    16
+  ],
+  "amplitude_ridge": 0.001,
+  "covariance_shrinkage": 0.5,
+  "residual_variance_floor": 0.0001,
+  "outer_folds": 5,
+  "synthetic_tests_passed": 14,
+  "treatment_wells": 64,
+  "per_plate": [
+    32,
+    32
+  ],
+  "half_error_target": 0.000521372861048106,
+  "bootstrap_replicates": 100000,
+  "bootstrap_seed": 202610072102,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false,
+  "automatic_promotion": false,
+  "kaggle_entry_changed": false
+}
