@@ -1,0 +1,99 @@
+{
+  "schema": "dosepilot.nested_residual_simplex.result.v1",
+  "status": "COMPLETE",
+  "candidate": {
+    "mse": 0.0009353263281234187,
+    "p90_patient_rmse": 0.037746223215302584,
+    "fold_mse": [
+      0.0012573876204671926,
+      0.0007703598660925448,
+      0.0009506684554183763,
+      0.0007702629549639064,
+      0.0009272824178161331
+    ],
+    "orientation_mse": [
+      0.0009117404380636321,
+      0.0009589122181832053
+    ]
+  },
+  "parent72": {
+    "mse": 0.0009326007417880046,
+    "p90_patient_rmse": 0.03770730634910972,
+    "fold_mse": [
+      0.0012400530892393048,
+      0.0007720708820037255,
+      0.0009584133484135121,
+      0.000764740777803025,
+      0.0009272824178161329
+    ],
+    "orientation_mse": [
+      0.0009073514713933787,
+      0.0009578500121826304
+    ]
+  },
+  "scientific64": {
+    "mse": 0.001042745722096212,
+    "p90_patient_rmse": 0.037419695944064885,
+    "fold_mse": [
+      0.001366773267863328,
+      0.000883213740262644,
+      0.0010438248703862052,
+      0.0007983143384081181,
+      0.001128771181875723
+    ],
+    "orientation_mse": [
+      0.0011006087977665972,
+      0.0009848826464258266
+    ]
+  },
+  "candidate_vs_parent72": {
+    "relative_mse_gain": -0.002922565051994841,
+    "patient_wins": 26,
+    "patient_losses": 22,
+    "patient_ties": 11,
+    "target_wins": 9,
+    "target_losses": 15,
+    "target_ties": 0,
+    "fold_wins": 2,
+    "p90_nonworse": false,
+    "bootstrap_95_ci": [
+      -1.4955996672051354e-06,
+      7.435447515549099e-06
+    ],
+    "gate_pass": false
+  },
+  "candidate_vs_scientific64": {
+    "relative_mse_gain": 0.10301590473739852,
+    "patient_wins": 48,
+    "patient_losses": 11,
+    "patient_ties": 0,
+    "target_wins": 18,
+    "target_losses": 6,
+    "target_ties": 0,
+    "fold_wins": 5,
+    "p90_nonworse": false,
+    "bootstrap_95_ci": [
+      -0.0001553847768684967,
+      -6.46431528660378e-05
+    ],
+    "gate_pass": false
+  },
+  "checks": {
+    "parent_prediction_maxdiff": 4.440892098500626e-16,
+    "outer_label_mutation_maxdiff": 0.0,
+    "all_inner_fits_exclude_outer_test": true
+  },
+  "treatment_wells": 72,
+  "plate_wells": [
+    36,
+    36
+  ],
+  "decision": "REJECT_FOR_PROMOTION",
+  "candidate_promotion_allowed": false,
+  "protected22_access": false,
+  "independent_validation": false,
+  "selection_adjusted": false,
+  "prediction_sha256": "dee001f6318f90e12d75150a2e1073a95bb80f40b078eabb832626439828be4e",
+  "freeze_sha256": "f1e849012c8b9540b36d802e9995fdd0b560522421ac0cd586f3571747d7ab67",
+  "finished_utc": "2026-10-07T07:36:35.125379+00:00"
+}

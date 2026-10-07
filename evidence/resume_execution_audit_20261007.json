@@ -1,0 +1,239 @@
+{
+  "schema": "dosepilot.resume_execution_audit.v1",
+  "as_of_utc": "2026-10-07T07:40:00.557492+00:00",
+  "execution_device": "JOSEPH-DESKTOP",
+  "workspace_drive": "D:",
+  "completed_metric_audits": 13,
+  "maximum_saved_metric_difference": 6.938893903907228e-18,
+  "saved_array_audit_only": true,
+  "new_shape_experiment": {
+    "freeze_commit": "4d3914e36c0bef585f1f4af8f76f4e5b1a6e3667",
+    "branch": "budget72-shape-geometry",
+    "candidate": {
+      "mse": 0.0009327137968562641,
+      "p90_patient_rmse": 0.03769056916562484,
+      "fold_mse": [
+        0.001240053089239305,
+        0.0007720708820037257,
+        0.0009593750075279345,
+        0.0007643349727742108,
+        0.0009272824178161331
+      ],
+      "orientation_mse": [
+        0.0009074664119454251,
+        0.0009579611817671027
+      ]
+    },
+    "decision": "REJECT_SHAPE_GEOMETRY",
+    "result_sha256": "12825389815a060969e291a71300feee72a077f549580373379ea16a9e6d0b05",
+    "prediction_sha256": "c1669558e5faec28e6cb70a2b8a5eb401e830cd21be51be3746f81339b1dc8cb"
+  },
+  "new_nested_simplex": {
+    "freeze_commit": "29760a5fd96f9584fe07cbd336e33ee29156383d",
+    "synthetic_tests_passed": 6,
+    "candidate": {
+      "mse": 0.0009353263281234187,
+      "p90_patient_rmse": 0.037746223215302584,
+      "fold_mse": [
+        0.0012573876204671926,
+        0.0007703598660925448,
+        0.0009506684554183763,
+        0.0007702629549639064,
+        0.0009272824178161331
+      ],
+      "orientation_mse": [
+        0.0009117404380636321,
+        0.0009589122181832053
+      ]
+    },
+    "parent72": {
+      "mse": 0.0009326007417880046,
+      "p90_patient_rmse": 0.03770730634910972,
+      "fold_mse": [
+        0.0012400530892393048,
+        0.0007720708820037255,
+        0.0009584133484135121,
+        0.000764740777803025,
+        0.0009272824178161329
+      ],
+      "orientation_mse": [
+        0.0009073514713933787,
+        0.0009578500121826304
+      ]
+    },
+    "scientific64": {
+      "mse": 0.001042745722096212,
+      "p90_patient_rmse": 0.037419695944064885,
+      "fold_mse": [
+        0.001366773267863328,
+        0.000883213740262644,
+        0.0010438248703862052,
+        0.0007983143384081181,
+        0.001128771181875723
+      ],
+      "orientation_mse": [
+        0.0011006087977665972,
+        0.0009848826464258266
+      ]
+    },
+    "candidate_vs_parent72": {
+      "relative_mse_gain": -0.002922565051994841,
+      "patient_wins": 26,
+      "patient_losses": 22,
+      "patient_ties": 11,
+      "target_wins": 9,
+      "target_losses": 15,
+      "target_ties": 0,
+      "fold_wins": 2,
+      "p90_nonworse": false,
+      "bootstrap_95_ci": [
+        -1.4955996672051354e-06,
+        7.435447515549099e-06
+      ],
+      "gate_pass": false
+    },
+    "candidate_vs_scientific64": {
+      "relative_mse_gain": 0.10301590473739852,
+      "patient_wins": 48,
+      "patient_losses": 11,
+      "patient_ties": 0,
+      "target_wins": 18,
+      "target_losses": 6,
+      "target_ties": 0,
+      "fold_wins": 5,
+      "p90_nonworse": false,
+      "bootstrap_95_ci": [
+        -0.0001553847768684967,
+        -6.46431528660378e-05
+      ],
+      "gate_pass": false
+    },
+    "checks": {
+      "parent_prediction_maxdiff": 4.440892098500626e-16,
+      "outer_label_mutation_maxdiff": 0.0,
+      "all_inner_fits_exclude_outer_test": true
+    },
+    "decision": "REJECT_FOR_PROMOTION",
+    "prediction_sha256": "dee001f6318f90e12d75150a2e1073a95bb80f40b078eabb832626439828be4e",
+    "freeze_sha256": "f1e849012c8b9540b36d802e9995fdd0b560522421ac0cd586f3571747d7ab67",
+    "result_sha256": "1af3bfae8a8335792eb6a19c4c0a7a598cfd70458675a9859b333b8ff6d3a736"
+  },
+  "recovered_results": [
+    {
+      "run": "budget72_bandwidth07_residual_20261006_run1",
+      "mse": 0.0009326007417880046,
+      "p90": 0.03770730634910972,
+      "prediction_hash": "72f803893e252a88777dbf2e5ef918d452da697da986d72adcbcb61f9e749a65",
+      "metric_max_difference": 0.0,
+      "decision": "LOWER_ERROR_72_WELL_RESIDUAL_FRONTIER"
+    },
+    {
+      "run": "budget72_bandwidth_sweep_20261006_run1",
+      "mse": 0.0009351907852102865,
+      "p90": 0.03772330009000962,
+      "prediction_hash": "4c1943f6eed809e3395701111469b209b81ba637e03a6bcdd185b7180ebf964f",
+      "metric_max_difference": 0.0,
+      "decision": "REJECT_BANDWIDTH_SWEEP"
+    },
+    {
+      "run": "budget72_global_quadratic_20261007_run1",
+      "mse": 0.0009361531431936582,
+      "p90": 0.03765647429227654,
+      "prediction_hash": "26a1a2a6d98e26452f3193381addf0185241b4f2380feb388f6f01d3083de5a9",
+      "metric_max_difference": 0.0,
+      "decision": "REJECT_GLOBAL_QUADRATIC"
+    },
+    {
+      "run": "budget72_global_rbf_20261007_run1",
+      "mse": 0.0009326665427233098,
+      "p90": 0.03772689521858378,
+      "prediction_hash": "69d23e59a98db5d8ebccdc74df0e76d413f7fd52d67b398dd8960d234a8bc0f1",
+      "metric_max_difference": 0.0,
+      "decision": "REJECT_GLOBAL_RBF"
+    },
+    {
+      "run": "budget72_lowridge_bandwidth_v2_20261006_run1",
+      "mse": 0.0009326007417880046,
+      "p90": 0.03770730634910972,
+      "prediction_hash": "b794dba1de605039bbbedff97a02a5f4b196bbc17bce9d79d79ab9c6ff6244c3",
+      "metric_max_difference": 0.0,
+      "decision": "REJECT_LOWRIDGE"
+    },
+    {
+      "run": "budget72_nested_residual_simplex_20261007_run1",
+      "mse": 0.0009353263281234187,
+      "p90": 0.037746223215302584,
+      "prediction_hash": "dee001f6318f90e12d75150a2e1073a95bb80f40b078eabb832626439828be4e",
+      "metric_max_difference": 0.0,
+      "decision": "REJECT_FOR_PROMOTION"
+    },
+    {
+      "run": "budget72_orientation_residual_20261006_run1",
+      "mse": 0.0009329905788482519,
+      "p90": 0.03770730634910972,
+      "prediction_hash": "6c06ef0e94aace9877da535ad25e3996b26d9b76ffaf9154a01655aaeddae0d4",
+      "metric_max_difference": 0.0,
+      "decision": "REJECT_ORIENTATION"
+    },
+    {
+      "run": "budget72_pair_augmented_20261006_run1",
+      "mse": 0.000931327319592721,
+      "p90": 0.03767428204027439,
+      "prediction_hash": "13081c513ccadc206d34ae942be5344fd602d64cbd6e8940084940f1aec770bb",
+      "metric_max_difference": 0.0,
+      "decision": "REJECT_PAIR"
+    },
+    {
+      "run": "budget72_residual_gain_20261006_run1",
+      "mse": 0.0009373406776657328,
+      "p90": 0.037825331175629896,
+      "prediction_hash": "a8695995911a9cbc290070930672852779c571b55e19c61e7242af4f50f98b21",
+      "metric_max_difference": 0.0,
+      "decision": "REJECT_GAIN"
+    },
+    {
+      "run": "budget72_separate_kernels_20261006_run1",
+      "mse": 0.0009624649482378527,
+      "p90": 0.037939265501919554,
+      "prediction_hash": "319c5510c03f475b3e591bdd5b47731276d681d88284fffd67cdef70e3a21ec0",
+      "metric_max_difference": 0.0,
+      "decision": "REJECT_SEPARATE_KERNELS"
+    },
+    {
+      "run": "budget72_shape_geometry_20261007_run1",
+      "mse": 0.0009327137968562641,
+      "p90": 0.03769056916562484,
+      "prediction_hash": "c1669558e5faec28e6cb70a2b8a5eb401e830cd21be51be3746f81339b1dc8cb",
+      "metric_max_difference": 0.0,
+      "decision": "REJECT_SHAPE_GEOMETRY"
+    },
+    {
+      "run": "budget72_targetwise_residual_20261006_run1",
+      "mse": 0.0009534478413882536,
+      "p90": 0.03853318953260168,
+      "prediction_hash": "b699951af57a438e48db55b5b5a82ec69fec9d8c58588eb83b035c80c3d15b9c",
+      "metric_max_difference": 0.0,
+      "decision": "REJECT_TARGETWISE"
+    },
+    {
+      "run": "budget72_transferred_control_rank1_20261006_run1",
+      "mse": 0.00100352567955771,
+      "p90": 0.0383811151233371,
+      "prediction_hash": "bd79d5247cb5be3b3a68db99836f7af718fdb5dc41b477f0ff7952a00490ac7f",
+      "metric_max_difference": 6.938893903907228e-18,
+      "decision": "REJECT_TRANSFER"
+    }
+  ],
+  "queue_corrections": {
+    "lowridge_v2": "Already complete before resumption; exact tie; not rerun.",
+    "global_rbf_v1": "Complete saved result discovered after reconnection. Its reporting error was after RESULT.json was written. Do not rerun RBF v2 as an unseen scientific trial.",
+    "legacy_crossfit_simplex": "Not rerun. Raw budget archive lacks sample_ids/drug_ids, and reusing other outer-fold OOF predictions for meta-training admits an indirect outer-test training path.",
+    "legacy_74_stack": "Previous preflight found 95 physical wells, not 74; do not promote or score as 74."
+  },
+  "approved_model_changed": false,
+  "kaggle_submission_changed": false,
+  "official_score": null,
+  "protected22_access": false,
+  "independent_validation": false,
+  "patient_arrays_published": false
+}
