@@ -1,0 +1,62 @@
+{
+  "schema": "dosepilot.masked_curve_boost64_v2.freeze.v1",
+  "state": "FROZEN_BEFORE_FIRST_BIOLOGICAL_OUTCOME",
+  "utc": "2026-10-07T17:32:09.268919+00:00",
+  "inputs": {
+    "curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "reference": "ab7bd69e97fc0295a9f4066be0396d82d628bba5b69302bb9670f31561e6df12"
+  },
+  "source_sha256": {
+    "study/masked_curve_boost64_v2/core.py": "6a031b0d60fd77c2e35aff6137cc7bbe46f6fdf88e23bddbf5d313730e4a90b2",
+    "study/masked_curve_boost64_v2/PROTOCOL.md": "283e6de495c7c97ab95a25b7193f753c452ba320246ce718e21985f1711346b1",
+    "study/masked_curve_boost64_v2/run_study.py": "21c4a6d83a480b499d2f20469365f4f8c2adf7921561fa344b71863720fb9e1f",
+    "study/masked_curve_boost64_v2/test_study.py": "a6f0e32ee2ec476d0f50eb99883790cf69d4b40a55d9e83bd8b863138582f035",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/TRAIN_CATALOG.json": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/engine/sparse_methods.py": "511ea1665a7f245cd3a2923fd8a6be6f5c2e45ba901da1620f7298a4125ec64c",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/evaluate.py": "24593a7d8608fd3ce98c367e1760af596b3b33554c1ef7a3f8ac645b046b700b",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e"
+  },
+  "runtime_versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.0",
+    "threadpoolctl": "3.6.0"
+  },
+  "parameters": {
+    "loss": "squared_error",
+    "learning_rate": 0.03,
+    "max_iter": 400,
+    "max_leaf_nodes": 7,
+    "max_depth": 3,
+    "min_samples_leaf": 64,
+    "l2_regularization": 10.0,
+    "max_bins": 128,
+    "categorical_features": null,
+    "early_stopping": false,
+    "random_state": 746608807
+  },
+  "primary_arm": "mask_augmented",
+  "control_arm": "original_mask_control",
+  "outer_patient_folds": 5,
+  "hyperparameter_search": false,
+  "synthetic_tests_passed": 9,
+  "bootstrap_replicates": 100000,
+  "bootstrap_seed": 202610071719,
+  "treatment_wells": 64,
+  "per_plate": [
+    32,
+    32
+  ],
+  "half_error_target": 0.000521372861048106,
+  "TabPFN_partial_errors_used_for_design": false,
+  "synthetic_masks_are_not_new_patients": true,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false,
+  "automatic_promotion": false,
+  "kaggle_entry_changed": false
+}

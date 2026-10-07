@@ -1,0 +1,19 @@
+{
+  "schema": "dosepilot.masked_curve_boost64.v1_runtime_failure.v1",
+  "status": "RUNTIME_FAILURE_BEFORE_FIRST_TREE_FIT",
+  "failure": {
+    "error": "InvalidParameterError(\"The 'random_state' parameter of HistGradientBoostingRegressor must be an int in the range [0, 4294967295], an instance of 'numpy.random.mtrand.RandomState' or None. Got 202610071719 instead.\")",
+    "traceback": "Traceback (most recent call last):\n  File \"D:\\von-dosepilot-maskaug64-20261007\\study\\masked_curve_boost64\\run_study.py\", line 103, in execute\n    pp,rr,rec=fit_fold(x,y,p,catalog,bounds,folds,f,x,out)\n              ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\von-dosepilot-maskaug64-20261007\\study\\masked_curve_boost64\\run_study.py\", line 54, in fit_fold\n    tree=fit_model(xx,yy,w);tree_state=export_trees(tree)\n  File \"D:\\von-dosepilot-maskaug64-20261007\\study\\masked_curve_boost64\\core.py\", line 78, in fit_model\n    return HistGradientBoostingRegressor(**PARAMETERS).fit(x,y,sample_weight=w)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\JosephMayo\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\sklearn\\base.py\", line 1393, in wrapper\n    estimator._validate_params()\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"C:\\Users\\JosephMayo\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\sklearn\\base.py\", line 554, in _validate_params\n    validate_parameter_constraints(\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        self._parameter_constraints,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        self.get_params(deep=False),\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        caller_name=self.__class__.__name__,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"C:\\Users\\JosephMayo\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\sklearn\\utils\\_param_validation.py\", line 98, in validate_parameter_constraints\n    raise InvalidParameterError(\n    ...<2 lines>...\n    )\nsklearn.utils._param_validation.InvalidParameterError: The 'random_state' parameter of HistGradientBoostingRegressor must be an int in the range [0, 4294967295], an instance of 'numpy.random.mtrand.RandomState' or None. Got 202610071719 instead.\n",
+    "utc": "2026-10-07T17:28:37.788587+00:00",
+    "automatic_retry": false
+  },
+  "failure_sha256": "62c8a189984e8926ce6917bade6d6d1de0a44db33cdf5c2f7b33776e2189df19",
+  "v1_freeze_sha256": "3a2bee2956bfdc42fa8c82065439ff282ddba233520cade6ac6a94c669c61266",
+  "biological_inputs_were_loaded": true,
+  "candidate_predictions_produced": false,
+  "candidate_scores_produced": false,
+  "automatic_retry": false,
+  "v2_manual_repair": "Estimator random_state reduced modulo 2**32; added test of actual production configuration",
+  "hyperparameter_search_added": false,
+  "protected22_access": false
+}
