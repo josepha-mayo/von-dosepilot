@@ -1,0 +1,49 @@
+{
+  "schema": "dosepilot.joint_own_drug_kernel64.freeze.v1",
+  "state": "FROZEN_BEFORE_FIRST_CANDIDATE_OUTCOME",
+  "utc": "2026-10-07T11:41:08.570621+00:00",
+  "family_id": "joint_own_drug_kernel64",
+  "inputs": {
+    "curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "scientific64": "ab7bd69e97fc0295a9f4066be0396d82d628bba5b69302bb9670f31561e6df12"
+  },
+  "files": {
+    "study/joint_own_drug_kernel64/joint.py": "c4ed8a1265daa4ea1b2f0d373424038930dd38712d45cf66815789f5a67c88ba",
+    "study/joint_own_drug_kernel64/PROTOCOL.md": "5bef77504877af4de6135939b7bcfb220f47572c7f5e888799896fdcefbc8152",
+    "study/joint_own_drug_kernel64/run_study.py": "85ce47bb5f6aab1799f47498e7482c2678dec7f9f0b2f6d7bb3185be75378959",
+    "study/joint_own_drug_kernel64/test_study.py": "f960f25a7cf6ee7204462988477f279669f3b840e33fc3707c6255078fd71a05",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/engine/sparse_methods.py": "511ea1665a7f245cd3a2923fd8a6be6f5c2e45ba901da1620f7298a4125ec64c",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/evaluate.py": "24593a7d8608fd3ce98c367e1760af596b3b33554c1ef7a3f8ac645b046b700b",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e",
+    "study/hybrid_residual/bandwidth_additive.py": "30723fbc8f6843c200891e14e5fb254e707298fa5514b668c4f005a4562edb30",
+    "study/hybrid_residual/additive_kernel.py": "683004e39904c6648c0283395697c914903e78db60a7e98f90362dc8b2c49b1a",
+    "study/hybrid_residual/kernel_spectral.py": "869bfc27cb72afe644f2e85ee5d255004e2afcf8b765b4cc56d8cd7d8927131e"
+  },
+  "menu_count": 13,
+  "sequential_options": 10,
+  "joint_kernel_penalties": [
+    0.1,
+    1.0,
+    10.0
+  ],
+  "linear_penalty": 0.01,
+  "treatment_wells": 64,
+  "per_plate": [
+    32,
+    32
+  ],
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "synthetic_tests_passed": 7,
+  "bootstrap_replicates": 100000,
+  "bootstrap_seed": 202610071130,
+  "protected22_access": false,
+  "independent_validation": false,
+  "automatic_retry": false,
+  "automatic_promotion": false,
+  "kaggle_entry_changed": false
+}
