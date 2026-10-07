@@ -1,0 +1,367 @@
+{
+  "schema": "dosepilot.patient_deleted_acquisition64.result.v1",
+  "status": "COMPLETE",
+  "candidate": {
+    "mse": 0.0010670699038616163,
+    "p90_patient_rmse": 0.038795846152446696,
+    "fold_mse": [
+      0.0013896065743922894,
+      0.0008933246324477283,
+      0.0011030910238992951,
+      0.0008157793466305918,
+      0.0011395913999451375
+    ],
+    "orientation_mse": [
+      0.001102214092524994,
+      0.0010319257151982387
+    ]
+  },
+  "operating64": {
+    "mse": 0.0010582750420801534,
+    "p90_patient_rmse": 0.037894285308720174,
+    "fold_mse": [
+      0.0013921291183112406,
+      0.0008933246324477283,
+      0.001063300071680917,
+      0.0008098063511711593,
+      0.0011395913999451375
+    ],
+    "orientation_mse": [
+      0.001104752161673216,
+      0.0010117979224870909
+    ]
+  },
+  "scientific64": {
+    "mse": 0.001042745722096212,
+    "p90_patient_rmse": 0.037419695944064885,
+    "fold_mse": [
+      0.001366773267863328,
+      0.000883213740262644,
+      0.0010438248703862052,
+      0.0007983143384081181,
+      0.001128771181875723
+    ],
+    "orientation_mse": [
+      0.0011006087977665972,
+      0.0009848826464258266
+    ]
+  },
+  "candidate_vs_operating64": {
+    "relative_mse_gain": -0.008310563352392553,
+    "patient_wins": 13,
+    "patient_losses": 23,
+    "patient_ties": 23,
+    "fold_wins": 1,
+    "p90_nonworse": false,
+    "target_wins": 12,
+    "regressing_targets": [
+      "5-FU",
+      "Alisertib",
+      "Atorvastatin",
+      "Bemcentinib",
+      "Lapatinib",
+      "Methotrexate",
+      "Napabucasin",
+      "Pevonedistat",
+      "SN-38",
+      "TAS-102",
+      "Trametinib",
+      "Volasertib"
+    ],
+    "descriptive_bootstrap_95_ci": [
+      -1.4649865784157198e-05,
+      3.1604152505851295e-05
+    ],
+    "gate_pass": false
+  },
+  "candidate_vs_scientific64": {
+    "relative_mse_gain": -0.023327050161861207,
+    "patient_wins": 20,
+    "patient_losses": 39,
+    "patient_ties": 0,
+    "fold_wins": 0,
+    "p90_nonworse": false,
+    "target_wins": 9,
+    "regressing_targets": [
+      "5-FU",
+      "Alisertib",
+      "Atorvastatin",
+      "Bemcentinib",
+      "Gedatolisib",
+      "Idasanutlin",
+      "Lapatinib",
+      "Methotrexate",
+      "Napabucasin",
+      "Panobinostat",
+      "Pevonedistat",
+      "SN-38",
+      "TAS-102",
+      "Trametinib",
+      "Volasertib"
+    ],
+    "descriptive_bootstrap_95_ci": [
+      8.775864047373142e-07,
+      4.850304232002617e-05
+    ],
+    "gate_pass": false
+  },
+  "selections": [
+    {
+      "fold": 0,
+      "selected_index": 15,
+      "selected": {
+        "policy": "patient_deleted",
+        "fraction": 0.3,
+        "kernel_ridge": 1.0
+      },
+      "baseline_index": 5,
+      "inner_mse": [
+        0.0010132512621741298,
+        0.0011198249688768424,
+        0.0009892230158850908,
+        0.000993429987591903,
+        0.001014382155174773,
+        0.0009837094930684428,
+        0.001000158266678844,
+        0.000993526200887025,
+        0.0009964676910461825,
+        0.0010079822643315206,
+        0.0009973552135957794,
+        0.0010978378015393487,
+        0.0009719810091685369,
+        0.0009755465770621551,
+        0.0009945164577762039,
+        0.0009681787138278864,
+        0.0009841366737052802,
+        0.000977537115149895,
+        0.0009826035072239391,
+        0.000991868890938902
+      ],
+      "changed_native_doses_from_original": 7,
+      "state_replay_maxdiff": 0.0,
+      "unpaid_poison_maxdiff": 0.0,
+      "treatment_wells": 64,
+      "per_plate": [
+        32,
+        32
+      ]
+    },
+    {
+      "fold": 1,
+      "selected_index": 2,
+      "selected": {
+        "policy": "original",
+        "fraction": 0.1,
+        "kernel_ridge": 1.0
+      },
+      "baseline_index": 2,
+      "inner_mse": [
+        0.0012538368316976172,
+        0.0012279802469159357,
+        0.0011558803720362106,
+        0.0012090699107567206,
+        0.0011689206867934708,
+        0.0011763561651665937,
+        0.0012250807540808877,
+        0.0012110825418429501,
+        0.0012231127937360803,
+        0.0012431936302113606,
+        0.0012403239403088217,
+        0.0012593486177369445,
+        0.00116162888016021,
+        0.00119888751995847,
+        0.001189018526566376,
+        0.0011754762439124661,
+        0.001212894407144718,
+        0.001202514702338194,
+        0.0012110578822905479,
+        0.0012286890553137285
+      ],
+      "changed_native_doses_from_original": 0,
+      "state_replay_maxdiff": 0.0,
+      "unpaid_poison_maxdiff": 0.0,
+      "treatment_wells": 64,
+      "per_plate": [
+        32,
+        32
+      ]
+    },
+    {
+      "fold": 2,
+      "selected_index": 12,
+      "selected": {
+        "policy": "patient_deleted",
+        "fraction": 0.1,
+        "kernel_ridge": 1.0
+      },
+      "baseline_index": 2,
+      "inner_mse": [
+        0.0012023536897529132,
+        0.0012245621136330407,
+        0.0011205344140247826,
+        0.0011612323300382956,
+        0.00114369370201556,
+        0.0011322517593096255,
+        0.0011752467776589158,
+        0.0011604697306895704,
+        0.00117166216307085,
+        0.0011927747686860171,
+        0.0011826556006943312,
+        0.0012200640425810672,
+        0.0011082690030213406,
+        0.00114055068970678,
+        0.0011264818353691698,
+        0.0011132615133768856,
+        0.0011544638016501186,
+        0.001145255154392628,
+        0.0011526392930191775,
+        0.001172119800564549
+      ],
+      "changed_native_doses_from_original": 11,
+      "state_replay_maxdiff": 0.0,
+      "unpaid_poison_maxdiff": 0.0,
+      "treatment_wells": 64,
+      "per_plate": [
+        32,
+        32
+      ]
+    },
+    {
+      "fold": 3,
+      "selected_index": 12,
+      "selected": {
+        "policy": "patient_deleted",
+        "fraction": 0.1,
+        "kernel_ridge": 1.0
+      },
+      "baseline_index": 2,
+      "inner_mse": [
+        0.0012201117989048254,
+        0.0012871395579465929,
+        0.0011567129404010802,
+        0.001181966627406635,
+        0.0011908590653884243,
+        0.0011639223141468055,
+        0.0011953497451002197,
+        0.0012014495183696463,
+        0.0012023165757790624,
+        0.0012122155824820984,
+        0.0012109637563650587,
+        0.0012813783972459587,
+        0.0011546162978171217,
+        0.0011774793581259284,
+        0.0011776775225561661,
+        0.0011601519792647649,
+        0.0011902959578400296,
+        0.001188569343745956,
+        0.0011944800096524457,
+        0.001204979494651807
+      ],
+      "changed_native_doses_from_original": 4,
+      "state_replay_maxdiff": 0.0,
+      "unpaid_poison_maxdiff": 0.0,
+      "treatment_wells": 64,
+      "per_plate": [
+        32,
+        32
+      ]
+    },
+    {
+      "fold": 4,
+      "selected_index": 2,
+      "selected": {
+        "policy": "original",
+        "fraction": 0.1,
+        "kernel_ridge": 1.0
+      },
+      "baseline_index": 2,
+      "inner_mse": [
+        0.0010879286148585614,
+        0.001178638567793217,
+        0.0010461835333661974,
+        0.0010613899354221152,
+        0.0010890081903083097,
+        0.0010527304650692017,
+        0.0010717671985309867,
+        0.001078325649937697,
+        0.0010733303046164377,
+        0.0010822648564329353,
+        0.0010985776635579257,
+        0.0011599345924064456,
+        0.0010497237605342645,
+        0.0010704176498291863,
+        0.0010794236689960718,
+        0.0010576116157858138,
+        0.0010819651559008578,
+        0.0010813683459424109,
+        0.00108499785447739,
+        0.001094441424107513
+      ],
+      "changed_native_doses_from_original": 0,
+      "state_replay_maxdiff": 0.0,
+      "unpaid_poison_maxdiff": 0.0,
+      "treatment_wells": 64,
+      "per_plate": [
+        32,
+        32
+      ]
+    }
+  ],
+  "treatment_wells": 64,
+  "per_plate": [
+    32,
+    32
+  ],
+  "half_error_target": 0.000521372861048106,
+  "half_error_target_met": false,
+  "decision": "REJECT_FOR_PROMOTION",
+  "outer_label_and_curve_mutation_maxdiff": 0.0,
+  "outer_state_mutation_maxdiff": 0.0,
+  "baseline_mse_difference": 4.336808689942018e-19,
+  "prediction_sha256": "b92b2bfd99962272bf3d2624dfa0f9af1fa5d5fa9c4ad481aa1026c1d5252b37",
+  "freeze_sha256": "33074757c9846fad0dcd2b6617259f2dda0908c60dce52ceb8f1e812ee9b840b",
+  "protected22_access": false,
+  "independent_validation": false,
+  "selection_adjusted": false,
+  "automatic_promotion": false,
+  "kaggle_entry_changed": false,
+  "finished_utc": "2026-10-07T13:05:20.925788+00:00",
+  "saved_model_verification": {
+    "status": "PASS_INDEPENDENT_SAVED_MODEL_REPLAY",
+    "replayed_outer_models": 5,
+    "source_hashes_checked": 19,
+    "prediction_maxdiff": 2.220446049250313e-16,
+    "metric_maxdiff": 6.938893903907228e-18,
+    "candidate_metrics": {
+      "mse": 0.0010670699038616163,
+      "p90_patient_rmse": 0.03879584615244669,
+      "fold_mse": [
+        0.0013896065743922894,
+        0.000893324632447728,
+        0.001103091023899295,
+        0.0008157793466305918,
+        0.0011395913999451375
+      ]
+    },
+    "model_sha256": {
+      "fold_0_model_private.npz": "53ebe731f99b2d15c80afe78f7481cb2a8b777575681cae0d2ebb7761a45c12c",
+      "fold_1_model_private.npz": "c2511195e8e031b81eb2a7f50994a4e45af8c291c7476888d392d0a8fd9d7f70",
+      "fold_2_model_private.npz": "e5ae0106e48f5f7aaf95efc122c333e1f17d0619314be7bb624a1bddbed1dd50",
+      "fold_3_model_private.npz": "13569273b2d20df5908b3c702b667d0a7403455761e39eb957db58583f6403dc",
+      "fold_4_model_private.npz": "1607aea085e4e529f49bc8d20acba40f0e543dad4c8f9865931f68bb77f8f79a"
+    },
+    "prediction_sha256": "b92b2bfd99962272bf3d2624dfa0f9af1fa5d5fa9c4ad481aa1026c1d5252b37",
+    "result_sha256": "bdd2d82c21a0db23f4874f9baa219e1d5a6c0695e94b450fde8a6f71b1d266dd",
+    "fresh_training_refit": false,
+    "protected22_access": false,
+    "independent_biological_validation": false,
+    "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "2.4.6",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "utc": "2026-10-07T13:06:32.606226+00:00"
+  },
+  "patient_rows_published": false,
+  "prediction_arrays_published": false,
+  "source_protocol": "study/patient_deleted_acquisition64/PROTOCOL.md",
+  "freeze_commit": "2eb969756ade0661c66169e201f12862472ef1b4"
+}
