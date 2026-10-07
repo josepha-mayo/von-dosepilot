@@ -1,0 +1,161 @@
+{
+  "role": "POST_HOC_ERROR_CONCENTRATION_DIAGNOSTIC",
+  "samples": 119,
+  "whole_patients": 59,
+  "retained_mse": 0.001042745722096212,
+  "halved_mse_target": 0.000521372861048106,
+  "top_6_of_24_targets_error_share": 0.34343064955745606,
+  "top_12_of_24_targets_error_share": 0.6054005617428834,
+  "worst_6_of_59_patients_error_share": 0.23861326469584254,
+  "mean_squared_plate_auc_half_difference": 0.0007521757809186084,
+  "plate_difference_is_not_an_irreducible_error_bound": true,
+  "target_rows": [
+    {
+      "target": "Encorafenib",
+      "mse": 0.0019938592738140692,
+      "error_share": 0.07967183943487569,
+      "native_doses_available": 8
+    },
+    {
+      "target": "Palbociclib",
+      "mse": 0.0016195919384122339,
+      "error_share": 0.06471663801044736,
+      "native_doses_available": 7
+    },
+    {
+      "target": "TAS-102",
+      "mse": 0.0014128964092900284,
+      "error_share": 0.05645737256257569,
+      "native_doses_available": 3
+    },
+    {
+      "target": "Afatinib",
+      "mse": 0.0012663535060878518,
+      "error_share": 0.050601722262888046,
+      "native_doses_available": 8
+    },
+    {
+      "target": "5-FU",
+      "mse": 0.001170981459752254,
+      "error_share": 0.04679078813026489,
+      "native_doses_available": 6
+    },
+    {
+      "target": "AZD7762",
+      "mse": 0.0011309775885498157,
+      "error_share": 0.045192289156404344,
+      "native_doses_available": 6
+    },
+    {
+      "target": "Bemcentinib",
+      "mse": 0.0011308647898766895,
+      "error_share": 0.04518778187853785,
+      "native_doses_available": 7
+    },
+    {
+      "target": "Idasanutlin",
+      "mse": 0.0011155549983325442,
+      "error_share": 0.04457602393267576,
+      "native_doses_available": 8
+    },
+    {
+      "target": "Napabucasin",
+      "mse": 0.0011085820950404012,
+      "error_share": 0.04429739642932954,
+      "native_doses_available": 8
+    },
+    {
+      "target": "Regorafenib",
+      "mse": 0.0010943191263007087,
+      "error_share": 0.043727468064666326,
+      "native_doses_available": 6
+    },
+    {
+      "target": "Gedatolisib",
+      "mse": 0.0010809224746799397,
+      "error_share": 0.04319215652542556,
+      "native_doses_available": 7
+    },
+    {
+      "target": "LGK974",
+      "mse": 0.0010257886417523064,
+      "error_share": 0.040989085354792246,
+      "native_doses_available": 8
+    },
+    {
+      "target": "Gemcitabine",
+      "mse": 0.0010235463055789597,
+      "error_share": 0.04089948472454307,
+      "native_doses_available": 8
+    },
+    {
+      "target": "LCL161",
+      "mse": 0.0010108719976433098,
+      "error_share": 0.040393037032843325,
+      "native_doses_available": 4
+    },
+    {
+      "target": "Pevonedistat",
+      "mse": 0.0009344841278893918,
+      "error_share": 0.03734068415431521,
+      "native_doses_available": 8
+    },
+    {
+      "target": "Trametinib",
+      "mse": 0.0009162665032925765,
+      "error_share": 0.036612733249843474,
+      "native_doses_available": 8
+    },
+    {
+      "target": "Methotrexate",
+      "mse": 0.0008953840672779617,
+      "error_share": 0.035778300192798845,
+      "native_doses_available": 8
+    },
+    {
+      "target": "Lapatinib",
+      "mse": 0.0008430899769032471,
+      "error_share": 0.03368870117924497,
+      "native_doses_available": 6
+    },
+    {
+      "target": "Volasertib",
+      "mse": 0.0007768157815656421,
+      "error_share": 0.031040476643562093,
+      "native_doses_available": 8
+    },
+    {
+      "target": "Panobinostat",
+      "mse": 0.000758724806471356,
+      "error_share": 0.030317586476807674,
+      "native_doses_available": 6
+    },
+    {
+      "target": "Alisertib",
+      "mse": 0.0007579324417192562,
+      "error_share": 0.030285924684958953,
+      "native_doses_available": 8
+    },
+    {
+      "target": "Atorvastatin",
+      "mse": 0.0007296100063270956,
+      "error_share": 0.02915419961559015,
+      "native_doses_available": 6
+    },
+    {
+      "target": "Luminespib",
+      "mse": 0.0006683327449023639,
+      "error_share": 0.02670564559908668,
+      "native_doses_available": 8
+    },
+    {
+      "target": "SN-38",
+      "mse": 0.0005601462688490818,
+      "error_share": 0.022382664703522286,
+      "native_doses_available": 4
+    }
+  ],
+  "protected22_access": false,
+  "patient_level_rows_published": false,
+  "model_selection_performed": false
+}
