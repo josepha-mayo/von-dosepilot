@@ -1,0 +1,39 @@
+{
+  "schema": "dosepilot.improvement_checkpoint64.v1",
+  "utc": "2026-10-07T11:53:11.136134+00:00",
+  "studies": [
+    {
+      "family": "joint_own_drug_kernel64",
+      "candidate_mse": 0.0010582750420801534,
+      "p90": 0.037894285308720174,
+      "decision": "REJECT_FOR_PROMOTION",
+      "baseline_gain": 0.0,
+      "baseline_patient_wins": 0,
+      "baseline_fold_wins": 0,
+      "max_metric_difference": 2.168404344971009e-19,
+      "outer_mutation_maxdiff": 0.0,
+      "receipt": "evidence/joint_own_drug_kernel64_20261007.json"
+    },
+    {
+      "family": "contrast_whitened_residual64",
+      "candidate_mse": 0.0010576854058442203,
+      "p90": 0.03787061642685855,
+      "decision": "REJECT_FOR_PROMOTION",
+      "baseline_gain": 0.0005571672887363377,
+      "baseline_patient_wins": 26,
+      "baseline_fold_wins": 2,
+      "max_metric_difference": 6.938893903907228e-18,
+      "outer_mutation_maxdiff": 0.0,
+      "receipt": "evidence/contrast_whitened_residual64_20261007.json"
+    }
+  ],
+  "synthetic_tests_passed": 14,
+  "operational_mse": 0.0010582750420801538,
+  "retained_scientific_mse": 0.001042745722096212,
+  "same_treatment_well_budget": 64,
+  "protected22_access": false,
+  "independent_validation": false,
+  "kaggle_entry_changed": false,
+  "research_through_local_date": "2026-10-08",
+  "finalize_update_local_date": "2026-10-09"
+}

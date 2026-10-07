@@ -1,0 +1,295 @@
+{
+  "schema": "dosepilot.joint_own_drug_kernel64.result.v1",
+  "status": "COMPLETE",
+  "candidate": {
+    "mse": 0.0010582750420801534,
+    "p90_patient_rmse": 0.037894285308720174,
+    "fold_mse": [
+      0.0013921291183112406,
+      0.0008933246324477283,
+      0.001063300071680917,
+      0.0008098063511711593,
+      0.0011395913999451375
+    ],
+    "orientation_mse": [
+      0.001104752161673216,
+      0.0010117979224870909
+    ]
+  },
+  "baseline64": {
+    "mse": 0.0010582750420801534,
+    "p90_patient_rmse": 0.037894285308720174,
+    "fold_mse": [
+      0.0013921291183112406,
+      0.0008933246324477283,
+      0.001063300071680917,
+      0.0008098063511711593,
+      0.0011395913999451375
+    ],
+    "orientation_mse": [
+      0.001104752161673216,
+      0.0010117979224870909
+    ]
+  },
+  "scientific64": {
+    "mse": 0.001042745722096212,
+    "p90_patient_rmse": 0.037419695944064885,
+    "fold_mse": [
+      0.001366773267863328,
+      0.000883213740262644,
+      0.0010438248703862052,
+      0.0007983143384081181,
+      0.001128771181875723
+    ],
+    "orientation_mse": [
+      0.0011006087977665972,
+      0.0009848826464258266
+    ]
+  },
+  "candidate_vs_baseline": {
+    "relative_mse_gain": 0.0,
+    "patient_wins": 0,
+    "patient_losses": 0,
+    "patient_ties": 59,
+    "fold_wins": 0,
+    "p90_nonworse": true,
+    "target_wins": 0,
+    "regressing_targets": [],
+    "descriptive_bootstrap_95_ci": [
+      0.0,
+      0.0
+    ],
+    "gate_pass": false
+  },
+  "candidate_vs_scientific64": {
+    "relative_mse_gain": -0.014892719917108055,
+    "patient_wins": 19,
+    "patient_losses": 40,
+    "patient_ties": 0,
+    "fold_wins": 0,
+    "p90_nonworse": false,
+    "target_wins": 5,
+    "regressing_targets": [
+      "5-FU",
+      "Alisertib",
+      "Atorvastatin",
+      "Bemcentinib",
+      "Encorafenib",
+      "Gedatolisib",
+      "Gemcitabine",
+      "Idasanutlin",
+      "LGK974",
+      "Lapatinib",
+      "Luminespib",
+      "Methotrexate",
+      "Napabucasin",
+      "Palbociclib",
+      "Panobinostat",
+      "Pevonedistat",
+      "SN-38",
+      "TAS-102",
+      "Volasertib"
+    ],
+    "descriptive_bootstrap_95_ci": [
+      6.5042639240686695e-06,
+      2.6015552771904073e-05
+    ],
+    "gate_pass": false
+  },
+  "selections": [
+    {
+      "fold": 0,
+      "selected_index": 5,
+      "selected": {
+        "kind": "sequential",
+        "fraction": 0.3,
+        "ridge": 1.0
+      },
+      "baseline_index": 5,
+      "inner_mse": [
+        0.0010132512621741298,
+        0.0011198249688768424,
+        0.0009892230158850908,
+        0.000993429987591903,
+        0.001014382155174773,
+        0.0009837094930684428,
+        0.001000158266678844,
+        0.000993526200887025,
+        0.0009964676910461825,
+        0.0010079822643315206,
+        0.001357465035649454,
+        0.001030456227989857,
+        0.0009912259594060961
+      ],
+      "unpurchased_poison_maxdiff": 0.0,
+      "max_joint_stationarity": 2.461138931542095e-17,
+      "treatment_wells": 64,
+      "per_plate": [
+        32,
+        32
+      ]
+    },
+    {
+      "fold": 1,
+      "selected_index": 2,
+      "selected": {
+        "kind": "sequential",
+        "fraction": 0.1,
+        "ridge": 1.0
+      },
+      "baseline_index": 2,
+      "inner_mse": [
+        0.0012538368316976172,
+        0.0012279802469159357,
+        0.0011558803720362106,
+        0.0012090699107567206,
+        0.0011689206867934708,
+        0.0011763561651665937,
+        0.0012250807540808877,
+        0.0012110825418429501,
+        0.0012231127937360803,
+        0.0012431936302113606,
+        0.0014200230448332503,
+        0.0011687726046267222,
+        0.001199303957760919
+      ],
+      "unpurchased_poison_maxdiff": 0.0,
+      "max_joint_stationarity": 2.482822974991805e-17,
+      "treatment_wells": 64,
+      "per_plate": [
+        32,
+        32
+      ]
+    },
+    {
+      "fold": 2,
+      "selected_index": 2,
+      "selected": {
+        "kind": "sequential",
+        "fraction": 0.1,
+        "ridge": 1.0
+      },
+      "baseline_index": 2,
+      "inner_mse": [
+        0.0012023536897529132,
+        0.0012245621136330407,
+        0.0011205344140247826,
+        0.0011612323300382956,
+        0.00114369370201556,
+        0.0011322517593096255,
+        0.0011752467776589158,
+        0.0011604697306895704,
+        0.00117166216307085,
+        0.0011927747686860171,
+        0.0014644992171151062,
+        0.0011547914517704364,
+        0.001156899068477084
+      ],
+      "unpurchased_poison_maxdiff": 0.0,
+      "max_joint_stationarity": 2.5153490401663703e-17,
+      "treatment_wells": 64,
+      "per_plate": [
+        32,
+        32
+      ]
+    },
+    {
+      "fold": 3,
+      "selected_index": 2,
+      "selected": {
+        "kind": "sequential",
+        "fraction": 0.1,
+        "ridge": 1.0
+      },
+      "baseline_index": 2,
+      "inner_mse": [
+        0.0012201117989048254,
+        0.0012871395579465929,
+        0.0011567129404010802,
+        0.001181966627406635,
+        0.0011908590653884243,
+        0.0011639223141468055,
+        0.0011953497451002197,
+        0.0012014495183696463,
+        0.0012023165757790624,
+        0.0012122155824820984,
+        0.0015364476976359152,
+        0.0011892831518621415,
+        0.0011728123008449864
+      ],
+      "unpurchased_poison_maxdiff": 0.0,
+      "max_joint_stationarity": 2.4774019641293776e-17,
+      "treatment_wells": 64,
+      "per_plate": [
+        32,
+        32
+      ]
+    },
+    {
+      "fold": 4,
+      "selected_index": 2,
+      "selected": {
+        "kind": "sequential",
+        "fraction": 0.1,
+        "ridge": 1.0
+      },
+      "baseline_index": 2,
+      "inner_mse": [
+        0.0010879286148585614,
+        0.001178638567793217,
+        0.0010461835333661974,
+        0.0010613899354221152,
+        0.0010890081903083097,
+        0.0010527304650692017,
+        0.0010717671985309867,
+        0.001078325649937697,
+        0.0010733303046164377,
+        0.0010822648564329353,
+        0.00138611549303892,
+        0.0010687588258081564,
+        0.0010546997194452899
+      ],
+      "unpurchased_poison_maxdiff": 0.0,
+      "max_joint_stationarity": 3.3068166260807885e-17,
+      "treatment_wells": 64,
+      "per_plate": [
+        32,
+        32
+      ]
+    }
+  ],
+  "treatment_wells": 64,
+  "per_plate": [
+    32,
+    32
+  ],
+  "outer_label_mutation_maxdiff": 0.0,
+  "baseline_mse_difference": 4.336808689942018e-19,
+  "decision": "REJECT_FOR_PROMOTION",
+  "prediction_sha256": "7fdcc98d8029410de3503e5dd87b8c6b6ede0fc37a4462ef723dc92005ce9559",
+  "freeze_sha256": "087cc2207c5d59e3263d515629dd26c23bd112277a5bd62ba59a2078e06a025e",
+  "protected22_access": false,
+  "independent_validation": false,
+  "selection_adjusted": false,
+  "automatic_promotion": false,
+  "kaggle_entry_changed": false,
+  "finished_utc": "2026-10-07T11:42:07.857751+00:00",
+  "saved_array_verification": {
+    "status": "PASS_SAVED_ARRAY_METRICS_AND_SOURCE_HASHES",
+    "max_metric_difference": 2.168404344971009e-19,
+    "source_hashes_checked": 13,
+    "prediction_sha256": "7fdcc98d8029410de3503e5dd87b8c6b6ede0fc37a4462ef723dc92005ce9559",
+    "result_sha256": "c252fae90eeecf035601d848fb66cab043cbbafba5c2aefa83a773ada0c53426",
+    "outer_mutation_maxdiff": 0.0,
+    "independent_biological_validation": false,
+    "fresh_training_replay_performed": false,
+    "utc": "2026-10-07T11:53:10.813486+00:00",
+    "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "2.4.6",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "source_protocol": "study/joint_own_drug_kernel64/PROTOCOL.md",
+  "public_claim": "Completed adaptive-development test, rejected for promotion; no official entry change.",
+  "patient_rows_published": false,
+  "prediction_arrays_published": false
+}
