@@ -1,0 +1,190 @@
+{
+  "schema": "dosepilot.fixed_three_channel64.result.v1",
+  "status": "COMPLETE",
+  "model_name": "TabPFN-von-DosePilot-Three64",
+  "attribution": "Built with PriorLabs-TabPFN",
+  "weights": [
+    0.3333333333333333,
+    0.3333333333333333,
+    0.3333333333333333
+  ],
+  "components": [
+    "operating_kernel64",
+    "direct_TabPFN_full_context64",
+    "exact_contribution_TabPFN64"
+  ],
+  "candidate": {
+    "mse": 0.0011032463102158827,
+    "p90_patient_rmse": 0.03936644846932225,
+    "fold_mse": [
+      0.0014285980603400271,
+      0.0009097923271878926,
+      0.0011610192293129787,
+      0.0008222345373199657,
+      0.0012028911320733368
+    ]
+  },
+  "vs_retained64": {
+    "relative_mse_gain": -0.05802046159254215,
+    "patient_wins": 17,
+    "patient_losses": 42,
+    "fold_wins": 0,
+    "p90_nonworse": false,
+    "target_wins": 5,
+    "regressing_targets": [
+      "5-FU",
+      "AZD7762",
+      "Afatinib",
+      "Alisertib",
+      "Bemcentinib",
+      "Encorafenib",
+      "Gedatolisib",
+      "Gemcitabine",
+      "Idasanutlin",
+      "LCL161",
+      "Luminespib",
+      "Methotrexate",
+      "Napabucasin",
+      "Palbociclib",
+      "Panobinostat",
+      "Pevonedistat",
+      "Regorafenib",
+      "SN-38",
+      "TAS-102"
+    ],
+    "descriptive_bootstrap_95_ci": [
+      2.5208192477961138e-05,
+      0.0001043909656734927
+    ],
+    "gate_pass": false
+  },
+  "vs_operating64": {
+    "relative_mse_gain": -0.042494877368867146,
+    "patient_wins": 19,
+    "patient_losses": 40,
+    "fold_wins": 0,
+    "p90_nonworse": false,
+    "target_wins": 8,
+    "regressing_targets": [
+      "5-FU",
+      "AZD7762",
+      "Afatinib",
+      "Alisertib",
+      "Bemcentinib",
+      "Encorafenib",
+      "Gemcitabine",
+      "Idasanutlin",
+      "LCL161",
+      "Luminespib",
+      "Methotrexate",
+      "Palbociclib",
+      "Pevonedistat",
+      "Regorafenib",
+      "SN-38",
+      "TAS-102"
+    ],
+    "descriptive_bootstrap_95_ci": [
+      1.4207641181911464e-05,
+      8.25776992350518e-05
+    ],
+    "gate_pass": false
+  },
+  "half_error_target": 0.000521372861048106,
+  "half_error_point_and_tail_met": false,
+  "decision": "REJECT_FOR_PROMOTION",
+  "treatment_wells": 64,
+  "per_plate": [
+    32,
+    32
+  ],
+  "plan_checks": [
+    {
+      "fold": 0,
+      "direct_plan_sha256": "ba605f0d110bcc8fef78e2e51876a6702402f44acf884f3a26f5195b0bce5afa",
+      "exact_plan_sha256": "ba605f0d110bcc8fef78e2e51876a6702402f44acf884f3a26f5195b0bce5afa",
+      "physical_wells": 64,
+      "per_plate": [
+        32,
+        32
+      ]
+    },
+    {
+      "fold": 1,
+      "direct_plan_sha256": "5409bc9aaa0c493301c6509e0e8e6ec2ae56b89be30e0cf06fef0bad7f233b37",
+      "exact_plan_sha256": "5409bc9aaa0c493301c6509e0e8e6ec2ae56b89be30e0cf06fef0bad7f233b37",
+      "physical_wells": 64,
+      "per_plate": [
+        32,
+        32
+      ]
+    },
+    {
+      "fold": 2,
+      "direct_plan_sha256": "d08f6e14979f98d75b9384b33779229a460b8d21c8fdc9313137f4e8bd381d32",
+      "exact_plan_sha256": "d08f6e14979f98d75b9384b33779229a460b8d21c8fdc9313137f4e8bd381d32",
+      "physical_wells": 64,
+      "per_plate": [
+        32,
+        32
+      ]
+    },
+    {
+      "fold": 3,
+      "direct_plan_sha256": "acaa4e4e6d0294f08c9e097673838e349a020be2ff96a3566a075f5996b08ec4",
+      "exact_plan_sha256": "acaa4e4e6d0294f08c9e097673838e349a020be2ff96a3566a075f5996b08ec4",
+      "physical_wells": 64,
+      "per_plate": [
+        32,
+        32
+      ]
+    },
+    {
+      "fold": 4,
+      "direct_plan_sha256": "8384ddedd283ea6df849622e3d0d38fbe6954a2fe3f1f807c541bf9e099862fe",
+      "exact_plan_sha256": "8384ddedd283ea6df849622e3d0d38fbe6954a2fe3f1f807c541bf9e099862fe",
+      "physical_wells": 64,
+      "per_plate": [
+        32,
+        32
+      ]
+    }
+  ],
+  "meta_training_performed": false,
+  "weights_selected_from_outcomes": false,
+  "producer_hashes": {
+    "direct": {
+      "result_sha256": "073cf8b155a4ab5eb5a1c2bfda9546d64a32f5b07b9faca80a32d8ee17584a39",
+      "prediction_sha256": "3dfe888cce68b09cf27935ee70699316bb57f6388dbd1b214e57bddc38c35491"
+    },
+    "exact": {
+      "result_sha256": "076c4440242b87362d03b76d63c19b015ce214bd4a8ae2d587249a74824f109b",
+      "prediction_sha256": "b69373c40a054833602cab30bd20bff0d638b12c009e0e6fd91851fc125608b2"
+    }
+  },
+  "prediction_sha256": "2d5f600027c30a95a03ecfc507f623f7a4dde60e2a384d5139dde8242c000538",
+  "freeze_sha256": "6c0bc1499199a8b4a1c6526bc6b82efe06ebe1bc1a44a4a163e398aa4161005d",
+  "protected22_access": false,
+  "independent_validation": false,
+  "selection_adjusted": false,
+  "automatic_promotion": false,
+  "kaggle_entry_changed": false,
+  "finished_utc": "2026-10-07T22:48:25.323971+00:00",
+  "independent_arithmetic_audit": {
+    "status": "PASS_INDEPENDENT_FIXED_ARITHMETIC_AND_METRICS",
+    "prediction_maxdiff": 0.0,
+    "metric_maxdiff": 2.168404344971009e-19,
+    "weight_selection_performed": false,
+    "weights": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "models_refit": false,
+    "independent_biological_validation": false,
+    "prediction_sha256": "2d5f600027c30a95a03ecfc507f623f7a4dde60e2a384d5139dde8242c000538",
+    "result_sha256": "3a05ee863b912075c2be18cc0316438d04e6863c14a7b4f973f7d80a27b882d0"
+  },
+  "producer_branch": "dosepilot-tabpfn-exact64-20261007",
+  "prefit_source_commit": "ddefe303b2a8e7b4fdca9e1df85fe5357ae405a5",
+  "patient_arrays_published": false
+}

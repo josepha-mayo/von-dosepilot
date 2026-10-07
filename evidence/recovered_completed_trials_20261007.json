@@ -1,0 +1,155 @@
+{
+  "schema": "dosepilot.recovered_trial_registry.v1",
+  "records": [
+    {
+      "family": "direct_prior",
+      "run_folder": "tabpfn_v2_patient_balanced64_20261007_run1",
+      "arms": {
+        "full_context": {
+          "metrics": {
+            "mse": 0.001186798460008325,
+            "p90_patient_rmse": 0.04124416425258814,
+            "fold_mse": [
+              0.0015161109354097167,
+              0.000976183911177269,
+              0.0012715201849222112,
+              0.0008923605153928642,
+              0.0012860911434242213
+            ]
+          },
+          "decision": "REJECT_FOR_PROMOTION"
+        },
+        "balanced_contexts": {
+          "metrics": {
+            "mse": 0.0012390805122147817,
+            "p90_patient_rmse": 0.041453800497239596,
+            "fold_mse": [
+              0.0015829137818194157,
+              0.000970678768057768,
+              0.0013448289194310525,
+              0.0009433421696819474,
+              0.0013640533229809012
+            ]
+          },
+          "decision": "REJECT_FOR_PROMOTION"
+        }
+      },
+      "result_sha256": "073cf8b155a4ab5eb5a1c2bfda9546d64a32f5b07b9faca80a32d8ee17584a39",
+      "prediction_sha256": "3dfe888cce68b09cf27935ee70699316bb57f6388dbd1b214e57bddc38c35491",
+      "finished_utc": "2026-10-07T17:41:32.961223+00:00",
+      "existing_independent_audit_status": "PASS_INDEPENDENT_SAVED_ARRAY_AUDIT",
+      "recovered_completed_run_not_rerun": true,
+      "new_biological_validation": false
+    },
+    {
+      "family": "exact_prior",
+      "run_folder": "tabpfn_exact_contribution64_20261007_run1",
+      "arms": {
+        "candidate": {
+          "metrics": {
+            "mse": 0.0012104208145013618,
+            "p90_patient_rmse": 0.04120262544373143,
+            "fold_mse": [
+              0.0015687926391383,
+              0.0010074832985680264,
+              0.0012957497601098582,
+              0.0008793930425314159,
+              0.001308891197400831
+            ]
+          },
+          "decision": "REJECT_FOR_PROMOTION"
+        }
+      },
+      "result_sha256": "076c4440242b87362d03b76d63c19b015ce214bd4a8ae2d587249a74824f109b",
+      "prediction_sha256": "b69373c40a054833602cab30bd20bff0d638b12c009e0e6fd91851fc125608b2",
+      "finished_utc": "2026-10-07T18:28:35.186001+00:00",
+      "existing_independent_audit_status": "PASS_INDEPENDENT_SAVED_ARRAY_AUDIT",
+      "recovered_completed_run_not_rerun": true,
+      "new_biological_validation": false
+    },
+    {
+      "family": "mask_augmentation",
+      "run_folder": "masked_curve_boost64_v2_20261007_run1",
+      "arms": {
+        "mask_augmented": {
+          "metrics": {
+            "mse": 0.0011989960402994302,
+            "p90_patient_rmse": 0.04332576001093127,
+            "fold_mse": [
+              0.0016610059804901994,
+              0.0009785131546338236,
+              0.0011640963194699437,
+              0.0009488829942867816,
+              0.0012464349991906725
+            ]
+          },
+          "decision": "REJECT_FOR_PROMOTION"
+        },
+        "original_mask_control": {
+          "metrics": {
+            "mse": 0.0011188070165382247,
+            "p90_patient_rmse": 0.04150619210699719,
+            "fold_mse": [
+              0.0014448089620944869,
+              0.0009252640576753746,
+              0.0011191486224074755,
+              0.0009108606188860585,
+              0.0012007842584540456
+            ]
+          },
+          "decision": "REJECT_FOR_PROMOTION"
+        }
+      },
+      "result_sha256": "14ce90a9f7bb2e46ea0111f3d6d4b5104626c0b38ec17491355012e238f6b362",
+      "prediction_sha256": "8f62ba38f3a2a6daa8dc77f4a5f71a324b77f644ac61a2ec60e263e4ac548610",
+      "finished_utc": "2026-10-07T17:38:43.808674+00:00",
+      "existing_independent_audit_status": null,
+      "recovered_completed_run_not_rerun": true,
+      "new_biological_validation": false
+    },
+    {
+      "family": "shape_mixture",
+      "run_folder": "empirical_shape_mixture64_20261007_run1",
+      "arms": {
+        "mixture": {
+          "metrics": {
+            "mse": 0.0012866978785174533,
+            "p90_patient_rmse": 0.04456207695629871,
+            "fold_mse": [
+              0.0017439072450523639,
+              0.0010681015444621584,
+              0.0012833085273475959,
+              0.0009893482711812612,
+              0.001354471616000834
+            ]
+          },
+          "decision": "REJECT_FOR_PROMOTION"
+        },
+        "gaussian_control": {
+          "metrics": {
+            "mse": 0.0011659624651240853,
+            "p90_patient_rmse": 0.04223234305263884,
+            "fold_mse": [
+              0.0015694360159301853,
+              0.0009756772574080518,
+              0.0011548170893231106,
+              0.0009234685977665964,
+              0.0012100907197441543
+            ]
+          },
+          "decision": "REJECT_FOR_PROMOTION"
+        }
+      },
+      "result_sha256": "9c801eb8205ab09c12f8f469055c34782884f57b22fb99ed3200cf3543a7daa1",
+      "prediction_sha256": "dc12bc14f19eec94e11985adcc7cb44e621a31f16a9c6b36953af1b315ca8bd7",
+      "finished_utc": "2026-10-07T21:21:12.475251+00:00",
+      "existing_independent_audit_status": "PASS_INDEPENDENT_SAVED_MODEL_REPLAY",
+      "recovered_completed_run_not_rerun": true,
+      "new_biological_validation": false
+    }
+  ],
+  "half_error_target_achieved": false,
+  "retained64_unchanged": true,
+  "kaggle_entry_changed": false,
+  "patient_arrays_published": false
+}
