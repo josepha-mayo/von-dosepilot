@@ -1,0 +1,14 @@
+{
+  "status": "PASS_SYNTHETIC_ANCHORED_CPU_PREFLIGHT",
+  "biological_inputs_read": false,
+  "network_attempts": 0,
+  "prediction_shape": [
+    2,
+    8
+  ],
+  "heldout_label_mutation_maxdiff": 0.0,
+  "known_plus_missing_identity_maxdiff": 5.551115123125783e-17,
+  "seconds_for_two_predictions": 35.34128079999937,
+  "checkpoint_sha256": "2ab5a07d5c41dfe6db9aa7ae106fc6de898326c2765be66505a07e2868c10736",
+  "utc": "2026-10-07T16:43:37.112770+00:00"
+}
