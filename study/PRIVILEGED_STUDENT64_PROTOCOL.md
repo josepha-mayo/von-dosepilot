@@ -1,0 +1,20 @@
+# Transfer a richer-measurement teacher into a 64-well student
+
+## Goal and strict inference boundary
+Same64-well goal: MSE<=0.000521372861048106 and p90<=0.037419695944064885 on original119 Lib1 samples /59 whole patients /24 original raw AUC targets. No increased inference budget. The preceding128-well model scored0.0005102658031862283 but doubled purchased wells; that is NOT a same-budget improvement. This study tests whether richer historical TRAIN measurements can improve a student that sees only the original64-well panel at inference.
+
+All data come from the existing authenticated public Lib1 TRAIN full profiles. The richer measurements are used only to generate fitting labels. No teacher is called at deployment or while predicting any outer-test sample. No outer-test full curves, targets or peer-sample measurements may influence the fit. No Protected22/Lib2, new data, extra controls, new labels, changed dose catalog or A/B inference ensemble.
+
+## Frozen method
+In every student fitting partition, rebuild the original R13 64-distinct-dose plan from that partition's raw labels. Separately partition its whole patients into three teacher folds with a fixed new hash salt. On each teacher fitting subset, regenerate the preceding128-well acquisition model; its spectral option is fixed at index3=(fraction0.1,kernel ridge10), the deterministic lowest-index mode of prior128 selections. Produce teacher predictions only on its excluded fitting patients. The teacher's A and B layouts yield separate soft labels for the corresponding student training alternatives; never average A/B into an inference ensemble. Complete historical fitting curves are already available, so this does not assert that teacher supervision requires no additional experimental data in an actually new lab study.
+
+For each alpha in(0,0.25,0.5,1), student training labels are (1-alpha)*raw_y + alpha*cross-fitted_teacher_prediction, separately for A/B training alternatives. Keep the original64 acquisition, own-drug ridge0.01 and bandwidth0.7 additive spectral residual predictor. These represent four supervised student procedures, not output blending across different panels. Choose one of the ten original global spectral options per alpha in three inner patient folds of each of five original outer patient folds. The entire teacher-label generation must be rebuilt INSIDE each student training partition. Never reuse global outer-OOF arrays as fitting labels. Also report the primary40-option procedure selected wholly within each outer training fold.
+
+Alpha0 must numerically reproduce operating MSE0.0010582750420801538. Comparisons use the stronger retained scientific64 MSE0.001042745722096212. No outcome-driven menu expansion, target/fold splicing or retries. All outcomes are repeated adaptive development, not unbiased independent biological validation. Prior128 method outcomes informed this family and are disclosed.
+
+## Integrity and decisions
+Synthetic checks: original64 identity, teacher/student patient separation, finite64 input API, saved numerical replay and unpurchased-input exclusion. Freeze source/protocol/dependency/input hashes before biological student fits. Save outer student models, fixed64 plans, original purchased inputs and teacher patient-membership receipts. Rebuild outerfold0 after changing its excluded x/y but preserving its original paid query inputs; models and predictions must be unchanged. An independent saved-state verifier recomputes all predictions and equal-patient metrics.
+
+Promotion requires lower MSE,>=30 patient wins,5/5 favorable folds and nonworse p90 against BOTH operating64 and scientific64. Half-error additionally requires the absolute threshold at64 wells. Rejected students never replace the retained model. A successful high-cost teacher is not evidence of a successful64-well student. No automatic submission or deployment.
+
+Established reference: Lopez-Paz et al., Unifying distillation and privileged information, https://arxiv.org/abs/1511.03643 . The general training/inference information separation is established; no claim to invent distillation or to transfer an accuracy guarantee.
