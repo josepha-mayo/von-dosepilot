@@ -1,0 +1,1082 @@
+{
+  "schema": "dosepilot.external_drug_identity_audit64.v1",
+  "status": "METADATA_AUDIT_COMPLETE",
+  "utc": "2026-10-08T00:47:46.351134+00:00",
+  "source_cache_sha256": "53aae154d310256d77ddbc9c9d6ddab461235496e12009a23105620c0181b66c",
+  "source_metadata_only": true,
+  "source_compounds": 1135,
+  "targets": 24,
+  "validated_targets": 20,
+  "unresolved_public_lookups": 0,
+  "requests": 44,
+  "rows": [
+    {
+      "drug": "5-FU",
+      "public_name_query": "5-fluorouracil",
+      "synonym_request": {
+        "request": 1,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/5-fluorouracil/synonyms/JSON",
+        "utc": "2026-10-08T00:46:58.399588+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_001.json",
+        "bytes": 10905,
+        "sha256": "494ea8a67519264e092b56ee7ec3f77ed475f456af81e9ce2e3aa86241a00a7f"
+      },
+      "exact_matches": [
+        {
+          "nsc": "19893",
+          "compound_cid": 3385,
+          "external_curve_groups": 115,
+          "external_cell_identifiers": 60,
+          "external_experiments": 2
+        }
+      ],
+      "compound_cid": 3385,
+      "synonym_nsc_candidates": [
+        "19893",
+        "757036",
+        "816997"
+      ],
+      "nsc_candidates_in_external_source": [
+        "19893"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "19893",
+          "standardized_cids": [
+            3385
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 2,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/19893/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:46:59.499699+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_002.json",
+            "bytes": 138,
+            "sha256": "154080a93425aae63125df2f19c625c9f5d821538aff312286d7629a1b817c41"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "AZD7762",
+      "public_name_query": "AZD7762",
+      "synonym_request": {
+        "request": 3,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/AZD7762/synonyms/JSON",
+        "utc": "2026-10-08T00:47:00.600049+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_003.json",
+        "bytes": 2428,
+        "sha256": "5a65ee01f070a13b62311aac31f79b5f1f9c3b14e7cf637067d4a0d62c469999"
+      },
+      "exact_matches": [
+        {
+          "nsc": "757148",
+          "compound_cid": 11152667,
+          "external_curve_groups": 59,
+          "external_cell_identifiers": 59,
+          "external_experiments": 1
+        }
+      ],
+      "compound_cid": 11152667,
+      "synonym_nsc_candidates": [
+        "757148",
+        "799350"
+      ],
+      "nsc_candidates_in_external_source": [
+        "757148"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "757148",
+          "standardized_cids": [
+            11152667
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 4,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/757148/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:01.700394+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_004.json",
+            "bytes": 146,
+            "sha256": "0910b6c5b777c114f50257a13ef49150ba12288ec6aa427a16aefd504b694226"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "Afatinib",
+      "public_name_query": "Afatinib",
+      "synonym_request": {
+        "request": 5,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Afatinib/synonyms/JSON",
+        "utc": "2026-10-08T00:47:02.800685+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_005.json",
+        "bytes": 6635,
+        "sha256": "38717fb33e8249a1701c0b22ac0f50f1b119af365525cb2bf225870b17baa00e"
+      },
+      "exact_matches": [
+        {
+          "nsc": "750691",
+          "compound_cid": 10184653,
+          "external_curve_groups": 57,
+          "external_cell_identifiers": 57,
+          "external_experiments": 1
+        }
+      ],
+      "compound_cid": 10184653,
+      "synonym_nsc_candidates": [
+        "750691",
+        "799327"
+      ],
+      "nsc_candidates_in_external_source": [
+        "750691"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "750691",
+          "standardized_cids": [
+            10184653
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 6,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/750691/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:03.900947+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_006.json",
+            "bytes": 146,
+            "sha256": "11467b69333794f71428d7f072ee4363d93747626e4f43d976da9c03042d183e"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "Alisertib",
+      "public_name_query": "Alisertib",
+      "synonym_request": {
+        "request": 7,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Alisertib/synonyms/JSON",
+        "utc": "2026-10-08T00:47:05.001284+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_007.json",
+        "bytes": 4251,
+        "sha256": "b692926a2fe31485c6f13e856fd4c8ea7943353dc3a62016da1cbd03d809ccb7"
+      },
+      "exact_matches": [
+        {
+          "nsc": "759677",
+          "compound_cid": 24771867,
+          "external_curve_groups": 58,
+          "external_cell_identifiers": 58,
+          "external_experiments": 1
+        }
+      ],
+      "compound_cid": 24771867,
+      "synonym_nsc_candidates": [
+        "759677",
+        "799329"
+      ],
+      "nsc_candidates_in_external_source": [
+        "759677"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "759677",
+          "standardized_cids": [
+            24771867
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 8,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/759677/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:06.101704+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_008.json",
+            "bytes": 146,
+            "sha256": "ac4a16c5b68adef6ac5425eafecfa610fa08ca8a61c22403247db2cc26bbf1b1"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "Atorvastatin",
+      "public_name_query": "Atorvastatin",
+      "synonym_request": {
+        "request": 9,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Atorvastatin/synonyms/JSON",
+        "utc": "2026-10-08T00:47:07.202151+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_009.json",
+        "bytes": 5410,
+        "sha256": "fdfdf1dcde642a329f11e491a419558b8d0ca4b2e5db2f801e7f6e59a047540a"
+      },
+      "exact_matches": [],
+      "compound_cid": 60823,
+      "synonym_nsc_candidates": [],
+      "nsc_candidates_in_external_source": [],
+      "source_confirmation_checks": [],
+      "status": "NO_VALIDATED_SOURCE_MATCH"
+    },
+    {
+      "drug": "Bemcentinib",
+      "public_name_query": "Bemcentinib",
+      "synonym_request": {
+        "request": 10,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Bemcentinib/synonyms/JSON",
+        "utc": "2026-10-08T00:47:08.302636+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_010.json",
+        "bytes": 4286,
+        "sha256": "fe5b607349529a03667fe91541c10cb8c4a1a6f8b32e2af8f053280d86449bf3"
+      },
+      "exact_matches": [
+        {
+          "nsc": "824183",
+          "compound_cid": 46215462,
+          "external_curve_groups": 55,
+          "external_cell_identifiers": 55,
+          "external_experiments": 1
+        }
+      ],
+      "compound_cid": 46215462,
+      "synonym_nsc_candidates": [
+        "824183"
+      ],
+      "nsc_candidates_in_external_source": [
+        "824183"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "824183",
+          "standardized_cids": [
+            46215462
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 11,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/824183/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:09.403212+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_011.json",
+            "bytes": 146,
+            "sha256": "b2967dc8d67af30562d8d0f273d20c8f6e0a377fc732374d084dd8df89a83957"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "Encorafenib",
+      "public_name_query": "Encorafenib",
+      "synonym_request": {
+        "request": 12,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Encorafenib/synonyms/JSON",
+        "utc": "2026-10-08T00:47:10.503734+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_012.json",
+        "bytes": 4585,
+        "sha256": "d066b360bb4ac530bc37603624e5684d445eec06543f9a49d4c7e848cc950958"
+      },
+      "exact_matches": [
+        {
+          "nsc": "778304",
+          "compound_cid": 50922675,
+          "external_curve_groups": 109,
+          "external_cell_identifiers": 58,
+          "external_experiments": 2
+        }
+      ],
+      "compound_cid": 50922675,
+      "synonym_nsc_candidates": [
+        "778304",
+        "800093"
+      ],
+      "nsc_candidates_in_external_source": [
+        "778304"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "778304",
+          "standardized_cids": [
+            50922675
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 13,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/778304/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:11.604235+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_013.json",
+            "bytes": 146,
+            "sha256": "ed34d3635e0a539ba992d8ee7b31f97b4fd33b5df22d3772069cad3582060861"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "Gedatolisib",
+      "public_name_query": "Gedatolisib",
+      "synonym_request": {
+        "request": 14,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Gedatolisib/synonyms/JSON",
+        "utc": "2026-10-08T00:47:12.704386+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_014.json",
+        "bytes": 3661,
+        "sha256": "6541f77bf5af0dff5b51267fec86f6e8521251b1bfc264b68846b52fcaeb7616"
+      },
+      "exact_matches": [
+        {
+          "nsc": "758256",
+          "compound_cid": 44516953,
+          "external_curve_groups": 55,
+          "external_cell_identifiers": 55,
+          "external_experiments": 1
+        }
+      ],
+      "compound_cid": 44516953,
+      "synonym_nsc_candidates": [
+        "758256",
+        "801014"
+      ],
+      "nsc_candidates_in_external_source": [
+        "758256"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "758256",
+          "standardized_cids": [
+            44516953
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 15,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/758256/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:13.804833+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_015.json",
+            "bytes": 146,
+            "sha256": "5b9df69f87a9c234111589c788a5871179a7aaddcb64fc729139a57e40504d76"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "Gemcitabine",
+      "public_name_query": "Gemcitabine",
+      "synonym_request": {
+        "request": 16,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Gemcitabine/synonyms/JSON",
+        "utc": "2026-10-08T00:47:14.904898+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_016.json",
+        "bytes": 4573,
+        "sha256": "0988da3af98af394bfe8839a474190beeb2c6f10d6ec388d9c081c2ac69487dc"
+      },
+      "exact_matches": [],
+      "compound_cid": 60750,
+      "synonym_nsc_candidates": [
+        "613327"
+      ],
+      "nsc_candidates_in_external_source": [
+        "613327"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "613327",
+          "standardized_cids": [
+            356653
+          ],
+          "exact_cid_match": false,
+          "request": {
+            "request": 17,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/613327/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:16.005108+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_017.json",
+            "bytes": 141,
+            "sha256": "20e15495d5abecd6fc3c5ea9a83cd369c3947c6490ebc3bc7f58723bffd82cc4"
+          }
+        }
+      ],
+      "status": "NO_VALIDATED_SOURCE_MATCH"
+    },
+    {
+      "drug": "Idasanutlin",
+      "public_name_query": "Idasanutlin",
+      "synonym_request": {
+        "request": 18,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Idasanutlin/synonyms/JSON",
+        "utc": "2026-10-08T00:47:17.105375+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_018.json",
+        "bytes": 4051,
+        "sha256": "77b3bc9aabfe7dcbb3ba01c25747535ba99384c5eed54a376b11323eab29dfe6"
+      },
+      "exact_matches": [
+        {
+          "nsc": "779404",
+          "compound_cid": 53358942,
+          "external_curve_groups": 39,
+          "external_cell_identifiers": 39,
+          "external_experiments": 1
+        }
+      ],
+      "compound_cid": 53358942,
+      "synonym_nsc_candidates": [
+        "779404"
+      ],
+      "nsc_candidates_in_external_source": [
+        "779404"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "779404",
+          "standardized_cids": [
+            53358942
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 19,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/779404/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:18.205604+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_019.json",
+            "bytes": 146,
+            "sha256": "3eb172dc01253f24790e088dd98155e394f684485b1c481985256733ea8fae06"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "LCL161",
+      "public_name_query": "LCL161",
+      "synonym_request": {
+        "request": 20,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/LCL161/synonyms/JSON",
+        "utc": "2026-10-08T00:47:19.306126+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_020.json",
+        "bytes": 3398,
+        "sha256": "83c6d1be5b573b75e29a8d4e19004b70fb0dae4d5a6cb2a1e5f86b60117749f4"
+      },
+      "exact_matches": [
+        {
+          "nsc": "772868",
+          "compound_cid": 24737642,
+          "external_curve_groups": 58,
+          "external_cell_identifiers": 58,
+          "external_experiments": 1
+        }
+      ],
+      "compound_cid": 24737642,
+      "synonym_nsc_candidates": [
+        "772868"
+      ],
+      "nsc_candidates_in_external_source": [
+        "772868"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "772868",
+          "standardized_cids": [
+            24737642
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 21,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/772868/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:20.406302+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_021.json",
+            "bytes": 146,
+            "sha256": "a3a4233ddf3ecdf97c669bda5e2f57d3e3f8fb9310adcd32fbdbc6fbf1645d83"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "LGK974",
+      "public_name_query": "LGK974",
+      "synonym_request": {
+        "request": 22,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/LGK974/synonyms/JSON",
+        "utc": "2026-10-08T00:47:21.506395+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_022.json",
+        "bytes": 2911,
+        "sha256": "c7636f5c339f7b88acb95cc3f3a34dc4523296f3bb9c9ec395c5d87a43215e92"
+      },
+      "exact_matches": [
+        {
+          "nsc": "777639",
+          "compound_cid": 46926973,
+          "external_curve_groups": 111,
+          "external_cell_identifiers": 59,
+          "external_experiments": 2
+        }
+      ],
+      "compound_cid": 46926973,
+      "synonym_nsc_candidates": [
+        "777639"
+      ],
+      "nsc_candidates_in_external_source": [
+        "777639"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "777639",
+          "standardized_cids": [
+            46926973
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 23,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/777639/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:22.606613+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_023.json",
+            "bytes": 146,
+            "sha256": "80b0f6c965ee8a5278790477e35dd5efe42cb4ce1aa51a51e93bd6f3b10cf841"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "Lapatinib",
+      "public_name_query": "Lapatinib",
+      "synonym_request": {
+        "request": 24,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Lapatinib/synonyms/JSON",
+        "utc": "2026-10-08T00:47:23.706834+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_024.json",
+        "bytes": 6662,
+        "sha256": "3d44821eab7ca934bb532b788ab1d6713649250885ba1039c23a82fff9a4d0d6"
+      },
+      "exact_matches": [
+        {
+          "nsc": "745750",
+          "compound_cid": 208908,
+          "external_curve_groups": 116,
+          "external_cell_identifiers": 60,
+          "external_experiments": 2
+        }
+      ],
+      "compound_cid": 208908,
+      "synonym_nsc_candidates": [
+        "727989",
+        "745750",
+        "800780"
+      ],
+      "nsc_candidates_in_external_source": [
+        "745750"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "745750",
+          "standardized_cids": [
+            208908
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 25,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/745750/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:24.807175+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_025.json",
+            "bytes": 143,
+            "sha256": "ed909b19afbf7345fa23c3028cd9946eede4eb043881353788a9f9eaf88de9bd"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "Luminespib",
+      "public_name_query": "Luminespib",
+      "synonym_request": {
+        "request": 26,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Luminespib/synonyms/JSON",
+        "utc": "2026-10-08T00:47:25.907475+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_026.json",
+        "bytes": 3867,
+        "sha256": "bafb96daadb890e12ce31c1bc7d52d5c34fe726d012c73148f34ce5320836d4c"
+      },
+      "exact_matches": [
+        {
+          "nsc": "755762",
+          "compound_cid": 135539077,
+          "external_curve_groups": 58,
+          "external_cell_identifiers": 58,
+          "external_experiments": 1
+        }
+      ],
+      "compound_cid": 135539077,
+      "synonym_nsc_candidates": [
+        "755762"
+      ],
+      "nsc_candidates_in_external_source": [
+        "755762"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "755762",
+          "standardized_cids": [
+            135539077
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 27,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/755762/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:27.007742+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_027.json",
+            "bytes": 147,
+            "sha256": "2e9e102bbd99efa1eef510480dcf8dc6abbb5d1a228aaf8e35c481d6540935e6"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "Methotrexate",
+      "public_name_query": "Methotrexate",
+      "synonym_request": {
+        "request": 28,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Methotrexate/synonyms/JSON",
+        "utc": "2026-10-08T00:47:28.108010+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_028.json",
+        "bytes": 11416,
+        "sha256": "7783b8769a29c3bb52a7fbdd4e6109a58f8f4515d81827ceeb55f87cd510cdf5"
+      },
+      "exact_matches": [
+        {
+          "nsc": "740",
+          "compound_cid": 126941,
+          "external_curve_groups": 115,
+          "external_cell_identifiers": 60,
+          "external_experiments": 2
+        }
+      ],
+      "compound_cid": 126941,
+      "synonym_nsc_candidates": [
+        "740"
+      ],
+      "nsc_candidates_in_external_source": [
+        "740"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "740",
+          "standardized_cids": [
+            126941
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 29,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/740/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:29.208322+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_029.json",
+            "bytes": 140,
+            "sha256": "b40d74ead5043d58e640b8aba57be64744a84b829474cc80f86cb10c989fb535"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "Napabucasin",
+      "public_name_query": "Napabucasin",
+      "synonym_request": {
+        "request": 30,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Napabucasin/synonyms/JSON",
+        "utc": "2026-10-08T00:47:30.308423+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_030.json",
+        "bytes": 2352,
+        "sha256": "4c4a85a5f222e340cc0886cc69fe7e4e6998001ae926b7e7b59c60ed5566f1be"
+      },
+      "exact_matches": [
+        {
+          "nsc": "788900",
+          "compound_cid": 10331844,
+          "external_curve_groups": 56,
+          "external_cell_identifiers": 56,
+          "external_experiments": 1
+        }
+      ],
+      "compound_cid": 10331844,
+      "synonym_nsc_candidates": [
+        "788900",
+        "816092"
+      ],
+      "nsc_candidates_in_external_source": [
+        "788900"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "788900",
+          "standardized_cids": [
+            10331844
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 31,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/788900/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:31.408838+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_031.json",
+            "bytes": 146,
+            "sha256": "0e51cd2e003941c13be22428a586f514b6adef084b36351792194501dbc7e0be"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "Palbociclib",
+      "public_name_query": "Palbociclib",
+      "synonym_request": {
+        "request": 32,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Palbociclib/synonyms/JSON",
+        "utc": "2026-10-08T00:47:32.509125+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_032.json",
+        "bytes": 5674,
+        "sha256": "cc1ab74d13baeec1748f01b64e7b2793b36739b8de34cd2127d417d895add7b4"
+      },
+      "exact_matches": [
+        {
+          "nsc": "758247",
+          "compound_cid": 5330286,
+          "external_curve_groups": 116,
+          "external_cell_identifiers": 60,
+          "external_experiments": 2
+        }
+      ],
+      "compound_cid": 5330286,
+      "synonym_nsc_candidates": [
+        "758247",
+        "772256",
+        "800815"
+      ],
+      "nsc_candidates_in_external_source": [
+        "758247"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "758247",
+          "standardized_cids": [
+            5330286
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 33,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/758247/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:33.609377+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_033.json",
+            "bytes": 145,
+            "sha256": "c002d312d48560f4e5f8f6e8127b035e0c83b7096f039ab763798f1efbf379fe"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "Panobinostat",
+      "public_name_query": "Panobinostat",
+      "synonym_request": {
+        "request": 34,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Panobinostat/synonyms/JSON",
+        "utc": "2026-10-08T00:47:34.709800+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_034.json",
+        "bytes": 4354,
+        "sha256": "d1dd75928692732ba824664b8e27c04ba4113def39fd6932bfadd62c16118dde"
+      },
+      "exact_matches": [
+        {
+          "nsc": "761190",
+          "compound_cid": 6918837,
+          "external_curve_groups": 170,
+          "external_cell_identifiers": 60,
+          "external_experiments": 3
+        }
+      ],
+      "compound_cid": 6918837,
+      "synonym_nsc_candidates": [
+        "761190"
+      ],
+      "nsc_candidates_in_external_source": [
+        "761190"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "761190",
+          "standardized_cids": [
+            6918837
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 35,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/761190/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:35.810134+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_035.json",
+            "bytes": 145,
+            "sha256": "95c7cd59c6c8058941f986bb84a93dc2b8c3162ab86c5b1791afb3333b98c90c"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "Pevonedistat",
+      "public_name_query": "Pevonedistat",
+      "synonym_request": {
+        "request": 36,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Pevonedistat/synonyms/JSON",
+        "utc": "2026-10-08T00:47:36.910414+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_036.json",
+        "bytes": 4611,
+        "sha256": "ae7f7e3cda98b98573700511b452e9f593244e6990256d04f72b4f287892b488"
+      },
+      "exact_matches": [],
+      "compound_cid": 16720766,
+      "synonym_nsc_candidates": [
+        "793435"
+      ],
+      "nsc_candidates_in_external_source": [],
+      "source_confirmation_checks": [],
+      "status": "NO_VALIDATED_SOURCE_MATCH"
+    },
+    {
+      "drug": "Regorafenib",
+      "public_name_query": "Regorafenib",
+      "synonym_request": {
+        "request": 37,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Regorafenib/synonyms/JSON",
+        "utc": "2026-10-08T00:47:38.010847+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_037.json",
+        "bytes": 4194,
+        "sha256": "8b15a77258c3494083798819ccfcc4d200a77b8eda416c70a4ee139a2e32f38d"
+      },
+      "exact_matches": [
+        {
+          "nsc": "763932",
+          "compound_cid": 11167602,
+          "external_curve_groups": 109,
+          "external_cell_identifiers": 58,
+          "external_experiments": 2
+        }
+      ],
+      "compound_cid": 11167602,
+      "synonym_nsc_candidates": [
+        "763932",
+        "800865"
+      ],
+      "nsc_candidates_in_external_source": [
+        "763932"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "763932",
+          "standardized_cids": [
+            11167602
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 38,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/763932/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:39.111085+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_038.json",
+            "bytes": 146,
+            "sha256": "1c6480f67de182fdf832331fd81a1cb00a91ca5c59ac248765237cbed3c475d1"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "SN-38",
+      "public_name_query": "SN-38",
+      "synonym_request": {
+        "request": 39,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/SN-38/synonyms/JSON",
+        "utc": "2026-10-08T00:47:40.211394+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_039.json",
+        "bytes": 4769,
+        "sha256": "163eeed8ea07e366f784170137948cdafc697c028299768f43e9b66d59601bde"
+      },
+      "exact_matches": [
+        {
+          "nsc": "673596",
+          "compound_cid": 104842,
+          "external_curve_groups": 58,
+          "external_cell_identifiers": 58,
+          "external_experiments": 1
+        }
+      ],
+      "compound_cid": 104842,
+      "synonym_nsc_candidates": [
+        "673596"
+      ],
+      "nsc_candidates_in_external_source": [
+        "673596"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "673596",
+          "standardized_cids": [
+            104842
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 40,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/673596/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:41.311536+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_040.json",
+            "bytes": 141,
+            "sha256": "1c8e3c9b11663432d2a3ca921f4ab3c24c4b915efea8f252b89b5f5952c6a204"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "TAS-102",
+      "status": "COMBINATION_NOT_ASSIGNED_TO_SINGLE_COMPONENT",
+      "exact_matches": []
+    },
+    {
+      "drug": "Trametinib",
+      "public_name_query": "Trametinib",
+      "synonym_request": {
+        "request": 41,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Trametinib/synonyms/JSON",
+        "utc": "2026-10-08T00:47:42.412004+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_041.json",
+        "bytes": 5717,
+        "sha256": "8cb75b34b82026b7f6248c2b92ca77a4b7660211c01f583ff2bf6cf17ba80bf9"
+      },
+      "exact_matches": [
+        {
+          "nsc": "758246",
+          "compound_cid": 11707110,
+          "external_curve_groups": 116,
+          "external_cell_identifiers": 60,
+          "external_experiments": 2
+        }
+      ],
+      "compound_cid": 11707110,
+      "synonym_nsc_candidates": [
+        "758246",
+        "800956"
+      ],
+      "nsc_candidates_in_external_source": [
+        "758246"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "758246",
+          "standardized_cids": [
+            11707110
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 42,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/758246/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:43.512382+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_042.json",
+            "bytes": 146,
+            "sha256": "ae7229c036401ecfbf1e06a7e05d474d5cc7eea4b84c1c8055e7a8f0ec2b4e2c"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    },
+    {
+      "drug": "Volasertib",
+      "public_name_query": "Volasertib",
+      "synonym_request": {
+        "request": 43,
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/Volasertib/synonyms/JSON",
+        "utc": "2026-10-08T00:47:44.612626+00:00",
+        "http_status": 200,
+        "response_file": "pubchem_043.json",
+        "bytes": 4423,
+        "sha256": "7d48ddc99a596969259b101f19dd0373eb2e45ef0fe31950e708e136510fe1ec"
+      },
+      "exact_matches": [
+        {
+          "nsc": "757149",
+          "compound_cid": 10461508,
+          "external_curve_groups": 55,
+          "external_cell_identifiers": 55,
+          "external_experiments": 1
+        }
+      ],
+      "compound_cid": 10461508,
+      "synonym_nsc_candidates": [
+        "757149",
+        "800965"
+      ],
+      "nsc_candidates_in_external_source": [
+        "757149"
+      ],
+      "source_confirmation_checks": [
+        {
+          "nsc": "757149",
+          "standardized_cids": [
+            10461508
+          ],
+          "exact_cid_match": true,
+          "request": {
+            "request": 44,
+            "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sourceid/DTP.NCI/757149/cids/JSON?cids_type=standardized",
+            "utc": "2026-10-08T00:47:45.712895+00:00",
+            "http_status": 200,
+            "response_file": "pubchem_044.json",
+            "bytes": 146,
+            "sha256": "7579891cd4af84bc69925f7872cfe3ae4e3779b5d5606724c64b807c79244af4"
+          }
+        }
+      ],
+      "status": "EXACT_STANDARDIZED_CID_MATCH"
+    }
+  ],
+  "organoid_responses_read": false,
+  "patient_data_transmitted": false,
+  "same_drug_does_not_imply_same_assay": true,
+  "salt_or_component_equivalence_assumed": false,
+  "compound_mixture_to_ingredient_mapping_used": false,
+  "candidate_model_trained": false,
+  "accuracy_improvement_claimed": false,
+  "method_documentation": "https://pubchem.ncbi.nlm.nih.gov/docs/pug-rest"
+}

@@ -1,0 +1,548 @@
+{
+  "schema": "dosepilot.chemical_dose_correlation64.source_bank.v1",
+  "status": "PREPARED_SOURCE_ONLY",
+  "source_sha256": "53aae154d310256d77ddbc9c9d6ddab461235496e12009a23105620c0181b66c",
+  "identity_audit_sha256": "0e814c4046c607286308a1e165ed7922504aac88e9aa9a803b198c43c0b6731e",
+  "organoid_metadata_source_sha256": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+  "bank_sha256": "0dbde3e970e3d7b9dfc6330c20a04c6dcbe87642abc66263bb469e6b0062512e",
+  "matched_chemical_targets": 20,
+  "matched_chemical_and_full_dose_targets": 0,
+  "targets": 24,
+  "records": [
+    {
+      "exact_nsc_candidates": [
+        "19893"
+      ],
+      "chemical_curve_groups": 115,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "5-FU",
+      "compound_cid": 3385,
+      "source_nsc_candidates": [
+        "19893"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [
+        "757148"
+      ],
+      "chemical_curve_groups": 59,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "AZD7762",
+      "compound_cid": 11152667,
+      "source_nsc_candidates": [
+        "757148"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [
+        "750691"
+      ],
+      "chemical_curve_groups": 57,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Afatinib",
+      "compound_cid": 10184653,
+      "source_nsc_candidates": [
+        "750691"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [
+        "759677"
+      ],
+      "chemical_curve_groups": 58,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Alisertib",
+      "compound_cid": 24771867,
+      "source_nsc_candidates": [
+        "759677"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [],
+      "chemical_curve_groups": 0,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "source_ranges_for_matching_chemical": [],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Atorvastatin",
+      "compound_cid": 60823,
+      "source_nsc_candidates": []
+    },
+    {
+      "exact_nsc_candidates": [
+        "824183"
+      ],
+      "chemical_curve_groups": 55,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Bemcentinib",
+      "compound_cid": 46215462,
+      "source_nsc_candidates": [
+        "824183"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [
+        "778304"
+      ],
+      "chemical_curve_groups": 109,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Encorafenib",
+      "compound_cid": 50922675,
+      "source_nsc_candidates": [
+        "778304"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [
+        "758256"
+      ],
+      "chemical_curve_groups": 55,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Gedatolisib",
+      "compound_cid": 44516953,
+      "source_nsc_candidates": [
+        "758256"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [],
+      "chemical_curve_groups": 0,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "source_ranges_for_matching_chemical": [],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Gemcitabine",
+      "compound_cid": 60750,
+      "source_nsc_candidates": []
+    },
+    {
+      "exact_nsc_candidates": [
+        "779404"
+      ],
+      "chemical_curve_groups": 39,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Idasanutlin",
+      "compound_cid": 53358942,
+      "source_nsc_candidates": [
+        "779404"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [
+        "772868"
+      ],
+      "chemical_curve_groups": 58,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -8.602059991327963,
+        -4.6020599913279625
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "LCL161",
+      "compound_cid": 24737642,
+      "source_nsc_candidates": [
+        "772868"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [
+        "777639"
+      ],
+      "chemical_curve_groups": 111,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "LGK974",
+      "compound_cid": 46926973,
+      "source_nsc_candidates": [
+        "777639"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [
+        "745750"
+      ],
+      "chemical_curve_groups": 116,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Lapatinib",
+      "compound_cid": 208908,
+      "source_nsc_candidates": [
+        "745750"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [
+        "755762"
+      ],
+      "chemical_curve_groups": 58,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Luminespib",
+      "compound_cid": 135539077,
+      "source_nsc_candidates": [
+        "755762"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [
+        "740"
+      ],
+      "chemical_curve_groups": 115,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -9.301029995663981,
+        -5.301029995663981
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Methotrexate",
+      "compound_cid": 126941,
+      "source_nsc_candidates": [
+        "740"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [
+        "788900"
+      ],
+      "chemical_curve_groups": 56,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -8.698970004336019,
+        -4.698970004336019
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Napabucasin",
+      "compound_cid": 10331844,
+      "source_nsc_candidates": [
+        "788900"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [
+        "758247"
+      ],
+      "chemical_curve_groups": 116,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.301,
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Palbociclib",
+      "compound_cid": 5330286,
+      "source_nsc_candidates": [
+        "758247"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [
+        "761190"
+      ],
+      "chemical_curve_groups": 170,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Panobinostat",
+      "compound_cid": 6918837,
+      "source_nsc_candidates": [
+        "761190"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [],
+      "chemical_curve_groups": 0,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "source_ranges_for_matching_chemical": [],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Pevonedistat",
+      "compound_cid": 16720766,
+      "source_nsc_candidates": []
+    },
+    {
+      "exact_nsc_candidates": [
+        "763932"
+      ],
+      "chemical_curve_groups": 109,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Regorafenib",
+      "compound_cid": 11167602,
+      "source_nsc_candidates": [
+        "763932"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [
+        "673596"
+      ],
+      "chemical_curve_groups": 58,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "SN-38",
+      "compound_cid": 104842,
+      "source_nsc_candidates": [
+        "673596"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [],
+      "chemical_curve_groups": 0,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "source_ranges_for_matching_chemical": [],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "TAS-102",
+      "compound_cid": null,
+      "source_nsc_candidates": []
+    },
+    {
+      "exact_nsc_candidates": [
+        "758246"
+      ],
+      "chemical_curve_groups": 116,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -10.602059991327963,
+        -6.6020599913279625
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Trametinib",
+      "compound_cid": 11707110,
+      "source_nsc_candidates": [
+        "758246"
+      ]
+    },
+    {
+      "exact_nsc_candidates": [
+        "757149"
+      ],
+      "chemical_curve_groups": 55,
+      "fully_covering_curve_groups": 0,
+      "fully_covering_cell_identifiers": 0,
+      "required_min_cells": 20,
+      "requested_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "source_ranges_for_matching_chemical": [
+        -4.0
+      ],
+      "extrapolation_used": false,
+      "status": "POOLED_FALLBACK_INSUFFICIENT_EXACT_DOSE_COVERAGE",
+      "drug": "Volasertib",
+      "compound_cid": 10461508,
+      "source_nsc_candidates": [
+        "757149"
+      ]
+    }
+  ],
+  "organoid_viability_values_parsed": false,
+  "organoid_model_fitted": false,
+  "extrapolation_used": false,
+  "potency_or_assay_equivalence_claimed": false,
+  "source_response_arrays_published": false,
+  "utc": "2026-10-08T00:49:58.447758+00:00"
+}
