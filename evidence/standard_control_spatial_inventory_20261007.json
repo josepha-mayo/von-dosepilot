@@ -1,0 +1,232 @@
+{
+  "schema": "dosepilot.standard_control_spatial_inventory.v1",
+  "status": "PASS_CONTROL_ONLY_EXTRACTION",
+  "source_sha256": "3847aa93b2a84c7d5d0b04c26494f39f35963fc41e96eae97d8a180fbc33d81c",
+  "curve_sha256": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+  "prior_quality_sha256": "f09448aad3d62de360d07be799a43a3fa7f3442b6b1f7c829c12533f43d8b0ba",
+  "control_signal_conversions": 5236,
+  "treatment_signal_conversions": 0,
+  "viability_conversions": 0,
+  "Lib2_numeric_conversions": 0,
+  "selected_samples": 119,
+  "selected_patients": 59,
+  "sample_run_plates": 238,
+  "existing_QC_summary_maxdiff": 0.0,
+  "same_standard_control_inventory_as_retained_model": true,
+  "control_groups": {
+    "p1_negative": [
+      {
+        "positions": [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            12
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            20
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            6,
+            15
+          ],
+          [
+            9,
+            7
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            9,
+            19
+          ],
+          [
+            12,
+            8
+          ],
+          [
+            12,
+            17
+          ],
+          [
+            16,
+            3
+          ],
+          [
+            16,
+            22
+          ]
+        ],
+        "plates_with_this_geometry": 119,
+        "control_count": 13
+      }
+    ],
+    "p1_positive": [
+      {
+        "positions": [
+          [
+            1,
+            16
+          ],
+          [
+            1,
+            22
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            9,
+            4
+          ],
+          [
+            9,
+            10
+          ],
+          [
+            12,
+            14
+          ],
+          [
+            15,
+            12
+          ],
+          [
+            15,
+            21
+          ],
+          [
+            16,
+            18
+          ]
+        ],
+        "plates_with_this_geometry": 119,
+        "control_count": 9
+      }
+    ],
+    "p2_negative": [
+      {
+        "positions": [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            12
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            20
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            6,
+            15
+          ],
+          [
+            9,
+            7
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            9,
+            19
+          ],
+          [
+            12,
+            8
+          ],
+          [
+            12,
+            17
+          ],
+          [
+            16,
+            3
+          ],
+          [
+            16,
+            22
+          ]
+        ],
+        "plates_with_this_geometry": 119,
+        "control_count": 13
+      }
+    ],
+    "p2_positive": [
+      {
+        "positions": [
+          [
+            1,
+            16
+          ],
+          [
+            1,
+            22
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            9,
+            4
+          ],
+          [
+            9,
+            10
+          ],
+          [
+            12,
+            14
+          ],
+          [
+            15,
+            12
+          ],
+          [
+            15,
+            21
+          ],
+          [
+            16,
+            18
+          ]
+        ],
+        "plates_with_this_geometry": 119,
+        "control_count": 9
+      }
+    ]
+  },
+  "private_controls_sha256": "0c6db1b9c4dc922176dd4b9afb1c3b9c9f1eb2239decd96bda97f5abcf367047",
+  "new_treatment_measurements": 0,
+  "candidate_predictions_computed": false,
+  "predictive_residuals_inspected": false,
+  "controls_are_separate_assay_resources": true,
+  "utc": "2026-10-07T22:36:02.663868+00:00"
+}
