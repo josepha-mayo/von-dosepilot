@@ -273,7 +273,7 @@
       10.0
     ],
     "synthetic_inference_passed": true,
-    "retained 64_replaced": false
+    "retained64_replaced": false
   },
   "submission_changed": false,
   "independent_biological_validation": false,
