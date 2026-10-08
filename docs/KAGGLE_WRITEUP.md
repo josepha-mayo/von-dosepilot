@@ -7,7 +7,7 @@
 **Team:** von DosePilot  
 **Author:** Joseph Ayanda
 
-**Repository edition updated 4 October 2026.** This file is the prepared writeup, not proof that the live Kaggle entry has been edited. The accepted entry already exists; no duplicate submission is intended.
+**Repository edition updated 8 October 2026.** This file is the prepared writeup, not proof that the live Kaggle entry has been edited. The accepted entry already exists; no duplicate submission is intended.
 
 ## Demo video and code
 
@@ -32,6 +32,16 @@
 **Current judge/audit package:** [finalist audit](https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FINALIST_AUDIT.md) · [bandwidth-0.7 successor](https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/BANDWIDTH_SUCCESSOR.md) · [nested bandwidth selection](https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/NESTED_BANDWIDTH_EVALUATION.md) · [closed co-optimized interpolation control](https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/COOPTIMIZED_CALIBRATED_CONTROL_NEGATIVE.md) · [simulated assay robustness](https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/SIMULATED_ASSAY_ROBUSTNESS.md) · [frozen 64-row OoC treatment schedule](https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/FROZEN_OOC_EXECUTION_MANIFEST.md) · [prospective OoC validation contract](https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/PROSPECTIVE_OOC_VALIDATION_CONTRACT.md) · [current-model lifecycle](https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/BANDWIDTH_LIFECYCLE.md)
 
 **Evidence history:** [structured-kernel results and recovery](https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/STRUCTURED_KERNELS_AND_RECOVERY.md) · [historical durable lifecycle and acquisition](https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/DURABLE_LIFECYCLE_AND_ACQUISITION.md) · [S2 spectral successor](https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/SPECTRAL_SUCCESSOR.md) · [Protected22 execution, missingness and exposure disclosure](https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/PROTECTED22_RESULT.md)
+
+## Current verified decision state — 8 October 2026
+
+The public demo and operational runtime remain the 64-well bandwidth-0.7 additive model (MSE `0.0010582750420801538`, p90 patient RMSE `0.037894285308720174`). The strongest retained same-budget research candidate is orientation-specific control-quality rank-1 (MSE `0.001042745722096212`, p90 `0.037419695944064885`, 40/59 patient wins, 5/5 favorable folds and 19/24 target-average wins versus the operating model). That research candidate is not silently substituted into the deployed demo.
+
+The separately evaluated 72-well residual frontier reached MSE `0.0009326007417880046` but buys eight additional treatment wells and has worse p90 (`0.03770730634910972`) than the retained 64-well candidate, so it is rejected for promotion and remains only a measurement/error trade-off.
+
+The explicit same-budget half-error objective is MSE `<=0.000521372861048106` with p90 `<=0.037419695944064885`. It has **not** been achieved. The [current verified state map](https://github.com/josepha-mayo/von-dosepilot/blob/master/docs/CURRENT_VERIFIED_STATE_20261008.md) links the retained decision, recent negative studies and their public receipts.
+
+These figures are repeated adaptive Lib1 development over 119 samples grouped into 59 patients. They are not an official competition score, independent biological validation, clinical evidence, finalist confirmation or proof that this prepared repository text has been saved to the existing Kaggle entry.
 
 ## Project Summary
 
