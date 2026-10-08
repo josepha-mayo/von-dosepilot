@@ -1,0 +1,135 @@
+{
+  "schema": "dosepilot.followthrough_20261008_1423.v1",
+  "created_utc": "2026-10-08T14:47:19.534675+00:00",
+  "scope": "Response to then keep going after the original128-well research result",
+  "retained64": {
+    "mse": 0.001042745722096212,
+    "p90": 0.037419695944064885,
+    "treatment_wells": 64,
+    "unchanged": true
+  },
+  "retained128": {
+    "mse": 0.0005102658031862283,
+    "p90": 0.028122765834466153,
+    "treatment_wells": 128,
+    "unchanged": true
+  },
+  "same_budget_half_error_target": 0.000521372861048106,
+  "same_budget_half_error_achieved": false,
+  "primary64_local": {
+    "mse": 0.001058388693158486,
+    "decision": "REJECT"
+  },
+  "primary64_control_calibration": {
+    "mse": 0.0010583251482929321,
+    "decision": "REJECT"
+  },
+  "legacy64_integration": {
+    "mse": 0.0010428118492048445,
+    "decision": "REJECT",
+    "full_legacy_rebuild": false
+  },
+  "124_well_nested": {
+    "mse": 0.0005238641402924872,
+    "p90": 0.02824213359617893,
+    "treatment_wells": 124,
+    "added_wells_vs64": 60,
+    "fewer_wells_vs128": 4,
+    "mse_reduction_factor_vs64": 1.990488834593678,
+    "half_error_threshold_reached": false,
+    "status": "DIFFERENT_COST_RESEARCH_ONLY"
+  },
+  "128_well_nested": {
+    "mse": 0.0005088350928528425,
+    "p90": 0.02809556098092916,
+    "comparison_to_retained128": {
+      "relative_gain": 0.0028038530594292066,
+      "patient_wins": 29,
+      "patient_losses": 18,
+      "fold_wins": 3,
+      "p90_nonworse": true,
+      "targets_better": 16
+    },
+    "status": "NOT_PROMOTED"
+  },
+  "128_well_best_fixed_secondary": {
+    "name": "own14_full",
+    "role": "PRESPECIFIED_SECONDARY_NOT_NESTED_PRIMARY",
+    "mse": 0.000506481942609793,
+    "p90": 0.02809556098092916,
+    "treatment_wells": 128,
+    "added_wells_vs64": 64,
+    "mse_reduction_factor_vs64": 2.0588013794197013,
+    "relative_mse_gain_vs_retained128": 0.007415469648971107,
+    "comparison_to_retained128": {
+      "relative_gain": 0.007415469648971107,
+      "patient_wins": 37,
+      "patient_losses": 22,
+      "fold_wins": 4,
+      "p90_nonworse": true,
+      "targets_better": 16
+    },
+    "status": "NOT_PROMOTED_4_OF_5_FOLDS_IMPROVE"
+  },
+  "independent_replay": {
+    "local": {
+      "status": "PASS",
+      "independent_augmented_regression_replay": true,
+      "predictions_reconstructed": 182784,
+      "maximum_prediction_difference": 5.972999872483342e-14,
+      "cost_tiers_checked": [
+        64,
+        120,
+        124,
+        128
+      ],
+      "whole_patient_membership_checked": true,
+      "outer_label_exclusion_sentinel": 0.0,
+      "result_sha256": "0aadf5b616e32388e196209491adb015af535967181ab3fb495f1b582a1912b3",
+      "verifier_sha256": "7747889655dcab93d2514d8adf4c950bee0cddf2298fcd2d9af8fdda3fa0a8e8",
+      "independent_biological_confirmation": false
+    },
+    "control_calibration": {
+      "status": "PASS",
+      "independent_model_and_control_algebra": true,
+      "predictions_reconstructed": 91392,
+      "maximum_prediction_difference": 4.6629367034256575e-15,
+      "physical_costs_checked": [
+        64,
+        120,
+        124,
+        128
+      ],
+      "standard_controls_explicitly_required": true,
+      "whole_patient_membership_checked": true,
+      "result_sha256": "34fc61309da82725e0f01f9c188a5f404949568291c7876e88d845b7bd63ad3a",
+      "verifier_sha256": "3b14fa29fb72a9aa87c50aca02df5e91933b4e2ef5f02ed4fbeac2dce8bee9ff",
+      "independent_biological_confirmation": false
+    },
+    "combined_predictions": 274176
+  },
+  "source_commits": {
+    "local_frozen": "eaf33c0",
+    "local_outcome": "5951cb9",
+    "control_frozen": "9270dc1"
+  },
+  "run_paths": {
+    "local": "D:\\von-dosepilot-data\\local_response_tiers_20261008_run1",
+    "control": "D:\\von-dosepilot-data\\control_transfer_tiers_20261008_run1"
+  },
+  "raw_result_sha256": {
+    "local": "0aadf5b616e32388e196209491adb015af535967181ab3fb495f1b582a1912b3",
+    "control": "34fc61309da82725e0f01f9c188a5f404949568291c7876e88d845b7bd63ad3a"
+  },
+  "independent_biological_confirmation": false,
+  "selection_adjusted": false,
+  "submission_changed": false,
+  "retained_models_replaced": false,
+  "limitations": [
+    "Repeated adaptive development on the same119 samples and59 whole patients.",
+    "The128-well improvement is a secondary point estimate, not a new2x gain relative to the existing128-well model.",
+    "The124-well point estimate must not be rounded up to claim2x.",
+    "Standard-control calibrated variants require ten quality summaries in addition to the declared treatment values.",
+    "No new fitted model was promoted or submitted."
+  ]
+}
