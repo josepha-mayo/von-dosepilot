@@ -183,7 +183,7 @@ def construct_models(xx,yy,pp,cat,full):
         base=Ridge(ctx,plan,.01)
         z=(xx2-base.mean_x)/base.scale_x
         res=yy2-base.predict(xx2)
-        w=np.tile(patient_weights(pp),2)/2
+        w=np.tile(patient_weights(pp),2)/(2*len(np.unique(pp)))
         kernel=BandwidthAdditive(z,res,w,np.asarray(plan["coordinate_target_indices"],int),.7)
         coefs=[np.zeros_like(res)]
         for frac,lam in OPTIONS[1:]:
