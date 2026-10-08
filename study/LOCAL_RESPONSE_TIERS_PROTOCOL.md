@@ -1,0 +1,27 @@
+# Query-specific local response reconstruction, 8 October 2026
+
+## Objectives and cost boundaries
+Primary: halve retained64 MSE 0.001042745722096212 to <=0.000521372861048106, with p90 patient RMSE <=0.037419695944064885, using the original 64 physical treatment measurements. Secondary: assess whether 120 or 124 wells can approach the verified 128-well MSE 0.0005102658031862283 at lower measurement count. The 128-well tier is a cost-matched reproduction/control for those alternatives. More than 64 wells NEVER qualifies as same-budget improvement against retained64. All costs are explicitly reported; no new physical assays are being purchased.
+
+## Distinct hypothesis
+The prior additive residual model uses fixed own-drug coefficients across query samples. This study makes each target's own-drug linear map depend on similarity between the query's purchased values and fitting profiles. It is not another covariance-rank choice, a full-curve generative fit, a teacher/student distillation, or a measurement-layout ensemble. Standard controls are not new inputs to this primary predictor.
+
+For each fitting-only panel, construct the unchanged patient-balanced, symmetric A/B-augmented own-drug ridge (penalty0.01, original standardized coordinates) and unchanged bandwidth0.7 additive spectral residual. Build local weights from either (a) the target's own standardized purchased measurements or (b) the 24 standardized predictions of the fitting own-drug model. Distance is mean squared standardized feature distance. Gaussian weights use exp(-distance/(2*h^2)), multiplied by original patient weights and normalized. Mix these local weights with the original patient weights: (1-rho)*global + rho*local. Fit query-specific own-target ridge0.01 with an unpenalized intercept in the original standardized coordinates. Its prediction replaces only the original own-drug head; the global spectral residual remains unchanged.
+
+Seven fixed bases: original; own h0.7/rho0.5; own h0.7/rho1; own h1.4/rho1; response h0.7/rho0.5; response h0.7/rho1; response h1.4/rho1. Combine each with the original ten spectral choices: identity, or fraction{0.1,0.3,0.6} times ridge{0.1,1,10}. No outcome-driven changes, clipping, extra sweeps or target-specific hyperparameter selection. This is an adaptation of established local weighted regression, not a claim to invent it.
+
+## Evaluation
+Budgets fixed before outcomes: 64,120,124,128. Original R13 64-distinct-dose plan; higher budgets use the already specified 2-to-6-dose subset search plus exact cost knapsack. Keep 24 identical endpoints, original eligible dose menu and equal plate counts. Each alternative A/B layout is purchased and scored separately. Average squared LOSSES, never A/B predictions. Every plan, scale, mean, response embedding and model is rebuilt within the fitting portion of three inner patient folds inside five original outer patient folds. The primary per budget selects one of 70 combinations using only inner scores. Also report every fixed local base with its inner-selected spectral option. There is no outerfold or target cherry-picking.
+
+A declared secondary 64-well integration diagnostic adds (nested_local64 minus original_operating64) to the archived retained64 predictions. The local correction uses only each outer-training fit; archived retained64 predictions are not used in selecting this correction. This preserves the previous control-quality calibration and same physical panel, but remains repeated adaptive development and is NOT a fresh end-to-end rebuild of the older multi-stage calibration lineage. It cannot automatically replace the released model. The exact original outer panels must agree with archived plans before evaluating this diagnostic.
+
+All 119 Lib1 TRAIN samples, 59 whole patients, 24 unchanged raw normalized log-dose AUCs. No Protected22/Lib2, patient-ID features, external-response data, expanded dose menu or inference-time teacher information. No benchmark/official score claim. Every outcome is repeatedly adapted development, not independent biological confirmation.
+
+## Integrity and decision
+Freeze implementation, tests, independent verifier, dependencies and exact input hashes before fitting. Synthetic checks: zero-local-weight reproduction; locality actually changes a nonlinear fixture; exact physical accounting; known linear weighted-regression reproduction; saved-model prediction replay; patient weighting; nonfinite/wrong-budget rejection; unchanged output with unpurchased cells missing. Save fitted numerical state, actual purchased query arrays, full membership and selected options. Verify predictions independently using a separately implemented weighted normal-equation solver. Rebuild outerfold0 after changing all excluded raw responses and labels; selected states and outputs must be identical. Reproduce archived 64 and128 controls.
+
+Primary same64 promotion screen: lower MSE, >=30 patient wins,5/5 favorable folds,p90 nonworse vs retained64 and operating64. Half error still needs the absolute threshold. The secondary higher-cost models must state both increased costs vs64 and changes vs128; they are not drop-in 64-well models. No automatic merge, public push, submission mutation or replacement of verified versions. Preserve negatives.
+
+Established method/evaluation sources checked for this study:
+https://www.statsmodels.org/stable/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html
+https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html
