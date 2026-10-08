@@ -19,6 +19,8 @@ DosePilot is a measurement-aware drug-response reconstruction method: commit a p
 **Prepared Kaggle writeup:** [docs/KAGGLE_WRITEUP.md](docs/KAGGLE_WRITEUP.md)  
 **Current technical report:** [CURRENT_TECHNICAL_REPORT.md](CURRENT_TECHNICAL_REPORT.md)
 
+**Current verified research state (8 October):** [docs/CURRENT_VERIFIED_STATE_20261008.md](docs/CURRENT_VERIFIED_STATE_20261008.md) · separates the operating 64-well demo, retained 64-well research candidate, rejected 72-well trade-off and latest closed experiments; repository evidence only, not a Kaggle-entry update
+
 **Current criterion evidence map:** [docs/FINALIST_RUBRIC_EVIDENCE_CURRENT.md](docs/FINALIST_RUBRIC_EVIDENCE_CURRENT.md) · no self-score or finalist-probability estimate; the [4 October predecessor](docs/FINALIST_RUBRIC_EVIDENCE.md) remains immutable history
 
 **Current-package criterion successor:** [docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_PACKAGE.md](docs/FINALIST_RUBRIC_EVIDENCE_CURRENT_PACKAGE.md) · binds the primary v2 package and clean isolated execution: 8/8 checks, current rubric successor enforced, nested canonical 14/14 stages and 173 tests; dependencies came from the local pip cache, not a network clone, clean-new-machine certification, independent biological validation, self-score, finalist-probability estimate, Kaggle edit, or official score
