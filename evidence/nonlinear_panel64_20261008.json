@@ -1,0 +1,160 @@
+{
+  "schema": "dosepilot.nonlinear_panel64.v1",
+  "status": "COMPLETE",
+  "role": "REPEATED_ADAPTIVE_DEVELOPMENT",
+  "arms": {
+    "original": {
+      "metrics": {
+        "mse": 0.0010582750420801536,
+        "p90": 0.03789428530872017,
+        "fold_mse": [
+          0.0013921291183112406,
+          0.0008933246324477283,
+          0.0010633000716809172,
+          0.0008098063511711591,
+          0.0011395913999451372
+        ],
+        "orientation_mse": [
+          0.001104752161673216,
+          0.0010117979224870909
+        ],
+        "target_mse": [
+          0.0012108915801875926,
+          0.001122872272305305,
+          0.0012635622362233336,
+          0.000779058173826831,
+          0.000743507100577465,
+          0.0011494559522303685,
+          0.0020088038453215983,
+          0.0011101364425016738,
+          0.0010258725939387393,
+          0.0011421553835742585,
+          0.0010025451960770217,
+          0.001047000188949754,
+          0.0008506139524040389,
+          0.0006861981783436255,
+          0.000908180146146035,
+          0.0011706234162799278,
+          0.0016282264101015076,
+          0.0007854335068702308,
+          0.0009652257971401312,
+          0.0010899556662439748,
+          0.0005674313654643134,
+          0.0014476200563955646,
+          0.000903813286953047,
+          0.0007894182618673456
+        ]
+      },
+      "vs_best": {
+        "relative_gain": -0.014892719917108277,
+        "patient_wins": 19,
+        "patient_losses": 40,
+        "fold_wins": 0,
+        "p90_nonworse": false,
+        "targets_better": 5
+      },
+      "vs_operating": {
+        "relative_gain": 2.220446049250313e-16,
+        "patient_wins": 0,
+        "patient_losses": 0,
+        "fold_wins": 0,
+        "p90_nonworse": true,
+        "targets_better": 12
+      },
+      "gate": false,
+      "two_x": false
+    },
+    "nonlinear_panel": {
+      "metrics": {
+        "mse": 0.0010511556646128047,
+        "p90": 0.038511608158242776,
+        "fold_mse": [
+          0.0013347945145138053,
+          0.0009307742099298547,
+          0.00103709423572955,
+          0.0008334621420636516,
+          0.0011258802713921044
+        ],
+        "orientation_mse": [
+          0.0010896022117077245,
+          0.0010127091175178853
+        ],
+        "target_mse": [
+          0.0013242790007559557,
+          0.0011344332141790924,
+          0.0012398068144806801,
+          0.0007643267009965229,
+          0.0008013272406505751,
+          0.0012812909005665164,
+          0.0019766648534826395,
+          0.0011032908797261219,
+          0.0010560722447903277,
+          0.001024327788891466,
+          0.0010398553496908467,
+          0.0010017129772049362,
+          0.0008632710277988193,
+          0.0006679033085074365,
+          0.0009027483828805338,
+          0.0011616617256617824,
+          0.0013920686794650498,
+          0.0008059903642862495,
+          0.0008669510182397019,
+          0.0010218418876201025,
+          0.0005563508281405899,
+          0.0015606692419345368,
+          0.0009777850506533146,
+          0.0007031064701035194
+        ]
+      },
+      "vs_best": {
+        "relative_gain": -0.008065190140206457,
+        "patient_wins": 30,
+        "patient_losses": 29,
+        "fold_wins": 3,
+        "p90_nonworse": false,
+        "targets_better": 10
+      },
+      "vs_operating": {
+        "relative_gain": 0.006727341366149275,
+        "patient_wins": 30,
+        "patient_losses": 29,
+        "fold_wins": 3,
+        "p90_nonworse": false,
+        "targets_better": 14
+      },
+      "gate": false,
+      "two_x": false
+    }
+  },
+  "control_maxdiff": 1.7763568394002505e-15,
+  "outer_mutation_maxdiff": 0.0,
+  "outer_state_maxdiff": 0.0,
+  "physical_wells": 64,
+  "distinct_native_doses": 64,
+  "per_plate": [
+    32,
+    32
+  ],
+  "target_mse_2x": 0.000521372861048106,
+  "protected22_access": false,
+  "submission_changed": false,
+  "independent_validation": false,
+  "freeze_sha256": "fa8c1346fc861a406665e9d9c4b9205562b81dde3eb87a2b0df581d3d8fd96ae",
+  "prediction_sha256": "2dd727bbb274310becaf49c4511a3e20f1e433881168e44aec2ab7c2ecd0f331",
+  "finished_utc": "2026-10-08T13:16:39.393919+00:00",
+  "verification": {
+    "status": "PASS",
+    "independent_saved_model_replay": true,
+    "predictions_reconstructed": 11424,
+    "max_prediction_difference": 2.220446049250313e-16,
+    "original_64_physical_budget_checked": true,
+    "whole_patient_metrics_checked": true,
+    "outer_label_exclusion_sentinel": 0.0,
+    "biological_independent_validation": false,
+    "verifier_sha256": "f7c561d441e6b2cd51b42b18758e4c87b4d53ae77590e3889c550480c5fe8b34",
+    "result_sha256": "b740907a6193632559dab601142c480f6e8d3835e9dc5e88a376aab0bd745a7e"
+  },
+  "decision": "REJECT_RETAIN_SCIENTIFIC64",
+  "frozen_commit": "0056db1",
+  "run_directory": "D:\\von-dosepilot-data\\nonlinear_panel64_20261008_run1"
+}
