@@ -1,0 +1,132 @@
+{
+  "schema": "dosepilot.hts384.source_provenance.v1",
+  "download": {
+    "schema": "dosepilot.external_hts384.download.v1",
+    "status": "PUBLIC_CSV_DOWNLOADED",
+    "source_page": "https://wiki.nci.nih.gov/spaces/NCIDTPdata/pages/998965250/HTS384%2BGrowth%2BInhibition%2BData",
+    "download_url": "https://wiki.nci.nih.gov/download/attachments/998965250/HTS384_DOSERESP.csv?version=3&modificationDate=1790099021997&api=v2",
+    "final_url": "https://wiki.nci.nih.gov/download/attachments/998965250/HTS384_DOSERESP.csv?version=3&modificationDate=1790099021997&api=v2",
+    "response_headers": {
+      "Content-Type": "text/csv;charset=UTF-8",
+      "Content-Length": "38336989",
+      "Last-Modified": "Wed, 21 Jan 1970 17:14:59 GMT",
+      "Content-Disposition": "inline; filename=\"HTS384_DOSERESP.csv\""
+    },
+    "bytes": 38336989,
+    "sha256": "4088c00b6eea513c4d5add4e7052b53f66a13c4c541c42ef853f8658a9db8cba",
+    "csv_columns": [
+      "EXPID",
+      "PREFIX",
+      "NSC",
+      "CONCUNIT",
+      "LHICONC",
+      "LCONC",
+      "M_GIPRCNT",
+      "PANELCDE",
+      "CELLNBR",
+      "PANELNAME",
+      "CELLNAME",
+      "PANELNBR",
+      "M_PTC"
+    ],
+    "started_utc": "2026-10-08T00:01:07.348306+00:00",
+    "finished_utc": "2026-10-08T00:02:46.576398+00:00",
+    "max_download_bytes": 67108864,
+    "authentication_used": false,
+    "patient_inputs_read": false,
+    "third_party_mirror_used": false,
+    "public_raw_data_republication": false,
+    "explicit_archive_license_detected": false,
+    "use_scope": "Local scientific-use source/schema audit. Official NCI data index provides data for scientific community; no blanket MIT/CC relicensing or endorsement asserted."
+  },
+  "prepared_source": {
+    "schema": "dosepilot.hts384.external_curve_audit.v1",
+    "status": "READY_FOR_SHAPE_ONLY_PRIOR",
+    "source_sha256": "4088c00b6eea513c4d5add4e7052b53f66a13c4c541c42ef853f8658a9db8cba",
+    "source_rows": 446805,
+    "candidate_curve_groups": 89361,
+    "accepted_curves": 84702,
+    "unique_cell_identifiers": 60,
+    "unique_cell_names": 60,
+    "unique_compounds": 1135,
+    "unique_experiments": 65,
+    "row_exclusions": {
+      "non_numeric_required_field": 19315
+    },
+    "curve_exclusions": {
+      "required_values_missing": 4659
+    },
+    "response_field": "M_PTC / 100, not M_GIPRCNT",
+    "response_quantiles": {
+      "min": 2.8999999999999997e-05,
+      "p001": 0.000143,
+      "p01": 0.000851,
+      "median": 0.8552584999999999,
+      "p99": 1.1628394599999998,
+      "p999": 1.3373146219999992,
+      "max": 2.164683
+    },
+    "shape_coordinate": "relative log concentration within each five-point four-log series; no drug-potency equivalence",
+    "external_weighting": "equal cell identifier, equal NSC within cell, equal experiment/range within cell+NSC",
+    "weight_sum": 0.9999999999999999,
+    "weighted_mean_curve": [
+      0.9398799645088951,
+      0.8713979462000473,
+      0.7503120768721294,
+      0.49431729428187304,
+      0.25070125111441965
+    ],
+    "covariance5": [
+      [
+        0.03602567196879314,
+        0.03856936071424318,
+        0.03398842001724187,
+        0.02066721136037001,
+        0.009925875398284205
+      ],
+      [
+        0.03856936071424318,
+        0.07138751516278688,
+        0.07066496390107009,
+        0.045144295930498166,
+        0.022018509407224086
+      ],
+      [
+        0.03398842001724187,
+        0.07066496390107009,
+        0.10982161816516346,
+        0.081563227164378,
+        0.040341111787036976
+      ],
+      [
+        0.020667211360370006,
+        0.045144295930498166,
+        0.081563227164378,
+        0.1414615052900714,
+        0.08140840678858553
+      ],
+      [
+        0.00992587539828421,
+        0.02201850940722408,
+        0.04034111178703696,
+        0.08140840678858553,
+        0.10494172093841338
+      ]
+    ],
+    "prepared_sha256": "53aae154d310256d77ddbc9c9d6ddab461235496e12009a23105620c0181b66c",
+    "source_responses_clipped": false,
+    "patient_inputs_read": false,
+    "existing_external_validation_partition_reused": false,
+    "novel_independent_patient_count_claimed": false,
+    "raw_source_republished": false,
+    "utc": "2026-10-08T00:04:49.476805+00:00"
+  },
+  "archive_specific_license_verified": false,
+  "NCI_text_policy_is_not_blanket_data_license": true,
+  "local_scientific_analysis_only": true,
+  "raw_data_or_fitted_arrays_republished": false,
+  "original_data_source_credit": "National Cancer Institute, Developmental Therapeutics Program, HTS384 public screen",
+  "public_master_prior_use_search": "No NCI-60/HTS384 occurrence found in tracked study/docs/evidence at 5700f8d; complete unpublished history not claimed",
+  "heldout_validation_source_reassigned": false,
+  "NCI_endorsement_claimed": false
+}
