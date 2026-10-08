@@ -1,0 +1,73 @@
+{
+  "schema": "dosepilot.two_stage_crossfit_residual64.freeze.v1",
+  "state": "FROZEN_BEFORE_CANDIDATE_OUTCOMES",
+  "utc": "2026-10-08T09:47:56.758437+00:00",
+  "inputs": {
+    "curves": "b192dc242362d74c4faa941752792336c7610d9bd403cccbf1cee7a8a1fc7c94",
+    "catalog": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "reference": "ab7bd69e97fc0295a9f4066be0396d82d628bba5b69302bb9670f31561e6df12",
+    "raw_policy_reference": "b751609c67cef366cc83369aa6f12edd8643d83114d3b1661a505990004f60e4"
+  },
+  "source_sha256": {
+    "study/two_stage_risk64/policy.py": "f04c9225fff145ea26946a0c4f27fcd3fc3d4fb539425cfc736decd6eb205311",
+    "study/two_stage_risk64/PROTOCOL.md": "e845953e79132b7a698ed38406421233d46f692656bf83bbd847c0864b9600b5",
+    "study/two_stage_risk64/run_study.py": "a3f1403a6b36730e473dba390429ef8eb1c5f103b4fc53184d58b97902866fd7",
+    "study/two_stage_risk64/shape_prior.py": "c3f31c1314f89e188d656baf594a5d994b1523bceabe97bb95f51c9d8a6c3981",
+    "study/two_stage_risk64/test_integration.py": "b1fcc5053770b981caeca92ca005479bea196def803532bbdf66497344e87b57",
+    "study/two_stage_risk64/test_study.py": "4f1bf5ddc75aa818c5dccd44015d30b14cc59d036a4dc07f15b53ec7fbd46f37",
+    "study/global_conditional_curve64/run_study.py": "80e326c6c43d9db8a1a1d9f5a0250589662d7322922654d5fe545c52309fc9ca",
+    "study/global_conditional_curve64/conditional.py": "0a036fcb6e9c59ac003c90cc3beb028ec51a65767bd17b2e3cbf4b882457353a",
+    "study/global_conditional_curve64/full_curves.py": "31d64f4313c97930bf238de71d56dfcf5ecf725d2eed971eb526f7f54b7c5480",
+    "study/compact_train.py": "50a9140441680b9a889a165bbd6921d2ed42f65e7fe43efd18078db05340b34e",
+    "study/TRAIN_CATALOG.json": "84eae3976307448ac696852d39d1b2376cce479d8af5e386ce04097020deff5e",
+    "study/engine/coverage_methods.py": "2c5cb8c5e1ed67f7d68677020102d70f60a42e12a1316d3e8a515fc28a9d63f8",
+    "study/engine/sparse_methods.py": "511ea1665a7f245cd3a2923fd8a6be6f5c2e45ba901da1620f7298a4125ec64c",
+    "study/engine/methods.py": "6fc6909ab92057aa8715383f0001f4bcaa14df85d0e897ed8900f88efb1aaf5f",
+    "study/engine/evaluate.py": "24593a7d8608fd3ce98c367e1760af596b3b33554c1ef7a3f8ac645b046b700b",
+    "study/acceleration/fast_coverage.py": "bf99cf292ed0f398043872239a7cd2eff8995f3d4aea4f98a62955a89bea724e",
+    "study/hybrid_residual/bandwidth_additive.py": "30723fbc8f6843c200891e14e5fb254e707298fa5514b668c4f005a4562edb30",
+    "study/hybrid_residual/additive_kernel.py": "683004e39904c6648c0283395697c914903e78db60a7e98f90362dc8b2c49b1a",
+    "study/hybrid_residual/kernel_spectral.py": "869bfc27cb72afe644f2e85ee5d255004e2afcf8b765b4cc56d8cd7d8927131e",
+    "study/two_stage_crossfit_residual64/kernel.py": "6dcc239b9dd5e3652455a34797658607bc462aa8ecceabb117bd57a314c543a6",
+    "study/two_stage_crossfit_residual64/PROTOCOL.md": "36171f01288091277a82218c44239f7875361f4798d67d4b794db75a1ccdbf8a",
+    "study/two_stage_crossfit_residual64/run_study.py": "b32804aee1ddc2ae3e42267d0e9b314ab8862e64c140cd717f03fa35ca658ac9",
+    "study/two_stage_crossfit_residual64/test_integration.py": "bfd7525b92c0b76a39ed106ba4a692062bde94b18c285485c8a9288ed81335ce",
+    "study/two_stage_crossfit_residual64/test_study.py": "8db5e18a37d6af8400ae50eb6cb62d9dcbd69fdce9441d5dcbe5d508e244f615"
+  },
+  "runtime_versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.18.1",
+    "threadpoolctl": "3.6.0"
+  },
+  "primary_arm": "adaptive",
+  "control_arm": "static",
+  "calibration_patient_folds": 3,
+  "inner_selection_patient_folds": 3,
+  "outer_patient_folds": 5,
+  "residual_options": 10,
+  "derived_features": 264,
+  "model_features_are_paid_values_and_metadata_only": true,
+  "uses_global_outer_OOF_for_meta_training": false,
+  "frozen_parent_policy": "bbc7b603468d319d53162c1fa2f02c6af49806de",
+  "treatment_wells": 64,
+  "per_plate": [
+    32,
+    32
+  ],
+  "round_budgets": [
+    48,
+    16
+  ],
+  "single_round_operational_contract_preserved": false,
+  "sequential_lab_feasibility_validated": false,
+  "synthetic_tests_passed": 15,
+  "bootstrap_seed": 202610080940,
+  "bootstrap_replicates": 100000,
+  "half_error_target": 0.000521372861048106,
+  "protected22_access": false,
+  "independent_validation": false,
+  "selection_adjusted": false,
+  "automatic_retry": false,
+  "automatic_promotion": false,
+  "kaggle_entry_changed": false
+}
