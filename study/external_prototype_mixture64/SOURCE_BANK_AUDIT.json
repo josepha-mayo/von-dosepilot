@@ -1,0 +1,29 @@
+{
+  "schema": "dosepilot.external_prototype_bank.v1",
+  "status": "SOURCE_ONLY_COMPRESSION_COMPLETE",
+  "prepared_source_sha256": "53aae154d310256d77ddbc9c9d6ddab461235496e12009a23105620c0181b66c",
+  "prototype_bank_sha256": "52dea1c675b057089258c672855a05d30fc04f56602d4a63c515c47d3a1bad57",
+  "source_curves": 84702,
+  "source_cell_identifiers": 60,
+  "source_compounds": 1135,
+  "requested_prototypes": 256,
+  "nonempty_prototypes": 256,
+  "minibatch_steps": 132,
+  "weighted_mean_maxdiff": 5.88418203051333e-15,
+  "quantization_covariance_min_eigenvalue": 0.0018337016246611334,
+  "source_covariance_trace": 0.46363803152522826,
+  "quantization_covariance_trace": 0.011175225436087136,
+  "parameter_search": false,
+  "random_state": 20261008,
+  "organoid_data_read": false,
+  "raw_data_or_prototype_arrays_published": false,
+  "new_independent_patients_claimed": false,
+  "runtime_versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.0",
+    "threadpoolctl": "3.6.0"
+  },
+  "seconds": 3.6721740999928443,
+  "utc": "2026-10-08T00:27:18.538386+00:00"
+}

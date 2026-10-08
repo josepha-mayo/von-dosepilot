@@ -1,0 +1,700 @@
+{
+  "schema": "dosepilot.chemical_partial_prior64.source_bank.v1",
+  "status": "SOURCE_ONLY_BANK_READY",
+  "source_cache_sha256": "53aae154d310256d77ddbc9c9d6ddab461235496e12009a23105620c0181b66c",
+  "identity_audit_sha256": "0e814c4046c607286308a1e165ed7922504aac88e9aa9a803b198c43c0b6731e",
+  "bank_sha256": "6b457c9e51c68e5444b07d2a5676b18d5490be8fd8d0090db88c88d83e5e3d1d",
+  "supported_targets": 20,
+  "records": [
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1
+      ],
+      "matched_cells": 60,
+      "matched_curve_groups": 115,
+      "covered_log_molar_range": [
+        -8.0,
+        -5.0
+      ],
+      "full_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "max_difference_from_regularized_pooled": 0.3545193920313586,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "5-FU",
+      "candidates": [
+        "19893"
+      ]
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "matched_cells": 59,
+      "matched_curve_groups": 59,
+      "covered_log_molar_range": [
+        -8.0,
+        -6.0
+      ],
+      "full_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "max_difference_from_regularized_pooled": 0.11156069335200347,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "AZD7762",
+      "candidates": [
+        "757148"
+      ]
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "matched_cells": 57,
+      "matched_curve_groups": 57,
+      "covered_log_molar_range": [
+        -8.0,
+        -6.0
+      ],
+      "full_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "max_difference_from_regularized_pooled": 0.27788476547546315,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "Afatinib",
+      "candidates": [
+        "750691"
+      ]
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1
+      ],
+      "matched_cells": 58,
+      "matched_curve_groups": 58,
+      "covered_log_molar_range": [
+        -8.0,
+        -5.0
+      ],
+      "full_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "max_difference_from_regularized_pooled": 0.39609063404878886,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "Alisertib",
+      "candidates": [
+        "759677"
+      ]
+    },
+    {
+      "status": "POOLED_FALLBACK",
+      "covered_indices": [],
+      "matched_cells": 0,
+      "matched_curve_groups": 0,
+      "drug": "Atorvastatin",
+      "candidates": []
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1
+      ],
+      "matched_cells": 55,
+      "matched_curve_groups": 55,
+      "covered_log_molar_range": [
+        -8.0,
+        -5.0
+      ],
+      "full_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "max_difference_from_regularized_pooled": 0.5804945535558034,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "Bemcentinib",
+      "candidates": [
+        "824183"
+      ]
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "matched_cells": 58,
+      "matched_curve_groups": 109,
+      "covered_log_molar_range": [
+        -8.0,
+        -6.0
+      ],
+      "full_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "max_difference_from_regularized_pooled": 0.42597832216618065,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "Encorafenib",
+      "candidates": [
+        "778304"
+      ]
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "matched_cells": 55,
+      "matched_curve_groups": 55,
+      "covered_log_molar_range": [
+        -8.0,
+        -6.0
+      ],
+      "full_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "max_difference_from_regularized_pooled": 0.15092308844239,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "Gedatolisib",
+      "candidates": [
+        "758256"
+      ]
+    },
+    {
+      "status": "POOLED_FALLBACK",
+      "covered_indices": [],
+      "matched_cells": 0,
+      "matched_curve_groups": 0,
+      "drug": "Gemcitabine",
+      "candidates": []
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1
+      ],
+      "matched_cells": 39,
+      "matched_curve_groups": 39,
+      "covered_log_molar_range": [
+        -8.0,
+        -5.0
+      ],
+      "full_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "max_difference_from_regularized_pooled": 0.370403553669035,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "Idasanutlin",
+      "candidates": [
+        "779404"
+      ]
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        2,
+        3,
+        4
+      ],
+      "uncovered_indices": [
+        0,
+        1
+      ],
+      "matched_cells": 58,
+      "matched_curve_groups": 58,
+      "covered_log_molar_range": [
+        -6.6020599913279625,
+        -4.6020599913279625
+      ],
+      "full_log_molar_range": [
+        -8.602059991327963,
+        -4.6020599913279625
+      ],
+      "max_difference_from_regularized_pooled": 0.3958633215655138,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "LCL161",
+      "candidates": [
+        "772868"
+      ]
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1
+      ],
+      "matched_cells": 59,
+      "matched_curve_groups": 111,
+      "covered_log_molar_range": [
+        -8.0,
+        -5.0
+      ],
+      "full_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "max_difference_from_regularized_pooled": 0.199394018400618,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "LGK974",
+      "candidates": [
+        "777639"
+      ]
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "matched_cells": 60,
+      "matched_curve_groups": 116,
+      "covered_log_molar_range": [
+        -8.0,
+        -6.0
+      ],
+      "full_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "max_difference_from_regularized_pooled": 0.12945798718364743,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "Lapatinib",
+      "candidates": [
+        "745750"
+      ]
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "matched_cells": 58,
+      "matched_curve_groups": 58,
+      "covered_log_molar_range": [
+        -8.0,
+        -6.0
+      ],
+      "full_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "max_difference_from_regularized_pooled": 0.19492952185610485,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "Luminespib",
+      "candidates": [
+        "755762"
+      ]
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1,
+        2
+      ],
+      "matched_cells": 60,
+      "matched_curve_groups": 115,
+      "covered_log_molar_range": [
+        -7.823908740944319,
+        -5.301029995663981
+      ],
+      "full_log_molar_range": [
+        -9.301029995663981,
+        -5.301029995663981
+      ],
+      "max_difference_from_regularized_pooled": 0.3523131199840999,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "Methotrexate",
+      "candidates": [
+        "740"
+      ]
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1
+      ],
+      "matched_cells": 56,
+      "matched_curve_groups": 56,
+      "covered_log_molar_range": [
+        -7.698970004336019,
+        -4.698970004336019
+      ],
+      "full_log_molar_range": [
+        -8.698970004336019,
+        -4.698970004336019
+      ],
+      "max_difference_from_regularized_pooled": 0.5652954119628633,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "Napabucasin",
+      "candidates": [
+        "788900"
+      ]
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1
+      ],
+      "matched_cells": 60,
+      "matched_curve_groups": 116,
+      "covered_log_molar_range": [
+        -8.0,
+        -5.0
+      ],
+      "full_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "max_difference_from_regularized_pooled": 0.335380469210419,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "Palbociclib",
+      "candidates": [
+        "758247"
+      ]
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "matched_cells": 60,
+      "matched_curve_groups": 170,
+      "covered_log_molar_range": [
+        -8.0,
+        -6.0
+      ],
+      "full_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "max_difference_from_regularized_pooled": 0.085490130659433,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "Panobinostat",
+      "candidates": [
+        "761190"
+      ]
+    },
+    {
+      "status": "POOLED_FALLBACK",
+      "covered_indices": [],
+      "matched_cells": 0,
+      "matched_curve_groups": 0,
+      "drug": "Pevonedistat",
+      "candidates": []
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1
+      ],
+      "matched_cells": 58,
+      "matched_curve_groups": 109,
+      "covered_log_molar_range": [
+        -8.0,
+        -5.0
+      ],
+      "full_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "max_difference_from_regularized_pooled": 0.545333644657115,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "Regorafenib",
+      "candidates": [
+        "763932"
+      ]
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        2,
+        3,
+        4
+      ],
+      "uncovered_indices": [
+        0,
+        1
+      ],
+      "matched_cells": 58,
+      "matched_curve_groups": 58,
+      "covered_log_molar_range": [
+        -7.0,
+        -5.0
+      ],
+      "full_log_molar_range": [
+        -9.0,
+        -5.0
+      ],
+      "max_difference_from_regularized_pooled": 0.23150263679242195,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "SN-38",
+      "candidates": [
+        "673596"
+      ]
+    },
+    {
+      "status": "POOLED_FALLBACK",
+      "covered_indices": [],
+      "matched_cells": 0,
+      "matched_curve_groups": 0,
+      "drug": "TAS-102",
+      "candidates": []
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "matched_cells": 60,
+      "matched_curve_groups": 116,
+      "covered_log_molar_range": [
+        -7.6020599913279625,
+        -6.6020599913279625
+      ],
+      "full_log_molar_range": [
+        -10.602059991327963,
+        -6.6020599913279625
+      ],
+      "max_difference_from_regularized_pooled": 0.27326810808187185,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "Trametinib",
+      "candidates": [
+        "758246"
+      ]
+    },
+    {
+      "status": "PARTIAL_CHEMICAL_DOSE_TRANSFER",
+      "covered_indices": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "uncovered_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "matched_cells": 55,
+      "matched_curve_groups": 55,
+      "covered_log_molar_range": [
+        -8.0,
+        -6.0
+      ],
+      "full_log_molar_range": [
+        -10.0,
+        -6.0
+      ],
+      "max_difference_from_regularized_pooled": 0.27600229826697725,
+      "source_response_extrapolation": false,
+      "uncovered_region_uses_gaussian_conditional_prior": true,
+      "drug": "Volasertib",
+      "candidates": [
+        "757149"
+      ]
+    }
+  ],
+  "min_cells": 20,
+  "correlation_ridge": 0.1,
+  "organoid_response_values_parsed": false,
+  "organoid_model_fitted": false,
+  "external_response_extrapolation_used": false,
+  "utc": "2026-10-08T00:54:53.113843+00:00"
+}
