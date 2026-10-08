@@ -1,0 +1,286 @@
+{
+  "schema": "dosepilot.research_progress_20261008.v1",
+  "as_of_utc": "2026-10-08T14:15:10.622870+00:00",
+  "population": {
+    "samples": 119,
+    "whole_patients": 59,
+    "targets": 24,
+    "outer_patient_folds": 5
+  },
+  "retained_scientific64": {
+    "mse": 0.001042745722096212,
+    "p90": 0.037419695944064885,
+    "treatment_wells": 64,
+    "unchanged_by_this_work": true
+  },
+  "same_budget_half_error_target": 0.000521372861048106,
+  "same_budget_2x_achieved": false,
+  "tiers": {
+    "64": {
+      "mse": 0.0010582750420801536,
+      "p90": 0.037894285308720174,
+      "treatment_wells": 64,
+      "added_wells_vs64": 0,
+      "error_reduction_factor_vs64": 0.9853258185571332,
+      "error_reduction_factor_vs72": 0.8812460888757968,
+      "accuracy_only_2x": false,
+      "same_budget_2x": false,
+      "patient_wins": 19,
+      "fold_wins": 0,
+      "target_mean_wins": 5
+    },
+    "80": {
+      "mse": 0.0008321259869567429,
+      "p90": 0.035733566643650294,
+      "treatment_wells": 80,
+      "added_wells_vs64": 16,
+      "error_reduction_factor_vs64": 1.2531103924656277,
+      "error_reduction_factor_vs72": 1.1207446425254892,
+      "accuracy_only_2x": false,
+      "same_budget_2x": false,
+      "patient_wins": 57,
+      "fold_wins": 5,
+      "target_mean_wins": 21
+    },
+    "96": {
+      "mse": 0.0006909674226742624,
+      "p90": 0.03199234695992155,
+      "treatment_wells": 96,
+      "added_wells_vs64": 32,
+      "error_reduction_factor_vs64": 1.5091098188977656,
+      "error_reduction_factor_vs72": 1.349702910997663,
+      "accuracy_only_2x": false,
+      "same_budget_2x": false,
+      "patient_wins": 58,
+      "fold_wins": 5,
+      "target_mean_wins": 24
+    },
+    "112": {
+      "mse": 0.0005825200110026925,
+      "p90": 0.029874389316411697,
+      "treatment_wells": 112,
+      "added_wells_vs64": 48,
+      "error_reduction_factor_vs64": 1.790059916227311,
+      "error_reduction_factor_vs72": 1.6009763169898965,
+      "accuracy_only_2x": false,
+      "same_budget_2x": false,
+      "patient_wins": 59,
+      "fold_wins": 5,
+      "target_mean_wins": 24
+    },
+    "128": {
+      "mse": 0.0005102658031862283,
+      "p90": 0.028122765834466153,
+      "treatment_wells": 128,
+      "added_wells_vs64": 64,
+      "error_reduction_factor_vs64": 2.043534400277355,
+      "error_reduction_factor_vs72": 1.827676352137671,
+      "accuracy_only_2x": true,
+      "same_budget_2x": false,
+      "patient_wins": 59,
+      "fold_wins": 5,
+      "target_mean_wins": 24
+    }
+  },
+  "accuracy128_ratio_uncertainty": {
+    "point": 2.043534400277355,
+    "descriptive_patient_bootstrap95ci": [
+      1.9368054709555778,
+      2.159965422373478
+    ],
+    "seed": 2026100817,
+    "replicates": 100000,
+    "selection_adjusted": false,
+    "independent_biological_confirmation": false,
+    "two_x_inside_interval": true
+  },
+  "finite_auc64": {
+    "original": {
+      "mse": 0.0010582750420801534,
+      "p90": 0.037894285308720174,
+      "beats_retained_gate": false,
+      "same_budget_2x": false
+    },
+    "observed_anchor": {
+      "mse": 0.001058028277873179,
+      "p90": 0.037913345123291566,
+      "beats_retained_gate": false,
+      "same_budget_2x": false
+    },
+    "smooth_local": {
+      "mse": 0.001208245893803307,
+      "p90": 0.040251195034131694,
+      "beats_retained_gate": false,
+      "same_budget_2x": false
+    },
+    "smooth_halfpool": {
+      "mse": 0.0011970884712749368,
+      "p90": 0.039805273982652614,
+      "beats_retained_gate": false,
+      "same_budget_2x": false
+    },
+    "smooth_pool": {
+      "mse": 0.001173696224306985,
+      "p90": 0.038800357161490294,
+      "beats_retained_gate": false,
+      "same_budget_2x": false
+    },
+    "nested_primary": {
+      "mse": 0.0010581069836155498,
+      "p90": 0.037913345123291566,
+      "beats_retained_gate": false,
+      "same_budget_2x": false
+    }
+  },
+  "privileged_student64": {
+    "raw": {
+      "mse": 0.0010582750420801536,
+      "p90": 0.037894285308720174,
+      "beats_retained_gate": false,
+      "same_budget_2x": false
+    },
+    "teacher25": {
+      "mse": 0.0010637245467034412,
+      "p90": 0.03846555451468062,
+      "beats_retained_gate": false,
+      "same_budget_2x": false
+    },
+    "teacher50": {
+      "mse": 0.0010766988229947924,
+      "p90": 0.03917465993298605,
+      "beats_retained_gate": false,
+      "same_budget_2x": false
+    },
+    "teacher100": {
+      "mse": 0.0011303365194666366,
+      "p90": 0.040951101356625205,
+      "beats_retained_gate": false,
+      "same_budget_2x": false
+    },
+    "nested_primary": {
+      "mse": 0.0010590052787348959,
+      "p90": 0.038366514758665884,
+      "beats_retained_gate": false,
+      "same_budget_2x": false
+    }
+  },
+  "verifications": {
+    "finite_auc64": {
+      "status": "PASS",
+      "independent_numeric_model_replay": true,
+      "predictions_reconstructed": 34272,
+      "max_difference": 2.220446049250313e-16,
+      "physical_budget_checked": true,
+      "whole_patient_metrics_checked": true,
+      "result_sha256": "d89b509cf50b59d2ae74efabe56836b02bcc83a30da17b71b0cec063f892bde9",
+      "verifier_sha256": "d7f04003a9a0e8f3d43aff7d28eff312c760ab89811068c6ab30da07bc3621ab",
+      "independent_biological_validation": false
+    },
+    "accuracy_tiers": {
+      "status": "PASS",
+      "independent_model_replay": true,
+      "predictions_reconstructed": 28560,
+      "max_difference": 2.220446049250313e-16,
+      "budgets_individually_verified": [
+        64,
+        80,
+        96,
+        112,
+        128
+      ],
+      "tiers": {
+        "64": {
+          "mse": 0.0010582750420801536,
+          "p90": 0.037894285308720174,
+          "treatment_wells": 64,
+          "error_reduction_factor_vs64": 0.9853258185571332,
+          "added_wells": 0
+        },
+        "80": {
+          "mse": 0.0008321259869567429,
+          "p90": 0.03573356664365029,
+          "treatment_wells": 80,
+          "error_reduction_factor_vs64": 1.2531103924656277,
+          "added_wells": 16
+        },
+        "96": {
+          "mse": 0.0006909674226742625,
+          "p90": 0.03199234695992155,
+          "treatment_wells": 96,
+          "error_reduction_factor_vs64": 1.5091098188977654,
+          "added_wells": 32
+        },
+        "112": {
+          "mse": 0.0005825200110026925,
+          "p90": 0.029874389316411697,
+          "treatment_wells": 112,
+          "error_reduction_factor_vs64": 1.790059916227311,
+          "added_wells": 48
+        },
+        "128": {
+          "mse": 0.0005102658031862283,
+          "p90": 0.028122765834466157,
+          "treatment_wells": 128,
+          "error_reduction_factor_vs64": 2.043534400277355,
+          "added_wells": 64
+        }
+      },
+      "same_budget_2x_achieved": false,
+      "result_sha256": "4008e2e289ff098bb08c8a98f78af6e36e86316bbd54d60c8a1808be0da22c05",
+      "verifier_sha256": "ff3815c140dabef2bc9075ee9b0689f4ac20a0d41184781ffdac6088f6287053",
+      "independent_biological_validation": false
+    },
+    "privileged_student64": {
+      "status": "PASS",
+      "independent_student_model_replay": true,
+      "teacher_patient_separation_audited": true,
+      "student_inference_wells": 64,
+      "predictions_reconstructed": 28560,
+      "maximum_difference": 2.220446049250313e-16,
+      "result_sha256": "39c0a1f374a40f0ced15f62210c9a4a359fc0fa587f8f9551158a361391d9371",
+      "verifier_sha256": "5f605e5180d5410c1437e93c6a6cf099f0015479f26b85ddf0584a4e6279adc1",
+      "independent_biological_validation": false
+    },
+    "deployment_cli": {
+      "status": "PASS",
+      "synthetic_only": true,
+      "treatment_wells_required": 128,
+      "checks": [
+        "validA",
+        "validB",
+        "missing",
+        "only64",
+        "duplicate",
+        "unpaid",
+        "nonfinite",
+        "wrong_layout"
+      ],
+      "clinical_validation": false
+    }
+  },
+  "frozen_scientific_commits": {
+    "finite_auc64": "a4e9899",
+    "accuracy_tiers": "fa5b154",
+    "privileged_student64": "18ff3e2"
+  },
+  "research_model": {
+    "name": "von-dosepilot-128-research",
+    "private_directory": "D:\\von-dosepilot-data\\accuracy_tiers_20261008_run1\\deployment128_private",
+    "required_treatment_wells": 128,
+    "model_sha256": "4026a4b2c74975713b9c465000a9793243b08a932cb9d968da6e110344172e37",
+    "deployment_option": [
+      0.1,
+      10.0
+    ],
+    "synthetic_inference_passed": true,
+    "retained 64_replaced": false
+  },
+  "submission_changed": false,
+  "independent_biological_validation": false,
+  "official_competition_score": null,
+  "source_runs": {
+    "finite_auc64": "D:\\von-dosepilot-data\\finite_auc64_20261008_run1",
+    "accuracy_tiers": "D:\\von-dosepilot-data\\accuracy_tiers_20261008_run1",
+    "privileged_student64": "D:\\von-dosepilot-data\\privileged_student64_20261008_run1"
+  }
+}
