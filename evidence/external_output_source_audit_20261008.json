@@ -1,0 +1,220 @@
+{
+  "schema": "dosepilot.external_output_coupling64.source_bank.v1",
+  "status": "SOURCE_ONLY_OUTPUT_PRIOR_READY",
+  "source_cache_sha256": "53aae154d310256d77ddbc9c9d6ddab461235496e12009a23105620c0181b66c",
+  "chemical_dose_audit_sha256": "2e086a4e1ac2c3bf1cba76151ead67e263ff2f2aeb9ab21953990480aaaa80e3",
+  "bank_sha256": "1d3333b53dbb53a13afab5aa5ee573792666ecaaf7a58f9712bf204bcf788c0e",
+  "matched_drugs": 20,
+  "common_source_cell_identifiers": 33,
+  "covariance_shrinkage": 0.5,
+  "source_coverage": [
+    {
+      "drug": "5-FU",
+      "target_index": 0,
+      "source_cell_count": 60,
+      "source_series": 115,
+      "log_molar_interval": [
+        -8.0,
+        -5.0
+      ]
+    },
+    {
+      "drug": "AZD7762",
+      "target_index": 1,
+      "source_cell_count": 59,
+      "source_series": 59,
+      "log_molar_interval": [
+        -8.0,
+        -6.0
+      ]
+    },
+    {
+      "drug": "Afatinib",
+      "target_index": 2,
+      "source_cell_count": 57,
+      "source_series": 57,
+      "log_molar_interval": [
+        -8.0,
+        -6.0
+      ]
+    },
+    {
+      "drug": "Alisertib",
+      "target_index": 3,
+      "source_cell_count": 58,
+      "source_series": 58,
+      "log_molar_interval": [
+        -8.0,
+        -5.0
+      ]
+    },
+    {
+      "drug": "Bemcentinib",
+      "target_index": 5,
+      "source_cell_count": 55,
+      "source_series": 55,
+      "log_molar_interval": [
+        -8.0,
+        -5.0
+      ]
+    },
+    {
+      "drug": "Encorafenib",
+      "target_index": 6,
+      "source_cell_count": 58,
+      "source_series": 109,
+      "log_molar_interval": [
+        -8.0,
+        -6.0
+      ]
+    },
+    {
+      "drug": "Gedatolisib",
+      "target_index": 7,
+      "source_cell_count": 55,
+      "source_series": 55,
+      "log_molar_interval": [
+        -8.0,
+        -6.0
+      ]
+    },
+    {
+      "drug": "Idasanutlin",
+      "target_index": 9,
+      "source_cell_count": 39,
+      "source_series": 39,
+      "log_molar_interval": [
+        -8.0,
+        -5.0
+      ]
+    },
+    {
+      "drug": "LCL161",
+      "target_index": 10,
+      "source_cell_count": 58,
+      "source_series": 58,
+      "log_molar_interval": [
+        -6.6020599913279625,
+        -4.6020599913279625
+      ]
+    },
+    {
+      "drug": "LGK974",
+      "target_index": 11,
+      "source_cell_count": 59,
+      "source_series": 111,
+      "log_molar_interval": [
+        -8.0,
+        -5.0
+      ]
+    },
+    {
+      "drug": "Lapatinib",
+      "target_index": 12,
+      "source_cell_count": 60,
+      "source_series": 116,
+      "log_molar_interval": [
+        -8.0,
+        -6.0
+      ]
+    },
+    {
+      "drug": "Luminespib",
+      "target_index": 13,
+      "source_cell_count": 58,
+      "source_series": 58,
+      "log_molar_interval": [
+        -8.0,
+        -6.0
+      ]
+    },
+    {
+      "drug": "Methotrexate",
+      "target_index": 14,
+      "source_cell_count": 60,
+      "source_series": 115,
+      "log_molar_interval": [
+        -7.823908740944319,
+        -5.301029995663981
+      ]
+    },
+    {
+      "drug": "Napabucasin",
+      "target_index": 15,
+      "source_cell_count": 56,
+      "source_series": 56,
+      "log_molar_interval": [
+        -7.698970004336019,
+        -4.698970004336019
+      ]
+    },
+    {
+      "drug": "Palbociclib",
+      "target_index": 16,
+      "source_cell_count": 60,
+      "source_series": 116,
+      "log_molar_interval": [
+        -8.0,
+        -5.0
+      ]
+    },
+    {
+      "drug": "Panobinostat",
+      "target_index": 17,
+      "source_cell_count": 60,
+      "source_series": 170,
+      "log_molar_interval": [
+        -8.0,
+        -6.0
+      ]
+    },
+    {
+      "drug": "Regorafenib",
+      "target_index": 19,
+      "source_cell_count": 58,
+      "source_series": 109,
+      "log_molar_interval": [
+        -8.0,
+        -5.0
+      ]
+    },
+    {
+      "drug": "SN-38",
+      "target_index": 20,
+      "source_cell_count": 58,
+      "source_series": 58,
+      "log_molar_interval": [
+        -7.0,
+        -5.0
+      ]
+    },
+    {
+      "drug": "Trametinib",
+      "target_index": 22,
+      "source_cell_count": 60,
+      "source_series": 116,
+      "log_molar_interval": [
+        -7.6020599913279625,
+        -6.6020599913279625
+      ]
+    },
+    {
+      "drug": "Volasertib",
+      "target_index": 23,
+      "source_cell_count": 55,
+      "source_series": 55,
+      "log_molar_interval": [
+        -8.0,
+        -6.0
+      ]
+    }
+  ],
+  "min_prior_eigenvalue": 0.5159695090533584,
+  "source_response_matrix_published": false,
+  "organoid_data_read": false,
+  "external_means_or_potencies_imported": false,
+  "independent_biological_validation": false,
+  "external_response_extrapolation": false,
+  "source_missing_values_imputed": false,
+  "utc": "2026-10-08T01:06:08.875433+00:00"
+}
